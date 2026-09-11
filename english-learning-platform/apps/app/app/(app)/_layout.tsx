@@ -10,18 +10,23 @@ export default function AppTabsLayout(): React.JSX.Element {
       screenOptions={{
         headerShown: false,
         tabBarStyle: {
-          backgroundColor: colors.backgroundSubtle,
+          backgroundColor: colors.card,
           borderTopColor: colors.border,
           borderTopWidth: 1,
           height: Platform.OS === 'ios' ? 88 : 64,
           paddingBottom: Platform.OS === 'ios' ? 28 : 8,
           paddingTop: 8,
+          shadowColor: '#0F172A',
+          shadowOffset: { width: 0, height: -2 },
+          shadowOpacity: 0.04,
+          shadowRadius: 6,
+          elevation: 4,
         },
         tabBarActiveTintColor: colors.primary,
-        tabBarInactiveTintColor: colors.textMuted,
+        tabBarInactiveTintColor: colors.textSecondary,
         tabBarLabelStyle: {
           fontSize: typography.sizes.xs - 1,
-          fontWeight: typography.weights.medium,
+          fontWeight: typography.weights.semibold,
         },
       }}
     >

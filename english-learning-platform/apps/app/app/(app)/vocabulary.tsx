@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react'
-import { View, Text, TextInput, StyleSheet, ScrollView, TouchableOpacity } from 'react-native'
+import { View, Text, TextInput, StyleSheet, ScrollView, TouchableOpacity, Pressable } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { colors, spacing, radius, typography, WordCard, Badge } from '@elp/ui'
 import { Ionicons } from '@expo/vector-icons'
@@ -38,17 +38,24 @@ export default function VocabularyScreen(): React.JSX.Element {
           {LEVELS.map((lvl) => {
             const isSelected = selectedLevel === lvl
             return (
-              <TouchableOpacity
+              <Pressable
                 key={lvl}
+                accessibilityRole="button"
                 onPress={() => {
                   setSelectedLevel(lvl)
                 }}
-                style={[styles.levelTab, isSelected && styles.levelTabActive]}
+                style={({ pressed }) => [
+                  styles.levelTab,
+                  isSelected && styles.levelTabActive,
+                  {
+                    transform: [{ scale: pressed ? 0.96 : 1 }],
+                  },
+                ]}
               >
                 <Text style={[styles.levelTabText, isSelected && styles.levelTabTextActive]}>
                   {lvl}
                 </Text>
-              </TouchableOpacity>
+              </Pressable>
             )
           })}
         </View>
@@ -133,7 +140,7 @@ const styles = StyleSheet.create({
   },
   header: {
     padding: spacing.md,
-    backgroundColor: colors.backgroundSubtle,
+    backgroundColor: colors.card,
     borderBottomWidth: 1,
     borderBottomColor: colors.border,
   },

@@ -5,6 +5,7 @@ import {
   TextInput,
   StyleSheet,
   TouchableOpacity,
+  Pressable,
   KeyboardAvoidingView,
   Platform,
   ScrollView,
@@ -118,20 +119,27 @@ export default function RegisterScreen(): React.JSX.Element {
                 {LEVELS.map((level) => {
                   const isSelected = selectedLevel === level
                   return (
-                    <TouchableOpacity
+                    <Pressable
                       key={level}
                       disabled={isLoading}
+                      accessibilityRole="button"
                       onPress={() => {
                         setSelectedLevel(level)
                       }}
-                      style={[styles.levelOption, isSelected && styles.levelOptionSelected]}
+                      style={({ pressed }) => [
+                        styles.levelOption,
+                        isSelected && styles.levelOptionSelected,
+                        {
+                          transform: [{ scale: pressed ? 0.95 : 1 }],
+                        },
+                      ]}
                     >
                       <Badge
                         label={level}
-                        color={isSelected ? colors.primary : colors.textMuted}
+                        color={isSelected ? colors.primary : colors.textSecondary}
                         size="md"
                       />
-                    </TouchableOpacity>
+                    </Pressable>
                   )
                 })}
               </View>

@@ -5,6 +5,7 @@ import {
   StyleSheet,
   ScrollView,
   TouchableOpacity,
+  Pressable,
   Modal,
   type StyleProp,
   type ViewStyle,
@@ -299,13 +300,19 @@ export default function ReadingScreen(): React.JSX.Element {
                       }
 
                       return (
-                        <TouchableOpacity
+                        <Pressable
                           key={`opt-${String(optIndex)}`}
                           disabled={hasAnswered}
+                          accessibilityRole="button"
                           onPress={() => {
                             handleSelectOption(qIndex, optIndex)
                           }}
-                          style={optionStyle}
+                          style={({ pressed }) => [
+                            optionStyle,
+                            {
+                              transform: [{ scale: pressed && !hasAnswered ? 0.98 : 1 }],
+                            },
+                          ]}
                         >
                           <Text style={optionTextStyle}>{opt}</Text>
                           {hasAnswered && isCorrect ? (
@@ -314,7 +321,7 @@ export default function ReadingScreen(): React.JSX.Element {
                           {hasAnswered && isOptionSelected && !isCorrect ? (
                             <Ionicons name="close-circle" size={18} color={colors.danger} />
                           ) : null}
-                        </TouchableOpacity>
+                        </Pressable>
                       )
                     })}
                   </View>
@@ -615,22 +622,22 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    backgroundColor: 'rgba(16, 185, 129, 0.2)',
+    backgroundColor: colors.successLight,
     paddingHorizontal: spacing.md,
     paddingVertical: spacing.sm,
     borderRadius: radius.md,
-    borderWidth: 1,
+    borderWidth: 1.5,
     borderColor: colors.primary,
   },
   optionWrong: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    backgroundColor: 'rgba(239, 68, 68, 0.2)',
+    backgroundColor: colors.dangerLight,
     paddingHorizontal: spacing.md,
     paddingVertical: spacing.sm,
     borderRadius: radius.md,
-    borderWidth: 1,
+    borderWidth: 1.5,
     borderColor: colors.danger,
   },
   optionText: {
@@ -653,7 +660,7 @@ const styles = StyleSheet.create({
     fontWeight: typography.weights.bold,
   },
   explanationBox: {
-    backgroundColor: colors.cardHover,
+    backgroundColor: colors.backgroundSubtle,
     padding: spacing.sm,
     borderRadius: radius.sm,
     borderLeftWidth: 3,
@@ -669,7 +676,7 @@ const styles = StyleSheet.create({
   },
   modalOverlay: {
     flex: 1,
-    backgroundColor: 'rgba(0, 0, 0, 0.7)',
+    backgroundColor: 'rgba(15, 23, 42, 0.45)',
     justifyContent: 'center',
     alignItems: 'center',
     padding: spacing.lg,

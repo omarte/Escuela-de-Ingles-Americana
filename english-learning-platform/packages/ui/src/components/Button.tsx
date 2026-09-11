@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {
-  TouchableOpacity,
+  Pressable,
   Text,
   StyleSheet,
   ActivityIndicator,
+  Platform,
   type GestureResponderEvent,
   type StyleProp,
   type ViewStyle,
@@ -37,42 +38,103 @@ export const Button: React.FC<ButtonProps> = ({
   textStyle,
   icon,
 }) => {
-  const containerStyles = [
-    styles.base,
-    styles[size],
-    styles[variant],
-    disabled && styles.disabled,
-    style,
-  ]
+  const [isHovered, setIsHovered] = useState(false)
 
-  const textStyles = [
-    styles.textBase,
-    styles[`${size}Text`],
-    styles[`${variant}Text`],
-    disabled && styles.disabledText,
-    textStyle,
-  ]
+  const getVariantStyle = (hovered: boolean) => {
+    switch (variant) {
+      case 'primary':
+        return {
+          backgroundColor: hovered ? colors.primaryHover : colors.primary,
+          shadowColor: colors.primary,
+          shadowOffset: { width: 0, height: hovered ? 4 : 2 },
+          shadowOpacity: hovered ? 0.25 : 0.15,
+          shadowRadius: hovered ? 8 : 4,
+          elevation: hovered ? 4 : 2,
+        }
+      case 'secondary':
+        return {
+          backgroundColor: hovered ? colors.secondaryHover : colors.secondary,
+          shadowColor: colors.secondary,
+          shadowOffset: { width: 0, height: hovered ? 4 : 2 },
+          shadowOpacity: hovered ? 0.25 : 0.15,
+          shadowRadius: hovered ? 8 : 4,
+          elevation: hovered ? 4 : 2,
+        }
+      case 'outline':
+        return {
+          backgroundColor: hovered ? colors.primaryLight : 'transparent',
+          borderWidth: 1.5,
+          borderColor: hovered ? colors.primary : colors.borderActive,
+        }
+      case 'ghost':
+        return {
+          backgroundColor: hovered ? colors.backgroundSubtle : 'transparent',
+        }
+      case 'danger':
+        return {
+          backgroundColor: hovered ? '#B91C1C' : colors.danger,
+          shadowColor: colors.danger,
+          shadowOffset: { width: 0, height: hovered ? 4 : 2 },
+          shadowOpacity: hovered ? 0.25 : 0.15,
+          shadowRadius: hovered ? 8 : 4,
+          elevation: hovered ? 4 : 2,
+        }
+    }
+  }
 
   return (
-    <TouchableOpacity
-      activeOpacity={0.8}
+    <Pressable
       onPress={onPress}
       disabled={disabled || loading}
-      style={containerStyles}
+      onHoverIn={() => {
+        setIsHovered(true)
+      }}
+      onHoverOut={() => {
+        setIsHovered(false)
+      }}
       accessibilityRole="button"
+      style={({ pressed }) => {
+        const activeHover = isHovered && !disabled && !loading
+        return [
+          styles.base,
+          styles[size],
+          getVariantStyle(activeHover),
+          {
+            transform: [
+              {
+                scale: pressed ? 0.98 : activeHover ? 1.02 : 1,
+              },
+            ],
+            ...(Platform.OS === 'web' ? ({ cursor: disabled ? 'not-allowed' : 'pointer' } as any) : {}),
+          },
+          disabled && styles.disabled,
+          style,
+        ]
+      }}
     >
       {loading ? (
         <ActivityIndicator
           size="small"
-          color={variant === 'primary' ? colors.textInverse : colors.primary}
+          color={variant === 'primary' || variant === 'secondary' || variant === 'danger' ? colors.textInverse : colors.primary}
         />
       ) : (
         <>
           {icon ? <>{icon}</> : null}
-          <Text style={textStyles}>{title}</Text>
+          <Text
+            style={[
+              styles.textBase,
+              styles[`${size}Text`],
+              styles[`${variant}Text`],
+              variant === 'outline' && isHovered && { color: colors.primary },
+              disabled && styles.disabledText,
+              textStyle,
+            ]}
+          >
+            {title}
+          </Text>
         </>
       )}
-    </TouchableOpacity>
+    </Pressable>
   )
 }
 
@@ -98,24 +160,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: spacing.xl,
     borderRadius: radius.lg,
   },
-  // Variants
-  primary: {
-    backgroundColor: colors.primary,
-  },
-  secondary: {
-    backgroundColor: colors.secondary,
-  },
-  outline: {
-    backgroundColor: 'transparent',
-    borderWidth: 1.5,
-    borderColor: colors.borderActive,
-  },
-  ghost: {
-    backgroundColor: 'transparent',
-  },
-  danger: {
-    backgroundColor: colors.danger,
-  },
   disabled: {
     opacity: 0.5,
   },
@@ -136,7 +180,7 @@ const styles = StyleSheet.create({
     color: colors.textInverse,
   },
   secondaryText: {
-    color: colors.textPrimary,
+    color: colors.textInverse,
   },
   outlineText: {
     color: colors.textPrimary,
@@ -145,7 +189,7 @@ const styles = StyleSheet.create({
     color: colors.textSecondary,
   },
   dangerText: {
-    color: colors.textPrimary,
+    color: colors.textInverse,
   },
   disabledText: {
     color: colors.textMuted,

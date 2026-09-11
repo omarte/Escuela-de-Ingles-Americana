@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {
   View,
   StyleSheet,
+  Pressable,
+  Platform,
   type StyleProp,
   type ViewStyle,
-  TouchableOpacity,
   type GestureResponderEvent,
 } from 'react-native'
 import { colors, radius, spacing } from '../tokens'
@@ -15,6 +16,7 @@ export interface CardProps {
   padding?: 'none' | 'sm' | 'md' | 'lg' | undefined
   onPress?: ((event: GestureResponderEvent) => void) | undefined
   highlighted?: boolean | undefined
+  interactive?: boolean | undefined
 }
 
 export const Card: React.FC<CardProps> = ({
@@ -23,28 +25,55 @@ export const Card: React.FC<CardProps> = ({
   padding = 'md',
   onPress,
   highlighted = false,
+  interactive,
 }) => {
-  const cardStyles = [
-    styles.card,
-    styles[`padding_${padding}`],
-    highlighted && styles.highlighted,
-    style,
-  ]
+  const [isHovered, setIsHovered] = useState(false)
+  const isClickable = Boolean(onPress || interactive)
 
-  if (onPress) {
+  if (isClickable) {
     return (
-      <TouchableOpacity
-        activeOpacity={0.85}
+      <Pressable
         onPress={onPress}
-        style={cardStyles}
+        onHoverIn={() => {
+          setIsHovered(true)
+        }}
+        onHoverOut={() => {
+          setIsHovered(false)
+        }}
         accessibilityRole="button"
+        style={({ pressed }) => [
+          styles.card,
+          styles[`padding_${padding}`],
+          highlighted && styles.highlighted,
+          isHovered && styles.hovered,
+          {
+            transform: [
+              {
+                scale: pressed ? 0.99 : isHovered ? 1.012 : 1,
+              },
+            ],
+            ...(Platform.OS === 'web' ? ({ cursor: 'pointer' } as any) : {}),
+          },
+          style,
+        ]}
       >
         {children}
-      </TouchableOpacity>
+      </Pressable>
     )
   }
 
-  return <View style={cardStyles}>{children}</View>
+  return (
+    <View
+      style={[
+        styles.card,
+        styles[`padding_${padding}`],
+        highlighted && styles.highlighted,
+        style,
+      ]}
+    >
+      {children}
+    </View>
+  )
 }
 
 const styles = StyleSheet.create({
@@ -53,13 +82,25 @@ const styles = StyleSheet.create({
     borderRadius: radius.lg,
     borderWidth: 1,
     borderColor: colors.border,
-    overflow: 'hidden',
+    shadowColor: '#0F172A',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.05,
+    shadowRadius: 8,
+    elevation: 2,
+  },
+  hovered: {
+    borderColor: colors.primary,
+    backgroundColor: colors.cardHover,
+    shadowOffset: { width: 0, height: 6 },
+    shadowOpacity: 0.12,
+    shadowRadius: 16,
+    elevation: 6,
   },
   highlighted: {
     borderColor: colors.primary,
     shadowColor: colors.primary,
     shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.2,
+    shadowOpacity: 0.15,
     shadowRadius: 12,
     elevation: 4,
   },

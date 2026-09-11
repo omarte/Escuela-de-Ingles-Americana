@@ -17,7 +17,7 @@ export const Badge: React.FC<BadgeProps> = ({
   size = 'md',
   style,
 }) => {
-  const bg = backgroundColor ?? `${color}20` // 20 hex = ~12% opacity
+  const bg = backgroundColor ?? `${color}15` // Soft pastel tint for light canvas
 
   return (
     <View style={[styles.badge, styles[size], { backgroundColor: bg }, style]}>

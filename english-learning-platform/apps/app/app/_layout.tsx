@@ -58,7 +58,7 @@ function NavigationGuard(): React.JSX.Element {
 export default function RootLayout(): React.JSX.Element {
   return (
     <SafeAreaProvider>
-      <StatusBar style="light" backgroundColor={colors.background} />
+      <StatusBar style="dark" backgroundColor={colors.background} />
       <NavigationGuard />
     </SafeAreaProvider>
   )

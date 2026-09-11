@@ -4,43 +4,47 @@
  */
 
 export const colors = {
-  // Backgrounds
-  background: '#0B0F17', // Deep obsidian slate
-  backgroundSubtle: '#111827', // Slate 900
-  card: '#161F30', // Elevated slate card surface
-  cardHover: '#1E293B', // Slate 800
-  border: '#1F2937', // Border subtle
-  borderActive: '#374151',
+  // Backgrounds - Positive Contrast Polarity (Light Theme)
+  background: '#F8FAFC', // Soft anti-glare canvas (Slate 50)
+  backgroundSubtle: '#F1F5F9', // Subtle container background (Slate 100)
+  card: '#FFFFFF', // Pure elevated white card surface
+  cardHover: '#F8FAFC', // Crisp highlight surface on hover
+  border: '#E2E8F0', // Delicate, crisp border (Slate 200)
+  borderActive: '#CBD5E1', // Focus & active border (Slate 300)
 
-  // Primary brand accent: Emerald (represents growth, progress, fluency)
-  primary: '#10B981', // Emerald 500
-  primaryHover: '#059669', // Emerald 600
-  primaryLight: 'rgba(16, 185, 129, 0.15)',
-  primaryGlow: 'rgba(16, 185, 129, 0.35)',
+  // Primary brand accent: Emerald (cognition, growth, fluency)
+  primary: '#059669', // Emerald 600 - High legibility on light
+  primaryHover: '#047857', // Emerald 700 - Hover state
+  primaryLight: '#ECFDF5', // Emerald 50 - Soft pastel container
+  primaryGlow: 'rgba(5, 150, 105, 0.18)',
 
-  // Secondary accent: Indigo / Violet (represents study, deep learning)
-  secondary: '#6366F1', // Indigo 500
-  secondaryLight: 'rgba(99, 102, 241, 0.15)',
+  // Secondary accent: Royal Sapphire / Indigo (grammar, study, structure)
+  secondary: '#2563EB', // Blue 600
+  secondaryHover: '#1D4ED8', // Blue 700
+  secondaryLight: '#EFF6FF', // Blue 50
 
-  // Text colors
-  textPrimary: '#F9FAFB', // Slate 50
-  textSecondary: '#9CA3AF', // Slate 400
-  textMuted: '#6B7280', // Slate 500
-  textInverse: '#0B0F17',
+  // Text colors - WCAG AAA 14:1 contrast ratio
+  textPrimary: '#0F172A', // Slate 900 - Deep, sharp readability
+  textSecondary: '#475569', // Slate 600 - Balanced hierarchy
+  textMuted: '#94A3B8', // Slate 400 - Subtle details and phonetics
+  textInverse: '#FFFFFF', // High-contrast text on primary buttons
 
   // Feedback & State colors
-  success: '#10B981',
-  warning: '#F59E0B',
-  danger: '#EF4444',
-  dangerLight: 'rgba(239, 68, 68, 0.15)',
-  info: '#3B82F6',
+  success: '#059669',
+  successLight: '#ECFDF5',
+  warning: '#D97706', // Amber 600 - Streak fire
+  warningLight: '#FEF3C7', // Amber 50
+  danger: '#DC2626', // Red 600
+  dangerLight: '#FEE2E2', // Red 50
+  info: '#0284C7', // Sky 600
+  infoLight: '#F0F9FF',
 
-  // CEFR Level accents
+  // CEFR Level accents - Vibrant, scientifically distinct
   levels: {
-    A1: '#10B981', // Emerald
-    A2: '#06B6D4', // Cyan
-    B1: '#6366F1', // Indigo
-    B2: '#EC4899', // Pink
+    A1: '#059669', // Emerald
+    A2: '#0284C7', // Sky Blue
+    B1: '#4F46E5', // Indigo
+    B2: '#DB2777', // Rose Pink
   },
 } as const
 

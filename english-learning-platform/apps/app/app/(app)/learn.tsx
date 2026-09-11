@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native'
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Pressable } from 'react-native'
 import { useRouter } from 'expo-router'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { colors, spacing, typography, radius, Card, Button, Badge, ProgressBar } from '@elp/ui'
@@ -245,41 +245,62 @@ export default function LearnScreen(): React.JSX.Element {
             <View style={styles.ratingsContainer}>
               <Text style={styles.ratingTitle}>¿Cómo recordaste esta palabra?</Text>
               <View style={styles.ratingButtonsRow}>
-                <TouchableOpacity
-                  style={[styles.ratingBtn, styles.ratingBtnHard]}
+                <Pressable
+                  accessibilityRole="button"
+                  style={({ pressed }) => [
+                    styles.ratingBtn,
+                    styles.ratingBtnHard,
+                    {
+                      transform: [{ scale: pressed ? 0.97 : 1 }],
+                    },
+                  ]}
                   onPress={() => {
                     handleAnswer(1)
                   }}
                 >
-                  <Text style={styles.ratingBtnText}>Difícil</Text>
-                  <Text style={styles.ratingBtnSub}>1d</Text>
-                </TouchableOpacity>
+                  <Text style={[styles.ratingBtnText, { color: colors.danger }]}>Difícil</Text>
+                  <Text style={[styles.ratingBtnSub, { color: colors.danger }]}>1d</Text>
+                </Pressable>
 
-                <TouchableOpacity
-                  style={[styles.ratingBtn, styles.ratingBtnGood]}
+                <Pressable
+                  accessibilityRole="button"
+                  style={({ pressed }) => [
+                    styles.ratingBtn,
+                    styles.ratingBtnGood,
+                    {
+                      transform: [{ scale: pressed ? 0.97 : 1 }],
+                    },
+                  ]}
                   onPress={() => {
                     handleAnswer(3)
                   }}
                 >
-                  <Text style={styles.ratingBtnText}>Bueno</Text>
-                  <Text style={styles.ratingBtnSub}>
+                  <Text style={[styles.ratingBtnText, { color: colors.primary }]}>Bueno</Text>
+                  <Text style={[styles.ratingBtnSub, { color: colors.primary }]}>
                     {activeCard.interval > 0 ? `${String(activeCard.interval)}d` : '4d'}
                   </Text>
-                </TouchableOpacity>
+                </Pressable>
 
-                <TouchableOpacity
-                  style={[styles.ratingBtn, styles.ratingBtnEasy]}
+                <Pressable
+                  accessibilityRole="button"
+                  style={({ pressed }) => [
+                    styles.ratingBtn,
+                    styles.ratingBtnEasy,
+                    {
+                      transform: [{ scale: pressed ? 0.97 : 1 }],
+                    },
+                  ]}
                   onPress={() => {
                     handleAnswer(5)
                   }}
                 >
-                  <Text style={styles.ratingBtnText}>Fácil</Text>
-                  <Text style={styles.ratingBtnSub}>
+                  <Text style={[styles.ratingBtnText, { color: colors.info }]}>Fácil</Text>
+                  <Text style={[styles.ratingBtnSub, { color: colors.info }]}>
                     {activeCard.interval > 0
                       ? `${String(Math.round(activeCard.interval * activeCard.easeFactor))}d`
                       : '7d'}
                   </Text>
-                </TouchableOpacity>
+                </Pressable>
               </View>
             </View>
           )}
@@ -512,9 +533,9 @@ const styles = StyleSheet.create({
     borderColor: colors.primary,
   },
   ratingBtnEasy: {
-    backgroundColor: '#064e3b',
+    backgroundColor: colors.infoLight,
     borderWidth: 1,
-    borderColor: '#34d399',
+    borderColor: colors.info,
   },
   ratingBtnText: {
     fontSize: typography.sizes.sm,

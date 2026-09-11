@@ -326,7 +326,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: spacing.xs,
-    backgroundColor: 'rgba(239, 68, 68, 0.1)',
+    backgroundColor: colors.dangerLight,
     borderRadius: radius.sm,
     padding: spacing.sm,
     marginTop: spacing.sm,
@@ -367,7 +367,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.border,
   },
   logoutBtn: {
-    borderColor: colors.dangerLight,
+    borderColor: colors.danger,
     marginBottom: spacing.xl,
   },
   logoutBtnText: {

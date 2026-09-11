@@ -622,7 +622,7 @@ const styles = StyleSheet.create({
   },
   modalOverlay: {
     flex: 1,
-    backgroundColor: 'rgba(0, 0, 0, 0.7)',
+    backgroundColor: 'rgba(15, 23, 42, 0.45)',
     justifyContent: 'center',
     alignItems: 'center',
     padding: spacing.lg,
@@ -641,7 +641,7 @@ const styles = StyleSheet.create({
     width: 72,
     height: 72,
     borderRadius: radius.full,
-    backgroundColor: 'rgba(16, 185, 129, 0.1)',
+    backgroundColor: colors.primaryLight,
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: spacing.md,

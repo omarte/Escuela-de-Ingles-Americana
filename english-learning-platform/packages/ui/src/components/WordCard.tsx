@@ -118,13 +118,17 @@ const styles = StyleSheet.create({
   hiddenContainer: {
     marginTop: spacing.md,
     paddingHorizontal: spacing.md,
-    paddingVertical: spacing.xs + 2,
-    backgroundColor: colors.cardHover,
+    paddingVertical: spacing.xs + 4,
+    backgroundColor: colors.backgroundSubtle,
     borderRadius: radius.md,
+    borderWidth: 1,
+    borderStyle: 'dashed',
+    borderColor: colors.borderActive,
   },
   hiddenText: {
     fontSize: typography.sizes.sm,
-    color: colors.textMuted,
+    color: colors.textSecondary,
+    fontWeight: typography.weights.medium,
   },
   exampleContainer: {
     marginTop: spacing.lg,

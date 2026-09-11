@@ -88,7 +88,13 @@ export default function HomeScreen(): React.JSX.Element {
 
         {/* Current Week Focus */}
         <Text style={styles.sectionTitle}>Enfocado Esta Semana</Text>
-        <Card padding="md" style={styles.weekCard}>
+        <Card
+          padding="md"
+          style={styles.weekCard}
+          onPress={() => {
+            router.push('/(app)/learn')
+          }}
+        >
           <View style={styles.weekRow}>
             <View style={styles.weekIconBox}>
               <Ionicons name="people-outline" size={24} color={colors.primary} />
