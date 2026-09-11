@@ -1,7 +1,8 @@
 {
   "expo": {
-    "name": "English Learning Platform",
-    "slug": "english-learning-platform",
+    "name": "Escuela de Inglés Americana",
+    "slug": "escuela-de-ingles-americana",
+    "owner": "omarte2027",
     "version": "0.1.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
