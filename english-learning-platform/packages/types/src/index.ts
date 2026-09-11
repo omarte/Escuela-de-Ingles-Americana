@@ -92,6 +92,15 @@ export interface ComprehensionQuestion {
 }
 
 /**
+ * A word-level mapping between English passage terms and Spanish translation terms.
+ */
+export interface WordMapping {
+  readonly en: string
+  readonly es: string
+  readonly vocabularyId?: string
+}
+
+/**
  * A reading passage associated with a level and week.
  *
  * The `id` field is PERMANENT — same rules as VocabularyItem.id apply.
@@ -113,6 +122,8 @@ export interface ReadingPassage {
   readonly difficulty: 1 | 2 | 3 | 4 | 5
   /** Curated reading comprehension questions */
   readonly comprehensionQuestions?: readonly ComprehensionQuestion[]
+  /** Curated word mappings between English words and Spanish translations */
+  readonly wordMappings?: readonly WordMapping[]
   readonly verifiedBy: string
   readonly verifiedAt: string
   readonly status: ContentStatus

@@ -95,6 +95,12 @@ export const ComprehensionQuestionSchema = z.object({
   explanation: z.string().optional(),
 })
 
+export const WordMappingSchema = z.object({
+  en: z.string().min(1),
+  es: z.string().min(1),
+  vocabularyId: VocabularyIdSchema.optional(),
+})
+
 export const ReadingPassageSchema = z.object({
   id: ReadingIdSchema,
   level: CEFRLevelSchema,
@@ -105,6 +111,7 @@ export const ReadingPassageSchema = z.object({
   vocabularyIds: z.array(VocabularyIdSchema).min(1),
   difficulty: z.union([z.literal(1), z.literal(2), z.literal(3), z.literal(4), z.literal(5)]),
   comprehensionQuestions: z.array(ComprehensionQuestionSchema).optional(),
+  wordMappings: z.array(WordMappingSchema).optional(),
   verifiedBy: z.string().min(1),
   verifiedAt: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'verifiedAt must be YYYY-MM-DD'),
   status: ContentStatusSchema,

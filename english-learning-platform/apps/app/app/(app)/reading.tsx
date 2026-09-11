@@ -15,7 +15,7 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import { colors, spacing, radius, typography, Card, Badge, Button } from '@elp/ui'
 import { Ionicons } from '@expo/vector-icons'
 import { getReadingPassagesByLevel, getVocabularyById } from '@elp/content'
-import type { CEFRLevel, ReadingPassage, VocabularyItem } from '@elp/types'
+import type { CEFRLevel, ReadingPassage, VocabularyItem, WordMapping } from '@elp/types'
 
 const LEVELS: CEFRLevel[] = ['A1', 'A2', 'B1', 'B2']
 
@@ -66,6 +66,7 @@ export default function ReadingScreen(): React.JSX.Element {
 
   const [showTranslation, setShowTranslation] = useState(false)
   const [activeWordItem, setActiveWordItem] = useState<VocabularyItem | null>(null)
+  const [activeMappingKey, setActiveMappingKey] = useState<string | null>(null)
   const [userAnswers, setUserAnswers] = useState<Record<number, number>>({})
   const [isCompleted, setIsCompleted] = useState(false)
 
@@ -88,10 +89,40 @@ export default function ReadingScreen(): React.JSX.Element {
     return map
   }, [selectedPassage.vocabularyIds])
 
+  // Get or compute word mappings between English words and Spanish translation terms
+  const passageMappings = useMemo<readonly WordMapping[]>(() => {
+    if (selectedPassage.wordMappings && selectedPassage.wordMappings.length > 0) {
+      return selectedPassage.wordMappings
+    }
+    const list: WordMapping[] = []
+    for (const vid of selectedPassage.vocabularyIds) {
+      const item = getVocabularyById(vid)
+      if (item) {
+        const transTokens = item.translation.split(/[/,;]+/).map((t) => t.trim())
+        for (const tt of transTokens) {
+          const clean = tt.replace(/\([^)]*\)/g, '').trim()
+          if (
+            clean.length > 2 &&
+            selectedPassage.translation.toLowerCase().includes(clean.toLowerCase())
+          ) {
+            list.push({
+              en: item.word,
+              es: clean,
+              vocabularyId: item.id,
+            })
+            break
+          }
+        }
+      }
+    }
+    return list
+  }, [selectedPassage])
+
   const handleSelectPassage = (passage: ReadingPassage): void => {
     setSelectedPassage(passage)
     setShowTranslation(false)
     setActiveWordItem(null)
+    setActiveMappingKey(null)
     setUserAnswers({})
     setIsCompleted(false)
   }
@@ -103,37 +134,58 @@ export default function ReadingScreen(): React.JSX.Element {
     }))
   }
 
-  // Tokenize text into words and punctuation
-  const renderInteractiveText = (): React.JSX.Element => {
-    const tokens = selectedPassage.text.split(/(\s+)/)
+  // Interactive content renderer for English text and Spanish translation
+  const renderInteractiveContent = (isSpanish: boolean): React.JSX.Element => {
+    const rawText = isSpanish ? selectedPassage.translation : selectedPassage.text
+    if (!passageMappings.length) {
+      return (
+        <Text style={isSpanish ? styles.passageTextEs : styles.passageTextEn}>{rawText}</Text>
+      )
+    }
+
+    // Sort by term length descending to match longer multi-word phrases first
+    const sorted = [...passageMappings].sort((a, b) => {
+      const lenA = (isSpanish ? a.es : a.en).length
+      const lenB = (isSpanish ? b.es : b.en).length
+      return lenB - lenA
+    })
+
+    const escapeRegex = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+    const pattern = sorted.map((m) => escapeRegex(isSpanish ? m.es : m.en)).join('|')
+    const regex = new RegExp(`(${pattern})`, 'gi')
+    const tokens = rawText.split(regex)
 
     return (
-      <Text style={styles.passageTextEn}>
+      <Text style={isSpanish ? styles.passageTextEs : styles.passageTextEn}>
         {tokens.map((token, index) => {
-          // If whitespace token, render directly
-          if (/^\s+$/.test(token)) {
-            return <Text key={`ws-${String(index)}`}>{token}</Text>
-          }
+          const matched = sorted.find(
+            (m) => (isSpanish ? m.es : m.en).toLowerCase() === token.toLowerCase(),
+          )
 
-          // Strip punctuation to match against vocabMap
-          const cleanWord = token.toLowerCase().replace(/[^a-z0-9]/g, '')
-          const matchedItem = vocabMap.get(cleanWord)
+          if (matched) {
+            const isPairActive = activeMappingKey === matched.en.toLowerCase()
+            const vocItem = matched.vocabularyId ? getVocabularyById(matched.vocabularyId) : null
 
-          if (matchedItem) {
             return (
               <Text
-                key={`tok-${String(index)}`}
+                key={`tok-${isSpanish ? 'es' : 'en'}-${String(index)}`}
                 onPress={() => {
-                  setActiveWordItem(matchedItem)
+                  setActiveMappingKey(matched.en.toLowerCase())
+                  if (vocItem) {
+                    setActiveWordItem(vocItem)
+                  }
                 }}
-                style={styles.highlightedWord}
+                style={[
+                  styles.highlightedWord,
+                  isPairActive && styles.highlightedWordActive,
+                ]}
               >
                 {token}
               </Text>
             )
           }
 
-          return <Text key={`tok-${String(index)}`}>{token}</Text>
+          return <Text key={`tok-${isSpanish ? 'es' : 'en'}-${String(index)}`}>{token}</Text>
         })}
       </Text>
     )
@@ -223,20 +275,20 @@ export default function ReadingScreen(): React.JSX.Element {
           <View style={styles.instructionBanner}>
             <Ionicons name="information-circle-outline" size={16} color={colors.primary} />
             <Text style={styles.instructionText}>
-              Las palabras resaltadas pertenecen a tu banco de estudio. Tócalas para ver su
-              traducción.
+              Las palabras subrayadas en inglés y español están conectadas. Tócalas para relacionar
+              su significado y traducción.
             </Text>
           </View>
 
           {/* English Interactive Passage */}
-          {renderInteractiveText()}
+          {renderInteractiveContent(false)}
 
-          {/* Translation Section (Tap-to-reveal) */}
+          {/* Translation Section (Tap-to-reveal with synchronized highlighted words) */}
           {showTranslation ? (
             <View style={styles.translationContainer}>
               <View style={styles.translationDivider} />
               <Text style={styles.translationLabel}>Traducción Oficial al Español:</Text>
-              <Text style={styles.passageTextEs}>{selectedPassage.translation}</Text>
+              {renderInteractiveContent(true)}
             </View>
           ) : null}
 
@@ -523,7 +575,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: spacing.xs,
-    backgroundColor: 'rgba(16, 185, 129, 0.08)',
+    backgroundColor: colors.primaryLight,
     borderRadius: radius.sm,
     padding: spacing.sm,
     marginBottom: spacing.md,
@@ -542,9 +594,18 @@ const styles = StyleSheet.create({
   highlightedWord: {
     color: colors.primary,
     fontWeight: typography.weights.bold,
-    backgroundColor: 'rgba(16, 185, 129, 0.14)',
+    backgroundColor: colors.primaryLight,
     borderRadius: radius.sm,
     textDecorationLine: 'underline',
+    paddingHorizontal: 3,
+  },
+  highlightedWordActive: {
+    color: colors.textInverse,
+    backgroundColor: colors.primary,
+    fontWeight: typography.weights.bold,
+    borderRadius: radius.sm,
+    textDecorationLine: 'underline',
+    paddingHorizontal: 3,
   },
   translationContainer: {
     marginTop: spacing.lg,
