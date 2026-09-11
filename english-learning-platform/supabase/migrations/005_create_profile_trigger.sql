@@ -34,13 +34,17 @@ BEGIN
     extracted_level := 'A1'::public.cefr_level;
   END IF;
 
-  -- Insert profile
+  -- Insert profile with idempotent conflict handling
   INSERT INTO public.profiles (id, display_name, current_level)
   VALUES (
     NEW.id,
     extracted_name,
     extracted_level
-  );
+  )
+  ON CONFLICT (id) DO UPDATE
+    SET display_name = EXCLUDED.display_name,
+        current_level = EXCLUDED.current_level,
+        updated_at = now();
 
   RETURN NEW;
 END;
