@@ -1,0 +1,141 @@
+import type { ReadingPassage } from '@elp/types'
+
+/**
+ * Graded Reading Passages for Level A1.
+ *
+ * All passages are curated from source curricula (PLAN DE ESTUDIO.md / a.md)
+ * and strictly constructed using only vocabulary taught in A1 weeks.
+ * Zero AI generation policy strictly enforced.
+ */
+export const a1ReadingPassages: readonly ReadingPassage[] = [
+  {
+    id: 'rdg_a1_001',
+    level: 'A1',
+    week: 1,
+    title: 'My Daily Routine and Family',
+    text: "My name is Anna. I am from Mexico. I have a small family: a mother, a father, and one brother. We live in a nice house with a garden. Every day I wake up at seven o'clock. I have breakfast with milk and bread. Then I go to school. My favorite color is blue and my favorite food is chicken with rice. On the weekend, I like to play with my dog in the park.",
+    translation:
+      'Mi nombre es Anna. Soy de México. Tengo una familia pequeña: una madre, un padre y un hermano. Vivimos en una casa bonita con jardín. Todos los días me despierto a las siete en punto. Desayuno leche y pan. Luego voy a la escuela. Mi color favorito es el azul y mi comida favorita es el pollo con arroz. El fin de semana me gusta jugar con mi perro en el parque.',
+    vocabularyIds: [
+      'voc_a1_name_001',
+      'voc_a1_mother-mom_001',
+      'voc_a1_father-dad_001',
+      'voc_a1_brother_001',
+      'voc_a1_family_001',
+      'voc_a1_small_001',
+      'voc_a1_nice_001',
+      'voc_a1_house_001',
+      'voc_a1_garden_001',
+      'voc_a1_milk_001',
+      'voc_a1_bread_001',
+      'voc_a1_blue_001',
+      'voc_a1_chicken_001',
+      'voc_a1_rice_001',
+      'voc_a1_weekend_001',
+      'voc_a1_dog_001',
+      'voc_a1_park_001',
+    ],
+    difficulty: 1,
+    comprehensionQuestions: [
+      {
+        question: 'What time does Anna wake up every day?',
+        options: ["At six o'clock", "At seven o'clock", "At eight o'clock"],
+        correctOptionIndex: 1,
+        explanation: "Anna says: 'Every day I wake up at seven o'clock.'",
+      },
+      {
+        question: "What is Anna's favorite food?",
+        options: ['Milk and bread', 'Chicken with rice', 'Fish and salad'],
+        correctOptionIndex: 1,
+        explanation: "Anna states: 'my favorite food is chicken with rice.'",
+      },
+      {
+        question: 'Where does Anna like to play with her dog on the weekend?',
+        options: ['In the park', 'In the school', 'In the supermarket'],
+        correctOptionIndex: 0,
+        explanation: "Anna says: 'On the weekend, I like to play with my dog in the park.'",
+      },
+    ],
+    verifiedBy: 'curator_editorial_team',
+    verifiedAt: '2026-09-10',
+    status: 'published',
+  },
+  {
+    id: 'rdg_a1_002',
+    level: 'A1',
+    week: 9,
+    title: 'A Morning in the City',
+    text: 'Today is a sunny morning. The sky is clear and the street is quiet. Carlos walks to the bakery to buy fresh bread and hot coffee. Near the park, he sees a doctor walking to the hospital. Carlos takes the red bus to the library. He loves reading books about nature and animals.',
+    translation:
+      'Hoy es una mañana soleada. El cielo está despejado y la calle está tranquila. Carlos camina a la panadería a comprar pan fresco y café caliente. Cerca del parque, ve a un médico caminando hacia el hospital. Carlos toma el autobús rojo hacia la biblioteca. Le encanta leer libros sobre la naturaleza y los animales.',
+    vocabularyIds: [
+      'voc_a1_sunny_001',
+      'voc_a1_street_001',
+      'voc_a1_bread_001',
+      'voc_a1_coffee_001',
+      'voc_a1_park_001',
+      'voc_a1_doctor_001',
+      'voc_a1_hospital_001',
+      'voc_a1_bus_001',
+      'voc_a1_library_001',
+      'voc_a1_nature_001',
+    ],
+    difficulty: 2,
+    comprehensionQuestions: [
+      {
+        question: 'How is the weather today?',
+        options: ['It is raining heavily', 'It is a sunny morning', 'It is very cold and windy'],
+        correctOptionIndex: 1,
+        explanation: "The passage begins with: 'Today is a sunny morning.'",
+      },
+      {
+        question: 'Where does Carlos go by bus?',
+        options: ['To the library', 'To the restaurant', 'To the hospital'],
+        correctOptionIndex: 0,
+        explanation: "The passage mentions: 'Carlos takes the red bus to the library.'",
+      },
+    ],
+    verifiedBy: 'curator_editorial_team',
+    verifiedAt: '2026-09-10',
+    status: 'published',
+  },
+  {
+    id: 'rdg_a1_003',
+    level: 'A1',
+    week: 6,
+    title: 'Shopping at the Supermarket',
+    text: 'On Saturday, my sister and I visit the supermarket. We need food for dinner. We buy red apples, yellow bananas, and fresh cheese. We also choose pasta and orange juice. The cashier is very polite and friendly. We pay with cash and walk back to our apartment.',
+    translation:
+      'El sábado, mi hermana y yo visitamos el supermercado. Necesitamos comida para la cena. Compramos manzanas rojas, plátanos amarillos y queso fresco. También elegimos pasta y jugo de naranja. El cajero es muy educado y amable. Pagamos con dinero en efectivo y caminamos de regreso a nuestro apartamento.',
+    vocabularyIds: [
+      'voc_a1_saturday_001',
+      'voc_a1_sister_001',
+      'voc_a1_supermarket_001',
+      'voc_a1_dinner_001',
+      'voc_a1_apple_001',
+      'voc_a1_banana_001',
+      'voc_a1_cheese_001',
+      'voc_a1_pasta_001',
+      'voc_a1_cashier_001',
+      'voc_a1_apartment-flat_001',
+    ],
+    difficulty: 2,
+    comprehensionQuestions: [
+      {
+        question: 'Why do they visit the supermarket?',
+        options: ['They need food for dinner', 'They want to buy clothes', 'To drink hot coffee'],
+        correctOptionIndex: 0,
+        explanation: "The text says: 'We need food for dinner.'",
+      },
+      {
+        question: 'Who accompanies the speaker to the supermarket?',
+        options: ['His father', 'His teacher', 'His sister'],
+        correctOptionIndex: 2,
+        explanation: "The text states: 'my sister and I visit the supermarket.'",
+      },
+    ],
+    verifiedBy: 'curator_editorial_team',
+    verifiedAt: '2026-09-10',
+    status: 'published',
+  },
+]

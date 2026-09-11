@@ -1,0 +1,214 @@
+/**
+ * CEFR Levels supported by the platform.
+ * IDs are permanent — never change a level code after content is published.
+ */
+export type CEFRLevel = 'A1' | 'A2' | 'B1' | 'B2'
+
+/**
+ * Lifecycle status of any educational content item.
+ * Content must follow: draft → review → approved → published
+ * 'deprecated' marks content that is no longer active but must not be deleted
+ * (SRS history references may exist).
+ */
+export type ContentStatus = 'draft' | 'review' | 'approved' | 'published' | 'deprecated'
+
+/**
+ * Part of speech values used to classify vocabulary items.
+ */
+export type PartOfSpeech =
+  | 'noun'
+  | 'verb'
+  | 'adjective'
+  | 'adverb'
+  | 'preposition'
+  | 'conjunction'
+  | 'pronoun'
+  | 'interjection'
+  | 'article'
+  | 'determiner'
+  | 'phrasal-verb'
+
+/**
+ * Irregular verb forms for verbs that don't follow standard -ed pattern.
+ */
+export interface IrregularForms {
+  readonly base: string
+  readonly past: string
+  readonly participle: string
+}
+
+/**
+ * Core vocabulary item.
+ *
+ * The `id` field is PERMANENT. Once a vocabulary item is published, its ID
+ * must never change. SRS history, user progress records, and reading
+ * annotations all reference this ID. Changing it breaks user data.
+ *
+ * ID format: voc_{level}_{word-slug}_{sequence}
+ * Example:   voc_a1_go_001
+ */
+export interface VocabularyItem {
+  /** Permanent unique identifier. Never change after publication. */
+  readonly id: string
+  /** English word or phrase */
+  readonly word: string
+  /** Spanish translation (most common usage) */
+  readonly translation: string
+  readonly partOfSpeech: PartOfSpeech
+  readonly level: CEFRLevel
+  /** Week number within the level (1-based) */
+  readonly week: number
+  /** Thematic topic slug for grouping */
+  readonly topic: string
+  /** Example sentence in English (optional) */
+  readonly example?: string
+  /** Spanish translation of the example sentence (optional) */
+  readonly exampleTranslation?: string
+  /** IPA or simplified pronunciation guide (optional) */
+  readonly pronunciation?: string
+  /** Spelling variants (e.g. color / colour) */
+  readonly variants?: readonly string[]
+  /** For irregular verbs: base, past, participle forms */
+  readonly irregularForms?: IrregularForms
+  /** Curator notes — never shown to learners */
+  readonly notes?: string
+  /** Slug identifier of the human curator who verified this item */
+  readonly verifiedBy: string
+  /** ISO date string of verification (YYYY-MM-DD) */
+  readonly verifiedAt: string
+  /** Original source reference (optional) */
+  readonly source?: string
+  readonly status: ContentStatus
+}
+
+/**
+ * A reading comprehension question associated with a passage.
+ */
+export interface ComprehensionQuestion {
+  readonly question: string
+  readonly options: readonly string[]
+  readonly correctOptionIndex: number
+  readonly explanation?: string
+}
+
+/**
+ * A reading passage associated with a level and week.
+ *
+ * The `id` field is PERMANENT — same rules as VocabularyItem.id apply.
+ *
+ * ID format: rdg_{level}_{sequence}
+ * Example:   rdg_a1_001
+ */
+export interface ReadingPassage {
+  readonly id: string
+  readonly level: CEFRLevel
+  readonly week: number
+  readonly title: string
+  readonly text: string
+  /** Full Spanish translation of the passage for tap-to-reveal */
+  readonly translation: string
+  /** IDs of vocabulary items that appear in this passage */
+  readonly vocabularyIds: readonly string[]
+  /** Difficulty score 1–5 within the level */
+  readonly difficulty: 1 | 2 | 3 | 4 | 5
+  /** Curated reading comprehension questions */
+  readonly comprehensionQuestions?: readonly ComprehensionQuestion[]
+  readonly verifiedBy: string
+  readonly verifiedAt: string
+  readonly status: ContentStatus
+}
+
+// ─── SRS Types ──────────────────────────────────────────────────────────────
+
+/**
+ * State machine for a single spaced repetition card.
+ *
+ * new        → Card has never been studied
+ * learning   → Card is in the initial learning phase (short intervals)
+ * review     → Card is in the long-term review phase (growing intervals)
+ * relearning → Card was forgotten during review; short-interval rescue phase
+ * dominated  → Card has very long intervals; considered consolidated
+ */
+export type CardState = 'new' | 'learning' | 'review' | 'relearning' | 'dominated'
+
+/**
+ * Review quality rating provided by the learner (0–5 scale, SM-2 convention).
+ * 0 = complete failure; 5 = perfect recall with no hesitation
+ */
+export type ReviewQuality = 0 | 1 | 2 | 3 | 4 | 5
+
+/**
+ * A single SRS card tracking the study state of one vocabulary item
+ * for one specific user.
+ *
+ * NOTE: The `vocabularyItemId` references a permanent VocabularyItem.id.
+ * Do NOT store word text here — always look it up from the content package.
+ */
+export interface SRSCard {
+  readonly id: string
+  readonly userId: string
+  readonly vocabularyItemId: string
+  state: CardState
+  /** Interval in days until next review */
+  interval: number
+  /** Ease factor controlling interval growth rate (min 1.3, max 2.5) */
+  easeFactor: number
+  /** Number of consecutive successful reviews */
+  reps: number
+  /** Number of times this card was forgotten (quality < 3) */
+  lapses: number
+  /** ISO timestamp for next scheduled review */
+  dueDate: string
+  /** ISO timestamp of last review, or null if never reviewed */
+  lastReviewed: string | null
+}
+
+/**
+ * A single review event — one card answered with a specific quality rating.
+ * Immutable log: never update or delete review events.
+ */
+export interface ReviewEvent {
+  readonly id: string
+  readonly userId: string
+  readonly cardId: string
+  readonly vocabularyItemId: string
+  readonly quality: ReviewQuality
+  readonly reviewedAt: string
+  /** State of the card BEFORE this review */
+  readonly previousState: CardState
+  /** State of the card AFTER this review */
+  readonly nextState: CardState
+  readonly previousInterval: number
+  readonly nextInterval: number
+}
+
+/**
+ * A study session groups a sequence of review events.
+ */
+export interface StudySession {
+  readonly id: string
+  readonly userId: string
+  readonly startedAt: string
+  readonly endedAt: string | null
+  readonly cardsReviewed: number
+  readonly cardsCorrect: number
+  readonly level: CEFRLevel
+}
+
+// ─── User Types ──────────────────────────────────────────────────────────────
+
+/**
+ * Public user profile stored in the database.
+ * Auth details (email, password hash) are managed exclusively by Supabase Auth.
+ */
+export interface UserProfile {
+  readonly id: string
+  readonly displayName: string
+  readonly currentLevel: CEFRLevel
+  /** Current week within the active level (1-based) */
+  readonly currentWeek: number
+  /** Consecutive study days */
+  readonly streakDays: number
+  readonly createdAt: string
+  readonly updatedAt: string
+}
