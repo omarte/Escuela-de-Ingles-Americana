@@ -29,6 +29,7 @@
     "expo-linking": "~7.0.4",
     "expo-modules-core": "~2.2.3",
     "expo-router": "~4.0.17",
+    "expo-speech": "^57.0.3",
     "expo-sqlite": "~15.0.6",
     "expo-status-bar": "~2.0.1",
     "react": "18.3.1",

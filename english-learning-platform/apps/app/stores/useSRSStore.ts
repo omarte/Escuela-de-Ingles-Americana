@@ -8,6 +8,7 @@ import {
 import { syncUserData } from '../lib/db/syncEngine'
 import { useSyncStore } from './useSyncStore'
 import { buildStudySessionQueue, calculateNextReview, createCard } from '@elp/srs'
+import { getVocabularyForLevel } from '@elp/content'
 import type { CEFRLevel, ReviewEvent, ReviewQuality, SRSCard } from '@elp/types'
 import { isSupabaseConfigured, supabase } from '../lib/supabase'
 import { STARTER_WORD_IDS } from '../lib/vocabulary'
@@ -23,6 +24,7 @@ export interface SRSState {
   sessionQueue: readonly SRSCard[]
   currentIndex: number
   currentSessionId: string | null
+  lastReviewedCardIds: readonly string[]
   sessionStats: SessionStats
   isSessionActive: boolean
   isCompleted: boolean
@@ -31,6 +33,9 @@ export interface SRSState {
 
   loadCards: (userId: string) => Promise<void>
   startStudySession: (userId: string, level: CEFRLevel) => Promise<void>
+  loadNextBatch: (userId: string, level: CEFRLevel, count?: number) => Promise<void>
+  repeatCurrentLesson: (userId: string) => Promise<void>
+  startFreePracticeSession: (userId: string, level: CEFRLevel) => Promise<void>
   submitReview: (quality: ReviewQuality) => Promise<void>
   resetSession: () => void
 }
@@ -57,6 +62,7 @@ export const useSRSStore = create<SRSState>()((set, get) => ({
   sessionQueue: [],
   currentIndex: 0,
   currentSessionId: null,
+  lastReviewedCardIds: [],
   sessionStats: {
     cardsReviewed: 0,
     cardsCorrect: 0,
@@ -138,6 +144,117 @@ export const useSRSStore = create<SRSState>()((set, get) => ({
       sessionQueue: queue,
       currentIndex: 0,
       currentSessionId: sessionId,
+      lastReviewedCardIds: queue.map((c) => c.id),
+      isSessionActive: queue.length > 0,
+      isCompleted: false,
+      sessionStats: {
+        cardsReviewed: 0,
+        cardsCorrect: 0,
+        qualityHistory: [],
+      },
+    })
+  },
+
+  loadNextBatch: async (userId: string, level: CEFRLevel, count: number = 10): Promise<void> => {
+    let currentCards = get().cards
+    if (currentCards.length === 0) {
+      await get().loadCards(userId)
+      currentCards = get().cards
+    }
+
+    const existingItemIds = new Set(currentCards.map((c) => c.vocabularyItemId))
+    const levelVocab = getVocabularyForLevel(level)
+    const candidates = levelVocab.filter((v) => !existingItemIds.has(v.id))
+
+    if (candidates.length === 0) {
+      // All level words are already in the deck; fallback to practice
+      await get().startFreePracticeSession(userId, level)
+      return
+    }
+
+    const batch = candidates.slice(0, count)
+    const now = new Date().toISOString()
+    const newCards: SRSCard[] = batch.map((item) => {
+      const card = createCard(`card_${userId}_${item.id}`, userId, item.id)
+      return {
+        ...card,
+        state: 'learning',
+        interval: 1,
+        dueDate: now,
+      }
+    })
+
+    await saveLocalCards(newCards, 'dirty')
+    const merged = [...currentCards, ...newCards]
+
+    set({
+      cards: merged,
+      sessionQueue: newCards,
+      currentIndex: 0,
+      currentSessionId: `session_batch_${Date.now()}`,
+      lastReviewedCardIds: newCards.map((c) => c.id),
+      isSessionActive: true,
+      isCompleted: false,
+      sessionStats: {
+        cardsReviewed: 0,
+        cardsCorrect: 0,
+        qualityHistory: [],
+      },
+    })
+  },
+
+  repeatCurrentLesson: async (userId: string): Promise<void> => {
+    let currentCards = get().cards
+    if (currentCards.length === 0) {
+      await get().loadCards(userId)
+      currentCards = get().cards
+    }
+
+    const { lastReviewedCardIds } = get()
+    let cardsToRepeat: SRSCard[] = []
+
+    if (lastReviewedCardIds.length > 0) {
+      const idSet = new Set(lastReviewedCardIds)
+      cardsToRepeat = currentCards.filter((c) => idSet.has(c.id))
+    }
+
+    if (cardsToRepeat.length === 0) {
+      // Fallback: take recent cards up to 10
+      cardsToRepeat = currentCards.slice(-10)
+    }
+
+    // Shuffle for active recall testing
+    const queue = [...cardsToRepeat].sort(() => 0.5 - Math.random())
+
+    set({
+      sessionQueue: queue,
+      currentIndex: 0,
+      currentSessionId: `session_repeat_${Date.now()}`,
+      isSessionActive: queue.length > 0,
+      isCompleted: false,
+      sessionStats: {
+        cardsReviewed: 0,
+        cardsCorrect: 0,
+        qualityHistory: [],
+      },
+    })
+  },
+
+  startFreePracticeSession: async (userId: string, _level: CEFRLevel): Promise<void> => {
+    let currentCards = get().cards
+    if (currentCards.length === 0) {
+      await get().loadCards(userId)
+      currentCards = get().cards
+    }
+
+    // Shuffle and pick up to 10 cards for open practice
+    const queue = [...currentCards].sort(() => 0.5 - Math.random()).slice(0, 10)
+
+    set({
+      sessionQueue: queue,
+      currentIndex: 0,
+      currentSessionId: `session_practice_${Date.now()}`,
+      lastReviewedCardIds: queue.map((c) => c.id),
       isSessionActive: queue.length > 0,
       isCompleted: false,
       sessionStats: {

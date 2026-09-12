@@ -1,9 +1,6 @@
 import fs from 'node:fs'
 import path from 'node:path'
-import { a1Content } from '../packages/content/src/a1/index.ts'
-import { a2Content } from '../packages/content/src/a2/index.ts'
-import { b1Content } from '../packages/content/src/b1/index.ts'
-import { b2Content } from '../packages/content/src/b2/index.ts'
+import { a1Content, a2Content, b1Content, b2Content } from '../packages/content/src/index'
 
 interface SeedRow {
   id: string
