@@ -331,6 +331,10 @@ export const useSRSStore = create<SRSState>()((set, get) => ({
       await logLocalReviewEvent(reviewEvent)
       void useSyncStore.getState().checkPendingCount(activeCard.userId)
 
+      // Refresh in-memory progress metrics reactively
+      const { useProgressStore } = await import('./useProgressStore')
+      void useProgressStore.getState().refreshMetrics(activeCard.userId)
+
       // 3. Opportunistic background sync if connected
       if (isSupabaseConfigured && supabase) {
         void syncUserData(activeCard.userId, supabase).then(() => {
@@ -342,3 +346,4 @@ export const useSRSStore = create<SRSState>()((set, get) => ({
     }
   },
 }))
+

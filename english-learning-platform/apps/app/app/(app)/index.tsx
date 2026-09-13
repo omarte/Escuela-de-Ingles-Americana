@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react'
+import React, { useCallback } from 'react'
 import { View, Text, StyleSheet, ScrollView, Image, TouchableOpacity } from 'react-native'
-import { useRouter } from 'expo-router'
+import { useRouter, useFocusEffect } from 'expo-router'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { colors, spacing, typography, radius, Card, Button, Badge, ProgressBar } from '@elp/ui'
 import { Ionicons } from '@expo/vector-icons'
@@ -9,6 +9,19 @@ import { useSRSStore } from '../../stores/useSRSStore'
 import { useProgressStore } from '../../stores/useProgressStore'
 import { getDueCards } from '@elp/srs'
 import { APP_LOGO } from '../../lib/assets'
+
+/**
+ * Normalizes an ISO timestamp or date to YYYY-MM-DD in the user's local timezone.
+ * Avoids timezone drift bugs where reviews done late evening UTC-4 fall into tomorrow in UTC.
+ */
+function toLocalDateString(d: Date | string = new Date()): string {
+  const date = typeof d === 'string' ? new Date(d) : d
+  if (isNaN(date.getTime())) return ''
+  const year = date.getFullYear()
+  const month = String(date.getMonth() + 1).padStart(2, '0')
+  const day = String(date.getDate()).padStart(2, '0')
+  return `${year}-${month}-${day}`
+}
 
 export default function HomeScreen(): React.JSX.Element {
   const router = useRouter()
@@ -27,19 +40,36 @@ export default function HomeScreen(): React.JSX.Element {
   const userId = user?.id ?? 'demo-user'
   const displayName = profile?.displayName ?? 'Estudiante'
   const currentLevel = profile?.currentLevel ?? 'A1'
-  const hasStudiedToday = streak.studiedToday
-  const streakDays = streak.currentStreak > 0 ? streak.currentStreak : (profile?.streakDays ?? 0)
 
-  useEffect(() => {
-    void loadCards(userId)
-    void refreshMetrics(userId)
-  }, [loadCards, refreshMetrics, userId])
+  // Timezone-safe check: only count cards reviewed on the local calendar day
+  const todayStr = toLocalDateString(new Date())
+  const cardsReviewedToday = cards.filter((c) => {
+    if (!c.lastReviewed) return false
+    return toLocalDateString(c.lastReviewed) === todayStr
+  }).length
+
+  const dailyGoal = 20
+  const completedToday = Math.min(dailyGoal, Math.max(0, cardsReviewedToday))
+  const progressRatio = completedToday / dailyGoal
+  const hasStudiedToday = streak.studiedToday || completedToday > 0
+  const streakDays = streak.currentStreak > 0 ? streak.currentStreak : (hasStudiedToday ? 1 : (profile?.streakDays ?? 0))
+
+  // Calculated Gamification XP
+  const totalXP = Math.max(
+    profile?.streakDays ? profile.streakDays * 25 : 0,
+    cards.filter((c) => c.reps > 0).length * 10 + cards.filter((c) => c.interval >= 21).length * 20,
+  )
+
+  // Stable focus refresh: refreshes whenever the student navigates back to Home
+  useFocusEffect(
+    useCallback(() => {
+      void loadCards(userId)
+      void refreshMetrics(userId)
+    }, [loadCards, refreshMetrics, userId]),
+  )
 
   const dueCards = getDueCards(cards)
   const dueCount = dueCards.length
-  const dailyGoal = 20
-  const completedToday = Math.min(dailyGoal, Math.max(0, cards.filter((c) => c.reps > 0).length))
-  const progressRatio = completedToday / dailyGoal
 
   let heroSubtitle = ''
   if (dueCount > 0) {
@@ -62,12 +92,19 @@ export default function HomeScreen(): React.JSX.Element {
               <Text style={styles.subgreeting}>Escuela de Inglés Americana</Text>
             </View>
           </View>
-          <Badge label={`Nivel ${currentLevel}`} color={colors.primary} size="md" />
+          <View style={styles.topBarRight}>
+            <View style={styles.xpBadge}>
+              <Ionicons name="flash" size={14} color="#F59E0B" />
+              <Text style={styles.xpBadgeText}>{String(totalXP)} XP</Text>
+            </View>
+            <Badge label={`Nivel ${currentLevel}`} color={colors.primary} size="md" />
+          </View>
         </View>
 
         {/* Daily Goal & Streak Hero Card */}
         <Card padding="lg" highlighted style={styles.heroCard}>
           <View style={styles.heroHeader}>
+
             <View style={styles.streakBadge}>
               <Ionicons name="flame" size={20} color="#F59E0B" />
               <Text style={styles.streakText}>{String(streakDays)} días de racha</Text>
@@ -200,6 +237,27 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     marginBottom: spacing.lg,
+  },
+  topBarRight: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.xs,
+  },
+  xpBadge: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 3,
+    backgroundColor: '#FEF3C7',
+    paddingHorizontal: spacing.sm,
+    paddingVertical: 4,
+    borderRadius: radius.full,
+    borderWidth: 1,
+    borderColor: '#FDE68A',
+  },
+  xpBadgeText: {
+    color: '#B45309',
+    fontSize: typography.sizes.xs,
+    fontWeight: typography.weights.bold,
   },
   brandingRow: {
     flexDirection: 'row',
