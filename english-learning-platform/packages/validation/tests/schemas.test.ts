@@ -4,6 +4,8 @@ import {
   ReadingIdSchema,
   VocabularyItemSchema,
   ReadingPassageSchema,
+  GrammarExerciseSchema,
+  WritingPromptSchema,
 } from '../src/index'
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -165,3 +167,104 @@ describe('ReadingPassageSchema', () => {
     expect(result.success).toBe(false)
   })
 })
+
+describe('GrammarExerciseSchema', () => {
+  const validExercise = {
+    id: 'grm_b1_pres_perfect_001',
+    level: 'B1' as const,
+    week: 1,
+    grammarTopic: 'Present Perfect vs. Past Simple',
+    difficulty: 'simple' as const,
+    prompt: 'I ___ (visit) London twice in my life.',
+    promptTranslation: 'He visitado Londres dos veces en mi vida.',
+    hint: 'visit',
+    correctAnswer: 'have visited',
+    acceptedAlternatives: ["'ve visited"],
+    explanation: 'Usamos Present Perfect para experiencias de vida sin un momento específico en el tiempo.',
+    verifiedBy: 'claude-content-review',
+    verifiedAt: '2026-09-13',
+    status: 'curated' as const,
+  }
+
+  it('accepts a valid grammar exercise', () => {
+    expect(GrammarExerciseSchema.safeParse(validExercise).success).toBe(true)
+  })
+
+  it('accepts a valid multi-blank grammar exercise with aligned slash answers', () => {
+    const multiBlank = {
+      ...validExercise,
+      id: 'grm_b1_cond1_001',
+      prompt: 'If it ___ (rain) tomorrow, we ___ (stay) home.',
+      correctAnswer: 'rains / will stay',
+      acceptedAlternatives: ["rains / 'll stay"],
+    }
+    expect(GrammarExerciseSchema.safeParse(multiBlank).success).toBe(true)
+  })
+
+  it('rejects an exercise when gap count does not match answer count', () => {
+    const misaligned = {
+      ...validExercise,
+      prompt: 'I ___ (go) to the store.', // 1 gap
+      correctAnswer: 'went / extra', // 2 answers
+    }
+    const result = GrammarExerciseSchema.safeParse(misaligned)
+    expect(result.success).toBe(false)
+  })
+
+  it('rejects an exercise with short or trivial explanation', () => {
+    const shortExp = {
+      ...validExercise,
+      explanation: 'Short', // < 10 chars
+    }
+    expect(GrammarExerciseSchema.safeParse(shortExp).success).toBe(false)
+  })
+
+  it('rejects non-ISO date format in verifiedAt', () => {
+    const badDate = {
+      ...validExercise,
+      verifiedAt: '13-09-2026',
+    }
+    expect(GrammarExerciseSchema.safeParse(badDate).success).toBe(false)
+  })
+})
+
+describe('WritingPromptSchema', () => {
+  const validPrompt = {
+    id: 'wrt_b2_opinion_001',
+    level: 'B2' as const,
+    type: 'opinion_essay' as const,
+    topic: 'Should social media companies be responsible for mental health?',
+    topicTranslation: '¿Deberían las redes sociales ser responsables de la salud mental?',
+    instructions: 'Write a structured opinion essay of 150-200 words with arguments.',
+    targetGrammar: ['Present Perfect', 'Passive Voice'],
+    minWords: 150,
+    maxWords: 220,
+    rubricForTutor: [
+      'Estructura: ¿tiene introducción, desarrollo y conclusión claros?',
+      'Gramática: ¿hay errores recurrentes de tiempo verbal o concordancia?',
+    ],
+    status: 'curated' as const,
+  }
+
+  it('accepts a valid writing prompt', () => {
+    expect(WritingPromptSchema.safeParse(validPrompt).success).toBe(true)
+  })
+
+  it('rejects when maxWords is less than or equal to minWords', () => {
+    const badWordRange = {
+      ...validPrompt,
+      minWords: 200,
+      maxWords: 150,
+    }
+    expect(WritingPromptSchema.safeParse(badWordRange).success).toBe(false)
+  })
+
+  it('rejects a rubric with fewer than 2 evaluation criteria', () => {
+    const singleRubric = {
+      ...validPrompt,
+      rubricForTutor: ['Solo un criterio'],
+    }
+    expect(WritingPromptSchema.safeParse(singleRubric).success).toBe(false)
+  })
+})
+

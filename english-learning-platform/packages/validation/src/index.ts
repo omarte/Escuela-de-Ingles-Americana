@@ -6,7 +6,9 @@ export const CEFRLevelSchema = z.enum(['A1', 'A2', 'B1', 'B2'])
 
 export const ContentStatusSchema = z.enum([
   'draft',
+  'curated',
   'review',
+  'teacher_reviewed',
   'approved',
   'published',
   'deprecated',
@@ -156,6 +158,68 @@ export const SRSCardSchema = z.object({
   lastReviewed: z.string().datetime().nullable(),
 })
 
+// ─── Grammar Exercise (B1 Fill-the-Blank) ───────────────────────────────────
+
+export const GrammarDifficultySchema = z.enum(['simple', 'advanced', 'complex'])
+
+export const GrammarExerciseSchema = z
+  .object({
+    id: z.string().regex(/^grm_[a-z0-9_]+$/, 'id must match pattern grm_<name>'),
+    level: CEFRLevelSchema,
+    week: z.number().int().min(1).max(52),
+    grammarTopic: z.string().min(1),
+    difficulty: GrammarDifficultySchema,
+    prompt: z.string().min(1).refine((p) => p.includes('___'), {
+      message: "prompt must contain at least one gap marked with '___'",
+    }),
+    promptTranslation: z.string().min(1),
+    hint: z.string().optional(),
+    correctAnswer: z.string().min(1),
+    acceptedAlternatives: z.array(z.string()),
+    explanation: z.string().min(10, 'explanation must be substantial (at least 10 chars)'),
+    verifiedBy: z.string().min(1),
+    verifiedAt: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'verifiedAt must be YYYY-MM-DD'),
+    status: ContentStatusSchema,
+  })
+  .refine(
+    (ex) => (ex.prompt.match(/___/g) || []).length === ex.correctAnswer.split('/').length,
+    {
+      message:
+        "number of '___' gaps in prompt must match number of answers separated by '/' in correctAnswer",
+    },
+  )
+
+// ─── Writing Prompt (B2 Free Production with Tutor Review) ──────────────────
+
+export const WritingPromptTypeSchema = z.enum([
+  'opinion_essay',
+  'formal_email',
+  'narrative',
+  'argumentative_essay',
+  'descriptive',
+  'formal_report',
+])
+
+export const WritingPromptSchema = z
+  .object({
+    id: z.string().regex(/^wrt_[a-z0-9_]+$/, 'id must match pattern wrt_<name>'),
+    level: CEFRLevelSchema,
+    type: WritingPromptTypeSchema,
+    topic: z.string().min(1),
+    topicTranslation: z.string().min(1),
+    instructions: z.string().min(10),
+    targetGrammar: z.array(z.string()),
+    minWords: z.number().int().positive(),
+    maxWords: z.number().int().positive(),
+    rubricForTutor: z
+      .array(z.string().min(5))
+      .min(2, 'rubric must have at least 2 criteria for tutor review'),
+    status: ContentStatusSchema,
+  })
+  .refine((p) => p.maxWords > p.minWords, {
+    message: 'maxWords must be strictly greater than minWords',
+  })
+
 // ─── Re-exports ───────────────────────────────────────────────────────────────
 
 export type {
@@ -164,7 +228,12 @@ export type {
   PartOfSpeech,
   VocabularyItem,
   ReadingPassage,
+  GrammarDifficulty,
+  GrammarExercise,
+  WritingPromptType,
+  WritingPrompt,
   CardState,
   ReviewQuality,
   SRSCard,
 } from '@elp/types'
+

@@ -10,7 +10,14 @@ export type CEFRLevel = 'A1' | 'A2' | 'B1' | 'B2'
  * 'deprecated' marks content that is no longer active but must not be deleted
  * (SRS history references may exist).
  */
-export type ContentStatus = 'draft' | 'review' | 'approved' | 'published' | 'deprecated'
+export type ContentStatus =
+  | 'draft'
+  | 'curated'
+  | 'review'
+  | 'teacher_reviewed'
+  | 'approved'
+  | 'published'
+  | 'deprecated'
 
 /**
  * Part of speech values used to classify vocabulary items.
@@ -126,6 +133,59 @@ export interface ReadingPassage {
   readonly wordMappings?: readonly WordMapping[]
   readonly verifiedBy: string
   readonly verifiedAt: string
+  readonly status: ContentStatus
+}
+
+// ─── Grammar Exercise (B1 Fill-the-Blank) ───────────────────────────────────
+
+export type GrammarDifficulty = 'simple' | 'advanced' | 'complex'
+
+/**
+ * A grammar exercise of type Fill the Blank (introduced in B1).
+ */
+export interface GrammarExercise {
+  readonly id: string
+  readonly level: CEFRLevel
+  readonly week: number
+  readonly grammarTopic: string
+  readonly difficulty: GrammarDifficulty
+  /** Sentence with placeholder token, e.g. "If I ___ (have) more time, I would travel more." */
+  readonly prompt: string
+  readonly promptTranslation: string
+  readonly hint?: string
+  readonly correctAnswer: string
+  readonly acceptedAlternatives: readonly string[]
+  readonly explanation: string
+  readonly verifiedBy: string
+  readonly verifiedAt: string // ISO date (YYYY-MM-DD)
+  readonly status: ContentStatus
+}
+
+// ─── Writing Prompt (B2 Free Production with Tutor Review) ──────────────────
+
+export type WritingPromptType =
+  | 'opinion_essay'
+  | 'formal_email'
+  | 'narrative'
+  | 'argumentative_essay'
+  | 'descriptive'
+  | 'formal_report'
+
+/**
+ * A free writing prompt evaluated by a human tutor/teacher (not algorithmically autocorrected).
+ */
+export interface WritingPrompt {
+  readonly id: string
+  readonly level: CEFRLevel
+  readonly type: WritingPromptType
+  readonly topic: string
+  readonly topicTranslation: string
+  readonly instructions: string
+  readonly targetGrammar: readonly string[]
+  readonly minWords: number
+  readonly maxWords: number
+  /** Specific criteria for the tutor to review */
+  readonly rubricForTutor: readonly string[]
   readonly status: ContentStatus
 }
 
