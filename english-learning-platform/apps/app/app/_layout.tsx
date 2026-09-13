@@ -5,7 +5,7 @@ import { StatusBar } from 'expo-status-bar'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 import { colors } from '@elp/ui'
 import { useAuthStore } from '../stores/useAuthStore'
-import { APP_LOGO } from '../lib/assets'
+import { APP_LOGO, SPLASH_SCREEN_IMG } from '../lib/assets'
 
 function NavigationGuard(): React.JSX.Element {
   const router = useRouter()
@@ -13,13 +13,19 @@ function NavigationGuard(): React.JSX.Element {
   const session = useAuthStore((state) => state.session)
   const isInitialized = useAuthStore((state) => state.isInitialized)
   const initSession = useAuthStore((state) => state.initSession)
+  const [minSplashDone, setMinSplashDone] = React.useState(false)
 
   useEffect(() => {
     void initSession()
+    // Give brand splash screen an intentional minimum 1.5s presence so user can see it cleanly
+    const timer = setTimeout(() => {
+      setMinSplashDone(true)
+    }, 1500)
+    return () => clearTimeout(timer)
   }, [initSession])
 
   useEffect(() => {
-    if (!isInitialized) return
+    if (!isInitialized || !minSplashDone) return
 
     const inAuthGroup = segments[0] === '(auth)'
 
@@ -30,13 +36,19 @@ function NavigationGuard(): React.JSX.Element {
       // User is already authenticated but is on login/register
       router.replace('/(app)')
     }
-  }, [session, isInitialized, segments, router])
+  }, [session, isInitialized, minSplashDone, segments, router])
 
-  if (!isInitialized) {
+  if (!isInitialized || !minSplashDone) {
     return (
       <View style={styles.splashContainer}>
-        <Image source={APP_LOGO} style={styles.logoImage} resizeMode="contain" />
-        <ActivityIndicator size="large" color={colors.primary} style={styles.loader} />
+        <Image
+          source={SPLASH_SCREEN_IMG}
+          style={styles.splashImage}
+          resizeMode="cover"
+        />
+        <View style={styles.splashOverlay}>
+          <ActivityIndicator size="large" color="#10B981" style={styles.loader} />
+        </View>
       </View>
     )
   }
@@ -58,7 +70,7 @@ function NavigationGuard(): React.JSX.Element {
 export default function RootLayout(): React.JSX.Element {
   return (
     <SafeAreaProvider>
-      <StatusBar style="dark" backgroundColor={colors.background} />
+      <StatusBar style="light" backgroundColor="#0B0F17" />
       <NavigationGuard />
     </SafeAreaProvider>
   )
@@ -67,14 +79,20 @@ export default function RootLayout(): React.JSX.Element {
 const styles = StyleSheet.create({
   splashContainer: {
     flex: 1,
-    backgroundColor: colors.background,
+    backgroundColor: '#0B0F17',
     alignItems: 'center',
     justifyContent: 'center',
   },
-  logoImage: {
-    width: 160,
-    height: 160,
-    marginBottom: 8,
+  splashImage: {
+    ...StyleSheet.absoluteFillObject,
+    width: '100%',
+    height: '100%',
+  },
+  splashOverlay: {
+    ...StyleSheet.absoluteFillObject,
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    paddingBottom: 64,
   },
   loader: {
     marginTop: 24,

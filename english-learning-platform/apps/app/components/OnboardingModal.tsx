@@ -124,7 +124,7 @@ export function OnboardingModal({ visible, onClose }: OnboardingModalProps): Rea
 
         {/* Slide Content */}
         <View style={styles.slideContainer}>
-          {/* Main Visual Artwork */}
+          {/* Main Visual Artwork - Expanded and Frameless */}
           <View style={styles.imageCard}>
             <Image
               source={currentSlide.image}
@@ -133,7 +133,7 @@ export function OnboardingModal({ visible, onClose }: OnboardingModalProps): Rea
             />
           </View>
 
-          {/* Text Content */}
+          {/* Text Content - High contrast and crystal-clear readability */}
           <View style={styles.textContainer}>
             <View style={styles.tagBadge}>
               <Text style={styles.tagText}>{currentSlide.tag}</Text>
@@ -168,7 +168,7 @@ export function OnboardingModal({ visible, onClose }: OnboardingModalProps): Rea
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    backgroundColor: '#0B0F17',
+    backgroundColor: '#0F172A', // Rich Dark Slate
     justifyContent: 'space-between',
   },
   topNav: {
@@ -176,7 +176,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingHorizontal: spacing.md,
-    paddingVertical: spacing.sm,
+    paddingTop: spacing.sm,
+    paddingBottom: spacing.xs,
   },
   navIconBtn: {
     padding: spacing.xs,
@@ -195,12 +196,12 @@ const styles = StyleSheet.create({
     borderRadius: 4,
   },
   dotActive: {
-    width: 24,
-    backgroundColor: colors.primary,
+    width: 28,
+    backgroundColor: '#10B981', // Vivid Emerald
   },
   dotInactive: {
     width: 8,
-    backgroundColor: 'rgba(255, 255, 255, 0.2)',
+    backgroundColor: 'rgba(255, 255, 255, 0.25)',
   },
   skipBtn: {
     padding: spacing.xs,
@@ -208,7 +209,7 @@ const styles = StyleSheet.create({
     alignItems: 'flex-end',
   },
   skipText: {
-    color: colors.textSecondary,
+    color: '#94A3B8',
     fontSize: typography.sizes.sm,
     fontWeight: typography.weights.semibold,
   },
@@ -216,17 +217,17 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    paddingHorizontal: spacing.lg,
+    paddingHorizontal: spacing.md,
   },
   imageCard: {
-    width: SCREEN_WIDTH * 0.85,
-    height: Math.min(SCREEN_HEIGHT * 0.45, 360),
+    width: SCREEN_WIDTH - 24,
+    height: Math.min(SCREEN_HEIGHT * 0.52, 430),
     borderRadius: radius.xl,
     overflow: 'hidden',
-    backgroundColor: 'rgba(255, 255, 255, 0.03)',
-    borderWidth: 1,
-    borderColor: 'rgba(255, 255, 255, 0.08)',
-    marginBottom: spacing.lg,
+    backgroundColor: '#1E293B', // Slate 800 background so art pops
+    borderWidth: 1.5,
+    borderColor: 'rgba(255, 255, 255, 0.12)',
+    marginBottom: spacing.md,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -236,37 +237,37 @@ const styles = StyleSheet.create({
   },
   textContainer: {
     alignItems: 'center',
-    paddingHorizontal: spacing.sm,
+    paddingHorizontal: spacing.md,
   },
   tagBadge: {
-    backgroundColor: 'rgba(5, 150, 105, 0.15)',
+    backgroundColor: 'rgba(16, 185, 129, 0.2)',
     borderWidth: 1,
-    borderColor: colors.primary,
-    paddingHorizontal: spacing.sm + 4,
+    borderColor: '#10B981',
+    paddingHorizontal: spacing.md,
     paddingVertical: 4,
     borderRadius: radius.full,
-    marginBottom: spacing.sm,
+    marginBottom: spacing.xs + 2,
   },
   tagText: {
-    color: colors.primaryLight ?? '#A7F3D0',
-    fontSize: typography.sizes.xs - 1,
+    color: '#34D399', // Emerald 400
+    fontSize: typography.sizes.xs,
     fontWeight: typography.weights.bold,
     letterSpacing: 1,
   },
   slideTitle: {
-    fontSize: typography.sizes.xl,
-    fontWeight: typography.weights.bold,
-    color: colors.textPrimary,
+    fontSize: 22,
+    fontWeight: '800',
+    color: '#FFFFFF', // Pure White for crystal clarity
     textAlign: 'center',
     marginBottom: spacing.xs,
     lineHeight: 28,
   },
   slideDescription: {
-    fontSize: typography.sizes.sm,
-    color: colors.textSecondary,
+    fontSize: typography.sizes.sm + 1,
+    color: '#E2E8F0', // Slate 200 - High legibility
     textAlign: 'center',
     lineHeight: 22,
-    maxWidth: 340,
+    maxWidth: 360,
   },
   bottomBar: {
     paddingHorizontal: spacing.lg,
@@ -275,5 +276,6 @@ const styles = StyleSheet.create({
   },
   actionBtn: {
     width: '100%',
+    backgroundColor: '#059669',
   },
 })
