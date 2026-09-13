@@ -31,6 +31,39 @@ import {
 import { isSupabaseConfigured } from '../../lib/supabase'
 import { APP_LOGO, SCHOOL_LOGO } from '../../lib/assets'
 import { OnboardingModal } from '../../components/OnboardingModal'
+import {
+  useStudyPreferencesStore,
+  type PronunciationVariant,
+} from '../../stores/useStudyPreferencesStore'
+
+const GOAL_OPTIONS = [
+  { value: 10, label: '10 palabras / día', sub: 'Ritmo suave · ~5 min diarios' },
+  { value: 15, label: '15 palabras / día', sub: 'Ritmo constante · ~8 min diarios' },
+  { value: 20, label: '20 palabras / día (Recomendado)', sub: 'Ritmo académico estándar · ~10 min diarios' },
+  { value: 25, label: '25 palabras / día', sub: 'Acelerado · ~15 min diarios' },
+  { value: 30, label: '30 palabras / día', sub: 'Intensivo · ~20 min diarios' },
+]
+
+const PRONUNCIATION_OPTIONS: Array<{ value: PronunciationVariant; label: string; sub: string }> = [
+  {
+    value: 'US_STANDARD',
+    label: 'Inglés Americano Estándar (0.88x)',
+    sub: 'Velocidad fluida con entonación nativa de EE. UU.',
+  },
+  {
+    value: 'US_SLOW',
+    label: 'Inglés Americano Fonética Lenta (0.75x)',
+    sub: 'Pausado para distinguir fonemas y vocales complejas.',
+  },
+]
+
+const REMINDER_OPTIONS = [
+  { hour: 19, minute: 0, enabled: true, label: '19:00 hrs', sub: 'Tarde · Al finalizar labores' },
+  { hour: 20, minute: 0, enabled: true, label: '20:00 hrs (Recomendado)', sub: 'Noche · Antes de cenar' },
+  { hour: 21, minute: 0, enabled: true, label: '21:00 hrs', sub: 'Noche · Rutina tranquila de estudio' },
+  { hour: 22, minute: 0, enabled: true, label: '22:00 hrs', sub: 'Noche tardía · Antes de descansar' },
+  { hour: -1, minute: 0, enabled: false, label: 'Desactivado', sub: 'Sin recordatorios automáticos' },
+]
 
 export default function ProfileScreen(): React.JSX.Element {
   const router = useRouter()
@@ -46,6 +79,24 @@ export default function ProfileScreen(): React.JSX.Element {
   const lastSyncError = useSyncStore((state) => state.lastSyncError)
   const triggerSync = useSyncStore((state) => state.triggerSync)
   const loadInitialStatus = useSyncStore((state) => state.loadInitialStatus)
+
+  // Study Preferences Store
+  const dailyGoal = useStudyPreferencesStore((state) => state.dailyGoal)
+  const pronunciationVariant = useStudyPreferencesStore((state) => state.pronunciationVariant)
+  const reminderHour = useStudyPreferencesStore((state) => state.reminderHour)
+  const notificationsEnabled = useStudyPreferencesStore((state) => state.notificationsEnabled)
+  const loadPreferences = useStudyPreferencesStore((state) => state.loadPreferences)
+  const setDailyGoal = useStudyPreferencesStore((state) => state.setDailyGoal)
+  const setPronunciationVariant = useStudyPreferencesStore((state) => state.setPronunciationVariant)
+  const setReminder = useStudyPreferencesStore((state) => state.setReminder)
+
+  const [activeSettingModal, setActiveSettingModal] = useState<
+    'dailyGoal' | 'pronunciation' | 'reminder' | null
+  >(null)
+
+  useEffect(() => {
+    void loadPreferences()
+  }, [loadPreferences])
 
   useEffect(() => {
     if (user?.id) {
@@ -355,32 +406,72 @@ export default function ProfileScreen(): React.JSX.Element {
         {/* Study Preferences */}
         <Text style={styles.sectionTitle}>Configuración de Estudio</Text>
         <Card padding="md" style={styles.settingsCard}>
-          <TouchableOpacity style={styles.settingItem}>
+          <TouchableOpacity
+            style={styles.settingItem}
+            onPress={() => setActiveSettingModal('dailyGoal')}
+            activeOpacity={0.7}
+            accessibilityRole="button"
+            accessibilityLabel="Cambiar meta diaria de palabras"
+          >
             <View style={styles.settingLeft}>
-              <Ionicons name="flag-outline" size={20} color={colors.textSecondary} />
-              <Text style={styles.settingLabel}>Meta diaria de palabras</Text>
+              <Ionicons name="flag-outline" size={20} color={colors.primary} />
+              <View>
+                <Text style={styles.settingLabel}>Meta diaria de palabras</Text>
+                <Text style={styles.settingSubtext}>Objetivo diario de tarjetas</Text>
+              </View>
             </View>
-            <Text style={styles.settingValue}>20 palabras / día</Text>
+            <View style={styles.settingRight}>
+              <Text style={styles.settingValue}>{dailyGoal} palabras / día</Text>
+              <Ionicons name="chevron-forward" size={16} color={colors.textSecondary} />
+            </View>
           </TouchableOpacity>
 
           <View style={styles.settingDivider} />
 
-          <TouchableOpacity style={styles.settingItem}>
+          <TouchableOpacity
+            style={styles.settingItem}
+            onPress={() => setActiveSettingModal('pronunciation')}
+            activeOpacity={0.7}
+            accessibilityRole="button"
+            accessibilityLabel="Cambiar variante de pronunciación"
+          >
             <View style={styles.settingLeft}>
-              <Ionicons name="volume-high-outline" size={20} color={colors.textSecondary} />
-              <Text style={styles.settingLabel}>Variante de pronunciación</Text>
+              <Ionicons name="volume-high-outline" size={20} color={colors.primary} />
+              <View>
+                <Text style={styles.settingLabel}>Variante de pronunciación</Text>
+                <Text style={styles.settingSubtext}>Velocidad del motor de voz</Text>
+              </View>
             </View>
-            <Text style={styles.settingValue}>Inglés Americano</Text>
+            <View style={styles.settingRight}>
+              <Text style={styles.settingValue}>
+                {pronunciationVariant === 'US_SLOW' ? 'Fonética Lenta' : 'Estándar (EE.UU.)'}
+              </Text>
+              <Ionicons name="chevron-forward" size={16} color={colors.textSecondary} />
+            </View>
           </TouchableOpacity>
 
           <View style={styles.settingDivider} />
 
-          <TouchableOpacity style={styles.settingItem}>
+          <TouchableOpacity
+            style={styles.settingItem}
+            onPress={() => setActiveSettingModal('reminder')}
+            activeOpacity={0.7}
+            accessibilityRole="button"
+            accessibilityLabel="Cambiar recordatorio diario"
+          >
             <View style={styles.settingLeft}>
-              <Ionicons name="notifications-outline" size={20} color={colors.textSecondary} />
-              <Text style={styles.settingLabel}>Recordatorio diario</Text>
+              <Ionicons name="notifications-outline" size={20} color={colors.primary} />
+              <View>
+                <Text style={styles.settingLabel}>Recordatorio diario</Text>
+                <Text style={styles.settingSubtext}>Notificación local para tu racha</Text>
+              </View>
             </View>
-            <Text style={styles.settingValue}>20:00 hrs</Text>
+            <View style={styles.settingRight}>
+              <Text style={styles.settingValue}>
+                {notificationsEnabled ? `${String(reminderHour).padStart(2, '0')}:00 hrs` : 'Desactivado'}
+              </Text>
+              <Ionicons name="chevron-forward" size={16} color={colors.textSecondary} />
+            </View>
           </TouchableOpacity>
         </Card>
 
@@ -490,6 +581,168 @@ export default function ProfileScreen(): React.JSX.Element {
                 }}
                 style={styles.modalRestoreBtn}
               />
+            </View>
+          </View>
+        </View>
+      </Modal>
+
+      {/* Interactive Settings Selector Modal */}
+      <Modal
+        visible={activeSettingModal !== null}
+        transparent={true}
+        animationType="fade"
+        onRequestClose={() => setActiveSettingModal(null)}
+      >
+        <View style={styles.modalOverlay}>
+          <View style={styles.modalContainer}>
+            <View style={styles.modalHeader}>
+              <View style={styles.modalHeaderTitleRow}>
+                <Ionicons
+                  name={
+                    activeSettingModal === 'dailyGoal'
+                      ? 'flag-outline'
+                      : activeSettingModal === 'pronunciation'
+                        ? 'volume-high-outline'
+                        : 'notifications-outline'
+                  }
+                  size={20}
+                  color={colors.primary}
+                />
+                <Text style={styles.modalTitle}>
+                  {activeSettingModal === 'dailyGoal' && 'Meta Diaria de Palabras'}
+                  {activeSettingModal === 'pronunciation' && 'Variante de Pronunciación'}
+                  {activeSettingModal === 'reminder' && 'Recordatorio Diario de Estudio'}
+                </Text>
+              </View>
+              <TouchableOpacity
+                onPress={() => setActiveSettingModal(null)}
+                hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+                accessibilityLabel="Cerrar modal"
+              >
+                <Ionicons name="close" size={22} color={colors.textSecondary} />
+              </TouchableOpacity>
+            </View>
+
+            <Text style={styles.modalSubtitle}>
+              {activeSettingModal === 'dailyGoal' &&
+                'Selecciona cuántas tarjetas nuevas y de repaso deseas completar cada día para tu racha:'}
+              {activeSettingModal === 'pronunciation' &&
+                'Ajusta la velocidad del motor de pronunciación nativo de las tarjetas:'}
+              {activeSettingModal === 'reminder' &&
+                'Configura una notificación local en tu teléfono para proteger tu racha sin depender de internet:'}
+            </Text>
+
+            <View style={styles.settingOptionsList}>
+              {activeSettingModal === 'dailyGoal' &&
+                GOAL_OPTIONS.map((opt) => {
+                  const isSelected = dailyGoal === opt.value
+                  return (
+                    <TouchableOpacity
+                      key={opt.value}
+                      style={[
+                        styles.settingOptionRow,
+                        isSelected && styles.settingOptionRowSelected,
+                      ]}
+                      onPress={async () => {
+                        await setDailyGoal(opt.value)
+                        setActiveSettingModal(null)
+                      }}
+                      activeOpacity={0.7}
+                    >
+                      <View style={styles.settingOptionTextCol}>
+                        <Text
+                          style={[
+                            styles.settingOptionLabel,
+                            isSelected && styles.settingOptionLabelSelected,
+                          ]}
+                        >
+                          {opt.label}
+                        </Text>
+                        <Text style={styles.settingOptionSub}>{opt.sub}</Text>
+                      </View>
+                      <Ionicons
+                        name={isSelected ? 'checkmark-circle' : 'ellipse-outline'}
+                        size={20}
+                        color={isSelected ? colors.primary : colors.textMuted}
+                      />
+                    </TouchableOpacity>
+                  )
+                })}
+
+              {activeSettingModal === 'pronunciation' &&
+                PRONUNCIATION_OPTIONS.map((opt) => {
+                  const isSelected = pronunciationVariant === opt.value
+                  return (
+                    <TouchableOpacity
+                      key={opt.value}
+                      style={[
+                        styles.settingOptionRow,
+                        isSelected && styles.settingOptionRowSelected,
+                      ]}
+                      onPress={async () => {
+                        await setPronunciationVariant(opt.value)
+                        setActiveSettingModal(null)
+                      }}
+                      activeOpacity={0.7}
+                    >
+                      <View style={styles.settingOptionTextCol}>
+                        <Text
+                          style={[
+                            styles.settingOptionLabel,
+                            isSelected && styles.settingOptionLabelSelected,
+                          ]}
+                        >
+                          {opt.label}
+                        </Text>
+                        <Text style={styles.settingOptionSub}>{opt.sub}</Text>
+                      </View>
+                      <Ionicons
+                        name={isSelected ? 'checkmark-circle' : 'ellipse-outline'}
+                        size={20}
+                        color={isSelected ? colors.primary : colors.textMuted}
+                      />
+                    </TouchableOpacity>
+                  )
+                })}
+
+              {activeSettingModal === 'reminder' &&
+                REMINDER_OPTIONS.map((opt, idx) => {
+                  const isSelected =
+                    (!opt.enabled && !notificationsEnabled) ||
+                    (opt.enabled && notificationsEnabled && reminderHour === opt.hour)
+                  return (
+                    <TouchableOpacity
+                      key={idx}
+                      style={[
+                        styles.settingOptionRow,
+                        isSelected && styles.settingOptionRowSelected,
+                      ]}
+                      onPress={async () => {
+                        const res = await setReminder(opt.hour, opt.minute, opt.enabled)
+                        setActiveSettingModal(null)
+                        Alert.alert('Recordatorio', res.message)
+                      }}
+                      activeOpacity={0.7}
+                    >
+                      <View style={styles.settingOptionTextCol}>
+                        <Text
+                          style={[
+                            styles.settingOptionLabel,
+                            isSelected && styles.settingOptionLabelSelected,
+                          ]}
+                        >
+                          {opt.label}
+                        </Text>
+                        <Text style={styles.settingOptionSub}>{opt.sub}</Text>
+                      </View>
+                      <Ionicons
+                        name={isSelected ? 'checkmark-circle' : 'ellipse-outline'}
+                        size={20}
+                        color={isSelected ? colors.primary : colors.textMuted}
+                      />
+                    </TouchableOpacity>
+                  )
+                })}
             </View>
           </View>
         </View>
@@ -670,19 +923,70 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: spacing.sm,
+    flex: 1,
+  },
+  settingRight: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
   },
   settingLabel: {
     fontSize: typography.sizes.sm,
     color: colors.textPrimary,
+    fontWeight: typography.weights.medium,
+  },
+  settingSubtext: {
+    fontSize: typography.sizes.xs - 1,
+    color: colors.textMuted,
+    marginTop: 2,
   },
   settingValue: {
     fontSize: typography.sizes.xs,
     color: colors.primary,
-    fontWeight: typography.weights.medium,
+    fontWeight: typography.weights.semibold,
   },
   settingDivider: {
     height: 1,
     backgroundColor: colors.border,
+  },
+
+  // Interactive Setting Options Modal Styles
+  settingOptionsList: {
+    gap: spacing.xs + 2,
+    marginTop: spacing.xs,
+  },
+  settingOptionRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingVertical: 12,
+    paddingHorizontal: 14,
+    borderRadius: radius.md,
+    backgroundColor: colors.background,
+    borderWidth: 1.5,
+    borderColor: colors.border,
+  },
+  settingOptionRowSelected: {
+    borderColor: colors.primary,
+    backgroundColor: colors.primaryLight,
+  },
+  settingOptionTextCol: {
+    flex: 1,
+    paddingRight: spacing.sm,
+  },
+  settingOptionLabel: {
+    fontSize: typography.sizes.sm,
+    fontWeight: typography.weights.semibold,
+    color: colors.textPrimary,
+  },
+  settingOptionLabelSelected: {
+    color: colors.primary,
+    fontWeight: typography.weights.bold,
+  },
+  settingOptionSub: {
+    fontSize: typography.sizes.xs - 1,
+    color: colors.textSecondary,
+    marginTop: 2,
   },
   logoutBtn: {
     borderColor: colors.danger,

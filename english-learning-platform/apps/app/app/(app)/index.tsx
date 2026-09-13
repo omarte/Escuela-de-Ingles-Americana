@@ -9,6 +9,7 @@ import { useAuthStore } from '../../stores/useAuthStore'
 import { useSRSStore } from '../../stores/useSRSStore'
 import { useProgressStore } from '../../stores/useProgressStore'
 import { getDueCards, calculateDailyProgress } from '@elp/srs'
+import { useStudyPreferencesStore } from '../../stores/useStudyPreferencesStore'
 import { SCHOOL_LOGO, EMPTY_REVIEWS_IMG } from '../../lib/assets'
 import { OnboardingModal } from '../../components/OnboardingModal'
 
@@ -23,6 +24,9 @@ export default function HomeScreen(): React.JSX.Element {
   const streak = useProgressStore((state) => state.metrics.streak)
   const refreshMetrics = useProgressStore((state) => state.refreshMetrics)
 
+  const configuredDailyGoal = useStudyPreferencesStore((state) => state.dailyGoal)
+  const loadPreferences = useStudyPreferencesStore((state) => state.loadPreferences)
+
   const repeatCurrentLesson = useSRSStore((state) => state.repeatCurrentLesson)
   const loadNextBatch = useSRSStore((state) => state.loadNextBatch)
   const startStudySession = useSRSStore((state) => state.startStudySession)
@@ -31,8 +35,12 @@ export default function HomeScreen(): React.JSX.Element {
   const displayName = profile?.displayName ?? 'Estudiante'
   const currentLevel = profile?.currentLevel ?? 'A1'
 
+  useEffect(() => {
+    void loadPreferences()
+  }, [loadPreferences])
+
   // Timezone-safe check: only count cards reviewed on the local calendar day
-  const dailyProgress = calculateDailyProgress(cards, new Date(), 20)
+  const dailyProgress = calculateDailyProgress(cards, new Date(), configuredDailyGoal || 20)
   const completedToday = dailyProgress.completedToday
   const dailyGoal = dailyProgress.dailyGoal
   const progressRatio = dailyProgress.progressRatio

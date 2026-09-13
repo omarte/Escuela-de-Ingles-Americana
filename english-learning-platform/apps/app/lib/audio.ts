@@ -1,15 +1,27 @@
 import * as Speech from 'expo-speech'
 import { Platform } from 'react-native'
+import { useStudyPreferencesStore } from '../stores/useStudyPreferencesStore'
 
 /**
  * Audio voice helper for English language pronunciation.
- * Configured with native English dialect and tuned speech rate (0.85x - 0.88x)
- * for optimal clarity in early CEFR levels (A1/A2).
+ * Configured with native English dialect and tuned speech rate:
+ * - US_STANDARD: 0.85x - 0.88x (Natural fluent pacing)
+ * - US_SLOW: 0.72x - 0.75x (Phonetic study clarity)
  */
-export async function speakEnglish(word: string): Promise<void> {
+export async function speakEnglish(word: string, customRate?: number): Promise<void> {
   if (!word || word.trim().length === 0) return
 
   const cleanText = word.trim()
+  const variant = useStudyPreferencesStore.getState().pronunciationVariant
+
+  let rate: number
+  if (customRate !== undefined) {
+    rate = customRate
+  } else if (variant === 'US_SLOW') {
+    rate = Platform.OS === 'ios' ? 0.72 : 0.75
+  } else {
+    rate = Platform.OS === 'ios' ? 0.85 : 0.88
+  }
 
   try {
     const isSpeaking = await Speech.isSpeakingAsync()
@@ -19,7 +31,7 @@ export async function speakEnglish(word: string): Promise<void> {
 
     Speech.speak(cleanText, {
       language: 'en-US',
-      rate: Platform.OS === 'ios' ? 0.85 : 0.88,
+      rate,
       pitch: 1.0,
     })
   } catch {

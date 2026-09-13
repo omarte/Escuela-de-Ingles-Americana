@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import {
   View,
   Text,
@@ -52,7 +52,16 @@ export default function VocabularyScreen(): React.JSX.Element {
   const [selectedLevel, setSelectedLevel] = useState<CEFRLevel>('A1')
   const [selectedCategory, setSelectedCategory] = useState<CategoryFilter>('all')
   const [selectedWeek, setSelectedWeek] = useState<number | null>(null)
+  const [searchInputText, setSearchInputText] = useState('')
   const [searchQuery, setSearchQuery] = useState('')
+
+  // Debounce search input to avoid expensive re-renders on every keystroke
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setSearchQuery(searchInputText.trim())
+    }, 180)
+    return () => clearTimeout(timer)
+  }, [searchInputText])
 
   // Games Modal state
   const [isGamesModalVisible, setIsGamesModalVisible] = useState(false)
@@ -342,24 +351,49 @@ export default function VocabularyScreen(): React.JSX.Element {
 
         {/* Search Bar */}
         <View style={styles.searchContainer}>
-          <Ionicons name="search-outline" size={18} color={colors.textMuted} />
+          <Ionicons name="search-outline" size={18} color={colors.textSecondary} style={styles.searchIcon} />
           <TextInput
             style={styles.searchInput}
-            placeholder="Buscar palabra o traducción..."
+            placeholder="Buscar en inglés o español (ej. airport, hablar)..."
             placeholderTextColor={colors.textMuted}
-            value={searchQuery}
-            onChangeText={setSearchQuery}
+            value={searchInputText}
+            onChangeText={setSearchInputText}
+            returnKeyType="search"
+            autoCorrect={false}
+            autoCapitalize="none"
           />
-          {searchQuery ? (
+          {searchInputText ? (
             <TouchableOpacity
               onPress={() => {
+                setSearchInputText('')
                 setSearchQuery('')
               }}
+              style={styles.searchClearBtn}
+              accessibilityLabel="Limpiar búsqueda"
             >
-              <Ionicons name="close-circle" size={18} color={colors.textMuted} />
+              <Ionicons name="close-circle" size={18} color={colors.textSecondary} />
             </TouchableOpacity>
           ) : null}
         </View>
+
+        {/* Search Feedback Row */}
+        {searchQuery ? (
+          <View style={styles.searchFeedbackRow}>
+            <Text style={styles.searchFeedbackText}>
+              {filteredWords.length === 1
+                ? `1 resultado para "${searchQuery}"`
+                : `${filteredWords.length} resultados para "${searchQuery}"`}
+            </Text>
+            <TouchableOpacity
+              onPress={() => {
+                setSearchInputText('')
+                setSearchQuery('')
+              }}
+            >
+              <Text style={styles.searchFeedbackClearText}>Restablecer</Text>
+            </TouchableOpacity>
+          </View>
+        ) : null}
       </View>
 
       {/* ----------------- VOCABULARY LIST ----------------- */}
@@ -400,11 +434,24 @@ export default function VocabularyScreen(): React.JSX.Element {
         {/* Empty state */}
         {filteredWords.length === 0 ? (
           <View style={styles.emptyState}>
-            <Ionicons name="book-outline" size={48} color={colors.textMuted} />
+            <Ionicons name="search-outline" size={48} color={colors.textMuted} />
             <Text style={styles.emptyTitle}>No se encontraron palabras</Text>
             <Text style={styles.emptySubtitle}>
-              Intenta cambiar los filtros de categoría o semana, o ingresa otro término de búsqueda.
+              {searchQuery
+                ? `No encontramos coincidencias para "${searchQuery}" en el nivel ${selectedLevel}.`
+                : 'Intenta cambiar los filtros de categoría o semana.'}
             </Text>
+            {searchQuery ? (
+              <TouchableOpacity
+                style={styles.emptyResetBtn}
+                onPress={() => {
+                  setSearchInputText('')
+                  setSearchQuery('')
+                }}
+              >
+                <Text style={styles.emptyResetBtnText}>Limpiar Búsqueda</Text>
+              </TouchableOpacity>
+            ) : null}
           </View>
         ) : (
           /* Cards list */
@@ -883,23 +930,6 @@ const styles = StyleSheet.create({
     color: colors.primary,
     fontWeight: typography.weights.bold,
   },
-  searchContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: colors.card,
-    borderRadius: radius.md,
-    paddingHorizontal: spacing.md,
-    borderWidth: 1,
-    borderColor: colors.border,
-    gap: spacing.sm,
-    marginTop: spacing.xs,
-  },
-  searchInput: {
-    flex: 1,
-    paddingVertical: spacing.sm,
-    color: colors.textPrimary,
-    fontSize: typography.sizes.sm,
-  },
   scrollList: {
     padding: spacing.md,
     paddingBottom: spacing.xxl,
@@ -1308,5 +1338,62 @@ const styles = StyleSheet.create({
     fontSize: typography.sizes.xs,
     color: colors.textMuted,
     fontWeight: typography.weights.medium,
+  },
+
+  // Search Bar Styles
+  searchContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#0F172A',
+    borderWidth: 1,
+    borderColor: '#334155',
+    borderRadius: radius.lg,
+    paddingHorizontal: spacing.sm,
+    height: 44,
+    marginTop: spacing.xs,
+    marginBottom: spacing.xs,
+  },
+  searchIcon: {
+    marginRight: spacing.xs,
+  },
+  searchInput: {
+    flex: 1,
+    color: '#F8FAFC',
+    fontSize: typography.sizes.sm,
+    paddingVertical: 0,
+  },
+  searchClearBtn: {
+    padding: spacing.xs,
+  },
+  searchFeedbackRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingVertical: 2,
+    paddingHorizontal: spacing.xs,
+    marginBottom: spacing.xs,
+  },
+  searchFeedbackText: {
+    fontSize: typography.sizes.xs,
+    color: colors.primary,
+    fontWeight: typography.weights.semibold,
+  },
+  searchFeedbackClearText: {
+    fontSize: typography.sizes.xs,
+    color: colors.textSecondary,
+    fontWeight: typography.weights.medium,
+    textDecorationLine: 'underline',
+  },
+  emptyResetBtn: {
+    marginTop: spacing.md,
+    backgroundColor: colors.primary,
+    paddingHorizontal: spacing.md,
+    paddingVertical: spacing.sm,
+    borderRadius: radius.md,
+  },
+  emptyResetBtnText: {
+    color: '#FFFFFF',
+    fontWeight: typography.weights.semibold,
+    fontSize: typography.sizes.sm,
   },
 })
