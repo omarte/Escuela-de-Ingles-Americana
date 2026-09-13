@@ -63,10 +63,14 @@ const ONBOARDING_SLIDES = [
 export function OnboardingModal({ visible, onClose }: OnboardingModalProps): React.JSX.Element {
   const [currentIndex, setCurrentIndex] = useState(0)
 
-  const currentSlide = ONBOARDING_SLIDES[currentIndex] ?? ONBOARDING_SLIDES[0]!
+  const currentSlide = ONBOARDING_SLIDES[currentIndex] ?? ONBOARDING_SLIDES[0]
   const isLast = currentIndex === ONBOARDING_SLIDES.length - 1
 
-  const handleNext = () => {
+  if (!currentSlide) {
+    return <View />
+  }
+
+  const handleNext = (): void => {
     if (isLast) {
       onClose()
       setCurrentIndex(0)
@@ -75,13 +79,13 @@ export function OnboardingModal({ visible, onClose }: OnboardingModalProps): Rea
     }
   }
 
-  const handlePrev = () => {
+  const handlePrev = (): void => {
     if (currentIndex > 0) {
       setCurrentIndex((prev) => prev - 1)
     }
   }
 
-  const handleSkip = () => {
+  const handleSkip = (): void => {
     onClose()
     setCurrentIndex(0)
   }
@@ -129,7 +133,7 @@ export function OnboardingModal({ visible, onClose }: OnboardingModalProps): Rea
             <Image
               source={currentSlide.image}
               style={styles.slideImage}
-              resizeMode="contain"
+              resizeMode="cover"
             />
           </View>
 
@@ -168,7 +172,7 @@ export function OnboardingModal({ visible, onClose }: OnboardingModalProps): Rea
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    backgroundColor: '#0F172A', // Rich Dark Slate
+    backgroundColor: '#0B0F17', // Consistent with app dark theme
     justifyContent: 'space-between',
   },
   topNav: {
@@ -220,13 +224,13 @@ const styles = StyleSheet.create({
     paddingHorizontal: spacing.md,
   },
   imageCard: {
-    width: SCREEN_WIDTH - 24,
-    height: Math.min(SCREEN_HEIGHT * 0.52, 430),
+    width: SCREEN_WIDTH - 32,
+    height: Math.min(SCREEN_HEIGHT * 0.48, 390),
     borderRadius: radius.xl,
     overflow: 'hidden',
-    backgroundColor: '#1E293B', // Slate 800 background so art pops
+    backgroundColor: '#A8D5BA', // Matching the illustration mint tone
     borderWidth: 1.5,
-    borderColor: 'rgba(255, 255, 255, 0.12)',
+    borderColor: 'rgba(255, 255, 255, 0.15)',
     marginBottom: spacing.md,
     justifyContent: 'center',
     alignItems: 'center',
