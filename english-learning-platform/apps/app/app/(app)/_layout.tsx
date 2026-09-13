@@ -51,7 +51,7 @@ export default function AppTabsLayout(): React.JSX.Element {
       <Tabs.Screen
         name="vocabulary"
         options={{
-          title: 'Vocabulario',
+          title: 'Banco',
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="library-outline" size={size} color={color} />
           ),

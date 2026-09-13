@@ -21,6 +21,13 @@ import { GamesModal, type GameType } from '../../components/GamesModal'
 
 const LEVELS: CEFRLevel[] = ['A1', 'A2', 'B1', 'B2']
 
+const LEVEL_COLORS: Record<CEFRLevel, { primary: string; light: string; border: string }> = {
+  A1: { primary: '#059669', light: '#ECFDF5', border: '#A7F3D0' },
+  A2: { primary: '#0284C7', light: '#F0F9FF', border: '#BAE6FD' },
+  B1: { primary: '#7C3AED', light: '#F5F3FF', border: '#DDD6FE' },
+  B2: { primary: '#D97706', light: '#FFFBEB', border: '#FDE68A' },
+}
+
 type CategoryFilter = 'all' | 'noun' | 'verb' | 'adjective' | 'adverb' | 'other'
 
 const CATEGORIES: { id: CategoryFilter; label: string; icon: string }[] = [
@@ -31,6 +38,15 @@ const CATEGORIES: { id: CategoryFilter; label: string; icon: string }[] = [
   { id: 'adverb', label: 'Adverbios', icon: 'flash-outline' },
   { id: 'other', label: 'Otros', icon: 'extension-puzzle-outline' },
 ]
+
+const CATEGORY_COLORS: Record<CategoryFilter, { color: string; light: string; border: string }> = {
+  all: { color: '#475569', light: '#F1F5F9', border: '#CBD5E1' },
+  noun: { color: '#0891B2', light: '#ECFEFF', border: '#A5F3FC' },
+  verb: { color: '#4F46E5', light: '#EEF2FF', border: '#C7D2FE' },
+  adjective: { color: '#E11D48', light: '#FFF1F2', border: '#FECDD3' },
+  adverb: { color: '#D97706', light: '#FFFBEB', border: '#FDE68A' },
+  other: { color: '#9333EA', light: '#FAF5FF', border: '#E9D5FF' },
+}
 
 export default function VocabularyScreen(): React.JSX.Element {
   const [selectedLevel, setSelectedLevel] = useState<CEFRLevel>('A1')
@@ -196,6 +212,7 @@ export default function VocabularyScreen(): React.JSX.Element {
         <View style={styles.levelTabs}>
           {LEVELS.map((lvl) => {
             const isSelected = selectedLevel === lvl
+            const lvlColor = LEVEL_COLORS[lvl]
             return (
               <Pressable
                 key={lvl}
@@ -206,13 +223,25 @@ export default function VocabularyScreen(): React.JSX.Element {
                 }}
                 style={({ pressed }) => [
                   styles.levelTab,
-                  isSelected && styles.levelTabActive,
+                  isSelected && {
+                    backgroundColor: lvlColor.light,
+                    borderColor: lvlColor.primary,
+                    borderWidth: 1.5,
+                  },
                   {
                     transform: [{ scale: pressed ? 0.96 : 1 }],
                   },
                 ]}
               >
-                <Text style={[styles.levelTabText, isSelected && styles.levelTabTextActive]}>
+                <Text
+                  style={[
+                    styles.levelTabText,
+                    isSelected && {
+                      color: lvlColor.primary,
+                      fontWeight: '700',
+                    },
+                  ]}
+                >
                   {lvl}
                 </Text>
               </Pressable>
@@ -228,11 +257,18 @@ export default function VocabularyScreen(): React.JSX.Element {
         >
           {CATEGORIES.map((cat) => {
             const isSelected = selectedCategory === cat.id
+            const catColor = CATEGORY_COLORS[cat.id]
             return (
               <TouchableOpacity
                 key={cat.id}
                 accessibilityRole="button"
-                style={[styles.categoryChip, isSelected && styles.categoryChipActive]}
+                style={[
+                  styles.categoryChip,
+                  {
+                    backgroundColor: isSelected ? catColor.color : catColor.light,
+                    borderColor: isSelected ? catColor.color : catColor.border,
+                  },
+                ]}
                 onPress={() => {
                   setSelectedCategory(cat.id)
                 }}
@@ -241,9 +277,17 @@ export default function VocabularyScreen(): React.JSX.Element {
                 <Ionicons
                   name={cat.icon as any}
                   size={14}
-                  color={isSelected ? '#FFFFFF' : colors.textSecondary}
+                  color={isSelected ? '#FFFFFF' : catColor.color}
                 />
-                <Text style={[styles.categoryChipText, isSelected && styles.categoryChipTextActive]}>
+                <Text
+                  style={[
+                    styles.categoryChipText,
+                    {
+                      color: isSelected ? '#FFFFFF' : catColor.color,
+                      fontWeight: isSelected ? '700' : '600',
+                    },
+                  ]}
+                >
                   {cat.label}
                 </Text>
               </TouchableOpacity>

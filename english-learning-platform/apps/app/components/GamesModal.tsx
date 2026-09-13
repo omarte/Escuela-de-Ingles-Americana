@@ -586,17 +586,17 @@ function MemoryMatchGame({
         {cards.map((card, idx) => {
           const isFlipped = flippedIndices.includes(idx) || card.isMatched
           return (
-            <TouchableOpacity
+            <Pressable
               key={card.id}
-              style={[
+              style={({ pressed }) => [
                 styles.memoryCard,
                 isFlipped && styles.memoryCardFlipped,
                 card.isMatched && styles.memoryCardMatched,
+                { transform: [{ scale: pressed ? 0.94 : 1 }] },
               ]}
               onPress={() => {
                 handleCardPress(idx)
               }}
-              activeOpacity={0.8}
             >
               {isFlipped ? (
                 <View style={styles.memoryCardContent}>
@@ -614,9 +614,11 @@ function MemoryMatchGame({
                   </Text>
                 </View>
               ) : (
-                <Ionicons name="help" size={24} color={colors.primary} />
+                <View style={styles.memoryCardBack}>
+                  <Ionicons name="sparkles" size={20} color="#7C3AED" />
+                </View>
               )}
-            </TouchableOpacity>
+            </Pressable>
           )
         })}
       </View>
@@ -759,13 +761,16 @@ export function GamesModal({
             <Text style={styles.chooseGameLabel}>Selecciona un juego:</Text>
 
             {/* Game Card 1: TYPING RUSH */}
-            <TouchableOpacity
-              style={styles.gameMenuCard}
+            <Pressable
+              style={({ pressed }) => [
+                styles.gameMenuCard,
+                styles.gameMenuCardTyping,
+                { transform: [{ scale: pressed ? 0.97 : 1 }] },
+              ]}
               onPress={() => {
                 setActiveGame('typing_rush')
                 setGameResult(null)
               }}
-              activeOpacity={0.8}
             >
               <View style={[styles.gameIconWrap, { backgroundColor: '#EFF6FF' }]}>
                 <Text style={styles.gameEmoji}>⌨️</Text>
@@ -773,62 +778,68 @@ export function GamesModal({
               <View style={styles.gameMenuInfo}>
                 <View style={styles.gameMenuTitleRow}>
                   <Text style={styles.gameMenuTitle}>TYPING RUSH</Text>
-                  <Badge label="5 palabras • 60s" color={colors.primary} size="sm" />
+                  <Badge label="5 palabras • 60s" color="#059669" size="sm" />
                 </View>
                 <Text style={styles.gameMenuDesc}>
                   Escribe en inglés antes de que acabe el tiempo. ¡Encadena combos para ganar más XP!
                 </Text>
               </View>
-              <Ionicons name="chevron-forward" size={20} color={colors.textMuted} />
-            </TouchableOpacity>
+              <Ionicons name="chevron-forward" size={20} color="#059669" />
+            </Pressable>
 
             {/* Game Card 2: LIGHTNING QUIZ */}
-            <TouchableOpacity
-              style={styles.gameMenuCard}
+            <Pressable
+              style={({ pressed }) => [
+                styles.gameMenuCard,
+                styles.gameMenuCardLightning,
+                { transform: [{ scale: pressed ? 0.97 : 1 }] },
+              ]}
               onPress={() => {
                 setActiveGame('lightning_quiz')
                 setGameResult(null)
               }}
-              activeOpacity={0.8}
             >
-              <View style={[styles.gameIconWrap, { backgroundColor: '#FEF3C7' }]}>
+              <View style={[styles.gameIconWrap, { backgroundColor: '#FFFBEB' }]}>
                 <Text style={styles.gameEmoji}>⚡</Text>
               </View>
               <View style={styles.gameMenuInfo}>
                 <View style={styles.gameMenuTitleRow}>
                   <Text style={styles.gameMenuTitle}>LIGHTNING QUIZ</Text>
-                  <Badge label="30 segundos" color={colors.warning} size="sm" />
+                  <Badge label="30 segundos" color="#D97706" size="sm" />
                 </View>
                 <Text style={styles.gameMenuDesc}>
                   Ronda relámpago de selección rápida. ¿Cuántas palabras puedes acertar seguidas?
                 </Text>
               </View>
-              <Ionicons name="chevron-forward" size={20} color={colors.textMuted} />
-            </TouchableOpacity>
+              <Ionicons name="chevron-forward" size={20} color="#D97706" />
+            </Pressable>
 
             {/* Game Card 3: MEMORY MATCH */}
-            <TouchableOpacity
-              style={styles.gameMenuCard}
+            <Pressable
+              style={({ pressed }) => [
+                styles.gameMenuCard,
+                styles.gameMenuCardMemory,
+                { transform: [{ scale: pressed ? 0.97 : 1 }] },
+              ]}
               onPress={() => {
                 setActiveGame('memory_match')
                 setGameResult(null)
               }}
-              activeOpacity={0.8}
             >
-              <View style={[styles.gameIconWrap, { backgroundColor: '#ECFDF5' }]}>
+              <View style={[styles.gameIconWrap, { backgroundColor: '#F5F3FF' }]}>
                 <Text style={styles.gameEmoji}>🃏</Text>
               </View>
               <View style={styles.gameMenuInfo}>
                 <View style={styles.gameMenuTitleRow}>
                   <Text style={styles.gameMenuTitle}>MEMORY MATCH</Text>
-                  <Badge label="Parejas" color={colors.success} size="sm" />
+                  <Badge label="Parejas ↔ Memoria" color="#7C3AED" size="sm" />
                 </View>
                 <Text style={styles.gameMenuDesc}>
                   Voltea las cartas y encuentra las parejas inglés ↔ español a tu propio ritmo.
                 </Text>
               </View>
-              <Ionicons name="chevron-forward" size={20} color={colors.textMuted} />
-            </TouchableOpacity>
+              <Ionicons name="chevron-forward" size={20} color="#7C3AED" />
+            </Pressable>
           </ScrollView>
         )}
       </SafeAreaView>
@@ -1146,6 +1157,14 @@ const styles = StyleSheet.create({
     backgroundColor: '#ECFDF5',
     borderColor: colors.success,
   },
+  memoryCardBack: {
+    width: '100%',
+    height: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#F5F3FF',
+    borderRadius: radius.sm,
+  },
   memoryCardContent: {
     alignItems: 'center',
     justifyContent: 'center',
@@ -1201,6 +1220,18 @@ const styles = StyleSheet.create({
     borderColor: colors.border,
     marginBottom: spacing.md,
     gap: spacing.sm,
+  },
+  gameMenuCardTyping: {
+    borderLeftWidth: 4,
+    borderLeftColor: '#059669',
+  },
+  gameMenuCardLightning: {
+    borderLeftWidth: 4,
+    borderLeftColor: '#D97706',
+  },
+  gameMenuCardMemory: {
+    borderLeftWidth: 4,
+    borderLeftColor: '#7C3AED',
   },
   gameIconWrap: {
     width: 48,

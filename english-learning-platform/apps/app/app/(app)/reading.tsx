@@ -21,6 +21,13 @@ import { EMPTY_READINGS_IMG } from '../../lib/assets'
 
 const LEVELS: CEFRLevel[] = ['A1', 'A2', 'B1', 'B2']
 
+const LEVEL_COLORS: Record<CEFRLevel, { primary: string; light: string; border: string }> = {
+  A1: { primary: '#059669', light: '#ECFDF5', border: '#A7F3D0' },
+  A2: { primary: '#0284C7', light: '#F0F9FF', border: '#BAE6FD' },
+  B1: { primary: '#7C3AED', light: '#F5F3FF', border: '#DDD6FE' },
+  B2: { primary: '#D97706', light: '#FFFBEB', border: '#FDE68A' },
+}
+
 export default function ReadingScreen(): React.JSX.Element {
   const [selectedLevel, setSelectedLevel] = useState<CEFRLevel>('A1')
   const passages = useMemo(() => getReadingPassagesByLevel(selectedLevel), [selectedLevel])
@@ -212,15 +219,31 @@ export default function ReadingScreen(): React.JSX.Element {
         <View style={styles.levelTabs}>
           {LEVELS.map((lvl) => {
             const isSelected = selectedLevel === lvl
+            const lvlColor = LEVEL_COLORS[lvl]
             return (
               <TouchableOpacity
                 key={lvl}
                 onPress={() => {
                   handleSelectLevel(lvl)
                 }}
-                style={[styles.levelTab, isSelected && styles.levelTabActive]}
+                style={[
+                  styles.levelTab,
+                  isSelected && {
+                    backgroundColor: lvlColor.light,
+                    borderColor: lvlColor.primary,
+                    borderWidth: 1.5,
+                  },
+                ]}
               >
-                <Text style={[styles.levelTabText, isSelected && styles.levelTabTextActive]}>
+                <Text
+                  style={[
+                    styles.levelTabText,
+                    isSelected && {
+                      color: lvlColor.primary,
+                      fontWeight: '700',
+                    },
+                  ]}
+                >
                   {lvl}
                 </Text>
               </TouchableOpacity>

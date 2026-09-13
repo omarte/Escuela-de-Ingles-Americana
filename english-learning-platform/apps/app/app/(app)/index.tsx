@@ -59,8 +59,11 @@ export default function HomeScreen(): React.JSX.Element {
   let heroSubtitle = ''
   if (dueCount > 0) {
     heroSubtitle = `Tienes ${String(dueCount)} tarjeta${dueCount > 1 ? 's' : ''} pendiente${dueCount > 1 ? 's' : ''} de repaso hoy`
-  } else if (hasStudiedToday) {
+  } else if (completedToday >= dailyGoal) {
     heroSubtitle = '¡Excelente! Has cumplido tu meta diaria de hoy 🎉'
+  } else if (completedToday > 0) {
+    const remaining = dailyGoal - completedToday
+    heroSubtitle = `Llevas ${String(completedToday)} de ${String(dailyGoal)} palabras hoy. ¡Te faltan ${String(remaining)} para tu meta diaria!`
   } else {
     heroSubtitle = 'No tienes repasos pendientes hoy. ¡Aprende o repite lecciones para encender tu racha!'
   }
@@ -83,17 +86,19 @@ export default function HomeScreen(): React.JSX.Element {
         <View style={styles.topBar}>
           <View style={styles.brandingRow}>
             <Image source={SCHOOL_LOGO} style={styles.headerLogo} resizeMode="contain" />
-            <View>
-              <Text style={styles.greeting}>Hola, {displayName} 👋</Text>
+            <View style={styles.greetingContainer}>
+              <Text style={styles.greeting} numberOfLines={1} ellipsizeMode="tail">
+                Hola, {displayName} 👋
+              </Text>
               <Text style={styles.subgreeting}>Escuela de Inglés Americana</Text>
             </View>
           </View>
           <View style={styles.topBarRight}>
             <View style={styles.xpBadge}>
-              <Ionicons name="flash" size={14} color="#F59E0B" />
+              <Ionicons name="flash" size={13} color="#F59E0B" />
               <Text style={styles.xpBadgeText}>{String(totalXP)} XP</Text>
             </View>
-            <Badge label={`Nivel ${currentLevel}`} color={colors.primary} size="md" />
+            <Badge label={`Nivel ${currentLevel}`} color={colors.primary} size="sm" />
           </View>
         </View>
 
@@ -266,39 +271,45 @@ const styles = StyleSheet.create({
   },
   scrollContent: {
     padding: spacing.md,
-    paddingBottom: spacing.xxl,
+    paddingBottom: 120,
   },
   topBar: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: spacing.lg,
+    marginBottom: spacing.md,
   },
   topBarRight: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: spacing.xs,
+    gap: 4,
+    flexShrink: 0,
   },
   xpBadge: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: 3,
     backgroundColor: '#FEF3C7',
-    paddingHorizontal: spacing.sm,
-    paddingVertical: 4,
+    paddingHorizontal: spacing.xs + 2,
+    paddingVertical: 3,
     borderRadius: radius.full,
     borderWidth: 1,
     borderColor: '#FDE68A',
   },
   xpBadgeText: {
     color: '#B45309',
-    fontSize: typography.sizes.xs,
+    fontSize: typography.sizes.xs - 1,
     fontWeight: typography.weights.bold,
   },
   brandingRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: spacing.sm,
+    gap: spacing.xs + 2,
+    flex: 1,
+    marginRight: spacing.xs,
+  },
+  greetingContainer: {
+    flex: 1,
   },
   headerLogo: {
     width: 44,
@@ -306,14 +317,14 @@ const styles = StyleSheet.create({
     borderRadius: radius.full,
   },
   greeting: {
-    fontSize: typography.sizes.xl,
+    fontSize: typography.sizes.md + 1,
     fontWeight: typography.weights.bold,
     color: colors.textPrimary,
   },
   subgreeting: {
-    fontSize: typography.sizes.xs,
+    fontSize: typography.sizes.xs - 1,
     color: colors.textSecondary,
-    marginTop: 2,
+    marginTop: 1,
   },
   onboardingBanner: {
     flexDirection: 'row',
