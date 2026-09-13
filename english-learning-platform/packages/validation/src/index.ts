@@ -224,6 +224,89 @@ export const WritingPromptSchema = z
 
 export const WritingPromptBankSchema = z.array(WritingPromptSchema)
 
+// ─── Duplicate Detection ─────────────────────────────────────────────────────
+
+export interface DuplicateItemInfo {
+  id: string
+  level: string
+  week: number
+  word: string
+}
+
+export interface DuplicateGroup {
+  normalizedWord: string
+  items: DuplicateItemInfo[]
+}
+
+export interface DuplicateReport {
+  sameLevelDuplicates: DuplicateGroup[]
+  crossLevelDuplicates: DuplicateGroup[]
+}
+
+export function normalizeWord(word: string): string {
+  const trimmed = word.toLowerCase().trim()
+  if (trimmed.includes('–')) {
+    const base = (trimmed.split('–')[0] ?? '').trim()
+    return `irregular_triplet:${base}`
+  }
+  return trimmed
+}
+
+export function findDuplicates(
+  blocksByLevel: Record<
+    string,
+    ReadonlyArray<{ week: number; vocabulary: ReadonlyArray<{ id: string; word: string }> }>
+  >,
+  levels: readonly string[] = ['A1', 'A2', 'B1', 'B2'],
+): DuplicateReport {
+  const sameLevelDuplicates: DuplicateGroup[] = []
+  const crossLevelDuplicates: DuplicateGroup[] = []
+  const globalIndex = new Map<string, DuplicateItemInfo[]>()
+
+  for (const level of levels) {
+    const levelIndex = new Map<string, Array<{ id: string; word: string; week: number }>>()
+    const blocks = blocksByLevel[level]
+    if (!blocks) continue
+
+    for (const block of blocks) {
+      for (const item of block.vocabulary) {
+        const normalized = normalizeWord(item.word)
+
+        const existing = levelIndex.get(normalized) ?? []
+        existing.push({ id: item.id, word: item.word, week: block.week })
+        levelIndex.set(normalized, existing)
+
+        const globalEntry = globalIndex.get(normalized) ?? []
+        globalEntry.push({ id: item.id, level, week: block.week, word: item.word })
+        globalIndex.set(normalized, globalEntry)
+      }
+    }
+
+    for (const [normalizedWord, items] of levelIndex) {
+      if (items.length > 1) {
+        sameLevelDuplicates.push({
+          normalizedWord,
+          items: items.map((i) => ({
+            id: i.id,
+            level,
+            week: i.week,
+            word: i.word,
+          })),
+        })
+      }
+    }
+  }
+
+  for (const [normalizedWord, items] of globalIndex) {
+    const lvls = new Set(items.map((i) => i.level))
+    if (lvls.size > 1) {
+      crossLevelDuplicates.push({ normalizedWord, items })
+    }
+  }
+
+  return { sameLevelDuplicates, crossLevelDuplicates }
+}
+
 // ─── Re-exports ───────────────────────────────────────────────────────────────
 
 export type {

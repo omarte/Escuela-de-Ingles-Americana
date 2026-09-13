@@ -6,12 +6,39 @@
     "week": 2,
     "difficulty": "1/5",
     "wordCount": 142,
-    "grammarFocus": ["First Conditional", "Second Conditional"],
+    "grammarFocus": [
+      "First Conditional",
+      "Second Conditional"
+    ],
     "text": "Last month, Marco had to make a decision that would change his life. He had been offered a new job in another city, but if he accepted it, he would have to leave his elderly parents behind. If he stayed, he knew he would probably regret missing such a great opportunity. He spoke to his sister, who suggested that he make a list of reasons for each choice. 'If you don't try,' she said, 'you'll always wonder what could have happened.' After thinking it over for a week, Marco realized that if his parents needed him, he could always visit them often, and video calls would help too. In the end, he decided to accept the job. It wasn't an easy choice, but he felt confident that, whatever happened, he would learn something valuable from it.",
     "comprehensionQuestions": [
-      {"question": "Why was Marco's decision difficult?", "options": ["He didn't like his new job", "He would have to leave his parents", "He couldn't afford to move"], "correctIndex": 1},
-      {"question": "What did his sister suggest?", "options": ["To ignore the offer", "To make a list of reasons", "To ask his parents to move with him"], "correctIndex": 1},
-      {"question": "What did Marco finally decide?", "options": ["To stay in his city", "To accept the new job", "To wait another year"], "correctIndex": 1}
+      {
+        "question": "Why was Marco's decision difficult?",
+        "options": [
+          "He didn't like his new job",
+          "He would have to leave his parents",
+          "He couldn't afford to move"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "question": "What did his sister suggest?",
+        "options": [
+          "To ignore the offer",
+          "To make a list of reasons",
+          "To ask his parents to move with him"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "question": "What did Marco finally decide?",
+        "options": [
+          "To stay in his city",
+          "To accept the new job",
+          "To wait another year"
+        ],
+        "correctIndex": 1
+      }
     ],
     "status": "curated"
   },
@@ -22,12 +49,297 @@
     "week": 7,
     "difficulty": "3/5",
     "wordCount": 168,
-    "grammarFocus": ["Passive Voice", "Present Perfect"],
+    "grammarFocus": [
+      "Passive Voice",
+      "Present Perfect"
+    ],
     "text": "Over the past few years, the way people work has changed significantly. Many companies have been forced to reconsider how their offices are used, and remote work, which used to be seen as unusual, is now considered normal by a large part of the workforce. According to a recent survey, more than half of employees say they would prefer to work from home at least part of the time. Some businesses have already adapted their policies, offering flexible schedules and hybrid arrangements. However, not everyone benefits equally. Workers whose jobs require physical presence, such as those in manufacturing or healthcare, have not been given the same flexibility. Critics argue that this creates a new kind of inequality between those who can work from anywhere and those who cannot. As this trend continues, it is likely that new regulations will need to be introduced to protect workers on both sides of this divide.",
     "comprehensionQuestions": [
-      {"question": "What does the survey mention?", "options": ["Most employees dislike remote work", "Over half prefer working from home sometimes", "Nobody wants hybrid schedules"], "correctIndex": 1},
-      {"question": "Who has NOT received the same flexibility?", "options": ["Office workers", "Workers whose jobs require physical presence", "Managers"], "correctIndex": 1},
-      {"question": "What do critics say this trend creates?", "options": ["More jobs overall", "A new kind of inequality", "Lower salaries for everyone"], "correctIndex": 1}
+      {
+        "question": "What does the survey mention?",
+        "options": [
+          "Most employees dislike remote work",
+          "Over half prefer working from home sometimes",
+          "Nobody wants hybrid schedules"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "question": "Who has NOT received the same flexibility?",
+        "options": [
+          "Office workers",
+          "Workers whose jobs require physical presence",
+          "Managers"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "question": "What do critics say this trend creates?",
+        "options": [
+          "More jobs overall",
+          "A new kind of inequality",
+          "Lower salaries for everyone"
+        ],
+        "correctIndex": 1
+      }
+    ],
+    "status": "curated"
+  },
+  {
+    "id": "read_b1_003",
+    "level": "B1",
+    "title": "Breaking the Ice",
+    "week": 1,
+    "difficulty": "2/5",
+    "wordCount": 151,
+    "grammarFocus": [
+      "Phrasal verbs",
+      "Present Perfect"
+    ],
+    "text": "When Elena moved to a new city for work, she found it hard to get along with her new colleagues at first. Everyone seemed busy, and she didn't know how to break the ice. One day, she decided to bring up a topic that interested everyone: the terrible coffee in the office kitchen. It turned out to be the perfect way to start a conversation. Soon, people were laughing and sharing stories about their worst coffee experiences. Elena realized that she had been putting off making friends because she was afraid of looking silly. Now, she looks forward to lunch breaks, and she has even figured out how to deal with the office printer, which everyone else avoids. Sometimes the smallest things help you fit in.",
+    "comprehensionQuestions": [
+      {
+        "question": "Why did Elena find it hard to connect with colleagues?",
+        "options": [
+          "She didn't speak English well",
+          "Everyone seemed busy",
+          "She worked from home"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "question": "What topic did she bring up?",
+        "options": [
+          "The weather",
+          "The office coffee",
+          "Her old job"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "question": "What had Elena been avoiding?",
+        "options": [
+          "Making friends",
+          "Drinking coffee",
+          "Using the printer"
+        ],
+        "correctIndex": 0
+      }
+    ],
+    "status": "curated"
+  },
+  {
+    "id": "read_b1_004",
+    "level": "B1",
+    "title": "A Costly Mistake",
+    "week": 3,
+    "difficulty": "2/5",
+    "wordCount": 145,
+    "grammarFocus": [
+      "Abstract nouns",
+      "Past Simple vs. Present Perfect"
+    ],
+    "text": "Every company faces moments when a small assumption leads to a big consequence. Last year, a marketing team launched a campaign without fully checking their data, and the outcome was disappointing. They had assumed that their main audience was young adults, but the analysis later revealed that most of their customers were actually over forty. This factor changed the whole strategy. The team's attitude, however, is what impressed management the most: instead of blaming each other, they took full responsibility and used the experience as a learning opportunity. They created a new framework for checking assumptions before every future campaign. Their initiative has since become standard procedure across the entire company, showing that a single mistake, handled well, can improve an organization's structure for years to come.",
+    "comprehensionQuestions": [
+      {
+        "question": "What did the team assume incorrectly?",
+        "options": [
+          "Their budget was too small",
+          "Their main audience was young adults",
+          "The campaign would fail completely"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "question": "What impressed management?",
+        "options": [
+          "The team's attitude and responsibility",
+          "The size of the campaign",
+          "How fast the mistake was fixed"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "question": "What became standard procedure?",
+        "options": [
+          "Firing team members after mistakes",
+          "A new framework for checking assumptions",
+          "Cancelling all future campaigns"
+        ],
+        "correctIndex": 1
+      }
+    ],
+    "status": "curated"
+  },
+  {
+    "id": "read_b1_005",
+    "level": "B1",
+    "title": "Should Cities Ban Cars?",
+    "week": 5,
+    "difficulty": "3/5",
+    "wordCount": 163,
+    "grammarFocus": [
+      "Argumentation verbs",
+      "First Conditional"
+    ],
+    "text": "Some city planners argue that if downtown areas ban private cars, air quality will improve dramatically and streets will become safer for pedestrians. They point out that several European cities have already tested this idea with promising results. However, critics claim that such a policy would hurt local businesses, since many customers rely on their cars to reach shops that are far from public transport. Others suggest a middle ground: instead of a complete ban, cities could limit car access during specific hours or charge a fee for entering busy areas. It is difficult to prove which solution works best without testing it directly, but most experts agree that doing nothing is not an option. As traffic and pollution continue to increase, more cities will likely have to address this issue in the next decade, whether residents like it or not.",
+    "comprehensionQuestions": [
+      {
+        "question": "What do critics of the ban claim?",
+        "options": [
+          "It would improve air quality",
+          "It would hurt local businesses",
+          "It would make streets more dangerous"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "question": "What middle-ground solution is suggested?",
+        "options": [
+          "Banning all public transport",
+          "Limiting car access during certain hours",
+          "Building more parking lots"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "question": "What do most experts agree on?",
+        "options": [
+          "Doing nothing is fine",
+          "Cities must address the issue",
+          "Cars should never be banned"
+        ],
+        "correctIndex": 1
+      }
+    ],
+    "status": "curated"
+  },
+  {
+    "id": "read_b1_006",
+    "level": "B1",
+    "title": "Can We Trust the News?",
+    "week": 6,
+    "difficulty": "3/5",
+    "wordCount": 158,
+    "grammarFocus": [
+      "Passive Voice",
+      "Media vocabulary"
+    ],
+    "text": "In an age when information travels faster than ever, knowing which sources are credible has become an essential skill. A recent survey found that many young readers get their news mainly from social media rather than traditional outlets. While this makes information more accessible, it also increases the risk of misinformation, since content on social platforms is rarely fact-checked before it is shared. Journalists warn that bias can appear even in respected publications, often through the choice of which stories are covered and how headlines are written. To read critically, experts recommend checking whether a claim is supported by multiple independent sources, and being cautious of articles that seem designed mainly to provoke strong emotional reactions. Media literacy, they argue, should be taught in schools just like reading and writing.",
+    "comprehensionQuestions": [
+      {
+        "question": "Where do many young readers get their news?",
+        "options": [
+          "Newspapers",
+          "Social media",
+          "Radio"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "question": "What do experts recommend to read critically?",
+        "options": [
+          "Trusting only one source",
+          "Checking multiple independent sources",
+          "Avoiding the news entirely"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "question": "What should be taught in schools, according to experts?",
+        "options": [
+          "Media literacy",
+          "Journalism history",
+          "Social media marketing"
+        ],
+        "correctIndex": 0
+      }
+    ],
+    "status": "curated"
+  },
+  {
+    "id": "read_b1_007",
+    "level": "B1",
+    "title": "When Friends Disagree",
+    "week": 8,
+    "difficulty": "2/5",
+    "wordCount": 149,
+    "grammarFocus": [
+      "Social communication vocabulary",
+      "Reported Speech"
+    ],
+    "text": "Diego and Marta had been close friends for years, but a recent disagreement about money almost ended their friendship. Diego had lent Marta some money, and when she didn't pay him back on time, he complained to a mutual friend instead of talking to her directly. Marta found out and felt hurt that Diego hadn't confronted her himself. When they finally talked, Diego admitted that he should have addressed the issue right away instead of letting resentment build up. Marta apologized for forgetting the deadline and explained that she had been dealing with a difficult month financially. In the end, they agreed to be more open with each other in the future, and Diego said he had learned that avoiding a conversation usually makes a small problem much bigger than it needs to be.",
+    "comprehensionQuestions": [
+      {
+        "question": "What did Diego do instead of talking to Marta directly?",
+        "options": [
+          "He forgave her immediately",
+          "He complained to a mutual friend",
+          "He asked for the money back publicly"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "question": "What did Diego admit?",
+        "options": [
+          "He should have addressed the issue right away",
+          "He never lent Marta any money",
+          "He didn't care about the friendship"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "question": "What did Diego learn?",
+        "options": [
+          "Money ruins friendships",
+          "Avoiding conversation makes problems bigger",
+          "He should never lend money again"
+        ],
+        "correctIndex": 1
+      }
+    ],
+    "status": "curated"
+  },
+  {
+    "id": "read_b1_008",
+    "level": "B1",
+    "title": "The Most Underrated Skill",
+    "week": 9,
+    "difficulty": "3/5",
+    "wordCount": 155,
+    "grammarFocus": [
+      "Advanced adjectives",
+      "Comparatives and Superlatives"
+    ],
+    "text": "Of all the skills employers look for today, adaptability might be the most underrated one. Technical knowledge becomes obsolete faster than ever, but a worker who is versatile and willing to learn new tools will always be more valuable than one who resists change, no matter how experienced they are. Companies increasingly prefer candidates who show a consistent pattern of solving unfamiliar problems over those with an impressive but narrow set of qualifications. This doesn't mean expertise is unimportant; rather, it suggests that the most successful professionals combine deep knowledge in one area with a flexible, comprehensive approach to everything else. In a world where industries can transform in just a few years, the ability to adapt quickly may prove to be more significant than any single technical skill someone can list on a resume.",
+    "comprehensionQuestions": [
+      {
+        "question": "What skill does the text call underrated?",
+        "options": [
+          "Public speaking",
+          "Adaptability",
+          "Time management"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "question": "What do companies increasingly prefer?",
+        "options": [
+          "Candidates who resist change",
+          "Candidates who solve unfamiliar problems",
+          "Candidates with only narrow expertise"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "question": "What do the most successful professionals combine, according to the text?",
+        "options": [
+          "Luck and connections",
+          "Deep knowledge and flexibility",
+          "Speed and confidence"
+        ],
+        "correctIndex": 1
+      }
     ],
     "status": "curated"
   }

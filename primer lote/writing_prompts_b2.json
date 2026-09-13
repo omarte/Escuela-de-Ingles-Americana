@@ -6,7 +6,11 @@
     "topic": "Should social media companies be responsible for the mental health effects of their platforms?",
     "topicTranslation": "¿Deberían las redes sociales ser responsables de los efectos de sus plataformas en la salud mental?",
     "instructions": "Write a structured opinion essay of 150-200 words. State your position clearly in the introduction, support it with at least two reasons, address one counterargument, and write a brief conclusion.",
-    "targetGrammar": ["Present Perfect", "Passive Voice", "Discourse markers (however, moreover, on the other hand)"],
+    "targetGrammar": [
+      "Present Perfect",
+      "Passive Voice",
+      "Discourse markers (however, moreover, on the other hand)"
+    ],
     "minWords": 150,
     "maxWords": 220,
     "rubricForTutor": [
@@ -25,7 +29,10 @@
     "topic": "Is it better to specialize in one skill or to have knowledge in many different areas?",
     "topicTranslation": "¿Es mejor especializarse en una habilidad o tener conocimientos en muchas áreas distintas?",
     "instructions": "Write 150-200 words comparing both approaches before giving your own opinion. Use at least one comparative structure and one conditional sentence.",
-    "targetGrammar": ["Comparatives and Superlatives", "Second Conditional"],
+    "targetGrammar": [
+      "Comparatives and Superlatives",
+      "Second Conditional"
+    ],
     "minWords": 150,
     "maxWords": 220,
     "rubricForTutor": [
@@ -42,7 +49,11 @@
     "topic": "Write a formal email to a company complaining about a defective product and requesting a full refund.",
     "topicTranslation": "Escribe un correo formal a una empresa quejándote de un producto defectuoso y solicitando un reembolso completo.",
     "instructions": "Use formal register throughout (no contractions, no informal phrases). Include a clear subject line, a polite but firm tone, and a specific request for resolution.",
-    "targetGrammar": ["Passive Voice", "Formal register vocabulary", "Modal verbs (would, could)"],
+    "targetGrammar": [
+      "Passive Voice",
+      "Formal register vocabulary",
+      "Modal verbs (would, could)"
+    ],
     "minWords": 100,
     "maxWords": 180,
     "rubricForTutor": [
@@ -59,7 +70,11 @@
     "topic": "Describe a moment when you had to make a difficult decision. What happened, and what did you learn?",
     "topicTranslation": "Describe un momento en el que tuviste que tomar una decisión difícil. ¿Qué pasó y qué aprendiste?",
     "instructions": "Write a narrative of 180-250 words using a clear timeline. Use a variety of past tenses (past simple, past continuous, past perfect) and at least two descriptive adjectives per paragraph.",
-    "targetGrammar": ["Past Simple", "Past Continuous", "Past Perfect"],
+    "targetGrammar": [
+      "Past Simple",
+      "Past Continuous",
+      "Past Perfect"
+    ],
     "minWords": 180,
     "maxWords": 250,
     "rubricForTutor": [
@@ -76,7 +91,11 @@
     "topic": "Should university education be free for everyone?",
     "topicTranslation": "¿Debería la educación universitaria ser gratuita para todos?",
     "instructions": "Write 200-250 words presenting both sides of the argument with equal depth before stating your own conclusion. Use formal connectors (furthermore, nevertheless, consequently).",
-    "targetGrammar": ["Formal discourse connectors", "Passive Voice", "Conditional sentences"],
+    "targetGrammar": [
+      "Formal discourse connectors",
+      "Passive Voice",
+      "Conditional sentences"
+    ],
     "minWords": 200,
     "maxWords": 260,
     "rubricForTutor": [
@@ -93,7 +112,11 @@
     "topic": "Describe a place that has had a significant impact on who you are today.",
     "topicTranslation": "Describe un lugar que ha tenido un impacto importante en quién eres hoy.",
     "instructions": "Write 150-200 words with rich sensory detail (what you saw, heard, felt) and explain the emotional or personal significance, not just physical description.",
-    "targetGrammar": ["Present Perfect", "Relative Clauses", "Descriptive adjectives"],
+    "targetGrammar": [
+      "Present Perfect",
+      "Relative Clauses",
+      "Descriptive adjectives"
+    ],
     "minWords": 150,
     "maxWords": 220,
     "rubricForTutor": [
@@ -110,13 +133,143 @@
     "topic": "Write a short report analyzing the advantages and disadvantages of remote work for a hypothetical company considering the switch.",
     "topicTranslation": "Escribe un informe breve analizando las ventajas y desventajas del trabajo remoto para una empresa hipotética que considera el cambio.",
     "instructions": "Use report structure with clear headings (Introduction, Advantages, Disadvantages, Recommendation). Maintain an objective, formal tone throughout.",
-    "targetGrammar": ["Passive Voice", "Formal register", "Nominalization (e.g. 'the reduction of costs' instead of 'costs are reduced')"],
+    "targetGrammar": [
+      "Passive Voice",
+      "Formal register",
+      "Nominalization (e.g. 'the reduction of costs' instead of 'costs are reduced')"
+    ],
     "minWords": 200,
     "maxWords": 280,
     "rubricForTutor": [
       "¿Sigue la estructura de informe pedida, con encabezados claros?",
       "¿El tono se mantiene objetivo, sin opiniones personales sin fundamentar?",
       "¿La recomendación final se basa en los puntos desarrollados antes?"
+    ],
+    "status": "curated"
+  },
+  {
+    "id": "wrt_b2_opinion_003",
+    "level": "B2",
+    "type": "opinion_essay",
+    "topic": "Do you think artificial intelligence will create more jobs than it eliminates?",
+    "topicTranslation": "¿Crees que la inteligencia artificial creará más empleos de los que elimina?",
+    "instructions": "Write 180-220 words. Present your position with two supporting arguments, acknowledge the opposing view briefly, and conclude with your overall judgment.",
+    "targetGrammar": [
+      "Passive Voice",
+      "Future forms (will, going to)",
+      "Discourse markers"
+    ],
+    "minWords": 180,
+    "maxWords": 220,
+    "rubricForTutor": [
+      "¿La postura queda clara desde el inicio?",
+      "¿Reconoce la postura opuesta sin abandonar su propio argumento?",
+      "¿Usa vocabulario relacionado con tecnología/economía de forma precisa?"
+    ],
+    "status": "curated"
+  },
+  {
+    "id": "wrt_b2_formal_email_002",
+    "level": "B2",
+    "type": "formal_email",
+    "topic": "Write a formal email requesting information about a professional certification course, including questions about cost, duration, and schedule.",
+    "topicTranslation": "Escribe un correo formal solicitando información sobre un curso de certificación profesional, incluyendo preguntas sobre costo, duración y horario.",
+    "instructions": "Use formal greetings and closings. Include at least three specific, well-formed questions using indirect question structure (e.g., 'I would like to know whether...').",
+    "targetGrammar": [
+      "Indirect questions",
+      "Modal verbs (would, could)",
+      "Formal register"
+    ],
+    "minWords": 90,
+    "maxWords": 150,
+    "rubricForTutor": [
+      "¿Las preguntas usan estructura de pregunta indirecta correctamente (no 'What is the cost?' suelto)?",
+      "¿El registro formal se mantiene en saludo y despedida?",
+      "¿Las tres preguntas pedidas están presentes y son específicas?"
+    ],
+    "status": "curated"
+  },
+  {
+    "id": "wrt_b2_narrative_002",
+    "level": "B2",
+    "type": "narrative",
+    "topic": "Write about a time you had to adapt quickly to an unexpected change.",
+    "topicTranslation": "Escribe sobre un momento en que tuviste que adaptarte rápidamente a un cambio inesperado.",
+    "instructions": "Write 180-230 words. Include direct or reported speech at least once, and use at least one third conditional sentence to reflect on what could have happened differently.",
+    "targetGrammar": [
+      "Reported Speech",
+      "Third Conditional",
+      "Past tenses"
+    ],
+    "minWords": 180,
+    "maxWords": 230,
+    "rubricForTutor": [
+      "¿Incluye discurso directo o reportado de forma natural, no forzada?",
+      "¿La oración de tercer condicional está gramaticalmente correcta?",
+      "¿La reflexión final aporta algo más allá de narrar los hechos?"
+    ],
+    "status": "curated"
+  },
+  {
+    "id": "wrt_b2_argumentative_002",
+    "level": "B2",
+    "type": "argumentative_essay",
+    "topic": "Is it ethical for companies to use personal data to target advertising?",
+    "topicTranslation": "¿Es ético que las empresas usen datos personales para dirigir publicidad?",
+    "instructions": "Write 200-250 words. Address at least one ethical principle explicitly (e.g., privacy, consent, transparency) and support your conclusion with a specific example.",
+    "targetGrammar": [
+      "Formal discourse connectors",
+      "Passive Voice",
+      "Abstract nouns"
+    ],
+    "minWords": 200,
+    "maxWords": 260,
+    "rubricForTutor": [
+      "¿Menciona explícitamente al menos un principio ético (privacidad, consentimiento, transparencia)?",
+      "¿El ejemplo específico respalda de forma clara la conclusión?",
+      "¿El vocabulario abstracto se usa con precisión, no de forma vaga?"
+    ],
+    "status": "curated"
+  },
+  {
+    "id": "wrt_b2_descriptive_002",
+    "level": "B2",
+    "type": "descriptive",
+    "topic": "Describe a person who has significantly influenced your professional or personal development.",
+    "topicTranslation": "Describe a una persona que ha influido significativamente en tu desarrollo profesional o personal.",
+    "instructions": "Write 150-200 words. Go beyond physical description — explain specific actions or words from this person that had an impact, using relative clauses to add detail.",
+    "targetGrammar": [
+      "Relative Clauses",
+      "Present Perfect",
+      "Descriptive adjectives"
+    ],
+    "minWords": 150,
+    "maxWords": 220,
+    "rubricForTutor": [
+      "¿Explica impacto concreto (acciones/palabras), no solo cualidades genéricas ('kind', 'nice')?",
+      "¿Usa cláusulas relativas para añadir detalle con fluidez?",
+      "¿El texto tiene una conclusión que cierra la reflexión, no solo se corta?"
+    ],
+    "status": "curated"
+  },
+  {
+    "id": "wrt_b2_report_002",
+    "level": "B2",
+    "type": "formal_report",
+    "topic": "Write a short report evaluating whether your (hypothetical) company should invest in employee wellness programs.",
+    "topicTranslation": "Escribe un informe breve evaluando si tu empresa (hipotética) debería invertir en programas de bienestar para empleados.",
+    "instructions": "Use headings (Introduction, Findings, Recommendation). Support the recommendation with at least two specific reasons, maintaining an objective tone throughout.",
+    "targetGrammar": [
+      "Nominalization",
+      "Passive Voice",
+      "Formal register"
+    ],
+    "minWords": 200,
+    "maxWords": 280,
+    "rubricForTutor": [
+      "¿Sigue la estructura de informe con encabezados claros?",
+      "¿La recomendación se apoya en al menos dos razones específicas, no genéricas?",
+      "¿El tono se mantiene objetivo, evitando primera persona informal ('I think', 'I feel')?"
     ],
     "status": "curated"
   }

@@ -9,7 +9,9 @@
     "promptTranslation": "He visitado Londres dos veces en mi vida.",
     "hint": "visit",
     "correctAnswer": "have visited",
-    "acceptedAlternatives": ["'ve visited"],
+    "acceptedAlternatives": [
+      "'ve visited"
+    ],
     "explanation": "Usamos Present Perfect para experiencias de vida sin un momento específico en el tiempo.",
     "verifiedBy": "claude-content-review",
     "verifiedAt": "2026-09-13",
@@ -25,7 +27,9 @@
     "promptTranslation": "Ella ya había terminado el informe antes de que su jefe lo pidiera ayer.",
     "hint": "already finish / ask",
     "correctAnswer": "had already finished / asked",
-    "acceptedAlternatives": ["'d already finished / asked"],
+    "acceptedAlternatives": [
+      "'d already finished / asked"
+    ],
     "explanation": "El primer hueco requiere Past Perfect (acción anterior a otra acción pasada); el segundo, Past Simple para la acción pasada de referencia.",
     "verifiedBy": "claude-content-review",
     "verifiedAt": "2026-09-13",
@@ -41,7 +45,9 @@
     "promptTranslation": "Para cuando ella me llamó, yo ya había salido de la oficina, así que no escuché la noticia hasta la mañana siguiente.",
     "hint": "call / already leave / not hear",
     "correctAnswer": "called / had already left / didn't hear",
-    "acceptedAlternatives": ["called / 'd already left / did not hear"],
+    "acceptedAlternatives": [
+      "called / 'd already left / did not hear"
+    ],
     "explanation": "Combina tres tiempos: Past Simple para la llamada, Past Perfect para la acción anterior, y Past Simple negativo para la consecuencia posterior.",
     "verifiedBy": "claude-content-review",
     "verifiedAt": "2026-09-13",
@@ -57,7 +63,9 @@
     "promptTranslation": "Si llueve mañana, nos quedaremos en casa.",
     "hint": "rain / stay",
     "correctAnswer": "rains / will stay",
-    "acceptedAlternatives": ["rains / 'll stay"],
+    "acceptedAlternatives": [
+      "rains / 'll stay"
+    ],
     "explanation": "Primer condicional: presente simple en la condición, 'will' + infinitivo en el resultado, para situaciones futuras reales o probables.",
     "verifiedBy": "claude-content-review",
     "verifiedAt": "2026-09-13",
@@ -73,7 +81,9 @@
     "promptTranslation": "A menos que envíes el formulario para el viernes, tu solicitud no será considerada.",
     "hint": "submit / not be",
     "correctAnswer": "submit / won't be",
-    "acceptedAlternatives": ["submit / will not be"],
+    "acceptedAlternatives": [
+      "submit / will not be"
+    ],
     "explanation": "'Unless' funciona como 'if not' — la condición sigue en presente simple aunque el significado sea negativo.",
     "verifiedBy": "claude-content-review",
     "verifiedAt": "2026-09-13",
@@ -89,7 +99,9 @@
     "promptTranslation": "Si la empresa no reduce costos pronto, y siempre que las ventas no mejoren el próximo trimestre, tendrán que despedir personal.",
     "hint": "not reduce / not improve / have to",
     "correctAnswer": "doesn't reduce / don't improve / will have to",
-    "acceptedAlternatives": ["does not reduce / do not improve / 'll have to"],
+    "acceptedAlternatives": [
+      "does not reduce / do not improve / 'll have to"
+    ],
     "explanation": "Dos condiciones encadenadas ('if... and provided that...') seguidas de un resultado con 'will have to', mostrando que el primer condicional puede combinar varias cláusulas condicionales.",
     "verifiedBy": "claude-content-review",
     "verifiedAt": "2026-09-13",
@@ -105,7 +117,9 @@
     "promptTranslation": "Si tuviera más tiempo libre, viajaría más.",
     "hint": "have / travel",
     "correctAnswer": "had / would travel",
-    "acceptedAlternatives": ["had / 'd travel"],
+    "acceptedAlternatives": [
+      "had / 'd travel"
+    ],
     "explanation": "Segundo condicional: pasado simple en la condición hipotética, 'would' + infinitivo en el resultado imaginario.",
     "verifiedBy": "claude-content-review",
     "verifiedAt": "2026-09-13",
@@ -121,7 +135,10 @@
     "promptTranslation": "Si ella estuviera en tu posición, no dudaría en aceptar la oferta.",
     "hint": "be / not hesitate",
     "correctAnswer": "were / wouldn't hesitate",
-    "acceptedAlternatives": ["was / wouldn't hesitate", "were / would not hesitate"],
+    "acceptedAlternatives": [
+      "was / wouldn't hesitate",
+      "were / would not hesitate"
+    ],
     "explanation": "En registro formal, 'were' se usa con todos los sujetos en segundo condicional (aunque 'was' también es aceptado en habla informal).",
     "verifiedBy": "claude-content-review",
     "verifiedAt": "2026-09-13",
@@ -137,7 +154,9 @@
     "promptTranslation": "Si los gobiernos invirtieran más en energía renovable, y si la gente estuviera más dispuesta a cambiar sus hábitos, el cambio climático no sería una amenaza tan urgente.",
     "hint": "invest / be / not be",
     "correctAnswer": "invested / were / wouldn't be",
-    "acceptedAlternatives": ["invested / were / would not be"],
+    "acceptedAlternatives": [
+      "invested / were / would not be"
+    ],
     "explanation": "Dos condiciones hipotéticas coordinadas con 'and if' seguidas de un único resultado — estructura típica de argumentación en B1-B2.",
     "verifiedBy": "claude-content-review",
     "verifiedAt": "2026-09-13",
@@ -169,7 +188,9 @@
     "promptTranslation": "Nuevas regulaciones de seguridad serán introducidas el próximo año para reducir accidentes laborales.",
     "hint": "introduce",
     "correctAnswer": "will be introduced",
-    "acceptedAlternatives": ["'ll be introduced"],
+    "acceptedAlternatives": [
+      "'ll be introduced"
+    ],
     "explanation": "Voz pasiva en futuro con 'will': 'will be' + participio pasado.",
     "verifiedBy": "claude-content-review",
     "verifiedAt": "2026-09-13",
@@ -185,7 +206,9 @@
     "promptTranslation": "Se cree que el antiguo puente fue construido hace más de dos mil años, aunque no se confirmó oficialmente hasta excavaciones recientes.",
     "hint": "believe / build / not officially confirm",
     "correctAnswer": "is believed / was built / wasn't officially confirmed",
-    "acceptedAlternatives": ["is believed / was built / was not officially confirmed"],
+    "acceptedAlternatives": [
+      "is believed / was built / was not officially confirmed"
+    ],
     "explanation": "Combina tres construcciones pasivas en distintos tiempos dentro de una sola oración compleja, típico de textos académicos o históricos en B1-B2.",
     "verifiedBy": "claude-content-review",
     "verifiedAt": "2026-09-13",
@@ -265,7 +288,9 @@
     "promptTranslation": "No tienes que asistir a la reunión, pero debes enviar tu informe por correo.",
     "hint": "not have to / must",
     "correctAnswer": "don't have to / must",
-    "acceptedAlternatives": ["do not have to / must"],
+    "acceptedAlternatives": [
+      "do not have to / must"
+    ],
     "explanation": "Contraste clave en B1: 'don't have to' significa que algo no es necesario (no prohibición), mientras 'must' expresa obligación firme.",
     "verifiedBy": "claude-content-review",
     "verifiedAt": "2026-09-13",
@@ -281,7 +306,9 @@
     "promptTranslation": "Deberías habérmelo dicho antes; podría haber evitado el error si hubiera sabido del cambio de fecha límite.",
     "hint": "should have / could avoid / know",
     "correctAnswer": "should have / could have avoided / had known",
-    "acceptedAlternatives": ["should've / could've avoided / had known"],
+    "acceptedAlternatives": [
+      "should've / could've avoided / had known"
+    ],
     "explanation": "Combina 'should have + participio' (crítica sobre el pasado), 'could have + participio' (posibilidad no realizada) y tercer condicional implícito — estructura de entrada a B2.",
     "verifiedBy": "claude-content-review",
     "verifiedAt": "2026-09-13",
@@ -297,7 +324,9 @@
     "promptTranslation": "El hombre que vive al lado es maestro.",
     "hint": "who/that",
     "correctAnswer": "who",
-    "acceptedAlternatives": ["that"],
+    "acceptedAlternatives": [
+      "that"
+    ],
     "explanation": "'Who' (o 'that') introduce una cláusula relativa que describe a una persona.",
     "verifiedBy": "claude-content-review",
     "verifiedAt": "2026-09-13",
@@ -361,7 +390,9 @@
     "promptTranslation": "Él me dijo que había terminado el proyecto el día anterior y que lo enviaría pronto.",
     "hint": "finish / send",
     "correctAnswer": "had finished / would send",
-    "acceptedAlternatives": ["'d finished / would send"],
+    "acceptedAlternatives": [
+      "'d finished / would send"
+    ],
     "explanation": "El pasado simple retrocede a Past Perfect, y 'will' retrocede a 'would' en estilo indirecto — junto con el cambio de 'the day before' en vez de 'yesterday'.",
     "verifiedBy": "claude-content-review",
     "verifiedAt": "2026-09-13",
@@ -427,6 +458,306 @@
     "correctAnswer": "am / used to / had never been",
     "acceptedAlternatives": [],
     "explanation": "Contrasta 'be used to' (estar acostumbrado, presente) con 'used to' (hábito pasado) y Past Perfect para la experiencia previa — una distinción que suele confundirse incluso en niveles avanzados.",
+    "verifiedBy": "claude-content-review",
+    "verifiedAt": "2026-09-13",
+    "status": "curated"
+  },
+  {
+    "id": "grm_b1_third_cond_001",
+    "level": "B1",
+    "week": 9,
+    "grammarTopic": "Third Conditional",
+    "difficulty": "simple",
+    "prompt": "If I ___ (study) harder, I ___ (pass) the exam.",
+    "promptTranslation": "Si hubiera estudiado más, habría aprobado el examen.",
+    "hint": "study / pass",
+    "correctAnswer": "had studied / would have passed",
+    "acceptedAlternatives": [
+      "'d studied / would've passed"
+    ],
+    "explanation": "Tercer condicional: Past Perfect en la condición, 'would have' + participio en el resultado, para hablar de situaciones pasadas que no ocurrieron.",
+    "verifiedBy": "claude-content-review",
+    "verifiedAt": "2026-09-13",
+    "status": "curated"
+  },
+  {
+    "id": "grm_b1_third_cond_002",
+    "level": "B1",
+    "week": 9,
+    "grammarTopic": "Third Conditional",
+    "difficulty": "advanced",
+    "prompt": "If they ___ (leave) earlier, they ___ (not/miss) the flight.",
+    "promptTranslation": "Si hubieran salido más temprano, no habrían perdido el vuelo.",
+    "hint": "leave / not miss",
+    "correctAnswer": "had left / wouldn't have missed",
+    "acceptedAlternatives": [
+      "'d left / would not have missed"
+    ],
+    "explanation": "El resultado negativo en tercer condicional usa 'wouldn't have' + participio.",
+    "verifiedBy": "claude-content-review",
+    "verifiedAt": "2026-09-13",
+    "status": "curated"
+  },
+  {
+    "id": "grm_b1_third_cond_003",
+    "level": "B1",
+    "week": 9,
+    "grammarTopic": "Third Conditional",
+    "difficulty": "complex",
+    "prompt": "If the manager ___ (know) about the problem sooner, and if the team ___ (communicate) more clearly, the project ___ (not/fail) so badly.",
+    "promptTranslation": "Si el gerente hubiera sabido del problema antes, y si el equipo se hubiera comunicado con más claridad, el proyecto no habría fracasado tan gravemente.",
+    "hint": "know / communicate / not fail",
+    "correctAnswer": "had known / had communicated / wouldn't have failed",
+    "acceptedAlternatives": [
+      "'d known / 'd communicated / would not have failed"
+    ],
+    "explanation": "Dos condiciones hipotéticas pasadas coordinadas llevando a un único resultado no realizado — estructura de análisis retrospectivo típica en informes o debates.",
+    "verifiedBy": "claude-content-review",
+    "verifiedAt": "2026-09-13",
+    "status": "curated"
+  },
+  {
+    "id": "grm_b1_gerund_inf_001",
+    "level": "B1",
+    "week": 10,
+    "grammarTopic": "Gerunds vs. Infinitives",
+    "difficulty": "simple",
+    "prompt": "She enjoys ___ (read) before bed.",
+    "promptTranslation": "A ella le gusta leer antes de dormir.",
+    "hint": "read",
+    "correctAnswer": "reading",
+    "acceptedAlternatives": [],
+    "explanation": "'Enjoy' siempre va seguido de gerundio (-ing), nunca de infinitivo.",
+    "verifiedBy": "claude-content-review",
+    "verifiedAt": "2026-09-13",
+    "status": "curated"
+  },
+  {
+    "id": "grm_b1_gerund_inf_002",
+    "level": "B1",
+    "week": 10,
+    "grammarTopic": "Gerunds vs. Infinitives",
+    "difficulty": "advanced",
+    "prompt": "I stopped ___ (smoke) two years ago, but yesterday I stopped ___ (buy) some milk on my way home.",
+    "promptTranslation": "Dejé de fumar hace dos años, pero ayer me detuve para comprar leche de camino a casa.",
+    "hint": "smoke / buy",
+    "correctAnswer": "smoking / to buy",
+    "acceptedAlternatives": [],
+    "explanation": "'Stop + gerundio' significa dejar un hábito; 'stop + infinitivo' significa detenerse con el propósito de hacer algo — mismo verbo, significado opuesto según la forma.",
+    "verifiedBy": "claude-content-review",
+    "verifiedAt": "2026-09-13",
+    "status": "curated"
+  },
+  {
+    "id": "grm_b1_gerund_inf_003",
+    "level": "B1",
+    "week": 10,
+    "grammarTopic": "Gerunds vs. Infinitives",
+    "difficulty": "complex",
+    "prompt": "I regret ___ (not/study) harder in school, and I remember ___ (tell) myself back then that it didn't matter, but I'd forgotten ___ (mention) that to my own children until it was too late.",
+    "promptTranslation": "Me arrepiento de no haber estudiado más en la escuela, y recuerdo haberme dicho en aquel entonces que no importaba, pero había olvidado mencionárselo a mis propios hijos hasta que fue demasiado tarde.",
+    "hint": "not study / tell / mention",
+    "correctAnswer": "not studying / telling / to mention",
+    "acceptedAlternatives": [],
+    "explanation": "Tres verbos con comportamiento distinto: 'regret + gerundio' (lamentar algo pasado), 'remember + gerundio' (recordar un evento pasado), 'forget + infinitivo' (olvidar hacer algo pendiente).",
+    "verifiedBy": "claude-content-review",
+    "verifiedAt": "2026-09-13",
+    "status": "curated"
+  },
+  {
+    "id": "grm_b1_quantifiers_001",
+    "level": "B1",
+    "week": 11,
+    "grammarTopic": "Quantifiers (some/any/much/many/a few/a little)",
+    "difficulty": "simple",
+    "prompt": "There isn't ___ milk left in the fridge.",
+    "promptTranslation": "No queda mucha leche en el refrigerador.",
+    "hint": "much/many",
+    "correctAnswer": "much",
+    "acceptedAlternatives": [],
+    "explanation": "'Much' se usa con sustantivos incontables en oraciones negativas; 'many' se usa con contables.",
+    "verifiedBy": "claude-content-review",
+    "verifiedAt": "2026-09-13",
+    "status": "curated"
+  },
+  {
+    "id": "grm_b1_quantifiers_002",
+    "level": "B1",
+    "week": 11,
+    "grammarTopic": "Quantifiers (some/any/much/many/a few/a little)",
+    "difficulty": "advanced",
+    "prompt": "We only have ___ (little) time left, but fortunately ___ (few) people signed up, so it should be manageable.",
+    "promptTranslation": "Solo nos queda poco tiempo, pero afortunadamente pocas personas se inscribieron, así que debería ser manejable.",
+    "hint": "a little / a few",
+    "correctAnswer": "a little / a few",
+    "acceptedAlternatives": [],
+    "explanation": "'A little' (incontable) y 'a few' (contable) tienen connotación positiva ('suficiente'), a diferencia de 'little'/'few' sin artículo, que suenan negativos ('casi nada').",
+    "verifiedBy": "claude-content-review",
+    "verifiedAt": "2026-09-13",
+    "status": "curated"
+  },
+  {
+    "id": "grm_b1_quantifiers_003",
+    "level": "B1",
+    "week": 11,
+    "grammarTopic": "Quantifiers (some/any/much/many/a few/a little)",
+    "difficulty": "complex",
+    "prompt": "Although there was ___ (little) evidence to support the theory, ___ (a few) researchers continued the project, believing that ___ (some) of the missing data would eventually confirm their hypothesis.",
+    "promptTranslation": "Aunque había poca evidencia para respaldar la teoría, unos pocos investigadores continuaron el proyecto, creyendo que algunos de los datos faltantes finalmente confirmarían su hipótesis.",
+    "hint": "little / a few / some",
+    "correctAnswer": "little / a few / some",
+    "acceptedAlternatives": [],
+    "explanation": "Contrasta 'little' sin artículo (negativo: casi ninguna evidencia) con 'a few' (positivo: un grupo suficiente de investigadores) y 'some' (cantidad indefinida positiva) en una misma oración argumentativa.",
+    "verifiedBy": "claude-content-review",
+    "verifiedAt": "2026-09-13",
+    "status": "curated"
+  },
+  {
+    "id": "grm_b1_pres_perf_cont_001",
+    "level": "B1",
+    "week": 12,
+    "grammarTopic": "Present Perfect Continuous",
+    "difficulty": "simple",
+    "prompt": "I ___ (wait) for the bus for twenty minutes.",
+    "promptTranslation": "He estado esperando el autobús durante veinte minutos.",
+    "hint": "wait",
+    "correctAnswer": "have been waiting",
+    "acceptedAlternatives": [
+      "'ve been waiting"
+    ],
+    "explanation": "Present Perfect Continuous enfatiza la duración de una acción que comenzó en el pasado y continúa (o acaba de terminar).",
+    "verifiedBy": "claude-content-review",
+    "verifiedAt": "2026-09-13",
+    "status": "curated"
+  },
+  {
+    "id": "grm_b1_pres_perf_cont_002",
+    "level": "B1",
+    "week": 12,
+    "grammarTopic": "Present Perfect Continuous",
+    "difficulty": "advanced",
+    "prompt": "You look exhausted — ___ (you/run)?",
+    "promptTranslation": "Te ves agotado, ¿has estado corriendo?",
+    "hint": "you run",
+    "correctAnswer": "have you been running",
+    "acceptedAlternatives": [],
+    "explanation": "Pregunta en Present Perfect Continuous usada para explicar evidencia visible de una actividad reciente.",
+    "verifiedBy": "claude-content-review",
+    "verifiedAt": "2026-09-13",
+    "status": "curated"
+  },
+  {
+    "id": "grm_b1_pres_perf_cont_003",
+    "level": "B1",
+    "week": 12,
+    "grammarTopic": "Present Perfect Continuous",
+    "difficulty": "complex",
+    "prompt": "She ___ (work) on this report all week, but she still ___ (not/finish) it, even though she ___ (try) her best.",
+    "promptTranslation": "Ella ha estado trabajando en este informe toda la semana, pero todavía no lo ha terminado, aunque lo ha intentado con todas sus fuerzas.",
+    "hint": "work / not finish / try",
+    "correctAnswer": "has been working / hasn't finished / has tried",
+    "acceptedAlternatives": [
+      "has been working / has not finished / has tried"
+    ],
+    "explanation": "Combina Present Perfect Continuous (proceso en curso) con Present Perfect simple (resultado no logrado) en la misma oración — distinción clave de nivel B1 alto.",
+    "verifiedBy": "claude-content-review",
+    "verifiedAt": "2026-09-13",
+    "status": "curated"
+  },
+  {
+    "id": "grm_b1_wish_001",
+    "level": "B1",
+    "week": 13,
+    "grammarTopic": "Wish / If Only",
+    "difficulty": "simple",
+    "prompt": "I wish I ___ (have) more money.",
+    "promptTranslation": "Ojalá tuviera más dinero.",
+    "hint": "have",
+    "correctAnswer": "had",
+    "acceptedAlternatives": [],
+    "explanation": "'Wish' + pasado simple expresa un deseo sobre una situación presente que no es cierta.",
+    "verifiedBy": "claude-content-review",
+    "verifiedAt": "2026-09-13",
+    "status": "curated"
+  },
+  {
+    "id": "grm_b1_wish_002",
+    "level": "B1",
+    "week": 13,
+    "grammarTopic": "Wish / If Only",
+    "difficulty": "advanced",
+    "prompt": "If only I ___ (not/say) that to her yesterday.",
+    "promptTranslation": "Ojalá no le hubiera dicho eso ayer.",
+    "hint": "not say",
+    "correctAnswer": "hadn't said",
+    "acceptedAlternatives": [
+      "had not said"
+    ],
+    "explanation": "'If only' + Past Perfect expresa arrepentimiento sobre algo que ya sucedió en el pasado.",
+    "verifiedBy": "claude-content-review",
+    "verifiedAt": "2026-09-13",
+    "status": "curated"
+  },
+  {
+    "id": "grm_b1_wish_003",
+    "level": "B1",
+    "week": 13,
+    "grammarTopic": "Wish / If Only",
+    "difficulty": "complex",
+    "prompt": "I wish I ___ (can/speak) three languages like my sister, and if only I ___ (start) learning earlier instead of waiting until now.",
+    "promptTranslation": "Ojalá pudiera hablar tres idiomas como mi hermana, y ojalá hubiera empezado a aprender antes en vez de esperar hasta ahora.",
+    "hint": "can speak / start",
+    "correctAnswer": "could speak / had started",
+    "acceptedAlternatives": [],
+    "explanation": "Combina 'wish + could' (deseo sobre habilidad presente) con 'if only + Past Perfect' (arrepentimiento sobre el pasado) en la misma oración.",
+    "verifiedBy": "claude-content-review",
+    "verifiedAt": "2026-09-13",
+    "status": "curated"
+  },
+  {
+    "id": "grm_b1_qtags_001",
+    "level": "B1",
+    "week": 14,
+    "grammarTopic": "Question Tags",
+    "difficulty": "simple",
+    "prompt": "You're coming to the party, ___?",
+    "promptTranslation": "Vienes a la fiesta, ¿verdad?",
+    "hint": "aren't you",
+    "correctAnswer": "aren't you",
+    "acceptedAlternatives": [],
+    "explanation": "Con una afirmación, la question tag va en negativo: 'you're' (afirmativo) → 'aren't you' (negativo).",
+    "verifiedBy": "claude-content-review",
+    "verifiedAt": "2026-09-13",
+    "status": "curated"
+  },
+  {
+    "id": "grm_b1_qtags_002",
+    "level": "B1",
+    "week": 14,
+    "grammarTopic": "Question Tags",
+    "difficulty": "advanced",
+    "prompt": "She hasn't called yet, ___?",
+    "promptTranslation": "Ella no ha llamado todavía, ¿verdad?",
+    "hint": "has she",
+    "correctAnswer": "has she",
+    "acceptedAlternatives": [],
+    "explanation": "Con una afirmación negativa, la question tag va en positivo: 'hasn't called' (negativo) → 'has she' (positivo).",
+    "verifiedBy": "claude-content-review",
+    "verifiedAt": "2026-09-13",
+    "status": "curated"
+  },
+  {
+    "id": "grm_b1_qtags_003",
+    "level": "B1",
+    "week": 14,
+    "grammarTopic": "Question Tags",
+    "difficulty": "complex",
+    "prompt": "Let's take a break, ___? Nobody has finished the report yet, ___? And there's nothing more we can do today, ___?",
+    "promptTranslation": "Tomemos un descanso, ¿de acuerdo? Nadie ha terminado el informe todavía, ¿verdad? Y no hay nada más que podamos hacer hoy, ¿verdad?",
+    "hint": "shall we / have they / is there",
+    "correctAnswer": "shall we / have they / is there",
+    "acceptedAlternatives": [],
+    "explanation": "Tres casos especiales: 'Let's' siempre usa 'shall we'; 'nobody' (negativo implícito) toma tag positiva 'have they'; 'there's nothing' (negativo implícito) toma tag positiva 'is there'.",
     "verifiedBy": "claude-content-review",
     "verifiedAt": "2026-09-13",
     "status": "curated"
