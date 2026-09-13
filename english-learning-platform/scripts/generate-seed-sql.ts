@@ -46,7 +46,7 @@ function generateSeedSql(): void {
   const header = `-- ─────────────────────────────────────────────────────────────────────────────
 -- Supabase Database Seed File: content_words
 -- Generated automatically from packages/content/
--- Total Vocabulary Items: ${rows.length}
+-- Total Vocabulary Items: ${String(rows.length)}
 -- Levels: A1, A2, B1, B2 (Escuela de Inglés Americana)
 -- ─────────────────────────────────────────────────────────────────────────────
 
@@ -61,7 +61,7 @@ function generateSeedSql(): void {
     const values = chunk
       .map(
         (r) =>
-          `  ('${escapeSql(r.id)}', '${escapeSql(r.level)}'::cefr_level, ${r.week}, '${escapeSql(r.topic)}', '${escapeSql(r.status)}'::content_status, '${escapeSql(r.verifiedBy)}', '${escapeSql(r.verifiedAt)}')`,
+          `  ('${escapeSql(r.id)}', '${escapeSql(r.level)}'::cefr_level, ${String(r.week)}, '${escapeSql(r.topic)}', '${escapeSql(r.status)}'::content_status, '${escapeSql(r.verifiedBy)}', '${escapeSql(r.verifiedAt)}')`,
       )
       .join(',\n')
 
@@ -82,7 +82,7 @@ ON CONFLICT (id) DO UPDATE SET
   fs.writeFileSync(outputPath, fullSql, 'utf-8')
 
   console.log(`✅ Seed SQL generated successfully: ${outputPath}`)
-  console.log(`   Total items written: ${rows.length}`)
+  console.log(`   Total items written: ${String(rows.length)}`)
 }
 
 generateSeedSql()
