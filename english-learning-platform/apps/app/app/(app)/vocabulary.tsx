@@ -14,6 +14,7 @@ import { colors, spacing, radius, typography, WordCard, Badge } from '@elp/ui'
 import { Ionicons } from '@expo/vector-icons'
 import { contentRegistry, getVocabularyForLevel } from '@elp/content'
 import type { CEFRLevel, VocabularyItem } from '@elp/types'
+import { useSRSStore } from '../../stores/useSRSStore'
 import { speakEnglish } from '../../lib/audio'
 import { getSpanishPhonetic } from '../../lib/phonetics'
 import { GamesModal, type GameType } from '../../components/GamesModal'
@@ -48,6 +49,15 @@ export default function VocabularyScreen(): React.JSX.Element {
   const [hasCheckedSpelling, setHasCheckedSpelling] = useState(false)
   const [isSpellingCorrect, setIsSpellingCorrect] = useState(false)
   const [showSpellingHint, setShowSpellingHint] = useState(false)
+
+  const cards = useSRSStore((state) => state.cards)
+  const cardMap = useMemo(() => {
+    const map = new Map<string, (typeof cards)[0]>()
+    for (const c of cards) {
+      map.set(c.vocabularyItemId, c)
+    }
+    return map
+  }, [cards])
 
   const wordsForLevel = useMemo(() => getVocabularyForLevel(selectedLevel), [selectedLevel])
 
@@ -154,13 +164,23 @@ export default function VocabularyScreen(): React.JSX.Element {
       {/* ----------------- HEADER & CONTROLS ----------------- */}
       <View style={styles.header}>
         <View style={styles.headerTopRow}>
-          <View>
-            <Text style={styles.title}>Banco de Vocabulario</Text>
-            <Text style={styles.subtitle}>Explora, escucha, repasa y juega con las palabras</Text>
+          <View style={styles.headerTitleCol}>
+            <View style={styles.titleBadgeRow}>
+              <Text style={styles.title}>Banco de Vocabulario</Text>
+              <View style={styles.freePracticeBadge}>
+                <Ionicons name="infinite-outline" size={12} color={colors.secondary} />
+                <Text style={styles.freePracticeBadgeText}>Práctica Libre · sin límite diario</Text>
+              </View>
+            </View>
+            <Text style={styles.subtitle}>
+              Exploración libre y refuerzo. Para alimentar tu racha y algoritmo espaciado, ve a Aprender.
+            </Text>
           </View>
           {/* Arcade Launcher Button */}
           <TouchableOpacity
             style={styles.arcadeBadgeBtn}
+            accessibilityRole="button"
+            accessibilityLabel="Abrir Arcade de Juegos"
             onPress={() => {
               setInitialGame(null)
               setIsGamesModalVisible(true)
@@ -200,7 +220,7 @@ export default function VocabularyScreen(): React.JSX.Element {
           })}
         </View>
 
-        {/* Quick Tags: Category Chips */}
+        {/* Quick Filter Tags: Grammatical Categories Chips */}
         <ScrollView
           horizontal
           showsHorizontalScrollIndicator={false}
@@ -211,6 +231,7 @@ export default function VocabularyScreen(): React.JSX.Element {
             return (
               <TouchableOpacity
                 key={cat.id}
+                accessibilityRole="button"
                 style={[styles.categoryChip, isSelected && styles.categoryChipActive]}
                 onPress={() => {
                   setSelectedCategory(cat.id)
@@ -230,42 +251,50 @@ export default function VocabularyScreen(): React.JSX.Element {
           })}
         </ScrollView>
 
-        {/* Quick Tags: Week Selector Chips */}
-        <ScrollView
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          contentContainerStyle={styles.weekChipsContainer}
-        >
-          <TouchableOpacity
-            style={[styles.weekChip, selectedWeek === null && styles.weekChipActive]}
-            onPress={() => {
-              setSelectedWeek(null)
-            }}
-            activeOpacity={0.7}
+        {/* Quick Tags: Week Selector Chips with Right Fade Indicator */}
+        <View style={styles.weekChipsWrapper}>
+          <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={styles.weekChipsContainer}
           >
-            <Text style={[styles.weekChipText, selectedWeek === null && styles.weekChipTextActive]}>
-              Todas las semanas
-            </Text>
-          </TouchableOpacity>
+            <TouchableOpacity
+              style={[styles.weekChip, selectedWeek === null && styles.weekChipActive]}
+              accessibilityRole="button"
+              onPress={() => {
+                setSelectedWeek(null)
+              }}
+              activeOpacity={0.7}
+            >
+              <Text style={[styles.weekChipText, selectedWeek === null && styles.weekChipTextActive]}>
+                Todas las semanas
+              </Text>
+            </TouchableOpacity>
 
-          {availableWeeks.map((item) => {
-            const isSelected = selectedWeek === item.week
-            return (
-              <TouchableOpacity
-                key={item.week}
-                style={[styles.weekChip, isSelected && styles.weekChipActive]}
-                onPress={() => {
-                  setSelectedWeek(isSelected ? null : item.week)
-                }}
-                activeOpacity={0.7}
-              >
-                <Text style={[styles.weekChipText, isSelected && styles.weekChipTextActive]}>
-                  Sem. {item.week}
-                </Text>
-              </TouchableOpacity>
-            )
-          })}
-        </ScrollView>
+            {availableWeeks.map((item) => {
+              const isSelected = selectedWeek === item.week
+              return (
+                <TouchableOpacity
+                  key={item.week}
+                  style={[styles.weekChip, isSelected && styles.weekChipActive]}
+                  accessibilityRole="button"
+                  onPress={() => {
+                    setSelectedWeek(isSelected ? null : item.week)
+                  }}
+                  activeOpacity={0.7}
+                >
+                  <Text style={[styles.weekChipText, isSelected && styles.weekChipTextActive]}>
+                    Sem. {item.week}
+                  </Text>
+                </TouchableOpacity>
+              )
+            })}
+          </ScrollView>
+          <View style={styles.weekScrollIndicator} pointerEvents="none">
+            <Ionicons name="chevron-forward" size={13} color={colors.textSecondary} />
+          </View>
+        </View>
+
 
         {/* Search Bar */}
         <View style={styles.searchContainer}>
@@ -335,40 +364,58 @@ export default function VocabularyScreen(): React.JSX.Element {
           </View>
         ) : (
           /* Cards list */
-          filteredWords.slice(0, 100).map((item, index) => (
-            <View key={item.id} style={styles.wordCardWrapper}>
-              <WordCard
-                word={item.word}
-                translation={item.translation}
-                partOfSpeech={item.partOfSpeech}
-                level={item.level}
-                phonetic={item.pronunciation}
-                example={
-                  item.example
-                    ? {
-                        en: item.example,
-                        es: item.exampleTranslation ?? '',
-                      }
-                    : undefined
-                }
-                revealed
-                onPress={() => {
-                  openWordModal(index)
-                }}
-                style={styles.wordCardItem}
-              />
-              {/* Quick Practice Pill */}
-              <TouchableOpacity
-                style={styles.quickPracticePill}
-                onPress={() => {
-                  openWordModal(index)
-                }}
-              >
-                <Ionicons name="create-outline" size={14} color={colors.primary} />
-                <Text style={styles.quickPracticePillText}>Tocar para practicar (Escuchar + Escribir)</Text>
-              </TouchableOpacity>
-            </View>
-          ))
+          filteredWords.slice(0, 100).map((item, index) => {
+            const srsCard = cardMap.get(item.id)
+            const memoryStatus: 'mastered' | 'learning' | 'new' = !srsCard || srsCard.reps === 0
+              ? 'new'
+              : (srsCard.interval >= 21 || srsCard.reps >= 4)
+                ? 'mastered'
+                : 'learning'
+
+            return (
+              <View key={item.id} style={styles.wordCardWrapper}>
+                <WordCard
+                  word={item.word}
+                  translation={item.translation}
+                  partOfSpeech={item.partOfSpeech}
+                  level={item.level}
+                  week={item.week}
+                  phonetic={getSpanishPhonetic(item.word, item.pronunciation)}
+                  example={
+                    item.example
+                      ? {
+                          en: item.example,
+                          es: item.exampleTranslation ?? '',
+                        }
+                      : undefined
+                  }
+                  memoryStatus={memoryStatus}
+                  revealed
+                  onPress={() => {
+                    openWordModal(index)
+                  }}
+                  onPlayAudio={() => {
+                    void speakEnglish(item.word)
+                  }}
+                  audioIcon={<Ionicons name="volume-high" size={16} color={colors.primary} />}
+                  style={styles.wordCardItem}
+                />
+                {/* Quick Practice Pill */}
+                <TouchableOpacity
+                  style={styles.quickPracticePill}
+                  accessibilityRole="button"
+                  accessibilityLabel={`Practicar escritura de ${item.word}`}
+                  onPress={() => {
+                    openWordModal(index)
+                  }}
+                >
+                  <Ionicons name="create-outline" size={14} color={colors.primary} />
+                  <Text style={styles.quickPracticePillText}>Tocar para practicar (Escuchar + Escribir)</Text>
+                </TouchableOpacity>
+              </View>
+            )
+          })
+
         )}
       </ScrollView>
 
@@ -637,8 +684,34 @@ const styles = StyleSheet.create({
   headerTopRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'center',
+    alignItems: 'flex-start',
     marginBottom: spacing.xs,
+  },
+  headerTitleCol: {
+    flex: 1,
+    marginRight: spacing.sm,
+  },
+  titleBadgeRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    flexWrap: 'wrap',
+    gap: spacing.xs,
+  },
+  freePracticeBadge: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+    backgroundColor: '#EFF6FF',
+    paddingHorizontal: 8,
+    paddingVertical: 2,
+    borderRadius: radius.full,
+    borderWidth: 1,
+    borderColor: '#BFDBFE',
+  },
+  freePracticeBadgeText: {
+    fontSize: 10,
+    fontWeight: typography.weights.bold,
+    color: colors.secondary,
   },
   title: {
     fontSize: typography.sizes.xl,
@@ -648,9 +721,10 @@ const styles = StyleSheet.create({
   subtitle: {
     fontSize: typography.sizes.xs,
     color: colors.textSecondary,
-    marginTop: 2,
+    marginTop: 3,
     marginBottom: spacing.sm,
   },
+
   arcadeBadgeBtn: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -724,9 +798,25 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     fontWeight: typography.weights.bold,
   },
+  weekChipsWrapper: {
+    position: 'relative',
+  },
   weekChipsContainer: {
     gap: spacing.xs,
     paddingVertical: spacing.xs,
+    paddingRight: spacing.xl,
+  },
+  weekScrollIndicator: {
+    position: 'absolute',
+    right: 0,
+    top: 0,
+    bottom: spacing.xs,
+    width: 22,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(255, 255, 255, 0.85)',
+    borderTopLeftRadius: radius.sm,
+    borderBottomLeftRadius: radius.sm,
   },
   weekChip: {
     paddingHorizontal: spacing.sm,
@@ -773,14 +863,20 @@ const styles = StyleSheet.create({
   arcadeBanner: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#EFF6FF',
+    backgroundColor: colors.card,
     borderRadius: radius.lg,
     padding: spacing.md,
-    borderWidth: 1.5,
-    borderColor: colors.primaryLight,
+    borderWidth: 1,
+    borderColor: colors.border,
     marginBottom: spacing.md,
     gap: spacing.sm,
+    shadowColor: '#0F172A',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.08,
+    shadowRadius: 8,
+    elevation: 3,
   },
+
   arcadeBannerIcon: {
     width: 44,
     height: 44,

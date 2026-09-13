@@ -169,6 +169,8 @@ export default function ReadingScreen(): React.JSX.Element {
             return (
               <Text
                 key={`tok-${isSpanish ? 'es' : 'en'}-${String(index)}`}
+                accessibilityRole="button"
+                accessibilityLabel={`Ver significado de ${token}`}
                 onPress={() => {
                   setActiveMappingKey(matched.en.toLowerCase())
                   if (vocItem) {
@@ -592,20 +594,22 @@ const styles = StyleSheet.create({
     letterSpacing: 0.2,
   },
   highlightedWord: {
-    color: colors.primary,
-    fontWeight: typography.weights.bold,
+    color: colors.primaryDark,
+    fontWeight: '600',
     backgroundColor: colors.primaryLight,
-    borderRadius: radius.sm,
-    textDecorationLine: 'underline',
-    paddingHorizontal: 3,
+    borderRadius: 4,
+    textDecorationLine: 'none',
+    paddingHorizontal: 4,
+    paddingVertical: 2,
   },
   highlightedWordActive: {
     color: colors.textInverse,
     backgroundColor: colors.primary,
-    fontWeight: typography.weights.bold,
-    borderRadius: radius.sm,
-    textDecorationLine: 'underline',
-    paddingHorizontal: 3,
+    fontWeight: '700',
+    borderRadius: 4,
+    textDecorationLine: 'none',
+    paddingHorizontal: 4,
+    paddingVertical: 2,
   },
   translationContainer: {
     marginTop: spacing.lg,
