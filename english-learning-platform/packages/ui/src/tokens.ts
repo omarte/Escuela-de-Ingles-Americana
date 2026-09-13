@@ -7,6 +7,7 @@ export const colors = {
   // Backgrounds - Positive Contrast Polarity (Light Theme)
   background: '#F8FAFC', // Soft anti-glare canvas (Slate 50)
   backgroundSubtle: '#F1F5F9', // Subtle container background (Slate 100)
+  surface: '#FFFFFF', // Pure elevated white card surface
   card: '#FFFFFF', // Pure elevated white card surface
   cardHover: '#F8FAFC', // Crisp highlight surface on hover
   border: '#E2E8F0', // Delicate, crisp border (Slate 200)
@@ -15,7 +16,8 @@ export const colors = {
   // Primary brand accent: Emerald (cognition, growth, fluency)
   primary: '#059669', // Emerald 600 - High legibility on light
   primaryHover: '#047857', // Emerald 700 - Hover state
-  primaryLight: '#ECFDF5', // Emerald 50 - Soft pastel container
+  primaryLight: '#E8F5E9', // Soft pastel green for highlights & badges
+  primaryDark: '#2E7D32', // Dark contrast emerald for highlighted text
   primaryGlow: 'rgba(5, 150, 105, 0.18)',
 
   // Secondary accent: Royal Sapphire / Indigo (grammar, study, structure)
@@ -31,7 +33,7 @@ export const colors = {
 
   // Feedback & State colors
   success: '#059669',
-  successLight: '#ECFDF5',
+  successLight: '#E8F5E9',
   warning: '#D97706', // Amber 600 - Streak fire
   warningLight: '#FEF3C7', // Amber 50
   danger: '#DC2626', // Red 600
@@ -58,12 +60,39 @@ export const spacing = {
 } as const
 
 export const radius = {
-  sm: 6,
-  md: 10,
+  sm: 8,
+  md: 12,
   lg: 16,
   xl: 24,
   full: 9999,
 } as const
+
+export const shadow = {
+  sm: {
+    shadowColor: '#0F172A',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.05,
+    shadowRadius: 2,
+    elevation: 1,
+  },
+  md: {
+    shadowColor: '#0F172A',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.08,
+    shadowRadius: 8,
+    elevation: 3,
+  },
+  lg: {
+    shadowColor: '#0F172A',
+    shadowOffset: { width: 0, height: 8 },
+    shadowOpacity: 0.12,
+    shadowRadius: 16,
+    elevation: 6,
+  },
+} as const
+
+export const shadows = shadow
+
 
 export type FontWeight =
   'normal' | 'bold' | '100' | '200' | '300' | '400' | '500' | '600' | '700' | '800' | '900'

@@ -8,7 +8,7 @@ import {
   type ViewStyle,
   type GestureResponderEvent,
 } from 'react-native'
-import { colors, radius, spacing } from '../tokens'
+import { colors, radius, spacing, shadow } from '../tokens'
 
 export interface CardProps {
   children: React.ReactNode
@@ -82,11 +82,7 @@ const styles = StyleSheet.create({
     borderRadius: radius.lg,
     borderWidth: 1,
     borderColor: colors.border,
-    shadowColor: '#0F172A',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.05,
-    shadowRadius: 8,
-    elevation: 2,
+    ...shadow.md,
   },
   hovered: {
     borderColor: colors.primary,
