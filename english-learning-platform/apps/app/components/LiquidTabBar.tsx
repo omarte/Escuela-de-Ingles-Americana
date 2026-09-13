@@ -12,6 +12,7 @@ import type { BottomTabBarProps } from '@react-navigation/bottom-tabs'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { Ionicons } from '@expo/vector-icons'
 import Svg, { Path } from 'react-native-svg'
+import { darkColors, radius } from '@elp/ui'
 
 type IoniconName = keyof typeof Ionicons.glyphMap
 
@@ -104,23 +105,32 @@ export function LiquidTabBar({
   }
 
   // Generate SVG path for the liquid scoop notch tailored to tabWidth
-  const notchWidth = Math.min(Math.max(tabWidth * 0.92, 54), 68)
-  const notchDepth = 24
+  // Proportional clamp ensures the notch NEVER exceeds tabWidth or clips neighboring tabs on narrow screens (< 360px)
+  const notchWidth = Math.min(tabWidth * 0.86, 62)
+  const notchDepth = 22
   const cx = tabWidth / 2
-  const leftEdge = cx - notchWidth / 2
-  const rightEdge = cx + notchWidth / 2
+  const leftEdge = Math.max(cx - notchWidth / 2, 2)
+  const rightEdge = Math.min(cx + notchWidth / 2, tabWidth - 2)
+  const actualWidth = rightEdge - leftEdge
+  const cOffset = actualWidth * 0.22
 
   // Smooth cubic bezier liquid dip
   const notchPath = `
     M 0 0 
     L ${String(leftEdge)} 0 
-    C ${String(leftEdge + 12)} 0 ${String(cx - 16)} ${String(notchDepth)} ${String(cx)} ${String(notchDepth)} 
-    C ${String(cx + 16)} ${String(notchDepth)} ${String(rightEdge - 12)} 0 ${String(rightEdge)} 0 
+    C ${String(leftEdge + cOffset)} 0 ${String(cx - cOffset)} ${String(notchDepth)} ${String(cx)} ${String(notchDepth)} 
+    C ${String(cx + cOffset)} ${String(notchDepth)} ${String(rightEdge - cOffset)} 0 ${String(rightEdge)} 0 
     L ${String(tabWidth)} 0 
     L ${String(tabWidth)} ${String(notchDepth + 4)} 
     L 0 ${String(notchDepth + 4)} 
     Z
   `
+
+  // Responsive bubble diameter and vertical placement
+  const bubbleSize = Math.min(Math.max(tabWidth * 0.78, 38), 46)
+  const bubbleRadius = bubbleSize / 2
+  const bubbleTop = -(bubbleRadius - 4)
+  const bubbleIconSize = tabWidth < 52 ? 19 : 22
 
   const activeRoute = routes[activeIndex]
   const activeRouteName = activeRoute ? activeRoute.name : 'index'
@@ -151,10 +161,10 @@ export function LiquidTabBar({
               },
             ]}
           >
-            {/* Liquid Scoop Notch (carves smoothly into the dark bar with page background #0B0F17) */}
+            {/* Liquid Scoop Notch (carves smoothly into the dark bar with page background token) */}
             <View style={styles.notchSvgContainer}>
               <Svg width={tabWidth} height={notchDepth + 4}>
-                <Path d={notchPath} fill="#0B0F17" />
+                <Path d={notchPath} fill={darkColors.background} />
               </Svg>
             </View>
 
@@ -163,14 +173,18 @@ export function LiquidTabBar({
               style={[
                 styles.floatingBubble,
                 {
+                  top: bubbleTop,
+                  width: bubbleSize,
+                  height: bubbleSize,
+                  borderRadius: bubbleRadius,
                   transform: [{ scale: bubbleScale }],
                 },
               ]}
             >
               <Ionicons
                 name={activeConfig.iconActive}
-                size={23}
-                color="#059669"
+                size={bubbleIconSize}
+                color={darkColors.primaryHover}
               />
             </Animated.View>
           </Animated.View>
@@ -223,7 +237,7 @@ export function LiquidTabBar({
                     <Ionicons
                       name={config.icon}
                       size={20}
-                      color="#64748B"
+                      color={darkColors.textMuted}
                     />
                     <Text numberOfLines={1} style={styles.inactiveLabel}>
                       {config.label}
@@ -251,12 +265,11 @@ const styles = StyleSheet.create({
   },
   barCard: {
     height: 66,
-    backgroundColor: '#111827', // Rich Dark Slate
-    borderRadius: 24,
+    backgroundColor: darkColors.card,
+    borderRadius: radius.xl,
     borderWidth: 1.2,
-    borderColor: 'rgba(255, 255, 255, 0.08)',
+    borderColor: darkColors.border,
     position: 'relative',
-    // High-end soft shadow
     shadowColor: '#000000',
     shadowOffset: { width: 0, height: 8 },
     shadowOpacity: 0.35,
@@ -279,16 +292,12 @@ const styles = StyleSheet.create({
   },
   floatingBubble: {
     position: 'absolute',
-    top: -19,
-    width: 48,
-    height: 48,
-    borderRadius: 24,
     backgroundColor: '#FFFFFF',
     justifyContent: 'center',
     alignItems: 'center',
     borderWidth: 3,
-    borderColor: '#10B981', // Subtle Emerald Halo Ring
-    shadowColor: '#10B981',
+    borderColor: darkColors.primary,
+    shadowColor: darkColors.primary,
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.45,
     shadowRadius: 8,
@@ -316,7 +325,7 @@ const styles = StyleSheet.create({
   activeLabel: {
     fontSize: 10.5,
     fontWeight: '700',
-    color: '#34D399', // Emerald 400
+    color: darkColors.primaryLight,
     letterSpacing: 0.2,
   },
   inactiveItemContainer: {
@@ -327,6 +336,6 @@ const styles = StyleSheet.create({
   inactiveLabel: {
     fontSize: 9.5,
     fontWeight: '500',
-    color: '#64748B', // Slate 500
+    color: darkColors.textMuted,
   },
 })

@@ -50,6 +50,54 @@ export const colors = {
   },
 } as const
 
+export const darkColors = {
+  // Backgrounds - Dark Polarity (Midnight Navy / Slate 950)
+  background: '#0B0F17', // Deep dark void canvas
+  backgroundSubtle: '#111827', // Container background (Slate 900)
+  surface: '#111827', // Slate 900
+  card: '#111827', // Rich Dark Slate card
+  cardElevated: '#1E293B', // Slate 800
+  cardHover: '#1E293B',
+  border: 'rgba(255, 255, 255, 0.08)',
+  borderActive: 'rgba(255, 255, 255, 0.16)',
+
+  // Primary brand accent: Emerald
+  primary: '#10B981', // Emerald 500
+  primaryHover: '#059669', // Emerald 600
+  primaryLight: '#34D399', // Emerald 400
+  primaryDark: '#047857', // Emerald 700
+  primaryGlow: 'rgba(16, 185, 129, 0.25)',
+
+  // Secondary accent: Royal Sapphire / Indigo
+  secondary: '#3B82F6', // Blue 500
+  secondaryHover: '#2563EB',
+  secondaryLight: '#1E3A8A',
+
+  // Text colors
+  textPrimary: '#F8FAFC', // Slate 50
+  textSecondary: '#94A3B8', // Slate 400
+  textMuted: '#64748B', // Slate 500
+  textInverse: '#0B0F17', // High-contrast text on bright elements
+
+  // Feedback & State colors
+  success: '#10B981',
+  successLight: 'rgba(16, 185, 129, 0.15)',
+  warning: '#F59E0B',
+  warningLight: 'rgba(245, 158, 11, 0.15)',
+  danger: '#EF4444',
+  dangerLight: 'rgba(239, 68, 68, 0.15)',
+  info: '#38BDF8',
+  infoLight: 'rgba(56, 189, 248, 0.15)',
+
+  // CEFR Level accents
+  levels: {
+    A1: '#10B981',
+    A2: '#38BDF8',
+    B1: '#818CF8',
+    B2: '#F472B6',
+  },
+} as const
+
 export const spacing = {
   xs: 4,
   sm: 8,

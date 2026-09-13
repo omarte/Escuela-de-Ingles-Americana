@@ -21,7 +21,7 @@
 
 Bienvenido a Escuela de Inglés Americana: el método serio, estructurado y sin rodeos diseñado específicamente para hispanohablantes que necesitan dominar el inglés de verdad.
 
-Desde los fundamentos de A1 hasta la comunicación profesional de B2, nuestro sistema elimina la memorización mecánica y la sustituye por ciencia cognitiva comprobada.
+Desde los fundamentos de A1 hasta la progresión hacia niveles avanzados (B1/B2), nuestro sistema elimina la memorización mecánica y la sustituye por ciencia cognitiva comprobada.
 
 ────────────────────────────────────────
 POR QUÉ NUESTRO MÉTODO FUNCIONA
@@ -30,12 +30,11 @@ POR QUÉ NUESTRO MÉTODO FUNCIONA
 1. REPETICIÓN ESPACIADA INTELIGENTE (SRS)
 Olvídate de olvidar lo aprendido. Nuestro algoritmo calcula el momento exacto en que tu cerebro está a punto de perder una palabra o estructura y te la presenta en el intervalo óptimo. Memoriza vocabulario de por vida invirtiendo solo 10 a 15 minutos al día.
 
-2. BANCO DE VOCABULARIO 100% AUDITADO
-Más de 2.500 palabras y colocaciones reales, organizadas temáticamente por semanas y clasificadas según el Marco Común Europeo (MCER):
-• A1 (Acceso): Fundamentos cotidianos, números, familia, comida y rutinas.
-• A2 (Plataforma): Trabajo, viajes, descripciones y relaciones sociales.
-• B1 (Intermedio): Argumentación, conectores lógicos, medio ambiente, finanzas y phrasal verbs esenciales.
-• B2 (Intermedio Alto): Discurso formal, redacción estructurada, matices idiomáticos y pensamiento crítico.
+2. BANCO DE VOCABULARIO ESTRUCTURADO Y AUDITADO
+Más de 1.500 palabras y colocaciones esenciales en niveles base 100% auditadas por docentes, organizadas temáticamente por semanas (MCER):
+• A1 (Acceso - 100% Auditado): Fundamentos cotidianos, números, familia, comida y rutinas del día a día.
+• A2 (Plataforma - 100% Auditado): Trabajo, viajes, compras, descripciones y relaciones sociales.
+• B1 y B2 (Intermedio / Profesional - Curaduría Activa): Argumentación, conectores lógicos, finanzas y redacción formal en despliegue supervisado.
 
 3. LECTURAS GRADUADAS CON COMPRENSIÓN REAL
 El vocabulario no vive aislado. Lee textos y crónicas adaptadas a tu nivel, con traducción instantánea de soporte y preguntas de comprensión que desafían tu entendimiento del contexto.
