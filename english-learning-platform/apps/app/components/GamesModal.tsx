@@ -14,7 +14,7 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import { colors, spacing, typography, radius, Badge } from '@elp/ui'
 import { Ionicons } from '@expo/vector-icons'
 import type { CEFRLevel, VocabularyItem } from '@elp/types'
-import { speakEnglish } from '../lib/audio'
+import { speakEnglish, speakSpanish } from '../lib/audio'
 import { generateQuizOptions, type QuizOption } from '../lib/distractors'
 import { getWordDisplayData } from '../lib/vocabulary'
 
@@ -187,18 +187,34 @@ function TypingRushGame({
           <Text style={styles.promptLabel}>Escribe en inglés:</Text>
           <Text style={styles.targetSpanish}>"{currentWord.translation}"</Text>
 
-          {/* Letter Scaffolding Hint - avoids dictating answer */}
-          <TouchableOpacity
-            style={styles.listenHintBtn}
-            onPress={() => {
-              setShowHint((prev) => !prev)
-            }}
-          >
-            <Ionicons name="bulb-outline" size={16} color={colors.primary} />
-            <Text style={styles.listenHintText}>
-              {showHint ? 'Ocultar pista' : '💡 Pista de letras'}
-            </Text>
-          </TouchableOpacity>
+          {/* Action Row: Audio stimulus in Spanish + Letter hint */}
+          <View style={styles.hintActionsRow}>
+            <TouchableOpacity
+              style={styles.listenHintBtn}
+              accessibilityRole="button"
+              accessibilityLabel={`Escuchar estímulo en español: ${currentWord.translation}`}
+              onPress={() => {
+                void speakSpanish(currentWord.translation)
+              }}
+            >
+              <Ionicons name="volume-high" size={16} color={colors.primary} />
+              <Text style={styles.listenHintText}>Escuchar estímulo</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              style={styles.listenHintBtn}
+              accessibilityRole="button"
+              accessibilityLabel="Alternar pista de letras"
+              onPress={() => {
+                setShowHint((prev) => !prev)
+              }}
+            >
+              <Ionicons name="bulb-outline" size={16} color={colors.warning} />
+              <Text style={styles.listenHintText}>
+                {showHint ? 'Ocultar pista' : '💡 Pista'}
+              </Text>
+            </TouchableOpacity>
+          </View>
 
           {showHint ? (
             <Text style={styles.typingRushHintText}>
@@ -913,15 +929,21 @@ const styles = StyleSheet.create({
     color: colors.textPrimary,
     marginVertical: spacing.sm,
   },
+  hintActionsRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: spacing.sm,
+    marginBottom: spacing.md,
+  },
   listenHintBtn: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: 6,
     paddingHorizontal: spacing.sm,
-    paddingVertical: 4,
+    paddingVertical: 6,
     borderRadius: radius.full,
     backgroundColor: colors.primaryLight,
-    marginBottom: spacing.md,
   },
   listenHintText: {
     fontSize: typography.sizes.xs,
