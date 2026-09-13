@@ -9,6 +9,9 @@ import {
 describe('Primer Lote Curated Content - Regression & Integrity', () => {
   // Resolve primer lote folder reliably across different execution working directories
   const possiblePaths = [
+    path.resolve(__dirname, '../../../../docs/archive/primer-lote-2026-09'),
+    path.resolve(process.cwd(), '../docs/archive/primer-lote-2026-09'),
+    path.resolve(process.cwd(), 'docs/archive/primer-lote-2026-09'),
     path.resolve(__dirname, '../../../../primer lote'),
     path.resolve(process.cwd(), '../primer lote'),
     path.resolve(process.cwd(), '../../primer lote'),

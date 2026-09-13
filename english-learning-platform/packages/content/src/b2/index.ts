@@ -8,11 +8,12 @@ import { week01 } from './week-01'
 import { week02 } from './week-02'
 import { week03 } from './week-03'
 import { week04 } from './week-04'
+import { week05 } from './week-05'
 
-export { week01, week02, week03, week04 }
+export { week01, week02, week03, week04, week05 }
 
 export const b2Content: LevelContent = {
   level: 'B2',
-  totalWeeks: 4,
-  blocks: [week01, week02, week03, week04],
+  totalWeeks: 5,
+  blocks: [week01, week02, week03, week04, week05],
 }
