@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { View, Text, StyleSheet, ScrollView, Modal, Alert } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { colors, spacing, radius, typography, Card, ProgressBar, Badge, Button } from '@elp/ui'
@@ -38,6 +38,32 @@ export default function ProgressScreen(): React.JSX.Element {
 
   const currentLevel = profile?.currentLevel ?? 'A1'
   const masteryPercentage = Math.round(levelAdvancement.masteryRatio * 100)
+
+  // 7-day visual activity chart
+  const last7Days = useMemo(() => {
+    const days: { label: string; dateStr: string; active: boolean; isToday: boolean }[] = []
+    const dayNames = ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb']
+    const activeDateSet = new Set(streak.activeDates ?? [])
+
+    for (let i = 6; i >= 0; i--) {
+      const d = new Date()
+      d.setDate(d.getDate() - i)
+      const year = d.getFullYear()
+      const month = String(d.getMonth() + 1).padStart(2, '0')
+      const day = String(d.getDate()).padStart(2, '0')
+      const dateStr = `${year}-${month}-${day}`
+      const isToday = i === 0
+      const active = activeDateSet.has(dateStr) || (isToday && streak.studiedToday)
+
+      days.push({
+        label: dayNames[d.getDay()] ?? '',
+        dateStr,
+        active,
+        isToday,
+      })
+    }
+    return days
+  }, [streak.activeDates, streak.studiedToday])
 
   const a1Total = 1514
   const a2Total = 734
@@ -186,8 +212,48 @@ export default function ProgressScreen(): React.JSX.Element {
           )}
         </Card>
 
+        {/* 7-Day Activity Mini-Chart */}
+        <Card padding="md" style={styles.activityCard}>
+          <View style={styles.activityHeader}>
+            <View style={styles.activityTitleRow}>
+              <Ionicons name="calendar-outline" size={18} color={colors.primary} />
+              <Text style={styles.activityTitle}>Actividad de los Últimos 7 Días</Text>
+            </View>
+            <Text style={styles.activitySubtitle}>
+              {last7Days.filter((d) => d.active).length} de 7 días activos
+            </Text>
+          </View>
+
+          <View style={styles.activityBarsRow}>
+            {last7Days.map((d) => (
+              <View key={d.dateStr} style={styles.dayCol}>
+                <View
+                  style={[
+                    styles.dayBar,
+                    d.active ? styles.dayBarActive : styles.dayBarInactive,
+                    d.isToday && styles.dayBarToday,
+                  ]}
+                >
+                  {d.active ? (
+                    <Ionicons name="checkmark" size={12} color="#FFFFFF" />
+                  ) : null}
+                </View>
+                <Text
+                  style={[
+                    styles.dayLabel,
+                    d.isToday && styles.dayLabelToday,
+                  ]}
+                >
+                  {d.label}
+                </Text>
+              </View>
+            ))}
+          </View>
+        </Card>
+
         {/* Quick Stats Grid (4 Live Cards) */}
         <View style={styles.statsGrid}>
+
           {/* 1. Words in Memory */}
           <Card padding="md" style={styles.statCard}>
             <Ionicons name="checkmark-done-circle" size={24} color={colors.primary} />
@@ -477,7 +543,70 @@ const styles = StyleSheet.create({
     marginTop: spacing.sm,
     fontStyle: 'italic',
   },
+  activityCard: {
+    marginBottom: spacing.lg,
+  },
+  activityHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: spacing.md,
+  },
+  activityTitleRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+  },
+  activityTitle: {
+    fontSize: typography.sizes.sm,
+    fontWeight: typography.weights.bold,
+    color: colors.textPrimary,
+  },
+  activitySubtitle: {
+    fontSize: typography.sizes.xs,
+    color: colors.textSecondary,
+    fontWeight: typography.weights.medium,
+  },
+  activityBarsRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingHorizontal: spacing.xs,
+  },
+  dayCol: {
+    alignItems: 'center',
+    gap: 6,
+  },
+  dayBar: {
+    width: 34,
+    height: 34,
+    borderRadius: radius.md,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  dayBarActive: {
+    backgroundColor: colors.primary,
+  },
+  dayBarInactive: {
+    backgroundColor: colors.backgroundSubtle,
+    borderWidth: 1,
+    borderColor: colors.border,
+  },
+  dayBarToday: {
+    borderWidth: 2,
+    borderColor: '#F59E0B',
+  },
+  dayLabel: {
+    fontSize: 11,
+    color: colors.textSecondary,
+    fontWeight: typography.weights.medium,
+  },
+  dayLabelToday: {
+    color: colors.primary,
+    fontWeight: typography.weights.bold,
+  },
   statsGrid: {
+
     flexDirection: 'row',
     flexWrap: 'wrap',
     gap: spacing.md,

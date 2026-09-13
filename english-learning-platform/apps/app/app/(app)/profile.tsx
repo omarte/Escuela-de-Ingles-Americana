@@ -14,6 +14,7 @@ import { colors, spacing, radius, typography, Card, Button, Badge } from '@elp/u
 import { Ionicons } from '@expo/vector-icons'
 import { useAuthStore } from '../../stores/useAuthStore'
 import { useSyncStore } from '../../stores/useSyncStore'
+import { useSRSStore } from '../../stores/useSRSStore'
 import { isSupabaseConfigured } from '../../lib/supabase'
 import { APP_LOGO } from '../../lib/assets'
 
@@ -53,6 +54,12 @@ export default function ProfileScreen(): React.JSX.Element {
   const currentLevel = profile?.currentLevel ?? 'A1'
   const avatarInitial = displayName.charAt(0).toUpperCase() || 'E'
 
+  const cards = useSRSStore((state) => state.cards)
+  const totalXP = Math.max(
+    profile?.streakDays ? profile.streakDays * 25 : 0,
+    cards.filter((c) => c.reps > 0).length * 10 + cards.filter((c) => c.interval >= 21).length * 20,
+  )
+
   const totalPending = pendingCardsCount + pendingEventsCount
   const formattedSyncTime = lastSyncedAt
     ? new Date(lastSyncedAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
@@ -70,15 +77,21 @@ export default function ProfileScreen(): React.JSX.Element {
             <View style={styles.profileInfo}>
               <Text style={styles.profileName}>{displayName}</Text>
               <Text style={styles.profileEmail}>{displayEmail}</Text>
-              <Badge
-                label={`Nivel ${currentLevel} Activo`}
-                color={colors.primary}
-                size="sm"
-                style={styles.profileBadge}
-              />
+              <View style={styles.profileBadgesRow}>
+                <Badge
+                  label={`Nivel ${currentLevel} Activo`}
+                  color={colors.primary}
+                  size="sm"
+                />
+                <View style={styles.xpPill}>
+                  <Ionicons name="flash" size={13} color="#D97706" />
+                  <Text style={styles.xpPillText}>{String(totalXP)} XP</Text>
+                </View>
+              </View>
             </View>
           </View>
         </Card>
+
 
         {/* Offline & Sync Status */}
         <Text style={styles.sectionTitle}>Sincronización & Almacenamiento Local</Text>
@@ -255,9 +268,32 @@ const styles = StyleSheet.create({
     color: colors.textSecondary,
     marginTop: 2,
   },
+  profileBadgesRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.xs,
+    marginTop: spacing.xs,
+  },
+  xpPill: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 3,
+    backgroundColor: '#FEF3C7',
+    paddingHorizontal: 8,
+    paddingVertical: 3,
+    borderRadius: radius.full,
+    borderWidth: 1,
+    borderColor: '#FDE68A',
+  },
+  xpPillText: {
+    color: '#B45309',
+    fontSize: typography.sizes.xs - 1,
+    fontWeight: typography.weights.bold,
+  },
   profileBadge: {
     marginTop: spacing.xs,
   },
+
   sectionTitle: {
     fontSize: typography.sizes.xs,
     fontWeight: typography.weights.bold,

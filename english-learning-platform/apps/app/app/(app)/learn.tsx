@@ -13,6 +13,7 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import { colors, spacing, typography, radius, Card, Button, Badge, ProgressBar } from '@elp/ui'
 import { Ionicons } from '@expo/vector-icons'
 import type { ReviewQuality } from '@elp/types'
+import { getDueCards } from '@elp/srs'
 import { useSRSStore } from '../../stores/useSRSStore'
 import { useAuthStore } from '../../stores/useAuthStore'
 import { getWordDisplayData } from '../../lib/vocabulary'
@@ -55,6 +56,9 @@ export default function LearnScreen(): React.JSX.Element {
 
   const userId = user?.id ?? 'demo-user'
   const currentLevel = profile?.currentLevel ?? 'A1'
+
+  const dueCards = getDueCards(cards)
+  const dueCount = dueCards.length
 
   useEffect(() => {
     void loadCards(userId)
@@ -167,37 +171,51 @@ export default function LearnScreen(): React.JSX.Element {
               </View>
             </Card>
 
+            {/* 1 + 2 + 1 CTA Hierarchy */}
             <View style={styles.completedActions}>
+              {/* 1. Large Primary Action */}
               <Button
-                title="🔁 Repetir Lección Actual (Fijar Formación)"
+                title={
+                  dueCount > 0
+                    ? `Repasar SRS (${String(dueCount)} pendientes)`
+                    : '➕ Aprender 10 Palabras Nuevas'
+                }
                 variant="primary"
                 onPress={() => {
-                  void repeatCurrentLesson(userId)
+                  if (dueCount > 0) {
+                    void startStudySession(userId, currentLevel)
+                  } else {
+                    void loadNextBatch(userId, currentLevel, 10)
+                  }
                 }}
                 size="lg"
                 style={styles.completedBtn}
               />
 
-              <Button
-                title="➕ Aprender 10 Palabras Nuevas"
-                variant="secondary"
-                onPress={() => {
-                  void loadNextBatch(userId, currentLevel, 10)
-                }}
-                size="lg"
-                style={styles.completedBtn}
-              />
+              {/* 2. Two Medium Buttons Side by Side */}
+              <View style={styles.secondaryCtaRow}>
+                <Button
+                  title="🔁 Repetir lección"
+                  variant="secondary"
+                  onPress={() => {
+                    void repeatCurrentLesson(userId)
+                  }}
+                  size="md"
+                  style={styles.halfBtn}
+                />
 
-              <Button
-                title="🎯 Práctica Libre / Refuerzo"
-                variant="outline"
-                onPress={() => {
-                  void startFreePracticeSession(userId, currentLevel)
-                }}
-                size="md"
-                style={styles.completedBtn}
-              />
+                <Button
+                  title="🎯 Práctica libre"
+                  variant="outline"
+                  onPress={() => {
+                    void startFreePracticeSession(userId, currentLevel)
+                  }}
+                  size="md"
+                  style={styles.halfBtn}
+                />
+              </View>
 
+              {/* 1. Subtle Link Button */}
               <Button
                 title="Volver al Inicio"
                 variant="ghost"
@@ -206,7 +224,7 @@ export default function LearnScreen(): React.JSX.Element {
                   router.replace('/(app)')
                 }}
                 size="sm"
-                style={styles.completedBtn}
+                style={styles.subtleLinkBtn}
               />
             </View>
           </View>
@@ -214,6 +232,7 @@ export default function LearnScreen(): React.JSX.Element {
       </SafeAreaView>
     )
   }
+
 
   // ── Session Intro View (When Queue is Empty) ───────────────────────────────
   if (!isSessionActive || !activeCard || !wordData) {
@@ -261,45 +280,59 @@ export default function LearnScreen(): React.JSX.Element {
               </View>
             </View>
 
-            {/* The 3 Actions for continuous learning */}
+            {/* The 1 + 2 + 1 CTA Hierarchy */}
             <View style={styles.introActions}>
+              {/* 1. Large Primary Button */}
               <Button
-                title="➕ Aprender 10 Palabras Nuevas"
+                title={
+                  dueCount > 0
+                    ? `Repasar SRS (${String(dueCount)} pendientes)`
+                    : '➕ Aprender 10 Palabras Nuevas'
+                }
+                variant="primary"
                 onPress={() => {
-                  void loadNextBatch(userId, currentLevel, 10)
+                  if (dueCount > 0) {
+                    void startStudySession(userId, currentLevel)
+                  } else {
+                    void loadNextBatch(userId, currentLevel, 10)
+                  }
                 }}
                 size="lg"
                 style={styles.introBtn}
               />
 
-              <Button
-                title="🔁 Repetir Lección Actual (Fijar Formación)"
-                variant="secondary"
-                onPress={() => {
-                  void repeatCurrentLesson(userId)
-                }}
-                size="lg"
-                style={styles.introBtn}
-              />
+              {/* 2. Two Medium Buttons Side by Side */}
+              <View style={styles.secondaryCtaRow}>
+                <Button
+                  title="🔁 Repetir lección"
+                  variant="secondary"
+                  onPress={() => {
+                    void repeatCurrentLesson(userId)
+                  }}
+                  size="md"
+                  style={styles.halfBtn}
+                />
 
-              <Button
-                title="🎯 Práctica Libre / Refuerzo"
-                variant="outline"
-                onPress={() => {
-                  void startFreePracticeSession(userId, currentLevel)
-                }}
-                size="md"
-                style={styles.introBtn}
-              />
+                <Button
+                  title="🎯 Práctica libre"
+                  variant="outline"
+                  onPress={() => {
+                    void startFreePracticeSession(userId, currentLevel)
+                  }}
+                  size="md"
+                  style={styles.halfBtn}
+                />
+              </View>
 
+              {/* 1. Subtle Link Button */}
               <Button
-                title="Iniciar Sesión de Repaso Programado"
+                title="Volver al Inicio"
                 variant="ghost"
                 onPress={() => {
-                  void startStudySession(userId, currentLevel)
+                  router.replace('/(app)')
                 }}
                 size="sm"
-                style={styles.introBtn}
+                style={styles.subtleLinkBtn}
               />
             </View>
           </Card>
@@ -320,6 +353,7 @@ export default function LearnScreen(): React.JSX.Element {
           <View style={styles.sessionHeaderTop}>
             <View style={styles.badgeRow}>
               <Badge label={`Nivel ${wordData.level}`} color={colors.primary} size="sm" />
+              <Badge label="Repaso SRS" color={colors.success} size="sm" />
               <Badge
                 label={studyPhase === 'recognition' ? 'Fase 1: Reconocimiento' : 'Fase 2: Escritura ✍️'}
                 color={studyPhase === 'recognition' ? colors.secondary : colors.info}
@@ -1179,4 +1213,16 @@ const styles = StyleSheet.create({
   completedBtn: {
     width: '100%',
   },
+  secondaryCtaRow: {
+    flexDirection: 'row',
+    gap: spacing.sm,
+    width: '100%',
+  },
+  halfBtn: {
+    flex: 1,
+  },
+  subtleLinkBtn: {
+    marginTop: spacing.xs,
+  },
 })
+
