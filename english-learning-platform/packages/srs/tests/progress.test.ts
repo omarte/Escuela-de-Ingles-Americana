@@ -4,6 +4,8 @@ import {
   calculateRetentionRate,
   evaluateLevelAdvancement,
   calculateWeeklyBreakdown,
+  calculateDailyProgress,
+  toLocalDateString,
   type WeekDefinition,
 } from '../src/progress'
 import type { SRSCard } from '@elp/types'
@@ -262,3 +264,95 @@ describe('Progress Engine: calculateWeeklyBreakdown', () => {
     expect(breakdown[2]?.progressRatio).toBe(0)
   })
 })
+
+describe('Regression Test: Daily Goal vs Historical Reps (False 20/20 with Streak 0)', () => {
+  it('does NOT count cards reviewed in previous days towards today daily goal', () => {
+    // Scenario: User has 20 cards reviewed 3 days ago (reps > 0), but has NOT reviewed anything today.
+    const historicalCards: SRSCard[] = Array.from({ length: 20 }, (_, i) => ({
+      id: `c_${i}`,
+      userId: 'user_1',
+      vocabularyItemId: `v_${i}`,
+      state: 'review',
+      interval: 3,
+      easeFactor: 2.5,
+      reps: 2, // reps > 0 historically!
+      lapses: 0,
+      dueDate: '2026-09-10',
+      lastReviewed: '2026-09-07T15:00:00.000Z', // 3 days ago
+    }))
+
+    const todayStr = '2026-09-10'
+    const dailyProgress = calculateDailyProgress(historicalCards, todayStr, 20)
+
+    // Daily progress MUST be 0/20, NOT 20/20!
+    expect(dailyProgress.completedToday).toBe(0)
+    expect(dailyProgress.progressRatio).toBe(0)
+    expect(dailyProgress.isGoalAchieved).toBe(false)
+
+    // And streak calculation with no reviews today or yesterday MUST be 0
+    const reviewDates = historicalCards.map((c) => c.lastReviewed!)
+    const streakResult = calculateStreak(reviewDates, todayStr)
+
+    expect(streakResult.currentStreak).toBe(0)
+    expect(streakResult.studiedToday).toBe(false)
+    // No contradiction: 0/20 completed and 0 streak!
+  })
+
+  it('correctly counts cards reviewed today towards daily goal', () => {
+    const todayStr = '2026-09-10'
+    const mixedCards: SRSCard[] = [
+      // 5 cards reviewed today
+      ...Array.from({ length: 5 }, (_, i) => ({
+        id: `today_${i}`,
+        userId: 'user_1',
+        vocabularyItemId: `vt_${i}`,
+        state: 'learning' as const,
+        interval: 1,
+        easeFactor: 2.5,
+        reps: 1,
+        lapses: 0,
+        dueDate: '2026-09-11',
+        lastReviewed: '2026-09-10T11:00:00.000Z',
+      })),
+      // 15 cards reviewed yesterday
+      ...Array.from({ length: 15 }, (_, i) => ({
+        id: `yest_${i}`,
+        userId: 'user_1',
+        vocabularyItemId: `vy_${i}`,
+        state: 'review' as const,
+        interval: 2,
+        easeFactor: 2.5,
+        reps: 2,
+        lapses: 0,
+        dueDate: '2026-09-11',
+        lastReviewed: '2026-09-09T18:00:00.000Z',
+      })),
+    ]
+
+    const dailyProgress = calculateDailyProgress(mixedCards, todayStr, 20)
+    expect(dailyProgress.completedToday).toBe(5)
+    expect(dailyProgress.progressRatio).toBe(0.25)
+    expect(dailyProgress.isGoalAchieved).toBe(false)
+  })
+
+  it('handles timezone midnight boundary correctly', () => {
+    // A review timestamp at 23:30 local time
+    const todayLocal = toLocalDateString(new Date())
+    const card: SRSCard = {
+      id: 'c_boundary',
+      userId: 'user_1',
+      vocabularyItemId: 'v_boundary',
+      state: 'review',
+      interval: 1,
+      easeFactor: 2.5,
+      reps: 1,
+      lapses: 0,
+      dueDate: todayLocal,
+      lastReviewed: new Date().toISOString(), // exact now
+    }
+
+    const progress = calculateDailyProgress([card], todayLocal, 20)
+    expect(progress.completedToday).toBe(1)
+  })
+})
+

@@ -14,10 +14,14 @@ export {
   calculateRetentionRate,
   evaluateLevelAdvancement,
   calculateWeeklyBreakdown,
+  calculateDailyProgress,
+  toLocalDateString,
 } from './progress'
 export type {
   StreakResult,
   LevelAdvancementResult,
   WeekDefinition,
   WeeklyBreakdownItem,
+  DailyProgressResult,
 } from './progress'
+

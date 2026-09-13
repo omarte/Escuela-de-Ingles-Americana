@@ -39,17 +39,30 @@ export interface WeeklyBreakdownItem {
 const CEFR_ORDER: readonly CEFRLevel[] = ['A1', 'A2', 'B1', 'B2']
 
 /**
- * Normalizes an ISO timestamp or date string to YYYY-MM-DD.
+ * Normalizes an ISO timestamp, Date object, or date string to local calendar YYYY-MM-DD.
+ * If the input contains a timestamp (e.g. ISO string with time), converts to the local
+ * device timezone so reviews near midnight (e.g. 11 PM in UTC-4) match local calendar days.
  */
-function toDateString(d: string | Date): string {
-  if (d instanceof Date) {
-    const year = d.getFullYear()
-    const month = String(d.getMonth() + 1).padStart(2, '0')
-    const day = String(d.getDate()).padStart(2, '0')
+export function toLocalDateString(d: string | Date): string {
+  if (typeof d === 'string') {
+    if (/^\d{4}-\d{2}-\d{2}$/.test(d)) {
+      return d
+    }
+    const parsed = new Date(d)
+    if (isNaN(parsed.getTime())) {
+      return d.slice(0, 10)
+    }
+    const year = parsed.getFullYear()
+    const month = String(parsed.getMonth() + 1).padStart(2, '0')
+    const day = String(parsed.getDate()).padStart(2, '0')
     return `${String(year)}-${month}-${day}`
   }
-  return d.slice(0, 10)
+  const year = d.getFullYear()
+  const month = String(d.getMonth() + 1).padStart(2, '0')
+  const day = String(d.getDate()).padStart(2, '0')
+  return `${String(year)}-${month}-${day}`
 }
+
 
 /**
  * Gets the day before a given YYYY-MM-DD date.
@@ -61,7 +74,7 @@ function getPreviousDateString(dateStr: string): string {
   }
   const date = new Date(year, month - 1, day)
   date.setDate(date.getDate() - 1)
-  return toDateString(date)
+  return toLocalDateString(date)
 }
 
 /**
@@ -91,7 +104,7 @@ export function calculateStreak(
   const uniqueDateSet = new Set<string>()
   for (const raw of studyDates) {
     if (raw && raw.length >= 10) {
-      uniqueDateSet.add(toDateString(raw))
+      uniqueDateSet.add(toLocalDateString(raw))
     }
   }
 
@@ -106,7 +119,7 @@ export function calculateStreak(
     }
   }
 
-  const todayStr = referenceDate ? toDateString(referenceDate) : toDateString(new Date())
+  const todayStr = referenceDate ? toLocalDateString(referenceDate) : toLocalDateString(new Date())
   const yesterdayStr = getPreviousDateString(todayStr)
   const lastStudyDate = sortedDates[sortedDates.length - 1] ?? null
   const studiedToday = uniqueDateSet.has(todayStr)
@@ -163,6 +176,42 @@ export function calculateStreak(
     studiedToday,
     lastStudyDate,
     activeDates: sortedDates,
+  }
+}
+
+export interface DailyProgressResult {
+  readonly completedToday: number
+  readonly dailyGoal: number
+  readonly progressRatio: number
+  readonly isGoalAchieved: boolean
+}
+
+/**
+ * Calculates daily goal progress based on cards reviewed on a specific local reference date.
+ * Prevents historical accumulation bias (where cards with reps > 0 from past days were falsely counted as today's progress).
+ */
+export function calculateDailyProgress(
+  cards: readonly SRSCard[],
+  referenceDate?: string | Date,
+  dailyGoal = 20,
+): DailyProgressResult {
+  const targetDateStr = referenceDate
+    ? toLocalDateString(referenceDate)
+    : toLocalDateString(new Date())
+
+  const cardsReviewedToday = cards.filter((c) => {
+    if (!c.lastReviewed) return false
+    return toLocalDateString(c.lastReviewed) === targetDateStr
+  }).length
+
+  const completedToday = Math.min(dailyGoal, Math.max(0, cardsReviewedToday))
+  const progressRatio = dailyGoal > 0 ? completedToday / dailyGoal : 0
+
+  return {
+    completedToday,
+    dailyGoal,
+    progressRatio,
+    isGoalAchieved: completedToday >= dailyGoal,
   }
 }
 
