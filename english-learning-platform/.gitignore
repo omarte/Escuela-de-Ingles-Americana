@@ -70,3 +70,5 @@ supabase/.temp/
 .cache/
 tmp/
 temp/
+apps/app/assets/raw_backup/
+

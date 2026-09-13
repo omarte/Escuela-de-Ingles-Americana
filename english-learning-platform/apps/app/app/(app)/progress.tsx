@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react'
-import { View, Text, StyleSheet, ScrollView, Modal, Alert } from 'react-native'
+import { View, Text, StyleSheet, ScrollView, Modal, Alert, Image } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { colors, spacing, radius, typography, Card, ProgressBar, Badge, Button } from '@elp/ui'
 import { Ionicons } from '@expo/vector-icons'
@@ -7,6 +7,12 @@ import { contentRegistry } from '@elp/content'
 import { useAuthStore } from '../../stores/useAuthStore'
 import { useProgressStore } from '../../stores/useProgressStore'
 import { useSRSStore } from '../../stores/useSRSStore'
+import {
+  LEVEL_A1_COMPLETED,
+  LEVEL_A2_COMPLETED,
+  LEVEL_B1_COMPLETED,
+  LEVEL_B2_COMPLETED,
+} from '../../lib/assets'
 
 export default function ProgressScreen(): React.JSX.Element {
   const user = useAuthStore((state) => state.user)
@@ -420,9 +426,19 @@ export default function ProgressScreen(): React.JSX.Element {
         >
           <View style={styles.modalOverlay}>
             <View style={styles.modalContent}>
-              <View style={styles.modalIconWrapper}>
-                <Ionicons name="ribbon" size={48} color={colors.primary} />
-              </View>
+              <Image
+                source={
+                  currentLevel === 'A1'
+                    ? LEVEL_A1_COMPLETED
+                    : currentLevel === 'A2'
+                      ? LEVEL_A2_COMPLETED
+                      : currentLevel === 'B1'
+                        ? LEVEL_B1_COMPLETED
+                        : LEVEL_B2_COMPLETED
+                }
+                style={styles.modalDiplomaImage}
+                resizeMode="contain"
+              />
               <Text style={styles.modalTitle}>¡Felicitaciones!</Text>
               <Text style={styles.modalBody}>
                 Has alcanzado el dominio requerido en el Nivel {currentLevel}. ¿Deseas ascender al
@@ -765,6 +781,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderWidth: 1,
     borderColor: colors.border,
+  },
+  modalDiplomaImage: {
+    width: '100%',
+    height: 160,
+    borderRadius: radius.md,
+    marginBottom: spacing.md,
   },
   modalIconWrapper: {
     width: 72,

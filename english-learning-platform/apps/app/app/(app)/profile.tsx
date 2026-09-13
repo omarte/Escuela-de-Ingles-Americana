@@ -29,7 +29,7 @@ import {
   restoreLocalCardsWithMerge,
 } from '../../lib/db/sqlite'
 import { isSupabaseConfigured } from '../../lib/supabase'
-import { APP_LOGO } from '../../lib/assets'
+import { APP_LOGO, SCHOOL_LOGO } from '../../lib/assets'
 
 export default function ProfileScreen(): React.JSX.Element {
   const router = useRouter()
@@ -399,7 +399,7 @@ export default function ProfileScreen(): React.JSX.Element {
 
         {/* App Version Info & School Crest */}
         <View style={styles.versionInfo}>
-          <Image source={APP_LOGO} style={styles.versionLogo} resizeMode="contain" />
+          <Image source={SCHOOL_LOGO} style={styles.versionLogo} resizeMode="contain" />
           <Text style={styles.schoolName}>Escuela de Inglés Americana</Text>
           <Text style={styles.schoolMotto}>Formación Académica y Cultural en Inglés</Text>
           <Text style={styles.versionText}>English Learning Platform v0.1.0 • A1 a B2</Text>
