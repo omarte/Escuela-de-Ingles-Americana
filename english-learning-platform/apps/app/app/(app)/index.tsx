@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import { View, Text, StyleSheet, ScrollView, Image, TouchableOpacity } from 'react-native'
+import { View, Text, StyleSheet, ScrollView, Image, TouchableOpacity, Share } from 'react-native'
 import { useRouter, useFocusEffect } from 'expo-router'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import AsyncStorage from '@react-native-async-storage/async-storage'
@@ -94,6 +94,18 @@ export default function HomeScreen(): React.JSX.Element {
             </View>
           </View>
           <View style={styles.topBarRight}>
+            {/* Quick Sync Button */}
+            <TouchableOpacity
+              style={styles.syncIconButton}
+              onPress={async () => {
+                const { useSyncStore } = await import('../../stores/useSyncStore')
+                await useSyncStore.getState().triggerSync(userId)
+              }}
+              accessibilityLabel="Sincronizar progreso"
+            >
+              <Ionicons name="sync-outline" size={16} color={colors.primary} />
+            </TouchableOpacity>
+
             <View style={styles.xpBadge}>
               <Ionicons name="flash" size={13} color="#F59E0B" />
               <Text style={styles.xpBadgeText}>{String(totalXP)} XP</Text>
@@ -185,6 +197,24 @@ export default function HomeScreen(): React.JSX.Element {
             <Text style={styles.repeatHeroBtnText}>
               🔁 Repetir lección actual para fijar formación
             </Text>
+          </TouchableOpacity>
+
+          {/* Social Share Streak Button */}
+          <TouchableOpacity
+            style={styles.shareStreakBtn}
+            onPress={async () => {
+              try {
+                await Share.share({
+                  message: `🔥 ¡Llevo ${streakDays} días de racha estudiando inglés en la Escuela de Inglés Americana! 🇺🇸📚 ${completedToday} palabras repasadas hoy. ¡Aprende con repetición espaciada!`,
+                })
+              } catch {
+                // dismissed
+              }
+            }}
+            activeOpacity={0.8}
+          >
+            <Ionicons name="share-social-outline" size={15} color={colors.primary} />
+            <Text style={styles.shareStreakBtnText}>Compartir mi racha de estudio</Text>
           </TouchableOpacity>
         </Card>
 
@@ -436,10 +466,28 @@ const styles = StyleSheet.create({
     borderColor: colors.border,
     marginTop: spacing.sm,
   },
+  syncIconButton: {
+    padding: 6,
+    borderRadius: radius.full,
+    backgroundColor: 'rgba(5, 150, 105, 0.08)',
+  },
   repeatHeroBtnText: {
     fontSize: typography.sizes.xs,
     color: colors.primary,
     fontWeight: typography.weights.semibold,
+  },
+  shareStreakBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 6,
+    paddingVertical: spacing.xs + 2,
+    marginTop: spacing.xs,
+  },
+  shareStreakBtnText: {
+    fontSize: typography.sizes.xs - 1,
+    color: colors.primary,
+    fontWeight: typography.weights.bold,
   },
   sectionTitle: {
     fontSize: typography.sizes.xs,

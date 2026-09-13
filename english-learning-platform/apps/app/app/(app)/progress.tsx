@@ -84,6 +84,27 @@ export default function ProgressScreen(): React.JSX.Element {
     }
   }
 
+  const handleShareGlobalProgress = async (): Promise<void> => {
+    try {
+      const studentName = profile?.displayName ?? user?.email?.split('@')[0] ?? 'Estudiante'
+      const shareText = `🌟 Mi Progreso en la Escuela de Inglés Americana 🇺🇸
+👤 Alumno: ${studentName}
+📊 Nivel: ${currentLevel} (${Math.round(levelAdvancement.masteryRatio * 100)}% dominado)
+🔥 Racha: ${streak.currentStreak} días seguidos
+🧠 Palabras en memoria: ${wordsInMemory}
+🎯 Retención de vocabulario: ${retentionRate}%
+
+¡Aprende inglés con método científico y repetición espaciada!`
+
+      await Share.share({
+        message: shareText,
+        title: 'Mi Avance en la Escuela de Inglés Americana',
+      })
+    } catch {
+      // User dismissed
+    }
+  }
+
   const userId = user?.id ?? 'demo-user'
 
   useEffect(() => {
@@ -411,6 +432,20 @@ export default function ProgressScreen(): React.JSX.Element {
               alcanzar el 80% y desbloquear el Nivel {levelAdvancement.nextLevel ?? 'superior'}.
             </Text>
           )}
+
+          {/* Share Global Progress Button */}
+          <View style={styles.shareProgressRow}>
+            <Button
+              title="📢 Compartir mi Avance en Redes"
+              variant="outline"
+              size="sm"
+              onPress={() => {
+                void handleShareGlobalProgress()
+              }}
+              style={styles.shareProgressBtn}
+              icon={<Ionicons name="share-social-outline" size={16} color={colors.primary} />}
+            />
+          </View>
         </Card>
 
         {/* 7-Day Activity Mini-Chart */}
@@ -1023,6 +1058,15 @@ const styles = StyleSheet.create({
     color: colors.textMuted,
     marginTop: spacing.sm,
     fontStyle: 'italic',
+  },
+  shareProgressRow: {
+    marginTop: spacing.md,
+    paddingTop: spacing.sm,
+    borderTopWidth: 1,
+    borderTopColor: colors.border,
+  },
+  shareProgressBtn: {
+    borderColor: colors.primary,
   },
   activityCard: {
     marginBottom: spacing.lg,
