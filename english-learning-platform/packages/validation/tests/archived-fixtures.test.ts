@@ -6,7 +6,7 @@ import {
   WritingPromptBankSchema,
 } from '../src/index'
 
-describe('Primer Lote Curated Content - Regression & Integrity', () => {
+describe('Archived Curriculum Fixtures - Schema & Content Regression', () => {
   // Resolve primer lote folder reliably across different execution working directories
   const possiblePaths = [
     path.resolve(__dirname, '../../../../docs/archive/primer-lote-2026-09'),
