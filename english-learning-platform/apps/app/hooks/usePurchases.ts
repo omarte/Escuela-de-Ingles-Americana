@@ -24,8 +24,14 @@ interface PurchasesState {
   error: string | null
 }
 
-const IOS_API_KEY = process.env.EXPO_PUBLIC_REVENUECAT_IOS_API_KEY ?? ''
-const ANDROID_API_KEY = process.env.EXPO_PUBLIC_REVENUECAT_ANDROID_API_KEY ?? ''
+const IOS_API_KEY =
+  process.env.EXPO_PUBLIC_REVENUECAT_API_KEY_IOS ??
+  process.env.EXPO_PUBLIC_REVENUECAT_IOS_API_KEY ??
+  ''
+const ANDROID_API_KEY =
+  process.env.EXPO_PUBLIC_REVENUECAT_API_KEY_ANDROID ??
+  process.env.EXPO_PUBLIC_REVENUECAT_ANDROID_API_KEY ??
+  ''
 
 /**
  * Configura el SDK una sola vez al arrancar la app, vinculando el

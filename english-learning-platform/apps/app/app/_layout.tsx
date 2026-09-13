@@ -6,6 +6,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context'
 import { colors } from '@elp/ui'
 import { useAuthStore } from '../stores/useAuthStore'
 import { SPLASH_SCREEN_IMG } from '../lib/assets'
+import { configurePurchases } from '../hooks/usePurchases'
 
 function NavigationGuard(): React.JSX.Element {
   const router = useRouter()
@@ -14,6 +15,17 @@ function NavigationGuard(): React.JSX.Element {
   const isInitialized = useAuthStore((state) => state.isInitialized)
   const initSession = useAuthStore((state) => state.initSession)
   const [minSplashDone, setMinSplashDone] = React.useState(false)
+
+  useEffect(() => {
+    if (session?.user?.id) {
+      void configurePurchases(session.user.id).catch((err: unknown) => {
+        if (__DEV__) {
+          const msg = err instanceof Error ? err.message : String(err)
+          console.warn('[Purchases] configurePurchases warning:', msg)
+        }
+      })
+    }
+  }, [session?.user?.id])
 
   useEffect(() => {
     void initSession()
