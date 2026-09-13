@@ -22,19 +22,35 @@ import type { CEFRLevel, VocabularyItem } from '../packages/types/src/index'
 
 const LEVELS: readonly CEFRLevel[] = ['A1', 'A2', 'B1', 'B2']
 
+interface DuplicateItem {
+  id: string
+  level: CEFRLevel
+  week: number
+  word: string
+}
+
 interface DuplicateEntry {
   normalizedWord: string
-  items: Array<{ id: string; level: CEFRLevel; week: number; word: string }>
+  items: DuplicateItem[]
 }
 
 const sameLevelDuplicates: DuplicateEntry[] = []
 const crossLevelDuplicates: DuplicateEntry[] = []
 
 // Build a cross-level index: normalizedWord → all items
-const globalIndex = new Map<
-  string,
-  Array<{ id: string; level: CEFRLevel; week: number; word: string }>
->()
+const globalIndex = new Map<string, DuplicateItem[]>()
+
+function normalizeWord(word: string): string {
+  const trimmed = word.toLowerCase().trim()
+  // Verbos irregulares con formato "base – past – participle" (Semana 19)
+  // Se namespacean aparte porque enseñan conjugación irregular del verbo ya visto.
+  // NO se eliminan los paréntesis para preservar homónimos legítimos como "cook" vs "cook (verb)".
+  if (trimmed.includes('–')) {
+    const base = (trimmed.split('–')[0] ?? '').trim()
+    return `irregular_triplet:${base}`
+  }
+  return trimmed
+}
 
 for (const level of LEVELS) {
   // Same-level check
@@ -42,7 +58,7 @@ for (const level of LEVELS) {
 
   for (const block of contentRegistry[level].blocks) {
     for (const item of block.vocabulary) {
-      const normalized = item.word.toLowerCase().trim()
+      const normalized = normalizeWord(item.word)
 
       // Within-level
       const existing = levelIndex.get(normalized) ?? []

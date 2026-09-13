@@ -67,6 +67,8 @@ desktop.ini
 *.key
 *.mobileprovision
 *.orig.*
+*.apk
+*.aab
 
 # ─── Local Database files ─────────────────────────────────────────────────────
 *.sqlite

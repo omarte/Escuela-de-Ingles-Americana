@@ -1,0 +1,34 @@
+[
+  {
+    "id": "read_b1_001",
+    "level": "B1",
+    "title": "A Difficult Decision",
+    "week": 2,
+    "difficulty": "1/5",
+    "wordCount": 142,
+    "grammarFocus": ["First Conditional", "Second Conditional"],
+    "text": "Last month, Marco had to make a decision that would change his life. He had been offered a new job in another city, but if he accepted it, he would have to leave his elderly parents behind. If he stayed, he knew he would probably regret missing such a great opportunity. He spoke to his sister, who suggested that he make a list of reasons for each choice. 'If you don't try,' she said, 'you'll always wonder what could have happened.' After thinking it over for a week, Marco realized that if his parents needed him, he could always visit them often, and video calls would help too. In the end, he decided to accept the job. It wasn't an easy choice, but he felt confident that, whatever happened, he would learn something valuable from it.",
+    "comprehensionQuestions": [
+      {"question": "Why was Marco's decision difficult?", "options": ["He didn't like his new job", "He would have to leave his parents", "He couldn't afford to move"], "correctIndex": 1},
+      {"question": "What did his sister suggest?", "options": ["To ignore the offer", "To make a list of reasons", "To ask his parents to move with him"], "correctIndex": 1},
+      {"question": "What did Marco finally decide?", "options": ["To stay in his city", "To accept the new job", "To wait another year"], "correctIndex": 1}
+    ],
+    "status": "curated"
+  },
+  {
+    "id": "read_b1_002",
+    "level": "B1",
+    "title": "The Rise of Remote Work",
+    "week": 7,
+    "difficulty": "3/5",
+    "wordCount": 168,
+    "grammarFocus": ["Passive Voice", "Present Perfect"],
+    "text": "Over the past few years, the way people work has changed significantly. Many companies have been forced to reconsider how their offices are used, and remote work, which used to be seen as unusual, is now considered normal by a large part of the workforce. According to a recent survey, more than half of employees say they would prefer to work from home at least part of the time. Some businesses have already adapted their policies, offering flexible schedules and hybrid arrangements. However, not everyone benefits equally. Workers whose jobs require physical presence, such as those in manufacturing or healthcare, have not been given the same flexibility. Critics argue that this creates a new kind of inequality between those who can work from anywhere and those who cannot. As this trend continues, it is likely that new regulations will need to be introduced to protect workers on both sides of this divide.",
+    "comprehensionQuestions": [
+      {"question": "What does the survey mention?", "options": ["Most employees dislike remote work", "Over half prefer working from home sometimes", "Nobody wants hybrid schedules"], "correctIndex": 1},
+      {"question": "Who has NOT received the same flexibility?", "options": ["Office workers", "Workers whose jobs require physical presence", "Managers"], "correctIndex": 1},
+      {"question": "What do critics say this trend creates?", "options": ["More jobs overall", "A new kind of inequality", "Lower salaries for everyone"], "correctIndex": 1}
+    ],
+    "status": "curated"
+  }
+]

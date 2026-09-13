@@ -189,6 +189,8 @@ export const GrammarExerciseSchema = z
     },
   )
 
+export const GrammarExerciseBankSchema = z.array(GrammarExerciseSchema)
+
 // ─── Writing Prompt (B2 Free Production with Tutor Review) ──────────────────
 
 export const WritingPromptTypeSchema = z.enum([
@@ -219,6 +221,8 @@ export const WritingPromptSchema = z
   .refine((p) => p.maxWords > p.minWords, {
     message: 'maxWords must be strictly greater than minWords',
   })
+
+export const WritingPromptBankSchema = z.array(WritingPromptSchema)
 
 // ─── Re-exports ───────────────────────────────────────────────────────────────
 

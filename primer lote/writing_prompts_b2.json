@@ -1,0 +1,123 @@
+[
+  {
+    "id": "wrt_b2_opinion_001",
+    "level": "B2",
+    "type": "opinion_essay",
+    "topic": "Should social media companies be responsible for the mental health effects of their platforms?",
+    "topicTranslation": "¿Deberían las redes sociales ser responsables de los efectos de sus plataformas en la salud mental?",
+    "instructions": "Write a structured opinion essay of 150-200 words. State your position clearly in the introduction, support it with at least two reasons, address one counterargument, and write a brief conclusion.",
+    "targetGrammar": ["Present Perfect", "Passive Voice", "Discourse markers (however, moreover, on the other hand)"],
+    "minWords": 150,
+    "maxWords": 220,
+    "rubricForTutor": [
+      "Estructura: ¿tiene introducción, desarrollo y conclusión claros?",
+      "Coherencia: ¿las ideas siguen un orden lógico con conectores adecuados?",
+      "Gramática: ¿hay errores recurrentes de tiempo verbal, concordancia o voz pasiva?",
+      "Vocabulario: ¿usa vocabulario de nivel B2 (matices, no solo palabras básicas)?",
+      "Argumentación: ¿aborda al menos un contraargumento, como se pidió?"
+    ],
+    "status": "curated"
+  },
+  {
+    "id": "wrt_b2_opinion_002",
+    "level": "B2",
+    "type": "opinion_essay",
+    "topic": "Is it better to specialize in one skill or to have knowledge in many different areas?",
+    "topicTranslation": "¿Es mejor especializarse en una habilidad o tener conocimientos en muchas áreas distintas?",
+    "instructions": "Write 150-200 words comparing both approaches before giving your own opinion. Use at least one comparative structure and one conditional sentence.",
+    "targetGrammar": ["Comparatives and Superlatives", "Second Conditional"],
+    "minWords": 150,
+    "maxWords": 220,
+    "rubricForTutor": [
+      "¿Compara ambas posturas antes de dar su opinión, como se pidió?",
+      "¿Usa al menos una estructura comparativa y una oracional condicional?",
+      "¿El argumento final está bien justificado, no solo afirmado?"
+    ],
+    "status": "curated"
+  },
+  {
+    "id": "wrt_b2_formal_email_001",
+    "level": "B2",
+    "type": "formal_email",
+    "topic": "Write a formal email to a company complaining about a defective product and requesting a full refund.",
+    "topicTranslation": "Escribe un correo formal a una empresa quejándote de un producto defectuoso y solicitando un reembolso completo.",
+    "instructions": "Use formal register throughout (no contractions, no informal phrases). Include a clear subject line, a polite but firm tone, and a specific request for resolution.",
+    "targetGrammar": ["Passive Voice", "Formal register vocabulary", "Modal verbs (would, could)"],
+    "minWords": 100,
+    "maxWords": 180,
+    "rubricForTutor": [
+      "¿Mantiene registro formal de principio a fin (sin contracciones ni coloquialismos)?",
+      "¿La solicitud es clara y específica (reembolso, no ambigua)?",
+      "¿El tono es firme pero cortés, apropiado para correspondencia comercial?"
+    ],
+    "status": "curated"
+  },
+  {
+    "id": "wrt_b2_narrative_001",
+    "level": "B2",
+    "type": "narrative",
+    "topic": "Describe a moment when you had to make a difficult decision. What happened, and what did you learn?",
+    "topicTranslation": "Describe un momento en el que tuviste que tomar una decisión difícil. ¿Qué pasó y qué aprendiste?",
+    "instructions": "Write a narrative of 180-250 words using a clear timeline. Use a variety of past tenses (past simple, past continuous, past perfect) and at least two descriptive adjectives per paragraph.",
+    "targetGrammar": ["Past Simple", "Past Continuous", "Past Perfect"],
+    "minWords": 180,
+    "maxWords": 250,
+    "rubricForTutor": [
+      "¿Usa variedad de tiempos pasados correctamente (no solo pasado simple)?",
+      "¿La secuencia temporal es clara y fácil de seguir?",
+      "¿El vocabulario descriptivo va más allá de adjetivos básicos (good/bad/nice)?"
+    ],
+    "status": "curated"
+  },
+  {
+    "id": "wrt_b2_argumentative_001",
+    "level": "B2",
+    "type": "argumentative_essay",
+    "topic": "Should university education be free for everyone?",
+    "topicTranslation": "¿Debería la educación universitaria ser gratuita para todos?",
+    "instructions": "Write 200-250 words presenting both sides of the argument with equal depth before stating your own conclusion. Use formal connectors (furthermore, nevertheless, consequently).",
+    "targetGrammar": ["Formal discourse connectors", "Passive Voice", "Conditional sentences"],
+    "minWords": 200,
+    "maxWords": 260,
+    "rubricForTutor": [
+      "¿Presenta ambos lados del argumento con profundidad similar (no sesgado desde el inicio)?",
+      "¿Usa conectores formales de forma natural, no forzada?",
+      "¿La conclusión se deriva lógicamente de los argumentos presentados?"
+    ],
+    "status": "curated"
+  },
+  {
+    "id": "wrt_b2_descriptive_001",
+    "level": "B2",
+    "type": "descriptive",
+    "topic": "Describe a place that has had a significant impact on who you are today.",
+    "topicTranslation": "Describe un lugar que ha tenido un impacto importante en quién eres hoy.",
+    "instructions": "Write 150-200 words with rich sensory detail (what you saw, heard, felt) and explain the emotional or personal significance, not just physical description.",
+    "targetGrammar": ["Present Perfect", "Relative Clauses", "Descriptive adjectives"],
+    "minWords": 150,
+    "maxWords": 220,
+    "rubricForTutor": [
+      "¿Va más allá de la descripción física hacia el significado personal?",
+      "¿Usa cláusulas relativas para añadir detalle sin oraciones cortadas?",
+      "¿El vocabulario descriptivo es variado y preciso?"
+    ],
+    "status": "curated"
+  },
+  {
+    "id": "wrt_b2_report_001",
+    "level": "B2",
+    "type": "formal_report",
+    "topic": "Write a short report analyzing the advantages and disadvantages of remote work for a hypothetical company considering the switch.",
+    "topicTranslation": "Escribe un informe breve analizando las ventajas y desventajas del trabajo remoto para una empresa hipotética que considera el cambio.",
+    "instructions": "Use report structure with clear headings (Introduction, Advantages, Disadvantages, Recommendation). Maintain an objective, formal tone throughout.",
+    "targetGrammar": ["Passive Voice", "Formal register", "Nominalization (e.g. 'the reduction of costs' instead of 'costs are reduced')"],
+    "minWords": 200,
+    "maxWords": 280,
+    "rubricForTutor": [
+      "¿Sigue la estructura de informe pedida, con encabezados claros?",
+      "¿El tono se mantiene objetivo, sin opiniones personales sin fundamentar?",
+      "¿La recomendación final se basa en los puntos desarrollados antes?"
+    ],
+    "status": "curated"
+  }
+]
