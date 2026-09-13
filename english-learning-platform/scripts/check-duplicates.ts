@@ -99,12 +99,12 @@ console.log('\n🔍  Checking for lexical duplicates...\n')
 
 if (crossLevelDuplicates.length > 0) {
   console.warn(
-    `⚠️   ${crossLevelDuplicates.length} cross-level duplicate(s) (may be intentional):\n`,
+    `⚠️   ${String(crossLevelDuplicates.length)} cross-level duplicate(s) (may be intentional):\n`,
   )
   for (const dup of crossLevelDuplicates) {
     console.warn(`  "${dup.normalizedWord}":`)
     for (const item of dup.items) {
-      console.warn(`    [${item.level} W${item.week}] ${item.id} — "${item.word}"`)
+      console.warn(`    [${item.level} W${String(item.week)}] ${item.id} — "${item.word}"`)
     }
     console.warn()
   }
@@ -114,11 +114,11 @@ if (sameLevelDuplicates.length === 0) {
   console.log('✅  No same-level duplicates found.\n')
   process.exit(0)
 } else {
-  console.error(`❌  ${sameLevelDuplicates.length} same-level duplicate(s) found (must fix):\n`)
+  console.error(`❌  ${String(sameLevelDuplicates.length)} same-level duplicate(s) found (must fix):\n`)
   for (const dup of sameLevelDuplicates) {
     console.error(`  "${dup.normalizedWord}":`)
     for (const item of dup.items) {
-      console.error(`    [${item.level} W${item.week}] ${item.id} — "${item.word}"`)
+      console.error(`    [${item.level} W${String(item.week)}] ${item.id} — "${item.word}"`)
     }
     console.error()
   }
