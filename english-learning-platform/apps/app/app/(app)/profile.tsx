@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
   View,
   Text,
@@ -7,6 +7,11 @@ import {
   TouchableOpacity,
   ActivityIndicator,
   Image,
+  Share,
+  Modal,
+  TextInput,
+  Alert,
+  Platform,
 } from 'react-native'
 import { useRouter } from 'expo-router'
 import { SafeAreaView } from 'react-native-safe-area-context'
@@ -15,6 +20,13 @@ import { Ionicons } from '@expo/vector-icons'
 import { useAuthStore } from '../../stores/useAuthStore'
 import { useSyncStore } from '../../stores/useSyncStore'
 import { useSRSStore } from '../../stores/useSRSStore'
+import { useProgressStore } from '../../stores/useProgressStore'
+import {
+  getLocalCards,
+  getAllLocalReviewEventsAsEvents,
+  upsertLocalCard,
+  restoreLocalReviewEvents,
+} from '../../lib/db/sqlite'
 import { isSupabaseConfigured } from '../../lib/supabase'
 import { APP_LOGO } from '../../lib/assets'
 
@@ -64,6 +76,121 @@ export default function ProfileScreen(): React.JSX.Element {
   const formattedSyncTime = lastSyncedAt
     ? new Date(lastSyncedAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
     : 'Aún no sincronizado'
+
+  const [isExporting, setIsExporting] = useState(false)
+  const [isRestoring, setIsRestoring] = useState(false)
+  const [isRestoreModalVisible, setIsRestoreModalVisible] = useState(false)
+  const [backupJsonInput, setBackupJsonInput] = useState('')
+
+  const handleExportBackup = async (): Promise<void> => {
+    if (!user?.id) return
+    setIsExporting(true)
+    try {
+      const userCards = await getLocalCards(user.id)
+      const events = await getAllLocalReviewEventsAsEvents(user.id)
+      const backupData = {
+        version: 1,
+        appName: 'Escuela de Inglés Americana',
+        exportedAt: new Date().toISOString(),
+        userId: user.id,
+        profile: {
+          displayName,
+          email: displayEmail,
+          currentLevel,
+          streakDays: profile?.streakDays ?? 0,
+          totalXP,
+        },
+        cards: userCards,
+        reviewEvents: events,
+      }
+      const jsonPayload = JSON.stringify(backupData, null, 2)
+      await Share.share({
+        message: jsonPayload,
+        title: `Respaldo_InglesAmericana_${new Date().toISOString().slice(0, 10)}.json`,
+      })
+    } catch (error) {
+      Alert.alert(
+        'Error al exportar',
+        error instanceof Error ? error.message : 'No se pudo generar el archivo de respaldo.',
+      )
+    } finally {
+      setIsExporting(false)
+    }
+  }
+
+  const handleRestoreBackup = async (): Promise<void> => {
+    if (!user?.id) return
+    const raw = backupJsonInput.trim()
+    if (!raw) return
+
+    setIsRestoring(true)
+    try {
+      let parsed: {
+        version?: number
+        cards?: Array<{ vocabularyItemId: string; [key: string]: unknown }>
+        reviewEvents?: unknown[]
+      }
+      try {
+        parsed = JSON.parse(raw) as {
+          version?: number
+          cards?: Array<{ vocabularyItemId: string; [key: string]: unknown }>
+          reviewEvents?: unknown[]
+        }
+      } catch {
+        throw new Error('El texto ingresado no es un formato JSON válido.')
+      }
+
+      if (!parsed || typeof parsed !== 'object') {
+        throw new Error('El archivo de respaldo está vacío o corrupto.')
+      }
+
+      if (!parsed.version || !Array.isArray(parsed.cards)) {
+        throw new Error(
+          'El JSON no contiene una estructura de respaldo compatible (falta versión o tarjetas).',
+        )
+      }
+
+      // Restore cards
+      for (const card of parsed.cards) {
+        if (card.vocabularyItemId) {
+          await upsertLocalCard(
+            {
+              ...(card as any),
+              userId: user.id,
+            },
+            'dirty',
+          )
+        }
+      }
+
+      // Restore review events if present
+      if (Array.isArray(parsed.reviewEvents) && parsed.reviewEvents.length > 0) {
+        const boundEvents = parsed.reviewEvents.map((evt: any) => ({
+          ...evt,
+          userId: user.id,
+        }))
+        await restoreLocalReviewEvents(user.id, boundEvents)
+      }
+
+      // Reload stores
+      await useSRSStore.getState().loadCards(user.id)
+      await useProgressStore.getState().refreshMetrics(user.id)
+
+      setIsRestoreModalVisible(false)
+      setBackupJsonInput('')
+      Alert.alert(
+        '¡Respaldo Restaurado!',
+        `Se han importado exitosamente ${parsed.cards.length} tarjetas y sus registros de estudio al dispositivo.`,
+      )
+    } catch (error) {
+      Alert.alert(
+        'Error al restaurar',
+        error instanceof Error ? error.message : 'Error desconocido al importar el respaldo.',
+      )
+    } finally {
+      setIsRestoring(false)
+    }
+  }
 
   return (
     <SafeAreaView style={styles.safeArea} edges={['top']}>
@@ -160,6 +287,47 @@ export default function ProfileScreen(): React.JSX.Element {
           />
         </Card>
 
+        {/* Backup & Restore Section */}
+        <Text style={styles.sectionTitle}>Copia de Seguridad & Respaldo</Text>
+        <Card padding="md" style={styles.backupCard}>
+          <View style={styles.backupHeaderRow}>
+            <View style={styles.backupIconBox}>
+              <Ionicons name="shield-checkmark-outline" size={22} color={colors.primary} />
+            </View>
+            <View style={styles.backupHeaderInfo}>
+              <Text style={styles.backupCardTitle}>Respaldo Portátil (JSON)</Text>
+              <Text style={styles.backupCardSubtitle}>
+                Exporta tu progreso para guardarlo en Drive o envíalo a otro teléfono sin depender de internet.
+              </Text>
+            </View>
+          </View>
+
+          <View style={styles.backupBtnRow}>
+            <Button
+              title={isExporting ? 'Exportando...' : 'Exportar Respaldo'}
+              variant="outline"
+              size="sm"
+              loading={isExporting}
+              disabled={isExporting || !user?.id}
+              onPress={() => {
+                void handleExportBackup()
+              }}
+              style={styles.backupActionBtn}
+              icon={<Ionicons name="share-outline" size={16} color={colors.primary} />}
+            />
+            <Button
+              title="Restaurar Respaldo"
+              variant="ghost"
+              size="sm"
+              onPress={() => {
+                setIsRestoreModalVisible(true)
+              }}
+              style={styles.backupActionBtn}
+              icon={<Ionicons name="download-outline" size={16} color={colors.textPrimary} />}
+            />
+          </View>
+        </Card>
+
         {/* Study Preferences */}
         <Text style={styles.sectionTitle}>Configuración de Estudio</Text>
         <Card padding="md" style={styles.settingsCard}>
@@ -219,6 +387,72 @@ export default function ProfileScreen(): React.JSX.Element {
           </Text>
         </View>
       </ScrollView>
+
+      {/* Restore Backup Modal */}
+      <Modal
+        visible={isRestoreModalVisible}
+        animationType="fade"
+        transparent={true}
+        onRequestClose={() => setIsRestoreModalVisible(false)}
+      >
+        <View style={styles.modalOverlay}>
+          <View style={styles.modalContainer}>
+            <View style={styles.modalHeader}>
+              <View style={styles.modalHeaderTitleRow}>
+                <Ionicons name="cloud-upload-outline" size={20} color={colors.primary} />
+                <Text style={styles.modalTitle}>Restaurar Copia</Text>
+              </View>
+              <TouchableOpacity
+                onPress={() => setIsRestoreModalVisible(false)}
+                hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+              >
+                <Ionicons name="close" size={22} color={colors.textSecondary} />
+              </TouchableOpacity>
+            </View>
+
+            <Text style={styles.modalSubtitle}>
+              Pega aquí el contenido JSON de tu respaldo previo para reincorporar tus tarjetas y estadísticas locales:
+            </Text>
+
+            <TextInput
+              style={styles.jsonInput}
+              multiline
+              numberOfLines={7}
+              value={backupJsonInput}
+              onChangeText={setBackupJsonInput}
+              placeholder='{"version": 1, "cards": [...]}'
+              placeholderTextColor={colors.textMuted}
+              textAlignVertical="top"
+              autoCapitalize="none"
+              autoCorrect={false}
+            />
+
+            <View style={styles.modalActionRow}>
+              <Button
+                title="Cancelar"
+                variant="ghost"
+                size="sm"
+                onPress={() => {
+                  setBackupJsonInput('')
+                  setIsRestoreModalVisible(false)
+                }}
+                style={styles.modalCancelBtn}
+              />
+              <Button
+                title={isRestoring ? 'Restaurando...' : 'Restaurar Ahora'}
+                variant="primary"
+                size="sm"
+                loading={isRestoring}
+                disabled={isRestoring || !backupJsonInput.trim()}
+                onPress={() => {
+                  void handleRestoreBackup()
+                }}
+                style={styles.modalRestoreBtn}
+              />
+            </View>
+          </View>
+        </View>
+      </Modal>
     </SafeAreaView>
   )
 }
@@ -437,4 +671,107 @@ const styles = StyleSheet.create({
     fontSize: typography.sizes.xs - 2,
     color: colors.textMuted,
   },
+  backupCard: {
+    marginBottom: spacing.lg,
+  },
+  backupHeaderRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.md,
+  },
+  backupIconBox: {
+    width: 44,
+    height: 44,
+    borderRadius: radius.md,
+    backgroundColor: colors.primaryLight,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  backupHeaderInfo: {
+    flex: 1,
+  },
+  backupCardTitle: {
+    fontSize: typography.sizes.sm,
+    fontWeight: typography.weights.semibold,
+    color: colors.textPrimary,
+  },
+  backupCardSubtitle: {
+    fontSize: typography.sizes.xs - 1,
+    color: colors.textMuted,
+    marginTop: 2,
+    lineHeight: 16,
+  },
+  backupBtnRow: {
+    flexDirection: 'row',
+    gap: spacing.sm,
+    marginTop: spacing.md,
+  },
+  backupActionBtn: {
+    flex: 1,
+  },
+  modalOverlay: {
+    flex: 1,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: spacing.lg,
+  },
+  modalContainer: {
+    backgroundColor: colors.surface,
+    borderRadius: radius.lg,
+    padding: spacing.lg,
+    width: '100%',
+    maxWidth: 480,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.15,
+    shadowRadius: 12,
+    elevation: 8,
+  },
+  modalHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: spacing.sm,
+  },
+  modalHeaderTitleRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.xs,
+  },
+  modalTitle: {
+    fontSize: typography.sizes.md,
+    fontWeight: typography.weights.bold,
+    color: colors.textPrimary,
+  },
+  modalSubtitle: {
+    fontSize: typography.sizes.xs,
+    color: colors.textSecondary,
+    marginBottom: spacing.md,
+    lineHeight: 18,
+  },
+  jsonInput: {
+    height: 140,
+    backgroundColor: colors.background,
+    borderWidth: 1,
+    borderColor: colors.border,
+    borderRadius: radius.md,
+    padding: spacing.sm,
+    fontSize: typography.sizes.xs,
+    color: colors.textPrimary,
+    fontFamily: Platform.OS === 'ios' ? 'Courier' : 'monospace',
+    marginBottom: spacing.md,
+  },
+  modalActionRow: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    gap: spacing.sm,
+  },
+  modalCancelBtn: {
+    flex: 1,
+  },
+  modalRestoreBtn: {
+    flex: 1,
+  },
 })
+

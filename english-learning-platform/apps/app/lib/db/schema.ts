@@ -144,3 +144,19 @@ export function reviewEventToLocalRow(
     sync_status: syncStatus,
   }
 }
+
+export function localRowToReviewEvent(row: LocalReviewEventRow): ReviewEvent {
+  return {
+    id: row.id,
+    userId: row.user_id,
+    cardId: row.card_id,
+    vocabularyItemId: row.vocabulary_item_id,
+    quality: row.quality as ReviewEvent['quality'],
+    reviewedAt: row.reviewed_at,
+    previousState: row.previous_state as ReviewEvent['previousState'],
+    nextState: row.next_state as ReviewEvent['nextState'],
+    previousInterval: row.previous_interval,
+    nextInterval: row.next_interval,
+  }
+}
+

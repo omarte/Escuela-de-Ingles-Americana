@@ -9,6 +9,7 @@ import {
   localRowToSRSCard,
   srsCardToLocalRow,
   reviewEventToLocalRow,
+  localRowToReviewEvent,
   type LocalReviewEventRow,
   type LocalSyncStatus,
   type LocalUserCardRow,
@@ -247,6 +248,54 @@ export async function getAllLocalReviewEvents(userId: string): Promise<LocalRevi
   }
   return await getFallbackEvents(userId)
 }
+
+export async function getAllLocalReviewEventsAsEvents(userId: string): Promise<ReviewEvent[]> {
+  const rows = await getAllLocalReviewEvents(userId)
+  return rows.map(localRowToReviewEvent)
+}
+
+export async function restoreLocalReviewEvents(
+  userId: string,
+  events: ReviewEvent[],
+): Promise<void> {
+  const db = await getDatabase()
+  if (db) {
+    for (const event of events) {
+      const row = reviewEventToLocalRow(event, 'pending')
+      await db.runAsync(
+        `INSERT OR REPLACE INTO local_review_events (
+          id, user_id, card_id, vocabulary_item_id, quality, reviewed_at,
+          previous_state, next_state, previous_interval, next_interval, sync_status
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+        [
+          row.id,
+          row.user_id,
+          row.card_id,
+          row.vocabulary_item_id,
+          row.quality,
+          row.reviewed_at,
+          row.previous_state,
+          row.next_state,
+          row.previous_interval,
+          row.next_interval,
+          row.sync_status,
+        ],
+      )
+    }
+    return
+  }
+
+  const existing = await getFallbackEvents(userId)
+  const existingIds = new Set(existing.map((e) => e.id))
+  for (const event of events) {
+    const row = reviewEventToLocalRow(event, 'pending')
+    if (!existingIds.has(row.id)) {
+      existing.push(row)
+    }
+  }
+  await saveFallbackEvents(userId, existing)
+}
+
 
 export async function getLocalReviewDates(userId: string): Promise<string[]> {
   const db = await getDatabase()
