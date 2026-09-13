@@ -354,5 +354,61 @@ describe('Regression Test: Daily Goal vs Historical Reps (False 20/20 with Strea
     const progress = calculateDailyProgress([card], todayLocal, 20)
     expect(progress.completedToday).toBe(1)
   })
+
+  it('deterministic timezone test: preserves pure date string YYYY-MM-DD without shifts', () => {
+    // A pure date string without time component MUST NOT be shifted by timezone interpretation
+    expect(toLocalDateString('2026-09-12', 'America/Santiago')).toBe('2026-09-12')
+    expect(toLocalDateString('2026-09-12', 'America/Mexico_City')).toBe('2026-09-12')
+    expect(toLocalDateString('2026-09-12', 'UTC')).toBe('2026-09-12')
+  })
+
+  it('deterministic timezone test: converts late night review (23:30) in American timezones to previous calendar day compared to UTC', () => {
+    // 2026-09-13T03:30:00.000Z is 23:30 on 2026-09-12 in America/New_York (EDT, UTC-4)
+    const lateNightNY = '2026-09-13T03:30:00.000Z'
+    // 2026-09-13T02:30:00.000Z is 23:30 on 2026-09-12 in America/Santiago (CLST, UTC-3)
+    const lateNightSantiago = '2026-09-13T02:30:00.000Z'
+    // 2026-09-13T05:30:00.000Z is 23:30 on 2026-09-12 in America/Mexico_City (CST, UTC-6)
+    const lateNightMexico = '2026-09-13T05:30:00.000Z'
+
+    // In UTC, all of them are already September 13:
+    expect(toLocalDateString(lateNightNY, 'UTC')).toBe('2026-09-13')
+    expect(toLocalDateString(lateNightSantiago, 'UTC')).toBe('2026-09-13')
+    expect(toLocalDateString(lateNightMexico, 'UTC')).toBe('2026-09-13')
+
+    // In their respective local timezones, all of them are strictly September 12:
+    expect(toLocalDateString(lateNightNY, 'America/New_York')).toBe('2026-09-12')
+    expect(toLocalDateString(lateNightSantiago, 'America/Santiago')).toBe('2026-09-12')
+    expect(toLocalDateString(lateNightMexico, 'America/Mexico_City')).toBe('2026-09-12')
+
+    // In Tokyo (UTC+9), 03:30Z is 12:30 PM on September 13:
+    expect(toLocalDateString(lateNightNY, 'Asia/Tokyo')).toBe('2026-09-13')
+  })
+
+  it('deterministic timezone test: calculateStreak correctly credits late-night review to local calendar day regardless of runner TZ', () => {
+    // User reviewed at 23:30 local New York time (03:30Z next day)
+    const reviewTimestamps = ['2026-09-13T03:30:00.000Z']
+
+    // When evaluated with referenceDate '2026-09-12' in America/New_York:
+    const resultNY = calculateStreak(reviewTimestamps, '2026-09-12', 'America/New_York')
+    expect(resultNY.studiedToday).toBe(true)
+    expect(resultNY.currentStreak).toBe(1)
+
+    // And calculateDailyProgress for '2026-09-12' in America/New_York:
+    const card: SRSCard = {
+      id: 'c_ny',
+      userId: 'u1',
+      vocabularyItemId: 'v1',
+      state: 'review',
+      interval: 1,
+      easeFactor: 2.5,
+      reps: 1,
+      lapses: 0,
+      dueDate: '2026-09-12',
+      lastReviewed: '2026-09-13T03:30:00.000Z',
+    }
+    const dailyProgress = calculateDailyProgress([card], '2026-09-12', 20, 'America/New_York')
+    expect(dailyProgress.completedToday).toBe(1)
+  })
 })
+
 

@@ -7,21 +7,9 @@ import { Ionicons } from '@expo/vector-icons'
 import { useAuthStore } from '../../stores/useAuthStore'
 import { useSRSStore } from '../../stores/useSRSStore'
 import { useProgressStore } from '../../stores/useProgressStore'
-import { getDueCards } from '@elp/srs'
+import { getDueCards, calculateDailyProgress } from '@elp/srs'
 import { APP_LOGO } from '../../lib/assets'
 
-/**
- * Normalizes an ISO timestamp or date to YYYY-MM-DD in the user's local timezone.
- * Avoids timezone drift bugs where reviews done late evening UTC-4 fall into tomorrow in UTC.
- */
-function toLocalDateString(d: Date | string = new Date()): string {
-  const date = typeof d === 'string' ? new Date(d) : d
-  if (isNaN(date.getTime())) return ''
-  const year = date.getFullYear()
-  const month = String(date.getMonth() + 1).padStart(2, '0')
-  const day = String(date.getDate()).padStart(2, '0')
-  return `${year}-${month}-${day}`
-}
 
 export default function HomeScreen(): React.JSX.Element {
   const router = useRouter()
@@ -42,15 +30,10 @@ export default function HomeScreen(): React.JSX.Element {
   const currentLevel = profile?.currentLevel ?? 'A1'
 
   // Timezone-safe check: only count cards reviewed on the local calendar day
-  const todayStr = toLocalDateString(new Date())
-  const cardsReviewedToday = cards.filter((c) => {
-    if (!c.lastReviewed) return false
-    return toLocalDateString(c.lastReviewed) === todayStr
-  }).length
-
-  const dailyGoal = 20
-  const completedToday = Math.min(dailyGoal, Math.max(0, cardsReviewedToday))
-  const progressRatio = completedToday / dailyGoal
+  const dailyProgress = calculateDailyProgress(cards, new Date(), 20)
+  const completedToday = dailyProgress.completedToday
+  const dailyGoal = dailyProgress.dailyGoal
+  const progressRatio = dailyProgress.progressRatio
   const hasStudiedToday = streak.studiedToday || completedToday > 0
   const streakDays = streak.currentStreak > 0 ? streak.currentStreak : (hasStudiedToday ? 1 : (profile?.streakDays ?? 0))
 

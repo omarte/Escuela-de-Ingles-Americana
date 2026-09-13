@@ -26,6 +26,7 @@ import {
   getAllLocalReviewEventsAsEvents,
   upsertLocalCard,
   restoreLocalReviewEvents,
+  restoreLocalCardsWithMerge,
 } from '../../lib/db/sqlite'
 import { isSupabaseConfigured } from '../../lib/supabase'
 import { APP_LOGO } from '../../lib/assets'
@@ -118,50 +119,18 @@ export default function ProfileScreen(): React.JSX.Element {
     }
   }
 
-  const handleRestoreBackup = async (): Promise<void> => {
+  const executeRestore = async (parsed: {
+    cards: Array<{ vocabularyItemId: string; [key: string]: unknown }>
+    reviewEvents?: unknown[]
+  }): Promise<void> => {
     if (!user?.id) return
-    const raw = backupJsonInput.trim()
-    if (!raw) return
-
     setIsRestoring(true)
     try {
-      let parsed: {
-        version?: number
-        cards?: Array<{ vocabularyItemId: string; [key: string]: unknown }>
-        reviewEvents?: unknown[]
-      }
-      try {
-        parsed = JSON.parse(raw) as {
-          version?: number
-          cards?: Array<{ vocabularyItemId: string; [key: string]: unknown }>
-          reviewEvents?: unknown[]
-        }
-      } catch {
-        throw new Error('El texto ingresado no es un formato JSON válido.')
-      }
-
-      if (!parsed || typeof parsed !== 'object') {
-        throw new Error('El archivo de respaldo está vacío o corrupto.')
-      }
-
-      if (!parsed.version || !Array.isArray(parsed.cards)) {
-        throw new Error(
-          'El JSON no contiene una estructura de respaldo compatible (falta versión o tarjetas).',
-        )
-      }
-
-      // Restore cards
-      for (const card of parsed.cards) {
-        if (card.vocabularyItemId) {
-          await upsertLocalCard(
-            {
-              ...(card as any),
-              userId: user.id,
-            },
-            'dirty',
-          )
-        }
-      }
+      // Smart Merge: updates existing cards keeping higher reps/interval, inserts new ones
+      const { added, updated } = await restoreLocalCardsWithMerge(
+        user.id,
+        parsed.cards as any,
+      )
 
       // Restore review events if present
       if (Array.isArray(parsed.reviewEvents) && parsed.reviewEvents.length > 0) {
@@ -179,8 +148,8 @@ export default function ProfileScreen(): React.JSX.Element {
       setIsRestoreModalVisible(false)
       setBackupJsonInput('')
       Alert.alert(
-        '¡Respaldo Restaurado!',
-        `Se han importado exitosamente ${parsed.cards.length} tarjetas y sus registros de estudio al dispositivo.`,
+        '¡Respaldo Fusionado con Éxito!',
+        `Se procesaron ${parsed.cards.length} tarjetas (${added} nuevas añadidas, ${updated} tarjetas existentes fusionadas manteniendo su mayor nivel de dominio).`,
       )
     } catch (error) {
       Alert.alert(
@@ -191,6 +160,58 @@ export default function ProfileScreen(): React.JSX.Element {
       setIsRestoring(false)
     }
   }
+
+  const handleRestoreBackup = (): void => {
+    if (!user?.id) return
+    const raw = backupJsonInput.trim()
+    if (!raw) return
+
+    let parsed: {
+      version?: number
+      cards?: Array<{ vocabularyItemId: string; [key: string]: unknown }>
+      reviewEvents?: unknown[]
+    }
+    try {
+      parsed = JSON.parse(raw) as {
+        version?: number
+        cards?: Array<{ vocabularyItemId: string; [key: string]: unknown }>
+        reviewEvents?: unknown[]
+      }
+    } catch {
+      Alert.alert('Error de Formato', 'El texto ingresado no es un formato JSON válido.')
+      return
+    }
+
+    if (!parsed || typeof parsed !== 'object') {
+      Alert.alert('Error', 'El archivo de respaldo está vacío o corrupto.')
+      return
+    }
+
+    if (!parsed.version || !Array.isArray(parsed.cards)) {
+      Alert.alert(
+        'Estructura Incompatible',
+        'El JSON no contiene una estructura de respaldo compatible (falta versión o lista de tarjetas).',
+      )
+      return
+    }
+
+    // Safety Confirmation Dialog before touching SQLite
+    Alert.alert(
+      '¿Restaurar Copia de Seguridad?',
+      `Se procesarán ${parsed.cards.length} tarjetas.\n\nFUSIÓN SEGURA: Si ya tienes avance local en este teléfono, se combinará inteligentemente conservando el estado más avanzado (mayor intervalo y repasos) sin perder nada.\n\n¿Deseas proceder?`,
+      [
+        { text: 'Cancelar', style: 'cancel' },
+        {
+          text: 'Restaurar y Fusionar',
+          style: 'default',
+          onPress: () => {
+            void executeRestore(parsed as any)
+          },
+        },
+      ],
+    )
+  }
+
 
   return (
     <SafeAreaView style={styles.safeArea} edges={['top']}>

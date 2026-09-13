@@ -1,6 +1,7 @@
 import { Platform } from 'react-native'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import type { ReviewEvent, SRSCard } from '@elp/types'
+import { toLocalDateString } from '@elp/srs'
 import {
   CREATE_INDEXES,
   CREATE_LOCAL_REVIEW_EVENTS_TABLE,
@@ -300,16 +301,89 @@ export async function restoreLocalReviewEvents(
 export async function getLocalReviewDates(userId: string): Promise<string[]> {
   const db = await getDatabase()
   if (db) {
-    const rows = await db.getAllAsync<{ date_str: string }>(
-      'SELECT DISTINCT substr(reviewed_at, 1, 10) as date_str FROM local_review_events WHERE user_id = ? ORDER BY date_str ASC',
+    const rows = await db.getAllAsync<{ reviewed_at: string }>(
+      'SELECT reviewed_at FROM local_review_events WHERE user_id = ? ORDER BY reviewed_at ASC',
       [userId],
     )
-    return rows.map((r) => r.date_str)
+    const unique = new Set(rows.map((r) => toLocalDateString(r.reviewed_at)))
+    return Array.from(unique).sort()
   }
   const all = await getFallbackEvents(userId)
-  const unique = new Set(all.map((e) => e.reviewed_at.slice(0, 10)))
+  const unique = new Set(all.map((e) => toLocalDateString(e.reviewed_at)))
   return Array.from(unique).sort()
 }
+
+/**
+ * Restores cards from backup by merging with existing local cards.
+ * If a card already exists on this device, takes the higher progress (reps, interval, state)
+ * to avoid ever losing local progress during restoration.
+ */
+export async function restoreLocalCardsWithMerge(
+  userId: string,
+  incomingCards: SRSCard[],
+): Promise<{ added: number; updated: number }> {
+  const existingCards = await getLocalCards(userId)
+  const existingMap = new Map(existingCards.map((c) => [c.vocabularyItemId, c]))
+
+  let added = 0
+  let updated = 0
+
+  const stateRank: Record<string, number> = {
+    new: 0,
+    learning: 1,
+    review: 2,
+    relearning: 1,
+  }
+
+  for (const card of incomingCards) {
+    if (!card.vocabularyItemId) continue
+
+    const local = existingMap.get(card.vocabularyItemId)
+    if (!local) {
+      await upsertLocalCard({ ...card, userId }, 'dirty')
+      added++
+    } else {
+      const localRank = stateRank[local.state] ?? 0
+      const incomingRank = stateRank[card.state] ?? 0
+      const mergedState = localRank >= incomingRank ? local.state : card.state
+      const mergedInterval = Math.max(local.interval ?? 0, card.interval ?? 0)
+      const mergedReps = Math.max(local.reps ?? 0, card.reps ?? 0)
+      const mergedLapses = Math.min(local.lapses ?? 0, card.lapses ?? 0)
+      const mergedEase = Math.max(local.easeFactor ?? 2.5, card.easeFactor ?? 2.5)
+
+      let mergedLastReviewed = local.lastReviewed
+      if (card.lastReviewed) {
+        if (!mergedLastReviewed || new Date(card.lastReviewed) > new Date(mergedLastReviewed)) {
+          mergedLastReviewed = card.lastReviewed
+        }
+      }
+      const mergedDueDate =
+        local.dueDate && card.dueDate
+          ? local.dueDate > card.dueDate
+            ? local.dueDate
+            : card.dueDate
+          : (local.dueDate || card.dueDate)
+
+      const mergedCard: SRSCard = {
+        id: local.id,
+        userId,
+        vocabularyItemId: card.vocabularyItemId,
+        state: mergedState,
+        interval: mergedInterval,
+        easeFactor: mergedEase,
+        reps: mergedReps,
+        lapses: mergedLapses,
+        dueDate: mergedDueDate,
+        lastReviewed: mergedLastReviewed,
+      }
+      await upsertLocalCard(mergedCard, 'dirty')
+      updated++
+    }
+  }
+
+  return { added, updated }
+}
+
 
 export async function markCardsSynced(userId: string, cardIds: string[]): Promise<void> {
   if (cardIds.length === 0) return

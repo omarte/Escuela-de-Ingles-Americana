@@ -40,29 +40,42 @@ const CEFR_ORDER: readonly CEFRLevel[] = ['A1', 'A2', 'B1', 'B2']
 
 /**
  * Normalizes an ISO timestamp, Date object, or date string to local calendar YYYY-MM-DD.
- * If the input contains a timestamp (e.g. ISO string with time), converts to the local
- * device timezone so reviews near midnight (e.g. 11 PM in UTC-4) match local calendar days.
+ * - If already a pure date (YYYY-MM-DD), preserves it as-is without UTC midnight shifts.
+ * - If timestamp contains time (ISO), formats using Intl.DateTimeFormat in local device timezone
+ *   (or specified timeZone) to prevent UTC midnight date shift.
  */
-export function toLocalDateString(d: string | Date): string {
+export function toLocalDateString(d: string | Date, timeZone?: string): string {
   if (typeof d === 'string') {
-    if (/^\d{4}-\d{2}-\d{2}$/.test(d)) {
-      return d
+    const trimmed = d.trim()
+    if (/^\d{4}-\d{2}-\d{2}$/.test(trimmed)) {
+      return trimmed
     }
-    const parsed = new Date(d)
+    const parsed = new Date(trimmed)
     if (isNaN(parsed.getTime())) {
-      return d.slice(0, 10)
+      return trimmed.slice(0, 10)
     }
-    const year = parsed.getFullYear()
-    const month = String(parsed.getMonth() + 1).padStart(2, '0')
-    const day = String(parsed.getDate()).padStart(2, '0')
-    return `${String(year)}-${month}-${day}`
+    return formatDateWithIntl(parsed, timeZone)
   }
-  const year = d.getFullYear()
-  const month = String(d.getMonth() + 1).padStart(2, '0')
-  const day = String(d.getDate()).padStart(2, '0')
-  return `${String(year)}-${month}-${day}`
+  return formatDateWithIntl(d, timeZone)
 }
 
+function formatDateWithIntl(date: Date, timeZone?: string): string {
+  if (isNaN(date.getTime())) return ''
+  try {
+    const formatter = new Intl.DateTimeFormat('en-CA', {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      ...(timeZone ? { timeZone } : {}),
+    })
+    return formatter.format(date)
+  } catch {
+    const year = date.getFullYear()
+    const month = String(date.getMonth() + 1).padStart(2, '0')
+    const day = String(date.getDate()).padStart(2, '0')
+    return `${String(year)}-${month}-${day}`
+  }
+}
 
 /**
  * Gets the day before a given YYYY-MM-DD date.
@@ -74,7 +87,10 @@ function getPreviousDateString(dateStr: string): string {
   }
   const date = new Date(year, month - 1, day)
   date.setDate(date.getDate() - 1)
-  return toLocalDateString(date)
+  const y = date.getFullYear()
+  const m = String(date.getMonth() + 1).padStart(2, '0')
+  const d = String(date.getDate()).padStart(2, '0')
+  return `${y}-${m}-${d}`
 }
 
 /**
@@ -89,6 +105,7 @@ function getPreviousDateString(dateStr: string): string {
 export function calculateStreak(
   studyDates: readonly string[],
   referenceDate?: string,
+  timeZone?: string,
 ): StreakResult {
   if (studyDates.length === 0) {
     return {
@@ -104,7 +121,7 @@ export function calculateStreak(
   const uniqueDateSet = new Set<string>()
   for (const raw of studyDates) {
     if (raw && raw.length >= 10) {
-      uniqueDateSet.add(toLocalDateString(raw))
+      uniqueDateSet.add(toLocalDateString(raw, timeZone))
     }
   }
 
@@ -119,7 +136,9 @@ export function calculateStreak(
     }
   }
 
-  const todayStr = referenceDate ? toLocalDateString(referenceDate) : toLocalDateString(new Date())
+  const todayStr = referenceDate
+    ? toLocalDateString(referenceDate, timeZone)
+    : toLocalDateString(new Date(), timeZone)
   const yesterdayStr = getPreviousDateString(todayStr)
   const lastStudyDate = sortedDates[sortedDates.length - 1] ?? null
   const studiedToday = uniqueDateSet.has(todayStr)
@@ -194,14 +213,15 @@ export function calculateDailyProgress(
   cards: readonly SRSCard[],
   referenceDate?: string | Date,
   dailyGoal = 20,
+  timeZone?: string,
 ): DailyProgressResult {
   const targetDateStr = referenceDate
-    ? toLocalDateString(referenceDate)
-    : toLocalDateString(new Date())
+    ? toLocalDateString(referenceDate, timeZone)
+    : toLocalDateString(new Date(), timeZone)
 
   const cardsReviewedToday = cards.filter((c) => {
     if (!c.lastReviewed) return false
-    return toLocalDateString(c.lastReviewed) === targetDateStr
+    return toLocalDateString(c.lastReviewed, timeZone) === targetDateStr
   }).length
 
   const completedToday = Math.min(dailyGoal, Math.max(0, cardsReviewedToday))
