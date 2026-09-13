@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useMemo, useRef, useState } from 'react'
 import {
   View,
   Text,
@@ -8,6 +8,7 @@ import {
   Pressable,
   TextInput,
   ScrollView,
+  Platform,
 } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { colors, spacing, typography, radius, Badge } from '@elp/ui'
@@ -55,6 +56,7 @@ function TypingRushGame({
   const [maxCombo, setMaxCombo] = useState(1)
   const [totalXp, setTotalXp] = useState(0)
   const [feedback, setFeedback] = useState<string | null>(null)
+  const [showHint, setShowHint] = useState(false)
   const timerRef = useRef<NodeJS.Timeout | null>(null)
 
   // Initialize 5 random words
@@ -74,6 +76,7 @@ function TypingRushGame({
     setMaxCombo(1)
     setTotalXp(0)
     setTypedInput('')
+    setShowHint(false)
     setFeedback(null)
   }, [wordsPool])
 
@@ -135,6 +138,7 @@ function TypingRushGame({
       })
       setRoundWords(updated)
       setTypedInput('')
+      setShowHint(false)
 
       if (currentIndex + 1 >= roundWords.length) {
         if (timerRef.current) clearInterval(timerRef.current)
@@ -183,15 +187,26 @@ function TypingRushGame({
           <Text style={styles.promptLabel}>Escribe en inglés:</Text>
           <Text style={styles.targetSpanish}>"{currentWord.translation}"</Text>
 
+          {/* Letter Scaffolding Hint - avoids dictating answer */}
           <TouchableOpacity
             style={styles.listenHintBtn}
             onPress={() => {
-              void speakEnglish(currentWord.word)
+              setShowHint((prev) => !prev)
             }}
           >
-            <Ionicons name="volume-medium-outline" size={18} color={colors.primary} />
-            <Text style={styles.listenHintText}>Escuchar pista auditiva</Text>
+            <Ionicons name="bulb-outline" size={16} color={colors.primary} />
+            <Text style={styles.listenHintText}>
+              {showHint ? 'Ocultar pista' : '💡 Pista de letras'}
+            </Text>
           </TouchableOpacity>
+
+          {showHint ? (
+            <Text style={styles.typingRushHintText}>
+              {currentWord.word.charAt(0).toUpperCase()}{' '}
+              {'_ '.repeat(Math.max(0, currentWord.word.length - 1))}
+              ({currentWord.word.length} letras)
+            </Text>
+          ) : null}
 
           {/* Typing input */}
           <View style={styles.typingInputContainer}>
@@ -291,9 +306,18 @@ function LightningQuizGame({
   const [selectedId, setSelectedId] = useState<string | null>(null)
   const timerRef = useRef<NodeJS.Timeout | null>(null)
 
+  const nonCognatePool = useMemo(() => {
+    const filtered = wordsPool.filter((w) => {
+      const cleanWord = w.word.trim().toLowerCase()
+      const cleanTrans = w.translation.trim().toLowerCase()
+      return cleanWord !== cleanTrans
+    })
+    return filtered.length >= 4 ? filtered : wordsPool
+  }, [wordsPool])
+
   const pickNextWord = (): void => {
-    if (wordsPool.length === 0) return
-    const random = wordsPool[Math.floor(Math.random() * wordsPool.length)]
+    if (nonCognatePool.length === 0) return
+    const random = nonCognatePool[Math.floor(Math.random() * nonCognatePool.length)]
     if (!random) return
     setCurrentWord(random)
     setSelectedId(null)
@@ -903,6 +927,15 @@ const styles = StyleSheet.create({
     fontSize: typography.sizes.xs,
     color: colors.primary,
     fontWeight: typography.weights.semibold,
+  },
+  typingRushHintText: {
+    fontSize: typography.sizes.sm,
+    color: colors.primary,
+    fontWeight: typography.weights.bold,
+    letterSpacing: 2,
+    marginBottom: spacing.md,
+    fontFamily: Platform.OS === 'ios' ? 'Courier' : 'monospace',
+    textAlign: 'center',
   },
   typingInputContainer: {
     flexDirection: 'row',

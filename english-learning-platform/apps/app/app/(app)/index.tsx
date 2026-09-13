@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { View, Text, StyleSheet, ScrollView, Image } from 'react-native'
+import { View, Text, StyleSheet, ScrollView, Image, TouchableOpacity } from 'react-native'
 import { useRouter } from 'expo-router'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { colors, spacing, typography, radius, Card, Button, Badge, ProgressBar } from '@elp/ui'
@@ -20,9 +20,14 @@ export default function HomeScreen(): React.JSX.Element {
   const streak = useProgressStore((state) => state.metrics.streak)
   const refreshMetrics = useProgressStore((state) => state.refreshMetrics)
 
+  const repeatCurrentLesson = useSRSStore((state) => state.repeatCurrentLesson)
+  const loadNextBatch = useSRSStore((state) => state.loadNextBatch)
+  const startStudySession = useSRSStore((state) => state.startStudySession)
+
   const userId = user?.id ?? 'demo-user'
   const displayName = profile?.displayName ?? 'Estudiante'
   const currentLevel = profile?.currentLevel ?? 'A1'
+  const hasStudiedToday = streak.studiedToday
   const streakDays = streak.currentStreak > 0 ? streak.currentStreak : (profile?.streakDays ?? 0)
 
   useEffect(() => {
@@ -35,6 +40,15 @@ export default function HomeScreen(): React.JSX.Element {
   const dailyGoal = 20
   const completedToday = Math.min(dailyGoal, Math.max(0, cards.filter((c) => c.reps > 0).length))
   const progressRatio = completedToday / dailyGoal
+
+  let heroSubtitle = ''
+  if (dueCount > 0) {
+    heroSubtitle = `Tienes ${String(dueCount)} tarjeta${dueCount > 1 ? 's' : ''} pendiente${dueCount > 1 ? 's' : ''} de repaso hoy`
+  } else if (hasStudiedToday) {
+    heroSubtitle = '¡Excelente! Has cumplido tu meta diaria de hoy 🎉'
+  } else {
+    heroSubtitle = 'No tienes repasos pendientes hoy. ¡Aprende o repite lecciones para encender tu racha!'
+  }
 
   return (
     <SafeAreaView style={styles.safeArea} edges={['top']}>
@@ -65,25 +79,42 @@ export default function HomeScreen(): React.JSX.Element {
 
           <Text style={styles.heroTitle}>Meta Diaria de Estudio</Text>
           <ProgressBar progress={progressRatio} height={10} style={styles.heroProgress} />
-          <Text style={styles.heroSubtitle}>
-            {dueCount > 0
-              ? `Tienes ${String(dueCount)} tarjeta${dueCount > 1 ? 's' : ''} pendiente${dueCount > 1 ? 's' : ''} de repaso hoy`
-              : '¡Estás al día con tus repasos de hoy!'}
-          </Text>
+          <Text style={styles.heroSubtitle}>{heroSubtitle}</Text>
 
+          {/* Primary Action */}
           <Button
             title={
               dueCount > 0
                 ? `Repasar SRS (${String(dueCount)} pendientes)`
-                : 'Practicar Vocabulario'
+                : 'Aprender 10 Palabras Nuevas'
             }
-            onPress={() => {
+            onPress={async () => {
+              if (dueCount > 0) {
+                await startStudySession(userId, currentLevel)
+              } else {
+                await loadNextBatch(userId, currentLevel, 10)
+              }
               router.push('/(app)/learn')
             }}
             size="lg"
             style={styles.heroBtn}
             icon={<Ionicons name="play" size={18} color={colors.textInverse} />}
           />
+
+          {/* Repetición de Lección para fijar formación */}
+          <TouchableOpacity
+            style={styles.repeatHeroBtn}
+            onPress={async () => {
+              await repeatCurrentLesson(userId)
+              router.push('/(app)/learn')
+            }}
+            activeOpacity={0.8}
+          >
+            <Ionicons name="repeat" size={16} color={colors.primary} />
+            <Text style={styles.repeatHeroBtnText}>
+              🔁 Repetir lección actual para fijar formación
+            </Text>
+          </TouchableOpacity>
         </Card>
 
         {/* Current Week Focus */}
@@ -235,6 +266,23 @@ const styles = StyleSheet.create({
   },
   heroBtn: {
     marginTop: spacing.xs,
+  },
+  repeatHeroBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 6,
+    paddingVertical: spacing.sm,
+    backgroundColor: colors.cardHover,
+    borderRadius: radius.md,
+    borderWidth: 1,
+    borderColor: colors.border,
+    marginTop: spacing.sm,
+  },
+  repeatHeroBtnText: {
+    fontSize: typography.sizes.xs,
+    color: colors.primary,
+    fontWeight: typography.weights.semibold,
   },
   sectionTitle: {
     fontSize: typography.sizes.xs,
