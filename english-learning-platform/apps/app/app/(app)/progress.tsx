@@ -1,5 +1,16 @@
 import React, { useEffect, useMemo, useState } from 'react'
-import { View, Text, StyleSheet, ScrollView, Modal, Alert, Image } from 'react-native'
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  Modal,
+  Alert,
+  Image,
+  TouchableOpacity,
+  Share,
+  type ImageSourcePropType,
+} from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { colors, spacing, radius, typography, Card, ProgressBar, Badge, Button } from '@elp/ui'
 import { Ionicons } from '@expo/vector-icons'
@@ -12,6 +23,15 @@ import {
   LEVEL_A2_COMPLETED,
   LEVEL_B1_COMPLETED,
   LEVEL_B2_COMPLETED,
+  STREAK_7_DAYS,
+  STREAK_30_DAYS,
+  STREAK_100_DAYS,
+  VOCAB_100_WORDS,
+  VOCAB_500_WORDS,
+  VOCAB_1000_WORDS,
+  VOCAB_2500_WORDS,
+  MASTERED_100_WORDS,
+  MASTERED_1000_WORDS,
 } from '../../lib/assets'
 
 export default function ProgressScreen(): React.JSX.Element {
@@ -25,6 +45,44 @@ export default function ProgressScreen(): React.JSX.Element {
 
   const [advancingModalVisible, setAdvancingModalVisible] = useState(false)
   const [showAllWeeks, setShowAllWeeks] = useState(false)
+  const [selectedBadge, setSelectedBadge] = useState<{
+    id: string
+    title: string
+    category: string
+    image: ImageSourcePropType
+    current: number
+    target: number
+    unit: string
+    description: string
+    unlocked: boolean
+  } | null>(null)
+  const [selectedDiploma, setSelectedDiploma] = useState<{
+    level: string
+    title: string
+    image: ImageSourcePropType
+    isCompleted: boolean
+    wordsText: string
+  } | null>(null)
+
+  const handleShareBadge = async (badgeItem: { title: string }): Promise<void> => {
+    try {
+      await Share.share({
+        message: `🎓 ¡Acabo de desbloquear el logro "${badgeItem.title}" en la Escuela de Inglés Americana! 🚀 Estudiando inglés con repetición espaciada.`,
+      })
+    } catch {
+      // User dismissed
+    }
+  }
+
+  const handleShareDiploma = async (diplomaItem: { level: string; title: string }): Promise<void> => {
+    try {
+      await Share.share({
+        message: `🏆 ¡He completado exitosamente el Nivel ${diplomaItem.level} de Inglés en la Escuela de Inglés Americana! 🎓 Certificación oficial y vocabulario consolidado.`,
+      })
+    } catch {
+      // User dismissed
+    }
+  }
 
   const userId = user?.id ?? 'demo-user'
 
@@ -146,6 +204,143 @@ export default function ProgressScreen(): React.JSX.Element {
 
   // Display initial 5 weeks or all 19 weeks
   const visibleWeeks = showAllWeeks ? weeklyBreakdown : weeklyBreakdown.slice(0, 5)
+
+  const currentStreak = streak.currentStreak
+  const totalCardsCount = cards.length
+  const masteredCardsCount = cards.filter((c) => c.interval >= 21).length
+
+  const badgesList = [
+    {
+      id: 'streak-7',
+      title: 'Racha de 7 Días',
+      category: 'Racha',
+      image: STREAK_7_DAYS,
+      current: currentStreak,
+      target: 7,
+      unit: 'días',
+      description: 'Estudia 7 días consecutivos para afianzar el hábito.',
+      unlocked: currentStreak >= 7,
+    },
+    {
+      id: 'streak-30',
+      title: 'Hábito de 30 Días',
+      category: 'Racha',
+      image: STREAK_30_DAYS,
+      current: currentStreak,
+      target: 30,
+      unit: 'días',
+      description: 'Un mes completo de estudio continuo sin interrupciones.',
+      unlocked: currentStreak >= 30,
+    },
+    {
+      id: 'streak-100',
+      title: 'Leyenda de 100 Días',
+      category: 'Racha',
+      image: STREAK_100_DAYS,
+      current: currentStreak,
+      target: 100,
+      unit: 'días',
+      description: 'Dedicación inquebrantable en tu camino a la fluidez.',
+      unlocked: currentStreak >= 100,
+    },
+    {
+      id: 'vocab-100',
+      title: '100 Palabras',
+      category: 'Vocabulario',
+      image: VOCAB_100_WORDS,
+      current: totalCardsCount,
+      target: 100,
+      unit: 'palabras',
+      description: 'Primer centenar de palabras activas en tu mazo de estudio.',
+      unlocked: totalCardsCount >= 100,
+    },
+    {
+      id: 'vocab-500',
+      title: '500 Palabras',
+      category: 'Vocabulario',
+      image: VOCAB_500_WORDS,
+      current: totalCardsCount,
+      target: 500,
+      unit: 'palabras',
+      description: 'Léxico fundamental para comprender conversaciones cotidianas.',
+      unlocked: totalCardsCount >= 500,
+    },
+    {
+      id: 'vocab-1000',
+      title: '1,000 Palabras',
+      category: 'Vocabulario',
+      image: VOCAB_1000_WORDS,
+      current: totalCardsCount,
+      target: 1000,
+      unit: 'palabras',
+      description: 'Vocabulario avanzado para comprender textos reales y conferencias.',
+      unlocked: totalCardsCount >= 1000,
+    },
+    {
+      id: 'vocab-2500',
+      title: '2,500 Palabras',
+      category: 'Vocabulario',
+      image: VOCAB_2500_WORDS,
+      current: totalCardsCount,
+      target: 2500,
+      unit: 'palabras',
+      description: 'Dominio completo de todo el léxico del programa A1 a B2.',
+      unlocked: totalCardsCount >= 2500,
+    },
+    {
+      id: 'mastered-100',
+      title: '100 Dominadas',
+      category: 'Dominio',
+      image: MASTERED_100_WORDS,
+      current: masteredCardsCount,
+      target: 100,
+      unit: 'palabras',
+      description: '100 palabras con intervalo de memoria a largo plazo (21+ días).',
+      unlocked: masteredCardsCount >= 100,
+    },
+    {
+      id: 'mastered-1000',
+      title: '1,000 Dominadas',
+      category: 'Dominio',
+      image: MASTERED_1000_WORDS,
+      current: masteredCardsCount,
+      target: 1000,
+      unit: 'palabras',
+      description: 'Memoria de acero: 1,000 palabras consolidadas permanentemente.',
+      unlocked: masteredCardsCount >= 1000,
+    },
+  ]
+
+  const diplomasList = [
+    {
+      level: 'A1',
+      title: 'Certificado de Inglés Inicial (Nivel A1)',
+      image: LEVEL_A1_COMPLETED,
+      isCompleted: currentLevel !== 'A1' || levelAdvancement.isEligible,
+      wordsText: '1,514 palabras del nivel',
+    },
+    {
+      level: 'A2',
+      title: 'Certificado de Inglés Elemental (Nivel A2)',
+      image: LEVEL_A2_COMPLETED,
+      isCompleted: currentLevel === 'B1' || currentLevel === 'B2',
+      wordsText: '734 palabras del nivel',
+    },
+    {
+      level: 'B1',
+      title: 'Certificado de Inglés Intermedio (Nivel B1)',
+      image: LEVEL_B1_COMPLETED,
+      isCompleted: currentLevel === 'B2',
+      wordsText: 'Vocabulario Intermedio B1',
+    },
+    {
+      level: 'B2',
+      title: 'Certificado de Inglés Profesional (Nivel B2)',
+      image: LEVEL_B2_COMPLETED,
+      isCompleted: false,
+      wordsText: 'Vocabulario Avanzado B2',
+    },
+  ]
 
   return (
     <SafeAreaView style={styles.safeArea} edges={['top']}>
@@ -414,6 +609,276 @@ export default function ProgressScreen(): React.JSX.Element {
             </Card>
           ))}
         </View>
+
+        {/* Gamification Badges Section */}
+        <View style={styles.sectionHeaderRow}>
+          <Text style={styles.sectionTitle}>🏆 Insignias y Logros</Text>
+          <Text style={styles.sectionBadgeText}>
+            {String(badgesList.filter((b) => b.unlocked).length)} / {String(badgesList.length)}
+          </Text>
+        </View>
+        <Text style={styles.sectionSubtitle}>
+          Desbloquea insignias oficiales conforme avanzas tu racha y dominas vocabulario
+        </Text>
+
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          style={styles.badgesScroll}
+          contentContainerStyle={styles.badgesScrollContent}
+        >
+          {badgesList.map((badgeItem) => {
+            const progress = Math.min(1, badgeItem.current / badgeItem.target)
+            return (
+              <TouchableOpacity
+                key={badgeItem.id}
+                activeOpacity={0.8}
+                onPress={() => {
+                  setSelectedBadge(badgeItem)
+                }}
+                style={[
+                  styles.badgeCard,
+                  badgeItem.unlocked ? styles.badgeCardUnlocked : styles.badgeCardLocked,
+                ]}
+              >
+                <View style={styles.badgeImageWrapper}>
+                  <Image
+                    source={badgeItem.image}
+                    style={[
+                      styles.badgeThumbImage,
+                      !badgeItem.unlocked && styles.badgeThumbImageLocked,
+                    ]}
+                    resizeMode="cover"
+                  />
+                  {badgeItem.unlocked ? (
+                    <View style={styles.unlockedIconCircle}>
+                      <Ionicons name="checkmark-circle" size={20} color="#F59E0B" />
+                    </View>
+                  ) : (
+                    <View style={styles.lockedIconCircle}>
+                      <Ionicons name="lock-closed" size={14} color="#94A3B8" />
+                    </View>
+                  )}
+                </View>
+
+                <Text style={styles.badgeCardTitle} numberOfLines={1}>
+                  {badgeItem.title}
+                </Text>
+                <Text style={styles.badgeCardCategory}>{badgeItem.category}</Text>
+
+                <ProgressBar
+                  progress={progress}
+                  height={5}
+                  color={badgeItem.unlocked ? '#F59E0B' : colors.primary}
+                  style={styles.badgeProgressBar}
+                />
+                <Text style={styles.badgeCardCount}>
+                  {String(Math.min(badgeItem.current, badgeItem.target))} / {String(badgeItem.target)}
+                </Text>
+              </TouchableOpacity>
+            )
+          })}
+        </ScrollView>
+
+        {/* Diplomas & Official Certifications Gallery (Social Sharing Cards) */}
+        <View style={styles.sectionHeaderRow}>
+          <Text style={styles.sectionTitle}>📜 Certificados Oficiales</Text>
+          <Text style={styles.sectionBadgeText}>A1 a B2</Text>
+        </View>
+        <Text style={styles.sectionSubtitle}>
+          Diplomas avalados por la Escuela de Inglés Americana listos para compartir
+        </Text>
+
+        <View style={styles.diplomasContainer}>
+          {diplomasList.map((diplomaItem) => (
+            <Card
+              key={diplomaItem.level}
+              padding="none"
+              style={[
+                styles.diplomaCard,
+                diplomaItem.isCompleted && styles.diplomaCardCompleted,
+              ]}
+            >
+              <Image
+                source={diplomaItem.image}
+                style={styles.diplomaBannerImage}
+                resizeMode="cover"
+              />
+              <View style={styles.diplomaCardBody}>
+                <View style={styles.diplomaHeaderRow}>
+                  <View style={styles.diplomaTitleBox}>
+                    <Badge
+                      label={diplomaItem.level}
+                      color={diplomaItem.isCompleted ? '#F59E0B' : colors.primary}
+                      size="sm"
+                    />
+                    <Text style={styles.diplomaCardTitle}>{diplomaItem.title}</Text>
+                  </View>
+                  <Badge
+                    label={diplomaItem.isCompleted ? '✓ Certificado' : 'En curso'}
+                    color={diplomaItem.isCompleted ? '#F59E0B' : colors.textMuted}
+                    size="sm"
+                  />
+                </View>
+
+                <Text style={styles.diplomaWordsText}>{diplomaItem.wordsText}</Text>
+
+                <Button
+                  title={
+                    diplomaItem.isCompleted
+                      ? '📢 Ver Diploma y Compartir'
+                      : '🔍 Ver Requisitos del Diploma'
+                  }
+                  variant={diplomaItem.isCompleted ? 'primary' : 'outline'}
+                  size="sm"
+                  onPress={() => {
+                    setSelectedDiploma(diplomaItem)
+                  }}
+                  style={styles.diplomaActionBtn}
+                  icon={
+                    <Ionicons
+                      name={diplomaItem.isCompleted ? 'share-social-outline' : 'eye-outline'}
+                      size={16}
+                      color={diplomaItem.isCompleted ? colors.textInverse : colors.primary}
+                    />
+                  }
+                />
+              </View>
+            </Card>
+          ))}
+        </View>
+
+        {/* Badge Detail & Share Modal */}
+        <Modal
+          visible={selectedBadge !== null}
+          transparent
+          animationType="fade"
+          onRequestClose={() => {
+            setSelectedBadge(null)
+          }}
+        >
+          <View style={styles.modalOverlay}>
+            <View style={styles.badgeModalCard}>
+              {selectedBadge ? (
+                <>
+                  <Image
+                    source={selectedBadge.image}
+                    style={styles.badgeModalImage}
+                    resizeMode="cover"
+                  />
+                  <View style={styles.badgeModalStatusRow}>
+                    <Badge
+                      label={selectedBadge.category}
+                      color={colors.primary}
+                      size="sm"
+                    />
+                    <Badge
+                      label={selectedBadge.unlocked ? '🏆 Desbloqueado' : '🔒 En Progreso'}
+                      color={selectedBadge.unlocked ? '#F59E0B' : colors.textMuted}
+                      size="sm"
+                    />
+                  </View>
+                  <Text style={styles.badgeModalTitle}>{selectedBadge.title}</Text>
+                  <Text style={styles.badgeModalDesc}>{selectedBadge.description}</Text>
+
+                  <View style={styles.badgeModalProgressBox}>
+                    <View style={styles.badgeModalProgressHeader}>
+                      <Text style={styles.badgeModalProgressLabel}>Progreso hacia la meta</Text>
+                      <Text style={styles.badgeModalProgressVal}>
+                        {String(Math.min(selectedBadge.current, selectedBadge.target))} /{' '}
+                        {String(selectedBadge.target)} {selectedBadge.unit}
+                      </Text>
+                    </View>
+                    <ProgressBar
+                      progress={Math.min(1, selectedBadge.current / selectedBadge.target)}
+                      height={8}
+                      color={selectedBadge.unlocked ? '#F59E0B' : colors.primary}
+                    />
+                  </View>
+
+                  <View style={styles.badgeModalButtons}>
+                    <Button
+                      title="Cerrar"
+                      variant="outline"
+                      size="md"
+                      onPress={() => {
+                        setSelectedBadge(null)
+                      }}
+                      style={styles.modalCancelBtn}
+                    />
+                    {selectedBadge.unlocked ? (
+                      <Button
+                        title="🎉 Compartir"
+                        variant="primary"
+                        size="md"
+                        onPress={() => {
+                          void handleShareBadge(selectedBadge)
+                        }}
+                        style={styles.modalConfirmBtn}
+                        icon={<Ionicons name="share-social-outline" size={16} color={colors.textInverse} />}
+                      />
+                    ) : null}
+                  </View>
+                </>
+              ) : null}
+            </View>
+          </View>
+        </Modal>
+
+        {/* Diploma Preview & Social Share Modal */}
+        <Modal
+          visible={selectedDiploma !== null}
+          transparent
+          animationType="fade"
+          onRequestClose={() => {
+            setSelectedDiploma(null)
+          }}
+        >
+          <View style={styles.modalOverlay}>
+            <View style={styles.diplomaModalCard}>
+              {selectedDiploma ? (
+                <>
+                  <Image
+                    source={selectedDiploma.image}
+                    style={styles.diplomaModalImage}
+                    resizeMode="contain"
+                  />
+                  <Text style={styles.diplomaModalTitle}>{selectedDiploma.title}</Text>
+                  <Text style={styles.diplomaModalSub}>
+                    Otorgado a: {profile?.displayName ?? user?.email ?? 'Estudiante'} • Escuela de Inglés Americana
+                  </Text>
+                  <Text style={styles.diplomaModalBody}>
+                    {selectedDiploma.isCompleted
+                      ? '¡Diploma Oficial acreditado! Demuestra tu dominio de comprensión lectora, vocabulario bilingüe y fluidez según el Marco Común Europeo (MCER).'
+                      : `Este diploma se acredita automáticamente al completar todas las semanas de estudio y alcanzar el 80% de retención en el Nivel ${selectedDiploma.level}.`}
+                  </Text>
+
+                  <View style={styles.diplomaModalButtons}>
+                    <Button
+                      title="Cerrar"
+                      variant="outline"
+                      size="md"
+                      onPress={() => {
+                        setSelectedDiploma(null)
+                      }}
+                      style={styles.modalCancelBtn}
+                    />
+                    <Button
+                      title="📢 Compartir Diploma"
+                      variant="primary"
+                      size="md"
+                      onPress={() => {
+                        void handleShareDiploma(selectedDiploma)
+                      }}
+                      style={styles.modalConfirmBtn}
+                      icon={<Ionicons name="share-social" size={16} color={colors.textInverse} />}
+                    />
+                  </View>
+                </>
+              ) : null}
+            </View>
+          </View>
+        </Modal>
 
         {/* Level Advancement Modal */}
         <Modal
@@ -820,5 +1285,242 @@ const styles = StyleSheet.create({
   },
   modalConfirmBtn: {
     flex: 1,
+  },
+  sectionSubtitle: {
+    fontSize: typography.sizes.xs,
+    color: colors.textSecondary,
+    marginBottom: spacing.sm,
+    marginTop: -spacing.xs,
+  },
+  badgesScroll: {
+    marginHorizontal: -spacing.md,
+    marginBottom: spacing.lg,
+  },
+  badgesScrollContent: {
+    paddingHorizontal: spacing.md,
+    gap: spacing.sm,
+  },
+  badgeCard: {
+    width: 140,
+    backgroundColor: colors.card,
+    borderRadius: radius.lg,
+    padding: spacing.sm,
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: colors.border,
+  },
+  badgeCardUnlocked: {
+    borderColor: 'rgba(245, 158, 11, 0.4)',
+    backgroundColor: 'rgba(245, 158, 11, 0.04)',
+  },
+  badgeCardLocked: {
+    opacity: 0.85,
+  },
+  badgeImageWrapper: {
+    width: 70,
+    height: 70,
+    borderRadius: radius.md,
+    overflow: 'hidden',
+    position: 'relative',
+    marginBottom: spacing.xs,
+  },
+  badgeThumbImage: {
+    width: '100%',
+    height: '100%',
+  },
+  badgeThumbImageLocked: {
+    opacity: 0.45,
+  },
+  unlockedIconCircle: {
+    position: 'absolute',
+    bottom: 2,
+    right: 2,
+    backgroundColor: '#0B0F17',
+    borderRadius: radius.full,
+  },
+  lockedIconCircle: {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    marginTop: -12,
+    marginLeft: -12,
+    width: 24,
+    height: 24,
+    borderRadius: 12,
+    backgroundColor: 'rgba(15, 23, 42, 0.85)',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  badgeCardTitle: {
+    fontSize: typography.sizes.xs,
+    fontWeight: typography.weights.bold,
+    color: colors.textPrimary,
+    textAlign: 'center',
+    marginBottom: 2,
+  },
+  badgeCardCategory: {
+    fontSize: typography.sizes.xs - 2,
+    color: colors.textMuted,
+    marginBottom: spacing.xs,
+  },
+  badgeProgressBar: {
+    width: '100%',
+    marginBottom: 4,
+  },
+  badgeCardCount: {
+    fontSize: typography.sizes.xs - 2,
+    color: colors.textSecondary,
+    fontWeight: typography.weights.medium,
+  },
+  diplomasContainer: {
+    gap: spacing.md,
+    marginBottom: spacing.lg,
+  },
+  diplomaCard: {
+    overflow: 'hidden',
+    borderRadius: radius.lg,
+    borderWidth: 1,
+    borderColor: colors.border,
+    backgroundColor: colors.card,
+  },
+  diplomaCardCompleted: {
+    borderColor: 'rgba(245, 158, 11, 0.5)',
+  },
+  diplomaBannerImage: {
+    width: '100%',
+    height: 120,
+  },
+  diplomaCardBody: {
+    padding: spacing.md,
+  },
+  diplomaHeaderRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: spacing.xs,
+  },
+  diplomaTitleBox: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.xs,
+    flex: 1,
+    marginRight: spacing.sm,
+  },
+  diplomaCardTitle: {
+    fontSize: typography.sizes.sm,
+    fontWeight: typography.weights.bold,
+    color: colors.textPrimary,
+    flex: 1,
+  },
+  diplomaWordsText: {
+    fontSize: typography.sizes.xs,
+    color: colors.textSecondary,
+    marginBottom: spacing.md,
+  },
+  diplomaActionBtn: {
+    width: '100%',
+  },
+  badgeModalCard: {
+    width: '100%',
+    maxWidth: 360,
+    backgroundColor: colors.card,
+    borderRadius: radius.xl,
+    padding: spacing.lg,
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: colors.border,
+  },
+  badgeModalImage: {
+    width: 130,
+    height: 130,
+    borderRadius: radius.lg,
+    marginBottom: spacing.md,
+  },
+  badgeModalStatusRow: {
+    flexDirection: 'row',
+    gap: spacing.xs,
+    marginBottom: spacing.xs,
+  },
+  badgeModalTitle: {
+    fontSize: typography.sizes.lg,
+    fontWeight: typography.weights.bold,
+    color: colors.textPrimary,
+    textAlign: 'center',
+    marginBottom: spacing.xs,
+  },
+  badgeModalDesc: {
+    fontSize: typography.sizes.xs,
+    color: colors.textSecondary,
+    textAlign: 'center',
+    lineHeight: 18,
+    marginBottom: spacing.md,
+  },
+  badgeModalProgressBox: {
+    width: '100%',
+    backgroundColor: colors.cardHover,
+    padding: spacing.sm,
+    borderRadius: radius.md,
+    marginBottom: spacing.md,
+  },
+  badgeModalProgressHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: spacing.xs,
+  },
+  badgeModalProgressLabel: {
+    fontSize: typography.sizes.xs - 1,
+    color: colors.textMuted,
+  },
+  badgeModalProgressVal: {
+    fontSize: typography.sizes.xs - 1,
+    fontWeight: typography.weights.bold,
+    color: colors.textPrimary,
+  },
+  badgeModalButtons: {
+    flexDirection: 'row',
+    gap: spacing.sm,
+    width: '100%',
+  },
+  diplomaModalCard: {
+    width: '100%',
+    maxWidth: 420,
+    backgroundColor: colors.card,
+    borderRadius: radius.xl,
+    padding: spacing.lg,
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: colors.border,
+  },
+  diplomaModalImage: {
+    width: '100%',
+    height: 180,
+    borderRadius: radius.md,
+    marginBottom: spacing.md,
+  },
+  diplomaModalTitle: {
+    fontSize: typography.sizes.lg,
+    fontWeight: typography.weights.bold,
+    color: colors.textPrimary,
+    textAlign: 'center',
+    marginBottom: 2,
+  },
+  diplomaModalSub: {
+    fontSize: typography.sizes.xs,
+    color: '#F59E0B',
+    fontWeight: typography.weights.semibold,
+    textAlign: 'center',
+    marginBottom: spacing.sm,
+  },
+  diplomaModalBody: {
+    fontSize: typography.sizes.xs,
+    color: colors.textSecondary,
+    textAlign: 'center',
+    lineHeight: 18,
+    marginBottom: spacing.lg,
+  },
+  diplomaModalButtons: {
+    flexDirection: 'row',
+    gap: spacing.sm,
+    width: '100%',
   },
 })

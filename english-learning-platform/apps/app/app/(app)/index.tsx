@@ -1,14 +1,16 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { View, Text, StyleSheet, ScrollView, Image, TouchableOpacity } from 'react-native'
 import { useRouter, useFocusEffect } from 'expo-router'
 import { SafeAreaView } from 'react-native-safe-area-context'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import { colors, spacing, typography, radius, Card, Button, Badge, ProgressBar } from '@elp/ui'
 import { Ionicons } from '@expo/vector-icons'
 import { useAuthStore } from '../../stores/useAuthStore'
 import { useSRSStore } from '../../stores/useSRSStore'
 import { useProgressStore } from '../../stores/useProgressStore'
 import { getDueCards, calculateDailyProgress } from '@elp/srs'
-import { APP_LOGO } from '../../lib/assets'
+import { SCHOOL_LOGO, EMPTY_REVIEWS_IMG } from '../../lib/assets'
+import { OnboardingModal } from '../../components/OnboardingModal'
 
 
 export default function HomeScreen(): React.JSX.Element {
@@ -63,13 +65,24 @@ export default function HomeScreen(): React.JSX.Element {
     heroSubtitle = 'No tienes repasos pendientes hoy. ¡Aprende o repite lecciones para encender tu racha!'
   }
 
+  const [onboardingVisible, setOnboardingVisible] = useState(false)
+
+  useEffect(() => {
+    void AsyncStorage.getItem('@elp/has_seen_onboarding_v1').then((seen) => {
+      if (!seen) {
+        setOnboardingVisible(true)
+        void AsyncStorage.setItem('@elp/has_seen_onboarding_v1', 'true')
+      }
+    })
+  }, [])
+
   return (
     <SafeAreaView style={styles.safeArea} edges={['top']}>
       <ScrollView contentContainerStyle={styles.scrollContent}>
         {/* Top Bar */}
         <View style={styles.topBar}>
           <View style={styles.brandingRow}>
-            <Image source={APP_LOGO} style={styles.headerLogo} resizeMode="contain" />
+            <Image source={SCHOOL_LOGO} style={styles.headerLogo} resizeMode="contain" />
             <View>
               <Text style={styles.greeting}>Hola, {displayName} 👋</Text>
               <Text style={styles.subgreeting}>Escuela de Inglés Americana</Text>
@@ -83,6 +96,26 @@ export default function HomeScreen(): React.JSX.Element {
             <Badge label={`Nivel ${currentLevel}`} color={colors.primary} size="md" />
           </View>
         </View>
+
+        {/* Onboarding / Method Guide Banner */}
+        <TouchableOpacity
+          style={styles.onboardingBanner}
+          activeOpacity={0.8}
+          onPress={() => {
+            setOnboardingVisible(true)
+          }}
+        >
+          <View style={styles.onboardingBannerIcon}>
+            <Ionicons name="school-outline" size={22} color={colors.primary} />
+          </View>
+          <View style={styles.onboardingBannerText}>
+            <Text style={styles.onboardingBannerTitle}>Guía del Alumno y Método B2</Text>
+            <Text style={styles.onboardingBannerSub}>
+              Descubre cómo funciona la repetición espaciada y los diplomas
+            </Text>
+          </View>
+          <Ionicons name="chevron-forward" size={18} color={colors.textSecondary} />
+        </TouchableOpacity>
 
         {/* Daily Goal & Streak Hero Card */}
         <Card padding="lg" highlighted style={styles.heroCard}>
@@ -100,6 +133,19 @@ export default function HomeScreen(): React.JSX.Element {
           <Text style={styles.heroTitle}>Meta Diaria de Estudio</Text>
           <ProgressBar progress={progressRatio} height={10} style={styles.heroProgress} />
           <Text style={styles.heroSubtitle}>{heroSubtitle}</Text>
+
+          {dueCount === 0 ? (
+            <View style={styles.emptyHeroBox}>
+              <Image
+                source={EMPTY_REVIEWS_IMG}
+                style={styles.emptyHeroImage}
+                resizeMode="cover"
+              />
+              <Text style={styles.emptyHeroText}>
+                ¡Estás al día! Has repasado todo tu mazo programado para hoy 🎉
+              </Text>
+            </View>
+          ) : null}
 
           {/* Primary Action */}
           <Button
@@ -202,6 +248,13 @@ export default function HomeScreen(): React.JSX.Element {
           </Text>
         </Card>
       </ScrollView>
+
+      <OnboardingModal
+        visible={onboardingVisible}
+        onClose={() => {
+          setOnboardingVisible(false)
+        }}
+      />
     </SafeAreaView>
   )
 }
@@ -261,6 +314,58 @@ const styles = StyleSheet.create({
     fontSize: typography.sizes.xs,
     color: colors.textSecondary,
     marginTop: 2,
+  },
+  onboardingBanner: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: 'rgba(5, 150, 105, 0.08)',
+    borderWidth: 1,
+    borderColor: 'rgba(5, 150, 105, 0.25)',
+    borderRadius: radius.lg,
+    padding: spacing.sm + 2,
+    marginBottom: spacing.md,
+    gap: spacing.sm,
+  },
+  onboardingBannerIcon: {
+    width: 38,
+    height: 38,
+    borderRadius: radius.md,
+    backgroundColor: 'rgba(5, 150, 105, 0.15)',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  onboardingBannerText: {
+    flex: 1,
+  },
+  onboardingBannerTitle: {
+    fontSize: typography.sizes.xs,
+    fontWeight: typography.weights.bold,
+    color: colors.primary,
+  },
+  onboardingBannerSub: {
+    fontSize: typography.sizes.xs - 2,
+    color: colors.textSecondary,
+    marginTop: 1,
+  },
+  emptyHeroBox: {
+    borderRadius: radius.md,
+    overflow: 'hidden',
+    backgroundColor: colors.cardHover,
+    marginVertical: spacing.sm,
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: colors.border,
+  },
+  emptyHeroImage: {
+    width: '100%',
+    height: 120,
+  },
+  emptyHeroText: {
+    fontSize: typography.sizes.xs,
+    color: colors.textPrimary,
+    fontWeight: typography.weights.medium,
+    textAlign: 'center',
+    padding: spacing.sm,
   },
   heroCard: {
     marginBottom: spacing.lg,

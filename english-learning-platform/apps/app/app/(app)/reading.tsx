@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   Pressable,
   Modal,
+  Image,
   type StyleProp,
   type ViewStyle,
   type TextStyle,
@@ -16,6 +17,7 @@ import { colors, spacing, radius, typography, Card, Badge, Button } from '@elp/u
 import { Ionicons } from '@expo/vector-icons'
 import { getReadingPassagesByLevel, getVocabularyById } from '@elp/content'
 import type { CEFRLevel, ReadingPassage, VocabularyItem, WordMapping } from '@elp/types'
+import { EMPTY_READINGS_IMG } from '../../lib/assets'
 
 const LEVELS: CEFRLevel[] = ['A1', 'A2', 'B1', 'B2']
 
@@ -227,35 +229,51 @@ export default function ReadingScreen(): React.JSX.Element {
         </View>
 
         {/* Passage Selector Strip */}
-        <ScrollView
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          style={styles.selectorStrip}
-          contentContainerStyle={styles.selectorContent}
-        >
-          {passages.map((passage) => {
-            const isSelected = selectedPassage.id === passage.id
-            return (
-              <TouchableOpacity
-                key={passage.id}
-                onPress={() => {
-                  handleSelectPassage(passage)
-                }}
-                style={[styles.selectorChip, isSelected && styles.selectorChipActive]}
-              >
-                <Text
-                  style={[styles.selectorChipText, isSelected && styles.selectorChipTextActive]}
+        {passages.length > 0 ? (
+          <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            style={styles.selectorStrip}
+            contentContainerStyle={styles.selectorContent}
+          >
+            {passages.map((passage) => {
+              const isSelected = selectedPassage.id === passage.id
+              return (
+                <TouchableOpacity
+                  key={passage.id}
+                  onPress={() => {
+                    handleSelectPassage(passage)
+                  }}
+                  style={[styles.selectorChip, isSelected && styles.selectorChipActive]}
                 >
-                  {passage.title}
-                </Text>
-              </TouchableOpacity>
-            )
-          })}
-        </ScrollView>
+                  <Text
+                    style={[styles.selectorChipText, isSelected && styles.selectorChipTextActive]}
+                  >
+                    {passage.title}
+                  </Text>
+                </TouchableOpacity>
+              )
+            })}
+          </ScrollView>
+        ) : null}
 
-        {/* Active Passage Reader Card */}
-        <Card padding="lg" highlighted style={styles.readerCard}>
-          <View style={styles.passageHeader}>
+        {passages.length === 0 ? (
+          <Card padding="lg" style={styles.emptyCard}>
+            <Image
+              source={EMPTY_READINGS_IMG}
+              style={styles.emptyImage}
+              resizeMode="cover"
+            />
+            <Text style={styles.emptyTitle}>Lecturas del Nivel {selectedLevel} en preparación</Text>
+            <Text style={styles.emptySubtitle}>
+              Estamos curando lecturas bilingües graduadas para este nivel. Por ahora, continúa repasando las lecturas disponibles en los niveles A1 y A2.
+            </Text>
+          </Card>
+        ) : (
+          <>
+            {/* Active Passage Reader Card */}
+            <Card padding="lg" highlighted style={styles.readerCard}>
+              <View style={styles.passageHeader}>
             <View style={styles.badgeRow}>
               <Badge label={selectedPassage.level} color={colors.primary} size="sm" />
               <Badge
@@ -403,6 +421,8 @@ export default function ReadingScreen(): React.JSX.Element {
           style={styles.completeBtn}
           icon={<Ionicons name="checkmark-done-outline" size={20} color={colors.textPrimary} />}
         />
+        </>
+        )}
 
         {/* Word Detail Modal */}
         <Modal
@@ -812,5 +832,32 @@ const styles = StyleSheet.create({
   },
   modalBtn: {
     marginTop: spacing.lg,
+  },
+  emptyCard: {
+    borderRadius: radius.lg,
+    overflow: 'hidden',
+    alignItems: 'center',
+    padding: spacing.xl,
+    marginTop: spacing.md,
+  },
+  emptyImage: {
+    width: '100%',
+    height: 180,
+    borderRadius: radius.md,
+    marginBottom: spacing.md,
+  },
+  emptyTitle: {
+    fontSize: typography.sizes.lg,
+    fontWeight: typography.weights.bold,
+    color: colors.textPrimary,
+    textAlign: 'center',
+    marginBottom: spacing.xs,
+  },
+  emptySubtitle: {
+    fontSize: typography.sizes.xs,
+    color: colors.textSecondary,
+    textAlign: 'center',
+    lineHeight: 20,
+    maxWidth: 320,
   },
 })

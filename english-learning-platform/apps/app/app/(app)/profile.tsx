@@ -30,6 +30,7 @@ import {
 } from '../../lib/db/sqlite'
 import { isSupabaseConfigured } from '../../lib/supabase'
 import { APP_LOGO, SCHOOL_LOGO } from '../../lib/assets'
+import { OnboardingModal } from '../../components/OnboardingModal'
 
 export default function ProfileScreen(): React.JSX.Element {
   const router = useRouter()
@@ -56,6 +57,8 @@ export default function ProfileScreen(): React.JSX.Element {
     await logout()
     router.replace('/(auth)/login')
   }
+
+  const [onboardingVisible, setOnboardingVisible] = useState(false)
 
   const handleManualSync = async (): Promise<void> => {
     if (!user?.id) return
@@ -381,6 +384,23 @@ export default function ProfileScreen(): React.JSX.Element {
           </TouchableOpacity>
         </Card>
 
+        {/* Help & Guide */}
+        <Text style={styles.sectionTitle}>Guía del Estudiante</Text>
+        <Card padding="md" style={styles.settingsCard}>
+          <TouchableOpacity
+            style={styles.settingItem}
+            onPress={() => {
+              setOnboardingVisible(true)
+            }}
+          >
+            <View style={styles.settingLeft}>
+              <Ionicons name="school-outline" size={20} color={colors.primary} />
+              <Text style={styles.settingLabel}>Ver Tutorial y Método de la Escuela</Text>
+            </View>
+            <Ionicons name="chevron-forward" size={18} color={colors.textSecondary} />
+          </TouchableOpacity>
+        </Card>
+
         {/* Account & Logout */}
         <Text style={styles.sectionTitle}>Cuenta</Text>
         <Button
@@ -474,6 +494,13 @@ export default function ProfileScreen(): React.JSX.Element {
           </View>
         </View>
       </Modal>
+
+      <OnboardingModal
+        visible={onboardingVisible}
+        onClose={() => {
+          setOnboardingVisible(false)
+        }}
+      />
     </SafeAreaView>
   )
 }

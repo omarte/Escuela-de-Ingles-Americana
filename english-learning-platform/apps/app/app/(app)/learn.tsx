@@ -7,6 +7,7 @@ import {
   Pressable,
   TextInput,
   TouchableOpacity,
+  Image,
 } from 'react-native'
 import { useRouter } from 'expo-router'
 import { SafeAreaView } from 'react-native-safe-area-context'
@@ -19,6 +20,7 @@ import { useAuthStore } from '../../stores/useAuthStore'
 import { getWordDisplayData } from '../../lib/vocabulary'
 import { generateQuizOptions, type QuizOption } from '../../lib/distractors'
 import { speakEnglish } from '../../lib/audio'
+import { EMPTY_REVIEWS_IMG } from '../../lib/assets'
 
 const OPTION_LETTERS = ['A', 'B', 'C', 'D']
 
@@ -279,6 +281,20 @@ export default function LearnScreen(): React.JSX.Element {
                 </Text>
               </View>
             </View>
+
+            {dueCount === 0 ? (
+              <View style={styles.emptyIntroBox}>
+                <Image
+                  source={EMPTY_REVIEWS_IMG}
+                  style={styles.emptyIntroImage}
+                  resizeMode="cover"
+                />
+                <Text style={styles.emptyIntroTitle}>¡Sin repasos pendientes!</Text>
+                <Text style={styles.emptyIntroSub}>
+                  Has completado tus repasos de hoy. Aprende un nuevo lote de 10 palabras o haz práctica libre.
+                </Text>
+              </View>
+            ) : null}
 
             {/* The 1 + 2 + 1 CTA Hierarchy */}
             <View style={styles.introActions}>
@@ -1223,6 +1239,35 @@ const styles = StyleSheet.create({
   },
   subtleLinkBtn: {
     marginTop: spacing.xs,
+  },
+  emptyIntroBox: {
+    borderRadius: radius.md,
+    overflow: 'hidden',
+    backgroundColor: colors.cardHover,
+    marginTop: spacing.md,
+    marginBottom: spacing.xs,
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: colors.border,
+  },
+  emptyIntroImage: {
+    width: '100%',
+    height: 120,
+  },
+  emptyIntroTitle: {
+    fontSize: typography.sizes.sm,
+    fontWeight: typography.weights.bold,
+    color: colors.textPrimary,
+    marginTop: spacing.sm,
+    textAlign: 'center',
+  },
+  emptyIntroSub: {
+    fontSize: typography.sizes.xs,
+    color: colors.textSecondary,
+    textAlign: 'center',
+    paddingHorizontal: spacing.sm,
+    paddingBottom: spacing.sm,
+    lineHeight: 18,
   },
 })
 

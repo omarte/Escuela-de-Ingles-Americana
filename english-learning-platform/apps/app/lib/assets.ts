@@ -38,6 +38,8 @@ export const STREAK_7_DAYS: ImageSourcePropType = require('../assets/streak-7-da
 export const STREAK_30_DAYS: ImageSourcePropType = require('../assets/streak-30-days.jpg')
 // eslint-disable-next-line @typescript-eslint/no-require-imports, @typescript-eslint/no-unsafe-assignment
 export const STREAK_100_DAYS: ImageSourcePropType = require('../assets/streak-100-days.jpg')
+// eslint-disable-next-line @typescript-eslint/no-require-imports, @typescript-eslint/no-unsafe-assignment
+export const ACHIEVEMENT_GENERIC: ImageSourcePropType = require('../assets/achievement-generic.jpg')
 
 // Vocabulary Count Milestones
 // eslint-disable-next-line @typescript-eslint/no-require-imports, @typescript-eslint/no-unsafe-assignment
