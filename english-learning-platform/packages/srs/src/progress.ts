@@ -104,7 +104,7 @@ function getPreviousDateString(dateStr: string): string {
  */
 export function calculateStreak(
   studyDates: readonly string[],
-  referenceDate?: string,
+  referenceDate?: string | Date,
   timeZone?: string,
 ): StreakResult {
   if (studyDates.length === 0) {
