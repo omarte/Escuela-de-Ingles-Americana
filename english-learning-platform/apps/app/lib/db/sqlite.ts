@@ -469,3 +469,28 @@ export async function getPendingSyncCount(
     pendingEvents: events.length,
   }
 }
+
+/**
+ * Elimina todos los datos locales asociados a un usuario (SQLite y fallback AsyncStorage).
+ * Invocado durante el flujo de eliminación de cuenta para no dejar datos residuales.
+ */
+export async function clearLocalUserData(userId: string): Promise<void> {
+  const db = await getDatabase()
+  if (db) {
+    try {
+      await db.runAsync('DELETE FROM local_user_cards WHERE user_id = ?', [userId])
+      await db.runAsync('DELETE FROM local_review_events WHERE user_id = ?', [userId])
+      await db.runAsync('DELETE FROM sync_metadata WHERE key LIKE ?', [`%${userId}%`])
+    } catch {
+      // Ignorar errores si la tabla aún no fue creada
+    }
+  }
+  try {
+    await AsyncStorage.removeItem(`${ASYNC_CARDS_PREFIX}${userId}`)
+    await AsyncStorage.removeItem(`${ASYNC_EVENTS_PREFIX}${userId}`)
+    await AsyncStorage.removeItem(`${ASYNC_META_PREFIX}${userId}`)
+  } catch {
+    // ignore
+  }
+}
+

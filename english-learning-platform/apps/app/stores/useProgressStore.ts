@@ -36,7 +36,7 @@ export interface ProgressState {
   advanceLevel: () => Promise<boolean>
 }
 
-const DEFAULT_METRICS: ProgressMetrics = {
+export const DEFAULT_METRICS: ProgressMetrics = {
   streak: {
     currentStreak: 0,
     bestStreak: 0,

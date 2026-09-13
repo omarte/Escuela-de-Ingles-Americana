@@ -29,6 +29,7 @@ import {
   restoreLocalCardsWithMerge,
 } from '../../lib/db/sqlite'
 import { isSupabaseConfigured } from '../../lib/supabase'
+import { deleteAccountAndCleanup } from '../../lib/account'
 import { APP_LOGO, SCHOOL_LOGO } from '../../lib/assets'
 import { OnboardingModal } from '../../components/OnboardingModal'
 import {
@@ -136,6 +137,30 @@ export default function ProfileScreen(): React.JSX.Element {
   const [isRestoring, setIsRestoring] = useState(false)
   const [isRestoreModalVisible, setIsRestoreModalVisible] = useState(false)
   const [backupJsonInput, setBackupJsonInput] = useState('')
+
+  const [isDeleteModalVisible, setDeleteModalVisible] = useState(false)
+  const [confirmationText, setConfirmationText] = useState('')
+  const [isDeleting, setIsDeleting] = useState(false)
+
+  const handleDeleteAccount = async (): Promise<void> => {
+    if (confirmationText.trim().toUpperCase() !== 'ELIMINAR') {
+      Alert.alert('Confirmación requerida', 'Debes escribir "ELIMINAR" exactamente para confirmar.')
+      return
+    }
+
+    setIsDeleting(true)
+    const result = await deleteAccountAndCleanup()
+    setIsDeleting(false)
+
+    if (result.success) {
+      setDeleteModalVisible(false)
+      setConfirmationText('')
+      Alert.alert('Cuenta Eliminada', 'Tu cuenta y todos tus datos han sido eliminados correctamente.')
+      router.replace('/(auth)/login')
+    } else {
+      Alert.alert('Error', result.error ?? 'No se pudo eliminar la cuenta. Intenta de nuevo más tarde.')
+    }
+  }
 
   const handleExportBackup = async (): Promise<void> => {
     if (!user?.id) return
@@ -508,6 +533,28 @@ export default function ProfileScreen(): React.JSX.Element {
           textStyle={styles.logoutBtnText}
         />
 
+        {/* Zona de Peligro: Eliminación de Cuenta (Apple Guideline 5.1.1(v)) */}
+        <View style={styles.dangerZone}>
+          <View style={styles.dangerHeader}>
+            <Ionicons name="warning-outline" size={18} color={colors.danger} />
+            <Text style={styles.dangerTitle}>Zona de Peligro</Text>
+          </View>
+          <Text style={styles.dangerDescription}>
+            Esta acción es permanente e irreversible. Se eliminarán tu progreso, tarjetas de estudio y datos de cuenta de forma definitiva.
+          </Text>
+          <TouchableOpacity
+            style={styles.deleteAccountBtn}
+            onPress={() => {
+              setConfirmationText('')
+              setDeleteModalVisible(true)
+            }}
+            activeOpacity={0.7}
+          >
+            <Ionicons name="trash-outline" size={16} color={colors.danger} />
+            <Text style={styles.deleteAccountBtnText}>Eliminar mi cuenta permanentemente</Text>
+          </TouchableOpacity>
+        </View>
+
         {/* App Version Info & School Crest */}
         <View style={styles.versionInfo}>
           <Image source={SCHOOL_LOGO} style={styles.versionLogo} resizeMode="contain" />
@@ -580,6 +627,83 @@ export default function ProfileScreen(): React.JSX.Element {
                   void handleRestoreBackup()
                 }}
                 style={styles.modalRestoreBtn}
+              />
+            </View>
+          </View>
+        </View>
+      </Modal>
+
+      {/* Modal de Confirmación de Eliminación de Cuenta */}
+      <Modal
+        visible={isDeleteModalVisible}
+        animationType="fade"
+        transparent={true}
+        onRequestClose={() => {
+          if (!isDeleting) {
+            setDeleteModalVisible(false)
+            setConfirmationText('')
+          }
+        }}
+      >
+        <View style={styles.modalOverlay}>
+          <View style={styles.modalContainer}>
+            <View style={styles.modalHeader}>
+              <View style={styles.modalHeaderTitleRow}>
+                <Ionicons name="alert-circle-outline" size={22} color={colors.danger} />
+                <Text style={[styles.modalTitle, { color: colors.danger }]}>¿Eliminar Cuenta?</Text>
+              </View>
+              {!isDeleting && (
+                <TouchableOpacity
+                  onPress={() => {
+                    setDeleteModalVisible(false)
+                    setConfirmationText('')
+                  }}
+                  hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+                >
+                  <Ionicons name="close" size={20} color={colors.textSecondary} />
+                </TouchableOpacity>
+              )}
+            </View>
+
+            <Text style={styles.modalSubtitle}>
+              Esta acción <Text style={{ fontWeight: '700', color: colors.textPrimary }}>no se puede deshacer</Text>. Se purgarán de inmediato todos tus repasos y tarjetas.
+            </Text>
+            <Text style={[styles.modalSubtitle, { marginBottom: spacing.md }]}>
+              Para confirmar, escribe <Text style={{ fontWeight: '700', color: colors.danger }}>ELIMINAR</Text> en el campo siguiente:
+            </Text>
+
+            <TextInput
+              style={styles.deleteConfirmInput}
+              placeholder="Escribe ELIMINAR"
+              placeholderTextColor={colors.textMuted}
+              value={confirmationText}
+              onChangeText={setConfirmationText}
+              autoCapitalize="characters"
+              editable={!isDeleting}
+            />
+
+            <View style={styles.modalActionRow}>
+              <Button
+                title="Cancelar"
+                variant="ghost"
+                size="sm"
+                disabled={isDeleting}
+                onPress={() => {
+                  setDeleteModalVisible(false)
+                  setConfirmationText('')
+                }}
+                style={styles.modalCancelBtn}
+              />
+              <Button
+                title={isDeleting ? 'Eliminando...' : 'Confirmar'}
+                variant="danger"
+                size="sm"
+                loading={isDeleting}
+                disabled={isDeleting || confirmationText.trim().toUpperCase() !== 'ELIMINAR'}
+                onPress={() => {
+                  void handleDeleteAccount()
+                }}
+                style={styles.modalDeleteBtn}
               />
             </View>
           </View>
@@ -1123,6 +1247,61 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   modalRestoreBtn: {
+    flex: 1,
+  },
+  dangerZone: {
+    padding: spacing.md,
+    backgroundColor: '#FEF2F2',
+    borderRadius: radius.md,
+    borderWidth: 1,
+    borderColor: '#FECACA',
+    marginBottom: spacing.xl,
+  },
+  dangerHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.xs,
+    marginBottom: spacing.xs,
+  },
+  dangerTitle: {
+    fontSize: typography.sizes.sm,
+    fontWeight: typography.weights.bold,
+    color: '#991B1B',
+  },
+  dangerDescription: {
+    fontSize: typography.sizes.xs,
+    color: '#7F1D1D',
+    lineHeight: 18,
+    marginBottom: spacing.md,
+  },
+  deleteAccountBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: spacing.xs,
+    backgroundColor: '#FFFFFF',
+    paddingVertical: spacing.sm,
+    paddingHorizontal: spacing.md,
+    borderRadius: radius.sm,
+    borderWidth: 1,
+    borderColor: '#EF4444',
+  },
+  deleteAccountBtnText: {
+    color: '#EF4444',
+    fontSize: typography.sizes.xs,
+    fontWeight: typography.weights.semibold,
+  },
+  deleteConfirmInput: {
+    borderWidth: 1,
+    borderColor: colors.border,
+    borderRadius: radius.sm,
+    padding: spacing.sm,
+    fontSize: typography.sizes.sm,
+    backgroundColor: colors.background,
+    color: colors.textPrimary,
+    marginBottom: spacing.md,
+  },
+  modalDeleteBtn: {
     flex: 1,
   },
 })
