@@ -1,0 +1,20 @@
+# Ignore native folders (EAS will prebuild in cloud)
+android/
+ios/
+
+# Ignore build artifacts
+*.apk
+*.aab
+*.tar.gz
+*.zip
+.expo/
+dist/
+build/
+.turbo/
+coverage/
+
+# Docs and scripts not needed for build
+docs/
+*.md
+tests/
+__tests__/

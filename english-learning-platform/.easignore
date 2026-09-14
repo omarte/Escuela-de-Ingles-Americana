@@ -1,0 +1,20 @@
+# Ignore native folders
+android/
+ios/
+
+# Ignore build artifacts
+*.apk
+*.aab
+*.tar.gz
+*.zip
+.expo/
+dist/
+build/
+.turbo/
+coverage/
+
+# Non-essential files
+docs/
+*.md
+tests/
+__tests__/
