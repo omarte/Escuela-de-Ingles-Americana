@@ -13,6 +13,7 @@
         ul, ol { padding-left: 24px; margin-bottom: 18px; }
         li { margin-bottom: 8px; }
         .highlight-box { background-color: #ECFDF5; border-left: 4px solid #059669; padding: 14px 18px; border-radius: 6px; margin: 20px 0; }
+        .warning-box { background-color: #FFFBEB; border-left: 4px solid #D97706; padding: 14px 18px; border-radius: 6px; margin: 20px 0; }
         a { color: #059669; text-decoration: underline; }
         .nav-links { margin-top: 32px; padding-top: 16px; border-top: 1px solid #E2E8F0; font-size: 14px; color: #64748B; }
         .nav-links a { margin-right: 16px; }
@@ -28,6 +29,7 @@
         <ul>
             <li><strong>Información de la cuenta:</strong> Dirección de correo electrónico y nombre de visualización (utilizados exclusivamente para autenticación, personalización básica y recuperación de cuenta).</li>
             <li><strong>Datos de actividad y progreso:</strong> Palabras estudiadas, calificaciones del algoritmo de repetición espaciada (SRS), rachas de estudio diarias y preferencias de configuración (velocidad y dialecto de audio). Estos datos se procesan localmente en tu dispositivo (SQLite) y se sincronizan cifrados con nuestros servidores seguros (Supabase).</li>
+            <li><strong>Datos de compras y facturación:</strong> Las transacciones de pago son gestionadas y procesadas directamente por Apple (App Store) o Google (Google Play). No almacenamos números de tarjetas de crédito ni datos financieros en nuestros servidores. Utilizamos la infraestructura de RevenueCat como procesador de validación de recibos para conceder tu acceso Pro sin acceder a tu información bancaria.</li>
         </ul>
 
         <h2>2. Cómo Usamos tus Datos</h2>
@@ -53,8 +55,15 @@
         </ol>
         <p>Al confirmar, tus credenciales son revocadas y borradas de Supabase Auth, todos tus registros de estudio son eliminados de nuestros servidores relacionales, y la base de datos local SQLite y almacenamiento caché son purgados de tu dispositivo de manera irreversible.</p>
 
-        <h2>5. Contacto</h2>
-        <p>Si tienes preguntas sobre esta política de privacidad o requieres asistencia adicional sobre tus datos personales, puedes contactar a nuestro equipo en:</p>
+        <div class="warning-box">
+            <p><strong>Aviso importante sobre suscripciones activas en tiendas:</strong> La eliminación de tu cuenta en la aplicación borra tus datos en nuestros servidores, pero <strong>NO cancela automáticamente</strong> las suscripciones contratadas a través de Apple App Store o Google Play. Para evitar cobros recurrentes de la tienda, debes cancelar la suscripción directamente desde los ajustes de tu cuenta de Apple ID o Google Play Store antes o después de eliminar tu cuenta en la app.</p>
+        </div>
+
+        <h2>5. Protección de Menores de Edad</h2>
+        <p>La aplicación está diseñada principalmente para estudiantes adultos y profesionales (18+ años). No recopilamos intencionalmente información personal de menores de 13 años (o la edad mínima legal correspondiente en tu jurisdicción) sin el consentimiento y supervisión expresa de sus padres o tutores legales. Si detectamos que un menor nos ha proporcionado información sin dicho consentimiento, procederemos a su eliminación inmediata.</p>
+
+        <h2>6. Contacto y Derechos de Privacidad</h2>
+        <p>Si tienes preguntas sobre esta política de privacidad o requieres asistencia adicional para ejercer tus derechos de acceso, rectificación o supresión, puedes contactar a nuestro equipo en:</p>
         <p><strong>Email:</strong> <a href="mailto:soporte@escueladeinglesamericana.com">soporte@escueladeinglesamericana.com</a></p>
 
         <div class="nav-links">

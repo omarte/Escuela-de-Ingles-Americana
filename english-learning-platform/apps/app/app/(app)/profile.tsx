@@ -12,6 +12,7 @@ import {
   TextInput,
   Alert,
   Platform,
+  Linking,
 } from 'react-native'
 import { useRouter } from 'expo-router'
 import { SafeAreaView } from 'react-native-safe-area-context'
@@ -668,8 +669,37 @@ export default function ProfileScreen(): React.JSX.Element {
             <Text style={styles.modalSubtitle}>
               Esta acción <Text style={{ fontWeight: '700', color: colors.textPrimary }}>no se puede deshacer</Text>. Se purgarán de inmediato todos tus repasos y tarjetas.
             </Text>
-            <Text style={[styles.modalSubtitle, { marginBottom: spacing.md }]}>
-              Para confirmar, escribe <Text style={{ fontWeight: '700', color: colors.danger }}>ELIMINAR</Text> en el campo siguiente:
+
+            {/* Advertencia obligatoria: Cancelación de suscripciones en Apple/Google */}
+            <View style={styles.subscriptionWarningBox}>
+              <View style={styles.subscriptionWarningHeader}>
+                <Ionicons name="card-outline" size={18} color="#B45309" />
+                <Text style={styles.subscriptionWarningTitle}>
+                  Aviso importante de suscripción
+                </Text>
+              </View>
+              <Text style={styles.subscriptionWarningText}>
+                Eliminar tu cuenta en la aplicación <Text style={{ fontWeight: '700' }}>NO cancela</Text> tus cobros en Apple App Store o Google Play. Si tienes una suscripción activa, debes cancelarla directamente desde los ajustes de tu tienda para evitar cargos recurrentes.
+              </Text>
+              <TouchableOpacity
+                style={styles.manageSubscriptionsBtn}
+                onPress={() => {
+                  const url = Platform.select({
+                    ios: 'https://apps.apple.com/account/subscriptions',
+                    default: 'https://play.google.com/store/account/subscriptions',
+                  })
+                  void Linking.openURL(url)
+                }}
+                activeOpacity={0.7}
+              >
+                <Text style={styles.manageSubscriptionsBtnText}>
+                  Gestionar suscripciones en {Platform.OS === 'ios' ? 'Apple ID' : 'Google Play'} →
+                </Text>
+              </TouchableOpacity>
+            </View>
+
+            <Text style={[styles.modalSubtitle, { marginBottom: spacing.sm }]}>
+              Para confirmar la eliminación permanente de tu cuenta, escribe <Text style={{ fontWeight: '700', color: colors.danger }}>ELIMINAR</Text>:
             </Text>
 
             <TextInput
@@ -1303,6 +1333,41 @@ const styles = StyleSheet.create({
   },
   modalDeleteBtn: {
     flex: 1,
+  },
+  subscriptionWarningBox: {
+    backgroundColor: '#FFFBEB',
+    borderRadius: radius.md,
+    borderWidth: 1,
+    borderColor: '#FDE68A',
+    padding: spacing.md,
+    marginBottom: spacing.md,
+  },
+  subscriptionWarningHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.xs,
+    marginBottom: 4,
+  },
+  subscriptionWarningTitle: {
+    fontSize: typography.sizes.xs,
+    fontWeight: typography.weights.bold,
+    color: '#92400E',
+  },
+  subscriptionWarningText: {
+    fontSize: typography.sizes.xs - 1,
+    color: '#78350F',
+    lineHeight: 16,
+    marginBottom: spacing.xs,
+  },
+  manageSubscriptionsBtn: {
+    marginTop: 4,
+    paddingVertical: 4,
+  },
+  manageSubscriptionsBtnText: {
+    fontSize: typography.sizes.xs - 1,
+    fontWeight: typography.weights.bold,
+    color: '#B45309',
+    textDecorationLine: 'underline',
   },
 })
 

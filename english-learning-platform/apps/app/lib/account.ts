@@ -20,29 +20,46 @@ export async function deleteAccountAndCleanup(): Promise<DeleteAccountResult> {
   const userId = authState.user?.id
 
   try {
-    // 1. Si Supabase está configurado y hay sesión activa, invocar la Edge Function delete-account
+    // 1. Si Supabase está configurado y hay sesión activa, eliminar en el servidor
     if (isSupabaseConfigured && supabase && authState.session) {
-      const {
-        data: { session },
-      } = await supabase.auth.getSession()
+      let serverDeleted = false
 
-      const accessToken = session?.access_token ?? authState.session.access_token
+      // Intentar primero mediante RPC nativo de base de datos
+      try {
+        const { error: rpcError } = await supabase.rpc('delete_user_account')
+        if (!rpcError) {
+          serverDeleted = true
+        }
+      } catch {
+        // RPC no instalado o error de red, intentar Edge Function
+      }
 
-      if (accessToken) {
-        const supabaseUrl = process.env.EXPO_PUBLIC_SUPABASE_URL ?? ''
-        const response = await fetch(`${supabaseUrl}/functions/v1/delete-account`, {
-          method: 'POST',
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({}),
-        })
+      // Si el RPC no procesó la solicitud, intentar mediante la Edge Function
+      if (!serverDeleted) {
+        const {
+          data: { session },
+        } = await supabase.auth.getSession()
 
-        if (!response.ok) {
-          const result = (await response.json().catch(() => ({}))) as { error?: string }
-          const errorMsg = result?.error ?? 'Error al eliminar la cuenta en el servidor'
-          throw new Error(errorMsg)
+        const accessToken = session?.access_token ?? authState.session.access_token
+
+        if (accessToken) {
+          const supabaseUrl = process.env.EXPO_PUBLIC_SUPABASE_URL ?? ''
+          const response = await fetch(`${supabaseUrl}/functions/v1/delete-account`, {
+            method: 'POST',
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({}),
+          })
+
+          if (!response.ok) {
+            const result = (await response.json().catch(() => ({}))) as { error?: string }
+            const errorMsg =
+              result?.error ??
+              'No se pudo procesar la eliminación en el servidor. Verifica tu conexión o contacta a soporte.'
+            throw new Error(errorMsg)
+          }
         }
       }
     }
