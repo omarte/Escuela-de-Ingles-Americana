@@ -48,7 +48,7 @@ serve(async (req) => {
     await supabaseAdmin.from('review_events').delete().eq('user_id', user.id)
     await supabaseAdmin.from('user_cards').delete().eq('user_id', user.id)
     await supabaseAdmin.from('study_sessions').delete().eq('user_id', user.id)
-    await supabaseAdmin.from('user_profiles').delete().eq('id', user.id)
+    await supabaseAdmin.from('profiles').delete().eq('id', user.id)
 
     // 4. Eliminar el usuario de auth (irreversible)
     const { error: deleteError } = await supabaseAdmin.auth.admin.deleteUser(user.id)

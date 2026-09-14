@@ -1,0 +1,12 @@
+{
+  "name": "escuela-de-ingles-americana-root",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "verify:account-deletion": "pnpm --filter english-learning-platform verify:account-deletion",
+    "dev": "pnpm --filter english-learning-platform dev",
+    "test": "pnpm --filter english-learning-platform test",
+    "lint": "pnpm --filter english-learning-platform lint",
+    "typecheck": "pnpm --filter english-learning-platform typecheck"
+  }
+}

@@ -28,6 +28,8 @@ export default tseslint.config(
       'prefer-const': 'error',
       // No unused vars
       '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+      // Allow numbers in template expressions
+      '@typescript-eslint/restrict-template-expressions': ['error', { allowNumber: true }],
     },
   },
   {
@@ -49,6 +51,7 @@ export default tseslint.config(
       '*.config.mjs',
       '*.cjs',
       'scripts/*.cjs',
+      'supabase/**',
     ],
   },
 )
