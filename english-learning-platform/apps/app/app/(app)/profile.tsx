@@ -686,7 +686,7 @@ export default function ProfileScreen(): React.JSX.Element {
                 onPress={() => {
                   const url = Platform.select({
                     ios: 'https://apps.apple.com/account/subscriptions',
-                    default: 'https://play.google.com/store/account/subscriptions',
+                    default: 'https://play.google.com/store/account/subscriptions?package=com.elp.app',
                   })
                   void Linking.openURL(url)
                 }}
