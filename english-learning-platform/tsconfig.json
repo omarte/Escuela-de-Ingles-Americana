@@ -20,5 +20,5 @@
     "declarationMap": true,
     "sourceMap": true
   },
-  "exclude": ["node_modules", "dist", "build", ".expo", "coverage"]
+  "exclude": ["node_modules", "dist", "build", ".expo", "coverage", "supabase/functions"]
 }
