@@ -2,7 +2,7 @@
   "expo": {
     "name": "Escuela de Inglés Americana",
     "slug": "escuela-de-ingles-americana",
-    "owner": "omarte2027",
+    "owner": "omarte2027s-team",
     "version": "0.1.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -51,8 +51,11 @@
       "typedRoutes": true
     },
     "extra": {
+      "router": {
+        "origin": false
+      },
       "eas": {
-        "projectId": "1d41a5f7-5630-46da-81ab-b33b7fe88b50"
+        "projectId": "094201bb-0ebb-4fa7-b7ca-e73da8a83d1d"
       }
     }
   }
