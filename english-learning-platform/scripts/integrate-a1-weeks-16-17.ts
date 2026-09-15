@@ -71,15 +71,15 @@ function updateWeekFile(weekNum: number, rows: typeof tableRows, fileName: strin
       'm'
     )
     const match = code.match(itemRegex)
-    if (match && match[1] && match[2]) {
+    if (match?.[1] && match?.[2]) {
       matchedCount++
       let block = match[1]
       const statusField = match[2]
 
       // clean existing pronunciation/example/exampleTranslation if any
-      block = block.replace(/pronunciation:\s*['"][^'"]*['"],\s*/g, '')
-      block = block.replace(/example:\s*['"][^'"]*['"],\s*/g, '')
-      block = block.replace(/exampleTranslation:\s*['"][^'"]*['"],\s*/g, '')
+      block = block.replace(/pronunciation:\s*['"][^\n]*?['"],\s*\n?\s*/g, '')
+      block = block.replace(/example:\s*['"][^\n]*?['"],\s*\n?\s*/g, '')
+      block = block.replace(/exampleTranslation:\s*['"][^\n]*?['"],\s*\n?\s*/g, '')
 
       // update partOfSpeech if row has category
       if (row.category) {
