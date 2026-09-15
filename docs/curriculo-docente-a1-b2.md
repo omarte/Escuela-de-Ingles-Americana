@@ -1792,132 +1792,132 @@ Total de palabras en esta semana: **64**
 
 | ID | Palabra | Categoría | Fonética (IPA) | Traducción | Ejemplo en Inglés | Traducción del Ejemplo |
 |---|---|---|---|---|---|---|
-| `voc_a2_refund_001` | **refund** | *noun* | — | reembolso | — | — |
-| `voc_a2_exchange_002` | **exchange (product)** | *noun* | — | cambio (producto) | — | — |
-| `voc_a2_return_003` | **return (product)** | *noun* | — | devolución | — | — |
-| `voc_a2_warranty_004` | **warranty** | *noun* | — | garantía | — | — |
-| `voc_a2_guarantee_005` | **guarantee** | *noun* | — | garantía (verbo/promesa) | — | — |
-| `voc_a2_complaint_006` | **complaint** | *noun* | — | queja | — | — |
-| `voc_a2_customer-service_007` | **customer service** | *noun* | — | servicio al cliente | — | — |
-| `voc_a2_fitting-room_008` | **fitting room** | *noun* | — | probador | — | — |
-| `voc_a2_barcode_009` | **barcode** | *noun* | — | código de barras | — | — |
-| `voc_a2_discount-code_010` | **discount code** | *noun* | — | código de descuento | — | — |
-| `voc_a2_clearance_011` | **clearance** | *noun* | — | liquidación | — | — |
-| `voc_a2_bargain_012` | **bargain** | *noun* | — | ganga | — | — |
-| `voc_a2_brand-new_013` | **brand new** | *noun* | — | totalmente nuevo | — | — |
-| `voc_a2_secondhand_014` | **secondhand** | *noun* | — | de segunda mano | — | — |
-| `voc_a2_quality-control_015` | **quality control** | *noun* | — | control de calidad | — | — |
-| `voc_a2_damaged_016` | **damaged** | *adjective* | — | dañado | — | — |
-| `voc_a2_broken_017` | **broken (thing)** | *noun* | — | roto | — | — |
-| `voc_a2_defective_018` | **defective** | *adjective* | — | defectuoso | — | — |
-| `voc_a2_missing-part_019` | **missing part** | *adjective* | — | pieza faltante | — | — |
-| `voc_a2_instructions-manual_020` | **instructions manual** | *noun* | — | manual de instrucciones | — | — |
-| `voc_a2_assemble_021` | **assemble** | *verb* | — | ensamblar | — | — |
-| `voc_a2_gift-receipt_022` | **gift receipt** | *noun* | — | recibo de regalo | — | — |
-| `voc_a2_loyalty-card_023` | **loyalty card** | *noun* | — | tarjeta de fidelidad | — | — |
-| `voc_a2_membership_024` | **membership** | *noun* | — | membresía | — | — |
-| `voc_a2_catalog_025` | **catalog** | *noun* | — | catálogo | — | — |
-| `voc_a2_order-online_026` | **order online** | *phrasal-verb* | — | pedir en línea | — | — |
-| `voc_a2_shipping_027` | **shipping** | *noun* | — | envío | — | — |
-| `voc_a2_delivery_028` | **delivery** | *noun* | — | entrega | — | — |
-| `voc_a2_package-parcel_029` | **package / parcel** | *noun* | — | paquete | — | — |
-| `voc_a2_tracking-number_030` | **tracking number** | *noun* | — | número de rastreo | — | — |
-| `voc_a2_courier_031` | **courier** | *noun* | — | mensajero | — | — |
-| `voc_a2_express-delivery_032` | **express delivery** | *noun* | — | envío exprés | — | — |
-| `voc_a2_standard-delivery_033` | **standard delivery** | *noun* | — | envío estándar | — | — |
-| `voc_a2_out-of-stock_034` | **out of stock** | *adjective* | — | agotado | — | — |
-| `voc_a2_in-stock_035` | **in stock** | *noun* | — | en existencia | — | — |
-| `voc_a2_available_036` | **available** | *adjective* | — | disponible | — | — |
-| `voc_a2_unavailable_037` | **unavailable** | *adjective* | — | no disponible | — | — |
-| `voc_a2_color-option_038` | **color option** | *noun* | — | opción de color | — | — |
-| `voc_a2_model_039` | **model (product)** | *noun* | — | modelo (producto) | — | — |
-| `voc_a2_version_040` | **version** | *noun* | — | versión | — | — |
-| `voc_a2_upgrade_041` | **upgrade** | *noun* | — | mejora/actualización | — | — |
-| `voc_a2_downgrade_042` | **downgrade** | *noun* | — | reducir (plan/versión) | — | — |
-| `voc_a2_subscription_043` | **subscription** | *noun* | — | suscripción | — | — |
-| `voc_a2_cancel_044` | **cancel** | *verb* | — | cancelar | — | — |
-| `voc_a2_renew_045` | **renew** | *verb* | — | renovar | — | — |
-| `voc_a2_invoice_046` | **invoice** | *noun* | — | factura | — | — |
-| `voc_a2_payment-method_047` | **payment method** | *noun* | — | método de pago | — | — |
-| `voc_a2_installment_048` | **installment** | *noun* | — | cuota/pago a plazos | — | — |
-| `voc_a2_negotiate_049` | **negotiate** | *verb* | — | negociar | — | — |
-| `voc_a2_haggle_050` | **haggle** | *verb* | — | regatear | — | — |
-| `voc_a2_overpriced_051` | **overpriced** | *adjective* | — | sobrevalorado | — | — |
-| `voc_a2_affordable_052` | **affordable** | *adjective* | — | asequible | — | — |
-| `voc_a2_worth-it_053` | **worth it** | *noun* | — | que vale la pena | — | — |
-| `voc_a2_satisfied_054` | **satisfied** | *noun* | — | satisfecho | — | — |
-| `voc_a2_dissatisfied_055` | **dissatisfied** | *noun* | — | insatisfecho | — | — |
-| `voc_a2_store-credit_056` | **store credit** | *noun* | — | crédito de tienda | — | — |
-| `voc_a2_gift-card_057` | **gift card** | *noun* | — | tarjeta de regalo | — | — |
-| `voc_a2_coupon_058` | **coupon** | *noun* | — | cupón | — | — |
-| `voc_a2_promo-code_059` | **promo code** | *noun* | — | código promocional | — | — |
-| `voc_a2_limited-offer_060` | **limited offer** | *adjective* | — | oferta limitada | — | — |
-| `voc_a2_best-seller_061` | **best seller** | *noun* | — | más vendido | — | — |
-| `voc_a2_customer-review_062` | **customer review** | *adjective* | — | reseña de cliente | — | — |
-| `voc_a2_rating_063` | **rating** | *noun* | — | calificación | — | — |
-| `voc_a2_feedback_064` | **feedback** | *noun* | — | retroalimentación | — | — |
+| `voc_a2_refund_001` | **refund** | *noun* | `/ˈriˌfʌnd/` | reembolso | I want a refund for this item. | Quiero un reembolso por este artículo. |
+| `voc_a2_exchange_002` | **exchange (product)** | *noun* | `/ɪksˈtʃeɪndʒ/` | cambio (producto) | Can I get an exchange instead? | ¿Puedo hacer un cambio en su lugar? |
+| `voc_a2_return_003` | **return (product)** | *noun* | `/rɪˈtɜrn/` | devolución | The store accepted my return. | La tienda aceptó mi devolución. |
+| `voc_a2_warranty_004` | **warranty** | *noun* | `/ˈwɔrənti/` | garantía | This laptop has a two-year warranty. | Esta laptop tiene garantía de dos años. |
+| `voc_a2_guarantee_005` | **guarantee** | *noun* | `/ˌgɛrənˈti/` | garantía (verbo/promesa) | We offer a money-back guarantee. | Ofrecemos garantía de devolución de dinero. |
+| `voc_a2_complaint_006` | **complaint** | *noun* | `/kəmˈpleɪnt/` | queja | I filed a complaint about the service. | Presenté una queja sobre el servicio. |
+| `voc_a2_customer-service_007` | **customer service** | *noun* | `/ˈkʌstəmər ˈsɜrvɪs/` | servicio al cliente | Customer service was very helpful. | El servicio al cliente fue muy útil. |
+| `voc_a2_fitting-room_008` | **fitting room** | *noun* | `/ˈfɪtɪŋ rum/` | probador | The fitting room is over there. | El probador está allá. |
+| `voc_a2_barcode_009` | **barcode** | *noun* | `/ˈbɑrˌkoʊd/` | código de barras | Scan the barcode, please. | Escanea el código de barras, por favor. |
+| `voc_a2_discount-code_010` | **discount code** | *noun* | `/ˈdɪskaʊnt koʊd/` | código de descuento | Do you have a discount code? | ¿Tienes un código de descuento? |
+| `voc_a2_clearance_011` | **clearance** | *noun* | `/ˈklɪrəns/` | liquidación | These shoes are on clearance. | Estos zapatos están en liquidación. |
+| `voc_a2_bargain_012` | **bargain** | *noun* | `/ˈbɑrgɪn/` | ganga | This jacket was a real bargain. | Esta chaqueta fue una verdadera ganga. |
+| `voc_a2_brand-new_013` | **brand new** | *noun* | `/brænd nu/` | totalmente nuevo | My phone is brand new. | Mi teléfono es totalmente nuevo. |
+| `voc_a2_secondhand_014` | **secondhand** | *noun* | `/ˈsɛkəndˌhænd/` | de segunda mano | I bought a secondhand bike. | Compré una bicicleta de segunda mano. |
+| `voc_a2_quality-control_015` | **quality control** | *noun* | `/ˈkwɑləti kənˈtroʊl/` | control de calidad | Quality control checks every product. | El control de calidad revisa cada producto. |
+| `voc_a2_damaged_016` | **damaged** | *adjective* | `/ˈdæmɪdʒd/` | dañado | The box arrived damaged. | La caja llegó dañada. |
+| `voc_a2_broken_017` | **broken (thing)** | *noun* | `/ˈbroʊkən/` | roto | The screen is broken. | La pantalla está rota. |
+| `voc_a2_defective_018` | **defective** | *adjective* | `/dɪˈfɛktɪv/` | defectuoso | This charger is defective. | Este cargador es defectuoso. |
+| `voc_a2_missing-part_019` | **missing part** | *adjective* | `/ˈmɪsɪŋ pɑrt/` | pieza faltante | The box has a missing part. | A la caja le falta una pieza. |
+| `voc_a2_instructions-manual_020` | **instructions manual** | *noun* | `/ɪnˈstrʌkʃənz ˈmænjuəl/` | manual de instrucciones | Read the instructions manual first. | Lee el manual de instrucciones primero. |
+| `voc_a2_assemble_021` | **assemble** | *verb* | `/əˈsɛmbəl/` | ensamblar | We assembled the furniture together. | Ensamblamos el mueble juntos. |
+| `voc_a2_gift-receipt_022` | **gift receipt** | *noun* | `/gɪft rɪˈsit/` | recibo de regalo | Would you like a gift receipt? | ¿Quieres un recibo de regalo? |
+| `voc_a2_loyalty-card_023` | **loyalty card** | *noun* | `/ˈlɔɪəlti kɑrd/` | tarjeta de fidelidad | Scan your loyalty card, please. | Escanea tu tarjeta de fidelidad, por favor. |
+| `voc_a2_membership_024` | **membership** | *noun* | `/ˈmɛmbərˌʃɪp/` | membresía | I renewed my gym membership. | Renové mi membresía del gimnasio. |
+| `voc_a2_catalog_025` | **catalog** | *noun* | `/ˈkætəˌlɔg/` | catálogo | Look in the catalog for prices. | Busca los precios en el catálogo. |
+| `voc_a2_order-online_026` | **order online** | *phrasal-verb* | `/ˈɔrdər ˈɔnˌlaɪn/` | pedir en línea | I usually order online. | Normalmente pido en línea. |
+| `voc_a2_shipping_027` | **shipping** | *noun* | `/ˈʃɪpɪŋ/` | envío | Shipping takes five days. | El envío tarda cinco días. |
+| `voc_a2_delivery_028` | **delivery** | *noun* | `/dɪˈlɪvəri/` | entrega | The delivery arrived on time. | La entrega llegó a tiempo. |
+| `voc_a2_package-parcel_029` | **package / parcel** | *noun* | `/ˈpækɪdʒ/` | paquete | I'm waiting for a package. | Estoy esperando un paquete. |
+| `voc_a2_tracking-number_030` | **tracking number** | *noun* | `/ˈtrækɪŋ ˈnʌmbər/` | número de rastreo | Here is your tracking number. | Aquí está tu número de rastreo. |
+| `voc_a2_courier_031` | **courier** | *noun* | `/ˈkʊriər/` | mensajero | The courier left it at the door. | El mensajero lo dejó en la puerta. |
+| `voc_a2_express-delivery_032` | **express delivery** | *noun* | `/ɪkˈsprɛs dɪˈlɪvəri/` | envío exprés | I paid for express delivery. | Pagué por envío exprés. |
+| `voc_a2_standard-delivery_033` | **standard delivery** | *noun* | `/ˈstændərd dɪˈlɪvəri/` | envío estándar | Standard delivery is free. | El envío estándar es gratis. |
+| `voc_a2_out-of-stock_034` | **out of stock** | *adjective* | `/aʊt əv stɑk/` | agotado | That size is out of stock. | Esa talla está agotada. |
+| `voc_a2_in-stock_035` | **in stock** | *noun* | `/ɪn stɑk/` | en existencia | The blue one is in stock. | El azul está disponible en existencia. |
+| `voc_a2_available_036` | **available** | *adjective* | `/əˈveɪləbəl/` | disponible | Is this color available? | ¿Está disponible este color? |
+| `voc_a2_unavailable_037` | **unavailable** | *adjective* | `/ˌʌnəˈveɪləbəl/` | no disponible | The item is currently unavailable. | El artículo no está disponible actualmente. |
+| `voc_a2_color-option_038` | **color option** | *noun* | `/ˈkʌlər ˈɑpʃən/` | opción de color | There is only one color option. | Solo hay una opción de color. |
+| `voc_a2_model_039` | **model (product)** | *noun* | `/ˈmɑdəl/` | modelo (producto) | This is the newest model. | Este es el modelo más reciente. |
+| `voc_a2_version_040` | **version** | *noun* | `/ˈvɜrʒən/` | versión | I have an old version of this app. | Tengo una versión vieja de esta aplicación. |
+| `voc_a2_upgrade_041` | **upgrade** | *noun* | `/ˈʌpˌgreɪd/` | mejora/actualización | I bought an upgrade for my phone. | Compré una mejora para mi teléfono. |
+| `voc_a2_downgrade_042` | **downgrade** | *noun* | `/ˈdaʊnˌgreɪd/` | reducir (plan/versión) | I decided to downgrade my plan. | Decidí bajar mi plan. |
+| `voc_a2_subscription_043` | **subscription** | *noun* | `/səbˈskrɪpʃən/` | suscripción | I canceled my subscription. | Cancelé mi suscripción. |
+| `voc_a2_cancel_044` | **cancel** | *verb* | `/ˈkænsəl/` | cancelar | Can I cancel my order? | ¿Puedo cancelar mi pedido? |
+| `voc_a2_renew_045` | **renew** | *verb* | `/rɪˈnu/` | renovar | I need to renew my membership. | Necesito renovar mi membresía. |
+| `voc_a2_invoice_046` | **invoice** | *noun* | `/ˈɪnvɔɪs/` | factura | Please send me the invoice. | Por favor envíame la factura. |
+| `voc_a2_payment-method_047` | **payment method** | *noun* | `/ˈpeɪmənt ˈmɛθəd/` | método de pago | Choose your payment method. | Elige tu método de pago. |
+| `voc_a2_installment_048` | **installment** | *noun* | `/ɪnˈstɔlmənt/` | cuota/pago a plazos | I paid in three installments. | Pagué en tres cuotas. |
+| `voc_a2_negotiate_049` | **negotiate** | *verb* | `/nɪˈgoʊʃiˌeɪt/` | negociar | We negotiated a better price. | Negociamos un mejor precio. |
+| `voc_a2_haggle_050` | **haggle** | *verb* | `/ˈhægəl/` | regatear | People haggle a lot at this market. | La gente regatea mucho en este mercado. |
+| `voc_a2_overpriced_051` | **overpriced** | *adjective* | `/ˌoʊvərˈpraɪst/` | sobrevalorado | This restaurant is overpriced. | Este restaurante está sobrevalorado. |
+| `voc_a2_affordable_052` | **affordable** | *adjective* | `/əˈfɔrdəbəl/` | asequible | I found an affordable hotel. | Encontré un hotel asequible. |
+| `voc_a2_worth-it_053` | **worth it** | *noun* | `/wɜrθ ɪt/` | que vale la pena | The trip was worth it. | El viaje valió la pena. |
+| `voc_a2_satisfied_054` | **satisfied** | *noun* | `/ˈsætɪsˌfaɪd/` | satisfecho | I am satisfied with my purchase. | Estoy satisfecho con mi compra. |
+| `voc_a2_dissatisfied_055` | **dissatisfied** | *noun* | `/dɪsˈsætɪsˌfaɪd/` | insatisfecho | She was dissatisfied with the service. | Ella estaba insatisfecha con el servicio. |
+| `voc_a2_store-credit_056` | **store credit** | *noun* | `/stɔr ˈkrɛdɪt/` | crédito de tienda | They gave me store credit. | Me dieron crédito de tienda. |
+| `voc_a2_gift-card_057` | **gift card** | *noun* | `/gɪft kɑrd/` | tarjeta de regalo | I received a gift card for my birthday. | Recibí una tarjeta de regalo por mi cumpleaños. |
+| `voc_a2_coupon_058` | **coupon** | *noun* | `/ˈkupɑn/` | cupón | Do you have a coupon? | ¿Tienes un cupón? |
+| `voc_a2_promo-code_059` | **promo code** | *noun* | `/ˈproʊmoʊ koʊd/` | código promocional | Enter the promo code at checkout. | Ingresa el código promocional al pagar. |
+| `voc_a2_limited-offer_060` | **limited offer** | *adjective* | `/ˈlɪmɪtɪd ˈɔfər/` | oferta limitada | This is a limited offer. | Esta es una oferta limitada. |
+| `voc_a2_best-seller_061` | **best seller** | *noun* | `/bɛst ˈsɛlər/` | más vendido | This book is a best seller. | Este libro es el más vendido. |
+| `voc_a2_customer-review_062` | **customer review** | *noun* | `/ˈkʌstəmər rɪˈvju/` | reseña de cliente | Read the customer reviews first. | Lee las reseñas de clientes primero. |
+| `voc_a2_rating_063` | **rating** | *noun* | `/ˈreɪtɪŋ/` | calificación | This product has a high rating. | Este producto tiene una calificación alta. |
+| `voc_a2_feedback_064` | **feedback** | *noun* | `/ˈfidˌbæk/` | retroalimentación | Thank you for your feedback. | Gracias por tu retroalimentación. |
 
 ### Semana 2: Viajes: aeropuerto, hotel y emergencias
 Total de palabras en esta semana: **56**
 
 | ID | Palabra | Categoría | Fonética (IPA) | Traducción | Ejemplo en Inglés | Traducción del Ejemplo |
 |---|---|---|---|---|---|---|
-| `voc_a2_check-in_065` | **check-in** | *noun* | — | registro de entrada | — | — |
-| `voc_a2_check-out_066` | **check-out** | *noun* | — | salida (hotel) | — | — |
-| `voc_a2_room-service_067` | **room service** | *noun* | — | servicio a la habitación | — | — |
-| `voc_a2_single-room_068` | **single room** | *noun* | — | habitación individual | — | — |
-| `voc_a2_double-room_069` | **double room** | *noun* | — | habitación doble | — | — |
-| `voc_a2_suite_070` | **suite** | *noun* | — | suite | — | — |
-| `voc_a2_lobby_071` | **lobby** | *noun* | — | vestíbulo | — | — |
-| `voc_a2_concierge_072` | **concierge** | *noun* | — | conserje | — | — |
-| `voc_a2_housekeeping_073` | **housekeeping** | *noun* | — | limpieza (hotel) | — | — |
-| `voc_a2_do-not-disturb_074` | **do not disturb** | *phrasal-verb* | — | no molestar | — | — |
-| `voc_a2_key-card_075` | **key card** | *noun* | — | tarjeta llave | — | — |
-| `voc_a2_wake-up-call_076` | **wake-up call** | *noun* | — | llamada para despertar | — | — |
-| `voc_a2_mini-bar_077` | **mini bar** | *noun* | — | minibar | — | — |
-| `voc_a2_complimentary_078` | **complimentary** | *noun* | — | gratuito/cortesía | — | — |
-| `voc_a2_amenities_079` | **amenities** | *noun* | — | comodidades | — | — |
-| `voc_a2_spa_080` | **spa** | *noun* | — | spa | — | — |
-| `voc_a2_laundry-service_081` | **laundry service** | *noun* | — | servicio de lavandería | — | — |
-| `voc_a2_front-desk_082` | **front desk** | *noun* | — | recepción | — | — |
-| `voc_a2_overbooked_083` | **overbooked** | *adjective* | — | con sobreventa | — | — |
-| `voc_a2_cancellation_084` | **cancellation** | *noun* | — | cancelación | — | — |
-| `voc_a2_non-refundable_085` | **non-refundable** | *adjective* | — | no reembolsable | — | — |
-| `voc_a2_itinerary_086` | **itinerary** | *noun* | — | itinerario | — | — |
-| `voc_a2_layover_087` | **layover** | *noun* | — | escala | — | — |
-| `voc_a2_connecting-flight_088` | **connecting flight** | *noun* | — | vuelo de conexión | — | — |
-| `voc_a2_delayed-flight_089` | **delayed flight** | *adjective* | — | vuelo retrasado | — | — |
-| `voc_a2_cancelled-flight_090` | **cancelled flight** | *adjective* | — | vuelo cancelado | — | — |
-| `voc_a2_boarding-time_091` | **boarding time** | *noun* | — | hora de embarque | — | — |
-| `voc_a2_overhead-bin_092` | **overhead bin** | *noun* | — | compartimento superior | — | — |
-| `voc_a2_carry-on_093` | **carry-on** | *noun* | — | equipaje de mano | — | — |
-| `voc_a2_baggage-claim_094` | **baggage claim** | *noun* | — | reclamo de equipaje | — | — |
-| `voc_a2_lost-luggage_095` | **lost luggage** | *noun* | — | equipaje perdido | — | — |
-| `voc_a2_customs-declaration_096` | **customs declaration** | *noun* | — | declaración de aduana | — | — |
-| `voc_a2_duty-free_097` | **duty-free** | *noun* | — | libre de impuestos | — | — |
-| `voc_a2_embassy_098` | **embassy** | *noun* | — | embajada | — | — |
-| `voc_a2_consulate_099` | **consulate** | *noun* | — | consulado | — | — |
-| `voc_a2_emergency-exit_100` | **emergency exit** | *noun* | — | salida de emergencia | — | — |
-| `voc_a2_fire-alarm_101` | **fire alarm** | *noun* | — | alarma de incendio | — | — |
-| `voc_a2_first-aid_102` | **first aid** | *noun* | — | primeros auxilios | — | — |
-| `voc_a2_evacuation_103` | **evacuation** | *noun* | — | evacuación | — | — |
-| `voc_a2_emergency-contact_104` | **emergency contact** | *noun* | — | contacto de emergencia | — | — |
-| `voc_a2_insurance-claim_105` | **insurance claim** | *noun* | — | reclamo de seguro | — | — |
-| `voc_a2_stolen_106` | **stolen** | *adjective* | — | robado | — | — |
-| `voc_a2_robbery_107` | **robbery** | *noun* | — | robo | — | — |
-| `voc_a2_pickpocket_108` | **pickpocket** | *noun* | — | carterista | — | — |
-| `voc_a2_police-report_109` | **police report** | *noun* | — | reporte policial | — | — |
-| `voc_a2_lost-and-found_110` | **lost and found** | *noun* | — | objetos perdidos | — | — |
-| `voc_a2_replacement-passport_111` | **replacement passport** | *noun* | — | pasaporte de reemplazo | — | — |
-| `voc_a2_travel-advisory_112` | **travel advisory** | *noun* | — | advertencia de viaje | — | — |
-| `voc_a2_vaccination-certific_113` | **vaccination certificate** | *noun* | — | certificado de vacunación | — | — |
-| `voc_a2_jet-lag_114` | **jet lag** | *noun* | — | descompensación horaria | — | — |
-| `voc_a2_time-zone_115` | **time zone** | *noun* | — | zona horaria | — | — |
-| `voc_a2_local-currency_116` | **local currency** | *noun* | — | moneda local | — | — |
-| `voc_a2_tipping_117` | **tipping** | *noun* | — | dar propina | — | — |
-| `voc_a2_guided-tour_118` | **guided tour** | *adjective* | — | tour guiado | — | — |
-| `voc_a2_sightseeing_119` | **sightseeing** | *noun* | — | hacer turismo | — | — |
-| `voc_a2_landmark_120` | **landmark** | *noun* | — | punto de referencia/monumento | — | — |
+| `voc_a2_check-in_065` | **check-in** | *noun* | `/ˈtʃɛkˌɪn/` | registro de entrada | Check-in starts at three. | El registro de entrada empieza a las tres. |
+| `voc_a2_check-out_066` | **check-out** | *noun* | `/ˈtʃɛkˌaʊt/` | salida (hotel) | Check-out is at eleven. | La salida es a las once. |
+| `voc_a2_room-service_067` | **room service** | *noun* | `/rum ˈsɜrvɪs/` | servicio a la habitación | We ordered room service last night. | Pedimos servicio a la habitación anoche. |
+| `voc_a2_single-room_068` | **single room** | *noun* | `/ˈsɪŋgəl rum/` | habitación individual | I booked a single room. | Reservé una habitación individual. |
+| `voc_a2_double-room_069` | **double room** | *noun* | `/ˈdʌbəl rum/` | habitación doble | We need a double room. | Necesitamos una habitación doble. |
+| `voc_a2_suite_070` | **suite** | *noun* | `/swit/` | suite | They stayed in a suite. | Se hospedaron en una suite. |
+| `voc_a2_lobby_071` | **lobby** | *noun* | `/ˈlɑbi/` | vestíbulo | Let's meet in the lobby. | Reunámonos en el vestíbulo. |
+| `voc_a2_concierge_072` | **concierge** | *noun* | `/ˌkɑnsiˈɛrʒ/` | conserje | The concierge gave us a map. | El conserje nos dio un mapa. |
+| `voc_a2_housekeeping_073` | **housekeeping** | *noun* | `/ˈhaʊsˌkipɪŋ/` | limpieza (hotel) | Housekeeping cleaned our room. | La limpieza aseó nuestra habitación. |
+| `voc_a2_do-not-disturb_074` | **do not disturb** | *phrasal-verb* | `/du nɑt dɪˈstɜrb/` | no molestar | Put the do not disturb sign on the door. | Cuelga el letrero de no molestar en la puerta. |
+| `voc_a2_key-card_075` | **key card** | *noun* | `/ki kɑrd/` | tarjeta llave | I lost my key card. | Perdí mi tarjeta llave. |
+| `voc_a2_wake-up-call_076` | **wake-up call** | *noun* | `/ˈweɪkʌp kɔl/` | llamada para despertar | I need a wake-up call at six. | Necesito una llamada para despertar a las seis. |
+| `voc_a2_mini-bar_077` | **mini bar** | *noun* | `/ˈmɪni bɑr/` | minibar | The mini bar has snacks and drinks. | El minibar tiene botanas y bebidas. |
+| `voc_a2_complimentary_078` | **complimentary** | *noun* | `/ˌkɑmpləˈmɛntəri/` | gratuito/cortesía | Breakfast is complimentary. | El desayuno es gratuito. |
+| `voc_a2_amenities_079` | **amenities** | *noun* | `/əˈmɛnətiz/` | comodidades | The hotel has great amenities. | El hotel tiene excelentes comodidades. |
+| `voc_a2_spa_080` | **spa** | *noun* | `/spɑ/` | spa | We relaxed at the spa. | Nos relajamos en el spa. |
+| `voc_a2_laundry-service_081` | **laundry service** | *noun* | `/ˈlɔndri ˈsɜrvɪs/` | servicio de lavandería | Does the hotel offer laundry service? | ¿El hotel ofrece servicio de lavandería? |
+| `voc_a2_front-desk_082` | **front desk** | *noun* | `/frʌnt dɛsk/` | recepción | Ask the front desk for towels. | Pide toallas en la recepción. |
+| `voc_a2_overbooked_083` | **overbooked** | *adjective* | `/ˌoʊvərˈbʊkt/` | con sobreventa | The hotel was overbooked. | El hotel tenía sobreventa. |
+| `voc_a2_cancellation_084` | **cancellation** | *noun* | `/ˌkænsəˈleɪʃən/` | cancelación | There was a last-minute cancellation. | Hubo una cancelación de última hora. |
+| `voc_a2_non-refundable_085` | **non-refundable** | *adjective* | `/ˌnɑnrɪˈfʌndəbəl/` | no reembolsable | This ticket is non-refundable. | Este boleto no es reembolsable. |
+| `voc_a2_itinerary_086` | **itinerary** | *noun* | `/aɪˈtɪnəˌrɛri/` | itinerario | Here is our travel itinerary. | Aquí está nuestro itinerario de viaje. |
+| `voc_a2_layover_087` | **layover** | *noun* | `/ˈleɪˌoʊvər/` | escala | We have a two-hour layover. | Tenemos una escala de dos horas. |
+| `voc_a2_connecting-flight_088` | **connecting flight** | *noun* | `/kəˈnɛktɪŋ flaɪt/` | vuelo de conexión | I almost missed my connecting flight. | Casi pierdo mi vuelo de conexión. |
+| `voc_a2_delayed-flight_089` | **delayed flight** | *adjective* | `/dɪˈleɪd flaɪt/` | vuelo retrasado | Our delayed flight caused problems. | Nuestro vuelo retrasado causó problemas. |
+| `voc_a2_cancelled-flight_090` | **cancelled flight** | *adjective* | `/ˈkænsəld flaɪt/` | vuelo cancelado | The cancelled flight was rescheduled. | El vuelo cancelado fue reprogramado. |
+| `voc_a2_boarding-time_091` | **boarding time** | *noun* | `/ˈbɔrdɪŋ taɪm/` | hora de embarque | Check the boarding time on your ticket. | Revisa la hora de embarque en tu boleto. |
+| `voc_a2_overhead-bin_092` | **overhead bin** | *noun* | `/ˈoʊvərˌhɛd bɪn/` | compartimento superior | Put your bag in the overhead bin. | Pon tu bolsa en el compartimento superior. |
+| `voc_a2_carry-on_093` | **carry-on** | *noun* | `/ˈkæriˌɑn/` | equipaje de mano | I only brought a carry-on. | Solo traje equipaje de mano. |
+| `voc_a2_baggage-claim_094` | **baggage claim** | *noun* | `/ˈbægɪdʒ kleɪm/` | reclamo de equipaje | Meet me at baggage claim. | Encuéntrame en el reclamo de equipaje. |
+| `voc_a2_lost-luggage_095` | **lost luggage** | *noun* | `/lɔst ˈlʌgɪdʒ/` | equipaje perdido | We reported our lost luggage. | Reportamos nuestro equipaje perdido. |
+| `voc_a2_customs-declaration_096` | **customs declaration** | *noun* | `/ˈkʌstəmz ˌdɛkləˈreɪʃən/` | declaración de aduana | Fill out the customs declaration. | Llena la declaración de aduana. |
+| `voc_a2_duty-free_097` | **duty-free** | *noun* | `/ˈdutiˈfri/` | libre de impuestos | I bought perfume at duty-free. | Compré perfume libre de impuestos. |
+| `voc_a2_embassy_098` | **embassy** | *noun* | `/ˈɛmbəsi/` | embajada | We visited the embassy for a visa. | Visitamos la embajada por una visa. |
+| `voc_a2_consulate_099` | **consulate** | *noun* | `/ˈkɑnsələt/` | consulado | The consulate can help with documents. | El consulado puede ayudar con documentos. |
+| `voc_a2_emergency-exit_100` | **emergency exit** | *noun* | `/ɪˈmɜrdʒənsi ˈɛgzɪt/` | salida de emergencia | The emergency exit is at the back. | La salida de emergencia está atrás. |
+| `voc_a2_fire-alarm_101` | **fire alarm** | *noun* | `/faɪər əˈlɑrm/` | alarma de incendio | The fire alarm went off. | Sonó la alarma de incendio. |
+| `voc_a2_first-aid_102` | **first aid** | *noun* | `/fɜrst eɪd/` | primeros auxilios | She knows basic first aid. | Ella sabe primeros auxilios básicos. |
+| `voc_a2_evacuation_103` | **evacuation** | *noun* | `/ɪˌvækjuˈeɪʃən/` | evacuación | The evacuation was calm and organized. | La evacuación fue tranquila y organizada. |
+| `voc_a2_emergency-contact_104` | **emergency contact** | *noun* | `/ɪˈmɜrdʒənsi ˈkɑnˌtækt/` | contacto de emergencia | Write down your emergency contact. | Anota tu contacto de emergencia. |
+| `voc_a2_insurance-claim_105` | **insurance claim** | *noun* | `/ɪnˈʃʊrəns kleɪm/` | reclamo de seguro | I filed an insurance claim. | Presenté un reclamo de seguro. |
+| `voc_a2_stolen_106` | **stolen** | *adjective* | `/ˈstoʊlən/` | robado | My phone was stolen. | Me robaron el teléfono. |
+| `voc_a2_robbery_107` | **robbery** | *noun* | `/ˈrɑbəri/` | robo | There was a robbery downtown. | Hubo un robo en el centro. |
+| `voc_a2_pickpocket_108` | **pickpocket** | *noun* | `/ˈpɪkˌpɑkɪt/` | carterista | Watch out for pickpockets. | Cuidado con los carteristas. |
+| `voc_a2_police-report_109` | **police report** | *noun* | `/pəˈlis rɪˈpɔrt/` | reporte policial | We filed a police report. | Presentamos un reporte policial. |
+| `voc_a2_lost-and-found_110` | **lost and found** | *noun* | `/lɔst ənd faʊnd/` | objetos perdidos | Check the lost and found. | Revisa los objetos perdidos. |
+| `voc_a2_replacement-passport_111` | **replacement passport** | *noun* | `/rɪˈpleɪsmənt ˈpæˌspɔrt/` | pasaporte de reemplazo | I need a replacement passport. | Necesito un pasaporte de reemplazo. |
+| `voc_a2_travel-advisory_112` | **travel advisory** | *noun* | `/ˈtrævəl ædˈvaɪzəri/` | advertencia de viaje | There is a travel advisory for that area. | Hay una advertencia de viaje para esa zona. |
+| `voc_a2_vaccination-certific_113` | **vaccination certificate** | *noun* | `/ˌvæksəˈneɪʃən sərˈtɪfɪkət/` | certificado de vacunación | Bring your vaccination certificate. | Trae tu certificado de vacunación. |
+| `voc_a2_jet-lag_114` | **jet lag** | *noun* | `/dʒɛt læg/` | descompensación horaria | I have terrible jet lag. | Tengo un descompensación horaria terrible. |
+| `voc_a2_time-zone_115` | **time zone** | *noun* | `/taɪm zoʊn/` | zona horaria | We are in a different time zone. | Estamos en una zona horaria diferente. |
+| `voc_a2_local-currency_116` | **local currency** | *noun* | `/ˈloʊkəl ˈkɜrənsi/` | moneda local | Exchange your money for local currency. | Cambia tu dinero por moneda local. |
+| `voc_a2_tipping_117` | **tipping** | *noun* | `/ˈtɪpɪŋ/` | dar propina | Tipping is common here. | Dar propina es común aquí. |
+| `voc_a2_guided-tour_118` | **guided tour** | *adjective* | `/ˈgaɪdɪd tʊr/` | tour guiado | We took a guided tour of the museum. | Hicimos un tour guiado del museo. |
+| `voc_a2_sightseeing_119` | **sightseeing** | *noun* | `/ˈsaɪtˌsiɪŋ/` | hacer turismo | We went sightseeing all day. | Hicimos turismo todo el día. |
+| `voc_a2_landmark_120` | **landmark** | *noun* | `/ˈlændˌmɑrk/` | punto de referencia/monumento | The tower is a famous landmark. | La torre es un monumento famoso. |
 
 ### Semana 3: Trabajo y oficina
 Total de palabras en esta semana: **61**

@@ -1,22 +1,47 @@
-import { a1Content } from '../packages/content/src/index'
+import {
+  a1Content,
+  a2Content,
+  b1Content,
+  b2Content,
+} from '../packages/content/src/index'
 
-console.log('=== ESTADO DE CURADURÍA A1 ===')
-let totalVocab = 0
-let totalCurated = 0
+const levels = [
+  { name: 'A1', content: a1Content },
+  { name: 'A2', content: a2Content },
+  { name: 'B1', content: b1Content },
+  { name: 'B2', content: b2Content },
+]
 
-for (const block of a1Content.blocks) {
-  const withPron = block.vocabulary.filter((v) => !!v.pronunciation).length
-  const total = block.vocabulary.length
-  totalVocab += total
-  totalCurated += withPron
-  const pct = Math.round((withPron / total) * 100)
-  const statusIcon = pct === 100 ? '✅' : pct > 0 ? '⚠️' : '❌'
+let grandTotalVocab = 0
+let grandTotalCurated = 0
+
+for (const { name, content } of levels) {
+  console.log(`\n=== ESTADO DE CURADURÍA ${name} ===`)
+  let levelVocab = 0
+  let levelCurated = 0
+
+  for (const block of content.blocks) {
+    const withPron = block.vocabulary.filter((v) => !!v.pronunciation).length
+    const total = block.vocabulary.length
+    levelVocab += total
+    levelCurated += withPron
+    const pct = Math.round((withPron / total) * 100)
+    const statusIcon = pct === 100 ? '✅' : pct > 0 ? '⚠️' : '❌'
+    console.log(
+      `${statusIcon} Semana ${String(block.week).padStart(2, '0')}: ${withPron}/${total} palabras (${pct}%)`
+    )
+  }
+
+  grandTotalVocab += levelVocab
+  grandTotalCurated += levelCurated
+  const levelPct = Math.round((levelCurated / levelVocab) * 100)
+  console.log('--------------------------------')
   console.log(
-    `${statusIcon} Semana ${String(block.week).padStart(2, '0')}: ${withPron}/${total} palabras (${pct}%)`
+    `SUBTOTAL ${name}: ${levelCurated}/${levelVocab} palabras curadas (${levelPct}%)`
   )
 }
 
-console.log('--------------------------------')
+console.log('\n================================')
 console.log(
-  `TOTAL A1: ${totalCurated}/${totalVocab} palabras curadas (${Math.round((totalCurated / totalVocab) * 100)}%)`
+  `TOTAL GENERAL MONOREPO: ${grandTotalCurated}/${grandTotalVocab} palabras (${Math.round((grandTotalCurated / grandTotalVocab) * 100)}%)`
 )
