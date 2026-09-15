@@ -66,9 +66,10 @@ function updateWeekFile(weekNum: number, rows: typeof tableRows, fileName: strin
       'm'
     )
     const match = code.match(itemRegex)
-    if (match) {
+    if (match && match[1] && match[2]) {
       matchedCount++
       let block = match[1]
+      const statusField = match[2]
 
       // clean existing pronunciation/example/exampleTranslation if any
       block = block.replace(/pronunciation:\s*['"][^'"]*['"],\s*/g, '')
@@ -86,7 +87,7 @@ function updateWeekFile(weekNum: number, rows: typeof tableRows, fileName: strin
       const cleanTrans = row.exampleTranslation.replace(/'/g, "\\'")
 
       const fields = `pronunciation: '${cleanIpa}',\n      example: '${cleanExample}',\n      exampleTranslation: '${cleanTrans}',\n      `
-      code = code.replace(match[0], block + fields + match[2])
+      code = code.replace(match[0], block + fields + statusField)
     } else {
       console.warn(`Could not match word: "${row.word}" in week ${weekNum}`)
     }
