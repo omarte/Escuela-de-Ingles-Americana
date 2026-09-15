@@ -33,6 +33,7 @@ import {
   MASTERED_100_WORDS,
   MASTERED_1000_WORDS,
 } from '../../lib/assets'
+import { AppScreenHeader } from '../../components/AppScreenHeader'
 
 export default function ProgressScreen(): React.JSX.Element {
   const user = useAuthStore((state) => state.user)
@@ -367,12 +368,17 @@ export default function ProgressScreen(): React.JSX.Element {
     <SafeAreaView style={styles.safeArea} edges={['top']}>
       <ScrollView contentContainerStyle={styles.scrollContent}>
         {/* Screen Header */}
-        <View style={styles.header}>
-          <Text style={styles.title}>Tu Progreso</Text>
-          <Text style={styles.subtitle}>
-            Estadísticas y avance en tiempo real del método nivel por nivel
-          </Text>
-        </View>
+        <AppScreenHeader
+          icon="stats-chart"
+          accentColor="#4F46E5"
+          iconBgColor="#EEF2FF"
+          eyebrow="TELEMETRÍA Y DOMINIO LÉXICO"
+          title="Tu Progreso"
+          subtitle="Curva del olvido Ebbinghaus, retención a largo plazo y avance nivel por nivel."
+          rightElement={
+            <Badge label={`Nivel ${currentLevel}`} color="#4F46E5" size="sm" />
+          }
+        />
 
         {/* Global Level Mastery Card */}
         <Card padding="lg" highlighted style={styles.levelCard}>

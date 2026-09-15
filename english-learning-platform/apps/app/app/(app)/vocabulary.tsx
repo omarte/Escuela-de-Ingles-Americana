@@ -18,6 +18,7 @@ import { useSRSStore } from '../../stores/useSRSStore'
 import { speakEnglish } from '../../lib/audio'
 import { getSpanishPhonetic } from '../../lib/phonetics'
 import { GamesModal, type GameType } from '../../components/GamesModal'
+import { AppScreenHeader } from '../../components/AppScreenHeader'
 
 const LEVELS: CEFRLevel[] = ['A1', 'A2', 'B1', 'B2']
 
@@ -188,34 +189,29 @@ export default function VocabularyScreen(): React.JSX.Element {
     <SafeAreaView style={styles.safeArea} edges={['top']}>
       {/* ----------------- HEADER & CONTROLS ----------------- */}
       <View style={styles.header}>
-        <View style={styles.headerTopRow}>
-          <View style={styles.headerTitleCol}>
-            <View style={styles.titleBadgeRow}>
-              <Text style={styles.title}>Banco de Vocabulario</Text>
-              <View style={styles.freePracticeBadge}>
-                <Ionicons name="infinite-outline" size={12} color={colors.secondary} />
-                <Text style={styles.freePracticeBadgeText}>Práctica Libre · sin límite diario</Text>
-              </View>
-            </View>
-            <Text style={styles.subtitle}>
-              Exploración libre y refuerzo. Para alimentar tu racha y algoritmo espaciado, ve a Aprender.
-            </Text>
-          </View>
-          {/* Arcade Launcher Button */}
-          <TouchableOpacity
-            style={styles.arcadeBadgeBtn}
-            accessibilityRole="button"
-            accessibilityLabel="Abrir Arcade de Juegos"
-            onPress={() => {
-              setInitialGame(null)
-              setIsGamesModalVisible(true)
-            }}
-            activeOpacity={0.8}
-          >
-            <Ionicons name="game-controller" size={18} color="#FFFFFF" />
-            <Text style={styles.arcadeBadgeBtnText}>Juegos</Text>
-          </TouchableOpacity>
-        </View>
+        <AppScreenHeader
+          icon="library"
+          accentColor={colors.secondary}
+          iconBgColor="#EFF6FF"
+          eyebrow="LÉXICO A1–B2 · PRÁCTICA LIBRE"
+          title="Banco de Vocabulario"
+          subtitle="Exploración libre y refuerzo sin límite diario. Para alimentar tu racha y algoritmo SM-2, ve a Aprender."
+          rightElement={
+            <TouchableOpacity
+              style={styles.arcadeBadgeBtn}
+              accessibilityRole="button"
+              accessibilityLabel="Abrir Arcade de Juegos"
+              onPress={() => {
+                setInitialGame(null)
+                setIsGamesModalVisible(true)
+              }}
+              activeOpacity={0.8}
+            >
+              <Ionicons name="game-controller" size={16} color="#FFFFFF" />
+              <Text style={styles.arcadeBadgeBtnText}>Juegos</Text>
+            </TouchableOpacity>
+          }
+        />
 
         {/* Level Switcher */}
         <View style={styles.levelTabs}>

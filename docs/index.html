@@ -19,6 +19,39 @@
         radial-gradient(circle at 15% 50%, rgba(37, 99, 235, 0.05), transparent 30%),
         linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
       text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-header-wrap {
+      position: relative;
+      max-width: 980px;
+      margin: 0 auto;
+      z-index: 1;
+    }
+    .hero-watermark {
+      position: absolute;
+      top: 45%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: clamp(280px, 46vw, 480px);
+      height: clamp(280px, 46vw, 480px);
+      pointer-events: none;
+      user-select: none;
+      z-index: 0;
+      opacity: 0.07;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero-watermark img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      filter: grayscale(10%);
+    }
+    .hero-header-wrap > :not(.hero-watermark) {
+      position: relative;
+      z-index: 1;
     }
     .hero h1 {
       font-size: clamp(38px, 5.2vw, 64px);
@@ -651,22 +684,29 @@
     <!-- Section 1: Hero Principal con Carrusel de Impacto y Showcase -->
     <section class="hero">
       <div class="container">
-        <div class="eyebrow">Ciencia Cognitiva &bull; 2,556 Palabras A1–B2</div>
-        <h1>
-          La capa científica del <span class="serif-accent">inglés americano</span> sin jueguitos ni traducción mecánica.
-        </h1>
-        <p>
-          Adquisición léxica de alta retención mediante repetición espaciada SM-2 adaptativa, método Krashen $i+1$, telemetría de latencia y curaduría docente 100% humana.
-        </p>
+        <div class="hero-header-wrap">
+          <!-- Marca de agua / Logo institucional semi-transparente de fondo -->
+          <div class="hero-watermark" aria-hidden="true">
+            <img src="assets/logo-clean.png" alt="" loading="eager">
+          </div>
 
-        <div class="hero-actions">
-          <a href="#precios" class="btn btn-primary">
-            <span>Comenzar Prueba Gratuita</span>
-            <span>&rarr;</span>
-          </a>
-          <a href="#experiencia" class="btn btn-secondary">
-            <span>Ver Experiencia en la App</span>
-          </a>
+          <div class="eyebrow">Ciencia Cognitiva &bull; 2,556 Palabras A1–B2</div>
+          <h1>
+            La capa científica del <span class="serif-accent">inglés americano</span> sin jueguitos ni traducción mecánica.
+          </h1>
+          <p>
+            Adquisición léxica de alta retención mediante repetición espaciada SM-2 adaptativa, método Krashen $i+1$, telemetría de latencia y curaduría docente 100% humana.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#precios" class="btn btn-primary">
+              <span>Comenzar Prueba Gratuita</span>
+              <span>&rarr;</span>
+            </a>
+            <a href="#experiencia" class="btn btn-secondary">
+              <span>Ver Experiencia en la App</span>
+            </a>
+          </div>
         </div>
 
         <!-- Carrusel de Imágenes de Impacto Widescreen (Historias y Vidas Reales) -->

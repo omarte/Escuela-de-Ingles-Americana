@@ -90,18 +90,17 @@ export default function HomeScreen(): React.JSX.Element {
   return (
     <SafeAreaView style={styles.safeArea} edges={['top']}>
       <ScrollView contentContainerStyle={styles.scrollContent}>
-        {/* Top Bar */}
-        <View style={styles.topBar}>
-          <View style={styles.brandingRow}>
-            <Image source={SCHOOL_LOGO} style={styles.headerLogo} resizeMode="contain" />
-            <View style={styles.greetingContainer}>
-              <Text style={styles.greeting} numberOfLines={1} ellipsizeMode="tail">
-                Hola, {displayName} 👋
-              </Text>
-              <Text style={styles.subgreeting}>Escuela de Inglés Americana</Text>
+        {/* Tier 1: Institutional Bar with School Branding & Global Status Pills */}
+        <View style={styles.institutionBar}>
+          <View style={styles.institutionBrand}>
+            <Image source={SCHOOL_LOGO} style={styles.institutionLogo} resizeMode="contain" />
+            <View style={styles.institutionTextCol}>
+              <Text style={styles.institutionTitle} numberOfLines={1}>Escuela de Inglés Americana</Text>
+              <Text style={styles.institutionTag}>CIENCIA COGNITIVA · MÉTODO B2</Text>
             </View>
           </View>
-          <View style={styles.topBarRight}>
+
+          <View style={styles.institutionPills}>
             {/* Quick Sync Button */}
             <TouchableOpacity
               style={styles.syncIconButton}
@@ -111,14 +110,37 @@ export default function HomeScreen(): React.JSX.Element {
               }}
               accessibilityLabel="Sincronizar progreso"
             >
-              <Ionicons name="sync-outline" size={16} color={colors.primary} />
+              <Ionicons name="sync-outline" size={15} color={colors.primary} />
             </TouchableOpacity>
 
             <View style={styles.xpBadge}>
-              <Ionicons name="flash" size={13} color="#F59E0B" />
+              <Ionicons name="flash" size={12} color="#F59E0B" />
               <Text style={styles.xpBadgeText}>{String(totalXP)} XP</Text>
             </View>
+
             <Badge label={`Nivel ${currentLevel}`} color={colors.primary} size="sm" />
+          </View>
+        </View>
+
+        {/* Tier 2: Welcome Greeting & Context Card */}
+        <View style={styles.welcomeBanner}>
+          <View style={styles.welcomeTextCol}>
+            <View style={styles.welcomeEyebrowRow}>
+              <View style={styles.welcomeEyebrowDot} />
+              <Text style={styles.welcomeEyebrow}>SESIÓN ACTIVA</Text>
+            </View>
+            <Text style={styles.welcomeTitle} numberOfLines={1} ellipsizeMode="tail">
+              Hola, {displayName} 👋
+            </Text>
+            <Text style={styles.welcomeSub} numberOfLines={1}>
+              {dueCount > 0
+                ? `${String(dueCount)} tarjeta${dueCount > 1 ? 's' : ''} pendiente${dueCount > 1 ? 's' : ''} de repaso hoy`
+                : 'Todo al día. Aprende o repasa para fijar vocabulario'}
+            </Text>
+          </View>
+          <View style={styles.welcomeStreakChip}>
+            <Ionicons name="flame" size={16} color="#F59E0B" />
+            <Text style={styles.welcomeStreakText}>{String(streakDays)}d</Text>
           </View>
         </View>
 
@@ -311,17 +333,58 @@ const styles = StyleSheet.create({
     padding: spacing.md,
     paddingBottom: 120,
   },
-  topBar: {
+  institutionBar: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: spacing.md,
+    paddingBottom: spacing.sm,
+    marginBottom: spacing.sm,
+    borderBottomWidth: 1,
+    borderBottomColor: 'rgba(226, 232, 240, 0.7)',
   },
-  topBarRight: {
+  institutionBrand: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.xs + 3,
+    flex: 1,
+    marginRight: spacing.xs,
+  },
+  institutionLogo: {
+    width: 32,
+    height: 32,
+    borderRadius: radius.sm,
+  },
+  institutionTextCol: {
+    flex: 1,
+  },
+  institutionTitle: {
+    fontSize: 12.5,
+    fontWeight: typography.weights.bold,
+    color: colors.textPrimary,
+    lineHeight: 15,
+  },
+  institutionTag: {
+    fontSize: 8.5,
+    fontWeight: typography.weights.bold,
+    color: colors.primary,
+    letterSpacing: 0.5,
+    marginTop: 1,
+  },
+  institutionPills: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: 4,
     flexShrink: 0,
+  },
+  syncIconButton: {
+    width: 26,
+    height: 26,
+    borderRadius: radius.full,
+    backgroundColor: 'rgba(5, 150, 105, 0.08)',
+    borderWidth: 1,
+    borderColor: 'rgba(5, 150, 105, 0.2)',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   xpBadge: {
     flexDirection: 'row',
@@ -339,30 +402,71 @@ const styles = StyleSheet.create({
     fontSize: typography.sizes.xs - 1,
     fontWeight: typography.weights.bold,
   },
-  brandingRow: {
+  welcomeBanner: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: spacing.md,
+    backgroundColor: '#FFFFFF',
+    borderRadius: radius.lg,
+    padding: spacing.md,
+    borderWidth: 1,
+    borderColor: colors.border,
+    shadowColor: '#0F172A',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.04,
+    shadowRadius: 6,
+    elevation: 2,
+  },
+  welcomeTextCol: {
+    flex: 1,
+    marginRight: spacing.sm,
+  },
+  welcomeEyebrowRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: spacing.xs + 2,
-    flex: 1,
-    marginRight: spacing.xs,
+    gap: 4,
+    marginBottom: 2,
   },
-  greetingContainer: {
-    flex: 1,
+  welcomeEyebrowDot: {
+    width: 4,
+    height: 4,
+    borderRadius: 2,
+    backgroundColor: colors.primary,
   },
-  headerLogo: {
-    width: 44,
-    height: 44,
-    borderRadius: radius.full,
+  welcomeEyebrow: {
+    fontSize: 9.5,
+    fontWeight: typography.weights.bold,
+    color: colors.primary,
+    letterSpacing: 0.5,
   },
-  greeting: {
-    fontSize: typography.sizes.md + 1,
+  welcomeTitle: {
+    fontSize: 20,
     fontWeight: typography.weights.bold,
     color: colors.textPrimary,
+    lineHeight: 24,
   },
-  subgreeting: {
-    fontSize: typography.sizes.xs - 1,
+  welcomeSub: {
+    fontSize: typography.sizes.xs - 0.5,
     color: colors.textSecondary,
-    marginTop: 1,
+    marginTop: 2,
+    lineHeight: 16,
+  },
+  welcomeStreakChip: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 3,
+    backgroundColor: '#FEF3C7',
+    paddingHorizontal: spacing.sm,
+    paddingVertical: 5,
+    borderRadius: radius.full,
+    borderWidth: 1,
+    borderColor: '#FDE68A',
+  },
+  welcomeStreakText: {
+    fontSize: typography.sizes.xs,
+    fontWeight: typography.weights.bold,
+    color: '#B45309',
   },
   onboardingBanner: {
     flexDirection: 'row',
@@ -473,11 +577,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: colors.border,
     marginTop: spacing.sm,
-  },
-  syncIconButton: {
-    padding: 6,
-    borderRadius: radius.full,
-    backgroundColor: 'rgba(5, 150, 105, 0.08)',
   },
   repeatHeroBtnText: {
     fontSize: typography.sizes.xs,

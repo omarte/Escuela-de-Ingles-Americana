@@ -18,6 +18,7 @@ import { Ionicons } from '@expo/vector-icons'
 import { getReadingPassagesByLevel, getVocabularyById } from '@elp/content'
 import type { CEFRLevel, ReadingPassage, VocabularyItem, WordMapping } from '@elp/types'
 import { EMPTY_READINGS_IMG } from '../../lib/assets'
+import { AppScreenHeader } from '../../components/AppScreenHeader'
 
 const LEVELS: CEFRLevel[] = ['A1', 'A2', 'B1', 'B2']
 
@@ -208,12 +209,17 @@ export default function ReadingScreen(): React.JSX.Element {
     <SafeAreaView style={styles.safeArea} edges={['top']}>
       <ScrollView contentContainerStyle={styles.scrollContent}>
         {/* Screen Header */}
-        <View style={styles.header}>
-          <Text style={styles.title}>Lectura Contextual</Text>
-          <Text style={styles.subtitle}>
-            Lee párrafos graduados construidos con el vocabulario curado de tu nivel
-          </Text>
-        </View>
+        <AppScreenHeader
+          icon="reader"
+          accentColor="#0D9488"
+          iconBgColor="#F0FDFA"
+          eyebrow="COMPRENSIÓN NATURAL KRASHEN i+1"
+          title="Lectura Contextual"
+          subtitle="Lee párrafos graduados construidos con vocabulario hipervinculado y traducción paralela."
+          rightElement={
+            <Badge label={`Nivel ${selectedLevel}`} color="#0D9488" size="sm" />
+          }
+        />
 
         {/* Level Switcher */}
         <View style={styles.levelTabs}>

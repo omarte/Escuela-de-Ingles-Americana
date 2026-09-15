@@ -24,6 +24,7 @@ import { EMPTY_REVIEWS_IMG } from '../../lib/assets'
 import { RescueModeBanner } from '../../components/RescueModeBanner'
 import { SessionFeedbackModal } from '../../components/SessionFeedbackModal'
 import { MicroExamModal } from '../../components/MicroExamModal'
+import { AppScreenHeader } from '../../components/AppScreenHeader'
 
 const OPTION_LETTERS = ['A', 'B', 'C', 'D']
 
@@ -315,12 +316,17 @@ export default function LearnScreen(): React.JSX.Element {
     return (
       <SafeAreaView style={styles.safeArea} edges={['top']}>
         <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
-          <View style={styles.header}>
-            <Text style={styles.title}>Entrenamiento Diario</Text>
-            <Text style={styles.subtitle}>
-              Domina el vocabulario en dos fases: reconocimiento y escritura con voz nativa
-            </Text>
-          </View>
+          <AppScreenHeader
+            icon="sparkles"
+            accentColor={colors.primary}
+            iconBgColor="#ECFDF5"
+            eyebrow="MÉTODO SM-2 ADAPTATIVO"
+            title="Entrenamiento Diario"
+            subtitle="Domina el vocabulario en dos fases científicas: reconocimiento auditivo y ortografía activa."
+            rightElement={
+              <Badge label={`Nivel ${currentLevel}`} color={colors.primary} size="sm" />
+            }
+          />
 
           <Card padding="lg" style={styles.sessionIntroCard}>
             <View style={styles.introHeader}>

@@ -33,6 +33,7 @@ import { isSupabaseConfigured } from '../../lib/supabase'
 import { deleteAccountAndCleanup } from '../../lib/account'
 import { APP_LOGO, SCHOOL_LOGO } from '../../lib/assets'
 import { OnboardingModal } from '../../components/OnboardingModal'
+import { AppScreenHeader } from '../../components/AppScreenHeader'
 import {
   useStudyPreferencesStore,
   type PronunciationVariant,
@@ -296,6 +297,23 @@ export default function ProfileScreen(): React.JSX.Element {
   return (
     <SafeAreaView style={styles.safeArea} edges={['top']}>
       <ScrollView contentContainerStyle={styles.scrollContent}>
+        {/* Screen Header */}
+        <AppScreenHeader
+          icon="person-circle"
+          accentColor="#334155"
+          iconBgColor="#F1F5F9"
+          eyebrow="CUENTA Y PREFERENCIAS"
+          title="Mi Perfil"
+          subtitle="Sincronización en la nube, respaldo portátil JSON y preferencias de estudio."
+          rightElement={
+            <Badge
+              label={isSupabaseConfigured ? 'Cloud Sync' : 'Modo Offline'}
+              color={isSupabaseConfigured ? colors.primary : colors.secondary}
+              size="sm"
+            />
+          }
+        />
+
         {/* User Card */}
         <Card padding="lg" style={styles.profileCard}>
           <View style={styles.avatarRow}>
