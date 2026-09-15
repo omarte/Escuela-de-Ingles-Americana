@@ -1541,166 +1541,166 @@ Total de palabras en esta semana: **104**
 
 | ID | Palabra | Categoría | Fonética (IPA) | Traducción | Ejemplo en Inglés | Traducción del Ejemplo |
 |---|---|---|---|---|---|---|
-| `voc_a1_put_001` | **put** | *verb* | — | poner | — | — |
-| `voc_a1_keep_001` | **keep** | *verb* | — | mantener/guardar | — | — |
-| `voc_a1_hold_001` | **hold** | *verb* | — | sostener | — | — |
-| `voc_a1_carry_001` | **carry (object)** | *verb* | — | llevar/cargar | — | — |
-| `voc_a1_pull_001` | **pull** | *verb* | — | jalar | — | — |
-| `voc_a1_push_001` | **push** | *verb* | — | empujar | — | — |
-| `voc_a1_throw_001` | **throw** | *verb* | — | lanzar | — | — |
-| `voc_a1_catch_001` | **catch** | *verb* | — | atrapar | — | — |
-| `voc_a1_hit_001` | **hit** | *verb* | — | golpear | — | — |
-| `voc_a1_kick_001` | **kick** | *verb* | — | patear | — | — |
-| `voc_a1_tear_001` | **tear** | *verb* | — | rasgar | — | — |
-| `voc_a1_fold_001` | **fold** | *verb* | — | doblar | — | — |
-| `voc_a1_wrap_001` | **wrap** | *verb* | — | envolver | — | — |
-| `voc_a1_cover_001` | **cover** | *verb* | — | cubrir | — | — |
-| `voc_a1_hide_001` | **hide** | *verb* | — | esconder | — | — |
-| `voc_a1_show_001` | **show** | *verb* | — | mostrar | — | — |
-| `voc_a1_point_001` | **point** | *verb* | — | señalar | — | — |
-| `voc_a1_turn_001` | **turn** | *verb* | — | girar | — | — |
-| `voc_a1_turn-on_001` | **turn on** | *verb* | — | encender | — | — |
-| `voc_a1_turn-off_001` | **turn off** | *verb* | — | apagar | — | — |
-| `voc_a1_mix_001` | **mix** | *verb* | — | mezclar | — | — |
-| `voc_a1_add_001` | **add** | *verb* | — | agregar | — | — |
-| `voc_a1_remove_001` | **remove** | *verb* | — | quitar | — | — |
-| `voc_a1_fill_001` | **fill** | *verb* | — | llenar | — | — |
-| `voc_a1_pour_001` | **pour** | *verb* | — | verter | — | — |
-| `voc_a1_press_001` | **press** | *verb* | — | presionar | — | — |
-| `voc_a1_lift_001` | **lift** | *verb* | — | levantar | — | — |
-| `voc_a1_drop_001` | **drop** | *verb* | — | dejar caer | — | — |
-| `voc_a1_pick-up_001` | **pick up** | *verb* | — | recoger | — | — |
-| `voc_a1_set-up_001` | **set up** | *verb* | — | instalar/organizar | — | — |
-| `voc_a1_rise_001` | **rise** | *verb* | — | subir/aumentar | — | — |
-| `voc_a1_fall_001` | **fall** | *verb* | — | caer | — | — |
-| `voc_a1_grow_001` | **grow** | *verb* | — | crecer | — | — |
-| `voc_a1_increase_001` | **increase** | *verb* | — | aumentar | — | — |
-| `voc_a1_decrease_001` | **decrease** | *verb* | — | disminuir | — | — |
-| `voc_a1_change_002` | **change (verb)** | *verb* | — | cambiar | — | — |
-| `voc_a1_improve_001` | **improve** | *verb* | — | mejorar | — | — |
-| `voc_a1_succeed_001` | **succeed** | *verb* | — | tener éxito | — | — |
-| `voc_a1_fail_001` | **fail** | *verb* | — | fallar | — | — |
-| `voc_a1_compete_001` | **compete** | *verb* | — | competir | — | — |
-| `voc_a1_practice_001` | **practice** | *verb* | — | practicar | — | — |
-| `voc_a1_prepare_001` | **prepare** | *verb* | — | preparar | — | — |
-| `voc_a1_organize_001` | **organize** | *verb* | — | organizar | — | — |
-| `voc_a1_arrange_001` | **arrange** | *verb* | — | arreglar/organizar | — | — |
-| `voc_a1_collect_001` | **collect** | *verb* | — | coleccionar | — | — |
-| `voc_a1_gather_001` | **gather** | *verb* | — | reunir | — | — |
-| `voc_a1_separate_001` | **separate** | *verb* | — | separar | — | — |
-| `voc_a1_connect_001` | **connect** | *verb* | — | conectar | — | — |
-| `voc_a1_disconnect_001` | **disconnect** | *verb* | — | desconectar | — | — |
-| `voc_a1_join_001` | **join** | *verb* | — | unirse | — | — |
-| `voc_a1_enter_001` | **enter** | *verb* | — | entrar | — | — |
-| `voc_a1_exit_001` | **exit** | *verb* | — | salir | — | — |
-| `voc_a1_idea_001` | **idea** | *noun* | — | idea | — | — |
-| `voc_a1_opinion_001` | **opinion** | *noun* | — | opinión | — | — |
-| `voc_a1_decision_001` | **decision** | *noun* | — | decisión | — | — |
-| `voc_a1_solution_001` | **solution** | *noun* | — | solución | — | — |
-| `voc_a1_problem_001` | **problem** | *noun* | — | problema | — | — |
-| `voc_a1_reason_001` | **reason** | *noun* | — | razón | — | — |
-| `voc_a1_result_001` | **result** | *noun* | — | resultado | — | — |
-| `voc_a1_effect_001` | **effect** | *noun* | — | efecto | — | — |
-| `voc_a1_cause_001` | **cause** | *noun* | — | causa | — | — |
-| `voc_a1_example_001` | **example** | *noun* | — | ejemplo | — | — |
-| `voc_a1_fact_001` | **fact** | *noun* | — | hecho | — | — |
-| `voc_a1_information_001` | **information** | *noun* | — | información | — | — |
-| `voc_a1_rule_001` | **rule** | *noun* | — | regla | — | — |
-| `voc_a1_law_001` | **law** | *noun* | — | ley | — | — |
-| `voc_a1_permission_001` | **permission** | *noun* | — | permiso | — | — |
-| `voc_a1_freedom_001` | **freedom** | *noun* | — | libertad | — | — |
-| `voc_a1_responsibility_001` | **responsibility** | *noun* | — | responsabilidad | — | — |
-| `voc_a1_duty_001` | **duty** | *noun* | — | deber | — | — |
-| `voc_a1_purpose_001` | **purpose** | *noun* | — | propósito | — | — |
-| `voc_a1_project_001` | **project** | *noun* | — | proyecto | — | — |
-| `voc_a1_task_001` | **task** | *noun* | — | tarea (labor) | — | — |
-| `voc_a1_effort_001` | **effort** | *noun* | — | esfuerzo | — | — |
-| `voc_a1_chance_001` | **chance** | *noun* | — | oportunidad/posibilidad | — | — |
-| `voc_a1_opportunity_001` | **opportunity** | *noun* | — | oportunidad | — | — |
-| `voc_a1_risk_001` | **risk** | *noun* | — | riesgo | — | — |
-| `voc_a1_success_001` | **success** | *noun* | — | éxito | — | — |
-| `voc_a1_failure_001` | **failure** | *noun* | — | fracaso | — | — |
-| `voc_a1_mistake_001` | **mistake** | *noun* | — | error | — | — |
-| `voc_a1_experience_001` | **experience** | *noun* | — | experiencia | — | — |
-| `voc_a1_knowledge_001` | **knowledge** | *noun* | — | conocimiento | — | — |
-| `voc_a1_skill_001` | **skill** | *noun* | — | habilidad | — | — |
-| `voc_a1_ability_001` | **ability** | *noun* | — | capacidad | — | — |
-| `voc_a1_talent_001` | **talent** | *noun* | — | talento | — | — |
-| `voc_a1_memory_001` | **memory** | *noun* | — | memoria | — | — |
-| `voc_a1_imagination_001` | **imagination** | *noun* | — | imaginación | — | — |
-| `voc_a1_attention_001` | **attention** | *noun* | — | atención | — | — |
-| `voc_a1_focus_001` | **focus** | *noun* | — | concentración | — | — |
-| `voc_a1_courage_001` | **courage** | *noun* | — | valentía | — | — |
-| `voc_a1_fear_001` | **fear** | *noun* | — | miedo | — | — |
-| `voc_a1_faith_001` | **faith** | *noun* | — | fe | — | — |
-| `voc_a1_trust_001` | **trust** | *noun* | — | confianza | — | — |
-| `voc_a1_doubt_001` | **doubt** | *noun* | — | duda | — | — |
-| `voc_a1_truth_001` | **truth** | *noun* | — | verdad | — | — |
-| `voc_a1_lie_001` | **lie (noun)** | *verb* | — | mentira | — | — |
-| `voc_a1_secret_001` | **secret** | *noun* | — | secreto | — | — |
-| `voc_a1_agreement_001` | **agreement** | *noun* | — | acuerdo | — | — |
-| `voc_a1_conflict_001` | **conflict** | *noun* | — | conflicto | — | — |
-| `voc_a1_peace_001` | **peace** | *noun* | — | paz | — | — |
-| `voc_a1_war_001` | **war** | *noun* | — | guerra | — | — |
-| `voc_a1_justice_001` | **justice** | *noun* | — | justicia | — | — |
-| `voc_a1_equality_001` | **equality** | *noun* | — | igualdad | — | — |
-| `voc_a1_value_001` | **value** | *noun* | — | valor | — | — |
+| `voc_a1_put_001` | **put** | *verb* | `/pʊt/` | poner | Put the box on the table. | Pon la caja sobre la mesa. |
+| `voc_a1_keep_001` | **keep** | *verb* | `/kip/` | mantener/guardar | You can keep the book. | Puedes quedarte con el libro. |
+| `voc_a1_hold_001` | **hold** | *verb* | `/hoʊld/` | sostener | Can you hold my bag? | ¿Puedes sostener mi bolsa? |
+| `voc_a1_carry_001` | **carry (object)** | *verb* | `/ˈkæri/` | llevar/cargar | She carries her laptop every day. | Ella carga su laptop todos los días. |
+| `voc_a1_pull_001` | **pull** | *verb* | `/pʊl/` | jalar | Pull the door to open it. | Jala la puerta para abrirla. |
+| `voc_a1_push_001` | **push** | *verb* | `/pʊʃ/` | empujar | Push the button to start. | Presiona el botón para empezar. |
+| `voc_a1_throw_001` | **throw** | *verb* | `/θroʊ/` | lanzar | Throw the ball to me. | Lánzame la pelota. |
+| `voc_a1_catch_001` | **catch** | *verb* | `/kætʃ/` | atrapar | Catch the ball! | ¡Atrapa la pelota! |
+| `voc_a1_hit_001` | **hit** | *verb* | `/hɪt/` | golpear | He hit the ball hard. | Él golpeó la pelota fuerte. |
+| `voc_a1_kick_001` | **kick** | *verb* | `/kɪk/` | patear | The player kicked the ball. | El jugador pateó la pelota. |
+| `voc_a1_tear_001` | **tear** | *verb* | `/tɛr/` | rasgar | Be careful, don't tear the paper. | Ten cuidado, no rasgues el papel. |
+| `voc_a1_fold_001` | **fold** | *verb* | `/foʊld/` | doblar | Fold the clothes, please. | Dobla la ropa, por favor. |
+| `voc_a1_wrap_001` | **wrap** | *verb* | `/ræp/` | envolver | I need to wrap this gift. | Necesito envolver este regalo. |
+| `voc_a1_cover_001` | **cover** | *verb* | `/ˈkʌvər/` | cubrir | Cover the food with a towel. | Cubre la comida con una toalla. |
+| `voc_a1_hide_001` | **hide** | *verb* | `/haɪd/` | esconder | The cat likes to hide under the bed. | Al gato le gusta esconderse bajo la cama. |
+| `voc_a1_show_001` | **show** | *verb* | `/ʃoʊ/` | mostrar | Show me your notebook. | Muéstrame tu cuaderno. |
+| `voc_a1_point_001` | **point** | *verb* | `/pɔɪnt/` | señalar | She pointed at the map. | Ella señaló el mapa. |
+| `voc_a1_turn_001` | **turn** | *verb* | `/tɜrn/` | girar | Turn left at the corner. | Gira a la izquierda en la esquina. |
+| `voc_a1_turn-on_001` | **turn on** | *verb* | `/tɜrn ɑn/` | encender | Turn on the light, please. | Enciende la luz, por favor. |
+| `voc_a1_turn-off_001` | **turn off** | *verb* | `/tɜrn ɔf/` | apagar | Turn off your phone in class. | Apaga tu teléfono en clase. |
+| `voc_a1_mix_001` | **mix** | *verb* | `/mɪks/` | mezclar | Mix the eggs and the flour. | Mezcla los huevos y la harina. |
+| `voc_a1_add_001` | **add** | *verb* | `/æd/` | agregar | Add a little salt. | Agrega un poco de sal. |
+| `voc_a1_remove_001` | **remove** | *verb* | `/rɪˈmuv/` | quitar | Remove your shoes, please. | Quítate los zapatos, por favor. |
+| `voc_a1_fill_001` | **fill** | *verb* | `/fɪl/` | llenar | Fill the glass with water. | Llena el vaso con agua. |
+| `voc_a1_pour_001` | **pour** | *verb* | `/pɔr/` | verter | Pour the juice into the cup. | Vierte el jugo en la taza. |
+| `voc_a1_press_001` | **press** | *verb* | `/prɛs/` | presionar | Press the button twice. | Presiona el botón dos veces. |
+| `voc_a1_lift_001` | **lift** | *verb* | `/lɪft/` | levantar | Lift the box carefully. | Levanta la caja con cuidado. |
+| `voc_a1_drop_001` | **drop** | *verb* | `/drɑp/` | dejar caer | Don't drop the plate. | No dejes caer el plato. |
+| `voc_a1_pick-up_001` | **pick up** | *verb* | `/pɪk ʌp/` | recoger | Pick up your toys, please. | Recoge tus juguetes, por favor. |
+| `voc_a1_set-up_001` | **set up** | *verb* | `/sɛt ʌp/` | instalar/organizar | We set up the tent quickly. | Instalamos la tienda de campaña rápido. |
+| `voc_a1_rise_001` | **rise** | *verb* | `/raɪz/` | subir/aumentar | Prices rise every year. | Los precios suben cada año. |
+| `voc_a1_fall_001` | **fall** | *verb* | `/fɔl/` | caer | Leaves fall in autumn. | Las hojas caen en otoño. |
+| `voc_a1_grow_001` | **grow** | *verb* | `/groʊ/` | crecer | Children grow very fast. | Los niños crecen muy rápido. |
+| `voc_a1_increase_001` | **increase** | *verb* | `/ɪnˈkris/` | aumentar | The company will increase salaries. | La empresa aumentará los salarios. |
+| `voc_a1_decrease_001` | **decrease** | *verb* | `/diˈkris/` | disminuir | Sales decreased this month. | Las ventas disminuyeron este mes. |
+| `voc_a1_change_002` | **change (verb)** | *verb* | `/tʃeɪndʒ/` | cambiar | I need to change my schedule. | Necesito cambiar mi horario. |
+| `voc_a1_improve_001` | **improve** | *verb* | `/ɪmˈpruv/` | mejorar | She wants to improve her English. | Ella quiere mejorar su inglés. |
+| `voc_a1_succeed_001` | **succeed** | *verb* | `/səkˈsid/` | tener éxito | He worked hard to succeed. | Él trabajó duro para tener éxito. |
+| `voc_a1_fail_001` | **fail** | *verb* | `/feɪl/` | fallar | I hope I don't fail the exam. | Espero no reprobar el examen. |
+| `voc_a1_compete_001` | **compete** | *verb* | `/kəmˈpit/` | competir | Our team will compete this weekend. | Nuestro equipo competirá este fin de semana. |
+| `voc_a1_practice_001` | **practice** | *verb* | `/ˈpræktɪs/` | practicar | I practice English every day. | Practico inglés todos los días. |
+| `voc_a1_prepare_001` | **prepare** | *verb* | `/prɪˈpɛr/` | preparar | We need to prepare dinner. | Necesitamos preparar la cena. |
+| `voc_a1_organize_001` | **organize** | *verb* | `/ˈɔrgəˌnaɪz/` | organizar | Let's organize the closet. | Organicemos el armario. |
+| `voc_a1_arrange_001` | **arrange** | *verb* | `/əˈreɪndʒ/` | arreglar/organizar | She arranged the flowers nicely. | Ella arregló las flores muy bien. |
+| `voc_a1_collect_001` | **collect** | *verb* | `/kəˈlɛkt/` | coleccionar | He collects old coins. | Él colecciona monedas antiguas. |
+| `voc_a1_gather_001` | **gather** | *verb* | `/ˈgæðər/` | reunir | We gathered around the table. | Nos reunimos alrededor de la mesa. |
+| `voc_a1_separate_001` | **separate** | *verb* | `/ˈsɛpəˌreɪt/` | separar | Please separate the plastic and paper. | Por favor separa el plástico y el papel. |
+| `voc_a1_connect_001` | **connect** | *verb* | `/kəˈnɛkt/` | conectar | Connect the cable to the TV. | Conecta el cable a la televisión. |
+| `voc_a1_disconnect_001` | **disconnect** | *verb* | `/ˌdɪskəˈnɛkt/` | desconectar | Disconnect the printer before moving it. | Desconecta la impresora antes de moverla. |
+| `voc_a1_join_001` | **join** | *verb* | `/dʒɔɪn/` | unirse | Do you want to join our team? | ¿Quieres unirte a nuestro equipo? |
+| `voc_a1_enter_001` | **enter** | *verb* | `/ˈɛntər/` | entrar | Please enter through this door. | Por favor entra por esta puerta. |
+| `voc_a1_exit_001` | **exit** | *verb* | `/ˈɛgzɪt/` | salir | Exit through the back door. | Sal por la puerta trasera. |
+| `voc_a1_idea_001` | **idea** | *noun* | `/aɪˈdiə/` | idea | That's a great idea. | Esa es una gran idea. |
+| `voc_a1_opinion_001` | **opinion** | *noun* | `/əˈpɪnjən/` | opinión | What is your opinion? | ¿Cuál es tu opinión? |
+| `voc_a1_decision_001` | **decision** | *noun* | `/dɪˈsɪʒən/` | decisión | It was a difficult decision. | Fue una decisión difícil. |
+| `voc_a1_solution_001` | **solution** | *noun* | `/səˈluʃən/` | solución | We found a good solution. | Encontramos una buena solución. |
+| `voc_a1_problem_001` | **problem** | *noun* | `/ˈprɑbləm/` | problema | We have a small problem. | Tenemos un pequeño problema. |
+| `voc_a1_reason_001` | **reason** | *noun* | `/ˈrizən/` | razón | What is the reason for this? | ¿Cuál es la razón de esto? |
+| `voc_a1_result_001` | **result** | *noun* | `/rɪˈzʌlt/` | resultado | The result was excellent. | El resultado fue excelente. |
+| `voc_a1_effect_001` | **effect** | *noun* | `/ɪˈfɛkt/` | efecto | The medicine had no effect. | La medicina no tuvo efecto. |
+| `voc_a1_cause_001` | **cause** | *noun* | `/kɔz/` | causa | We don't know the cause yet. | Todavía no sabemos la causa. |
+| `voc_a1_example_001` | **example** | *noun* | `/ɪgˈzæmpəl/` | ejemplo | Can you give me an example? | ¿Puedes darme un ejemplo? |
+| `voc_a1_fact_001` | **fact** | *noun* | `/fækt/` | hecho | That's an interesting fact. | Ese es un hecho interesante. |
+| `voc_a1_information_001` | **information** | *noun* | `/ˌɪnfərˈmeɪʃən/` | información | I need more information. | Necesito más información. |
+| `voc_a1_rule_001` | **rule** | *noun* | `/rul/` | regla | Every game has rules. | Todo juego tiene reglas. |
+| `voc_a1_law_001` | **law** | *noun* | `/lɔ/` | ley | It's against the law. | Es contra la ley. |
+| `voc_a1_permission_001` | **permission** | *noun* | `/pərˈmɪʃən/` | permiso | I need your permission. | Necesito tu permiso. |
+| `voc_a1_freedom_001` | **freedom** | *noun* | `/ˈfridəm/` | libertad | Freedom is important to me. | La libertad es importante para mí. |
+| `voc_a1_responsibility_001` | **responsibility** | *noun* | `/rɪˌspɑnsəˈbɪləti/` | responsabilidad | It's your responsibility now. | Es tu responsabilidad ahora. |
+| `voc_a1_duty_001` | **duty** | *noun* | `/ˈduti/` | deber | It's my duty to help. | Es mi deber ayudar. |
+| `voc_a1_purpose_001` | **purpose** | *noun* | `/ˈpɜrpəs/` | propósito | What is the purpose of this meeting? | ¿Cuál es el propósito de esta reunión? |
+| `voc_a1_project_001` | **project** | *noun* | `/ˈprɑdʒɛkt/` | proyecto | We finished the project on time. | Terminamos el proyecto a tiempo. |
+| `voc_a1_task_001` | **task** | *noun* | `/tæsk/` | tarea (labor) | I have one more task to do. | Tengo una tarea más que hacer. |
+| `voc_a1_effort_001` | **effort** | *noun* | `/ˈɛfərt/` | esfuerzo | She made a big effort. | Ella hizo un gran esfuerzo. |
+| `voc_a1_chance_001` | **chance** | *noun* | `/tʃæns/` | oportunidad/posibilidad | This is your chance. | Esta es tu oportunidad. |
+| `voc_a1_opportunity_001` | **opportunity** | *noun* | `/ˌɑpərˈtunəti/` | oportunidad | It was a great opportunity. | Fue una gran oportunidad. |
+| `voc_a1_risk_001` | **risk** | *noun* | `/rɪsk/` | riesgo | There is a small risk. | Hay un pequeño riesgo. |
+| `voc_a1_success_001` | **success** | *noun* | `/səkˈsɛs/` | éxito | The event was a success. | El evento fue un éxito. |
+| `voc_a1_failure_001` | **failure** | *noun* | `/ˈfeɪljər/` | fracaso | Failure taught him a lot. | El fracaso le enseñó mucho. |
+| `voc_a1_mistake_001` | **mistake** | *noun* | `/mɪˈsteɪk/` | error | Everyone makes mistakes. | Todos cometemos errores. |
+| `voc_a1_experience_001` | **experience** | *noun* | `/ɪkˈspɪriəns/` | experiencia | It was a great experience. | Fue una gran experiencia. |
+| `voc_a1_knowledge_001` | **knowledge** | *noun* | `/ˈnɑlɪdʒ/` | conocimiento | She has a lot of knowledge. | Ella tiene mucho conocimiento. |
+| `voc_a1_skill_001` | **skill** | *noun* | `/skɪl/` | habilidad | Cooking is a useful skill. | Cocinar es una habilidad útil. |
+| `voc_a1_ability_001` | **ability** | *noun* | `/əˈbɪləti/` | capacidad | He has the ability to lead. | Él tiene la capacidad de liderar. |
+| `voc_a1_talent_001` | **talent** | *noun* | `/ˈtælənt/` | talento | She has real talent for music. | Ella tiene verdadero talento para la música. |
+| `voc_a1_memory_001` | **memory** | *noun* | `/ˈmɛməri/` | memoria | I have a good memory. | Tengo buena memoria. |
+| `voc_a1_imagination_001` | **imagination** | *noun* | `/ɪˌmædʒəˈneɪʃən/` | imaginación | Children have great imagination. | Los niños tienen mucha imaginación. |
+| `voc_a1_attention_001` | **attention** | *noun* | `/əˈtɛnʃən/` | atención | Pay attention, please. | Presta atención, por favor. |
+| `voc_a1_focus_001` | **focus** | *noun* | `/ˈfoʊkəs/` | concentración | I need more focus today. | Necesito más concentración hoy. |
+| `voc_a1_courage_001` | **courage** | *noun* | `/ˈkɜrɪdʒ/` | valentía | It took courage to speak up. | Se necesitó valentía para hablar. |
+| `voc_a1_fear_001` | **fear** | *noun* | `/fɪr/` | miedo | She has a fear of heights. | Ella tiene miedo a las alturas. |
+| `voc_a1_faith_001` | **faith** | *noun* | `/feɪθ/` | fe | I have faith in you. | Tengo fe en ti. |
+| `voc_a1_trust_001` | **trust** | *noun* | `/trʌst/` | confianza | Trust is important in a team. | La confianza es importante en un equipo. |
+| `voc_a1_doubt_001` | **doubt** | *noun* | `/daʊt/` | duda | I have some doubt about this. | Tengo algo de duda sobre esto. |
+| `voc_a1_truth_001` | **truth** | *noun* | `/truθ/` | verdad | Please tell me the truth. | Por favor dime la verdad. |
+| `voc_a1_lie_001` | **lie (noun)** | *noun* | `/laɪ/` | mentira | That was a lie. | Eso fue una mentira. |
+| `voc_a1_secret_001` | **secret** | *noun* | `/ˈsikrɪt/` | secreto | Can you keep a secret? | ¿Puedes guardar un secreto? |
+| `voc_a1_agreement_001` | **agreement** | *noun* | `/əˈgrimənt/` | acuerdo | We reached an agreement. | Llegamos a un acuerdo. |
+| `voc_a1_conflict_001` | **conflict** | *noun* | `/ˈkɑnflɪkt/` | conflicto | There was a conflict at work. | Hubo un conflicto en el trabajo. |
+| `voc_a1_peace_001` | **peace** | *noun* | `/pis/` | paz | We want peace. | Queremos paz. |
+| `voc_a1_war_001` | **war** | *noun* | `/wɔr/` | guerra | The war ended years ago. | La guerra terminó hace años. |
+| `voc_a1_justice_001` | **justice** | *noun* | `/ˈdʒʌstɪs/` | justicia | They fought for justice. | Ellos lucharon por la justicia. |
+| `voc_a1_equality_001` | **equality** | *noun* | `/ɪˈkwɑləti/` | igualdad | Equality is a basic right. | La igualdad es un derecho básico. |
+| `voc_a1_value_001` | **value** | *noun* | `/ˈvælju/` | valor | Honesty is an important value. | La honestidad es un valor importante. |
 
 ### Semana 19: Semana 19 – Verbos irregulares esenciales (base – pasado – participio)
 Total de palabras en esta semana: **50**
 
 | ID | Palabra | Categoría | Fonética (IPA) | Traducción | Ejemplo en Inglés | Traducción del Ejemplo |
 |---|---|---|---|---|---|---|
-| `voc_a1_go-went-gone_001` | **go – went – gone** | *verb* | — | ir | — | — |
-| `voc_a1_see-saw-seen_001` | **see – saw – seen** | *verb* | — | ver | — | — |
-| `voc_a1_eat-ate-eaten_001` | **eat – ate – eaten** | *verb* | — | comer | — | — |
-| `voc_a1_drink-drank-drunk_001` | **drink – drank – drunk** | *verb* | — | beber | — | — |
-| `voc_a1_come-came-come_001` | **come – came – come** | *verb* | — | venir | — | — |
-| `voc_a1_take-took-taken_001` | **take – took – taken** | *verb* | — | tomar | — | — |
-| `voc_a1_give-gave-given_001` | **give – gave – given** | *verb* | — | dar | — | — |
-| `voc_a1_make-made-made_001` | **make – made – made** | *verb* | — | hacer/fabricar | — | — |
-| `voc_a1_get-got-gotten_001` | **get – got – gotten** | *verb* | — | obtener | — | — |
-| `voc_a1_say-said-said_001` | **say – said – said** | *verb* | — | decir | — | — |
-| `voc_a1_know-knew-known_001` | **know – knew – known** | *verb* | — | saber/conocer | — | — |
-| `voc_a1_think-thought-thought_001` | **think – thought – thought** | *verb* | — | pensar | — | — |
-| `voc_a1_find-found-found_001` | **find – found – found** | *verb* | — | encontrar | — | — |
-| `voc_a1_tell-told-told_001` | **tell – told – told** | *verb* | — | contar/decir | — | — |
-| `voc_a1_become-became-become_001` | **become – became – become** | *verb* | — | convertirse | — | — |
-| `voc_a1_leave-left-left_001` | **leave – left – left** | *verb* | — | irse/dejar | — | — |
-| `voc_a1_feel-felt-felt_001` | **feel – felt – felt** | *verb* | — | sentir | — | — |
-| `voc_a1_bring-brought-brought_001` | **bring – brought – brought** | *verb* | — | traer | — | — |
-| `voc_a1_begin-began-begun_001` | **begin – began – begun** | *verb* | — | comenzar | — | — |
-| `voc_a1_keep-kept-kept_001` | **keep – kept – kept** | *verb* | — | mantener | — | — |
-| `voc_a1_hold-held-held_001` | **hold – held – held** | *verb* | — | sostener | — | — |
-| `voc_a1_write-wrote-written_001` | **write – wrote – written** | *verb* | — | escribir | — | — |
-| `voc_a1_stand-stood-stood_001` | **stand – stood – stood** | *verb* | — | pararse | — | — |
-| `voc_a1_hear-heard-heard_001` | **hear – heard – heard** | *verb* | — | oír | — | — |
-| `voc_a1_let-let-let_001` | **let – let – let** | *verb* | — | permitir | — | — |
-| `voc_a1_mean-meant-meant_001` | **mean – meant – meant** | *verb* | — | significar | — | — |
-| `voc_a1_meet-met-met_001` | **meet – met – met** | *verb* | — | conocer/encontrarse | — | — |
-| `voc_a1_pay-paid-paid_001` | **pay – paid – paid** | *verb* | — | pagar | — | — |
-| `voc_a1_run-ran-run_001` | **run – ran – run** | *verb* | — | correr | — | — |
-| `voc_a1_sit-sat-sat_001` | **sit – sat – sat** | *verb* | — | sentarse | — | — |
-| `voc_a1_speak-spoke-spoken_001` | **speak – spoke – spoken** | *verb* | — | hablar | — | — |
-| `voc_a1_read-read-read_001` | **read – read – read** | *verb* | — | leer | — | — |
-| `voc_a1_grow-grew-grown_001` | **grow – grew – grown** | *verb* | — | crecer | — | — |
-| `voc_a1_lose-lost-lost_001` | **lose – lost – lost** | *verb* | — | perder | — | — |
-| `voc_a1_fall-fell-fallen_001` | **fall – fell – fallen** | *verb* | — | caer | — | — |
-| `voc_a1_send-sent-sent_001` | **send – sent – sent** | *verb* | — | enviar | — | — |
-| `voc_a1_build-built-built_001` | **build – built – built** | *verb* | — | construir | — | — |
-| `voc_a1_understand-understood-understood_001` | **understand – understood – understood** | *verb* | — | entender | — | — |
-| `voc_a1_break-broke-broken_001` | **break – broke – broken** | *verb* | — | romper | — | — |
-| `voc_a1_spend-spent-spent_001` | **spend – spent – spent** | *verb* | — | gastar | — | — |
-| `voc_a1_drive-drove-driven_001` | **drive – drove – driven** | *verb* | — | conducir | — | — |
-| `voc_a1_buy-bought-bought_001` | **buy – bought – bought** | *verb* | — | comprar | — | — |
-| `voc_a1_catch-caught-caught_001` | **catch – caught – caught** | *verb* | — | atrapar | — | — |
-| `voc_a1_teach-taught-taught_001` | **teach – taught – taught** | *verb* | — | enseñar | — | — |
-| `voc_a1_fly-flew-flown_001` | **fly – flew – flown** | *verb* | — | volar | — | — |
-| `voc_a1_choose-chose-chosen_001` | **choose – chose – chosen** | *verb* | — | elegir | — | — |
-| `voc_a1_wear-wore-worn_001` | **wear – wore – worn** | *verb* | — | llevar puesto | — | — |
-| `voc_a1_sell-sold-sold_001` | **sell – sold – sold** | *verb* | — | vender | — | — |
-| `voc_a1_forget-forgot-forgotten_001` | **forget – forgot – forgotten** | *verb* | — | olvidar | — | — |
-| `voc_a1_put-put-put_001` | **put – put – put** | *verb* | — | poner | — | — |
+| `voc_a1_go-went-gone_001` | **go – went – gone** | *verb* | `/goʊ/ /wɛnt/ /gɔn/` | ir | I go to work by bus. | Voy al trabajo en autobús. |
+| `voc_a1_see-saw-seen_001` | **see – saw – seen** | *verb* | `/si/ /sɔ/ /sin/` | ver | I see my friends on weekends. | Veo a mis amigos los fines de semana. |
+| `voc_a1_eat-ate-eaten_001` | **eat – ate – eaten** | *verb* | `/it/ /eɪt/ /ˈitən/` | comer | We eat dinner at eight. | Cenamos a las ocho. |
+| `voc_a1_drink-drank-drunk_001` | **drink – drank – drunk** | *verb* | `/drɪŋk/ /dræŋk/ /drʌŋk/` | beber | I drink coffee every morning. | Bebo café todas las mañanas. |
+| `voc_a1_come-came-come_001` | **come – came – come** | *verb* | `/kʌm/ /keɪm/ /kʌm/` | venir | Please come early tomorrow. | Por favor ven temprano mañana. |
+| `voc_a1_take-took-taken_001` | **take – took – taken** | *verb* | `/teɪk/ /tʊk/ /ˈteɪkən/` | tomar | I take the bus every day. | Tomo el autobús todos los días. |
+| `voc_a1_give-gave-given_001` | **give – gave – given** | *verb* | `/gɪv/ /geɪv/ /ˈgɪvən/` | dar | Give me your hand, please. | Dame tu mano, por favor. |
+| `voc_a1_make-made-made_001` | **make – made – made** | *verb* | `/meɪk/ /meɪd/ /meɪd/` | hacer/fabricar | She makes breakfast every morning. | Ella hace el desayuno cada mañana. |
+| `voc_a1_get-got-gotten_001` | **get – got – gotten** | *verb* | `/gɛt/ /gɑt/ /ˈgɑtən/` | obtener | I get up at seven. | Me levanto a las siete. |
+| `voc_a1_say-said-said_001` | **say – said – said** | *verb* | `/seɪ/ /sɛd/ /sɛd/` | decir | What did she say? | ¿Qué dijo ella? |
+| `voc_a1_know-knew-known_001` | **know – knew – known** | *verb* | `/noʊ/ /nu/ /noʊn/` | saber/conocer | I know the answer. | Sé la respuesta. |
+| `voc_a1_think-thought-thought_001` | **think – thought – thought** | *verb* | `/θɪŋk/ /θɔt/ /θɔt/` | pensar | I think it will rain. | Creo que va a llover. |
+| `voc_a1_find-found-found_001` | **find – found – found** | *verb* | `/faɪnd/ /faʊnd/ /faʊnd/` | encontrar | I can't find my keys. | No encuentro mis llaves. |
+| `voc_a1_tell-told-told_001` | **tell – told – told** | *verb* | `/tɛl/ /toʊld/ /toʊld/` | contar/decir | Tell me the truth. | Dime la verdad. |
+| `voc_a1_become-became-become_001` | **become – became – become** | *verb* | `/bɪˈkʌm/ /bɪˈkeɪm/ /bɪˈkʌm/` | convertirse | She became a doctor. | Ella se convirtió en médica. |
+| `voc_a1_leave-left-left_001` | **leave – left – left** | *verb* | `/liv/ /lɛft/ /lɛft/` | irse/dejar | I leave home at eight. | Salgo de casa a las ocho. |
+| `voc_a1_feel-felt-felt_001` | **feel – felt – felt** | *verb* | `/fil/ /fɛlt/ /fɛlt/` | sentir | I feel tired today. | Me siento cansado hoy. |
+| `voc_a1_bring-brought-brought_001` | **bring – brought – brought** | *verb* | `/brɪŋ/ /brɔt/ /brɔt/` | traer | Bring your homework tomorrow. | Trae tu tarea mañana. |
+| `voc_a1_begin-began-begun_001` | **begin – began – begun** | *verb* | `/bɪˈgɪn/ /bɪˈgæn/ /bɪˈgʌn/` | comenzar | The movie begins at eight. | La película empieza a las ocho. |
+| `voc_a1_keep-kept-kept_001` | **keep – kept – kept** | *verb* | `/kip/ /kɛpt/ /kɛpt/` | mantener | You can keep the change. | Puedes quedarte con el cambio. |
+| `voc_a1_hold-held-held_001` | **hold – held – held** | *verb* | `/hoʊld/ /hɛld/ /hɛld/` | sostener | She held the baby gently. | Ella sostuvo al bebé con cuidado. |
+| `voc_a1_write-wrote-written_001` | **write – wrote – written** | *verb* | `/raɪt/ /roʊt/ /ˈrɪtən/` | escribir | He writes letters to his family. | Él le escribe cartas a su familia. |
+| `voc_a1_stand-stood-stood_001` | **stand – stood – stood** | *verb* | `/stænd/ /stʊd/ /stʊd/` | pararse | We stood in line for an hour. | Estuvimos parados en la fila una hora. |
+| `voc_a1_hear-heard-heard_001` | **hear – heard – heard** | *verb* | `/hɪr/ /hɜrd/ /hɜrd/` | oír | Can you hear the music? | ¿Puedes oír la música? |
+| `voc_a1_let-let-let_001` | **let – let – let** | *verb* | `/lɛt/ /lɛt/ /lɛt/` | permitir | Let me help you. | Déjame ayudarte. |
+| `voc_a1_mean-meant-meant_001` | **mean – meant – meant** | *verb* | `/min/ /mɛnt/ /mɛnt/` | significar | What does this word mean? | ¿Qué significa esta palabra? |
+| `voc_a1_meet-met-met_001` | **meet – met – met** | *verb* | `/mit/ /mɛt/ /mɛt/` | conocer/encontrarse | Nice to meet you. | Mucho gusto en conocerte. |
+| `voc_a1_pay-paid-paid_001` | **pay – paid – paid** | *verb* | `/peɪ/ /peɪd/ /peɪd/` | pagar | I will pay for dinner. | Yo pagaré la cena. |
+| `voc_a1_run-ran-run_001` | **run – ran – run** | *verb* | `/rʌn/ /ræn/ /rʌn/` | correr | She runs in the park on Sundays. | Ella corre en el parque los domingos. |
+| `voc_a1_sit-sat-sat_001` | **sit – sat – sat** | *verb* | `/sɪt/ /sæt/ /sæt/` | sentarse | Please sit here. | Por favor siéntate aquí. |
+| `voc_a1_speak-spoke-spoken_001` | **speak – spoke – spoken** | *verb* | `/spik/ /spoʊk/ /ˈspoʊkən/` | hablar | Do you speak English? | ¿Hablas inglés? |
+| `voc_a1_read-read-read_001` | **read – read – read** | *verb* | `/rid/ /rɛd/ /rɛd/` | leer | I read a book before sleeping. | Leo un libro antes de dormir. |
+| `voc_a1_grow-grew-grown_001` | **grow – grew – grown** | *verb* | `/groʊ/ /gru/ /groʊn/` | crecer | Children grow very fast. | Los niños crecen muy rápido. |
+| `voc_a1_lose-lost-lost_001` | **lose – lost – lost** | *verb* | `/luz/ /lɔst/ /lɔst/` | perder | Don't lose your ticket. | No pierdas tu boleto. |
+| `voc_a1_fall-fell-fallen_001` | **fall – fell – fallen** | *verb* | `/fɔl/ /fɛl/ /ˈfɔlən/` | caer | Leaves fall in autumn. | Las hojas caen en otoño. |
+| `voc_a1_send-sent-sent_001` | **send – sent – sent** | *verb* | `/sɛnd/ /sɛnt/ /sɛnt/` | enviar | I will send you an email. | Te enviaré un correo electrónico. |
+| `voc_a1_build-built-built_001` | **build – built – built** | *verb* | `/bɪld/ /bɪlt/ /bɪlt/` | construir | They built a new house. | Construyeron una casa nueva. |
+| `voc_a1_understand-understood-understood_001` | **understand – understood – understood** | *verb* | `/ˌʌndərˈstænd/ /ˌʌndərˈstʊd/ /ˌʌndərˈstʊd/` | entender | Do you understand the question? | ¿Entiendes la pregunta? |
+| `voc_a1_break-broke-broken_001` | **break – broke – broken** | *verb* | `/breɪk/ /broʊk/ /ˈbroʊkən/` | romper | Be careful, don't break the glass. | Ten cuidado, no rompas el vaso. |
+| `voc_a1_spend-spent-spent_001` | **spend – spent – spent** | *verb* | `/spɛnd/ /spɛnt/ /spɛnt/` | gastar | We spend a lot on rent. | Gastamos mucho en el alquiler. |
+| `voc_a1_drive-drove-driven_001` | **drive – drove – driven** | *verb* | `/draɪv/ /droʊv/ /ˈdrɪvən/` | conducir | He drives to the office. | Él conduce a la oficina. |
+| `voc_a1_buy-bought-bought_001` | **buy – bought – bought** | *verb* | `/baɪ/ /bɔt/ /bɔt/` | comprar | I need to buy some bread. | Necesito comprar pan. |
+| `voc_a1_catch-caught-caught_001` | **catch – caught – caught** | *verb* | `/kætʃ/ /kɔt/ /kɔt/` | atrapar | Catch the ball! | ¡Atrapa la pelota! |
+| `voc_a1_teach-taught-taught_001` | **teach – taught – taught** | *verb* | `/titʃ/ /tɔt/ /tɔt/` | enseñar | She teaches math at school. | Ella enseña matemáticas en la escuela. |
+| `voc_a1_fly-flew-flown_001` | **fly – flew – flown** | *verb* | `/flaɪ/ /flu/ /floʊn/` | volar | We fly to Chicago tomorrow. | Volamos a Chicago mañana. |
+| `voc_a1_choose-chose-chosen_001` | **choose – chose – chosen** | *verb* | `/tʃuz/ /tʃoʊz/ /ˈtʃoʊzən/` | elegir | Choose your favorite color. | Elige tu color favorito. |
+| `voc_a1_wear-wore-worn_001` | **wear – wore – worn** | *verb* | `/wɛr/ /wɔr/ /wɔrn/` | llevar puesto | She wears jeans to work. | Ella usa jeans para trabajar. |
+| `voc_a1_sell-sold-sold_001` | **sell – sold – sold** | *verb* | `/sɛl/ /soʊld/ /soʊld/` | vender | They sell fresh fruit here. | Aquí venden fruta fresca. |
+| `voc_a1_forget-forgot-forgotten_001` | **forget – forgot – forgotten** | *verb* | `/fərˈgɛt/ /fərˈgɑt/ /fərˈgɑtən/` | olvidar | Don't forget your keys. | No olvides tus llaves. |
+| `voc_a1_put-put-put_001` | **put – put – put** | *verb* | `/pʊt/ /pʊt/ /pʊt/` | poner | Put the box on the table. | Pon la caja sobre la mesa. |
 
 ### 📖 Lecturas de Comprensión · Nivel A1
 
