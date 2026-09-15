@@ -182,6 +182,147 @@
       flex-shrink: 0;
     }
 
+    /* ─── Experience Suite: 3 Scientific Pillars ─── */
+    .pillars-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 36px;
+      margin-top: 40px;
+    }
+    .pillar-card {
+      background: var(--white);
+      border: 1px solid #E2E8F0;
+      border-radius: 28px;
+      padding: 36px 40px;
+      box-shadow: 0 16px 45px rgba(15, 23, 42, 0.05);
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      gap: 40px;
+      align-items: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .pillar-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 24px 60px rgba(15, 23, 42, 0.1);
+      border-color: #CBD5E1;
+    }
+    .pillar-card.reverse {
+      grid-template-columns: 1.15fr 1fr;
+    }
+    .pillar-card.reverse .pillar-content {
+      order: 2;
+    }
+    .pillar-card.reverse .pillar-media {
+      order: 1;
+    }
+    .pillar-content {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .pillar-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      align-self: flex-start;
+      font-size: 11.5px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: rgba(5, 150, 105, 0.08);
+      color: var(--emerald-600);
+      border: 1px solid rgba(5, 150, 105, 0.2);
+    }
+    .pillar-badge.blue {
+      background: rgba(37, 99, 235, 0.08);
+      color: #2563EB;
+      border-color: rgba(37, 99, 235, 0.2);
+    }
+    .pillar-badge.amber {
+      background: rgba(217, 119, 6, 0.08);
+      color: #D97706;
+      border-color: rgba(217, 119, 6, 0.2);
+    }
+    .pillar-title {
+      font-size: clamp(24px, 2.5vw, 32px);
+      font-weight: 900;
+      color: var(--navy-900);
+      line-height: 1.2;
+      letter-spacing: -0.025em;
+      margin: 0;
+    }
+    .pillar-desc {
+      font-size: 15px;
+      color: var(--slate-600);
+      line-height: 1.65;
+      margin: 0;
+    }
+    .pillar-highlights {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 6px;
+    }
+    .pillar-highlight-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 13.5px;
+      color: var(--slate-700);
+      line-height: 1.5;
+    }
+    .pillar-highlight-icon {
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(5, 150, 105, 0.12);
+      color: var(--emerald-600);
+      font-size: 12px;
+      font-weight: 800;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .pillar-media {
+      width: 100%;
+      border-radius: 20px;
+      overflow: hidden;
+      background: #0B1120;
+      box-shadow: 0 16px 36px rgba(15, 23, 42, 0.12);
+      border: 1px solid rgba(226, 232, 240, 0.8);
+      position: relative;
+    }
+    .pillar-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+    .pillar-card:hover .pillar-media img {
+      transform: scale(1.025);
+    }
+    @media (max-width: 960px) {
+      .pillar-card,
+      .pillar-card.reverse {
+        grid-template-columns: 1fr;
+        padding: 24px;
+        gap: 24px;
+      }
+      .pillar-card.reverse .pillar-content {
+        order: 1;
+      }
+      .pillar-card.reverse .pillar-media {
+        order: 2;
+      }
+    }
+
     /* ─── Real App Illustrations Showcase ─── */
     .illustrations-grid {
       display: grid;
@@ -737,12 +878,12 @@
       </div>
     </section>
 
-    <!-- Section 2: Experiencia de Aprendizaje (3 Columnas) -->
+    <!-- Section 2: Experiencia de Aprendizaje (3 Pilares Científicos) -->
     <section id="experiencia">
       <div class="container">
         <div class="head">
           <div>
-            <div class="eyebrow">Experiencia del Estudiante</div>
+            <div class="eyebrow">Metodología Comprobada &bull; 3 Pilares</div>
             <h2>Todo lo que necesitas, en un solo lugar</h2>
           </div>
           <p>
@@ -750,30 +891,98 @@
           </p>
         </div>
 
-        <div class="support-grid">
-          <div class="card">
-            <div class="card-icon">🧠</div>
-            <h3>SRS con Active Recall</h3>
-            <p>
-              Algoritmo SM-2 modificado con cálculo de facilidad adaptativo e intervalos graduados. Repasas exactamente en el instante antes de olvidar.
-            </p>
+        <div class="pillars-wrapper">
+
+          <!-- Pilar 1: SRS con Active Recall & Retención -->
+          <div class="pillar-card">
+            <div class="pillar-content">
+              <div class="pillar-badge">
+                <span>🧠</span> Neurobiología de la Memoria &bull; SM-2
+              </div>
+              <h3 class="pillar-title">SRS con Active Recall Científico</h3>
+              <p class="pillar-desc">
+                Algoritmo de Repetición Espaciada (SM-2) modificado con factor de facilidad adaptativo. Cada término se programa para reaparecer en tu pantalla exactamente en el instante biológico previo al olvido, aplanando la curva de Ebbinghaus y consolidando memoria a largo plazo sin esfuerzo redundante.
+              </p>
+              <div class="pillar-highlights">
+                <div class="pillar-highlight-item">
+                  <span class="pillar-highlight-icon">✓</span>
+                  <div><strong>Intervalos Graduados:</strong> Escalamiento dinámico (1 min, 2 días, 4 días, 7 días+) calibrado por tu velocidad de respuesta.</div>
+                </div>
+                <div class="pillar-highlight-item">
+                  <span class="pillar-highlight-icon">✓</span>
+                  <div><strong>Active Recall Forzado:</strong> Estimula la recuperación activa neuronal frente a estímulos contextuales, superando el reconocimiento pasivo.</div>
+                </div>
+                <div class="pillar-highlight-item">
+                  <span class="pillar-highlight-icon">✓</span>
+                  <div><strong>Retención Mayor al 90%:</strong> Diseñado para transferir léxico y patrones sintácticos de la memoria de trabajo a la memoria permanente.</div>
+                </div>
+              </div>
+            </div>
+            <div class="pillar-media">
+              <img src="assets/feature-microexamenes-3d.jpg" alt="Active Recall y Consolidación de Memoria en Dispositivo 3D" loading="lazy">
+            </div>
           </div>
 
-          <div class="card">
-            <div class="card-icon">⚡</div>
-            <h3>Micro-Exámenes de 60s</h3>
-            <p>
-              Retos de comprensión contextual basados en exámenes reales. Respuestas inmediatas para consolidar la memoria de trabajo sin fatiga mental.
-            </p>
+          <!-- Pilar 2: Micro-Exámenes de 60 Segundos -->
+          <div class="pillar-card reverse">
+            <div class="pillar-content">
+              <div class="pillar-badge amber">
+                <span>⚡</span> Rendimiento Bajo Presión &bull; Casos Reales
+              </div>
+              <h3 class="pillar-title">Micro-Exámenes Contextuales de 60s</h3>
+              <p class="pillar-desc">
+                Retos ágiles de comprensión contextual basados en exámenes reales y escenarios laborales de alta exigencia: medicina, programación, finanzas corporativas, ciberseguridad, marco legal y literatura. Un minuto de enfoque absoluto que consolida tu inglés instrumental sin fatiga mental.
+              </p>
+              <div class="pillar-highlights">
+                <div class="pillar-highlight-item">
+                  <span class="pillar-highlight-icon" style="background: rgba(217, 119, 6, 0.12); color: #D97706;">✓</span>
+                  <div><strong>Sprints de 60 Segundos:</strong> Ejercicios cloze de alta concentración diseñados para resolver durante traslados o pausas laborales.</div>
+                </div>
+                <div class="pillar-highlight-item">
+                  <span class="pillar-highlight-icon" style="background: rgba(217, 119, 6, 0.12); color: #D97706;">✓</span>
+                  <div><strong>9 Áreas Profesionales:</strong> Vocabulario especializado extraído de casos técnicos reales, no frases artificiales de libro de texto.</div>
+                </div>
+                <div class="pillar-highlight-item">
+                  <span class="pillar-highlight-icon" style="background: rgba(217, 119, 6, 0.12); color: #D97706;">✓</span>
+                  <div><strong>Feedback Inmediato:</strong> Diagnóstico de comprensión al instante para fijar patrones antes de que se arraiguen dudas.</div>
+                </div>
+              </div>
+            </div>
+            <div class="pillar-media">
+              <img src="assets/feature-microexamenes-mosaico.jpg" alt="Mosaico de Micro-Exámenes de 60s en 9 Disciplinas Profesionales" loading="lazy">
+            </div>
           </div>
 
-          <div class="card">
-            <div class="card-icon">📊</div>
-            <h3>Métricas Honestas</h3>
-            <p>
-              Telemetría de latencia cognitiva, curvas de retención en días y semanas, e historial de calidad. Cero medallas vacías, 100% dominio tangible.
-            </p>
+          <!-- Pilar 3: Métricas Honestas & Telemetría Real -->
+          <div class="pillar-card">
+            <div class="pillar-content">
+              <div class="pillar-badge blue">
+                <span>📊</span> Telemetría Real &bull; Cero Gamificación Vacía
+              </div>
+              <h3 class="pillar-title">Métricas Honestas: Cero Medallas Vacías</h3>
+              <p class="pillar-desc">
+                La mayoría de aplicaciones te entregan confeti y medallas sin valor tangible. Nuestra plataforma audita tu latencia cognitiva en milisegundos, proyecta tu curva de retención Ebbinghaus y monitorea tu avance léxico y gramatical con telemetría cuantificable y verificable.
+              </p>
+              <div class="pillar-highlights">
+                <div class="pillar-highlight-item">
+                  <span class="pillar-highlight-icon" style="background: rgba(37, 99, 235, 0.12); color: #2563EB;">✓</span>
+                  <div><strong>Latencia Cognitiva:</strong> Mide el tiempo exacto de respuesta y procesamiento mental eficiente (&lt; 200ms).</div>
+                </div>
+                <div class="pillar-highlight-item">
+                  <span class="pillar-highlight-icon" style="background: rgba(37, 99, 235, 0.12); color: #2563EB;">✓</span>
+                  <div><strong>Curvas de Retención en Días y Semanas:</strong> Gráficos reales de Ebbinghaus simulados y comprobados sesión a sesión.</div>
+                </div>
+                <div class="pillar-highlight-item">
+                  <span class="pillar-highlight-icon" style="background: rgba(37, 99, 235, 0.12); color: #2563EB;">✓</span>
+                  <div><strong>100% Dominio Tangible:</strong> Historial objetivo de palabras dominadas e índice de calidad de respuesta según el estándar CEFR.</div>
+                </div>
+              </div>
+            </div>
+            <div class="pillar-media">
+              <img src="assets/feature-metricas-honestas.jpg" alt="Panel de Métricas Honestas, Curvas de Retención y Telemetría Cognitiva" loading="lazy">
+            </div>
           </div>
+
         </div>
       </div>
     </section>
