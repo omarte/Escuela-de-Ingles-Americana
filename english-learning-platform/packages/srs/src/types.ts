@@ -28,6 +28,17 @@ export interface ReviewInput {
   readonly quality: ReviewQuality
   /** ISO timestamp of when the review took place */
   readonly reviewedAt: string
+  /**
+   * Response latency in milliseconds (time from card display to answer tap).
+   * Optional — undefined when not measured (e.g. legacy callers, unit tests).
+   *
+   * If latencyMs > FRICTION_THRESHOLD_MS (7 000 ms), the algorithm will cap the
+   * effective quality at 3 even if the user scored higher, scheduling a closer
+   * follow-up review to reinforce the slow-recall word.
+   *
+   * References: discusion-pedagogica.md §9 (Telemetría de Latencia Cognitiva)
+   */
+  readonly latencyMs?: number
 }
 
 // ─── Configuration ────────────────────────────────────────────────────────────

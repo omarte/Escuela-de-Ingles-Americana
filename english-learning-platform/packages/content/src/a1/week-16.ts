@@ -1146,7 +1146,7 @@ export const week16: ContentBlock = {
       id: 'voc_a1_series_001',
       word: 'series',
       translation: 'serie',
-      partOfSpeech: 'verb',
+      partOfSpeech: 'noun',
       level: 'A1',
       week: 16,
       topic: 'tecnolog-a-comunicaci-n-y-entretenimiento',

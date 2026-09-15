@@ -11,7 +11,6 @@ import {
 import { colors, radius, spacing, typography } from '../tokens'
 
 import { Card } from './Card'
-import { Badge } from './Badge'
 
 export interface WordCardProps {
   word: string

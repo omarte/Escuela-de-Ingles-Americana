@@ -404,7 +404,7 @@ export const week06: ContentBlock = {
       id: 'voc_a2_arguably_319',
       word: 'arguably',
       translation: 'posiblemente/se podría decir',
-      partOfSpeech: 'noun',
+      partOfSpeech: 'adverb',
       level: 'A2',
       week: 6,
       topic: 'expresar-opiniones',

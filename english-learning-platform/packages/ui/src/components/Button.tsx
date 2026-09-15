@@ -40,7 +40,7 @@ export const Button: React.FC<ButtonProps> = ({
 }) => {
   const [isHovered, setIsHovered] = useState(false)
 
-  const getVariantStyle = (hovered: boolean) => {
+  const getVariantStyle = (hovered: boolean): ViewStyle => {
     switch (variant) {
       case 'primary':
         return {
@@ -93,7 +93,7 @@ export const Button: React.FC<ButtonProps> = ({
         setIsHovered(false)
       }}
       accessibilityRole="button"
-      style={({ pressed }) => {
+      style={({ pressed }): StyleProp<ViewStyle> => {
         const activeHover = isHovered && !disabled && !loading
         return [
           styles.base,
@@ -105,7 +105,7 @@ export const Button: React.FC<ButtonProps> = ({
                 scale: pressed ? 0.98 : activeHover ? 1.02 : 1,
               },
             ],
-            ...(Platform.OS === 'web' ? ({ cursor: disabled ? 'not-allowed' : 'pointer' } as any) : {}),
+            ...(Platform.OS === 'web' ? ({ cursor: disabled ? 'not-allowed' : 'pointer' } as unknown as ViewStyle) : {}),
           },
           disabled && styles.disabled,
           style,

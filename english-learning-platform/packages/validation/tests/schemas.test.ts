@@ -6,6 +6,9 @@ import {
   ReadingPassageSchema,
   GrammarExerciseSchema,
   WritingPromptSchema,
+  FrictionLevelSchema,
+  ReviewEventSchema,
+  SessionFeedbackSchema,
 } from '../src/index'
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -265,6 +268,78 @@ describe('WritingPromptSchema', () => {
       rubricForTutor: ['Solo un criterio'],
     }
     expect(WritingPromptSchema.safeParse(singleRubric).success).toBe(false)
+  })
+})
+
+describe('FrictionLevelSchema', () => {
+  it('accepts valid friction levels', () => {
+    expect(FrictionLevelSchema.safeParse('easy').success).toBe(true)
+    expect(FrictionLevelSchema.safeParse('normal').success).toBe(true)
+    expect(FrictionLevelSchema.safeParse('hard').success).toBe(true)
+  })
+
+  it('rejects invalid friction levels', () => {
+    expect(FrictionLevelSchema.safeParse('extreme').success).toBe(false)
+    expect(FrictionLevelSchema.safeParse('').success).toBe(false)
+  })
+})
+
+describe('ReviewEventSchema', () => {
+  const validEvent = {
+    id: 'rev-001',
+    userId: '123e4567-e89b-12d3-a456-426614174000',
+    cardId: 'card-001',
+    vocabularyItemId: 'voc_a1_hello_001',
+    quality: 4,
+    reviewedAt: '2026-09-15T12:00:00.000Z',
+    previousState: 'learning',
+    nextState: 'review',
+    previousInterval: 1,
+    nextInterval: 6,
+    latencyMs: 3200,
+    frictionFlagged: false,
+  }
+
+  it('accepts a valid review event with telemetry', () => {
+    expect(ReviewEventSchema.safeParse(validEvent).success).toBe(true)
+  })
+
+  it('accepts legacy review event without latencyMs or frictionFlagged', () => {
+    const { latencyMs: _, frictionFlagged: __, ...legacyEvent } = validEvent
+    expect(ReviewEventSchema.safeParse(legacyEvent).success).toBe(true)
+  })
+
+  it('rejects negative latencyMs', () => {
+    expect(ReviewEventSchema.safeParse({ ...validEvent, latencyMs: -100 }).success).toBe(false)
+  })
+
+  it('rejects non-integer latencyMs', () => {
+    expect(ReviewEventSchema.safeParse({ ...validEvent, latencyMs: 12.5 }).success).toBe(false)
+  })
+
+  it('rejects invalid vocabularyItemId', () => {
+    expect(ReviewEventSchema.safeParse({ ...validEvent, vocabularyItemId: 'invalid_id' }).success).toBe(false)
+  })
+})
+
+describe('SessionFeedbackSchema', () => {
+  const validFeedback = {
+    userId: '123e4567-e89b-12d3-a456-426614174000',
+    sessionDate: '2026-09-15',
+    frictionLevel: 'easy' as const,
+  }
+
+  it('accepts valid session feedback', () => {
+    expect(SessionFeedbackSchema.safeParse(validFeedback).success).toBe(true)
+  })
+
+  it('rejects invalid sessionDate format', () => {
+    expect(SessionFeedbackSchema.safeParse({ ...validFeedback, sessionDate: '15/09/2026' }).success).toBe(false)
+    expect(SessionFeedbackSchema.safeParse({ ...validFeedback, sessionDate: '2026-9-15' }).success).toBe(false)
+  })
+
+  it('rejects non-uuid userId', () => {
+    expect(SessionFeedbackSchema.safeParse({ ...validFeedback, userId: 'not-a-uuid' }).success).toBe(false)
   })
 })
 

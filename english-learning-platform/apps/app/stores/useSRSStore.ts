@@ -17,6 +17,8 @@ export interface SessionStats {
   cardsReviewed: number
   cardsCorrect: number
   qualityHistory: number[]
+  /** Total friction events this session (latency > 7s OR quality < 3) */
+  frictionCount: number
 }
 
 export interface SRSState {
@@ -30,6 +32,12 @@ export interface SRSState {
   isCompleted: boolean
   isLoading: boolean
   error: string | null
+  /**
+   * Timestamp (Date.now()) captured when the current card was displayed.
+   * Used to compute latencyMs in submitReview.
+   * Set to null between sessions or when no card is active.
+   */
+  cardStartTime: number | null
 
   loadCards: (userId: string) => Promise<void>
   startStudySession: (userId: string, level: CEFRLevel) => Promise<void>
@@ -38,6 +46,8 @@ export interface SRSState {
   startFreePracticeSession: (userId: string, level: CEFRLevel) => Promise<void>
   submitReview: (quality: ReviewQuality) => Promise<void>
   resetSession: () => void
+  /** Call when a new card is displayed to start latency measurement. */
+  recordCardShown: () => void
 }
 
 function initializeStarterCards(userId: string): SRSCard[] {
@@ -67,11 +77,13 @@ export const useSRSStore = create<SRSState>()((set, get) => ({
     cardsReviewed: 0,
     cardsCorrect: 0,
     qualityHistory: [],
+    frictionCount: 0,
   },
   isSessionActive: false,
   isCompleted: false,
   isLoading: false,
   error: null,
+  cardStartTime: null,
 
   resetSession: (): void => {
     set({
@@ -80,13 +92,19 @@ export const useSRSStore = create<SRSState>()((set, get) => ({
       currentSessionId: null,
       isSessionActive: false,
       isCompleted: false,
+      cardStartTime: null,
       sessionStats: {
         cardsReviewed: 0,
         cardsCorrect: 0,
         qualityHistory: [],
+        frictionCount: 0,
       },
       error: null,
     })
+  },
+
+  recordCardShown: (): void => {
+    set({ cardStartTime: Date.now() })
   },
 
   loadCards: async (userId: string): Promise<void> => {
@@ -155,7 +173,7 @@ export const useSRSStore = create<SRSState>()((set, get) => ({
     })
   },
 
-  loadNextBatch: async (userId: string, level: CEFRLevel, count: number = 10): Promise<void> => {
+  loadNextBatch: async (userId: string, level: CEFRLevel, count = 10): Promise<void> => {
     let currentCards = get().cards
     if (currentCards.length === 0) {
       await get().loadCards(userId)
@@ -266,9 +284,24 @@ export const useSRSStore = create<SRSState>()((set, get) => ({
   },
 
   submitReview: async (quality: ReviewQuality): Promise<void> => {
-    const { sessionQueue, currentIndex, cards, sessionStats } = get()
+    const { sessionQueue, currentIndex, cards, sessionStats, cardStartTime } = get()
     const activeCard = sessionQueue[currentIndex]
     if (!activeCard) return
+
+    // ── Latency Measurement ────────────────────────────────────────────────
+    // Compute how long the user took to answer. Requires recordCardShown() to
+    // have been called when the card was first displayed.
+    const latencyMs =
+      cardStartTime !== null ? Math.max(0, Date.now() - cardStartTime) : undefined
+
+    // ── Friction Detection ─────────────────────────────────────────────────
+    // Two signals indicate the word needs immediate reinforcement:
+    //   1. Quality < 3 (user explicitly failed / expressed doubt)
+    //   2. Latency > 7 000 ms (slow recall = hidden uncertainty even if correct)
+    // References: discusion-pedagogica.md §8.2 (Bucle de Fijación Inmediata)
+    const FRICTION_THRESHOLD_MS = 7_000
+    const frictionFlagged =
+      quality < 3 || (latencyMs !== undefined && latencyMs > FRICTION_THRESHOLD_MS)
 
     const now = new Date().toISOString()
     const result = calculateNextReview({
@@ -279,6 +312,7 @@ export const useSRSStore = create<SRSState>()((set, get) => ({
       lapses: activeCard.lapses,
       quality,
       reviewedAt: now,
+      latencyMs,
     })
 
     const updatedCard: SRSCard = {
@@ -303,6 +337,24 @@ export const useSRSStore = create<SRSState>()((set, get) => ({
       nextState: result.state,
       previousInterval: activeCard.interval,
       nextInterval: result.interval,
+      latencyMs,
+      frictionFlagged,
+    }
+
+    // ── Bucle de Fijación Inmediata (Hot Re-injection) ─────────────────────
+    // When friction is detected, don't send the card to the end of the deck.
+    // Instead, re-insert it 2 positions ahead in the ACTIVE session queue so
+    // the learner encounters it again while it's still in working memory.
+    // The queue is treated as a mutable working copy; the canonical SRS state
+    // is driven by the card's updated easeFactor and interval in the DB.
+    const updatedQueue = [...sessionQueue]
+    const nextIndex = currentIndex + 1
+
+    if (frictionFlagged) {
+      // Splice the card out of its current position and re-insert at +2
+      const reinjectPosition = Math.min(currentIndex + 2, updatedQueue.length)
+      // Remove from current index (already answered, so insert a fresh copy)
+      updatedQueue.splice(reinjectPosition, 0, activeCard)
     }
 
     // 1. Update in-memory state immediately for zero-latency UI
@@ -311,17 +363,23 @@ export const useSRSStore = create<SRSState>()((set, get) => ({
     const newReviewedCount = sessionStats.cardsReviewed + 1
     const newCorrectCount = quality >= 3 ? sessionStats.cardsCorrect + 1 : sessionStats.cardsCorrect
     const newQualityHistory = [...sessionStats.qualityHistory, quality]
-    const isNextCompleted = currentIndex + 1 >= sessionQueue.length
+    const newFrictionCount = frictionFlagged
+      ? sessionStats.frictionCount + 1
+      : sessionStats.frictionCount
+    const isNextCompleted = nextIndex >= updatedQueue.length
 
     set({
       cards: updatedCards,
-      currentIndex: currentIndex + 1,
+      sessionQueue: updatedQueue,
+      currentIndex: nextIndex,
       isCompleted: isNextCompleted,
       isSessionActive: !isNextCompleted,
+      cardStartTime: null, // Reset; recordCardShown() will set it for the next card
       sessionStats: {
         cardsReviewed: newReviewedCount,
         cardsCorrect: newCorrectCount,
         qualityHistory: newQualityHistory,
+        frictionCount: newFrictionCount,
       },
     })
 

@@ -9,7 +9,7 @@ export const b2ReadingPassages: readonly ReadingPassage[] = [
   {
     "id": "rdg_b2_001",
     "level": "B2",
-    "week": 1,
+    "week": 5,
     "title": "The Ethical Dilemma of Advanced Artificial Intelligence",
     "text": "As machine learning architectures grow increasingly sophisticated, society faces unprecedented philosophical and practical challenges. While autonomous systems can analyze vast quantities of data and identify subtle patterns beyond human capability, they also introduce inherent risks. The problem of algorithmic opacity makes it difficult to scrutinise decision-making processes, creating moral ambiguity. Furthermore, questions of ethical accountability arise when automated systems cause unintended harm. Scholars argue that without rigorous transparency and multidisciplinary oversight, the technological transformation may exacerbate existing societal inequalities rather than resolve them.",
     "translation": "A medida que las arquitecturas de aprendizaje automático se vuelven cada vez más sofisticadas, la sociedad enfrenta desafíos filosóficos y prácticos sin precedentes. Si bien los sistemas autónomos pueden analizar grandes cantidades de datos e identificar patrones sutiles más allá de la capacidad humana, también introducen riesgos inherentes. El problema de la opacidad algorítmica dificulta escudriñar los procesos de toma de decisiones, creando ambigüedad moral. Además, surgen dudas sobre la responsabilidad ética cuando los sistemas automatizados causan daños imprevistos. Los académicos sostienen que sin una supervisión multidisciplinaria y una transparencia rigurosa, la transformación tecnológica puede exacerbar las desigualdades sociales existentes en lugar de resolverlas.",
@@ -87,7 +87,7 @@ export const b2ReadingPassages: readonly ReadingPassage[] = [
   {
     "id": "rdg_b2_002",
     "level": "B2",
-    "week": 2,
+    "week": 5,
     "title": "Strategic Leadership in International Mergers",
     "text": "Navigating cross-border corporate mergers requires extraordinary strategic leadership and cultural dexterity. When multinational corporations consolidate operations, executive management must harmonize distinct organizational cultures while ensuring regulatory compliance across multiple jurisdictions. Fostering transparency and corporate accountability is essential to maintain investor confidence and satisfy diverse stakeholders. Without clear communication and meticulous due diligence, cultural friction and strategic misalignment can jeopardize even the most promising acquisition. Sustainable corporate growth depends not merely on financial synergy, but on ethical governance and human talent retention.",
     "translation": "Gestionar fusiones corporativas transfronterizas requiere un liderazgo estratégico extraordinario y destreza cultural. Cuando las empresas multinacionales consolidan sus operaciones, la dirección ejecutiva debe armonizar culturas organizacionales distintas garantizando al mismo tiempo el cumplimiento normativo en múltiples jurisdicciones. Fomentar la transparencia y la responsabilidad corporativa es esencial para mantener la confianza de los inversores y satisfacer a los diferentes grupos de interés. Sin una comunicación clara y una debida diligencia meticulosa, la fricción cultural y la desalineación estratégica pueden poner en peligro incluso la adquisición más prometedora. El crecimiento corporativo sostenible depende no solo de la sinergia financiera, sino de la gobernanza ética y la retención del talento humano.",

@@ -28,7 +28,7 @@ export const Card: React.FC<CardProps> = ({
   interactive,
 }) => {
   const [isHovered, setIsHovered] = useState(false)
-  const isClickable = Boolean(onPress || interactive)
+  const isClickable = Boolean(onPress ?? interactive)
 
   if (isClickable) {
     return (
@@ -41,7 +41,7 @@ export const Card: React.FC<CardProps> = ({
           setIsHovered(false)
         }}
         accessibilityRole="button"
-        style={({ pressed }) => [
+        style={({ pressed }): StyleProp<ViewStyle> => [
           styles.card,
           styles[`padding_${padding}`],
           highlighted && styles.highlighted,
@@ -52,7 +52,7 @@ export const Card: React.FC<CardProps> = ({
                 scale: pressed ? 0.99 : isHovered ? 1.012 : 1,
               },
             ],
-            ...(Platform.OS === 'web' ? ({ cursor: 'pointer' } as any) : {}),
+            ...(Platform.OS === 'web' ? ({ cursor: 'pointer' } as unknown as ViewStyle) : {}),
           },
           style,
         ]}

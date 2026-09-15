@@ -560,7 +560,7 @@ export const week03: ContentBlock = {
       id: 'voc_a2_stakeholder_163',
       word: 'stakeholder',
       translation: 'parte interesada',
-      partOfSpeech: 'adjective',
+      partOfSpeech: 'noun',
       level: 'A2',
       week: 3,
       topic: 'trabajo-y-oficina',

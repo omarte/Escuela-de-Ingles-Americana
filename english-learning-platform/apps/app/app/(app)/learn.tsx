@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useCallback } from 'react'
 import {
   View,
   Text,
@@ -13,7 +13,7 @@ import { useRouter } from 'expo-router'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { colors, spacing, typography, radius, Card, Button, Badge, ProgressBar } from '@elp/ui'
 import { Ionicons } from '@expo/vector-icons'
-import type { ReviewQuality } from '@elp/types'
+import type { FrictionLevel, ReviewQuality } from '@elp/types'
 import { getDueCards } from '@elp/srs'
 import { useSRSStore } from '../../stores/useSRSStore'
 import { useAuthStore } from '../../stores/useAuthStore'
@@ -21,6 +21,9 @@ import { getWordDisplayData } from '../../lib/vocabulary'
 import { generateQuizOptions, type QuizOption } from '../../lib/distractors'
 import { speakEnglish } from '../../lib/audio'
 import { EMPTY_REVIEWS_IMG } from '../../lib/assets'
+import { RescueModeBanner } from '../../components/RescueModeBanner'
+import { SessionFeedbackModal } from '../../components/SessionFeedbackModal'
+import { MicroExamModal } from '../../components/MicroExamModal'
 
 const OPTION_LETTERS = ['A', 'B', 'C', 'D']
 
@@ -43,6 +46,7 @@ export default function LearnScreen(): React.JSX.Element {
   const startFreePracticeSession = useSRSStore((state) => state.startFreePracticeSession)
   const submitReview = useSRSStore((state) => state.submitReview)
   const resetSession = useSRSStore((state) => state.resetSession)
+  const recordCardShown = useSRSStore((state) => state.recordCardShown)
 
   // Quiz & Two-Phase State
   const [studyPhase, setStudyPhase] = useState<'recognition' | 'spelling'>('recognition')
@@ -55,6 +59,13 @@ export default function LearnScreen(): React.JSX.Element {
   const [typedWord, setTypedWord] = useState<string>('')
   const [hasCheckedSpelling, setHasCheckedSpelling] = useState<boolean>(false)
   const [isSpellingCorrect, setIsSpellingCorrect] = useState<boolean>(false)
+
+  // Post-Session Modal Flow State
+  // Sequence: session completes → MicroExam → SessionFeedback → summary screen
+  const [showMicroExam, setShowMicroExam] = useState<boolean>(false)
+  const [showFeedback, setShowFeedback] = useState<boolean>(false)
+  const [microExamVocabId, setMicroExamVocabId] = useState<string | null>(null)
+  const [sessionFrozen, setSessionFrozen] = useState<boolean>(false)
 
   const userId = user?.id ?? 'demo-user'
   const currentLevel = profile?.currentLevel ?? 'A1'
@@ -84,8 +95,11 @@ export default function LearnScreen(): React.JSX.Element {
 
       // Automatically speak the English word
       void speakEnglish(wordData.word)
+
+      // Start latency measurement for this card
+      recordCardShown()
     }
-  }, [activeCard?.vocabularyItemId, currentIndex, currentLevel])
+  }, [activeCard?.vocabularyItemId, currentIndex, currentLevel, recordCardShown])
 
   const handleSelectOption = (option: QuizOption): void => {
     if (hasAnswered) return
@@ -135,6 +149,37 @@ export default function LearnScreen(): React.JSX.Element {
     void submitReview(finalQuality)
   }
 
+  // ── Post-session modal trigger ──────────────────────────────────────────────
+  useEffect(() => {
+    if (isCompleted && !sessionFrozen) {
+      // Pick a word from the last session for the micro-exam (first card reviewed)
+      const lastCard = sessionQueue[0]
+      if (lastCard) {
+        setMicroExamVocabId(lastCard.vocabularyItemId)
+        setShowMicroExam(true)
+      } else {
+        setShowFeedback(true)
+      }
+      setSessionFrozen(true)
+    }
+  }, [isCompleted, sessionFrozen, sessionQueue])
+
+  const handleMicroExamComplete = useCallback((): void => {
+    setShowMicroExam(false)
+    setShowFeedback(true)
+  }, [])
+
+  const handleFeedbackSubmit = useCallback((_level: FrictionLevel): void => {
+    // TODO Sprint D: persist to SQLite via localFeedbackService
+    setShowFeedback(false)
+    setSessionFrozen(false)
+  }, [])
+
+  const handleFeedbackSkip = useCallback((): void => {
+    setShowFeedback(false)
+    setSessionFrozen(false)
+  }, [])
+
   // ── Completion View ────────────────────────────────────────────────────────
   if (isCompleted) {
     const accuracy =
@@ -144,6 +189,24 @@ export default function LearnScreen(): React.JSX.Element {
 
     return (
       <SafeAreaView style={styles.safeArea} edges={['top']}>
+        {/* Post-session modals: MicroExam first, then SessionFeedback */}
+        {microExamVocabId ? (
+          <MicroExamModal
+            visible={showMicroExam}
+            vocabularyItemId={microExamVocabId}
+            level={currentLevel}
+            maxWeek={19}
+            onComplete={handleMicroExamComplete}
+          />
+        ) : null}
+        <SessionFeedbackModal
+          visible={showFeedback}
+          accuracy={accuracy}
+          frictionCount={sessionStats.frictionCount}
+          cardsReviewed={sessionStats.cardsReviewed}
+          onSubmit={handleFeedbackSubmit}
+          onSkip={handleFeedbackSkip}
+        />
         <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
           <View style={styles.completedContainer}>
             <View style={styles.completedIconBox}>
@@ -167,8 +230,19 @@ export default function LearnScreen(): React.JSX.Element {
                 </View>
                 <View style={styles.statDivider} />
                 <View style={styles.statItem}>
-                  <Text style={[styles.statNumber, { color: colors.warning }]}>+30</Text>
-                  <Text style={styles.statLabel}>XP Ganados</Text>
+                  {sessionStats.frictionCount > 0 ? (
+                    <>
+                      <Text style={[styles.statNumber, { color: colors.warning }]}>
+                        {sessionStats.frictionCount}
+                      </Text>
+                      <Text style={styles.statLabel}>Con fricción</Text>
+                    </>
+                  ) : (
+                    <>
+                      <Text style={[styles.statNumber, { color: colors.success }]}>✨</Text>
+                      <Text style={styles.statLabel}>Sin fricción</Text>
+                    </>
+                  )}
                 </View>
               </View>
             </Card>
@@ -366,6 +440,8 @@ export default function LearnScreen(): React.JSX.Element {
       <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
         {/* Header with Progress Bar */}
         <View style={styles.sessionHeader}>
+          {/* Rescue Mode Banner — shown when pending reviews > 30 */}
+          <RescueModeBanner pendingCount={dueCount} threshold={30} />
           <View style={styles.sessionHeaderTop}>
             <View style={styles.badgeRow}>
               <Badge label={`Nivel ${wordData.level}`} color={colors.primary} size="sm" />
@@ -377,7 +453,7 @@ export default function LearnScreen(): React.JSX.Element {
               />
             </View>
             <Text style={styles.counterText}>
-              Palabra {currentIndex + 1} de {total}
+              Palabra {currentIndex + 1} de {sessionQueue.length}
             </Text>
           </View>
           <ProgressBar

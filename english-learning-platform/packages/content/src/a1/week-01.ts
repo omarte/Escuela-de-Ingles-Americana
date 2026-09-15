@@ -22,6 +22,9 @@ export const week01: ContentBlock = {
       verifiedBy: 'curator_editorial_team',
       verifiedAt: '2026-09-10',
       source: 'a.md',
+      pronunciation: '/aɪ/',
+      example: 'I am a student.',
+      exampleTranslation: 'Yo soy estudiante.',
       status: 'approved',
     },
     {
@@ -35,6 +38,9 @@ export const week01: ContentBlock = {
       verifiedBy: 'curator_editorial_team',
       verifiedAt: '2026-09-10',
       source: 'a.md',
+      pronunciation: '/juː/',
+      example: 'You are my friend.',
+      exampleTranslation: 'Tú eres mi amigo.',
       status: 'approved',
     },
     {
@@ -48,6 +54,9 @@ export const week01: ContentBlock = {
       verifiedBy: 'curator_editorial_team',
       verifiedAt: '2026-09-10',
       source: 'a.md',
+      pronunciation: '/hiː/',
+      example: 'He is tall.',
+      exampleTranslation: 'Él es alto.',
       status: 'approved',
     },
     {
@@ -61,6 +70,9 @@ export const week01: ContentBlock = {
       verifiedBy: 'curator_editorial_team',
       verifiedAt: '2026-09-10',
       source: 'a.md',
+      pronunciation: '/ʃiː/',
+      example: 'She lives in Mexico.',
+      exampleTranslation: 'Ella vive en México.',
       status: 'approved',
     },
     {
@@ -87,6 +99,9 @@ export const week01: ContentBlock = {
       verifiedBy: 'curator_editorial_team',
       verifiedAt: '2026-09-10',
       source: 'a.md',
+      pronunciation: '/wiː/',
+      example: 'We are happy today.',
+      exampleTranslation: 'Estamos felices hoy.',
       status: 'approved',
     },
     {
@@ -113,6 +128,9 @@ export const week01: ContentBlock = {
       verifiedBy: 'curator_editorial_team',
       verifiedAt: '2026-09-10',
       source: 'a.md',
+      pronunciation: '/maɪ/',
+      example: 'This is my house.',
+      exampleTranslation: 'Esta es mi casa.',
       status: 'approved',
     },
     {
@@ -217,6 +235,9 @@ export const week01: ContentBlock = {
       verifiedBy: 'curator_editorial_team',
       verifiedAt: '2026-09-10',
       source: 'a.md',
+      pronunciation: '/ðɪs/',
+      example: 'This is my brother.',
+      exampleTranslation: 'Este es mi hermano.',
       status: 'approved',
     },
     {
@@ -269,6 +290,9 @@ export const week01: ContentBlock = {
       verifiedBy: 'curator_editorial_team',
       verifiedAt: '2026-09-10',
       source: 'a.md',
+      pronunciation: '/æm/',
+      example: 'I am from Canada.',
+      exampleTranslation: 'Soy de Canadá.',
       status: 'approved',
     },
     {
@@ -282,6 +306,9 @@ export const week01: ContentBlock = {
       verifiedBy: 'curator_editorial_team',
       verifiedAt: '2026-09-10',
       source: 'a.md',
+      pronunciation: '/ɪz/',
+      example: 'She is a doctor.',
+      exampleTranslation: 'Ella es médica.',
       status: 'approved',
     },
     {
@@ -295,6 +322,9 @@ export const week01: ContentBlock = {
       verifiedBy: 'curator_editorial_team',
       verifiedAt: '2026-09-10',
       source: 'a.md',
+      pronunciation: '/ɑːr/',
+      example: 'They are at home.',
+      exampleTranslation: 'Ellos están en casa.',
       status: 'approved',
     },
     {
@@ -373,6 +403,9 @@ export const week01: ContentBlock = {
       verifiedBy: 'curator_editorial_team',
       verifiedAt: '2026-09-10',
       source: 'a.md',
+      pronunciation: '/hæv/',
+      example: 'I have two brothers.',
+      exampleTranslation: 'Tengo dos hermanos.',
       status: 'approved',
     },
     {
@@ -425,6 +458,9 @@ export const week01: ContentBlock = {
       verifiedBy: 'curator_editorial_team',
       verifiedAt: '2026-09-10',
       source: 'a.md',
+      pronunciation: '/duː/',
+      example: 'I do my homework every day.',
+      exampleTranslation: 'Hago mi tarea todos los días.',
       status: 'approved',
     },
     {
@@ -451,6 +487,9 @@ export const week01: ContentBlock = {
       verifiedBy: 'curator_editorial_team',
       verifiedAt: '2026-09-10',
       source: 'a.md',
+      pronunciation: '/dɪd/',
+      example: 'She did the dishes.',
+      exampleTranslation: 'Ella lavó los platos.',
       status: 'approved',
     },
     {
@@ -490,6 +529,9 @@ export const week01: ContentBlock = {
       verifiedBy: 'curator_editorial_team',
       verifiedAt: '2026-09-10',
       source: 'a.md',
+      pronunciation: '/həˈloʊ/',
+      example: 'Hello, how are you?',
+      exampleTranslation: 'Hola, ¿cómo estás?',
       status: 'approved',
     },
     {
@@ -516,6 +558,9 @@ export const week01: ContentBlock = {
       verifiedBy: 'curator_editorial_team',
       verifiedAt: '2026-09-10',
       source: 'a.md',
+      pronunciation: '/ˌɡʊdˈbaɪ/',
+      example: 'Goodbye, see you tomorrow.',
+      exampleTranslation: 'Adiós, nos vemos mañana.',
       status: 'approved',
     },
     {
@@ -542,6 +587,9 @@ export const week01: ContentBlock = {
       verifiedBy: 'curator_editorial_team',
       verifiedAt: '2026-09-10',
       source: 'a.md',
+      pronunciation: '/ɡʊd ˈmɔːrnɪŋ/',
+      example: 'Good morning, everyone!',
+      exampleTranslation: '¡Buenos días a todos!',
       status: 'approved',
     },
     {
@@ -594,6 +642,9 @@ export const week01: ContentBlock = {
       verifiedBy: 'curator_editorial_team',
       verifiedAt: '2026-09-10',
       source: 'a.md',
+      pronunciation: '/pliːz/',
+      example: 'Please, sit down.',
+      exampleTranslation: 'Por favor, siéntate.',
       status: 'approved',
     },
     {
@@ -607,6 +658,9 @@ export const week01: ContentBlock = {
       verifiedBy: 'curator_editorial_team',
       verifiedAt: '2026-09-10',
       source: 'a.md',
+      pronunciation: '/θæŋk juː/',
+      example: 'Thank you for your help.',
+      exampleTranslation: 'Gracias por tu ayuda.',
       status: 'approved',
     },
     {
@@ -633,6 +687,9 @@ export const week01: ContentBlock = {
       verifiedBy: 'curator_editorial_team',
       verifiedAt: '2026-09-10',
       source: 'a.md',
+      pronunciation: '/ˈsɑːri/',
+      example: 'Sorry, I am late.',
+      exampleTranslation: 'Perdón, llego tarde.',
       status: 'approved',
     },
     {
@@ -659,6 +716,9 @@ export const week01: ContentBlock = {
       verifiedBy: 'curator_editorial_team',
       verifiedAt: '2026-09-10',
       source: 'a.md',
+      pronunciation: '/jɛs/',
+      example: 'Yes, I understand.',
+      exampleTranslation: 'Sí, entiendo.',
       status: 'approved',
     },
     {
@@ -672,6 +732,9 @@ export const week01: ContentBlock = {
       verifiedBy: 'curator_editorial_team',
       verifiedAt: '2026-09-10',
       source: 'a.md',
+      pronunciation: '/noʊ/',
+      example: 'No, I don\'t have time.',
+      exampleTranslation: 'No, no tengo tiempo.',
       status: 'approved',
     },
     {
@@ -750,6 +813,9 @@ export const week01: ContentBlock = {
       verifiedBy: 'curator_editorial_team',
       verifiedAt: '2026-09-10',
       source: 'a.md',
+      pronunciation: '/wʌn/',
+      example: 'I have one sister.',
+      exampleTranslation: 'Tengo una hermana.',
       status: 'approved',
     },
     {
@@ -867,6 +933,9 @@ export const week01: ContentBlock = {
       verifiedBy: 'curator_editorial_team',
       verifiedAt: '2026-09-10',
       source: 'a.md',
+      pronunciation: '/tɛn/',
+      example: 'The bus arrives in ten minutes.',
+      exampleTranslation: 'El autobús llega en diez minutos.',
       status: 'approved',
     },
     {
@@ -1010,6 +1079,9 @@ export const week01: ContentBlock = {
       verifiedBy: 'curator_editorial_team',
       verifiedAt: '2026-09-10',
       source: 'a.md',
+      pronunciation: '/wʌt/',
+      example: 'What is your name?',
+      exampleTranslation: '¿Cómo te llamas?',
       status: 'approved',
     },
     {
@@ -1036,6 +1108,9 @@ export const week01: ContentBlock = {
       verifiedBy: 'curator_editorial_team',
       verifiedAt: '2026-09-10',
       source: 'a.md',
+      pronunciation: '/wɛr/',
+      example: 'Where do you live?',
+      exampleTranslation: '¿Dónde vives?',
       status: 'approved',
     },
     {

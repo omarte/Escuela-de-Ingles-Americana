@@ -182,7 +182,7 @@ export const GrammarExerciseSchema = z
     status: ContentStatusSchema,
   })
   .refine(
-    (ex) => (ex.prompt.match(/___/g) || []).length === ex.correctAnswer.split('/').length,
+    (ex) => (ex.prompt.match(/___/g) ?? []).length === ex.correctAnswer.split('/').length,
     {
       message:
         "number of '___' gaps in prompt must match number of answers separated by '/' in correctAnswer",
@@ -255,7 +255,7 @@ export function normalizeWord(word: string): string {
 export function findDuplicates(
   blocksByLevel: Record<
     string,
-    ReadonlyArray<{ week: number; vocabulary: ReadonlyArray<{ id: string; word: string }> }>
+    readonly { week: number; vocabulary: readonly { id: string; word: string }[] }[]
   >,
   levels: readonly string[] = ['A1', 'A2', 'B1', 'B2'],
 ): DuplicateReport {
@@ -264,7 +264,7 @@ export function findDuplicates(
   const globalIndex = new Map<string, DuplicateItemInfo[]>()
 
   for (const level of levels) {
-    const levelIndex = new Map<string, Array<{ id: string; word: string; week: number }>>()
+    const levelIndex = new Map<string, { id: string; word: string; week: number }[]>()
     const blocks = blocksByLevel[level]
     if (!blocks) continue
 
@@ -307,6 +307,54 @@ export function findDuplicates(
   return { sameLevelDuplicates, crossLevelDuplicates }
 }
 
+// ─── SRS Telemetry Schemas ────────────────────────────────────────────────────
+// References: discusion-pedagogica.md §9 (Telemetría de Latencia Cognitiva)
+//             and §10 (Feedback con Cariño y Verdad)
+
+/** Cognitive friction threshold in milliseconds (7 seconds). */
+export const FRICTION_THRESHOLD_MS = 7_000
+
+export const FrictionLevelSchema = z.enum(['easy', 'normal', 'hard'])
+
+/**
+ * Full Zod schema for a ReviewEvent, including the new telemetry fields.
+ * Both latencyMs and frictionFlagged are optional for backward compatibility
+ * with events logged before PIAP v1.0.
+ */
+export const ReviewEventSchema = z.object({
+  id: z.string().min(1),
+  userId: z.string().uuid(),
+  cardId: z.string().min(1),
+  vocabularyItemId: VocabularyIdSchema,
+  quality: z.number().int().min(0).max(5),
+  reviewedAt: z.string().datetime(),
+  previousState: CardStateSchema,
+  nextState: CardStateSchema,
+  previousInterval: z.number().int().min(0),
+  nextInterval: z.number().int().min(0),
+  /** Undefined for legacy events; present in all events after PIAP v1.0 */
+  latencyMs: z.number().int().min(0).optional(),
+  /**
+   * True when latencyMs > FRICTION_THRESHOLD_MS.
+   * Computed at review time; persisted for analytics.
+   */
+  frictionFlagged: z.boolean().optional(),
+})
+
+/**
+ * Payload schema for the 1-tap post-session survey.
+ * Written to SQLite locally and batch-synced to Supabase.
+ */
+export const SessionFeedbackSchema = z.object({
+  userId: z.string().uuid(),
+  /** ISO calendar date YYYY-MM-DD */
+  sessionDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'Expected ISO date YYYY-MM-DD'),
+  frictionLevel: FrictionLevelSchema,
+})
+
+export type ReviewEventPayload = z.infer<typeof ReviewEventSchema>
+export type SessionFeedbackPayload = z.infer<typeof SessionFeedbackSchema>
+
 // ─── Re-exports ───────────────────────────────────────────────────────────────
 
 export type {
@@ -322,5 +370,8 @@ export type {
   CardState,
   ReviewQuality,
   SRSCard,
+  ReviewEvent,
+  SessionFeedback,
+  FrictionLevel,
 } from '@elp/types'
 

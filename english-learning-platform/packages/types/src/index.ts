@@ -192,6 +192,15 @@ export interface WritingPrompt {
 // ─── SRS Types ──────────────────────────────────────────────────────────────
 
 /**
+ * Self-reported session difficulty from the 1-tap post-session survey.
+ * 'easy'   → user felt fluent, no friction.
+ * 'normal' → average effort, minor hesitations.
+ * 'hard'   → significant friction; triggers honest-mentor feedback message.
+ * References: discusion-pedagogica.md §10 (Feedback con Cariño y Verdad)
+ */
+export type FrictionLevel = 'easy' | 'normal' | 'hard'
+
+/**
  * State machine for a single spaced repetition card.
  *
  * new        → Card has never been studied
@@ -251,6 +260,33 @@ export interface ReviewEvent {
   readonly nextState: CardState
   readonly previousInterval: number
   readonly nextInterval: number
+  /**
+   * Response latency in milliseconds (time from card display to answer tap).
+   * Undefined for legacy events recorded before PIAP v1.0.
+   * A value > 7000ms indicates cognitive friction even if the answer was correct.
+   * References: discusion-pedagogica.md §9 (Telemetría de Latencia Cognitiva)
+   */
+  readonly latencyMs?: number
+  /**
+   * True when latencyMs exceeded the 7-second friction threshold.
+   * When true, the SM-2 algorithm caps effective quality at 3 regardless of
+   * the user's tapped quality, scheduling an earlier review interval.
+   */
+  readonly frictionFlagged?: boolean
+}
+
+/**
+ * A post-session 1-tap self-report persisted locally (SQLite) and
+ * batch-synced to Supabase. One row per user per calendar day.
+ * References: discusion-pedagogica.md §10 (Feedback con Cariño y Verdad)
+ */
+export interface SessionFeedback {
+  readonly id: string
+  readonly userId: string
+  /** ISO calendar date (YYYY-MM-DD) */
+  readonly sessionDate: string
+  readonly frictionLevel: FrictionLevel
+  readonly createdAt: string
 }
 
 /**

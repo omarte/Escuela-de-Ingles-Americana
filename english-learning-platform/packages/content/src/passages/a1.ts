@@ -11,8 +11,16 @@ export const a1ReadingPassages: readonly ReadingPassage[] = [
   {
     id: 'rdg_a1_001',
     level: 'A1',
-    week: 1,
+    // PIAP v1.0 correction (2026-09-15): Relocated from week 1 → week 10.
+    // Original assignment was incorrect: this passage references vocabulary
+    // introduced as late as Week 10 ('dog'), Week 8 ('wake up'), Week 6
+    // ('chicken', 'milk', 'bread', 'rice'), and Week 2 ('weekend').
+    // Assigning to Week 1 caused the "Choque Nivel Cero" described in
+    // discusion-pedagogica.md §6. Now placed at Week 10 where ALL referenced
+    // vocabulary has already been taught. (Zero AI — human curator note)
+    week: 10,
     title: 'My Daily Routine and Family',
+
     text: "My name is Anna. I am from Mexico. I have a small family: a mother, a father, and one brother. We live in a nice house with a garden. Every day I wake up at seven o'clock. I have breakfast with milk and bread. Then I go to school. My favorite color is blue and my favorite food is chicken with rice. On the weekend, I like to play with my dog in the park.",
     translation:
       'Mi nombre es Anna. Soy de México. Tengo una familia pequeña: una madre, un padre y un hermano. Vivimos en una casa bonita con jardín. Todos los días me despierto a las siete en punto. Desayuno leche y pan. Luego voy a la escuela. Mi color favorito es el azul y mi comida favorita es el pollo con arroz. El fin de semana me gusta jugar con mi perro en el parque.',
@@ -82,7 +90,8 @@ export const a1ReadingPassages: readonly ReadingPassage[] = [
   {
     id: 'rdg_a1_002',
     level: 'A1',
-    week: 9,
+    // Relocated to week 12 so all referenced vocabulary (bus in wk 12, doctor in wk 11, etc.) has been taught.
+    week: 12,
     title: 'A Morning in the City',
     text: 'Today is a sunny morning. The sky is clear and the street is quiet. Carlos walks to the bakery to buy fresh bread and hot coffee. Near the park, he sees a doctor walking to the hospital. Carlos takes the red bus to the library. He loves reading books about nature and animals.',
     translation:
@@ -133,7 +142,8 @@ export const a1ReadingPassages: readonly ReadingPassage[] = [
   {
     id: 'rdg_a1_003',
     level: 'A1',
-    week: 6,
+    // Relocated to week 11 so all referenced vocabulary (cashier in wk 11, supermarket in wk 9, etc.) has been taught.
+    week: 11,
     title: 'Shopping at the Supermarket',
     text: 'On Saturday, my sister and I visit the supermarket. We need food for dinner. We buy red apples, yellow bananas, and fresh cheese. We also choose pasta and orange juice. The cashier is very polite and friendly. We pay with cash and walk back to our apartment.',
     translation:

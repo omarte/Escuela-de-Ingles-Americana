@@ -391,4 +391,92 @@ describe('calculateNextReview (SM-2 Algorithm)', () => {
       expect(result.dueDate).toBe('2026-06-11T12:00:00.000Z')
     })
   })
+
+  describe('Cognitive Latency Degradation', () => {
+    it('caps effective quality at 3 when latency exceeds 7000ms', () => {
+      // Normal review with quality 5 without latency
+      const fastResult = calculateNextReview({
+        currentState: 'review',
+        interval: 10,
+        easeFactor: 2.5,
+        reps: 2,
+        lapses: 0,
+        quality: 5,
+        reviewedAt: NOW,
+        latencyMs: 2000,
+      })
+
+      // Review with quality 5 but latency > 7000ms (should behave like quality 3)
+      const slowResult = calculateNextReview({
+        currentState: 'review',
+        interval: 10,
+        easeFactor: 2.5,
+        reps: 2,
+        lapses: 0,
+        quality: 5,
+        reviewedAt: NOW,
+        latencyMs: 8500,
+      })
+
+      // Standard quality 3 result
+      const quality3Result = calculateNextReview({
+        currentState: 'review',
+        interval: 10,
+        easeFactor: 2.5,
+        reps: 2,
+        lapses: 0,
+        quality: 3,
+        reviewedAt: NOW,
+      })
+
+      // Slow result should match quality 3 easeFactor (degraded from 5), not fastResult
+      expect(slowResult.easeFactor).toBe(quality3Result.easeFactor)
+      expect(slowResult.easeFactor).toBeLessThan(fastResult.easeFactor)
+    })
+
+    it('does not degrade quality when latency is at or under 7000ms threshold', () => {
+      const result = calculateNextReview({
+        currentState: 'review',
+        interval: 10,
+        easeFactor: 2.2,
+        reps: 2,
+        lapses: 0,
+        quality: 5,
+        reviewedAt: NOW,
+        latencyMs: 7000,
+      })
+      // Quality 5 increases easeFactor: 2.2 + 0.1 = 2.3 (under maxEaseFactor 2.5)
+      expect(result.easeFactor).toBe(2.3)
+    })
+
+    it('does not degrade quality when latencyMs is undefined (legacy behavior)', () => {
+      const result = calculateNextReview({
+        currentState: 'review',
+        interval: 10,
+        easeFactor: 2.2,
+        reps: 2,
+        lapses: 0,
+        quality: 5,
+        reviewedAt: NOW,
+      })
+      expect(result.easeFactor).toBe(2.3)
+    })
+
+    it('retains failure state when quality < 3 even with high latency', () => {
+      const result = calculateNextReview({
+        currentState: 'review',
+        interval: 20,
+        easeFactor: 2.5,
+        reps: 3,
+        lapses: 0,
+        quality: 1,
+        reviewedAt: NOW,
+        latencyMs: 9000,
+      })
+      expect(result.state).toBe('relearning')
+      expect(result.interval).toBe(1)
+      expect(result.reps).toBe(0)
+      expect(result.lapses).toBe(1)
+    })
+  })
 })

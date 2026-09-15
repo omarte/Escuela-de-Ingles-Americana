@@ -3,16 +3,25 @@ import { DEFAULT_SRS_CONFIG } from './types'
 import type { CardState } from '@elp/types'
 
 /**
+ * Cognitive friction threshold in milliseconds.
+ * Answers that take longer than this indicate hidden uncertainty even when correct.
+ * References: discusion-pedagogica.md §9 (Telemetría de Latencia Cognitiva)
+ */
+const FRICTION_THRESHOLD_MS = 7_000
+
+/**
  * Full SM-2 modified spaced repetition algorithm.
  *
  * Implements:
  * 1. Grade scale 0..5 validation.
- * 2. Ease factor adjustment:
+ * 2. Latency degradation: if latencyMs > FRICTION_THRESHOLD_MS, caps effective
+ *    quality at 3 (Correct but uncertain → tighter interval).
+ * 3. Ease factor adjustment:
  *    EF' = clamp(EF + (0.1 - (5 - q) * (0.08 + (5 - q) * 0.02)), minEase, maxEase)
- * 3. Learning steps progression (1 day -> 4 days -> graduation).
- * 4. Review interval growth (I(n) = round(I(n-1) * EF)).
- * 5. Lapse / failure handling: resets reps, increments lapses, enters 'relearning'.
- * 6. Dominated threshold: marks card as 'dominated' once interval reaches dominatedThreshold (default 90 days).
+ * 4. Learning steps progression (1 day → 4 days → graduation).
+ * 5. Review interval growth (I(n) = round(I(n-1) * EF)).
+ * 6. Lapse / failure handling: resets reps, increments lapses, enters 'relearning'.
+ * 7. Dominated threshold: marks card as 'dominated' once interval reaches dominatedThreshold (default 90 days).
  *
  * @param input - Current card parameters and review quality
  * @param configOverrides - Custom settings (ease bounds, thresholds, etc.)
@@ -24,7 +33,20 @@ export const calculateNextReview: CalculateNextReview = (input, configOverrides)
     throw new Error('Review quality must be an integer between 0 and 5')
   }
 
-  const q = input.quality
+  // ── Latency Degradation (Cognitive Friction Detection) ───────────────────
+  // If the user took more than FRICTION_THRESHOLD_MS to answer, the correct
+  // answer reflects hidden uncertainty rather than solid recall.
+  // We cap the effective quality at 3 so the ease factor grows more slowly
+  // and the next review is scheduled sooner.
+  // This is transparent to the caller: the original quality is logged in
+  // review_events for analytics; only the scheduling uses effectiveQuality.
+  const hasFriction =
+    input.latencyMs !== undefined && input.latencyMs > FRICTION_THRESHOLD_MS
+  const effectiveQuality = hasFriction
+    ? (Math.min(input.quality, 3) as typeof input.quality)
+    : input.quality
+
+  const q = effectiveQuality
   const passes = q >= config.passingQuality
 
   // 1. Calculate new Ease Factor (SM-2 formula)
