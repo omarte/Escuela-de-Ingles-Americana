@@ -9,9 +9,9 @@
     "scheme": "elp",
     "userInterfaceStyle": "dark",
     "splash": {
-      "image": "./assets/splash-screen.png",
-      "backgroundColor": "#0B0F17",
-      "resizeMode": "contain"
+      "image": "./assets/splash-screen.jpg",
+      "backgroundColor": "#059669",
+      "resizeMode": "cover"
     },
     "ios": {
       "supportsTablet": true,

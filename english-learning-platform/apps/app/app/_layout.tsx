@@ -55,12 +55,15 @@ function NavigationGuard(): React.JSX.Element {
   if (!isInitialized || !minSplashDone) {
     return (
       <View style={styles.splashContainer}>
+        <StatusBar style="light" translucent backgroundColor="transparent" />
         <Image
           source={SPLASH_SCREEN_IMG}
-          style={styles.splashLogo}
-          resizeMode="contain"
+          style={StyleSheet.absoluteFillObject}
+          resizeMode="cover"
         />
-        <ActivityIndicator size="large" color="#10B981" style={styles.loader} />
+        <View style={styles.loaderContainer}>
+          <ActivityIndicator size="large" color="#FFFFFF" />
+        </View>
       </View>
     )
   }
@@ -91,16 +94,14 @@ export default function RootLayout(): React.JSX.Element {
 const styles = StyleSheet.create({
   splashContainer: {
     flex: 1,
-    backgroundColor: '#0B0F17',
+    backgroundColor: '#059669',
+  },
+  loaderContainer: {
+    position: 'absolute',
+    bottom: 84,
+    left: 0,
+    right: 0,
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  splashLogo: {
-    width: 220,
-    height: 220,
-    marginBottom: 24,
-  },
-  loader: {
-    marginTop: 8,
   },
 })

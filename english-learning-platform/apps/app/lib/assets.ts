@@ -13,7 +13,7 @@ export const SCHOOL_LOGO: ImageSourcePropType = require('../assets/school-logo.j
 // eslint-disable-next-line @typescript-eslint/no-require-imports, @typescript-eslint/no-unsafe-assignment
 export const APP_ICON: ImageSourcePropType = require('../assets/app-icon.jpg')
 // eslint-disable-next-line @typescript-eslint/no-require-imports, @typescript-eslint/no-unsafe-assignment
-export const SPLASH_SCREEN_IMG: ImageSourcePropType = require('../assets/splash-screen.png')
+export const SPLASH_SCREEN_IMG: ImageSourcePropType = require('../assets/splash-screen.jpg')
 
 // Onboarding Carousel (9:16 Fullscreen)
 // eslint-disable-next-line @typescript-eslint/no-require-imports, @typescript-eslint/no-unsafe-assignment
