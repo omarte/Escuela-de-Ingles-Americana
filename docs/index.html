@@ -113,233 +113,73 @@
     }
     .showcase-row {
       display: grid;
-      grid-template-columns: repeat(6, 1fr);
+      grid-template-columns: repeat(8, 204px);
       gap: 16px;
-      min-width: 1120px;
+      min-width: 1760px;
+      padding-bottom: 8px;
     }
 
-    /* Phone Mockup Frame */
+    /* Phone Mockup Frame with Real High-Res App Screenshots */
     .phone-frame {
       background: var(--white);
-      border: 1px solid var(--slate-200);
-      border-radius: 28px;
-      padding: 14px 12px;
-      box-shadow: 0 12px 28px rgba(15, 23, 42, 0.06);
+      border: 2px solid #CBD5E1;
+      border-radius: 32px;
+      padding: 10px 10px 14px;
+      box-shadow: 0 14px 34px rgba(15, 23, 42, 0.08);
       display: flex;
       flex-direction: column;
-      height: 390px;
+      height: 440px;
       position: relative;
-      text-align: left;
       overflow: hidden;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
     }
-    .phone-top-bar {
+    .phone-frame:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 50px rgba(15, 23, 42, 0.14);
+      border-color: var(--emerald-500);
+    }
+    .phone-notch-bar {
+      height: 14px;
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
-      font-size: 10px;
-      font-weight: 700;
-      color: var(--slate-400);
-      margin-bottom: 12px;
+      margin-bottom: 6px;
+      flex-shrink: 0;
     }
-    .phone-notch {
-      width: 48px;
+    .phone-notch-bar .notch {
+      width: 44px;
       height: 4px;
-      background: var(--slate-200);
+      background: #E2E8F0;
       border-radius: 4px;
-      margin: 0 auto;
     }
-    .phone-content {
+    .phone-screen-img-box {
       flex: 1;
+      border-radius: 20px;
+      overflow: hidden;
+      background: #0F172A;
+      box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08);
       display: flex;
-      flex-direction: column;
-      font-size: 12px;
+    }
+    .phone-screen-img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      transition: transform 0.3s ease;
+    }
+    .phone-frame:hover .phone-screen-img-box img {
+      transform: scale(1.02);
     }
     .phone-label {
-      font-size: 11px;
+      font-size: 11.5px;
       font-weight: 800;
-      color: var(--slate-400);
+      color: var(--navy-900);
       text-align: center;
       margin-top: 10px;
       text-transform: uppercase;
-      letter-spacing: 0.06em;
-    }
-
-    /* Phone 1: Splash Screen */
-    .screen-splash {
-      background: linear-gradient(160deg, #0F172A 0%, #064E3B 100%);
-      border-radius: 20px;
-      padding: 24px 14px;
-      color: var(--white);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100%;
-      text-align: center;
-    }
-    .screen-splash img {
-      width: 64px;
-      height: 64px;
-      object-fit: contain;
-      margin-bottom: 14px;
-      filter: drop-shadow(0 6px 16px rgba(0,0,0,0.4));
-    }
-    .screen-splash h4 {
-      font-family: 'Playfair Display', serif;
-      font-size: 16px;
-      margin: 0 0 6px;
-      letter-spacing: 0.02em;
-    }
-    .screen-splash span {
-      font-size: 10.5px;
-      opacity: 0.8;
-      color: var(--emerald-light);
-    }
-
-    /* Phone 2: Home Screen */
-    .screen-home {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      height: 100%;
-    }
-    .greeting { font-size: 13px; font-weight: 800; color: var(--navy-900); }
-    .streak-badge {
-      background: var(--amber-light);
-      color: var(--amber);
-      font-weight: 800;
-      font-size: 11px;
-      padding: 6px 10px;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .today-card {
-      background: var(--slate-50);
-      border: 1px solid var(--slate-200);
-      border-radius: 12px;
-      padding: 10px;
-    }
-    .today-card b { display: block; color: var(--emerald-600); font-size: 18px; }
-    .today-card small { color: var(--slate-600); font-size: 10.5px; }
-
-    /* Phone 3: Roadmap Screen */
-    .screen-roadmap {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      height: 100%;
-    }
-    .level-chip {
-      padding: 8px 10px;
-      border-radius: 10px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-weight: 700;
-      font-size: 11px;
-    }
-    .chip-a1 { background: #E8F5E9; color: #059669; }
-    .chip-a2 { background: #E0F2FE; color: #0284C7; }
-    .chip-b1 { background: #EEF2FF; color: #4F46E5; }
-    .chip-b2 { background: #FEF3C7; color: #D97706; }
-
-    /* Phone 4: Flashcard Active Recall */
-    .screen-flashcard {
-      background: var(--slate-900);
-      border-radius: 18px;
-      padding: 14px;
-      color: var(--white);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      height: 100%;
-    }
-    .card-word { font-size: 20px; font-weight: 900; color: #10B981; }
-    .card-ipa { font-size: 11px; color: var(--slate-400); font-family: monospace; }
-    .card-example {
-      font-size: 11px;
-      line-height: 1.4;
-      background: #1E293B;
-      padding: 8px;
-      border-radius: 8px;
-      border-left: 2px solid #10B981;
-    }
-    .sm2-buttons {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 4px;
-    }
-    .sm2-btn {
-      padding: 6px 2px;
-      border-radius: 6px;
-      font-size: 8.5px;
-      font-weight: 750;
-      text-align: center;
-    }
-    .sm2-1 { background: #EF4444; color: white; }
-    .sm2-2 { background: #F97316; color: white; }
-    .sm2-3 { background: #10B981; color: white; }
-    .sm2-4 { background: #059669; color: white; }
-
-    /* Phone 5: Micro-Exam Cloze */
-    .screen-exam {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      height: 100%;
-    }
-    .exam-timer {
-      font-size: 10px;
-      font-weight: 800;
-      color: #EF4444;
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
-    .exam-q {
-      background: var(--slate-50);
-      border: 1px solid var(--slate-200);
-      border-radius: 10px;
-      padding: 10px 8px;
-      font-size: 11px;
-      font-weight: 600;
-      color: var(--navy-900);
-      line-height: 1.4;
-    }
-    .exam-opt {
-      padding: 6px 10px;
-      border: 1px solid var(--slate-200);
-      border-radius: 8px;
-      font-size: 10.5px;
-      font-weight: 600;
-      margin-top: 5px;
-    }
-    .opt-correct { background: #ECFDF5; border-color: #10B981; color: #065F46; }
-
-    /* Phone 6: Telemetry Dashboard */
-    .screen-telemetry {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      height: 100%;
-    }
-    .tele-stat {
-      background: var(--slate-50);
-      border: 1px solid var(--slate-200);
-      border-radius: 10px;
-      padding: 8px 10px;
-    }
-    .tele-stat span { display: block; font-size: 9.5px; color: var(--slate-400); }
-    .tele-stat b { font-size: 14px; color: var(--navy-900); }
-    .friction-pill {
-      background: #FEF3C7;
-      color: #92400E;
-      font-size: 9.5px;
-      padding: 4px 8px;
-      border-radius: 6px;
-      font-weight: 700;
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
 
     /* ─── Real App Illustrations Showcase ─── */
@@ -808,118 +648,88 @@
           </div>
         </div>
 
-        <!-- 6 Phones Row Showcase (Inspirado en Mall OS) -->
+        <!-- 8 Phones Row Showcase (Flujo Móvil Real) -->
         <div class="showcase-wrapper">
           <div class="showcase-header">
             <div class="showcase-title">
               <span>● Flujo Móvil Completo</span>
-              <span style="color: var(--emerald-600); font-weight:700;">6 Pantallas Nativas</span>
+              <span style="color: var(--emerald-600); font-weight:800;">8 Pantallas Nativas</span>
             </div>
             <span style="font-size:12px; color:var(--slate-400); font-weight:600;">Desliza horizontalmente &rarr;</span>
           </div>
 
           <div class="showcase-row">
 
-            <!-- Phone 1: Splash con Logo Oficial -->
+            <!-- Phone 1: Splash Oficial -->
             <div class="phone-frame">
-              <div class="phone-top-bar"><span>9:41</span><div class="phone-notch"></div><span>100%</span></div>
-              <div class="phone-content">
-                <div class="screen-splash">
-                  <img src="assets/logo.png" alt="Logo Escuela de Inglés Americana">
-                  <h4>American English School</h4>
-                  <span>Fundación Académica &bull; 2026</span>
-                </div>
+              <div class="phone-notch-bar"><div class="notch"></div></div>
+              <div class="phone-screen-img-box">
+                <img src="assets/screens/screen-1-splash.jpg" alt="Splash Oficial de la App" loading="lazy">
               </div>
               <div class="phone-label">1. Splash Oficial</div>
             </div>
 
-            <!-- Phone 2: Home Screen -->
+            <!-- Phone 2: Acceso Seguro / Login -->
             <div class="phone-frame">
-              <div class="phone-top-bar"><span>9:41</span><div class="phone-notch"></div><span>100%</span></div>
-              <div class="phone-content screen-home">
-                <div class="greeting">Hola, Daniela 👋</div>
-                <div class="streak-badge">🔥 Racha activa: 14 días</div>
-                <div class="today-card">
-                  <b>15 palabras</b>
-                  <small>Meta diaria lista para repasar hoy</small>
-                </div>
-                <div style="background:var(--slate-100); border-radius:8px; padding:8px; font-size:10.5px; color:var(--slate-600);">
-                  Semana 10 &bull; Preposiciones y conectores
-                </div>
+              <div class="phone-notch-bar"><div class="notch"></div></div>
+              <div class="phone-screen-img-box">
+                <img src="assets/screens/screen-2-login.png" alt="Acceso Seguro y Login" loading="lazy">
               </div>
-              <div class="phone-label">2. Home Diario</div>
+              <div class="phone-label">2. Acceso / Login</div>
             </div>
 
-            <!-- Phone 3: Roadmap de Semanas -->
+            <!-- Phone 3: Home Diario -->
             <div class="phone-frame">
-              <div class="phone-top-bar"><span>9:41</span><div class="phone-notch"></div><span>100%</span></div>
-              <div class="phone-content screen-roadmap">
-                <div style="font-size:11px; font-weight:800; color:var(--navy-900); margin-bottom:4px;">Progreso CEFR</div>
-                <div class="level-chip chip-a1"><span>Nivel A1 (19 sem)</span><span>✓ 100%</span></div>
-                <div class="level-chip chip-a2"><span>Nivel A2 (11 sem)</span><span>73%</span></div>
-                <div class="level-chip chip-b1"><span>Nivel B1 (7 sem)</span><span>Próximo</span></div>
-                <div class="level-chip chip-b2"><span>Nivel B2 (7 sem)</span><span>Bloqueado</span></div>
+              <div class="phone-notch-bar"><div class="notch"></div></div>
+              <div class="phone-screen-img-box">
+                <img src="assets/screens/screen-3-home.png" alt="Home Diario de Estudio" loading="lazy">
               </div>
-              <div class="phone-label">3. Mapa Curricular</div>
+              <div class="phone-label">3. Home Diario</div>
             </div>
 
-            <!-- Phone 4: Active Recall Flashcard -->
+            <!-- Phone 4: Entrenamiento Diario (SRS) -->
             <div class="phone-frame">
-              <div class="phone-top-bar"><span>9:41</span><div class="phone-notch"></div><span>100%</span></div>
-              <div class="phone-content">
-                <div class="screen-flashcard">
-                  <div>
-                    <div class="card-word">understand</div>
-                    <div class="card-ipa">/ˌʌndərˈstænd/</div>
-                  </div>
-                  <div class="card-example">
-                    "I clearly understand the new instructions."
-                  </div>
-                  <div class="sm2-buttons">
-                    <div class="sm2-btn sm2-1">Otra vez</div>
-                    <div class="sm2-btn sm2-2">Difícil</div>
-                    <div class="sm2-btn sm2-3">Bien</div>
-                    <div class="sm2-btn sm2-4">Fácil</div>
-                  </div>
-                </div>
+              <div class="phone-notch-bar"><div class="notch"></div></div>
+              <div class="phone-screen-img-box">
+                <img src="assets/screens/screen-4-learn.png" alt="Entrenamiento Diario SRS" loading="lazy">
               </div>
-              <div class="phone-label">4. Active Recall</div>
+              <div class="phone-label">4. Aprender (SRS)</div>
             </div>
 
-            <!-- Phone 5: Micro-Examen 60s -->
+            <!-- Phone 5: Banco de Vocabulario -->
             <div class="phone-frame">
-              <div class="phone-top-bar"><span>9:41</span><div class="phone-notch"></div><span>100%</span></div>
-              <div class="phone-content screen-exam">
-                <div class="exam-timer">⏱️ 0:42 restantes</div>
-                <div class="exam-q">
-                  "She ______ her keys before leaving the office."
-                </div>
-                <div>
-                  <div class="exam-opt">found</div>
-                  <div class="exam-opt opt-correct">✓ forgot (correcto)</div>
-                  <div class="exam-opt">listen</div>
-                </div>
+              <div class="phone-notch-bar"><div class="notch"></div></div>
+              <div class="phone-screen-img-box">
+                <img src="assets/screens/screen-5-vocab.png" alt="Banco de Vocabulario y Arcade" loading="lazy">
               </div>
-              <div class="phone-label">5. Micro-Examen</div>
+              <div class="phone-label">5. Banco & Arcade</div>
             </div>
 
-            <!-- Phone 6: Telemetría Cognitiva -->
+            <!-- Phone 6: Lectura Contextual -->
             <div class="phone-frame">
-              <div class="phone-top-bar"><span>9:41</span><div class="phone-notch"></div><span>100%</span></div>
-              <div class="phone-content screen-telemetry">
-                <div class="tele-stat">
-                  <span>Precisión de Sesión</span>
-                  <b>87.5%</b>
-                </div>
-                <div class="tele-stat">
-                  <span>Latencia Promedio</span>
-                  <b>3.2 seg</b>
-                </div>
-                <div class="friction-pill">
-                  ⚠️ 1 Fricción: "although" (8.4s)
-                </div>
+              <div class="phone-notch-bar"><div class="notch"></div></div>
+              <div class="phone-screen-img-box">
+                <img src="assets/screens/screen-6-reading.png" alt="Lectura Contextual i+1" loading="lazy">
               </div>
-              <div class="phone-label">6. Telemetría</div>
+              <div class="phone-label">6. Lectura i+1</div>
+            </div>
+
+            <!-- Phone 7: Tu Progreso -->
+            <div class="phone-frame">
+              <div class="phone-notch-bar"><div class="notch"></div></div>
+              <div class="phone-screen-img-box">
+                <img src="assets/screens/screen-7-progress.png" alt="Telemetría y Progreso CEFR" loading="lazy">
+              </div>
+              <div class="phone-label">7. Tu Progreso</div>
+            </div>
+
+            <!-- Phone 8: Mi Perfil -->
+            <div class="phone-frame">
+              <div class="phone-notch-bar"><div class="notch"></div></div>
+              <div class="phone-screen-img-box">
+                <img src="assets/screens/screen-8-profile.png" alt="Perfil y Sincronización Offline" loading="lazy">
+              </div>
+              <div class="phone-label">8. Mi Perfil</div>
             </div>
 
           </div>
