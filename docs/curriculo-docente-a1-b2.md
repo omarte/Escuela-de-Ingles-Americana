@@ -1704,8 +1704,10 @@ Total de palabras en esta semana: **50**
 
 ### 📖 Lecturas de Comprensión · Nivel A1
 
-#### My Daily Routine and Family (`rdg_a1_001`)
-- **Nivel:** A1 • **Semana Asignada:** Semana 10 • **Dificultad:** 1/5
+Textos graduados que reutilizan exclusivamente el léxico consolidado hasta su semana lectiva, acompañados de preguntas pedagógicas de opción múltiple.
+
+#### Lectura Semana 10: My Daily Routine and Family (`rdg_a1_001`)
+- **Nivel:** A1 | **Semana lectiva:** 10 | **Dificultad interna:** 1/5
 - **Vocabulario Enlazado (17 términos):** `voc_a1_name_001`, `voc_a1_mother-mom_001`, `voc_a1_father-dad_001`, `voc_a1_brother_001`, `voc_a1_family_001`, `voc_a1_small_001`, `voc_a1_nice_001`, `voc_a1_house_001`, `voc_a1_garden_001`, `voc_a1_milk_001`, `voc_a1_bread_001`, `voc_a1_blue_001`, `voc_a1_chicken_001`, `voc_a1_rice_001`, `voc_a1_weekend_001`, `voc_a1_dog_001`, `voc_a1_park_001`
 
 **Texto en Inglés:**
@@ -1733,8 +1735,8 @@ Total de palabras en esta semana: **50**
    - ▫️ In the supermarket
    *Explicación:* Anna says: 'On the weekend, I like to play with my dog in the park.'
 
-#### A Morning in the City (`rdg_a1_002`)
-- **Nivel:** A1 • **Semana Asignada:** Semana 12 • **Dificultad:** 2/5
+#### Lectura Semana 12: A Morning in the City (`rdg_a1_002`)
+- **Nivel:** A1 | **Semana lectiva:** 12 | **Dificultad interna:** 2/5
 - **Vocabulario Enlazado (10 términos):** `voc_a1_sunny_001`, `voc_a1_street_001`, `voc_a1_bread_001`, `voc_a1_coffee_001`, `voc_a1_park_001`, `voc_a1_doctor_001`, `voc_a1_hospital_001`, `voc_a1_bus_001`, `voc_a1_library_001`, `voc_a1_nature_001`
 
 **Texto en Inglés:**
@@ -1756,8 +1758,8 @@ Total de palabras en esta semana: **50**
    - ▫️ To the hospital
    *Explicación:* The passage mentions: 'Carlos takes the red bus to the library.'
 
-#### Shopping at the Supermarket (`rdg_a1_003`)
-- **Nivel:** A1 • **Semana Asignada:** Semana 11 • **Dificultad:** 2/5
+#### Lectura Semana 11: Shopping at the Supermarket (`rdg_a1_003`)
+- **Nivel:** A1 | **Semana lectiva:** 11 | **Dificultad interna:** 2/5
 - **Vocabulario Enlazado (10 términos):** `voc_a1_saturday_001`, `voc_a1_sister_001`, `voc_a1_supermarket_001`, `voc_a1_dinner_001`, `voc_a1_apple_001`, `voc_a1_banana_001`, `voc_a1_cheese_001`, `voc_a1_pasta_001`, `voc_a1_cashier_001`, `voc_a1_apartment-flat_001`
 
 **Texto en Inglés:**
@@ -2613,8 +2615,10 @@ Total de palabras en esta semana: **48**
 
 ### 📖 Lecturas de Comprensión · Nivel A2
 
-#### A Weekend Trip to the Beach (`rdg_a2_001`)
-- **Nivel:** A2 • **Semana Asignada:** Semana 2 • **Dificultad:** 2/5
+Textos graduados que reutilizan exclusivamente el léxico consolidado hasta su semana lectiva, acompañados de preguntas pedagógicas de opción múltiple.
+
+#### Lectura Semana 2: A Weekend Trip to the Beach (`rdg_a2_001`)
+- **Nivel:** A2 | **Semana lectiva:** 2 | **Dificultad interna:** 2/5
 - **Vocabulario Enlazado (16 términos):** `voc_a1_weekend_001`, `voc_a1_family_001`, `voc_a1_beach_001`, `voc_a1_morning_001`, `voc_a1_sunny_001`, `voc_a1_warm_001`, `voc_a1_sea_001`, `voc_a1_lunch_001`, `voc_a1_afternoon_001`, `voc_a1_restaurant_001`, `voc_a1_hotel_001`, `voc_a1_fish_001`, `voc_a1_brother_001`, `voc_a1_grandmother-grandma_001`, `voc_a1_market_001`, `voc_a1_happy_001`
 
 **Texto en Inglés:**
@@ -2636,8 +2640,8 @@ Total de palabras en esta semana: **48**
    - ▫️ His friend
    *Explicación:* The author says: 'My brother wanted to buy a souvenir for our grandmother.'
 
-#### Returning a Damaged Package (`rdg_a2_002`)
-- **Nivel:** A2 • **Semana Asignada:** Semana 1 • **Dificultad:** 2/5
+#### Lectura Semana 1: Returning a Damaged Package (`rdg_a2_002`)
+- **Nivel:** A2 | **Semana lectiva:** 1 | **Dificultad interna:** 2/5
 - **Vocabulario Enlazado (11 términos):** `voc_a2_standard-delivery_033`, `voc_a2_package-parcel_029`, `voc_a2_damaged_016`, `voc_a2_broken_017`, `voc_a2_missing-part_019`, `voc_a2_customer-service_007`, `voc_a2_complaint_006`, `voc_a2_refund_001`, `voc_a2_exchange_002`, `voc_a2_courier_031`, `voc_a2_warranty_004`
 
 **Texto en Inglés:**
@@ -2659,8 +2663,8 @@ Total de palabras en esta semana: **48**
    - ▫️ A discount on the next purchase
    *Explicación:* The agent explained that the company would 'process a full refund or an exchange.'
 
-#### A Busy Day at the Office (`rdg_a2_003`)
-- **Nivel:** A2 • **Semana Asignada:** Semana 3 • **Dificultad:** 3/5
+#### Lectura Semana 3: A Busy Day at the Office (`rdg_a2_003`)
+- **Nivel:** A2 | **Semana lectiva:** 3 | **Dificultad interna:** 3/5
 - **Vocabulario Enlazado (9 términos):** `voc_a2_department_126`, `voc_a2_deadline_129`, `voc_a2_report_136`, `voc_a2_supervisor_128`, `voc_a2_meeting-room_130`, `voc_a2_colleague_127`, `voc_a2_presentation_132`, `voc_a2_spreadsheet_137`, `voc_a2_overtime_145`
 
 **Texto en Inglés:**
@@ -2972,8 +2976,10 @@ Total de palabras en esta semana: **24**
 
 ### 📖 Lecturas de Comprensión · Nivel B1
 
-#### A Difficult Decision (`rdg_b1_001`)
-- **Nivel:** B1 • **Semana Asignada:** Semana 2 • **Dificultad:** 1/5
+Textos graduados que reutilizan exclusivamente el léxico consolidado hasta su semana lectiva, acompañados de preguntas pedagógicas de opción múltiple.
+
+#### Lectura Semana 2: A Difficult Decision (`rdg_b1_001`)
+- **Nivel:** B1 | **Semana lectiva:** 2 | **Dificultad interna:** 1/5
 - **Vocabulario Enlazado (6 términos):** `voc_b1_once-in-a-blue-moon_037`, `voc_b1_break-the-ice_038`, `voc_b1_hit-the-books_039`, `voc_b1_under-the-weather_040`, `voc_b1_piece-of-cake_041`, `voc_b1_cost-an-arm-and-a-leg_042`
 
 **Texto en Inglés:**
@@ -3001,8 +3007,8 @@ Total de palabras en esta semana: **24**
    - ▫️ To wait another year
    *Explicación:* El texto dice: "he decided to accept the job."
 
-#### The Rise of Remote Work (`rdg_b1_002`)
-- **Nivel:** B1 • **Semana Asignada:** Semana 7 • **Dificultad:** 3/5
+#### Lectura Semana 7: The Rise of Remote Work (`rdg_b1_002`)
+- **Nivel:** B1 | **Semana lectiva:** 7 | **Dificultad interna:** 3/5
 - **Vocabulario Enlazado (6 términos):** `voc_b1_economy_165`, `voc_b1_inflation_166`, `voc_b1_recession_167`, `voc_b1_unemployment_168`, `voc_b1_income_169`, `voc_b1_expense_170`
 
 **Texto en Inglés:**
@@ -3030,8 +3036,8 @@ Total de palabras en esta semana: **24**
    - ▫️ Lower salaries for everyone
    *Explicación:* Los críticos dicen que "this creates a new kind of inequality."
 
-#### Breaking the Ice (`rdg_b1_003`)
-- **Nivel:** B1 • **Semana Asignada:** Semana 1 • **Dificultad:** 2/5
+#### Lectura Semana 1: Breaking the Ice (`rdg_b1_003`)
+- **Nivel:** B1 | **Semana lectiva:** 1 | **Dificultad interna:** 2/5
 - **Vocabulario Enlazado (6 términos):** `voc_b1_give-up_001`, `voc_b1_look-forward-to_002`, `voc_b1_get-along-with_003`, `voc_b1_put-off_004`, `voc_b1_run-into_005`, `voc_b1_come-across_006`
 
 **Texto en Inglés:**
@@ -3059,8 +3065,8 @@ Total de palabras en esta semana: **24**
    - ▫️ Using the printer
    *Explicación:* El texto dice: "she had been putting off making friends because she was afraid of looking silly."
 
-#### A Costly Mistake (`rdg_b1_004`)
-- **Nivel:** B1 • **Semana Asignada:** Semana 3 • **Dificultad:** 2/5
+#### Lectura Semana 3: A Costly Mistake (`rdg_b1_004`)
+- **Nivel:** B1 | **Semana lectiva:** 3 | **Dificultad interna:** 2/5
 - **Vocabulario Enlazado (6 términos):** `voc_b1_achievement_061`, `voc_b1_assumption_062`, `voc_b1_attitude_063`, `voc_b1_awareness_064`, `voc_b1_behavior_065`, `voc_b1_capability_066`
 
 **Texto en Inglés:**
@@ -3088,8 +3094,8 @@ Total de palabras en esta semana: **24**
    - ▫️ Cancelling all future campaigns
    *Explicación:* El texto dice: "They created a new framework for checking assumptions... has since become standard procedure."
 
-#### Should Cities Ban Cars? (`rdg_b1_005`)
-- **Nivel:** B1 • **Semana Asignada:** Semana 5 • **Dificultad:** 3/5
+#### Lectura Semana 5: Should Cities Ban Cars? (`rdg_b1_005`)
+- **Nivel:** B1 | **Semana lectiva:** 5 | **Dificultad interna:** 3/5
 - **Vocabulario Enlazado (6 términos):** `voc_b1_assume_120`, `voc_b1_argue-that_121`, `voc_b1_claim_122`, `voc_b1_demonstrate_123`, `voc_b1_emphasize_124`, `voc_b1_imply_125`
 
 **Texto en Inglés:**
@@ -3117,8 +3123,8 @@ Total de palabras en esta semana: **24**
    - ▫️ Cars should never be banned
    *Explicación:* El texto dice: "most experts agree that doing nothing is not an option."
 
-#### Can We Trust the News? (`rdg_b1_006`)
-- **Nivel:** B1 • **Semana Asignada:** Semana 6 • **Dificultad:** 3/5
+#### Lectura Semana 6: Can We Trust the News? (`rdg_b1_006`)
+- **Nivel:** B1 | **Semana lectiva:** 6 | **Dificultad interna:** 3/5
 - **Vocabulario Enlazado (6 términos):** `voc_b1_article_146`, `voc_b1_column-newspaper_147`, `voc_b1_broadcast_148`, `voc_b1_coverage-news_149`, `voc_b1_correspondent_150`, `voc_b1_editor_151`
 
 **Texto en Inglés:**
@@ -3146,8 +3152,8 @@ Total de palabras en esta semana: **24**
    - ▫️ Social media marketing
    *Explicación:* El texto dice: "Media literacy... should be taught in schools just like reading and writing."
 
-#### When Friends Disagree (`rdg_b1_007`)
-- **Nivel:** B1 • **Semana Asignada:** Semana 8 • **Dificultad:** 2/5
+#### Lectura Semana 8: When Friends Disagree (`rdg_b1_007`)
+- **Nivel:** B1 | **Semana lectiva:** 8 | **Dificultad interna:** 2/5
 - **Vocabulario Enlazado (6 términos):** `voc_b1_cooperate_188`, `voc_b1_collaborate_189`, `voc_b1_criticize_190`, `voc_b1_compliment_191`, `voc_b1_complain_192`, `voc_b1_reconcile_193`
 
 **Texto en Inglés:**
@@ -3175,8 +3181,8 @@ Total de palabras en esta semana: **24**
    - ▫️ He should never lend money again
    *Explicación:* El texto dice: "avoiding a conversation usually makes a small problem much bigger than it needs to be."
 
-#### The Most Underrated Skill (`rdg_b1_008`)
-- **Nivel:** B1 • **Semana Asignada:** Semana 9 • **Dificultad:** 3/5
+#### Lectura Semana 9: The Most Underrated Skill (`rdg_b1_008`)
+- **Nivel:** B1 | **Semana lectiva:** 9 | **Dificultad interna:** 3/5
 - **Vocabulario Enlazado (6 términos):** `voc_b1_ambiguous_203`, `voc_b1_controversial_204`, `voc_b1_significant_205`, `voc_b1_substantial_206`, `voc_b1_considerable_207`, `voc_b1_remarkable_208`
 
 **Texto en Inglés:**
@@ -3210,51 +3216,51 @@ Este banco evalúa la precisión morfosintáctica en oraciones contextualizadas 
 
 | ID | Tema Gramatical | Oración / Prompt | Traducción / Pista | Respuesta Correcta | Explicación Pedagógica |
 |---|---|---|---|---|---|
-| `grm_b1_pres_perfect_001` | **undefined** | I ___ (visit) London twice in my life. | He visitado Londres dos veces en mi vida. | **have visited *(alt: 've visited)*** | Usamos Present Perfect para experiencias de vida sin un momento específico en el tiempo. |
-| `grm_b1_pres_perfect_002` | **undefined** | She ___ (already/finish) the report before her boss ___ (ask) for it yesterday. | Ella ya había terminado el informe antes de que su jefe lo pidiera ayer. | **had already finished / asked *(alt: 'd already finished / asked)*** | El primer hueco requiere Past Perfect (acción anterior a otra acción pasada); el segundo, Past Simple para la acción pasada de referencia. |
-| `grm_b1_pres_perfect_003` | **undefined** | By the time she ___ (call) me, I ___ (already/leave) the office, so I ___ (not/hear) the news until the next morning. | Para cuando ella me llamó, yo ya había salido de la oficina, así que no escuché la noticia hasta la mañana siguiente. | **called / had already left / didn't hear *(alt: called / 'd already left / did not hear)*** | Combina tres tiempos: Past Simple para la llamada, Past Perfect para la acción anterior, y Past Simple negativo para la consecuencia posterior. |
-| `grm_b1_cond1_001` | **undefined** | If it ___ (rain) tomorrow, we ___ (stay) home. | Si llueve mañana, nos quedaremos en casa. | **rains / will stay *(alt: rains / 'll stay)*** | Primer condicional: presente simple en la condición, 'will' + infinitivo en el resultado, para situaciones futuras reales o probables. |
-| `grm_b1_cond1_002` | **undefined** | Unless you ___ (submit) the form by Friday, your application ___ (not/be) considered. | A menos que envíes el formulario para el viernes, tu solicitud no será considerada. | **submit / won't be *(alt: submit / will not be)*** | 'Unless' funciona como 'if not' — la condición sigue en presente simple aunque el significado sea negativo. |
-| `grm_b1_cond1_003` | **undefined** | If the company ___ (not/reduce) costs soon, and provided that sales ___ (not/improve) next quarter, they ___ (have to) lay off staff. | Si la empresa no reduce costos pronto, y siempre que las ventas no mejoren el próximo trimestre, tendrán que despedir personal. | **doesn't reduce / don't improve / will have to *(alt: does not reduce / do not improve / 'll have to)*** | Dos condiciones encadenadas ('if... and provided that...') seguidas de un resultado con 'will have to', mostrando que el primer condicional puede combinar varias cláusulas condicionales. |
-| `grm_b1_cond2_001` | **undefined** | If I ___ (have) more free time, I ___ (travel) more. | Si tuviera más tiempo libre, viajaría más. | **had / would travel *(alt: had / 'd travel)*** | Segundo condicional: pasado simple en la condición hipotética, 'would' + infinitivo en el resultado imaginario. |
-| `grm_b1_cond2_002` | **undefined** | If she ___ (be) in your position, she ___ (not/hesitate) to accept the offer. | Si ella estuviera en tu posición, no dudaría en aceptar la oferta. | **were / wouldn't hesitate *(alt: was / wouldn't hesitate, were / would not hesitate)*** | En registro formal, 'were' se usa con todos los sujetos en segundo condicional (aunque 'was' también es aceptado en habla informal). |
-| `grm_b1_cond2_003` | **undefined** | If governments ___ (invest) more in renewable energy, and if people ___ (be) more willing to change their habits, climate change ___ (not/be) such an urgent threat. | Si los gobiernos invirtieran más en energía renovable, y si la gente estuviera más dispuesta a cambiar sus hábitos, el cambio climático no sería una amenaza tan urgente. | **invested / were / wouldn't be *(alt: invested / were / would not be)*** | Dos condiciones hipotéticas coordinadas con 'and if' seguidas de un único resultado — estructura típica de argumentación en B1-B2. |
-| `grm_b1_passive_001` | **undefined** | This book ___ (write) by a famous author. | Este libro fue escrito por un autor famoso. | **was written** | Voz pasiva en pasado simple: 'was/were' + participio pasado, útil cuando el interés está en la acción, no en quién la realizó. |
-| `grm_b1_passive_002` | **undefined** | New safety regulations ___ (introduce) next year to reduce workplace accidents. | Nuevas regulaciones de seguridad serán introducidas el próximo año para reducir accidentes laborales. | **will be introduced *(alt: 'll be introduced)*** | Voz pasiva en futuro con 'will': 'will be' + participio pasado. |
-| `grm_b1_passive_003` | **undefined** | It ___ (believe) that the ancient bridge ___ (build) over two thousand years ago, although it ___ (not/officially/confirm) until recent excavations. | Se cree que el antiguo puente fue construido hace más de dos mil años, aunque no se confirmó oficialmente hasta excavaciones recientes. | **is believed / was built / wasn't officially confirmed *(alt: is believed / was built / was not officially confirmed)*** | Combina tres construcciones pasivas en distintos tiempos dentro de una sola oración compleja, típico de textos académicos o históricos en B1-B2. |
-| `grm_b1_comp_001` | **undefined** | This exercise is ___ (difficult) than the last one. | Este ejercicio es más difícil que el anterior. | **more difficult** | Adjetivos de dos o más sílabas terminados en patrones no simples forman el comparativo con 'more' + adjetivo + 'than'. |
-| `grm_b1_comp_002` | **undefined** | The more experience you gain, the ___ (confident) you become at your job. | Cuanta más experiencia ganas, más seguro te vuelves en tu trabajo. | **more confident** | Estructura 'the more..., the more...' para expresar relación proporcional entre dos ideas — un patrón que suele confundir a hablantes de español porque no existe una traducción literal directa. |
-| `grm_b1_comp_003` | **undefined** | Of all the candidates, she was by far ___ (qualified), even though she was not ___ (experienced) as some of the others. | De todos los candidatos, ella era con diferencia la más calificada, aunque no era tan experimentada como algunos de los otros. | **the most qualified / as experienced** | Combina un superlativo enfatizado con 'by far' y una comparación de igualdad ('as...as') en la misma oración — nivel de complejidad típico de B1 alto / entrada a B2. |
-| `grm_b1_modals_001` | **undefined** | You ___ (should) apologize to her. | Deberías disculparte con ella. | **should** | 'Should' expresa un consejo o recomendación, no una obligación estricta. |
-| `grm_b1_modals_002` | **undefined** | You ___ (not/have to) attend the meeting, but you ___ (must) send your report by email. | No tienes que asistir a la reunión, pero debes enviar tu informe por correo. | **don't have to / must *(alt: do not have to / must)*** | Contraste clave en B1: 'don't have to' significa que algo no es necesario (no prohibición), mientras 'must' expresa obligación firme. |
-| `grm_b1_modals_003` | **undefined** | You ___ (should/have) told me earlier — I ___ (could/avoid) the mistake if I ___ (know) about the deadline change. | Deberías habérmelo dicho antes; podría haber evitado el error si hubiera sabido del cambio de fecha límite. | **should have / could have avoided / had known *(alt: should've / could've avoided / had known)*** | Combina 'should have + participio' (crítica sobre el pasado), 'could have + participio' (posibilidad no realizada) y tercer condicional implícito — estructura de entrada a B2. |
-| `grm_b1_relative_001` | **undefined** | The man ___ lives next door is a teacher. | El hombre que vive al lado es maestro. | **who *(alt: that)*** | 'Who' (o 'that') introduce una cláusula relativa que describe a una persona. |
-| `grm_b1_relative_002` | **undefined** | The company, ___ headquarters are in Madrid, announced record profits this year. | La empresa, cuya sede está en Madrid, anunció ganancias récord este año. | **whose** | 'Whose' indica posesión dentro de una cláusula relativa, y aquí introduce información adicional no esencial (nótese las comas). |
-| `grm_b1_relative_003` | **undefined** | The city ___ I grew up, ___ has changed enormously in the last decade, is no longer ___ it used to be. | La ciudad donde crecí, que ha cambiado enormemente en la última década, ya no es lo que solía ser. | **where / which / what** | Combina tres tipos de cláusula relativa en una sola oración: 'where' (lugar), 'which' (cláusula no esencial sobre la ciudad) y 'what' (lo que solía ser, sin antecedente explícito). |
-| `grm_b1_reported_001` | **undefined** | She said that she ___ (be) tired. | Ella dijo que estaba cansada. | **was** | En estilo indirecto, el presente ('am/is') retrocede a pasado ('was') cuando el verbo introductorio está en pasado. |
-| `grm_b1_reported_002` | **undefined** | He told me that he ___ (finish) the project the day before and that he ___ (send) it soon. | Él me dijo que había terminado el proyecto el día anterior y que lo enviaría pronto. | **had finished / would send *(alt: 'd finished / would send)*** | El pasado simple retrocede a Past Perfect, y 'will' retrocede a 'would' en estilo indirecto — junto con el cambio de 'the day before' en vez de 'yesterday'. |
-| `grm_b1_reported_003` | **undefined** | The manager explained that the deadline ___ (change) because the client ___ (request) extra revisions, and she asked us whether we ___ (can) finish by Friday instead. | El gerente explicó que la fecha límite había cambiado porque el cliente había pedido revisiones adicionales, y preguntó si podríamos terminar el viernes en su lugar. | **had changed / had requested / could** | Combina Past Perfect en dos cláusulas causales y 'can' retrocedido a 'could' dentro de una pregunta indirecta ('asked us whether') — estructura avanzada de discurso reportado. |
-| `grm_b1_used_to_001` | **undefined** | When I was a child, I ___ (used to) play outside every day. | Cuando era niño, solía jugar afuera todos los días. | **used to** | 'Used to' describe hábitos o estados que ya no son ciertos en el presente. |
-| `grm_b1_used_to_002` | **undefined** | Every summer, my grandfather ___ (would) tell us stories by the fire, although he ___ (used to) get the details wrong sometimes. | Cada verano, mi abuelo nos contaba historias junto al fuego, aunque a veces se equivocaba en los detalles. | **would / used to** | 'Would' se usa para acciones repetidas (no estados) en el pasado; 'used to' puede usarse tanto para acciones como para estados — aquí se combinan correctamente. |
-| `grm_b1_used_to_003` | **undefined** | I ___ (be) used to waking up early now, but I remember how difficult it ___ (used to) be when I first started this job, since I ___ (never/be) a morning person before. | Ahora estoy acostumbrado a despertarme temprano, pero recuerdo lo difícil que solía ser cuando empecé este trabajo, ya que nunca antes había sido una persona madrugadora. | **am / used to / had never been** | Contrasta 'be used to' (estar acostumbrado, presente) con 'used to' (hábito pasado) y Past Perfect para la experiencia previa — una distinción que suele confundirse incluso en niveles avanzados. |
-| `grm_b1_third_cond_001` | **undefined** | If I ___ (study) harder, I ___ (pass) the exam. | Si hubiera estudiado más, habría aprobado el examen. | **had studied / would have passed *(alt: 'd studied / would've passed)*** | Tercer condicional: Past Perfect en la condición, 'would have' + participio en el resultado, para hablar de situaciones pasadas que no ocurrieron. |
-| `grm_b1_third_cond_002` | **undefined** | If they ___ (leave) earlier, they ___ (not/miss) the flight. | Si hubieran salido más temprano, no habrían perdido el vuelo. | **had left / wouldn't have missed *(alt: 'd left / would not have missed)*** | El resultado negativo en tercer condicional usa 'wouldn't have' + participio. |
-| `grm_b1_third_cond_003` | **undefined** | If the manager ___ (know) about the problem sooner, and if the team ___ (communicate) more clearly, the project ___ (not/fail) so badly. | Si el gerente hubiera sabido del problema antes, y si el equipo se hubiera comunicado con más claridad, el proyecto no habría fracasado tan gravemente. | **had known / had communicated / wouldn't have failed *(alt: 'd known / 'd communicated / would not have failed)*** | Dos condiciones hipotéticas pasadas coordinadas llevando a un único resultado no realizado — estructura de análisis retrospectivo típica en informes o debates. |
-| `grm_b1_gerund_inf_001` | **undefined** | She enjoys ___ (read) before bed. | A ella le gusta leer antes de dormir. | **reading** | 'Enjoy' siempre va seguido de gerundio (-ing), nunca de infinitivo. |
-| `grm_b1_gerund_inf_002` | **undefined** | I stopped ___ (smoke) two years ago, but yesterday I stopped ___ (buy) some milk on my way home. | Dejé de fumar hace dos años, pero ayer me detuve para comprar leche de camino a casa. | **smoking / to buy** | 'Stop + gerundio' significa dejar un hábito; 'stop + infinitivo' significa detenerse con el propósito de hacer algo — mismo verbo, significado opuesto según la forma. |
-| `grm_b1_gerund_inf_003` | **undefined** | I regret ___ (not/study) harder in school, and I remember ___ (tell) myself back then that it didn't matter, but I'd forgotten ___ (mention) that to my own children until it was too late. | Me arrepiento de no haber estudiado más en la escuela, y recuerdo haberme dicho en aquel entonces que no importaba, pero había olvidado mencionárselo a mis propios hijos hasta que fue demasiado tarde. | **not studying / telling / to mention** | Tres verbos con comportamiento distinto: 'regret + gerundio' (lamentar algo pasado), 'remember + gerundio' (recordar un evento pasado), 'forget + infinitivo' (olvidar hacer algo pendiente). |
-| `grm_b1_quantifiers_001` | **undefined** | There isn't ___ milk left in the fridge. | No queda mucha leche en el refrigerador. | **much** | 'Much' se usa con sustantivos incontables en oraciones negativas; 'many' se usa con contables. |
-| `grm_b1_quantifiers_002` | **undefined** | We only have ___ (little) time left, but fortunately ___ (few) people signed up, so it should be manageable. | Solo nos queda poco tiempo, pero afortunadamente pocas personas se inscribieron, así que debería ser manejable. | **a little / a few** | 'A little' (incontable) y 'a few' (contable) tienen connotación positiva ('suficiente'), a diferencia de 'little'/'few' sin artículo, que suenan negativos ('casi nada'). |
-| `grm_b1_quantifiers_003` | **undefined** | Although there was ___ (little) evidence to support the theory, ___ (a few) researchers continued the project, believing that ___ (some) of the missing data would eventually confirm their hypothesis. | Aunque había poca evidencia para respaldar la teoría, unos pocos investigadores continuaron el proyecto, creyendo que algunos de los datos faltantes finalmente confirmarían su hipótesis. | **little / a few / some** | Contrasta 'little' sin artículo (negativo: casi ninguna evidencia) con 'a few' (positivo: un grupo suficiente de investigadores) y 'some' (cantidad indefinida positiva) en una misma oración argumentativa. |
-| `grm_b1_pres_perf_cont_001` | **undefined** | I ___ (wait) for the bus for twenty minutes. | He estado esperando el autobús durante veinte minutos. | **have been waiting *(alt: 've been waiting)*** | Present Perfect Continuous enfatiza la duración de una acción que comenzó en el pasado y continúa (o acaba de terminar). |
-| `grm_b1_pres_perf_cont_002` | **undefined** | You look exhausted — ___ (you/run)? | Te ves agotado, ¿has estado corriendo? | **have you been running** | Pregunta en Present Perfect Continuous usada para explicar evidencia visible de una actividad reciente. |
-| `grm_b1_pres_perf_cont_003` | **undefined** | She ___ (work) on this report all week, but she still ___ (not/finish) it, even though she ___ (try) her best. | Ella ha estado trabajando en este informe toda la semana, pero todavía no lo ha terminado, aunque lo ha intentado con todas sus fuerzas. | **has been working / hasn't finished / has tried *(alt: has been working / has not finished / has tried)*** | Combina Present Perfect Continuous (proceso en curso) con Present Perfect simple (resultado no logrado) en la misma oración — distinción clave de nivel B1 alto. |
-| `grm_b1_wish_001` | **undefined** | I wish I ___ (have) more money. | Ojalá tuviera más dinero. | **had** | 'Wish' + pasado simple expresa un deseo sobre una situación presente que no es cierta. |
-| `grm_b1_wish_002` | **undefined** | If only I ___ (not/say) that to her yesterday. | Ojalá no le hubiera dicho eso ayer. | **hadn't said *(alt: had not said)*** | 'If only' + Past Perfect expresa arrepentimiento sobre algo que ya sucedió en el pasado. |
-| `grm_b1_wish_003` | **undefined** | I wish I ___ (can/speak) three languages like my sister, and if only I ___ (start) learning earlier instead of waiting until now. | Ojalá pudiera hablar tres idiomas como mi hermana, y ojalá hubiera empezado a aprender antes en vez de esperar hasta ahora. | **could speak / had started** | Combina 'wish + could' (deseo sobre habilidad presente) con 'if only + Past Perfect' (arrepentimiento sobre el pasado) en la misma oración. |
-| `grm_b1_qtags_001` | **undefined** | You're coming to the party, ___? | Vienes a la fiesta, ¿verdad? | **aren't you** | Con una afirmación, la question tag va en negativo: 'you're' (afirmativo) → 'aren't you' (negativo). |
-| `grm_b1_qtags_002` | **undefined** | She hasn't called yet, ___? | Ella no ha llamado todavía, ¿verdad? | **has she** | Con una afirmación negativa, la question tag va en positivo: 'hasn't called' (negativo) → 'has she' (positivo). |
-| `grm_b1_qtags_003` | **undefined** | Let's take a break, ___? Nobody has finished the report yet, ___? And there's nothing more we can do today, ___? | Tomemos un descanso, ¿de acuerdo? Nadie ha terminado el informe todavía, ¿verdad? Y no hay nada más que podamos hacer hoy, ¿verdad? | **shall we / have they / is there** | Tres casos especiales: 'Let's' siempre usa 'shall we'; 'nobody' (negativo implícito) toma tag positiva 'have they'; 'there's nothing' (negativo implícito) toma tag positiva 'is there'. |
+| `grm_b1_pres_perfect_001` | **Present Perfect vs. Past Simple** | I ___ (visit) London twice in my life. | He visitado Londres dos veces en mi vida. | **have visited *(alt: 've visited)*** | Usamos Present Perfect para experiencias de vida sin un momento específico en el tiempo. |
+| `grm_b1_pres_perfect_002` | **Present Perfect vs. Past Simple** | She ___ (already/finish) the report before her boss ___ (ask) for it yesterday. | Ella ya había terminado el informe antes de que su jefe lo pidiera ayer. | **had already finished / asked *(alt: 'd already finished / asked)*** | El primer hueco requiere Past Perfect (acción anterior a otra acción pasada); el segundo, Past Simple para la acción pasada de referencia. |
+| `grm_b1_pres_perfect_003` | **Present Perfect vs. Past Simple** | By the time she ___ (call) me, I ___ (already/leave) the office, so I ___ (not/hear) the news until the next morning. | Para cuando ella me llamó, yo ya había salido de la oficina, así que no escuché la noticia hasta la mañana siguiente. | **called / had already left / didn't hear *(alt: called / 'd already left / did not hear)*** | Combina tres tiempos: Past Simple para la llamada, Past Perfect para la acción anterior, y Past Simple negativo para la consecuencia posterior. |
+| `grm_b1_cond1_001` | **First Conditional** | If it ___ (rain) tomorrow, we ___ (stay) home. | Si llueve mañana, nos quedaremos en casa. | **rains / will stay *(alt: rains / 'll stay)*** | Primer condicional: presente simple en la condición, 'will' + infinitivo en el resultado, para situaciones futuras reales o probables. |
+| `grm_b1_cond1_002` | **First Conditional** | Unless you ___ (submit) the form by Friday, your application ___ (not/be) considered. | A menos que envíes el formulario para el viernes, tu solicitud no será considerada. | **submit / won't be *(alt: submit / will not be)*** | 'Unless' funciona como 'if not' — la condición sigue en presente simple aunque el significado sea negativo. |
+| `grm_b1_cond1_003` | **First Conditional** | If the company ___ (not/reduce) costs soon, and provided that sales ___ (not/improve) next quarter, they ___ (have to) lay off staff. | Si la empresa no reduce costos pronto, y siempre que las ventas no mejoren el próximo trimestre, tendrán que despedir personal. | **doesn't reduce / don't improve / will have to *(alt: does not reduce / do not improve / 'll have to)*** | Dos condiciones encadenadas ('if... and provided that...') seguidas de un resultado con 'will have to', mostrando que el primer condicional puede combinar varias cláusulas condicionales. |
+| `grm_b1_cond2_001` | **Second Conditional** | If I ___ (have) more free time, I ___ (travel) more. | Si tuviera más tiempo libre, viajaría más. | **had / would travel *(alt: had / 'd travel)*** | Segundo condicional: pasado simple en la condición hipotética, 'would' + infinitivo en el resultado imaginario. |
+| `grm_b1_cond2_002` | **Second Conditional** | If she ___ (be) in your position, she ___ (not/hesitate) to accept the offer. | Si ella estuviera en tu posición, no dudaría en aceptar la oferta. | **were / wouldn't hesitate *(alt: was / wouldn't hesitate, were / would not hesitate)*** | En registro formal, 'were' se usa con todos los sujetos en segundo condicional (aunque 'was' también es aceptado en habla informal). |
+| `grm_b1_cond2_003` | **Second Conditional** | If governments ___ (invest) more in renewable energy, and if people ___ (be) more willing to change their habits, climate change ___ (not/be) such an urgent threat. | Si los gobiernos invirtieran más en energía renovable, y si la gente estuviera más dispuesta a cambiar sus hábitos, el cambio climático no sería una amenaza tan urgente. | **invested / were / wouldn't be *(alt: invested / were / would not be)*** | Dos condiciones hipotéticas coordinadas con 'and if' seguidas de un único resultado — estructura típica de argumentación en B1-B2. |
+| `grm_b1_passive_001` | **Passive Voice** | This book ___ (write) by a famous author. | Este libro fue escrito por un autor famoso. | **was written** | Voz pasiva en pasado simple: 'was/were' + participio pasado, útil cuando el interés está en la acción, no en quién la realizó. |
+| `grm_b1_passive_002` | **Passive Voice** | New safety regulations ___ (introduce) next year to reduce workplace accidents. | Nuevas regulaciones de seguridad serán introducidas el próximo año para reducir accidentes laborales. | **will be introduced *(alt: 'll be introduced)*** | Voz pasiva en futuro con 'will': 'will be' + participio pasado. |
+| `grm_b1_passive_003` | **Passive Voice** | It ___ (believe) that the ancient bridge ___ (build) over two thousand years ago, although it ___ (not/officially/confirm) until recent excavations. | Se cree que el antiguo puente fue construido hace más de dos mil años, aunque no se confirmó oficialmente hasta excavaciones recientes. | **is believed / was built / wasn't officially confirmed *(alt: is believed / was built / was not officially confirmed)*** | Combina tres construcciones pasivas en distintos tiempos dentro de una sola oración compleja, típico de textos académicos o históricos en B1-B2. |
+| `grm_b1_comp_001` | **Comparatives and Superlatives** | This exercise is ___ (difficult) than the last one. | Este ejercicio es más difícil que el anterior. | **more difficult** | Adjetivos de dos o más sílabas terminados en patrones no simples forman el comparativo con 'more' + adjetivo + 'than'. |
+| `grm_b1_comp_002` | **Comparatives and Superlatives** | The more experience you gain, the ___ (confident) you become at your job. | Cuanta más experiencia ganas, más seguro te vuelves en tu trabajo. | **more confident** | Estructura 'the more..., the more...' para expresar relación proporcional entre dos ideas — un patrón que suele confundir a hablantes de español porque no existe una traducción literal directa. |
+| `grm_b1_comp_003` | **Comparatives and Superlatives** | Of all the candidates, she was by far ___ (qualified), even though she was not ___ (experienced) as some of the others. | De todos los candidatos, ella era con diferencia la más calificada, aunque no era tan experimentada como algunos de los otros. | **the most qualified / as experienced** | Combina un superlativo enfatizado con 'by far' y una comparación de igualdad ('as...as') en la misma oración — nivel de complejidad típico de B1 alto / entrada a B2. |
+| `grm_b1_modals_001` | **Modal Verbs of Obligation and Advice** | You ___ (should) apologize to her. | Deberías disculparte con ella. | **should** | 'Should' expresa un consejo o recomendación, no una obligación estricta. |
+| `grm_b1_modals_002` | **Modal Verbs of Obligation and Advice** | You ___ (not/have to) attend the meeting, but you ___ (must) send your report by email. | No tienes que asistir a la reunión, pero debes enviar tu informe por correo. | **don't have to / must *(alt: do not have to / must)*** | Contraste clave en B1: 'don't have to' significa que algo no es necesario (no prohibición), mientras 'must' expresa obligación firme. |
+| `grm_b1_modals_003` | **Modal Verbs of Obligation and Advice** | You ___ (should/have) told me earlier — I ___ (could/avoid) the mistake if I ___ (know) about the deadline change. | Deberías habérmelo dicho antes; podría haber evitado el error si hubiera sabido del cambio de fecha límite. | **should have / could have avoided / had known *(alt: should've / could've avoided / had known)*** | Combina 'should have + participio' (crítica sobre el pasado), 'could have + participio' (posibilidad no realizada) y tercer condicional implícito — estructura de entrada a B2. |
+| `grm_b1_relative_001` | **Relative Clauses** | The man ___ lives next door is a teacher. | El hombre que vive al lado es maestro. | **who *(alt: that)*** | 'Who' (o 'that') introduce una cláusula relativa que describe a una persona. |
+| `grm_b1_relative_002` | **Relative Clauses** | The company, ___ headquarters are in Madrid, announced record profits this year. | La empresa, cuya sede está en Madrid, anunció ganancias récord este año. | **whose** | 'Whose' indica posesión dentro de una cláusula relativa, y aquí introduce información adicional no esencial (nótese las comas). |
+| `grm_b1_relative_003` | **Relative Clauses** | The city ___ I grew up, ___ has changed enormously in the last decade, is no longer ___ it used to be. | La ciudad donde crecí, que ha cambiado enormemente en la última década, ya no es lo que solía ser. | **where / which / what** | Combina tres tipos de cláusula relativa en una sola oración: 'where' (lugar), 'which' (cláusula no esencial sobre la ciudad) y 'what' (lo que solía ser, sin antecedente explícito). |
+| `grm_b1_reported_001` | **Reported Speech** | She said that she ___ (be) tired. | Ella dijo que estaba cansada. | **was** | En estilo indirecto, el presente ('am/is') retrocede a pasado ('was') cuando el verbo introductorio está en pasado. |
+| `grm_b1_reported_002` | **Reported Speech** | He told me that he ___ (finish) the project the day before and that he ___ (send) it soon. | Él me dijo que había terminado el proyecto el día anterior y que lo enviaría pronto. | **had finished / would send *(alt: 'd finished / would send)*** | El pasado simple retrocede a Past Perfect, y 'will' retrocede a 'would' en estilo indirecto — junto con el cambio de 'the day before' en vez de 'yesterday'. |
+| `grm_b1_reported_003` | **Reported Speech** | The manager explained that the deadline ___ (change) because the client ___ (request) extra revisions, and she asked us whether we ___ (can) finish by Friday instead. | El gerente explicó que la fecha límite había cambiado porque el cliente había pedido revisiones adicionales, y preguntó si podríamos terminar el viernes en su lugar. | **had changed / had requested / could** | Combina Past Perfect en dos cláusulas causales y 'can' retrocedido a 'could' dentro de una pregunta indirecta ('asked us whether') — estructura avanzada de discurso reportado. |
+| `grm_b1_used_to_001` | **Used to / Would (Past Habits)** | When I was a child, I ___ (used to) play outside every day. | Cuando era niño, solía jugar afuera todos los días. | **used to** | 'Used to' describe hábitos o estados que ya no son ciertos en el presente. |
+| `grm_b1_used_to_002` | **Used to / Would (Past Habits)** | Every summer, my grandfather ___ (would) tell us stories by the fire, although he ___ (used to) get the details wrong sometimes. | Cada verano, mi abuelo nos contaba historias junto al fuego, aunque a veces se equivocaba en los detalles. | **would / used to** | 'Would' se usa para acciones repetidas (no estados) en el pasado; 'used to' puede usarse tanto para acciones como para estados — aquí se combinan correctamente. |
+| `grm_b1_used_to_003` | **Used to / Would (Past Habits)** | I ___ (be) used to waking up early now, but I remember how difficult it ___ (used to) be when I first started this job, since I ___ (never/be) a morning person before. | Ahora estoy acostumbrado a despertarme temprano, pero recuerdo lo difícil que solía ser cuando empecé este trabajo, ya que nunca antes había sido una persona madrugadora. | **am / used to / had never been** | Contrasta 'be used to' (estar acostumbrado, presente) con 'used to' (hábito pasado) y Past Perfect para la experiencia previa — una distinción que suele confundirse incluso en niveles avanzados. |
+| `grm_b1_third_cond_001` | **Third Conditional** | If I ___ (study) harder, I ___ (pass) the exam. | Si hubiera estudiado más, habría aprobado el examen. | **had studied / would have passed *(alt: 'd studied / would've passed)*** | Tercer condicional: Past Perfect en la condición, 'would have' + participio en el resultado, para hablar de situaciones pasadas que no ocurrieron. |
+| `grm_b1_third_cond_002` | **Third Conditional** | If they ___ (leave) earlier, they ___ (not/miss) the flight. | Si hubieran salido más temprano, no habrían perdido el vuelo. | **had left / wouldn't have missed *(alt: 'd left / would not have missed)*** | El resultado negativo en tercer condicional usa 'wouldn't have' + participio. |
+| `grm_b1_third_cond_003` | **Third Conditional** | If the manager ___ (know) about the problem sooner, and if the team ___ (communicate) more clearly, the project ___ (not/fail) so badly. | Si el gerente hubiera sabido del problema antes, y si el equipo se hubiera comunicado con más claridad, el proyecto no habría fracasado tan gravemente. | **had known / had communicated / wouldn't have failed *(alt: 'd known / 'd communicated / would not have failed)*** | Dos condiciones hipotéticas pasadas coordinadas llevando a un único resultado no realizado — estructura de análisis retrospectivo típica en informes o debates. |
+| `grm_b1_gerund_inf_001` | **Gerunds vs. Infinitives** | She enjoys ___ (read) before bed. | A ella le gusta leer antes de dormir. | **reading** | 'Enjoy' siempre va seguido de gerundio (-ing), nunca de infinitivo. |
+| `grm_b1_gerund_inf_002` | **Gerunds vs. Infinitives** | I stopped ___ (smoke) two years ago, but yesterday I stopped ___ (buy) some milk on my way home. | Dejé de fumar hace dos años, pero ayer me detuve para comprar leche de camino a casa. | **smoking / to buy** | 'Stop + gerundio' significa dejar un hábito; 'stop + infinitivo' significa detenerse con el propósito de hacer algo — mismo verbo, significado opuesto según la forma. |
+| `grm_b1_gerund_inf_003` | **Gerunds vs. Infinitives** | I regret ___ (not/study) harder in school, and I remember ___ (tell) myself back then that it didn't matter, but I'd forgotten ___ (mention) that to my own children until it was too late. | Me arrepiento de no haber estudiado más en la escuela, y recuerdo haberme dicho en aquel entonces que no importaba, pero había olvidado mencionárselo a mis propios hijos hasta que fue demasiado tarde. | **not studying / telling / to mention** | Tres verbos con comportamiento distinto: 'regret + gerundio' (lamentar algo pasado), 'remember + gerundio' (recordar un evento pasado), 'forget + infinitivo' (olvidar hacer algo pendiente). |
+| `grm_b1_quantifiers_001` | **Quantifiers (some/any/much/many/a few/a little)** | There isn't ___ milk left in the fridge. | No queda mucha leche en el refrigerador. | **much** | 'Much' se usa con sustantivos incontables en oraciones negativas; 'many' se usa con contables. |
+| `grm_b1_quantifiers_002` | **Quantifiers (some/any/much/many/a few/a little)** | We only have ___ (little) time left, but fortunately ___ (few) people signed up, so it should be manageable. | Solo nos queda poco tiempo, pero afortunadamente pocas personas se inscribieron, así que debería ser manejable. | **a little / a few** | 'A little' (incontable) y 'a few' (contable) tienen connotación positiva ('suficiente'), a diferencia de 'little'/'few' sin artículo, que suenan negativos ('casi nada'). |
+| `grm_b1_quantifiers_003` | **Quantifiers (some/any/much/many/a few/a little)** | Although there was ___ (little) evidence to support the theory, ___ (a few) researchers continued the project, believing that ___ (some) of the missing data would eventually confirm their hypothesis. | Aunque había poca evidencia para respaldar la teoría, unos pocos investigadores continuaron el proyecto, creyendo que algunos de los datos faltantes finalmente confirmarían su hipótesis. | **little / a few / some** | Contrasta 'little' sin artículo (negativo: casi ninguna evidencia) con 'a few' (positivo: un grupo suficiente de investigadores) y 'some' (cantidad indefinida positiva) en una misma oración argumentativa. |
+| `grm_b1_pres_perf_cont_001` | **Present Perfect Continuous** | I ___ (wait) for the bus for twenty minutes. | He estado esperando el autobús durante veinte minutos. | **have been waiting *(alt: 've been waiting)*** | Present Perfect Continuous enfatiza la duración de una acción que comenzó en el pasado y continúa (o acaba de terminar). |
+| `grm_b1_pres_perf_cont_002` | **Present Perfect Continuous** | You look exhausted — ___ (you/run)? | Te ves agotado, ¿has estado corriendo? | **have you been running** | Pregunta en Present Perfect Continuous usada para explicar evidencia visible de una actividad reciente. |
+| `grm_b1_pres_perf_cont_003` | **Present Perfect Continuous** | She ___ (work) on this report all week, but she still ___ (not/finish) it, even though she ___ (try) her best. | Ella ha estado trabajando en este informe toda la semana, pero todavía no lo ha terminado, aunque lo ha intentado con todas sus fuerzas. | **has been working / hasn't finished / has tried *(alt: has been working / has not finished / has tried)*** | Combina Present Perfect Continuous (proceso en curso) con Present Perfect simple (resultado no logrado) en la misma oración — distinción clave de nivel B1 alto. |
+| `grm_b1_wish_001` | **Wish / If Only** | I wish I ___ (have) more money. | Ojalá tuviera más dinero. | **had** | 'Wish' + pasado simple expresa un deseo sobre una situación presente que no es cierta. |
+| `grm_b1_wish_002` | **Wish / If Only** | If only I ___ (not/say) that to her yesterday. | Ojalá no le hubiera dicho eso ayer. | **hadn't said *(alt: had not said)*** | 'If only' + Past Perfect expresa arrepentimiento sobre algo que ya sucedió en el pasado. |
+| `grm_b1_wish_003` | **Wish / If Only** | I wish I ___ (can/speak) three languages like my sister, and if only I ___ (start) learning earlier instead of waiting until now. | Ojalá pudiera hablar tres idiomas como mi hermana, y ojalá hubiera empezado a aprender antes en vez de esperar hasta ahora. | **could speak / had started** | Combina 'wish + could' (deseo sobre habilidad presente) con 'if only + Past Perfect' (arrepentimiento sobre el pasado) en la misma oración. |
+| `grm_b1_qtags_001` | **Question Tags** | You're coming to the party, ___? | Vienes a la fiesta, ¿verdad? | **aren't you** | Con una afirmación, la question tag va en negativo: 'you're' (afirmativo) → 'aren't you' (negativo). |
+| `grm_b1_qtags_002` | **Question Tags** | She hasn't called yet, ___? | Ella no ha llamado todavía, ¿verdad? | **has she** | Con una afirmación negativa, la question tag va en positivo: 'hasn't called' (negativo) → 'has she' (positivo). |
+| `grm_b1_qtags_003` | **Question Tags** | Let's take a break, ___? Nobody has finished the report yet, ___? And there's nothing more we can do today, ___? | Tomemos un descanso, ¿de acuerdo? Nadie ha terminado el informe todavía, ¿verdad? Y no hay nada más que podamos hacer hoy, ¿verdad? | **shall we / have they / is there** | Tres casos especiales: 'Let's' siempre usa 'shall we'; 'nobody' (negativo implícito) toma tag positiva 'have they'; 'there's nothing' (negativo implícito) toma tag positiva 'is there'. |
 
 ---
 
@@ -3380,8 +3386,10 @@ Total de palabras en esta semana: **12**
 
 ### 📖 Lecturas de Comprensión · Nivel B2
 
-#### The Ethical Dilemma of Advanced Artificial Intelligence (`rdg_b2_001`)
-- **Nivel:** B2 • **Semana Asignada:** Semana 5 • **Dificultad:** 4/5
+Textos graduados que reutilizan exclusivamente el léxico consolidado hasta su semana lectiva, acompañados de preguntas pedagógicas de opción múltiple.
+
+#### Lectura Semana 5: The Ethical Dilemma of Advanced Artificial Intelligence (`rdg_b2_001`)
+- **Nivel:** B2 | **Semana lectiva:** 5 | **Dificultad interna:** 4/5
 - **Vocabulario Enlazado (10 términos):** `voc_b2_ambiguity_011`, `voc_b2_paradox_012`, `voc_b2_implication_003`, `voc_b2_scrutinise_075`, `voc_b2_ethical_077`, `voc_b2_unprecedented_076`, `voc_b2_abstract_073`, `voc_b2_inherent_074`, `voc_b1_figure-out_014`, `voc_b2_automation_044`
 
 **Texto en Inglés:**
@@ -3403,8 +3411,8 @@ Total de palabras en esta semana: **12**
    - ▫️ Lowering the cost of computer hardware for schools
    *Explicación:* The passage concludes that rigorous transparency and multidisciplinary oversight are necessary to prevent tech transformation from exacerbating inequalities.
 
-#### Strategic Leadership in International Mergers (`rdg_b2_002`)
-- **Nivel:** B2 • **Semana Asignada:** Semana 5 • **Dificultad:** 4/5
+#### Lectura Semana 5: Strategic Leadership in International Mergers (`rdg_b2_002`)
+- **Nivel:** B2 | **Semana lectiva:** 5 | **Dificultad interna:** 4/5
 - **Vocabulario Enlazado (10 términos):** `voc_b2_leadership_078`, `voc_b2_strategy_079`, `voc_b2_merger_080`, `voc_b2_acquisition_081`, `voc_b2_accountability_082`, `voc_b2_transparency_083`, `voc_b2_compliance_084`, `voc_a2_stakeholder_163`, `voc_b1_shareholder_186`, `voc_b1_look-forward-to_002`
 
 **Texto en Inglés:**

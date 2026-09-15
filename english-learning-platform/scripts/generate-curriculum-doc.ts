@@ -4,20 +4,24 @@ import {
   contentRegistry,
   readingPassagesRegistry,
 } from '../packages/content/src/index'
-import type { CEFRLevel } from '../packages/types/src/index'
+import type {
+  CEFRLevel,
+  GrammarExercise,
+  WritingPrompt,
+} from '../packages/types/src/index'
 
 const archiveDir = path.resolve(__dirname, '../../docs/archive/primer-lote-2026-09')
 const grammarB1Path = path.join(archiveDir, 'grammar_b1.json')
 const writingB2Path = path.join(archiveDir, 'writing_prompts_b2.json')
 
-let grammarB1: any[] = []
+let grammarB1: GrammarExercise[] = []
 if (fs.existsSync(grammarB1Path)) {
-  grammarB1 = JSON.parse(fs.readFileSync(grammarB1Path, 'utf-8'))
+  grammarB1 = JSON.parse(fs.readFileSync(grammarB1Path, 'utf-8')) as GrammarExercise[]
 }
 
-let writingB2: any[] = []
+let writingB2: WritingPrompt[] = []
 if (fs.existsSync(writingB2Path)) {
-  writingB2 = JSON.parse(fs.readFileSync(writingB2Path, 'utf-8'))
+  writingB2 = JSON.parse(fs.readFileSync(writingB2Path, 'utf-8')) as WritingPrompt[]
 }
 
 const levels: CEFRLevel[] = ['A1', 'A2', 'B1', 'B2']
@@ -27,7 +31,10 @@ const totalVocab = levels.reduce(
   0
 )
 
-const totalReadings = levels.reduce((sum, lvl) => sum + (readingPassagesRegistry[lvl]?.length || 0), 0)
+const totalReadings = levels.reduce(
+  (sum, lvl) => sum + readingPassagesRegistry[lvl].length,
+  0
+)
 
 const lines: string[] = []
 
@@ -44,10 +51,10 @@ lines.push('| Métrica | Valor | Descripción pedagógica |')
 lines.push('|---|---|---|')
 lines.push(`| **Marco Pedagógico** | MCER / CEFR | Niveles A1 (Acceso), A2 (Plataforma), B1 (Umbral), B2 (Avanzado) |`)
 lines.push(`| **Vocabulario Total** | **${totalVocab.toLocaleString()} palabras** | Enriquecidas con IPA, categoría gramatical, traducción y ejemplo contextual |`)
-lines.push(`| - Nivel A1 | ${contentRegistry['A1'].blocks.reduce((s, b) => s + b.vocabulary.length, 0)} palabras | 19 semanas temáticas (comunicación básica y supervivencia cotidiana) |`)
-lines.push(`| - Nivel A2 | ${contentRegistry['A2'].blocks.reduce((s, b) => s + b.vocabulary.length, 0)} palabras | 15 semanas temáticas (descripciones, rutinas, pasado, viajes y trabajo) |`)
-lines.push(`| - Nivel B1 | ${contentRegistry['B1'].blocks.reduce((s, b) => s + b.vocabulary.length, 0)} palabras | 9 semanas temáticas (opiniones, cultura, relaciones complejas y vida laboral) |`)
-lines.push(`| - Nivel B2 | ${contentRegistry['B2'].blocks.reduce((s, b) => s + b.vocabulary.length, 0)} palabras | 5 semanas temáticas (negocios, debate formal, academia y liderazgo) |`)
+lines.push(`| - Nivel A1 | ${contentRegistry.A1.blocks.reduce((s, b) => s + b.vocabulary.length, 0)} palabras | 19 semanas temáticas (comunicación básica y supervivencia cotidiana) |`)
+lines.push(`| - Nivel A2 | ${contentRegistry.A2.blocks.reduce((s, b) => s + b.vocabulary.length, 0)} palabras | 15 semanas temáticas (descripciones, rutinas, pasado, viajes y trabajo) |`)
+lines.push(`| - Nivel B1 | ${contentRegistry.B1.blocks.reduce((s, b) => s + b.vocabulary.length, 0)} palabras | 9 semanas temáticas (opiniones, cultura, relaciones complejas y vida laboral) |`)
+lines.push(`| - Nivel B2 | ${contentRegistry.B2.blocks.reduce((s, b) => s + b.vocabulary.length, 0)} palabras | 5 semanas temáticas (negocios, debate formal, academia y liderazgo) |`)
 lines.push(`| **Lecturas Contextuales** | **${totalReadings} lecturas** | Textos graduados con preguntas de opción múltiple y vocabulario enlazado |`)
 lines.push(`| **Ejercicios de Gramática B1** | **${grammarB1.length} ejercicios** | 15 temas de gramática aplicada con huecos (*Fill in the blanks*) y explicación |`)
 lines.push(`| **Prompts de Escritura B2** | **${writingB2.length} tareas** | Tareas de producción libre con rúbrica de evaluación docente (120-200 palabras) |`)
@@ -107,7 +114,7 @@ lines.push('')
 // Detailed level loops
 for (const lvl of levels) {
   const levelData = contentRegistry[lvl]
-  const passages = readingPassagesRegistry[lvl] || []
+  const passages = readingPassagesRegistry[lvl]
 
   lines.push(`## 📘 Nivel ${lvl} (${lvl === 'A1' ? 'Principiante · Breakthrough' : lvl === 'A2' ? 'Elemental · Waystage' : lvl === 'B1' ? 'Intermedio · Threshold' : 'Intermedio Alto · Vantage'})`)
   lines.push('')
@@ -125,17 +132,17 @@ for (const lvl of levels) {
       lines.push(`*${block.description}*`)
       lines.push('')
     }
-    lines.push(`Total de palabras en esta semana: **${block.vocabulary.length}**`)
+    lines.push(`Total de palabras en esta semana: **${String(block.vocabulary.length)}**`)
     lines.push('')
     lines.push('| ID | Palabra | Categoría | Fonética (IPA) | Traducción | Ejemplo en Inglés | Traducción del Ejemplo |')
     lines.push('|---|---|---|---|---|---|---|')
 
     for (const v of block.vocabulary) {
-      const cleanExample = (v.example || '').replace(/\|/g, '/')
-      const cleanTrans = (v.exampleTranslation || '').replace(/\|/g, '/')
-      const cleanEs = (v.translation || '').replace(/\|/g, '/')
+      const cleanExample = (v.example ?? '').replace(/\|/g, '/')
+      const cleanTrans = (v.exampleTranslation ?? '').replace(/\|/g, '/')
+      const cleanEs = v.translation.replace(/\|/g, '/')
       const cleanPron = v.pronunciation ? `\`${v.pronunciation}\`` : '—'
-      lines.push(`| \`${v.id}\` | **${v.word}** | *${v.partOfSpeech}* | ${cleanPron} | ${cleanEs || '—'} | ${cleanExample || '—'} | ${cleanTrans || '—'} |`)
+      lines.push(`| \`${v.id}\` | **${v.word}** | *${v.partOfSpeech}* | ${cleanPron} | ${cleanEs.length > 0 ? cleanEs : '—'} | ${cleanExample.length > 0 ? cleanExample : '—'} | ${cleanTrans.length > 0 ? cleanTrans : '—'} |`)
     }
     lines.push('')
   }
@@ -144,10 +151,13 @@ for (const lvl of levels) {
   if (passages.length > 0) {
     lines.push(`### 📖 Lecturas de Comprensión · Nivel ${lvl}`)
     lines.push('')
+    lines.push('Textos graduados que reutilizan exclusivamente el léxico consolidado hasta su semana lectiva, acompañados de preguntas pedagógicas de opción múltiple.')
+    lines.push('')
+
     for (const p of passages) {
-      lines.push(`#### ${p.title} (\`${p.id}\`)`)
-      lines.push(`- **Nivel:** ${p.level} • **Semana Asignada:** Semana ${p.week} • **Dificultad:** ${p.difficulty}/5`)
-      if (p.vocabularyIds && p.vocabularyIds.length > 0) {
+      lines.push(`#### Lectura Semana ${p.week}: ${p.title} (\`${p.id}\`)`)
+      lines.push(`- **Nivel:** ${p.level} | **Semana lectiva:** ${p.week} | **Dificultad interna:** ${p.difficulty}/5`)
+      if (p.vocabularyIds.length > 0) {
         lines.push(`- **Vocabulario Enlazado (${p.vocabularyIds.length} términos):** ${p.vocabularyIds.map((id) => `\`${id}\``).join(', ')}`)
       }
       lines.push('')
@@ -164,7 +174,7 @@ for (const lvl of levels) {
         p.comprehensionQuestions.forEach((q, qIdx) => {
           lines.push(`${qIdx + 1}. **${q.question}**`)
           q.options.forEach((opt, oIdx) => {
-            const isCorrect = oIdx === (q as any).correctOptionIndex || oIdx === (q as any).correctAnswer
+            const isCorrect = oIdx === q.correctOptionIndex
             lines.push(`   - ${isCorrect ? '✅ ' : '▫️ '}${opt}`)
           })
           if (q.explanation) {
@@ -185,10 +195,10 @@ for (const lvl of levels) {
     lines.push('| ID | Tema Gramatical | Oración / Prompt | Traducción / Pista | Respuesta Correcta | Explicación Pedagógica |')
     lines.push('|---|---|---|---|---|---|')
     for (const g of grammarB1) {
-      const cleanPrompt = (g.prompt || '').replace(/\|/g, '/')
-      const cleanTrans = (g.promptTranslation || g.hint || '').replace(/\|/g, '/')
-      const altStr = g.acceptedAlternatives && g.acceptedAlternatives.length > 0 ? ` *(alt: ${g.acceptedAlternatives.join(', ')})*` : ''
-      lines.push(`| \`${g.id}\` | **${g.topic}** | ${cleanPrompt} | ${cleanTrans} | **${g.correctAnswer}${altStr}** | ${g.explanation} |`)
+      const cleanPrompt = g.prompt.replace(/\|/g, '/')
+      const cleanTrans = g.promptTranslation.replace(/\|/g, '/')
+      const altStr = g.acceptedAlternatives.length > 0 ? ` *(alt: ${g.acceptedAlternatives.join(', ')})*` : ''
+      lines.push(`| \`${g.id}\` | **${g.grammarTopic}** | ${cleanPrompt} | ${cleanTrans} | **${g.correctAnswer}${altStr}** | ${g.explanation} |`)
     }
     lines.push('')
   }
@@ -211,9 +221,9 @@ for (const lvl of levels) {
         lines.push(`*Traducción del tema:* ${w.topicTranslation}`)
         lines.push('')
       }
-      if (w.rubricForTutor && w.rubricForTutor.length > 0) {
+      if (w.rubricForTutor.length > 0) {
         lines.push(`**Criterios de Evaluación Docente / Rúbrica:**`)
-        w.rubricForTutor.forEach((r: string) => {
+        w.rubricForTutor.forEach((r) => {
           lines.push(`- 📌 ${r}`)
         })
         lines.push('')
