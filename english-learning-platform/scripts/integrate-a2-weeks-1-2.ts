@@ -53,7 +53,7 @@ function normalizePos(cat: string): string {
   return 'noun'
 }
 
-function updateWeekFile(weekNum: number, rows: typeof tableRows, fileName: string) {
+function updateWeekFile(weekNum: number, rows: TableRow[], fileName: string): void {
   const filePath = path.join(contentDir, fileName)
   let code = fs.readFileSync(filePath, 'utf-8')
   let matchedCount = 0
@@ -65,7 +65,7 @@ function updateWeekFile(weekNum: number, rows: typeof tableRows, fileName: strin
       'm'
     )
     const match = code.match(itemRegex)
-    if (match?.[1] && match?.[2]) {
+    if (match?.[1] && match[2]) {
       matchedCount++
       let block = match[1]
       const statusField = match[2]
