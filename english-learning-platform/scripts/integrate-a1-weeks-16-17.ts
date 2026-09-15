@@ -9,24 +9,33 @@ if (!fs.existsSync(mdPath)) {
   process.exit(1)
 }
 
+interface TableRow {
+  word: string
+  category: string
+  ipa: string
+  example: string
+  exampleTranslation: string
+}
+
 const mdContent = fs.readFileSync(mdPath, 'utf-8')
-const tableRows = mdContent
+const tableRows: TableRow[] = mdContent
   .split('\n')
   .filter((line) => line.startsWith('|') && !line.includes('Palabra') && !line.includes('---'))
-  .map((line) => {
+  .map((line): TableRow => {
     const cols = line.split('|').map((c) => c.trim())
-    let word = cols[1]
+    let word = cols[1] ?? ''
     if (word === 'direction (rumbo)') {
       word = 'direction'
     }
     return {
       word,
-      category: cols[2],
-      ipa: cols[3],
-      example: cols[4],
-      exampleTranslation: cols[5],
+      category: cols[2] ?? '',
+      ipa: cols[3] ?? '',
+      example: cols[4] ?? '',
+      exampleTranslation: cols[5] ?? '',
     }
   })
+  .filter((r) => r.word.length > 0)
 
 console.log(`Found ${tableRows.length} total rows in markdown`)
 
