@@ -1315,226 +1315,226 @@ Total de palabras en esta semana: **105**
 
 | ID | Palabra | Categoría | Fonética (IPA) | Traducción | Ejemplo en Inglés | Traducción del Ejemplo |
 |---|---|---|---|---|---|---|
-| `voc_a1_laptop_001` | **laptop** | *noun* | — | laptop | — | — |
-| `voc_a1_tablet_001` | **tablet** | *noun* | — | tableta | — | — |
-| `voc_a1_smartphone_001` | **smartphone** | *noun* | — | teléfono inteligente | — | — |
-| `voc_a1_screen_001` | **screen** | *noun* | — | pantalla | — | — |
-| `voc_a1_keyboard_001` | **keyboard** | *noun* | — | teclado | — | — |
-| `voc_a1_mouse_002` | **mouse (device)** | *noun* | — | ratón (dispositivo) | — | — |
-| `voc_a1_password_001` | **password** | *noun* | — | contraseña | — | — |
-| `voc_a1_internet_001` | **internet** | *noun* | — | internet | — | — |
-| `voc_a1_website_001` | **website** | *noun* | — | sitio web | — | — |
-| `voc_a1_email_001` | **email** | *noun* | — | correo electrónico | — | — |
-| `voc_a1_message_001` | **message** | *noun* | — | mensaje | — | — |
-| `voc_a1_text-message_001` | **text message** | *noun* | — | mensaje de texto | — | — |
-| `voc_a1_app-application_001` | **app / application** | *noun* | — | aplicación | — | — |
-| `voc_a1_social-media_001` | **social media** | *noun* | — | redes sociales | — | — |
-| `voc_a1_photo-picture_001` | **photo / picture** | *noun* | — | foto | — | — |
-| `voc_a1_video_001` | **video** | *noun* | — | video | — | — |
-| `voc_a1_camera_001` | **camera** | *noun* | — | cámara | — | — |
-| `voc_a1_printer_001` | **printer** | *noun* | — | impresora | — | — |
-| `voc_a1_charger_001` | **charger** | *noun* | — | cargador | — | — |
-| `voc_a1_battery_001` | **battery** | *noun* | — | batería | — | — |
-| `voc_a1_wifi_001` | **wifi** | *noun* | — | wifi | — | — |
-| `voc_a1_download_001` | **download** | *verb* | — | descargar | — | — |
-| `voc_a1_upload_001` | **upload** | *verb* | — | subir (archivo) | — | — |
-| `voc_a1_click_001` | **click** | *verb* | — | hacer clic | — | — |
-| `voc_a1_type_001` | **type (keyboard)** | *verb* | — | escribir (teclado) | — | — |
-| `voc_a1_search_001` | **search** | *verb* | — | buscar | — | — |
-| `voc_a1_save_002` | **save (file)** | *verb* | — | guardar | — | — |
-| `voc_a1_delete_001` | **delete** | *verb* | — | borrar | — | — |
-| `voc_a1_share_002` | **share (online)** | *verb* | — | compartir | — | — |
-| `voc_a1_post_001` | **post (verb)** | *verb* | — | publicar | — | — |
-| `voc_a1_comment_001` | **comment** | *noun* | — | comentar/comentario | — | — |
-| `voc_a1_like_002` | **like (social media)** | *noun* | — | dar me gusta | — | — |
-| `voc_a1_follow_001` | **follow (online)** | *verb* | — | seguir | — | — |
-| `voc_a1_network_001` | **network** | *noun* | — | red | — | — |
-| `voc_a1_file_001` | **file** | *noun* | — | archivo | — | — |
-| `voc_a1_folder_001` | **folder** | *noun* | — | carpeta | — | — |
-| `voc_a1_document_001` | **document** | *noun* | — | documento | — | — |
-| `voc_a1_software_001` | **software** | *noun* | — | software | — | — |
-| `voc_a1_update_001` | **update** | *noun* | — | actualizar/actualización | — | — |
-| `voc_a1_install_001` | **install** | *verb* | — | instalar | — | — |
-| `voc_a1_soccer-football_001` | **soccer / football** | *noun* | — | fútbol | — | — |
-| `voc_a1_basketball_001` | **basketball** | *noun* | — | baloncesto | — | — |
-| `voc_a1_baseball_001` | **baseball** | *noun* | — | béisbol | — | — |
-| `voc_a1_tennis_001` | **tennis** | *noun* | — | tenis | — | — |
-| `voc_a1_volleyball_001` | **volleyball** | *noun* | — | voleibol | — | — |
-| `voc_a1_golf_001` | **golf** | *noun* | — | golf | — | — |
-| `voc_a1_swimming_001` | **swimming** | *noun* | — | natación | — | — |
-| `voc_a1_running_001` | **running** | *noun* | — | correr (actividad) | — | — |
-| `voc_a1_cycling_001` | **cycling** | *noun* | — | ciclismo | — | — |
-| `voc_a1_hiking_001` | **hiking** | *noun* | — | senderismo | — | — |
-| `voc_a1_dancing_001` | **dancing** | *noun* | — | baile | — | — |
-| `voc_a1_painting_001` | **painting (hobby)** | *noun* | — | pintura (afición) | — | — |
-| `voc_a1_drawing_001` | **drawing** | *noun* | — | dibujo | — | — |
-| `voc_a1_photography_001` | **photography** | *noun* | — | fotografía | — | — |
-| `voc_a1_gardening_001` | **gardening** | *noun* | — | jardinería | — | — |
-| `voc_a1_chess_001` | **chess** | *noun* | — | ajedrez | — | — |
-| `voc_a1_cards_001` | **cards (game)** | *noun* | — | cartas | — | — |
-| `voc_a1_video-games_001` | **video games** | *noun* | — | videojuegos | — | — |
-| `voc_a1_board-games_001` | **board games** | *noun* | — | juegos de mesa | — | — |
-| `voc_a1_fishing_001` | **fishing** | *noun* | — | pesca | — | — |
-| `voc_a1_camping_001` | **camping** | *verb* | — | acampar | — | — |
-| `voc_a1_yoga_001` | **yoga** | *noun* | — | yoga | — | — |
-| `voc_a1_team_001` | **team** | *noun* | — | equipo | — | — |
-| `voc_a1_player_001` | **player** | *noun* | — | jugador | — | — |
-| `voc_a1_coach_001` | **coach** | *noun* | — | entrenador | — | — |
-| `voc_a1_referee_001` | **referee** | *noun* | — | árbitro | — | — |
-| `voc_a1_match_001` | **match** | *noun* | — | partido | — | — |
-| `voc_a1_game_001` | **game** | *noun* | — | juego/partido | — | — |
-| `voc_a1_score_001` | **score** | *noun* | — | puntuación | — | — |
-| `voc_a1_win_001` | **win** | *verb* | — | ganar | — | — |
-| `voc_a1_tie_002` | **tie (game)** | *noun* | — | empate | — | — |
-| `voc_a1_championship_001` | **championship** | *noun* | — | campeonato | — | — |
-| `voc_a1_competition_001` | **competition** | *noun* | — | competencia | — | — |
-| `voc_a1_ball_001` | **ball** | *noun* | — | pelota | — | — |
-| `voc_a1_goal_001` | **goal** | *noun* | — | gol/meta | — | — |
-| `voc_a1_court_001` | **court (sports)** | *noun* | — | cancha | — | — |
-| `voc_a1_stadium_001` | **stadium** | *noun* | — | estadio | — | — |
-| `voc_a1_song_001` | **song** | *noun* | — | canción | — | — |
-| `voc_a1_instrument_001` | **instrument (music)** | *noun* | — | instrumento musical | — | — |
-| `voc_a1_guitar_001` | **guitar** | *noun* | — | guitarra | — | — |
-| `voc_a1_piano_001` | **piano** | *noun* | — | piano | — | — |
-| `voc_a1_drum_001` | **drum** | *noun* | — | tambor | — | — |
-| `voc_a1_violin_001` | **violin** | *noun* | — | violín | — | — |
-| `voc_a1_band_001` | **band (music)** | *noun* | — | banda | — | — |
-| `voc_a1_concert_001` | **concert** | *noun* | — | concierto | — | — |
-| `voc_a1_movie-film_001` | **movie / film** | *noun* | — | película | — | — |
-| `voc_a1_tv-show_001` | **TV show** | *noun* | — | programa de TV | — | — |
-| `voc_a1_series_001` | **series** | *noun* | — | serie | — | — |
-| `voc_a1_episode_001` | **episode** | *noun* | — | episodio | — | — |
-| `voc_a1_channel_001` | **channel** | *noun* | — | canal | — | — |
-| `voc_a1_program_001` | **program** | *noun* | — | programa | — | — |
-| `voc_a1_news_001` | **news** | *noun* | — | noticias | — | — |
-| `voc_a1_cartoon_001` | **cartoon** | *noun* | — | dibujos animados | — | — |
-| `voc_a1_comedy_001` | **comedy** | *noun* | — | comedia | — | — |
-| `voc_a1_drama_001` | **drama** | *noun* | — | drama | — | — |
-| `voc_a1_horror-movie_001` | **horror movie** | *noun* | — | película de terror | — | — |
-| `voc_a1_hobby_001` | **hobby** | *noun* | — | pasatiempo | — | — |
-| `voc_a1_interest_001` | **interest (hobby)** | *noun* | — | interés | — | — |
-| `voc_a1_free-time_001` | **free time** | *noun* | — | tiempo libre | — | — |
-| `voc_a1_activity_001` | **activity** | *noun* | — | actividad | — | — |
-| `voc_a1_club_001` | **club** | *noun* | — | club | — | — |
-| `voc_a1_member_001` | **member** | *noun* | — | miembro | — | — |
-| `voc_a1_event_001` | **event** | *noun* | — | evento | — | — |
-| `voc_a1_party_001` | **party** | *noun* | — | fiesta | — | — |
-| `voc_a1_festival_001` | **festival** | *noun* | — | festival | — | — |
+| `voc_a1_laptop_001` | **laptop** | *noun* | `/ˈlæpˌtɑp/` | laptop | I work on my laptop every day. | Trabajo en mi laptop todos los días. |
+| `voc_a1_tablet_001` | **tablet** | *noun* | `/ˈtæblət/` | tableta | My daughter watches videos on her tablet. | Mi hija ve videos en su tableta. |
+| `voc_a1_smartphone_001` | **smartphone** | *noun* | `/ˈsmɑrtˌfoʊn/` | teléfono inteligente | I lost my smartphone yesterday. | Perdí mi teléfono inteligente ayer. |
+| `voc_a1_screen_001` | **screen** | *noun* | `/skrin/` | pantalla | The screen is very bright. | La pantalla es muy brillante. |
+| `voc_a1_keyboard_001` | **keyboard** | *noun* | `/ˈkiˌbɔrd/` | teclado | My keyboard is not working. | Mi teclado no funciona. |
+| `voc_a1_mouse_002` | **mouse (device)** | *noun* | `/maʊs/` | ratón (dispositivo) | I need a new mouse for my computer. | Necesito un ratón nuevo para mi computadora. |
+| `voc_a1_password_001` | **password** | *noun* | `/ˈpæsˌwɜrd/` | contraseña | I forgot my password. | Olvidé mi contraseña. |
+| `voc_a1_internet_001` | **internet** | *noun* | `/ˈɪntərˌnɛt/` | internet | The internet is very slow today. | El internet está muy lento hoy. |
+| `voc_a1_website_001` | **website** | *noun* | `/ˈwɛbˌsaɪt/` | sitio web | I found this recipe on a website. | Encontré esta receta en un sitio web. |
+| `voc_a1_email_001` | **email** | *noun* | `/ˈiˌmeɪl/` | correo electrónico | I sent you an email this morning. | Te envié un correo electrónico esta mañana. |
+| `voc_a1_message_001` | **message** | *noun* | `/ˈmɛsɪdʒ/` | mensaje | She sent me a nice message. | Ella me envió un mensaje lindo. |
+| `voc_a1_text-message_001` | **text message** | *noun* | `/tɛkst ˈmɛsɪdʒ/` | mensaje de texto | I got your text message. | Recibí tu mensaje de texto. |
+| `voc_a1_app-application_001` | **app / application** | *noun* | `/æp/` | aplicación | I use this app to learn English. | Uso esta aplicación para aprender inglés. |
+| `voc_a1_social-media_001` | **social media** | *noun* | `/ˈsoʊʃəl ˈmidiə/` | redes sociales | She spends a lot of time on social media. | Ella pasa mucho tiempo en redes sociales. |
+| `voc_a1_photo-picture_001` | **photo / picture** | *noun* | `/ˈfoʊˌtoʊ/` | foto | Can you take a photo of us? | ¿Puedes tomarnos una foto? |
+| `voc_a1_video_001` | **video** | *noun* | `/ˈvɪdioʊ/` | video | We watched a funny video. | Vimos un video gracioso. |
+| `voc_a1_camera_001` | **camera** | *noun* | `/ˈkæmərə/` | cámara | I bought a new camera. | Compré una cámara nueva. |
+| `voc_a1_printer_001` | **printer** | *noun* | `/ˈprɪntər/` | impresora | The printer is out of paper. | La impresora se quedó sin papel. |
+| `voc_a1_charger_001` | **charger** | *noun* | `/ˈtʃɑrdʒər/` | cargador | Can I borrow your charger? | ¿Me prestas tu cargador? |
+| `voc_a1_battery_001` | **battery** | *noun* | `/ˈbætəri/` | batería | My phone battery is low. | La batería de mi teléfono está baja. |
+| `voc_a1_wifi_001` | **wifi** | *noun* | `/ˈwaɪˌfaɪ/` | wifi | What is the wifi password? | ¿Cuál es la contraseña del wifi? |
+| `voc_a1_download_001` | **download** | *verb* | `/ˈdaʊnˌloʊd/` | descargar | I downloaded a new app. | Descargué una nueva aplicación. |
+| `voc_a1_upload_001` | **upload** | *verb* | `/ˈʌpˌloʊd/` | subir (archivo) | She uploaded the photos online. | Ella subió las fotos en línea. |
+| `voc_a1_click_001` | **click** | *verb* | `/klɪk/` | hacer clic | Click here to continue. | Haz clic aquí para continuar. |
+| `voc_a1_type_001` | **type (keyboard)** | *verb* | `/taɪp/` | escribir (teclado) | She types very fast. | Ella escribe muy rápido (en el teclado). |
+| `voc_a1_search_001` | **search** | *verb* | `/sɜrtʃ/` | buscar | I will search for the answer online. | Buscaré la respuesta en línea. |
+| `voc_a1_save_002` | **save (file)** | *verb* | `/seɪv/` | guardar | Don't forget to save your work. | No olvides guardar tu trabajo. |
+| `voc_a1_delete_001` | **delete** | *verb* | `/dɪˈlit/` | borrar | I deleted the old photos. | Borré las fotos viejas. |
+| `voc_a1_share_002` | **share (online)** | *verb* | `/ʃɛr/` | compartir | She shared the article with me. | Ella compartió el artículo conmigo. |
+| `voc_a1_post_001` | **post (verb)** | *verb* | `/poʊst/` | publicar | He posted a photo of his trip. | Él publicó una foto de su viaje. |
+| `voc_a1_comment_001` | **comment** | *noun* | `/ˈkɑmɛnt/` | comentar/comentario | Please leave a comment. | Por favor deja un comentario. |
+| `voc_a1_like_002` | **like (social media)** | *noun* | `/laɪk/` | dar me gusta | I liked your new photo. | Le di "me gusta" a tu foto nueva. |
+| `voc_a1_follow_001` | **follow (online)** | *verb* | `/ˈfɑloʊ/` | seguir | I follow her on social media. | La sigo en redes sociales. |
+| `voc_a1_network_001` | **network** | *noun* | `/ˈnɛtˌwɜrk/` | red | Our home network is very fast. | Nuestra red de casa es muy rápida. |
+| `voc_a1_file_001` | **file** | *noun* | `/faɪl/` | archivo | I can't open this file. | No puedo abrir este archivo. |
+| `voc_a1_folder_001` | **folder** | *noun* | `/ˈfoʊldər/` | carpeta | Put the photos in this folder. | Pon las fotos en esta carpeta. |
+| `voc_a1_document_001` | **document** | *noun* | `/ˈdɑkjəmənt/` | documento | Please send me the document. | Por favor envíame el documento. |
+| `voc_a1_software_001` | **software** | *noun* | `/ˈsɔfˌwɛr/` | software | We need to update the software. | Necesitamos actualizar el software. |
+| `voc_a1_update_001` | **update** | *noun* | `/ˈʌpˌdeɪt/` | actualizar/actualización | There is a new update for the app. | Hay una nueva actualización para la aplicación. |
+| `voc_a1_install_001` | **install** | *verb* | `/ɪnˈstɔl/` | instalar | I installed a new program. | Instalé un programa nuevo. |
+| `voc_a1_soccer-football_001` | **soccer / football** | *noun* | `/ˈsɑkər/` | fútbol | The kids play soccer after school. | Los niños juegan fútbol después de la escuela. |
+| `voc_a1_basketball_001` | **basketball** | *noun* | `/ˈbæskɪtˌbɔl/` | baloncesto | He plays basketball every weekend. | Él juega baloncesto cada fin de semana. |
+| `voc_a1_baseball_001` | **baseball** | *noun* | `/ˈbeɪsˌbɔl/` | béisbol | We watched a baseball game. | Vimos un partido de béisbol. |
+| `voc_a1_tennis_001` | **tennis** | *noun* | `/ˈtɛnɪs/` | tenis | She plays tennis very well. | Ella juega tenis muy bien. |
+| `voc_a1_volleyball_001` | **volleyball** | *noun* | `/ˈvɑliˌbɔl/` | voleibol | We played volleyball on the beach. | Jugamos voleibol en la playa. |
+| `voc_a1_golf_001` | **golf** | *noun* | `/gɔlf/` | golf | My father plays golf on Sundays. | Mi padre juega golf los domingos. |
+| `voc_a1_swimming_001` | **swimming** | *noun* | `/ˈswɪmɪŋ/` | natación | Swimming is good exercise. | Nadar es buen ejercicio. |
+| `voc_a1_running_001` | **running** | *noun* | `/ˈrʌnɪŋ/` | correr (actividad) | Running helps me relax. | Correr me ayuda a relajarme. |
+| `voc_a1_cycling_001` | **cycling** | *noun* | `/ˈsaɪklɪŋ/` | ciclismo | We go cycling on weekends. | Salimos a andar en bicicleta los fines de semana. |
+| `voc_a1_hiking_001` | **hiking** | *noun* | `/ˈhaɪkɪŋ/` | senderismo | We went hiking in the mountains. | Fuimos de senderismo a las montañas. |
+| `voc_a1_dancing_001` | **dancing** | *noun* | `/ˈdænsɪŋ/` | baile | Dancing makes me happy. | Bailar me hace feliz. |
+| `voc_a1_painting_001` | **painting (hobby)** | *noun* | `/ˈpeɪntɪŋ/` | pintura (afición) | She loves painting on weekends. | A ella le encanta pintar los fines de semana. |
+| `voc_a1_drawing_001` | **drawing** | *noun* | `/ˈdrɔɪŋ/` | dibujo | He is good at drawing. | Él es bueno para dibujar. |
+| `voc_a1_photography_001` | **photography** | *noun* | `/fəˈtɑgrəfi/` | fotografía | Photography is his passion. | La fotografía es su pasión. |
+| `voc_a1_gardening_001` | **gardening** | *noun* | `/ˈgɑrdənɪŋ/` | jardinería | My mother enjoys gardening. | A mi madre le gusta la jardinería. |
+| `voc_a1_chess_001` | **chess** | *noun* | `/tʃɛs/` | ajedrez | My father taught me to play chess. | Mi padre me enseñó a jugar ajedrez. |
+| `voc_a1_cards_001` | **cards (game)** | *noun* | `/kɑrdz/` | cartas | We played cards after dinner. | Jugamos cartas después de la cena. |
+| `voc_a1_video-games_001` | **video games** | *noun* | `/ˈvɪdioʊ geɪmz/` | videojuegos | My brother loves video games. | A mi hermano le encantan los videojuegos. |
+| `voc_a1_board-games_001` | **board games** | *noun* | `/bɔrd geɪmz/` | juegos de mesa | We play board games on family night. | Jugamos juegos de mesa en la noche familiar. |
+| `voc_a1_fishing_001` | **fishing** | *noun* | `/ˈfɪʃɪŋ/` | pesca | My grandfather goes fishing every summer. | Mi abuelo va de pesca cada verano. |
+| `voc_a1_camping_001` | **camping** | *noun* | `/ˈkæmpɪŋ/` | acampar | We went camping near the lake. | Fuimos a acampar cerca del lago. |
+| `voc_a1_yoga_001` | **yoga** | *noun* | `/ˈjoʊgə/` | yoga | She practices yoga every morning. | Ella practica yoga todas las mañanas. |
+| `voc_a1_team_001` | **team** | *noun* | `/tim/` | equipo | Our team won the game. | Nuestro equipo ganó el partido. |
+| `voc_a1_player_001` | **player** | *noun* | `/ˈpleɪər/` | jugador | He is the best player on the team. | Él es el mejor jugador del equipo. |
+| `voc_a1_coach_001` | **coach** | *noun* | `/koʊtʃ/` | entrenador | The coach trains us every week. | El entrenador nos entrena cada semana. |
+| `voc_a1_referee_001` | **referee** | *noun* | `/ˌrɛfəˈri/` | árbitro | The referee stopped the game. | El árbitro detuvo el partido. |
+| `voc_a1_match_001` | **match** | *noun* | `/mætʃ/` | partido | We watched the match on TV. | Vimos el partido en la televisión. |
+| `voc_a1_game_001` | **game** | *noun* | `/geɪm/` | juego/partido | The game starts at eight. | El juego empieza a las ocho. |
+| `voc_a1_score_001` | **score** | *noun* | `/skɔr/` | puntuación | What is the score right now? | ¿Cuál es la puntuación ahora? |
+| `voc_a1_win_001` | **win** | *verb* | `/wɪn/` | ganar | I hope our team wins today. | Espero que nuestro equipo gane hoy. |
+| `voc_a1_tie_002` | **tie (game)** | *noun* | `/taɪ/` | empate | The game ended in a tie. | El partido terminó en empate. |
+| `voc_a1_championship_001` | **championship** | *noun* | `/ˈtʃæmpiənˌʃɪp/` | campeonato | They won the championship last year. | Ganaron el campeonato el año pasado. |
+| `voc_a1_competition_001` | **competition** | *noun* | `/ˌkɑmpəˈtɪʃən/` | competencia | She entered the swimming competition. | Ella participó en la competencia de natación. |
+| `voc_a1_ball_001` | **ball** | *noun* | `/bɔl/` | pelota | Throw me the ball. | Lánzame la pelota. |
+| `voc_a1_goal_001` | **goal** | *noun* | `/goʊl/` | gol/meta | He scored the winning goal. | Él anotó el gol de la victoria. |
+| `voc_a1_court_001` | **court (sports)** | *noun* | `/kɔrt/` | cancha | We play tennis on this court. | Jugamos tenis en esta cancha. |
+| `voc_a1_stadium_001` | **stadium** | *noun* | `/ˈsteɪdiəm/` | estadio | The stadium was full of fans. | El estadio estaba lleno de aficionados. |
+| `voc_a1_song_001` | **song** | *noun* | `/sɔŋ/` | canción | This is my favorite song. | Esta es mi canción favorita. |
+| `voc_a1_instrument_001` | **instrument (music)** | *noun* | `/ˈɪnstrəmənt/` | instrumento musical | Do you play any instrument? | ¿Tocas algún instrumento? |
+| `voc_a1_guitar_001` | **guitar** | *noun* | `/gɪˈtɑr/` | guitarra | He plays the guitar very well. | Él toca muy bien la guitarra. |
+| `voc_a1_piano_001` | **piano** | *noun* | `/piˈænoʊ/` | piano | She has piano lessons on Tuesdays. | Ella tiene clases de piano los martes. |
+| `voc_a1_drum_001` | **drum** | *noun* | `/drʌm/` | tambor | My son wants to play the drums. | Mi hijo quiere tocar la batería. |
+| `voc_a1_violin_001` | **violin** | *noun* | `/ˌvaɪəˈlɪn/` | violín | She learned to play the violin. | Ella aprendió a tocar el violín. |
+| `voc_a1_band_001` | **band (music)** | *noun* | `/bænd/` | banda | My brother is in a band. | Mi hermano está en una banda. |
+| `voc_a1_concert_001` | **concert** | *noun* | `/ˈkɑnsərt/` | concierto | We are going to a concert tonight. | Vamos a un concierto esta noche. |
+| `voc_a1_movie-film_001` | **movie / film** | *noun* | `/ˈmuvi/` | película | We watched a great movie. | Vimos una gran película. |
+| `voc_a1_tv-show_001` | **TV show** | *noun* | `/ˌtiˈvi ʃoʊ/` | programa de TV | This is my favorite TV show. | Este es mi programa de TV favorito. |
+| `voc_a1_series_001` | **series** | *noun* | `/ˈsɪriz/` | serie | We watched the whole series in a weekend. | Vimos toda la serie en un fin de semana. |
+| `voc_a1_episode_001` | **episode** | *noun* | `/ˈɛpəˌsoʊd/` | episodio | I watched the last episode last night. | Vi el último episodio anoche. |
+| `voc_a1_channel_001` | **channel** | *noun* | `/ˈtʃænəl/` | canal | Change the channel, please. | Cambia el canal, por favor. |
+| `voc_a1_program_001` | **program** | *noun* | `/ˈproʊˌgræm/` | programa | This program starts at nine. | Este programa empieza a las nueve. |
+| `voc_a1_news_001` | **news** | *noun* | `/nuz/` | noticias | We watch the news every night. | Vemos las noticias todas las noches. |
+| `voc_a1_cartoon_001` | **cartoon** | *noun* | `/kɑrˈtun/` | dibujos animados | The kids love this cartoon. | A los niños les encantan estos dibujos animados. |
+| `voc_a1_comedy_001` | **comedy** | *noun* | `/ˈkɑmədi/` | comedia | I love watching comedy movies. | Me encanta ver películas de comedia. |
+| `voc_a1_drama_001` | **drama** | *noun* | `/ˈdrɑmə/` | drama | This series is a drama. | Esta serie es un drama. |
+| `voc_a1_horror-movie_001` | **horror movie** | *noun* | `/ˈhɔrər ˈmuvi/` | película de terror | She doesn't like horror movies. | A ella no le gustan las películas de terror. |
+| `voc_a1_hobby_001` | **hobby** | *noun* | `/ˈhɑbi/` | pasatiempo | Reading is my favorite hobby. | Leer es mi pasatiempo favorito. |
+| `voc_a1_interest_001` | **interest (hobby)** | *noun* | `/ˈɪntrəst/` | interés | Photography is one of his interests. | La fotografía es uno de sus intereses. |
+| `voc_a1_free-time_001` | **free time** | *noun* | `/fri taɪm/` | tiempo libre | What do you do in your free time? | ¿Qué haces en tu tiempo libre? |
+| `voc_a1_activity_001` | **activity** | *noun* | `/ækˈtɪvəti/` | actividad | We planned an outdoor activity. | Planeamos una actividad al aire libre. |
+| `voc_a1_club_001` | **club** | *noun* | `/klʌb/` | club | She joined a book club. | Ella se unió a un club de lectura. |
+| `voc_a1_member_001` | **member** | *noun* | `/ˈmɛmbər/` | miembro | I am a member of the gym. | Soy miembro del gimnasio. |
+| `voc_a1_event_001` | **event** | *noun* | `/ɪˈvɛnt/` | evento | The event starts at seven. | El evento empieza a las siete. |
+| `voc_a1_party_001` | **party** | *noun* | `/ˈpɑrti/` | fiesta | We had a great party last night. | Tuvimos una gran fiesta anoche. |
+| `voc_a1_festival_001` | **festival** | *noun* | `/ˈfɛstəvəl/` | festival | We went to a music festival. | Fuimos a un festival de música. |
 
 ### Semana 17: Semana 17 – Herramientas, cantidades, dinero y salud
 Total de palabras en esta semana: **109**
 
 | ID | Palabra | Categoría | Fonética (IPA) | Traducción | Ejemplo en Inglés | Traducción del Ejemplo |
 |---|---|---|---|---|---|---|
-| `voc_a1_tool_001` | **tool** | *noun* | — | herramienta | — | — |
-| `voc_a1_hammer_001` | **hammer** | *noun* | — | martillo | — | — |
-| `voc_a1_nail_002` | **nail (tool)** | *noun* | — | clavo | — | — |
-| `voc_a1_screwdriver_001` | **screwdriver** | *noun* | — | destornillador | — | — |
-| `voc_a1_screw_001` | **screw** | *noun* | — | tornillo | — | — |
-| `voc_a1_saw_001` | **saw** | *noun* | — | sierra | — | — |
-| `voc_a1_drill_001` | **drill** | *noun* | — | taladro | — | — |
-| `voc_a1_ladder_001` | **ladder** | *noun* | — | escalera (de mano) | — | — |
-| `voc_a1_rope_001` | **rope** | *noun* | — | cuerda | — | — |
-| `voc_a1_tape_001` | **tape** | *noun* | — | cinta | — | — |
-| `voc_a1_glue_001` | **glue** | *noun* | — | pegamento | — | — |
-| `voc_a1_scissors_001` | **scissors** | *noun* | — | tijeras | — | — |
-| `voc_a1_needle_001` | **needle** | *noun* | — | aguja | — | — |
-| `voc_a1_thread_001` | **thread** | *noun* | — | hilo | — | — |
-| `voc_a1_machine_001` | **machine** | *noun* | — | máquina | — | — |
-| `voc_a1_engine_001` | **engine** | *noun* | — | motor | — | — |
-| `voc_a1_wire_001` | **wire** | *noun* | — | cable/alambre | — | — |
-| `voc_a1_pipe_001` | **pipe** | *noun* | — | tubería | — | — |
-| `voc_a1_brick_001` | **brick** | *noun* | — | ladrillo | — | — |
-| `voc_a1_wood_001` | **wood** | *noun* | — | madera | — | — |
-| `voc_a1_metal_001` | **metal** | *noun* | — | metal | — | — |
-| `voc_a1_plastic_001` | **plastic** | *noun* | — | plástico | — | — |
-| `voc_a1_glass_002` | **glass (material)** | *noun* | — | vidrio | — | — |
-| `voc_a1_paper_001` | **paper** | *noun* | — | papel | — | — |
-| `voc_a1_cardboard_001` | **cardboard** | *noun* | — | cartón | — | — |
-| `voc_a1_rubber_001` | **rubber** | *noun* | — | goma | — | — |
-| `voc_a1_material_001` | **material** | *noun* | — | material | — | — |
-| `voc_a1_quantity-amount_001` | **quantity / amount** | *noun* | — | cantidad | — | — |
-| `voc_a1_number_001` | **number** | *noun* | — | número | — | — |
-| `voc_a1_pair_001` | **pair** | *noun* | — | par | — | — |
-| `voc_a1_dozen_001` | **dozen** | *noun* | — | docena | — | — |
-| `voc_a1_piece_001` | **piece** | *noun* | — | pedazo | — | — |
-| `voc_a1_part_001` | **part** | *noun* | — | parte | — | — |
-| `voc_a1_whole_001` | **whole** | *noun* | — | entero | — | — |
-| `voc_a1_percent_001` | **percent** | *noun* | — | porcentaje | — | — |
-| `voc_a1_price_001` | **price** | *noun* | — | precio | — | — |
-| `voc_a1_cost_001` | **cost** | *noun* | — | costo | — | — |
-| `voc_a1_discount_001` | **discount** | *noun* | — | descuento | — | — |
-| `voc_a1_sale_001` | **sale** | *noun* | — | oferta/venta | — | — |
-| `voc_a1_receipt_001` | **receipt** | *noun* | — | recibo | — | — |
-| `voc_a1_cash_001` | **cash** | *noun* | — | efectivo | — | — |
-| `voc_a1_credit-card_001` | **credit card** | *noun* | — | tarjeta de crédito | — | — |
-| `voc_a1_money_001` | **money** | *noun* | — | dinero | — | — |
-| `voc_a1_coin_001` | **coin** | *noun* | — | moneda | — | — |
-| `voc_a1_bill_002` | **bill (money)** | *noun* | — | billete | — | — |
-| `voc_a1_change_001` | **change (money)** | *noun* | — | cambio (dinero) | — | — |
-| `voc_a1_wallet_001` | **wallet** | *noun* | — | billetera | — | — |
-| `voc_a1_purse_001` | **purse** | *noun* | — | bolso | — | — |
-| `voc_a1_budget_001` | **budget** | *noun* | — | presupuesto | — | — |
-| `voc_a1_debt_001` | **debt** | *noun* | — | deuda | — | — |
-| `voc_a1_loan_001` | **loan** | *noun* | — | préstamo | — | — |
-| `voc_a1_bank-account_001` | **bank account** | *noun* | — | cuenta bancaria | — | — |
-| `voc_a1_tax_001` | **tax** | *noun* | — | impuesto | — | — |
-| `voc_a1_insurance_001` | **insurance** | *noun* | — | seguro | — | — |
-| `voc_a1_contract_001` | **contract** | *noun* | — | contrato | — | — |
-| `voc_a1_business_001` | **business** | *noun* | — | negocio | — | — |
-| `voc_a1_customer_001` | **customer** | *noun* | — | cliente | — | — |
-| `voc_a1_seller_001` | **seller** | *noun* | — | vendedor | — | — |
-| `voc_a1_buyer_001` | **buyer** | *noun* | — | comprador | — | — |
-| `voc_a1_product_001` | **product** | *noun* | — | producto | — | — |
-| `voc_a1_service_001` | **service** | *noun* | — | servicio | — | — |
-| `voc_a1_quality_001` | **quality** | *noun* | — | calidad | — | — |
-| `voc_a1_brand_001` | **brand** | *noun* | — | marca | — | — |
-| `voc_a1_weight_001` | **weight** | *noun* | — | peso | — | — |
-| `voc_a1_measure_001` | **measure** | *verb* | — | medir | — | — |
-| `voc_a1_length_001` | **length** | *noun* | — | longitud | — | — |
-| `voc_a1_width_001` | **width** | *noun* | — | ancho | — | — |
-| `voc_a1_height_001` | **height** | *noun* | — | altura | — | — |
-| `voc_a1_depth_001` | **depth** | *noun* | — | profundidad | — | — |
-| `voc_a1_volume_001` | **volume** | *noun* | — | volumen | — | — |
-| `voc_a1_distance_001` | **distance** | *noun* | — | distancia | — | — |
-| `voc_a1_speed_001` | **speed** | *noun* | — | velocidad | — | — |
-| `voc_a1_direction_001` | **direction** | *noun* | — | dirección (rumbo) | — | — |
-| `voc_a1_north_001` | **north** | *noun* | — | norte | — | — |
-| `voc_a1_south_001` | **south** | *noun* | — | sur | — | — |
-| `voc_a1_east_001` | **east** | *noun* | — | este | — | — |
-| `voc_a1_west_001` | **west** | *noun* | — | oeste | — | — |
-| `voc_a1_medicine_001` | **medicine** | *noun* | — | medicina | — | — |
-| `voc_a1_pill_001` | **pill** | *noun* | — | pastilla | — | — |
-| `voc_a1_pharmacy_001` | **pharmacy** | *noun* | — | farmacia | — | — |
-| `voc_a1_appointment_001` | **appointment** | *noun* | — | cita | — | — |
-| `voc_a1_injury_001` | **injury** | *noun* | — | lesión | — | — |
-| `voc_a1_pain_001` | **pain** | *noun* | — | dolor | — | — |
-| `voc_a1_headache_001` | **headache** | *noun* | — | dolor de cabeza | — | — |
-| `voc_a1_fever_001` | **fever** | *noun* | — | fiebre | — | — |
-| `voc_a1_cough_001` | **cough** | *noun* | — | tos | — | — |
-| `voc_a1_cold_002` | **cold (illness)** | *noun* | — | resfriado | — | — |
-| `voc_a1_flu_001` | **flu** | *noun* | — | gripe | — | — |
-| `voc_a1_ambulance_001` | **ambulance** | *noun* | — | ambulancia | — | — |
-| `voc_a1_emergency_001` | **emergency** | *noun* | — | emergencia | — | — |
-| `voc_a1_accident_001` | **accident** | *noun* | — | accidente | — | — |
-| `voc_a1_patient_002` | **patient (person)** | *noun* | — | paciente | — | — |
-| `voc_a1_treatment_001` | **treatment** | *noun* | — | tratamiento | — | — |
-| `voc_a1_vaccine_001` | **vaccine** | *noun* | — | vacuna | — | — |
-| `voc_a1_health_001` | **health** | *noun* | — | salud | — | — |
-| `voc_a1_diet_001` | **diet** | *noun* | — | dieta | — | — |
-| `voc_a1_humidity_001` | **humidity** | *noun* | — | humedad | — | — |
-| `voc_a1_climate_001` | **climate** | *noun* | — | clima (general) | — | — |
-| `voc_a1_thunder_001` | **thunder** | *noun* | — | trueno | — | — |
-| `voc_a1_lightning_001` | **lightning** | *noun* | — | relámpago | — | — |
-| `voc_a1_earthquake_001` | **earthquake** | *noun* | — | terremoto | — | — |
-| `voc_a1_flood_001` | **flood** | *noun* | — | inundación | — | — |
-| `voc_a1_pollution_001` | **pollution** | *noun* | — | contaminación | — | — |
-| `voc_a1_recycle_001` | **recycle** | *verb* | — | reciclar | — | — |
-| `voc_a1_environment_001` | **environment** | *noun* | — | medio ambiente | — | — |
-| `voc_a1_energy_001` | **energy** | *noun* | — | energía | — | — |
-| `voc_a1_electricity_001` | **electricity** | *noun* | — | electricidad | — | — |
-| `voc_a1_fuel_001` | **fuel** | *noun* | — | combustible | — | — |
-| `voc_a1_solar_001` | **solar** | *adjective* | — | solar | — | — |
+| `voc_a1_tool_001` | **tool** | *noun* | `/tul/` | herramienta | I need a tool to fix this. | Necesito una herramienta para arreglar esto. |
+| `voc_a1_hammer_001` | **hammer** | *noun* | `/ˈhæmər/` | martillo | He used a hammer to fix the shelf. | Él usó un martillo para arreglar el estante. |
+| `voc_a1_nail_002` | **nail (tool)** | *noun* | `/neɪl/` | clavo | Pass me a nail, please. | Pásame un clavo, por favor. |
+| `voc_a1_screwdriver_001` | **screwdriver** | *noun* | `/ˈskruˌdraɪvər/` | destornillador | I need a screwdriver for this. | Necesito un destornillador para esto. |
+| `voc_a1_screw_001` | **screw** | *noun* | `/skru/` | tornillo | This screw is loose. | Este tornillo está flojo. |
+| `voc_a1_saw_001` | **saw** | *noun* | `/sɔ/` | sierra | He cut the wood with a saw. | Él cortó la madera con una sierra. |
+| `voc_a1_drill_001` | **drill** | *noun* | `/drɪl/` | taladro | I borrowed a drill from my neighbor. | Le pedí prestado un taladro a mi vecino. |
+| `voc_a1_ladder_001` | **ladder** | *noun* | `/ˈlædər/` | escalera (de mano) | Be careful on the ladder. | Ten cuidado en la escalera. |
+| `voc_a1_rope_001` | **rope** | *noun* | `/roʊp/` | cuerda | Tie the rope to the tree. | Ata la cuerda al árbol. |
+| `voc_a1_tape_001` | **tape** | *noun* | `/teɪp/` | cinta | Use tape to close the box. | Usa cinta para cerrar la caja. |
+| `voc_a1_glue_001` | **glue** | *noun* | `/glu/` | pegamento | I fixed it with glue. | Lo arreglé con pegamento. |
+| `voc_a1_scissors_001` | **scissors** | *noun* | `/ˈsɪzərz/` | tijeras | Where are the scissors? | ¿Dónde están las tijeras? |
+| `voc_a1_needle_001` | **needle** | *noun* | `/ˈnidəl/` | aguja | She sewed with a needle and thread. | Ella cosió con aguja e hilo. |
+| `voc_a1_thread_001` | **thread** | *noun* | `/θrɛd/` | hilo | I need blue thread for this. | Necesito hilo azul para esto. |
+| `voc_a1_machine_001` | **machine** | *noun* | `/məˈʃin/` | máquina | This machine is very old. | Esta máquina es muy vieja. |
+| `voc_a1_engine_001` | **engine** | *noun* | `/ˈɛndʒɪn/` | motor | The engine makes a strange noise. | El motor hace un ruido extraño. |
+| `voc_a1_wire_001` | **wire** | *noun* | `/ˈwaɪər/` | cable/alambre | Don't touch that wire. | No toques ese cable. |
+| `voc_a1_pipe_001` | **pipe** | *noun* | `/paɪp/` | tubería | The pipe is leaking water. | La tubería tiene una fuga de agua. |
+| `voc_a1_brick_001` | **brick** | *noun* | `/brɪk/` | ladrillo | The house is made of brick. | La casa está hecha de ladrillo. |
+| `voc_a1_wood_001` | **wood** | *noun* | `/wʊd/` | madera | This table is made of wood. | Esta mesa está hecha de madera. |
+| `voc_a1_metal_001` | **metal** | *noun* | `/ˈmɛtəl/` | metal | The door is made of metal. | La puerta está hecha de metal. |
+| `voc_a1_plastic_001` | **plastic** | *noun* | `/ˈplæstɪk/` | plástico | This bottle is made of plastic. | Esta botella está hecha de plástico. |
+| `voc_a1_glass_002` | **glass (material)** | *noun* | `/glæs/` | vidrio | Be careful, this is made of glass. | Ten cuidado, esto está hecho de vidrio. |
+| `voc_a1_paper_001` | **paper** | *noun* | `/ˈpeɪpər/` | papel | I need a piece of paper. | Necesito una hoja de papel. |
+| `voc_a1_cardboard_001` | **cardboard** | *noun* | `/ˈkɑrdˌbɔrd/` | cartón | The box is made of cardboard. | La caja está hecha de cartón. |
+| `voc_a1_rubber_001` | **rubber** | *noun* | `/ˈrʌbər/` | goma | These boots are made of rubber. | Estas botas están hechas de goma. |
+| `voc_a1_material_001` | **material** | *noun* | `/məˈtɪriəl/` | material | What material is this made of? | ¿De qué material está hecho esto? |
+| `voc_a1_quantity-amount_001` | **quantity / amount** | *noun* | `/ˈkwɑntəti/` | cantidad | We need a large quantity of water. | Necesitamos una gran cantidad de agua. |
+| `voc_a1_number_001` | **number** | *noun* | `/ˈnʌmbər/` | número | What is your phone number? | ¿Cuál es tu número de teléfono? |
+| `voc_a1_pair_001` | **pair** | *noun* | `/pɛr/` | par | I bought a new pair of shoes. | Compré un par de zapatos nuevo. |
+| `voc_a1_dozen_001` | **dozen** | *noun* | `/ˈdʌzən/` | docena | We need a dozen eggs. | Necesitamos una docena de huevos. |
+| `voc_a1_piece_001` | **piece** | *noun* | `/pis/` | pedazo | Can I have a piece of cake? | ¿Puedo comer un pedazo de pastel? |
+| `voc_a1_part_001` | **part** | *noun* | `/pɑrt/` | parte | This is an important part of the plan. | Esta es una parte importante del plan. |
+| `voc_a1_whole_001` | **whole** | *noun* | `/hoʊl/` | entero | I ate the whole apple. | Me comí toda la manzana. |
+| `voc_a1_percent_001` | **percent** | *noun* | `/pərˈsɛnt/` | porcentaje | Fifty percent of the class passed. | El cincuenta por ciento de la clase aprobó. |
+| `voc_a1_price_001` | **price** | *noun* | `/praɪs/` | precio | The price is too high. | El precio es muy alto. |
+| `voc_a1_cost_001` | **cost** | *noun* | `/kɔst/` | costo | The cost of living is high here. | El costo de vida es alto aquí. |
+| `voc_a1_discount_001` | **discount** | *noun* | `/ˈdɪskaʊnt/` | descuento | I got a discount on this jacket. | Me dieron un descuento en esta chaqueta. |
+| `voc_a1_sale_001` | **sale** | *noun* | `/seɪl/` | oferta/venta | The store is having a sale. | La tienda tiene una oferta. |
+| `voc_a1_receipt_001` | **receipt** | *noun* | `/rɪˈsit/` | recibo | Keep the receipt, please. | Guarda el recibo, por favor. |
+| `voc_a1_cash_001` | **cash** | *noun* | `/kæʃ/` | efectivo | I paid in cash. | Pagué en efectivo. |
+| `voc_a1_credit-card_001` | **credit card** | *noun* | `/ˈkrɛdɪt kɑrd/` | tarjeta de crédito | I paid with my credit card. | Pagué con mi tarjeta de crédito. |
+| `voc_a1_money_001` | **money** | *noun* | `/ˈmʌni/` | dinero | I don't have much money right now. | No tengo mucho dinero ahora. |
+| `voc_a1_coin_001` | **coin** | *noun* | `/kɔɪn/` | moneda | I found a coin on the street. | Encontré una moneda en la calle. |
+| `voc_a1_bill_002` | **bill (money)** | *noun* | `/bɪl/` | billete | She paid with a twenty-dollar bill. | Ella pagó con un billete de veinte dólares. |
+| `voc_a1_change_001` | **change (money)** | *noun* | `/tʃeɪndʒ/` | cambio (dinero) | Here is your change. | Aquí está tu cambio. |
+| `voc_a1_wallet_001` | **wallet** | *noun* | `/ˈwɑlɪt/` | billetera | I left my wallet at home. | Dejé mi billetera en casa. |
+| `voc_a1_purse_001` | **purse** | *noun* | `/pɜrs/` | bolso | Her purse is on the chair. | Su bolso está en la silla. |
+| `voc_a1_budget_001` | **budget** | *noun* | `/ˈbʌdʒɪt/` | presupuesto | We have a small budget this month. | Tenemos un presupuesto pequeño este mes. |
+| `voc_a1_debt_001` | **debt** | *noun* | `/dɛt/` | deuda | They paid off their debt. | Pagaron su deuda por completo. |
+| `voc_a1_loan_001` | **loan** | *noun* | `/loʊn/` | préstamo | We got a loan for the car. | Obtuvimos un préstamo para el carro. |
+| `voc_a1_bank-account_001` | **bank account** | *noun* | `/bæŋk əˈkaʊnt/` | cuenta bancaria | I opened a new bank account. | Abrí una cuenta bancaria nueva. |
+| `voc_a1_tax_001` | **tax** | *noun* | `/tæks/` | impuesto | We pay tax every year. | Pagamos impuestos cada año. |
+| `voc_a1_insurance_001` | **insurance** | *noun* | `/ɪnˈʃʊrəns/` | seguro | Do you have health insurance? | ¿Tienes seguro médico? |
+| `voc_a1_contract_001` | **contract** | *noun* | `/ˈkɑnˌtrækt/` | contrato | Read the contract carefully. | Lee el contrato con cuidado. |
+| `voc_a1_business_001` | **business** | *noun* | `/ˈbɪznəs/` | negocio | She started her own business. | Ella inició su propio negocio. |
+| `voc_a1_customer_001` | **customer** | *noun* | `/ˈkʌstəmər/` | cliente | The customer was very happy. | El cliente quedó muy contento. |
+| `voc_a1_seller_001` | **seller** | *noun* | `/ˈsɛlər/` | vendedor | The seller gave me a good price. | El vendedor me dio un buen precio. |
+| `voc_a1_buyer_001` | **buyer** | *noun* | `/ˈbaɪər/` | comprador | The buyer paid in cash. | El comprador pagó en efectivo. |
+| `voc_a1_product_001` | **product** | *noun* | `/ˈprɑdʌkt/` | producto | This is a very good product. | Este es un producto muy bueno. |
+| `voc_a1_service_001` | **service** | *noun* | `/ˈsɜrvɪs/` | servicio | The service here is excellent. | El servicio aquí es excelente. |
+| `voc_a1_quality_001` | **quality** | *noun* | `/ˈkwɑləti/` | calidad | This shirt has good quality. | Esta camisa tiene buena calidad. |
+| `voc_a1_brand_001` | **brand** | *noun* | `/brænd/` | marca | I like this brand of shoes. | Me gusta esta marca de zapatos. |
+| `voc_a1_weight_001` | **weight** | *noun* | `/weɪt/` | peso | What is the weight of this box? | ¿Cuál es el peso de esta caja? |
+| `voc_a1_measure_001` | **measure** | *verb* | `/ˈmɛʒər/` | medir | Measure the table before you buy it. | Mide la mesa antes de comprarla. |
+| `voc_a1_length_001` | **length** | *noun* | `/lɛŋθ/` | longitud | What is the length of this table? | ¿Cuál es la longitud de esta mesa? |
+| `voc_a1_width_001` | **width** | *noun* | `/wɪdθ/` | ancho | The width of the door is narrow. | El ancho de la puerta es estrecho. |
+| `voc_a1_height_001` | **height** | *noun* | `/haɪt/` | altura | What is your height? | ¿Cuál es tu estatura? |
+| `voc_a1_depth_001` | **depth** | *noun* | `/dɛpθ/` | profundidad | The depth of the pool is two meters. | La profundidad de la piscina es de dos metros. |
+| `voc_a1_volume_001` | **volume** | *noun* | `/ˈvɑljum/` | volumen | Can you lower the volume, please? | ¿Puedes bajar el volumen, por favor? |
+| `voc_a1_distance_001` | **distance** | *noun* | `/ˈdɪstəns/` | distancia | The distance to the city is short. | La distancia a la ciudad es corta. |
+| `voc_a1_speed_001` | **speed** | *noun* | `/spid/` | velocidad | The car was driving at high speed. | El carro iba a alta velocidad. |
+| `voc_a1_direction_001` | **direction** | *noun* | `/dəˈrɛkʃən/` | dirección (rumbo) | We are going in the wrong direction. | Vamos en la dirección equivocada. |
+| `voc_a1_north_001` | **north** | *noun* | `/nɔrθ/` | norte | The wind is coming from the north. | El viento viene del norte. |
+| `voc_a1_south_001` | **south** | *noun* | `/saʊθ/` | sur | We are driving south. | Vamos manejando hacia el sur. |
+| `voc_a1_east_001` | **east** | *noun* | `/ist/` | este | The sun rises in the east. | El sol sale por el este. |
+| `voc_a1_west_001` | **west** | *noun* | `/wɛst/` | oeste | The sun sets in the west. | El sol se pone por el oeste. |
+| `voc_a1_medicine_001` | **medicine** | *noun* | `/ˈmɛdəsən/` | medicina | Take your medicine after lunch. | Toma tu medicina después del almuerzo. |
+| `voc_a1_pill_001` | **pill** | *noun* | `/pɪl/` | pastilla | I need to take a pill. | Necesito tomar una pastilla. |
+| `voc_a1_pharmacy_001` | **pharmacy** | *noun* | `/ˈfɑrməsi/` | farmacia | I bought this at the pharmacy. | Compré esto en la farmacia. |
+| `voc_a1_appointment_001` | **appointment** | *noun* | `/əˈpɔɪntmənt/` | cita | I have a doctor's appointment tomorrow. | Tengo una cita médica mañana. |
+| `voc_a1_injury_001` | **injury** | *noun* | `/ˈɪndʒəri/` | lesión | His injury is not serious. | Su lesión no es grave. |
+| `voc_a1_pain_001` | **pain** | *noun* | `/peɪn/` | dolor | I have pain in my back. | Tengo dolor en la espalda. |
+| `voc_a1_headache_001` | **headache** | *noun* | `/ˈhɛˌdeɪk/` | dolor de cabeza | I have a headache today. | Tengo dolor de cabeza hoy. |
+| `voc_a1_fever_001` | **fever** | *noun* | `/ˈfivər/` | fiebre | The baby has a fever. | El bebé tiene fiebre. |
+| `voc_a1_cough_001` | **cough** | *noun* | `/kɔf/` | tos | She has a bad cough. | Ella tiene una tos fuerte. |
+| `voc_a1_cold_002` | **cold (illness)** | *noun* | `/koʊld/` | resfriado | I have a cold this week. | Tengo un resfriado esta semana. |
+| `voc_a1_flu_001` | **flu** | *noun* | `/flu/` | gripe | He is home with the flu. | Él está en casa con gripe. |
+| `voc_a1_ambulance_001` | **ambulance** | *noun* | `/ˈæmbjələns/` | ambulancia | The ambulance arrived quickly. | La ambulancia llegó rápido. |
+| `voc_a1_emergency_001` | **emergency** | *noun* | `/ɪˈmɜrdʒənsi/` | emergencia | Call this number in an emergency. | Llama a este número en una emergencia. |
+| `voc_a1_accident_001` | **accident** | *noun* | `/ˈæksɪdənt/` | accidente | There was an accident on the highway. | Hubo un accidente en la autopista. |
+| `voc_a1_patient_002` | **patient (person)** | *noun* | `/ˈpeɪʃənt/` | paciente | The doctor saw ten patients today. | El médico atendió a diez pacientes hoy. |
+| `voc_a1_treatment_001` | **treatment** | *noun* | `/ˈtritmənt/` | tratamiento | The treatment lasted two weeks. | El tratamiento duró dos semanas. |
+| `voc_a1_vaccine_001` | **vaccine** | *noun* | `/ˌvækˈsin/` | vacuna | I got my flu vaccine yesterday. | Me puse mi vacuna contra la gripe ayer. |
+| `voc_a1_health_001` | **health** | *noun* | `/hɛlθ/` | salud | Health is very important. | La salud es muy importante. |
+| `voc_a1_diet_001` | **diet** | *noun* | `/ˈdaɪət/` | dieta | She started a healthy diet. | Ella empezó una dieta saludable. |
+| `voc_a1_humidity_001` | **humidity** | *noun* | `/hjuˈmɪdəti/` | humedad | The humidity is very high today. | La humedad está muy alta hoy. |
+| `voc_a1_climate_001` | **climate** | *noun* | `/ˈklaɪmɪt/` | clima (general) | The climate here is very hot. | El clima aquí es muy caluroso. |
+| `voc_a1_thunder_001` | **thunder** | *noun* | `/ˈθʌndər/` | trueno | We heard thunder last night. | Escuchamos truenos anoche. |
+| `voc_a1_lightning_001` | **lightning** | *noun* | `/ˈlaɪtnɪŋ/` | relámpago | The lightning was very bright. | El relámpago fue muy brillante. |
+| `voc_a1_earthquake_001` | **earthquake** | *noun* | `/ˈɜrθˌkweɪk/` | terremoto | There was a small earthquake yesterday. | Hubo un pequeño terremoto ayer. |
+| `voc_a1_flood_001` | **flood** | *noun* | `/flʌd/` | inundación | The flood damaged many houses. | La inundación dañó muchas casas. |
+| `voc_a1_pollution_001` | **pollution** | *noun* | `/pəˈluʃən/` | contaminación | Pollution is a big problem in cities. | La contaminación es un gran problema en las ciudades. |
+| `voc_a1_recycle_001` | **recycle** | *verb* | `/riˈsaɪkəl/` | reciclar | We recycle paper and plastic. | Reciclamos papel y plástico. |
+| `voc_a1_environment_001` | **environment** | *noun* | `/ɪnˈvaɪrənmənt/` | medio ambiente | We must protect the environment. | Debemos proteger el medio ambiente. |
+| `voc_a1_energy_001` | **energy** | *noun* | `/ˈɛnərdʒi/` | energía | We need to save energy. | Necesitamos ahorrar energía. |
+| `voc_a1_electricity_001` | **electricity** | *noun* | `/ɪˌlɛkˈtrɪsəti/` | electricidad | The electricity went out last night. | Se fue la electricidad anoche. |
+| `voc_a1_fuel_001` | **fuel** | *noun* | `/ˈfjuəl/` | combustible | The car needs more fuel. | El carro necesita más combustible. |
+| `voc_a1_solar_001` | **solar** | *adjective* | `/ˈsoʊlər/` | solar | We installed solar panels last year. | Instalamos paneles solares el año pasado. |
 
 ### Semana 18: Semana 18 – Verbos de acción, ideas y repaso general
 Total de palabras en esta semana: **104**
