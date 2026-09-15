@@ -147,7 +147,8 @@ function validateCumulativeLexicon(): void {
     }
 
     for (const [passageId, passageViolations] of byPassage) {
-      const first = passageViolations[0]!
+      const first = passageViolations[0]
+      if (!first) continue
       console.error(
         `  📖  ${passageId}  (${first.passageLevel} — Week ${first.passageWeek})`,
       )
