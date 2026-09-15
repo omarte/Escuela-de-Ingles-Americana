@@ -1,70 +1,187 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Términos de Servicio - Escuela de Inglés Americana</title>
-    <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #1E293B; max-width: 800px; margin: 0 auto; padding: 24px; background-color: #F8FAFC; }
-        .container { background: #FFFFFF; padding: 32px; border-radius: 12px; border: 1px solid #E2E8F0; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
-        h1 { color: #059669; font-size: 28px; margin-top: 0; }
-        h2 { color: #0F172A; font-size: 20px; margin-top: 28px; border-bottom: 1px solid #E2E8F0; padding-bottom: 6px; }
-        p, li { color: #334155; font-size: 15px; }
-        ul, ol { padding-left: 24px; margin-bottom: 18px; }
-        li { margin-bottom: 8px; }
-        .highlight { background-color: #FEF3C7; padding: 18px; border-left: 4px solid #F59E0B; border-radius: 6px; margin: 20px 0; }
-        .highlight p { margin-top: 0; font-weight: 600; color: #92400E; }
-        .highlight li { color: #78350F; }
-        a { color: #059669; text-decoration: underline; }
-        .nav-links { margin-top: 32px; padding-top: 16px; border-top: 1px solid #E2E8F0; font-size: 14px; color: #64748B; }
-        .nav-links a { margin-right: 16px; }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Términos de Servicio — Escuela de Inglés Americana</title>
+  <meta name="description" content="Términos de servicio oficiales de la Escuela de Inglés Americana. Condiciones de uso, políticas de suscripción in-app para Apple App Store y Google Play, y derechos del estudiante.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Términos de Servicio</h1>
-        <p><strong>Última actualización:</strong> 14 de septiembre de 2026</p>
-        <p>Al descargar, instalar o utilizar la aplicación móvil <strong>Escuela de Inglés Americana</strong>, aceptas quedar vinculado por estos Términos de Servicio. Si no estás de acuerdo con estos términos, no debes utilizar la aplicación.</p>
 
-        <h2>1. Uso Autorizado y Propiedad Intelectual</h2>
-        <p>La aplicación está diseñada como una herramienta de formación académica en el idioma inglés con metodología de repetición espaciada y lecturas graduadas por el marco CEFR. Todo el contenido pedagógico (banco de vocabulario, transcripciones fonéticas, oraciones de ejemplo y pasajes de lectura) está curado por docentes humanos y protegido por las leyes de propiedad intelectual internacionales. No está permitida la copia, reproducción, ingeniería inversa o explotación comercial de los contenidos sin autorización previa por escrito.</p>
+  <!-- Sticky Navbar -->
+  <header class="nav">
+    <div class="container nav-in">
+      <a class="brand" href="index.html">
+        <div class="brand-logo-wrap">
+          <img src="assets/logo-clean.png" alt="Logo Escuela de Inglés Americana" class="brand-logo-img">
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">Escuela de Inglés Americana</span>
+          <span class="brand-tag">Ciencia Cognitiva &bull; A1–B2</span>
+        </div>
+      </a>
+
+      <nav class="nav-links">
+        <a href="index.html">Inicio</a>
+        <a href="index.html#metodologia">Metodología</a>
+        <a href="index.html#precios">Precios</a>
+        <a href="support.html">Soporte</a>
+        <a href="terms.html" class="active">Términos</a>
+      </nav>
+
+      <a href="index.html#precios" class="nav-cta">
+        <span>Comenzar Gratis</span>
+        <span>&rarr;</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="container">
+      <div class="eyebrow">Marco Contractual y Normativo</div>
+      <h1>Términos de Servicio</h1>
+      <p>
+        Condiciones que regulan el acceso, descarga y uso de la aplicación móvil y servicios académicos de la <strong>Escuela de Inglés Americana</strong>.
+      </p>
+    </div>
+  </section>
+
+  <!-- Legal Body Content -->
+  <main class="legal-body">
+    <div class="container">
+      <div class="legal-card">
+        <div style="font-size:13.5px; color:var(--slate-500); margin-bottom:20px; font-weight:600;">
+          Última actualización: 14 de septiembre de 2026 &bull; Vigente para versión móvil 1.0+
+        </div>
+
+        <p>
+          Al descargar, instalar o utilizar la aplicación móvil <strong>Escuela de Inglés Americana</strong>, aceptas quedar legalmente vinculado por estos Términos de Servicio. Si no estás de acuerdo con alguna de las cláusulas, debes abstenerte de utilizar la plataforma.
+        </p>
+
+        <h2>1. Uso Autorizado y Propiedad Intelectual del Currículo</h2>
+        <p>
+          La aplicación proporciona una formación estructurada del idioma inglés basada en repetición espaciada (SRS), telemetría cognitiva y lecturas graduadas por el Marco Común Europeo de Referencia (CEFR A1–B2).
+        </p>
+        <p>
+          Todo el contenido pedagógico —incluyendo las 2,556 entradas de vocabulario, transcripciones fonéticas IPA, oraciones de ejemplo de contexto real, colocaciones léxicas y preguntas de micro-examen— ha sido curado por docentes humanos bajo la política <strong>Zero AI Hallucinations</strong> y se encuentra protegido por las leyes de propiedad intelectual internacionales. No se autoriza su reproducción, ingeniería inversa, scraping ni redistribución sin autorización expresa por escrito.
+        </p>
 
         <h2>2. Elegibilidad y Edad Mínima (Política 18+)</h2>
-        <p>Para crear una cuenta y contratar suscripciones dentro de la aplicación, debes tener al menos 18 años de edad (o la mayoría de edad en tu jurisdicción). Si eres menor de 18 años, solo puedes utilizar la aplicación bajo la supervisión directa y con el consentimiento expreso de un padre o tutor legal que acepte estos términos en tu representación.</p>
+        <p>
+          Para registrar una cuenta y contratar compras o suscripciones, debes tener al menos 18 años de edad (o la mayoría de edad legal en tu país de residencia). Los menores de 18 años únicamente pueden utilizar la aplicación bajo supervisión directa y consentimiento previo de sus padres o tutores legales.
+        </p>
 
-        <h2>3. Compras dentro de la App y Suscripciones Renovables</h2>
-        <p>La aplicación ofrece una modalidad gratuita de acceso permanente (Nivel A1 completo) y una suscripción Pro opcional para acceder a niveles avanzados (A2, B1, B2) conforme estén aprobados pedagógicamente.</p>
+        <h2>3. Compras In-App y Suscripciones Autorrenovables</h2>
+        <p>
+          La aplicación ofrece un plan permanente gratuito (Starter Deck A1) y una suscripción Pro de pago para desbloquear el currículo completo de 44 semanas:
+        </p>
 
-        <div class="highlight">
-            <p>Política Obligatoria de Renovación Automática, Cobros y Cancelación (Requisitos de Apple App Store y Google Play):</p>
-            <ul>
-                <li><strong>Procesamiento del pago:</strong> El cobro se cargará a tu cuenta de Apple ID (iTunes Account) o Google Play en el momento de la confirmación de la compra. La validación técnica de recibos se realiza mediante RevenueCat.</li>
-                <li><strong>Renovación automática:</strong> Las suscripciones se renuevan de forma automática a menos que desactives la renovación automática al menos 24 horas antes del vencimiento del período de suscripción en curso.</li>
-                <li><strong>Cobro de renovación:</strong> Se cargará en tu cuenta el monto de la renovación dentro de las 24 horas previas al término del período actual, especificando claramente el costo del plan seleccionado.</li>
-                <li><strong>Gestión y cancelación:</strong> Puedes administrar o cancelar tu suscripción en cualquier momento desde los ajustes de tu cuenta de usuario en tu dispositivo móvil (en iOS: Ajustes > [Tu Nombre] > Suscripciones; en Android: Google Play Store > Menú > Pagos y suscripciones). La cancelación surtirá efecto al finalizar el período de facturación actual.</li>
-                <li><strong>Independencia entre cuenta in-app y suscripción de tienda:</strong> Eliminar tu cuenta de usuario desde la aplicación móvil purga tus datos en nuestros servidores, pero <strong>NO cancela automáticamente</strong> tu suscripción en Apple o Google Play. El usuario debe cancelar expresamente la suscripción en la tienda respectiva para evitar futuros cobros.</li>
-                <li><strong>Períodos de prueba:</strong> Cualquier fracción no utilizada de un período de prueba gratuito, si se llegara a ofrecer, se perderá en el momento en que el usuario adquiera una suscripción paga.</li>
-            </ul>
+        <div class="highlight-box">
+          <p style="font-weight:750; color:#065F46; margin-bottom:8px;">
+            Condiciones Obligatorias de Suscripción (Apple App Store y Google Play Store):
+          </p>
+          <ul style="margin:0; padding-left:20px; color:#065F46; font-size:14.5px;">
+            <li><strong>Cobro en la Tienda:</strong> El cargo se realizará a tu cuenta de Apple ID o Google Play al confirmar la compra in-app. La verificación técnica de recibos se procesa a través de RevenueCat.</li>
+            <li><strong>Renovación Automática:</strong> Las suscripciones se renuevan automáticamente salvo que desactives la renovación al menos 24 horas antes de que finalice el período de facturación en curso.</li>
+            <li><strong>Cargo por Renovación:</strong> La tienda oficial cargará el costo del plan seleccionado dentro de las 24 horas previas al término del período actual.</li>
+            <li><strong>Gestión y Cancelación:</strong> Puedes cancelar tu suscripción en cualquier momento desde los ajustes de tu cuenta (en iOS: <em>Ajustes &rarr; Apple ID &rarr; Suscripciones</em>; en Android: <em>Google Play Store &rarr; Menú &rarr; Pagos y suscripciones</em>). La cancelación será efectiva al finalizar el período pagado.</li>
+          </ul>
+        </div>
+
+        <div class="warning-box">
+          <p>
+            <strong>Independencia de la Cuenta y la Suscripción:</strong> Purgar o eliminar tu cuenta desde la opción "Zona de Peligro" en la aplicación móvil destruye tus datos en nuestros servidores, pero <strong>NO cancela automáticamente</strong> la suscripción contratada en Apple o Google Play. El usuario debe cancelar expresamente la suscripción desde los ajustes de su tienda para evitar cobros futuros de la misma.
+          </p>
         </div>
 
         <h2>4. Política de Reembolsos y Restauración de Compras</h2>
-        <p>Todas las transacciones de pago son procesadas exclusivamente por las tiendas oficiales (Apple App Store y Google Play Store). Por consiguiente, las solicitudes de reembolso se rigen por las políticas vigentes de Apple o Google. Si reinstalas la aplicación o cambias de dispositivo, puedes restaurar tus compras activas en cualquier momento desde el botón <em>"Restaurar compras"</em> disponible en la pantalla de pago de la aplicación.</p>
+        <p>
+          Las transacciones económicas son procesadas directamente por Apple o Google. En consecuencia, las solicitudes de reembolso deben gestionarse a través del soporte de la tienda correspondiente conforme a sus políticas de compra digital.
+        </p>
+        <p>
+          Si reinstalas la aplicación o cambias de teléfono móvil, puedes restablecer tu acceso Pro activo sin costo adicional utilizando el botón <strong>"Restaurar compras"</strong> disponible en la pantalla de pago de la aplicación.
+        </p>
 
         <h2>5. Limitación de Responsabilidad</h2>
-        <p>La aplicación se proporciona "tal cual" y "según disponibilidad". Escuela de Inglés Americana realiza sus mejores esfuerzos para garantizar la exactitud lingüística y la estabilidad técnica, pero no garantiza que el servicio esté libre de interrupciones o errores derivados de fallos de red o incompatibilidades de hardware.</p>
+        <p>
+          El servicio se proporciona "tal cual" y según disponibilidad. La Escuela de Inglés Americana realiza sus mejores esfuerzos pedagógicos y de ingeniería para asegurar la precisión lingüística y la alta disponibilidad del servicio, pero no garantiza que la plataforma esté totalmente libre de interrupciones técnicas derivadas de fallas de conectividad externa o incompatibilidad de hardware del dispositivo del usuario.
+        </p>
 
         <h2>6. Modificaciones de los Términos</h2>
-        <p>Nos reservamos el derecho de actualizar o modificar estos términos cuando sea necesario por motivos legales, regulatorios o de evolución del servicio. Las modificaciones entrarán en vigor de forma inmediata tras su publicación en esta URL.</p>
+        <p>
+          Podremos actualizar estos términos periódicamente para reflejar ajustes regulatorios o nuevas características de la plataforma. Las modificaciones entrarán en vigencia inmediatamente tras su publicación en esta dirección web.
+        </p>
 
-        <h2>7. Contacto Legal y Soporte</h2>
-        <p>Para consultas legales, aclaraciones contractuales o dudas sobre el servicio, puedes escribirnos a:</p>
-        <p><strong>Email:</strong> <a href="mailto:soporte@escueladeinglesamericana.com">soporte@escueladeinglesamericana.com</a></p>
-
-        <div class="nav-links">
-            <a href="privacy.html">Política de Privacidad</a>
-            <a href="support.html">Centro de Soporte</a>
-            <a href="index.html">Inicio</a>
-        </div>
+        <h2>7. Contacto Legal y Asistencia</h2>
+        <p>
+          Para cualquier consulta de índole legal, contractual o regulatoria, puedes contactar a nuestro equipo en:
+        </p>
+        <p>
+          <strong>Email Oficial:</strong> <a href="mailto:soporte@escueladeinglesamericana.com">soporte@escueladeinglesamericana.com</a>
+        </p>
+      </div>
     </div>
+  </main>
+
+  <!-- Comprehensive Dark Footer -->
+  <footer>
+    <div class="container">
+      <div class="foot-top">
+        <div class="foot-brand">
+          <div class="foot-brand-title">
+            <img src="assets/logo.png" alt="Escuela de Inglés Americana Logo">
+            <span>Escuela de Inglés Americana</span>
+          </div>
+          <p>
+            Plataforma científica de adquisición de inglés americano para hispanohablantes mediante repetición espaciada, input comprensible y telemetría de fijación léxica.
+          </p>
+          <div class="foot-badge">
+            Zero AI Curriculum &bull; 100% Curaduría Docente
+          </div>
+        </div>
+
+        <div class="foot-col">
+          <h5>Plataforma</h5>
+          <ul>
+            <li><a href="index.html#experiencia">Active Recall SM-2</a></li>
+            <li><a href="index.html#metodologia">Método Krashen i+1</a></li>
+            <li><a href="index.html#dashboard">Telemetría de Latencia</a></li>
+            <li><a href="index.html#precios">Planes y Precios</a></li>
+          </ul>
+        </div>
+
+        <div class="foot-col">
+          <h5>Legal y Soporte</h5>
+          <ul>
+            <li><a href="support.html">Centro de Soporte</a></li>
+            <li><a href="privacy.html">Política de Privacidad</a></li>
+            <li><a href="terms.html" style="color:var(--emerald-500); font-weight:700;">Términos del Servicio</a></li>
+            <li><a href="mailto:soporte@escueladeinglesamericana.com">Contacto por Email</a></li>
+          </ul>
+        </div>
+
+        <div class="foot-col">
+          <h5>Currículo A1–B2</h5>
+          <ul>
+            <li>A1: 825 palabras (Semanas 1–19)</li>
+            <li>A2: 673 palabras (Semanas 1–11)</li>
+            <li>B1: 539 palabras (Semanas 1–7)</li>
+            <li>B2: 519 palabras (Semanas 1–7)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="foot-bottom">
+        <span>&copy; 2026 Escuela de Inglés Americana. Todos los derechos reservados.</span>
+        <span>Aprende. Fija. Domina con Ciencia Cognitiva.</span>
+      </div>
+    </div>
+  </footer>
+
 </body>
 </html>

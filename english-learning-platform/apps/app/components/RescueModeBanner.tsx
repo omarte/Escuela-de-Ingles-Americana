@@ -30,7 +30,7 @@ export function RescueModeBanner({
   if (pendingCount <= threshold) return null
 
   return (
-    <View style={styles.container} accessibilityRole="status" accessibilityLabel="Modo Rescate activo: sesión enfocada en recuperación">
+    <View style={styles.container} accessibilityRole="alert" accessibilityLabel="Modo Rescate activo: sesión enfocada en recuperación">
       <Ionicons name="shield-checkmark" size={16} color={colors.warning} />
       <View style={styles.textBlock}>
         <Text style={styles.title}>🛡️ Modo Rescate activo</Text>

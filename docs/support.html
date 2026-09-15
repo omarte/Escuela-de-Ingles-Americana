@@ -1,75 +1,392 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Centro de Soporte - Escuela de Inglés Americana</title>
-    <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #1E293B; max-width: 800px; margin: 0 auto; padding: 24px; background-color: #F8FAFC; }
-        .container { background: #FFFFFF; padding: 32px; border-radius: 12px; border: 1px solid #E2E8F0; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
-        h1 { color: #059669; font-size: 28px; margin-top: 0; }
-        h2 { color: #0F172A; font-size: 20px; margin-top: 28px; border-bottom: 1px solid #E2E8F0; padding-bottom: 6px; }
-        p, li { color: #334155; font-size: 15px; }
-        .contact-card { background: #F1F5F9; border-radius: 8px; padding: 20px; margin: 20px 0; border: 1px solid #E2E8F0; }
-        .contact-card strong { color: #0F172A; font-size: 16px; }
-        .faq-item { margin-bottom: 18px; padding-bottom: 18px; border-bottom: 1px solid #F1F5F9; }
-        .faq-question { font-weight: 700; color: #0F172A; margin-bottom: 6px; font-size: 16px; }
-        .faq-answer { color: #475569; font-size: 14.5px; line-height: 1.6; }
-        a { color: #059669; text-decoration: underline; }
-        .nav-links { margin-top: 32px; padding-top: 16px; border-top: 1px solid #E2E8F0; font-size: 14px; color: #64748B; }
-        .nav-links a { margin-right: 16px; }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Centro de Soporte y Ayuda — Escuela de Inglés Americana</title>
+  <meta name="description" content="Centro oficial de asistencia técnica, pedagógica y administrativa de la Escuela de Inglés Americana. Preguntas frecuentes, gestión de suscripciones y contacto directo.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .support-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin: 36px 0 60px;
+    }
+    .support-card {
+      padding: 28px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      box-shadow: var(--card-shadow);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .support-card .icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 12px;
+      background: var(--emerald-light);
+      color: var(--emerald-600);
+      display: grid;
+      place-items: center;
+      font-size: 22px;
+      margin-bottom: 16px;
+    }
+    .support-card h3 {
+      font-size: 19px;
+      font-weight: 800;
+      color: var(--navy-900);
+      margin: 0 0 8px;
+    }
+    .support-card p {
+      color: var(--slate-600);
+      font-size: 14.5px;
+      margin: 0 0 16px;
+      line-height: 1.55;
+    }
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      max-width: 920px;
+      margin: 0 auto;
+    }
+    .faq-card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 26px 30px;
+      box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04);
+      transition: all 0.2s;
+    }
+    .faq-card:hover {
+      border-color: #CBD5E1;
+      box-shadow: 0 8px 30px rgba(15, 23, 42, 0.07);
+    }
+    .faq-question {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--navy-900);
+      margin-bottom: 12px;
+      letter-spacing: -0.01em;
+    }
+    .faq-question .q-badge {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: var(--slate-100);
+      color: var(--emerald-600);
+      display: grid;
+      place-items: center;
+      font-size: 13px;
+      font-weight: 900;
+      flex-shrink: 0;
+    }
+    .faq-answer {
+      color: #334155;
+      font-size: 15px;
+      line-height: 1.7;
+      padding-left: 42px;
+    }
+    .faq-answer ul {
+      margin: 10px 0 0;
+      padding-left: 20px;
+    }
+    .faq-answer li {
+      margin-bottom: 8px;
+    }
+    .offline-feature-box {
+      background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+      color: var(--white);
+      border-radius: 24px;
+      padding: 40px;
+      margin: 50px auto 0;
+      max-width: 920px;
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 36px;
+      align-items: center;
+      box-shadow: 0 20px 45px rgba(15, 23, 42, 0.2);
+    }
+    .offline-feature-box h3 {
+      font-size: 24px;
+      font-weight: 850;
+      margin: 0 0 12px;
+      color: var(--white);
+      letter-spacing: -0.02em;
+    }
+    .offline-feature-box p {
+      color: var(--slate-400);
+      font-size: 15px;
+      line-height: 1.6;
+      margin: 0 0 20px;
+    }
+    .offline-feature-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+    @media (max-width: 850px) {
+      .support-grid { grid-template-columns: 1fr; }
+      .offline-feature-box { grid-template-columns: 1fr; padding: 28px; }
+      .offline-feature-img { height: 180px; }
+      .faq-answer { padding-left: 0; }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Centro de Soporte y Ayuda</h1>
-        <p>Bienvenido al canal oficial de atención al estudiante y usuario de la <strong>Escuela de Inglés Americana</strong>. Si experimentas dificultades técnicas, dudas con tu suscripción o sugerencias sobre el contenido pedagógico, estamos aquí para asistirte.</p>
 
-        <h2>📧 Contacto Directo de Asistencia</h2>
-        <div class="contact-card">
-            <p><strong>Equipo de Soporte Técnico y Docente:</strong></p>
-            <p>Correo de atención: <a href="mailto:soporte@escueladeinglesamericana.com">soporte@escueladeinglesamericana.com</a></p>
-            <p><em>Horario de atención: Lunes a Viernes de 9:00 a 18:00 (Hora Estándar). Tiempo de respuesta garantizado entre 24 y 48 horas hábiles.</em></p>
+  <!-- Sticky Navbar -->
+  <header class="nav">
+    <div class="container nav-in">
+      <a class="brand" href="index.html">
+        <div class="brand-logo-wrap">
+          <img src="assets/logo-clean.png" alt="Logo Escuela de Inglés Americana" class="brand-logo-img">
         </div>
-
-        <h2>❓ Preguntas Frecuentes (FAQ)</h2>
-
-        <div class="faq-item">
-            <div class="faq-question">1. ¿Cómo recupero mi progreso si cambio de teléfono o reinstalo la app?</div>
-            <div class="faq-answer">Inicia sesión con la misma cuenta de correo electrónico registrada. Tu progreso de tarjetas repasadas, rachas e historial se sincronizarán automáticamente desde la nube de forma segura.</div>
+        <div class="brand-text">
+          <span class="brand-name">Escuela de Inglés Americana</span>
+          <span class="brand-tag">Ciencia Cognitiva &bull; A1–B2</span>
         </div>
+      </a>
 
-        <div class="faq-item">
-            <div class="faq-question">2. ¿La aplicación funciona sin conexión a Internet?</div>
-            <div class="faq-answer">Sí. La aplicación opera con una arquitectura <em>Offline-First</em> respaldada por una base de datos local (SQLite). Puedes estudiar tus sesiones de repaso SRS y pasajes de lectura sin conexión; en cuanto tu dispositivo recupere la señal, el progreso se sincronizará automáticamente.</div>
-        </div>
+      <nav class="nav-links">
+        <a href="index.html">Inicio</a>
+        <a href="index.html#metodologia">Metodología</a>
+        <a href="index.html#precios">Precios</a>
+        <a href="support.html" class="active">Soporte</a>
+      </nav>
 
-        <div class="faq-item">
-            <div class="faq-question">3. ¿Cómo cancelo mi suscripción Pro?</div>
-            <div class="faq-answer">
-                Las suscripciones son gestionadas directamente por las tiendas oficiales de aplicaciones:
-                <ul>
-                    <li><strong>En iPhone / iPad:</strong> Abre <em>Ajustes</em> > Toca tu <em>Nombre</em> > <em>Suscripciones</em> > Selecciona <em>Escuela de Inglés Americana</em> > Toca <em>Cancelar suscripción</em>.</li>
-                    <li><strong>En Android:</strong> Abre <em>Google Play Store</em> > Toca tu foto de perfil > <em>Pagos y suscripciones</em> > <em>Suscripciones</em> > Selecciona la app > Toca <em>Cancelar suscripción</em>.</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="faq-item">
-            <div class="faq-question">4. ¿Cómo restauro una compra previa de mi suscripción Pro?</div>
-            <div class="faq-answer">Abre la aplicación, dirígete a cualquier nivel bloqueado para abrir el Paywall y pulsa sobre el enlace <strong>"Restaurar compras"</strong> en la parte inferior. El sistema consultará tu Apple ID o cuenta de Google Play y reactivará tu acceso Pro de inmediato sin costo adicional.</div>
-        </div>
-
-        <div class="faq-item">
-            <div class="faq-question">5. ¿Cómo elimino permanentemente mi cuenta y mis datos personales?</div>
-            <div class="faq-answer">Puedes ejercer tu derecho al olvido directamente desde la app: dirígete a la pestaña <strong>Perfil</strong>, desplázate hasta la sección <strong>"Zona de Peligro"</strong>, pulsa <strong>"Eliminar mi cuenta permanentemente"</strong> y escribe <strong>ELIMINAR</strong> para confirmar. Tus datos se purgarán de inmediato de nuestros servidores y del almacenamiento local.</div>
-        </div>
-
-        <div class="nav-links">
-            <a href="privacy.html">Política de Privacidad</a>
-            <a href="terms.html">Términos de Servicio</a>
-            <a href="index.html">Inicio</a>
-        </div>
+      <a href="index.html#precios" class="nav-cta">
+        <span>Comenzar Gratis</span>
+        <span>&rarr;</span>
+      </a>
     </div>
+  </header>
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="container">
+      <div class="eyebrow">Canal Oficial de Asistencia</div>
+      <h1>Centro de Soporte y Ayuda</h1>
+      <p>
+        Canal de atención para estudiantes, usuarios y suscriptores de la <strong>Escuela de Inglés Americana</strong>. Resolvemos tus consultas técnicas, académicas y de cuenta con rapidez.
+      </p>
+
+      <div class="support-grid">
+        <div class="support-card">
+          <div>
+            <div class="icon">📧</div>
+            <h3>Soporte por Email</h3>
+            <p>Atención directa de nuestro equipo docente y técnico para resolver cualquier incidencia.</p>
+          </div>
+          <a href="mailto:soporte@escueladeinglesamericana.com" class="btn btn-primary" style="justify-content:center; font-size:13.5px; padding:10px 16px;">
+            soporte@escueladeinglesamericana.com
+          </a>
+        </div>
+
+        <div class="support-card">
+          <div>
+            <div class="icon">⚡</div>
+            <h3>Tiempo de Respuesta</h3>
+            <p>Atendemos de lunes a viernes de 9:00 a 18:00 (Hora Estándar). Respuesta garantizada en 24–48h.</p>
+          </div>
+          <div class="foot-badge" style="width:fit-content;">
+            <span>● SLA Garantizado 24h</span>
+          </div>
+        </div>
+
+        <div class="support-card">
+          <div>
+            <div class="icon">🛡️</div>
+            <h3>Estado del Servicio</h3>
+            <p>Sincronización en la nube (Supabase) y base de datos local SQLite 100% operativas.</p>
+          </div>
+          <div class="foot-badge" style="width:fit-content; background: rgba(5, 150, 105, 0.15); color: #059669; border-color: #059669;">
+            <span>● Sistemas en Línea</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section style="background: var(--slate-50); padding: 70px 0;">
+    <div class="container">
+      <div class="head" style="text-align: center; display: block; margin-bottom: 40px;">
+        <div class="eyebrow" style="margin: 0 auto 14px;">Respuestas Inmediatas</div>
+        <h2 style="font-size: clamp(28px, 3.5vw, 40px);">Preguntas Frecuentes de Estudiantes</h2>
+        <p style="margin: 12px auto 0; max-width: 600px;">
+          Encuentra solución a las dudas más comunes sobre la aplicación, el algoritmo SRS y tu suscripción.
+        </p>
+      </div>
+
+      <div class="faq-list">
+
+        <!-- FAQ 1 -->
+        <div class="faq-card">
+          <div class="faq-question">
+            <span class="q-badge">1</span>
+            <span>¿Cómo recupero mi progreso si cambio de dispositivo o reinstalo la app?</span>
+          </div>
+          <div class="faq-answer">
+            Basta con iniciar sesión con el mismo correo electrónico con el que te registraste originalmente. Tu historial de tarjetas aprendidas, factores de facilidad del algoritmo SM-2, rachas diarias de estudio y estadísticas se sincronizarán automáticamente desde la nube de forma segura.
+          </div>
+        </div>
+
+        <!-- FAQ 2 -->
+        <div class="faq-card">
+          <div class="faq-question">
+            <span class="q-badge">2</span>
+            <span>¿La aplicación funciona realmente sin conexión a Internet?</span>
+          </div>
+          <div class="faq-answer">
+            <strong>Sí, al 100%.</strong> La aplicación está construida con arquitectura <em>Offline-First</em> mediante una base de datos local embebida (SQLite). Puedes realizar tus sesiones diarias de Active Recall, repasar vocabulario con audio nativo y leer pasajes graduados en el metro, en un avión o sin datos móviles. En cuanto tu teléfono recupere la conexión, el progreso se sincronizará transparentemente con el servidor.
+          </div>
+        </div>
+
+        <!-- FAQ 3 -->
+        <div class="faq-card">
+          <div class="faq-question">
+            <span class="q-badge">3</span>
+            <span>¿Cómo cancelo mi suscripción mensual o anual Pro?</span>
+          </div>
+          <div class="faq-answer">
+            Las suscripciones son gestionadas de forma 100% transparente y segura por las tiendas oficiales de aplicaciones:
+            <ul>
+              <li><strong>En dispositivos Apple (iOS):</strong> Abre <em>Ajustes</em> en tu iPhone &rarr; Toca tu <em>Nombre / Apple ID</em> en la parte superior &rarr; Pulsa en <em>Suscripciones</em> &rarr; Selecciona <em>Escuela de Inglés Americana</em> &rarr; Toca <em>Cancelar suscripción</em>.</li>
+              <li><strong>En dispositivos Android (Google Play):</strong> Abre <em>Google Play Store</em> &rarr; Toca el icono de tu perfil en la esquina superior derecha &rarr; Selecciona <em>Pagos y suscripciones</em> &rarr; Pulsa en <em>Suscripciones</em> &rarr; Selecciona la app &rarr; Pulsa <em>Cancelar suscripción</em>.</li>
+            </ul>
+            Mantendrás tu acceso Pro hasta el último día del ciclo de facturación pagado, sin cobros posteriores.
+          </div>
+        </div>
+
+        <!-- FAQ 4 -->
+        <div class="faq-card">
+          <div class="faq-question">
+            <span class="q-badge">4</span>
+            <span>¿Cómo restauro una compra previa de mi suscripción Pro?</span>
+          </div>
+          <div class="faq-answer">
+            Si cambiaste de teléfono o restauraste tu sistema operativo, abre la app, ingresa a la pantalla de suscripciones o pulsa cualquier contenido bloqueado y selecciona el enlace <strong>"Restaurar compras"</strong> ubicado al pie de la pantalla. El sistema validará tu recibo directamente con Apple o Google Play a través de RevenueCat y reactivará tu acceso de forma inmediata sin costo adicional.
+          </div>
+        </div>
+
+        <!-- FAQ 5 -->
+        <div class="faq-card">
+          <div class="faq-question">
+            <span class="q-badge">5</span>
+            <span>¿Cómo ejerzo mi derecho al olvido y elimino permanentemente mi cuenta?</span>
+          </div>
+          <div class="faq-answer">
+            En cumplimiento estricto con el RGPD, CCPA y las normativas de Apple y Google, puedes purgar tus datos de inmediato desde la misma app:
+            <ol style="margin-top: 8px; padding-left: 20px;">
+              <li>Abre la app y ve a la pestaña <strong>Perfil</strong>.</li>
+              <li>Desplázate al final de la pantalla hasta la sección <strong>"Zona de Peligro"</strong>.</li>
+              <li>Pulsa <strong>"Eliminar mi cuenta permanentemente"</strong>.</li>
+              <li>Escribe la palabra <strong>ELIMINAR</strong> en el diálogo de seguridad para confirmar.</li>
+            </ol>
+            Tus credenciales se revocarán, tus registros en la base de datos se destruirán irreversiblemente y la base de datos local de tu teléfono será formateada.
+          </div>
+        </div>
+
+        <!-- FAQ 6 -->
+        <div class="faq-card">
+          <div class="faq-question">
+            <span class="q-badge">6</span>
+            <span>¿Qué es la telemetría de latencia cognitiva (&gt;7s)?</span>
+          </div>
+          <div class="faq-answer">
+            A diferencia de otras apps que solo consideran si marcaste la opción correcta o incorrecta, nuestra plataforma mide el tiempo en milisegundos que tarda tu cerebro en recuperar el término. Si tardas más de 7 segundos en responder, el algoritmo deduce que existió duda o traducción mental intermedia, por lo que programa un repaso de refuerzo más temprano para asegurar que la palabra pase a la memoria a largo plazo automatizada.
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Feature Highlight Box with Real Asset -->
+      <div class="offline-feature-box">
+        <div>
+          <span class="eyebrow" style="background:rgba(5, 150, 105, 0.2); border-color:#059669; color:var(--emerald-500); margin-bottom:12px;">
+            Ingeniería de Confiabilidad
+          </span>
+          <h3>Estudia sin interrupciones, donde sea</h3>
+          <p>
+            Toda la curaduría léxica, fonética IPA, oraciones de ejemplo y pasajes de lectura se encuentran precargados en tu dispositivo móvil. Tu aprendizaje no depende de la señal de celular ni de conexiones Wi-Fi lentas.
+          </p>
+          <a href="index.html#precios" class="btn btn-primary" style="font-size:14px; padding:12px 20px;">
+            Comenzar a Estudiar Gratis &rarr;
+          </a>
+        </div>
+        <img src="assets/onboarding-sin-internet.png" alt="Estudia Sin Internet - Escuela de Inglés Americana" class="offline-feature-img">
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Comprehensive Dark Footer -->
+  <footer>
+    <div class="container">
+      <div class="foot-top">
+        <div class="foot-brand">
+          <div class="foot-brand-title">
+            <img src="assets/logo.png" alt="Escuela de Inglés Americana Logo">
+            <span>Escuela de Inglés Americana</span>
+          </div>
+          <p>
+            Plataforma científica de adquisición de inglés americano para hispanohablantes mediante repetición espaciada, input comprensible y telemetría de fijación léxica.
+          </p>
+          <div class="foot-badge">
+            Zero AI Curriculum &bull; 100% Curaduría Docente
+          </div>
+        </div>
+
+        <div class="foot-col">
+          <h5>Plataforma</h5>
+          <ul>
+            <li><a href="index.html#experiencia">Active Recall SM-2</a></li>
+            <li><a href="index.html#metodologia">Método Krashen i+1</a></li>
+            <li><a href="index.html#dashboard">Telemetría de Latencia</a></li>
+            <li><a href="index.html#precios">Planes y Precios</a></li>
+          </ul>
+        </div>
+
+        <div class="foot-col">
+          <h5>Legal y Soporte</h5>
+          <ul>
+            <li><a href="support.html" style="color:var(--emerald-500); font-weight:700;">Centro de Soporte</a></li>
+            <li><a href="privacy.html">Política de Privacidad</a></li>
+            <li><a href="terms.html">Términos del Servicio</a></li>
+            <li><a href="mailto:soporte@escueladeinglesamericana.com">Contacto por Email</a></li>
+          </ul>
+        </div>
+
+        <div class="foot-col">
+          <h5>Currículo A1–B2</h5>
+          <ul>
+            <li>A1: 825 palabras (Semanas 1–19)</li>
+            <li>A2: 673 palabras (Semanas 1–11)</li>
+            <li>B1: 539 palabras (Semanas 1–7)</li>
+            <li>B2: 519 palabras (Semanas 1–7)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="foot-bottom">
+        <span>&copy; 2026 Escuela de Inglés Americana. Todos los derechos reservados.</span>
+        <span>Aprende. Fija. Domina con Ciencia Cognitiva.</span>
+      </div>
+    </div>
+  </footer>
+
 </body>
 </html>

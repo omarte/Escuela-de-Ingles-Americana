@@ -67,18 +67,20 @@ function initializeStarterCards(userId: string): SRSCard[] {
   })
 }
 
+export const INITIAL_SESSION_STATS: SessionStats = {
+  cardsReviewed: 0,
+  cardsCorrect: 0,
+  qualityHistory: [],
+  frictionCount: 0,
+}
+
 export const useSRSStore = create<SRSState>()((set, get) => ({
   cards: [],
   sessionQueue: [],
   currentIndex: 0,
   currentSessionId: null,
   lastReviewedCardIds: [],
-  sessionStats: {
-    cardsReviewed: 0,
-    cardsCorrect: 0,
-    qualityHistory: [],
-    frictionCount: 0,
-  },
+  sessionStats: INITIAL_SESSION_STATS,
   isSessionActive: false,
   isCompleted: false,
   isLoading: false,
@@ -93,12 +95,7 @@ export const useSRSStore = create<SRSState>()((set, get) => ({
       isSessionActive: false,
       isCompleted: false,
       cardStartTime: null,
-      sessionStats: {
-        cardsReviewed: 0,
-        cardsCorrect: 0,
-        qualityHistory: [],
-        frictionCount: 0,
-      },
+      sessionStats: INITIAL_SESSION_STATS,
       error: null,
     })
   },
@@ -165,11 +162,7 @@ export const useSRSStore = create<SRSState>()((set, get) => ({
       lastReviewedCardIds: queue.map((c) => c.id),
       isSessionActive: queue.length > 0,
       isCompleted: false,
-      sessionStats: {
-        cardsReviewed: 0,
-        cardsCorrect: 0,
-        qualityHistory: [],
-      },
+      sessionStats: INITIAL_SESSION_STATS,
     })
   },
 
@@ -213,11 +206,7 @@ export const useSRSStore = create<SRSState>()((set, get) => ({
       lastReviewedCardIds: newCards.map((c) => c.id),
       isSessionActive: true,
       isCompleted: false,
-      sessionStats: {
-        cardsReviewed: 0,
-        cardsCorrect: 0,
-        qualityHistory: [],
-      },
+      sessionStats: INITIAL_SESSION_STATS,
     })
   },
 
@@ -250,11 +239,7 @@ export const useSRSStore = create<SRSState>()((set, get) => ({
       currentSessionId: `session_repeat_${Date.now()}`,
       isSessionActive: queue.length > 0,
       isCompleted: false,
-      sessionStats: {
-        cardsReviewed: 0,
-        cardsCorrect: 0,
-        qualityHistory: [],
-      },
+      sessionStats: INITIAL_SESSION_STATS,
     })
   },
 
@@ -275,11 +260,7 @@ export const useSRSStore = create<SRSState>()((set, get) => ({
       lastReviewedCardIds: queue.map((c) => c.id),
       isSessionActive: queue.length > 0,
       isCompleted: false,
-      sessionStats: {
-        cardsReviewed: 0,
-        cardsCorrect: 0,
-        qualityHistory: [],
-      },
+      sessionStats: INITIAL_SESSION_STATS,
     })
   },
 
@@ -312,7 +293,7 @@ export const useSRSStore = create<SRSState>()((set, get) => ({
       lapses: activeCard.lapses,
       quality,
       reviewedAt: now,
-      latencyMs,
+      ...(latencyMs !== undefined ? { latencyMs } : {}),
     })
 
     const updatedCard: SRSCard = {
@@ -337,7 +318,7 @@ export const useSRSStore = create<SRSState>()((set, get) => ({
       nextState: result.state,
       previousInterval: activeCard.interval,
       nextInterval: result.interval,
-      latencyMs,
+      ...(latencyMs !== undefined ? { latencyMs } : {}),
       frictionFlagged,
     }
 

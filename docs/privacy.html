@@ -1,76 +1,214 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Política de Privacidad - Escuela de Inglés Americana</title>
-    <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #1E293B; max-width: 800px; margin: 0 auto; padding: 24px; background-color: #F8FAFC; }
-        .container { background: #FFFFFF; padding: 32px; border-radius: 12px; border: 1px solid #E2E8F0; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
-        h1 { color: #059669; font-size: 28px; margin-top: 0; }
-        h2 { color: #0F172A; font-size: 20px; margin-top: 28px; border-bottom: 1px solid #E2E8F0; padding-bottom: 6px; }
-        p, li { color: #334155; font-size: 15px; }
-        ul, ol { padding-left: 24px; margin-bottom: 18px; }
-        li { margin-bottom: 8px; }
-        .highlight-box { background-color: #ECFDF5; border-left: 4px solid #059669; padding: 14px 18px; border-radius: 6px; margin: 20px 0; }
-        .warning-box { background-color: #FFFBEB; border-left: 4px solid #D97706; padding: 14px 18px; border-radius: 6px; margin: 20px 0; }
-        a { color: #059669; text-decoration: underline; }
-        .nav-links { margin-top: 32px; padding-top: 16px; border-top: 1px solid #E2E8F0; font-size: 14px; color: #64748B; }
-        .nav-links a { margin-right: 16px; }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Política de Privacidad — Escuela de Inglés Americana</title>
+  <meta name="description" content="Política de privacidad oficial de la Escuela de Inglés Americana. Descubre cómo protegemos tus datos personales, cómo gestionamos el progreso de estudio y tu derecho al olvido.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
+  <!-- Sticky Navbar -->
+  <header class="nav">
+    <div class="container nav-in">
+      <a class="brand" href="index.html">
+        <div class="brand-logo-wrap">
+          <img src="assets/logo-clean.png" alt="Logo Escuela de Inglés Americana" class="brand-logo-img">
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">Escuela de Inglés Americana</span>
+          <span class="brand-tag">Ciencia Cognitiva &bull; A1–B2</span>
+        </div>
+      </a>
+
+      <nav class="nav-links">
+        <a href="index.html">Inicio</a>
+        <a href="index.html#metodologia">Metodología</a>
+        <a href="index.html#precios">Precios</a>
+        <a href="support.html">Soporte</a>
+        <a href="privacy.html" class="active">Privacidad</a>
+      </nav>
+
+      <a href="index.html#precios" class="nav-cta">
+        <span>Comenzar Gratis</span>
+        <span>&rarr;</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Page Hero -->
+  <section class="page-hero">
     <div class="container">
-        <h1>Política de Privacidad</h1>
-        <p><strong>Última actualización:</strong> 14 de septiembre de 2026</p>
-        <p>En <strong>Escuela de Inglés Americana</strong>, respetamos tu privacidad y nos comprometemos a proteger tus datos personales. Esta política explica qué datos recopilamos, cómo los usamos y tus derechos sobre ellos al utilizar nuestra aplicación móvil y servicios asociados.</p>
+      <div class="eyebrow">Compromiso de Privacidad y Seguridad</div>
+      <h1>Política de Privacidad</h1>
+      <p>
+        En <strong>Escuela de Inglés Americana</strong>, la privacidad de nuestros estudiantes es un principio fundamental. Explicamos de forma transparente qué datos tratamos, con qué fin pedagógico y cómo puedes eliminarlos en cualquier momento.
+      </p>
+    </div>
+  </section>
 
-        <h2>1. Datos que Recopilamos</h2>
-        <ul>
-            <li><strong>Información de la cuenta:</strong> Dirección de correo electrónico y nombre de visualización (utilizados exclusivamente para autenticación, personalización básica y recuperación de cuenta).</li>
-            <li><strong>Datos de actividad y progreso:</strong> Palabras estudiadas, calificaciones del algoritmo de repetición espaciada (SRS), rachas de estudio diarias y preferencias de configuración (velocidad y dialecto de audio). Estos datos se procesan localmente en tu dispositivo (SQLite) y se sincronizan cifrados con nuestros servidores seguros (Supabase).</li>
-            <li><strong>Datos de compras y facturación:</strong> Las transacciones de pago son gestionadas y procesadas directamente por Apple (App Store) o Google (Google Play). No almacenamos números de tarjetas de crédito ni datos financieros en nuestros servidores. Utilizamos la infraestructura de RevenueCat como procesador de validación de recibos para conceder tu acceso Pro sin acceder a tu información bancaria.</li>
-        </ul>
-
-        <h2>2. Cómo Usamos tus Datos</h2>
-        <p>Utilizamos tus datos únicamente para fines pedagógicos y operativos esenciales:</p>
-        <ul>
-            <li>Proporcionar y calibrar el algoritmo de repetición espaciada según tu curva de retención de vocabulario.</li>
-            <li>Mantener la seguridad de tu sesión y sincronizar tu progreso entre tus dispositivos.</li>
-            <li>Programar notificaciones locales opcionales para recordarte tu meta diaria de repaso (sin usar servicios de geolocalización ni rastreo externo).</li>
-        </ul>
-
-        <h2>3. Seguridad y No Venta de Datos</h2>
-        <div class="highlight-box">
-            <p><strong>Compromiso estricto de privacidad:</strong> Nunca vendemos, alquilamos ni compartimos tus datos personales con terceros con fines de publicidad, marketing o intermediación comercial. Toda la comunicación entre la app y nuestros servidores está cifrada de extremo a extremo mediante TLS 1.3 / HTTPS.</p>
+  <!-- Legal Body Content -->
+  <main class="legal-body">
+    <div class="container">
+      <div class="legal-card">
+        <div style="font-size:13.5px; color:var(--slate-500); margin-bottom:20px; font-weight:600;">
+          Última actualización: 14 de septiembre de 2026 &bull; Vigente para versión móvil 1.0+
         </div>
 
-        <h2>4. Tu Derecho a la Eliminación de Datos (Derecho al Olvido)</h2>
-        <p>En cumplimiento con las directrices de Apple (Guideline 5.1.1(v)), las políticas de seguridad de Google Play y las normativas de protección de datos (RGPD / CCPA), puedes eliminar tu cuenta y todos tus datos personales de forma inmediata y definitiva directamente desde la aplicación:</p>
-        <ol>
-            <li>Abre la aplicación y ve a la pestaña <strong>Perfil</strong>.</li>
-            <li>Desplázate hacia abajo hasta la sección <strong>"Zona de Peligro"</strong>.</li>
-            <li>Toca el botón <strong>"Eliminar mi cuenta permanentemente"</strong>.</li>
-            <li>Escribe la palabra <strong>ELIMINAR</strong> en el cuadro de confirmación para autorizar la acción.</li>
-        </ol>
-        <p>Al confirmar, tus credenciales son revocadas y borradas de Supabase Auth, todos tus registros de estudio son eliminados de nuestros servidores relacionales, y la base de datos local SQLite y almacenamiento caché son purgados de tu dispositivo de manera irreversible.</p>
+        <p>
+          Esta Política de Privacidad describe el tratamiento de la información recopilada a través de la aplicación móvil <strong>Escuela de Inglés Americana</strong> (disponible para iOS y Android) y de los servicios web vinculados en este dominio.
+        </p>
+
+        <h2>1. Datos que Recopilamos y Finalidad</h2>
+        <p>
+          Recopilamos únicamente la información técnica y pedagógica estrictamente necesaria para garantizar la sincronización de tu estudio y el funcionamiento del algoritmo de repetición espaciada:
+        </p>
+
+        <table class="legal-table">
+          <thead>
+            <tr>
+              <th>Categoría de Datos</th>
+              <th>Finalidad Pedagógica / Técnica</th>
+              <th>Almacenamiento</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Credenciales de Cuenta</strong><br><small>Correo electrónico y nombre de usuario</small></td>
+              <td>Autenticación segura, recuperación de contraseña y personalización básica del perfil.</td>
+              <td>Servidor cifrado (Supabase Auth)</td>
+            </tr>
+            <tr>
+              <td><strong>Historial de Estudio SRS</strong><br><small>Tarjetas repasadas, factores de facilidad, intervalos y latencia de respuesta</small></td>
+              <td>Cálculo matemático de la curva de retención (SM-2 adaptativo), detección de fricción cognitiva y recomendaciones de repaso.</td>
+              <td>Local en dispositivo (SQLite) con sincronización cifrada a la nube</td>
+            </tr>
+            <tr>
+              <td><strong>Datos de Transacción Pro</strong><br><small>Recibos de compra anónimos generados por la tienda</small></td>
+              <td>Concesión de acceso Pro y validación de vigencia de suscripción mediante RevenueCat. No almacenamos datos bancarios.</td>
+              <td>Google Play / Apple App Store / RevenueCat</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>2. Compromiso Estricto: Cero Venta de Datos y Cero Rastreo Comercial</h2>
+        <div class="highlight-box">
+          <p>
+            <strong>Garantía de Privacidad Académica:</strong> Nunca vendemos, comercializamos, alquilamos ni cedemos tus datos personales a empresas de publicidad, anunciantes ni intermediarios de datos. No integramos SDKs de publicidad invasiva, rastreo de localización en segundo plano ni brokers comerciales.
+          </p>
+        </div>
+
+        <h2>3. Almacenamiento Seguro y Cifrado</h2>
+        <p>
+          Toda la comunicación entre tu dispositivo móvil y nuestra infraestructura en la nube se realiza a través de protocolos seguros con cifrado de extremo a extremo mediante <strong>TLS 1.3 / HTTPS</strong>. En reposo, las bases de datos de respaldo emplean cifrado estándar AES-256 para resguardar la integridad de los registros académicos.
+        </p>
+
+        <h2>4. Derecho al Olvido: Eliminación Total e Inmediata de tu Cuenta</h2>
+        <p>
+          En estricta conformidad con las pautas de Apple (Guideline 5.1.1(v)), las políticas de seguridad de Google Play y el marco del Reglamento General de Protección de Datos (RGPD) y la CCPA, el usuario tiene derecho a eliminar todos sus datos de forma permanente en cualquier momento y sin trabas burocráticas:
+        </p>
+
+        <div style="background:var(--slate-50); border:1px solid var(--line); border-radius:16px; padding:24px; margin:20px 0;">
+          <h3 style="margin-top:0;">Pasos para purgar tu cuenta desde la app:</h3>
+          <ol style="margin-bottom:0;">
+            <li>Abre la aplicación <strong>Escuela de Inglés Americana</strong> en tu teléfono.</li>
+            <li>Dirígete a la pestaña <strong>Perfil</strong> en la barra de navegación inferior.</li>
+            <li>Desplázate hacia abajo hasta ubicar la sección <strong>"Zona de Peligro"</strong>.</li>
+            <li>Presiona el botón <strong>"Eliminar mi cuenta permanentemente"</strong>.</li>
+            <li>Escribe la palabra <strong>ELIMINAR</strong> en el cuadro de confirmación y confirma la operación.</li>
+          </ol>
+        </div>
+
+        <p>
+          Al confirmar, el sistema ejecuta de inmediato un borrado en cascada: se revoca la sesión en Supabase Auth, se destruyen todos los registros relacionales en el servidor y se formatea la base de datos local SQLite y caché del dispositivo móvil.
+        </p>
 
         <div class="warning-box">
-            <p><strong>Aviso importante sobre suscripciones activas en tiendas:</strong> La eliminación de tu cuenta en la aplicación borra tus datos en nuestros servidores, pero <strong>NO cancela automáticamente</strong> las suscripciones contratadas a través de Apple App Store o Google Play. Para evitar cobros recurrentes de la tienda, debes cancelar la suscripción directamente desde los ajustes de tu cuenta de Apple ID o Google Play Store antes o después de eliminar tu cuenta en la app.</p>
+          <p>
+            <strong>Aviso de Suscripciones en Tiendas Oficiales:</strong> Eliminar tu cuenta en la aplicación elimina tus datos y registros académicos de nuestros servidores, pero <strong>NO cancela automáticamente las suscripciones contratadas a través de Apple App Store o Google Play</strong>. Para evitar cobros recurrentes de la tienda, debes cancelar la suscripción directamente desde los ajustes de tu cuenta de Apple ID o Google Play antes o después de eliminar tu cuenta.
+          </p>
         </div>
 
-        <h2>5. Protección de Menores de Edad</h2>
-        <p>La aplicación está diseñada principalmente para estudiantes adultos y profesionales (18+ años). No recopilamos intencionalmente información personal de menores de 13 años (o la edad mínima legal correspondiente en tu jurisdicción) sin el consentimiento y supervisión expresa de sus padres o tutores legales. Si detectamos que un menor nos ha proporcionado información sin dicho consentimiento, procederemos a su eliminación inmediata.</p>
+        <h2>5. Protección de Menores de Edad (Política 18+)</h2>
+        <p>
+          Nuestros programas y servicios están dirigidos a adultos y jóvenes profesionales (18 años o más). No recopilamos intencionalmente información personal de menores de 13 años (o la edad mínima legal en la jurisdicción del usuario) sin consentimiento paterno previo y verificable. Si se constata que un menor ha registrado una cuenta sin autorización, sus datos serán eliminados con celeridad.
+        </p>
 
-        <h2>6. Contacto y Derechos de Privacidad</h2>
-        <p>Si tienes preguntas sobre esta política de privacidad o requieres asistencia adicional para ejercer tus derechos de acceso, rectificación o supresión, puedes contactar a nuestro equipo en:</p>
-        <p><strong>Email:</strong> <a href="mailto:soporte@escueladeinglesamericana.com">soporte@escueladeinglesamericana.com</a></p>
+        <h2>6. Modificaciones a esta Política</h2>
+        <p>
+          Podremos actualizar esta política para reflejar mejoras en la aplicación, nuevas funcionalidades o adecuaciones normativas. Toda actualización sustancial será notificada mediante la aplicación o publicada de manera visible en esta URL.
+        </p>
 
-        <div class="nav-links">
-            <a href="terms.html">Términos de Servicio</a>
-            <a href="support.html">Centro de Soporte</a>
-            <a href="index.html">Inicio</a>
-        </div>
+        <h2>7. Contacto para Asuntos de Privacidad</h2>
+        <p>
+          Para ejercer tus derechos de acceso, rectificación, supresión o plantear inquietudes sobre esta política, puedes dirigirte por correo a nuestro oficial de privacidad:
+        </p>
+        <p>
+          <strong>Correo de Privacidad:</strong> <a href="mailto:soporte@escueladeinglesamericana.com">soporte@escueladeinglesamericana.com</a><br>
+          <em>Asunto sugerido: "Solicitud de Privacidad / Datos Personales"</em>
+        </p>
+      </div>
     </div>
+  </main>
+
+  <!-- Comprehensive Dark Footer -->
+  <footer>
+    <div class="container">
+      <div class="foot-top">
+        <div class="foot-brand">
+          <div class="foot-brand-title">
+            <img src="assets/logo.png" alt="Escuela de Inglés Americana Logo">
+            <span>Escuela de Inglés Americana</span>
+          </div>
+          <p>
+            Plataforma científica de adquisición de inglés americano para hispanohablantes mediante repetición espaciada, input comprensible y telemetría de fijación léxica.
+          </p>
+          <div class="foot-badge">
+            Zero AI Curriculum &bull; 100% Curaduría Docente
+          </div>
+        </div>
+
+        <div class="foot-col">
+          <h5>Plataforma</h5>
+          <ul>
+            <li><a href="index.html#experiencia">Active Recall SM-2</a></li>
+            <li><a href="index.html#metodologia">Método Krashen i+1</a></li>
+            <li><a href="index.html#dashboard">Telemetría de Latencia</a></li>
+            <li><a href="index.html#precios">Planes y Precios</a></li>
+          </ul>
+        </div>
+
+        <div class="foot-col">
+          <h5>Legal y Soporte</h5>
+          <ul>
+            <li><a href="support.html">Centro de Soporte</a></li>
+            <li><a href="privacy.html" style="color:var(--emerald-500); font-weight:700;">Política de Privacidad</a></li>
+            <li><a href="terms.html">Términos del Servicio</a></li>
+            <li><a href="mailto:soporte@escueladeinglesamericana.com">Contacto por Email</a></li>
+          </ul>
+        </div>
+
+        <div class="foot-col">
+          <h5>Currículo A1–B2</h5>
+          <ul>
+            <li>A1: 825 palabras (Semanas 1–19)</li>
+            <li>A2: 673 palabras (Semanas 1–11)</li>
+            <li>B1: 539 palabras (Semanas 1–7)</li>
+            <li>B2: 519 palabras (Semanas 1–7)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="foot-bottom">
+        <span>&copy; 2026 Escuela de Inglés Americana. Todos los derechos reservados.</span>
+        <span>Aprende. Fija. Domina con Ciencia Cognitiva.</span>
+      </div>
+    </div>
+  </footer>
+
 </body>
 </html>

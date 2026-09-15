@@ -79,7 +79,7 @@ export async function deleteAccountAndCleanup(): Promise<DeleteAccountResult> {
       currentIndex: 0,
       currentSessionId: null,
       lastReviewedCardIds: [],
-      sessionStats: { cardsReviewed: 0, cardsCorrect: 0, qualityHistory: [] },
+      sessionStats: { cardsReviewed: 0, cardsCorrect: 0, qualityHistory: [], frictionCount: 0 },
       isSessionActive: false,
       isCompleted: false,
       isLoading: false,

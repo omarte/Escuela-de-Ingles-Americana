@@ -112,7 +112,7 @@ function buildPayload(vocabularyIds: string[]): DrillNotificationPayload {
   const items = vocabularyIds
     .slice(0, 3)
     .map((id) => getVocabularyById(id))
-    .filter(Boolean)
+    .filter((item): item is NonNullable<typeof item> => Boolean(item))
 
   if (items.length === 0) {
     return {

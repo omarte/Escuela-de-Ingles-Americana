@@ -178,9 +178,9 @@ export function MicroExamModal({
               const isWrong = isSelected && !opt.isCorrect
               const isReveal = hasAnswered && opt.isCorrect && !isSelected
 
-              let borderColor = colors.border
+              let borderColor: string = colors.border
               let bgColor = 'transparent'
-              let textColor = colors.textPrimary
+              let textColor: string = colors.textPrimary
 
               if (isRight) {
                 borderColor = colors.success
