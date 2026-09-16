@@ -29,7 +29,7 @@ import {
 import { ReadingPassageSchema, VocabularyItemSchema } from '../packages/validation/src/index'
 import type { CEFRLevel, VocabularyItem } from '../packages/types/src/index'
 
-const LEVELS: readonly CEFRLevel[] = ['A1', 'A2', 'B1', 'B2']
+const LEVELS = ['A1', 'A2', 'B1', 'B2'] as const
 const CEFR_ORDER: Record<CEFRLevel, number> = { A1: 1, A2: 2, B1: 3, B2: 4, C1: 5, C2: 6, D1: 7, D2: 8 }
 
 interface ValidationError {
@@ -55,6 +55,7 @@ let totalPassages = 0
 // ─── 1. Vocabulary Validation ────────────────────────────────────────────────
 for (const level of LEVELS) {
   const levelContent = contentRegistry[level]
+  if (!levelContent) continue
 
   for (const block of levelContent.blocks) {
     for (const item of block.vocabulary) {
