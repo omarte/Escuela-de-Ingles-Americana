@@ -24,7 +24,7 @@ import path from 'node:path'
 import crypto from 'node:crypto'
 import { contentRegistry, getAllVocabulary, readingPassagesRegistry } from '../packages/content/src/index'
 import { calculateNextReview, DEFAULT_SRS_CONFIG, type ReviewInput } from '../packages/srs/src/index'
-import type { CEFRLevel, CardState } from '../packages/types/src/index'
+import type { CEFRLevel, CardState, ReviewQuality } from '../packages/types/src/index'
 
 // ─── COLORES Y FORMATO DE CONSOLA ───────────────────────────────────────────
 const GREEN = '\x1b[32m'
@@ -33,10 +33,16 @@ const CYAN = '\x1b[36m'
 const BOLD = '\x1b[1m'
 const RESET = '\x1b[0m'
 
-const logPass = (msg: string) => console.log(`  ${GREEN}✓ [PASS]${RESET} ${msg}`)
-const logFail = (msg: string) => console.log(`  ${RED}✗ [FAIL]${RESET} ${msg}`)
-const logInfo = (msg: string) => console.log(`  ${CYAN}ℹ [INFO]${RESET} ${msg}`)
-const logSection = (title: string) => {
+const logPass = (msg: string): void => {
+  console.log(`  ${GREEN}✓ [PASS]${RESET} ${msg}`)
+}
+const logFail = (msg: string): void => {
+  console.log(`  ${RED}✗ [FAIL]${RESET} ${msg}`)
+}
+const logInfo = (msg: string): void => {
+  console.log(`  ${CYAN}ℹ [INFO]${RESET} ${msg}`)
+}
+const logSection = (title: string): void => {
   console.log(`\n${BOLD}${CYAN}──────────────────────────────────────────────────────────────────────────────${RESET}`)
   console.log(`${BOLD}${title}${RESET}`)
   console.log(`${BOLD}${CYAN}──────────────────────────────────────────────────────────────────────────────${RESET}`)
@@ -163,10 +169,10 @@ function auditKrashenPrinciple(): KrashenResult {
   logSection('📚 PILAR 2: AUDITORÍA DEL PRINCIPIO KRASHEN i+1')
 
   const vocabMap = new Map<string, { level: CEFRLevel; week: number }>()
-  const levels: CEFRLevel[] = ['A1', 'A2', 'B1', 'B2']
+  const levels = ['A1', 'A2', 'B1', 'B2'] as const
 
   for (const lvl of levels) {
-    const blockList = contentRegistry[lvl]?.blocks ?? []
+    const blockList = contentRegistry[lvl].blocks
     for (const block of blockList) {
       for (const item of block.vocabulary) {
         vocabMap.set(item.id, { level: lvl, week: block.week })
@@ -191,7 +197,7 @@ function auditKrashenPrinciple(): KrashenResult {
   let unknownIds = 0
 
   for (const lvl of levels) {
-    const passages = readingPassagesRegistry[lvl] ?? []
+    const passages = readingPassagesRegistry[lvl]
     for (const passage of passages) {
       passagesChecked++
       const passageLvlOrder = levelOrder[lvl]
@@ -246,7 +252,7 @@ function auditSM2LatencyEngine(): boolean {
   logSection('⏱️ PILAR 3: EFICIENCIA SM-2 CON TELEMETRÍA DE LATENCIA')
 
   const baseInput = (
-    quality: number,
+    quality: ReviewQuality,
     state: CardState = 'review',
     interval = 10,
     easeFactor = 2.4,
@@ -258,7 +264,7 @@ function auditSM2LatencyEngine(): boolean {
     easeFactor,
     reps,
     lapses: 0,
-    quality: quality as any,
+    quality,
     reviewedAt: new Date().toISOString(),
     latencyMs,
   })
@@ -424,6 +430,10 @@ try {
   const ipaStats = auditAuthenticIPA()
   const krashenStats = auditKrashenPrinciple()
   const sm2Passed = auditSM2LatencyEngine()
+
+  if (!sm2Passed) {
+    logFail('El motor SM-2 con telemetría no superó todas las pruebas unitarias.')
+  }
 
   const summary = generateCertificate(ipaStats, krashenStats)
 
