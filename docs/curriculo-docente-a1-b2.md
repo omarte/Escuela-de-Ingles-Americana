@@ -2899,80 +2899,80 @@ Total de palabras en esta semana: **23**
 
 | ID | Palabra | Categoría | Fonética (IPA) | Traducción | Ejemplo en Inglés | Traducción del Ejemplo |
 |---|---|---|---|---|---|---|
-| `voc_b1_economy_165` | **economy** | *noun* | — | economía | — | — |
-| `voc_b1_inflation_166` | **inflation** | *noun* | — | inflación | — | — |
-| `voc_b1_recession_167` | **recession** | *noun* | — | recesión | — | — |
-| `voc_b1_unemployment_168` | **unemployment** | *noun* | — | desempleo | — | — |
-| `voc_b1_income_169` | **income** | *noun* | — | ingresos | — | — |
-| `voc_b1_expense_170` | **expense** | *noun* | — | gasto | — | — |
-| `voc_b1_investment_171` | **investment** | *noun* | — | inversión | — | — |
-| `voc_b1_profit_172` | **profit** | *noun* | — | ganancia/beneficio | — | — |
-| `voc_b1_loss-business_173` | **loss (business)** | *noun* | — | pérdida (negocio) | — | — |
-| `voc_b1_supply_174` | **supply** | *adverb* | — | oferta | — | — |
-| `voc_b1_demand-economy_175` | **demand (economy)** | *noun* | — | demanda (economía) | — | — |
-| `voc_b1_trade_176` | **trade** | *noun* | — | comercio | — | — |
-| `voc_b1_export_177` | **export** | *noun* | — | exportar/exportación | — | — |
-| `voc_b1_import_178` | **import** | *noun* | — | importar/importación | — | — |
-| `voc_b1_industry_179` | **industry** | *noun* | — | industria | — | — |
-| `voc_b1_sector_180` | **sector** | *noun* | — | sector | — | — |
-| `voc_b1_consumer_181` | **consumer** | *noun* | — | consumidor | — | — |
-| `voc_b1_entrepreneur_182` | **entrepreneur** | *noun* | — | emprendedor | — | — |
-| `voc_b1_startup_183` | **startup** | *noun* | — | empresa emergente | — | — |
-| `voc_b1_revenue_184` | **revenue** | *noun* | — | ingresos (empresa) | — | — |
-| `voc_b1_asset_185` | **asset** | *noun* | — | activo (financiero) | — | — |
-| `voc_b1_shareholder_186` | **shareholder** | *noun* | — | accionista | — | — |
-| `voc_b1_stock-finance_187` | **stock (finance)** | *noun* | — | acción (bolsa) | — | — |
+| `voc_b1_economy_165` | **economy** | *noun* | `/ɪˈkɑnəmi/` | economía | The economy is growing slowly. | La economía está creciendo lentamente. |
+| `voc_b1_inflation_166` | **inflation** | *noun* | `/ɪnˈfleɪʃən/` | inflación | Inflation raised the price of food. | La inflación subió el precio de la comida. |
+| `voc_b1_recession_167` | **recession** | *noun* | `/rɪˈsɛʃən/` | recesión | The country entered a recession last year. | El país entró en recesión el año pasado. |
+| `voc_b1_unemployment_168` | **unemployment** | *noun* | `/ˌʌnɪmˈplɔɪmənt/` | desempleo | Unemployment dropped this quarter. | El desempleo bajó este trimestre. |
+| `voc_b1_income_169` | **income** | *noun* | `/ˈɪnˌkʌm/` | ingresos | Her income increased after the promotion. | Sus ingresos aumentaron después del ascenso. |
+| `voc_b1_expense_170` | **expense** | *noun* | `/ɪkˈspɛns/` | gasto | Rent is our biggest expense. | El alquiler es nuestro gasto más grande. |
+| `voc_b1_investment_171` | **investment** | *noun* | `/ɪnˈvɛstmənt/` | inversión | This was a smart investment. | Esta fue una inversión inteligente. |
+| `voc_b1_profit_172` | **profit** | *noun* | `/ˈprɑfɪt/` | ganancia/beneficio | The company made a big profit this year. | La empresa tuvo una gran ganancia este año. |
+| `voc_b1_loss-business_173` | **loss (business)** | *noun* | `/lɔs/` | pérdida (negocio) | The business reported a loss last quarter. | El negocio reportó una pérdida el último trimestre. |
+| `voc_b1_supply_174` | **supply** | *noun* | `/səˈplaɪ/` | oferta | Supply and demand affect prices. | La oferta y la demanda afectan los precios. |
+| `voc_b1_demand-economy_175` | **demand (economy)** | *noun* | `/dɪˈmænd/` | demanda (economía) | Demand for the product increased. | La demanda del producto aumentó. |
+| `voc_b1_trade_176` | **trade** | *noun* | `/treɪd/` | comercio | Trade between the two countries grew. | El comercio entre los dos países creció. |
+| `voc_b1_export_177` | **export** | *noun* | `/ˈɛkspɔrt/` | exportar/exportación | Coffee is a major export for this country. | El café es una exportación importante para este país. |
+| `voc_b1_import_178` | **import** | *noun* | `/ˈɪmpɔrt/` | importar/importación | The import of cars increased last year. | La importación de autos aumentó el año pasado. |
+| `voc_b1_industry_179` | **industry** | *noun* | `/ˈɪndəstri/` | industria | The tech industry keeps growing. | La industria tecnológica sigue creciendo. |
+| `voc_b1_sector_180` | **sector** | *noun* | `/ˈsɛktər/` | sector | She works in the healthcare sector. | Ella trabaja en el sector salud. |
+| `voc_b1_consumer_181` | **consumer** | *noun* | `/kənˈsumər/` | consumidor | Consumers want better prices. | Los consumidores quieren mejores precios. |
+| `voc_b1_entrepreneur_182` | **entrepreneur** | *noun* | `/ˌɑntrəprəˈnɜr/` | emprendedor | She became a successful entrepreneur. | Ella se convirtió en una emprendedora exitosa. |
+| `voc_b1_startup_183` | **startup** | *noun* | `/ˈstɑrˌtʌp/` | empresa emergente | He works for a small startup. | Él trabaja para una pequeña empresa emergente. |
+| `voc_b1_revenue_184` | **revenue** | *noun* | `/ˈrɛvəˌnu/` | ingresos (empresa) | The company's revenue doubled. | Los ingresos de la empresa se duplicaron. |
+| `voc_b1_asset_185` | **asset** | *noun* | `/ˈæˌsɛt/` | activo (financiero) | The building is a valuable asset. | El edificio es un activo valioso. |
+| `voc_b1_shareholder_186` | **shareholder** | *noun* | `/ˈʃɛrˌhoʊldər/` | accionista | Shareholders approved the new plan. | Los accionistas aprobaron el nuevo plan. |
+| `voc_b1_stock-finance_187` | **stock (finance)** | *noun* | `/stɑk/` | acción (bolsa) | She invested in stock last year. | Ella invirtió en acciones el año pasado. |
 
 ### Semana 8: B1 · Semana 8 – Relaciones sociales y comunicación
 Total de palabras en esta semana: **15**
 
 | ID | Palabra | Categoría | Fonética (IPA) | Traducción | Ejemplo en Inglés | Traducción del Ejemplo |
 |---|---|---|---|---|---|---|
-| `voc_b1_cooperate_188` | **cooperate** | *verb* | — | cooperar | — | — |
-| `voc_b1_collaborate_189` | **collaborate** | *verb* | — | colaborar | — | — |
-| `voc_b1_criticize_190` | **criticize** | *verb* | — | criticar | — | — |
-| `voc_b1_compliment_191` | **compliment** | *noun* | — | hacer un cumplido | — | — |
-| `voc_b1_complain_192` | **complain** | *noun* | — | quejarse | — | — |
-| `voc_b1_reconcile_193` | **reconcile** | *verb* | — | reconciliar | — | — |
-| `voc_b1_gossip_194` | **gossip** | *noun* | — | chisme/chismear | — | — |
-| `voc_b1_rumor_195` | **rumor** | *noun* | — | rumor | — | — |
-| `voc_b1_confront_196` | **confront** | *verb* | — | confrontar | — | — |
-| `voc_b1_mediate_197` | **mediate** | *verb* | — | mediar | — | — |
-| `voc_b1_empathize_198` | **empathize** | *verb* | — | empatizar | — | — |
-| `voc_b1_tolerate_199` | **tolerate** | *verb* | — | tolerar | — | — |
-| `voc_b1_admire_200` | **admire** | *noun* | — | admirar | — | — |
-| `voc_b1_envy_201` | **envy** | *noun* | — | envidiar/envidia | — | — |
-| `voc_b1_resent_202` | **resent** | *noun* | — | resentirse por | — | — |
+| `voc_b1_cooperate_188` | **cooperate** | *verb* | `/koʊˈɑpəˌreɪt/` | cooperar | Both teams cooperated to finish on time. | Ambos equipos cooperaron para terminar a tiempo. |
+| `voc_b1_collaborate_189` | **collaborate** | *verb* | `/kəˈlæbəˌreɪt/` | colaborar | We collaborated on this project together. | Colaboramos juntos en este proyecto. |
+| `voc_b1_criticize_190` | **criticize** | *verb* | `/ˈkrɪtɪˌsaɪz/` | criticar | Please don't criticize him in public. | Por favor no lo critiques en público. |
+| `voc_b1_compliment_191` | **compliment** | *noun* | `/ˈkɑmpləmənt/` | hacer un cumplido | She gave me a nice compliment. | Ella me hizo un lindo cumplido. |
+| `voc_b1_complain_192` | **complain** | *verb* | `/kəmˈpleɪn/` | quejarse | He always complains about the weather. | Él siempre se queja del clima. |
+| `voc_b1_reconcile_193` | **reconcile** | *verb* | `/ˈrɛkənˌsaɪl/` | reconciliar | They finally reconciled after years apart. | Finalmente se reconciliaron después de años separados. |
+| `voc_b1_gossip_194` | **gossip** | *noun* | `/ˈgɑsəp/` | chisme/chismear | I don't like to spread gossip. | No me gusta difundir chismes. |
+| `voc_b1_rumor_195` | **rumor** | *noun* | `/ˈrumər/` | rumor | There's a rumor about the merger. | Hay un rumor sobre la fusión. |
+| `voc_b1_confront_196` | **confront** | *verb* | `/kənˈfrʌnt/` | confrontar | She decided to confront him about it. | Ella decidió confrontarlo sobre eso. |
+| `voc_b1_mediate_197` | **mediate** | *verb* | `/ˈmidiˌeɪt/` | mediar | A friend helped mediate the dispute. | Un amigo ayudó a mediar el conflicto. |
+| `voc_b1_empathize_198` | **empathize** | *verb* | `/ˈɛmpəˌθaɪz/` | empatizar | I really empathize with your situation. | Realmente empatizo con tu situación. |
+| `voc_b1_tolerate_199` | **tolerate** | *verb* | `/ˈtɑləˌreɪt/` | tolerar | I won't tolerate that behavior. | No voy a tolerar ese comportamiento. |
+| `voc_b1_admire_200` | **admire** | *verb* | `/ædˈmaɪər/` | admirar | I admire her dedication. | Admiro su dedicación. |
+| `voc_b1_envy_201` | **envy** | *noun* | `/ˈɛnvi/` | envidiar/envidia | He couldn't hide his envy. | Él no pudo ocultar su envidia. |
+| `voc_b1_resent_202` | **resent** | *verb* | `/rɪˈzɛnt/` | resentirse por | She resents being ignored. | Ella se resiente por ser ignorada. |
 
 ### Semana 9: B1 · Semana 9 – Adjetivos descriptivos avanzados
 Total de palabras en esta semana: **24**
 
 | ID | Palabra | Categoría | Fonética (IPA) | Traducción | Ejemplo en Inglés | Traducción del Ejemplo |
 |---|---|---|---|---|---|---|
-| `voc_b1_ambiguous_203` | **ambiguous** | *adjective* | — | ambiguo | — | — |
-| `voc_b1_controversial_204` | **controversial** | *adjective* | — | controvertido | — | — |
-| `voc_b1_significant_205` | **significant** | *adjective* | — | significativo | — | — |
-| `voc_b1_substantial_206` | **substantial** | *adjective* | — | sustancial | — | — |
-| `voc_b1_considerable_207` | **considerable** | *adjective* | — | considerable | — | — |
-| `voc_b1_remarkable_208` | **remarkable** | *adjective* | — | notable | — | — |
-| `voc_b1_noteworthy_209` | **noteworthy** | *adjective* | — | digno de mención | — | — |
-| `voc_b1_inevitable_210` | **inevitable** | *adjective* | — | inevitable | — | — |
-| `voc_b1_plausible_211` | **plausible** | *adjective* | — | plausible | — | — |
-| `voc_b1_feasible_212` | **feasible** | *adjective* | — | factible | — | — |
-| `voc_b1_viable_213` | **viable** | *adjective* | — | viable | — | — |
-| `voc_b1_consistent_214` | **consistent** | *adjective* | — | consistente/constante | — | — |
-| `voc_b1_coherent_215` | **coherent** | *adjective* | — | coherente | — | — |
-| `voc_b1_comprehensive_216` | **comprehensive** | *adjective* | — | integral/exhaustivo | — | — |
-| `voc_b1_thorough_217` | **thorough** | *adjective* | — | minucioso | — | — |
-| `voc_b1_superficial_218` | **superficial** | *adjective* | — | superficial | — | — |
-| `voc_b1_subtle_219` | **subtle** | *adjective* | — | sutil | — | — |
-| `voc_b1_versatile_220` | **versatile** | *adjective* | — | versátil | — | — |
-| `voc_b1_adaptable_221` | **adaptable** | *adjective* | — | adaptable | — | — |
-| `voc_b1_innovative_222` | **innovative** | *adjective* | — | innovador | — | — |
-| `voc_b1_conventional_223` | **conventional** | *adjective* | — | convencional | — | — |
-| `voc_b1_prevalent_224` | **prevalent** | *adjective* | — | predominante | — | — |
-| `voc_b1_widespread_225` | **widespread** | *adjective* | — | generalizado | — | — |
-| `voc_b1_prominent_226` | **prominent** | *adjective* | — | prominente/destacado | — | — |
+| `voc_b1_ambiguous_203` | **ambiguous** | *adjective* | `/æmˈbɪgjuəs/` | ambiguo | His answer was quite ambiguous. | Su respuesta fue bastante ambigua. |
+| `voc_b1_controversial_204` | **controversial** | *adjective* | `/ˌkɑntrəˈvɜrʃəl/` | controvertido | It was a controversial decision. | Fue una decisión controvertida. |
+| `voc_b1_significant_205` | **significant** | *adjective* | `/sɪgˈnɪfɪkant/` | significativo | There was a significant change in sales. | Hubo un cambio significativo en las ventas. |
+| `voc_b1_substantial_206` | **substantial** | *adjective* | `/səbˈstænʃəl/` | sustancial | We made substantial progress this month. | Hicimos un progreso sustancial este mes. |
+| `voc_b1_considerable_207` | **considerable** | *adjective* | `/kənˈsɪdərəbəl/` | considerable | It took considerable effort to finish. | Tomó un esfuerzo considerable terminarlo. |
+| `voc_b1_remarkable_208` | **remarkable** | *adjective* | `/rɪˈmɑrkəbəl/` | notable | She made remarkable progress in English. | Ella hizo un progreso notable en inglés. |
+| `voc_b1_noteworthy_209` | **noteworthy** | *adjective* | `/ˈnoʊtˌwɜrði/` | digno de mención | This is a noteworthy achievement. | Este es un logro digno de mención. |
+| `voc_b1_inevitable_210` | **inevitable** | *adjective* | `/ɪnˈɛvɪtəbəl/` | inevitable | Change was inevitable. | El cambio era inevitable. |
+| `voc_b1_plausible_211` | **plausible** | *adjective* | `/ˈplɔzəbəl/` | plausible | That explanation seems plausible. | Esa explicación parece plausible. |
+| `voc_b1_feasible_212` | **feasible** | *adjective* | `/ˈfizəbəl/` | factible | Is this plan feasible? | ¿Es factible este plan? |
+| `voc_b1_viable_213` | **viable** | *adjective* | `/ˈvaɪəbəl/` | viable | We need a viable solution. | Necesitamos una solución viable. |
+| `voc_b1_consistent_214` | **consistent** | *adjective* | `/kənˈsɪstənt/` | consistente/constante | Her performance has been consistent. | Su desempeño ha sido consistente. |
+| `voc_b1_coherent_215` | **coherent** | *adjective* | `/koʊˈhɪrənt/` | coherente | The essay wasn't very coherent. | El ensayo no fue muy coherente. |
+| `voc_b1_comprehensive_216` | **comprehensive** | *adjective* | `/ˌkɑmprɪˈhɛnsɪv/` | integral/exhaustivo | We need a comprehensive plan. | Necesitamos un plan integral. |
+| `voc_b1_thorough_217` | **thorough** | *adjective* | `/ˈθɜroʊ/` | minucioso | He did a thorough review of the report. | Él hizo una revisión minuciosa del informe. |
+| `voc_b1_superficial_218` | **superficial** | *adjective* | `/ˌsupərˈfɪʃəl/` | superficial | His knowledge is quite superficial. | Su conocimiento es bastante superficial. |
+| `voc_b1_subtle_219` | **subtle** | *adjective* | `/ˈsʌtəl/` | sutil | There was a subtle change in her voice. | Hubo un cambio sutil en su voz. |
+| `voc_b1_versatile_220` | **versatile** | *adjective* | `/ˈvɜrsətəl/` | versátil | She is a versatile actress. | Ella es una actriz versátil. |
+| `voc_b1_adaptable_221` | **adaptable** | *adjective* | `/əˈdæptəbəl/` | adaptable | He is very adaptable to new situations. | Él es muy adaptable a nuevas situaciones. |
+| `voc_b1_innovative_222` | **innovative** | *adjective* | `/ˈɪnəˌveɪtɪv/` | innovador | They came up with an innovative idea. | Ellos idearon una idea innovadora. |
+| `voc_b1_conventional_223` | **conventional** | *adjective* | `/kənˈvɛnʃənəl/` | convencional | This is a more conventional approach. | Este es un enfoque más convencional. |
+| `voc_b1_prevalent_224` | **prevalent** | *adjective* | `/ˈprɛvələnt/` | predominante | This problem is prevalent in big cities. | Este problema es predominante en las grandes ciudades. |
+| `voc_b1_widespread_225` | **widespread** | *adjective* | `/ˈwaɪdˌsprɛd/` | generalizado | The disease caused widespread panic. | La enfermedad causó pánico generalizado. |
+| `voc_b1_prominent_226` | **prominent** | *adjective* | `/ˈprɑmənənt/` | prominente/destacado | He is a prominent scientist. | Él es un científico prominente. |
 
 ### 📖 Lecturas de Comprensión · Nivel B1
 
