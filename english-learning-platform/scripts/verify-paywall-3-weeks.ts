@@ -47,7 +47,7 @@ console.log('    ✅ Contenido de las primeras 3 semanas contabilizado con éxit
 // 3. Simular acceso de usuario NO PAGADO (isPro = false)
 console.log('[3] Simulando acceso para Usuario Gratuito (isPro = false):')
 for (let w = 1; w <= 3; w++) {
-  const allowed: boolean = canAccessWeek('A1', w, false)
+  const allowed = canAccessWeek('A1', w, false)
   console.log(`    • Semana ${w}: ${allowed ? '🟢 ACCESO PERMITIDO (Gratis)' : '❌ ERROR'}`)
   if (!allowed) throw new Error(`Semana ${w} debería ser gratis`)
 }
@@ -58,8 +58,9 @@ console.log(`    • Semana 4: ${w4Free ? '❌ ERROR (Permitido)' : '🔒 BLOQUE
 if (w4Free) throw new Error('Semana 4 NO debe ser accesible sin Pro')
 
 for (let w = 5; w <= 19; w++) {
-  const allowed: boolean = canAccessWeek('A1', w, false)
-  if (allowed) throw new Error(`Semana ${w} NO debe ser accesible sin Pro`)
+  if (canAccessWeek('A1', w, false)) {
+    throw new Error(`Semana ${w} NO debe ser accesible sin Pro`)
+  }
 }
 console.log('    ✅ Semanas 4 a 19 de A1 correctamente bloqueadas para usuarios gratuitos.\n')
 
