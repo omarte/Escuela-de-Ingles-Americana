@@ -695,9 +695,249 @@
       font-weight: 900;
     }
 
+    /* ─── Evaluation Milestones & Academic Record Section ─── */
+    .eval-layout {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 36px;
+      margin-top: 36px;
+      align-items: start;
+    }
+    .eval-timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .level-eval-group {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: var(--card-shadow);
+      position: relative;
+      overflow: hidden;
+    }
+    .level-eval-group::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 6px;
+    }
+    .level-eval-group.a1-group::before { background: var(--emerald-600); }
+    .level-eval-group.a2-group::before { background: var(--blue-600); }
+    .level-eval-group.b1-group::before { background: #4F46E5; }
+    .level-eval-group.b2-group::before { background: #DB2777; }
+
+    .level-eval-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #F1F5F9;
+    }
+    .level-eval-title {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--navy-900);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .eval-badge-pill {
+      font-size: 11.5px;
+      font-weight: 750;
+      padding: 4px 10px;
+      border-radius: 999px;
+    }
+    .eval-badge-pill.a1 { background: var(--emerald-light); color: var(--emerald-700); }
+    .eval-badge-pill.a2 { background: var(--blue-light); color: var(--blue-600); }
+    .eval-badge-pill.b1 { background: #EEF2FF; color: #4F46E5; }
+    .eval-badge-pill.b2 { background: #FCE7F3; color: #DB2777; }
+
+    .eval-items-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 12px;
+    }
+    .eval-step-card {
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 14px;
+      padding: 14px 16px;
+      transition: all 0.2s ease;
+    }
+    .eval-step-card:hover {
+      border-color: var(--emerald-500);
+      background: #FFFFFF;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(15, 23, 42, 0.06);
+    }
+    .eval-step-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+    .eval-step-icon {
+      font-size: 18px;
+    }
+    .eval-step-wordcount {
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--emerald-700);
+      background: var(--emerald-light);
+      padding: 2px 8px;
+      border-radius: 6px;
+      letter-spacing: 0.03em;
+    }
+    .eval-step-name {
+      font-size: 13.5px;
+      font-weight: 750;
+      color: var(--navy-900);
+      margin-bottom: 4px;
+    }
+    .eval-step-desc {
+      font-size: 12px;
+      color: var(--slate-600);
+      line-height: 1.45;
+    }
+
+    /* Boleta Oficial Mockup */
+    .report-card-wrap {
+      background: linear-gradient(145deg, #0B1329 0%, #172554 100%);
+      border: 2px solid rgba(59, 130, 246, 0.35);
+      border-radius: 24px;
+      padding: 28px 24px;
+      color: #F8FAFC;
+      box-shadow: 0 25px 60px rgba(15, 23, 42, 0.35);
+      position: sticky;
+      top: 90px;
+    }
+    .report-badge-top {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(5, 150, 105, 0.25);
+      border: 1px solid rgba(5, 150, 105, 0.5);
+      color: #34D399;
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 4px 12px;
+      border-radius: 999px;
+      margin-bottom: 16px;
+    }
+    .report-inst-header {
+      text-align: center;
+      padding-bottom: 16px;
+      border-bottom: 1px dashed rgba(148, 163, 184, 0.3);
+      margin-bottom: 18px;
+    }
+    .report-inst-logo {
+      width: 48px;
+      height: 48px;
+      margin: 0 auto 8px;
+      display: block;
+      border-radius: 12px;
+    }
+    .report-inst-name {
+      font-size: 15px;
+      font-weight: 850;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #FFFFFF;
+    }
+    .report-inst-sub {
+      font-size: 11px;
+      color: #94A3B8;
+      letter-spacing: 0.04em;
+    }
+    .report-student-box {
+      background: rgba(15, 23, 42, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 14px;
+      padding: 14px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+    .report-student-info strong {
+      display: block;
+      font-size: 14px;
+      color: #FFFFFF;
+      margin-bottom: 2px;
+    }
+    .report-student-info span {
+      font-size: 11px;
+      color: #94A3B8;
+    }
+    .report-score-big {
+      text-align: right;
+    }
+    .report-grade-letter {
+      font-size: 28px;
+      font-weight: 900;
+      color: #10B981;
+      line-height: 1;
+    }
+    .report-grade-num {
+      font-size: 11px;
+      color: #CBD5E1;
+      font-weight: 700;
+    }
+    .report-metrics-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+    .report-metric-item {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      padding: 10px 12px;
+    }
+    .report-metric-val {
+      font-size: 16px;
+      font-weight: 850;
+      color: #FFFFFF;
+      margin-bottom: 2px;
+    }
+    .report-metric-label {
+      font-size: 11px;
+      color: #94A3B8;
+    }
+    .report-seal-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 14px;
+      border-top: 1px dashed rgba(148, 163, 184, 0.3);
+    }
+    .report-cert-code {
+      font-family: monospace;
+      font-size: 10px;
+      color: #94A3B8;
+    }
+    .report-verify-stamp {
+      font-size: 11px;
+      font-weight: 800;
+      color: #34D399;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
     @media (max-width: 1024px) {
       .illustrations-grid { grid-template-columns: 1fr 1fr; }
       .dual-dashboard { grid-template-columns: 1fr; }
+      .eval-layout { grid-template-columns: 1fr; }
+      .report-card-wrap { position: static; }
       .pricing-grid { grid-template-columns: 1fr; }
       .badges-row { grid-template-columns: 1fr 1fr; }
     }
@@ -705,6 +945,7 @@
       .illustrations-grid { grid-template-columns: 1fr; }
       .badges-row { grid-template-columns: 1fr; }
       .testimonials { grid-template-columns: 1fr; }
+      .eval-items-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -727,6 +968,7 @@
         <a href="#experiencia">Experiencia</a>
         <a href="#arquitectura">Metodología</a>
         <a href="#dashboard">Telemetría</a>
+        <a href="#evaluaciones">Evaluaciones</a>
         <a href="#precios">Precios</a>
         <a href="support.html">Soporte</a>
       </nav>
@@ -1287,13 +1529,193 @@
           <div class="badge-card">
             <img src="assets/level-a1-completed.jpg" alt="Insignia Nivel A1 Completado">
             <h5>Nivel A1 Consolidado</h5>
-            <small>19 semanas y 825 palabras con cero fricción</small>
+            <small>19 semanas y 1,512 palabras con cero fricción</small>
           </div>
 
           <div class="badge-card">
             <img src="assets/mastered-1000-words.jpg" alt="Insignia 1000 Palabras Dominadas">
             <h5>1,000 Términos Fijados</h5>
             <small>Retención a largo plazo con intervalo superior a 21 días</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 6.5: Evaluaciones por Hitos y Boleta Oficial -->
+    <section id="evaluaciones" style="background:#FFFFFF;">
+      <div class="container">
+        <div class="head">
+          <div>
+            <div class="eyebrow">Rigor Académico & Certificación</div>
+            <h2>Evaluaciones por Hitos y Boleta Oficial</h2>
+          </div>
+          <p>Tu aprendizaje no se mide en conjeturas. Evaluamos tu fluidez en 4 tramos estratégicos en A1, 2 en A2, y exámenes finales en B1 y B2, emitiendo tu boleta con telemetría cognitiva y certificados compartibles.</p>
+        </div>
+
+        <div class="eval-layout">
+          <!-- Columna Izquierda: Los Tramos de Evaluación -->
+          <div class="eval-timeline">
+            
+            <!-- Grupo A1 -->
+            <div class="level-eval-group a1-group">
+              <div class="level-eval-header">
+                <div class="level-eval-title">
+                  <span>Nivel A1 — Principiante a Elemental</span>
+                </div>
+                <span class="eval-badge-pill a1">4 Tramos de Evaluación</span>
+              </div>
+              <div class="eval-items-grid">
+                <div class="eval-step-card">
+                  <div class="eval-step-top">
+                    <span class="eval-step-icon">🥉</span>
+                    <span class="eval-step-wordcount">100 palabras</span>
+                  </div>
+                  <div class="eval-step-name">Tramo 1: Primeros Pasos</div>
+                  <div class="eval-step-desc">Valida el hábito diario de estudio y los primeros 100 términos esenciales.</div>
+                </div>
+
+                <div class="eval-step-card">
+                  <div class="eval-step-top">
+                    <span class="eval-step-icon">🥈</span>
+                    <span class="eval-step-wordcount">500 palabras</span>
+                  </div>
+                  <div class="eval-step-name">Tramo 2: Fundamentos</div>
+                  <div class="eval-step-desc">Evalúa oraciones básicas, estructuras de interacción y retención SM-2.</div>
+                </div>
+
+                <div class="eval-step-card">
+                  <div class="eval-step-top">
+                    <span class="eval-step-icon">🥇</span>
+                    <span class="eval-step-wordcount">1,000 palabras</span>
+                  </div>
+                  <div class="eval-step-name">Tramo 3: Léxico Funcional</div>
+                  <div class="eval-step-desc">Consolidación de vocabulario cotidiano y agilidad de respuesta cognitiva.</div>
+                </div>
+
+                <div class="eval-step-card" style="border-color: rgba(5, 150, 105, 0.4); background: #F0FDF4;">
+                  <div class="eval-step-top">
+                    <span class="eval-step-icon">🏆</span>
+                    <span class="eval-step-wordcount" style="background:#059669; color:#FFF;">1,512 palabras</span>
+                  </div>
+                  <div class="eval-step-name" style="color: #047857;">Tramo 4: Certificación A1</div>
+                  <div class="eval-step-desc">Examen oficial de egreso A1 con comprensión lectora acumulativa Krashen i+1.</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Grupo A2 -->
+            <div class="level-eval-group a2-group">
+              <div class="level-eval-header">
+                <div class="level-eval-title">
+                  <span>Nivel A2 — Básico a Pre-Intermedio</span>
+                </div>
+                <span class="eval-badge-pill a2">2 Evaluaciones Estratégicas</span>
+              </div>
+              <div class="eval-items-grid">
+                <div class="eval-step-card">
+                  <div class="eval-step-top">
+                    <span class="eval-step-icon">📊</span>
+                    <span class="eval-step-wordcount" style="background:var(--blue-light); color:var(--blue-600);">~370 palabras</span>
+                  </div>
+                  <div class="eval-step-name">Evaluación Medio Término</div>
+                  <div class="eval-step-desc">Comprueba la transición a conectores narrativos, opiniones y situaciones laborales.</div>
+                </div>
+
+                <div class="eval-step-card" style="border-color: rgba(2, 132, 199, 0.4); background: #F0F9FF;">
+                  <div class="eval-step-top">
+                    <span class="eval-step-icon">🏆</span>
+                    <span class="eval-step-wordcount" style="background:#0284C7; color:#FFF;">734 palabras</span>
+                  </div>
+                  <div class="eval-step-name" style="color: #0369A1;">Certificación Oficial A2</div>
+                  <div class="eval-step-desc">Examen de graduación A2 con evaluación de fluidez oral y lectura contextual.</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Grupo B1 & B2 -->
+            <div class="level-eval-group b1-group">
+              <div class="level-eval-header">
+                <div class="level-eval-title">
+                  <span>Niveles B1 & B2 — Intermedio y Fluidez Profesional</span>
+                </div>
+                <span class="eval-badge-pill b1">Exámenes Finales de Egreso</span>
+              </div>
+              <div class="eval-items-grid">
+                <div class="eval-step-card">
+                  <div class="eval-step-top">
+                    <span class="eval-step-icon">🏆</span>
+                    <span class="eval-step-wordcount" style="background:#EEF2FF; color:#4F46E5;">226 palabras</span>
+                  </div>
+                  <div class="eval-step-name">Certificación Oficial B1</div>
+                  <div class="eval-step-desc">Evaluación exhaustiva de argumentación, debate y textos de nivel B1.</div>
+                </div>
+
+                <div class="eval-step-card" style="border-color: rgba(219, 39, 119, 0.4); background: #FDF2F8;">
+                  <div class="eval-step-top">
+                    <span class="eval-step-icon">🎓</span>
+                    <span class="eval-step-wordcount" style="background:#DB2777; color:#FFF;">84 palabras</span>
+                  </div>
+                  <div class="eval-step-name" style="color: #9D174D;">Diploma de Maestría B2</div>
+                  <div class="eval-step-desc">Acreditación de fluidez profesional con latencia refleja sub-3 segundos.</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Columna Derecha: Mockup Boleta Oficial -->
+          <div class="report-card-wrap">
+            <div class="report-badge-top">
+              <span>●</span> Expediente Académico Oficial
+            </div>
+
+            <div class="report-inst-header">
+              <img src="assets/logo-clean.png" alt="Logo EIA" class="report-inst-logo">
+              <div class="report-inst-name">Escuela de Inglés Americana</div>
+              <div class="report-inst-sub">Boleta de Competencias Cognitivas &bullet; A1 MCER</div>
+            </div>
+
+            <div class="report-student-box">
+              <div class="report-student-info">
+                <strong>Laura M. Méndez</strong>
+                <span>Estudiante Activa &bull; ID: EIA-2026-A1</span>
+                <span style="display:block; margin-top:3px; color:#34D399; font-weight:700;">Hito 4 Completado (1,512 palabras)</span>
+              </div>
+              <div class="report-score-big">
+                <div class="report-grade-letter">A+</div>
+                <div class="report-grade-num">95 / 100 pts</div>
+              </div>
+            </div>
+
+            <div class="report-metrics-grid">
+              <div class="report-metric-item">
+                <div class="report-metric-val">2.3s</div>
+                <div class="report-metric-label">Latencia Cognitiva (Refleja)</div>
+              </div>
+              <div class="report-metric-item">
+                <div class="report-metric-val">96.8%</div>
+                <div class="report-metric-label">Precisión Léxica SRS</div>
+              </div>
+              <div class="report-metric-item">
+                <div class="report-metric-val">100%</div>
+                <div class="report-metric-label">Comprensión Krashen i+1</div>
+              </div>
+              <div class="report-metric-item">
+                <div class="report-metric-val">42 días</div>
+                <div class="report-metric-label">Racha Ininterrumpida</div>
+              </div>
+            </div>
+
+            <div style="background:rgba(255,255,255,0.06); border-radius:12px; padding:12px 14px; margin-bottom:16px; font-size:12px; line-height:1.5; color:#E2E8F0;">
+              <strong>Dictamen Académico:</strong> El estudiante demuestra automatización del acceso léxico con latencia inferior a 4 segundos, aptitud completa para entablar conversaciones espontáneas y comprensión de textos A1.
+            </div>
+
+            <div class="report-seal-row">
+              <div class="report-cert-code">VERIF: EIA-A1-CERT-2026-8942</div>
+              <div class="report-verify-stamp">
+                <span>✓</span> Certificado Oficial
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -1313,7 +1735,7 @@
         <div class="testimonials">
           <div class="testimonial-card">
             <div class="quote">
-              "En 3 meses dominé las 825 palabras de A1 con el currículo guiado. El micro-examen de la semana 14 me demostró que ya no traduzco mentalmente: escucho la palabra e inmediatamente entiendo su significado en contexto."
+              "En 3 meses dominé las 1,512 palabras de A1 con el currículo guiado. El examen de graduación de nivel me demostró que ya no traduzco mentalmente: escucho la palabra e inmediatamente entiendo su significado en contexto."
             </div>
             <div class="quote-author">
               <div class="avatar">MG</div>
