@@ -99,17 +99,31 @@
 - Dynamic multi-level integration in mobile app (`progress.tsx`, `vocabulary.tsx`, `reading.tsx`)
 - Passed `content:validate`, `content:duplicates`, `typecheck`, `test`, `lint`, and `format:check`
 
+## Phase 11 — Comprehensive Editorial Curation & OTA Engine 🔄 IN PROGRESS
+
+- Complete A1 editorial curation (19 weeks, 1,512 vocabulary items)
+- In-progress A2 editorial curation (12/15 weeks completed, 604 words)
+- EAS Updates Over-The-Air (OTA) engine integration for continuous curriculum updates
+- Domain architecture expansion to support future levels C1, C2, D1, D2 and Professional Tracks
+
+## Phase 12 — Milestone Evaluation Engine & Academic Record 📋 PLANNED
+
+- 4 progression checkpoints in A1 (100, 500, 1000, 1512 words)
+- 2 progression checkpoints in A2 (mid-term, final certification)
+- 1 graduation exit exam for B1 and B2
+- Comprehensive Academic Record ("Boleta de Calificaciones") with cognitive latency telemetry and shareable digital certificates
+
 ---
 
 ## Complete Curriculum Summary
 
 | Level     | Weeks  | Curated Words | Reading Passages | Status                        |
 | :-------- | :----- | :------------ | :--------------- | :---------------------------- |
-| **A1**    | 19     | 1,514         | 3                | ✅ Completed                  |
-| **A2**    | 15     | 734           | 3                | ✅ Completed                  |
-| **B1**    | 6      | 203           | 2                | ✅ Completed                  |
-| **B2**    | 4      | 111           | 2                | ✅ Completed                  |
-| **TOTAL** | **44** | **2,562**     | **10**           | **100% Ready for Production** |
+| **A1**    | 19     | 1,512         | 3                | ✅ Completed                  |
+| **A2**    | 15     | 734           | 3                | 🔄 82% Curated                |
+| **B1**    | 9      | 226           | 8                | ⏳ Structural Model Ready     |
+| **B2**    | 5      | 84            | 2                | ⏳ Structural Model Ready     |
+| **TOTAL** | **48** | **2,556**     | **16**           | **Production Ready Platform** |
 
 ---
 
@@ -117,5 +131,7 @@
 
 - Native binary compilation with EAS (`eas build`) for iOS and Android app stores
 - Cloud Supabase production instance provisioning and environment migrations
-- High-fidelity audio pronunciation recordings for all 2,562 vocabulary terms
+- High-fidelity audio pronunciation recordings for all 2,556 vocabulary terms
 - AI-free interactive writing and pronunciation diagnostic exercises
+- Conversational clubs engine for C2 and D2 levels
+
