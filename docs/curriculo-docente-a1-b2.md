@@ -1926,544 +1926,544 @@ Total de palabras en esta semana: **61**
 
 | ID | Palabra | Categoría | Fonética (IPA) | Traducción | Ejemplo en Inglés | Traducción del Ejemplo |
 |---|---|---|---|---|---|---|
-| `voc_a2_resume-cv_121` | **resume / CV** | *noun* | — | currículum | — | — |
-| `voc_a2_cover-letter_122` | **cover letter** | *noun* | — | carta de presentación | — | — |
-| `voc_a2_job-interview_123` | **job interview** | *noun* | — | entrevista de trabajo | — | — |
-| `voc_a2_job-offer_124` | **job offer** | *noun* | — | oferta de trabajo | — | — |
-| `voc_a2_position_125` | **position** | *noun* | — | puesto | — | — |
-| `voc_a2_department_126` | **department** | *noun* | — | departamento | — | — |
-| `voc_a2_colleague_127` | **colleague** | *noun* | — | colega | — | — |
-| `voc_a2_supervisor_128` | **supervisor** | *noun* | — | supervisor | — | — |
-| `voc_a2_deadline_129` | **deadline** | *noun* | — | fecha límite | — | — |
-| `voc_a2_meeting-room_130` | **meeting room** | *noun* | — | sala de reuniones | — | — |
-| `voc_a2_conference-call_131` | **conference call** | *noun* | — | llamada de conferencia | — | — |
-| `voc_a2_presentation_132` | **presentation** | *noun* | — | presentación | — | — |
-| `voc_a2_agenda_133` | **agenda** | *noun* | — | agenda/orden del día | — | — |
-| `voc_a2_minutes_134` | **minutes (meeting)** | *noun* | — | acta (de reunión) | — | — |
-| `voc_a2_memo_135` | **memo** | *noun* | — | memorando | — | — |
-| `voc_a2_report_136` | **report** | *noun* | — | informe | — | — |
-| `voc_a2_spreadsheet_137` | **spreadsheet** | *noun* | — | hoja de cálculo | — | — |
-| `voc_a2_attachment_138` | **attachment** | *noun* | — | archivo adjunto | — | — |
-| `voc_a2_reply_139` | **reply** | *verb* | — | responder | — | — |
-| `voc_a2_forward_140` | **forward (email)** | *phrasal-verb* | — | reenviar | — | — |
-| `voc_a2_inbox_141` | **inbox** | *adjective* | — | bandeja de entrada | — | — |
-| `voc_a2_out-of-office_142` | **out of office** | *noun* | — | fuera de la oficina | — | — |
-| `voc_a2_sick-leave_143` | **sick leave** | *noun* | — | permiso por enfermedad | — | — |
-| `voc_a2_vacation-days_144` | **vacation days** | *noun* | — | días de vacaciones | — | — |
-| `voc_a2_overtime_145` | **overtime** | *noun* | — | horas extra | — | — |
-| `voc_a2_part-time_146` | **part-time** | *noun* | — | medio tiempo | — | — |
-| `voc_a2_full-time_147` | **full-time** | *noun* | — | tiempo completo | — | — |
-| `voc_a2_remote-work_148` | **remote work** | *noun* | — | trabajo remoto | — | — |
-| `voc_a2_freelance_149` | **freelance** | *adjective* | — | trabajo independiente | — | — |
-| `voc_a2_promotion_150` | **promotion** | *noun* | — | ascenso | — | — |
-| `voc_a2_raise_151` | **raise (salary)** | *noun* | — | aumento de sueldo | — | — |
-| `voc_a2_resign_152` | **resign** | *verb* | — | renunciar | — | — |
-| `voc_a2_lay-off_153` | **lay off** | *phrasal-verb* | — | despedir (recorte) | — | — |
-| `voc_a2_retire_154` | **retire** | *noun* | — | jubilarse | — | — |
-| `voc_a2_teamwork_155` | **teamwork** | *noun* | — | trabajo en equipo | — | — |
-| `voc_a2_brainstorm_156` | **brainstorm** | *noun* | — | lluvia de ideas | — | — |
-| `voc_a2_performance-review_157` | **performance review** | *noun* | — | evaluación de desempeño | — | — |
-| `voc_a2_workload_158` | **workload** | *noun* | — | carga de trabajo | — | — |
-| `voc_a2_multitask_159` | **multitask** | *noun* | — | hacer varias cosas a la vez | — | — |
-| `voc_a2_prioritize_160` | **prioritize** | *verb* | — | priorizar | — | — |
-| `voc_a2_negotiation_161` | **negotiation** | *noun* | — | negociación | — | — |
-| `voc_a2_client_162` | **client** | *noun* | — | cliente (negocio) | — | — |
-| `voc_a2_stakeholder_163` | **stakeholder** | *noun* | — | parte interesada | — | — |
-| `voc_a2_quarterly_164` | **quarterly** | *adverb* | — | trimestral | — | — |
-| `voc_a2_annual_165` | **annual** | *noun* | — | anual | — | — |
-| `voc_a2_target_166` | **target (goal)** | *noun* | — | meta | — | — |
-| `voc_a2_achieve_167` | **achieve** | *verb* | — | lograr | — | — |
-| `voc_a2_accomplish_168` | **accomplish** | *verb* | — | cumplir/lograr | — | — |
-| `voc_a2_project-manager_169` | **project manager** | *noun* | — | gerente de proyecto | — | — |
-| `voc_a2_human-resources_170` | **human resources** | *noun* | — | recursos humanos | — | — |
-| `voc_a2_headquarters_171` | **headquarters** | *noun* | — | sede central | — | — |
-| `voc_a2_branch-office_172` | **branch office** | *noun* | — | sucursal | — | — |
-| `voc_a2_shift_173` | **shift (work)** | *noun* | — | turno | — | — |
-| `voc_a2_commute_174` | **commute** | *noun* | — | desplazarse al trabajo | — | — |
-| `voc_a2_paperwork_175` | **paperwork** | *noun* | — | papeleo | — | — |
-| `voc_a2_signature_176` | **signature** | *noun* | — | firma | — | — |
-| `voc_a2_approval_177` | **approval** | *noun* | — | aprobación | — | — |
-| `voc_a2_policy_178` | **policy (company)** | *noun* | — | política (empresa) | — | — |
-| `voc_a2_training_179` | **training** | *noun* | — | capacitación | — | — |
-| `voc_a2_onboarding_180` | **onboarding** | *noun* | — | proceso de incorporación | — | — |
-| `voc_a2_networking-event_181` | **networking event** | *noun* | — | evento de networking | — | — |
+| `voc_a2_resume-cv_121` | **resume / CV** | *noun* | `/ˈrɛzəˌmeɪ/` | currículum | I updated my resume last week. | Actualicé mi currículum la semana pasada. |
+| `voc_a2_cover-letter_122` | **cover letter** | *noun* | `/ˈkʌvər ˈlɛtər/` | carta de presentación | Attach a cover letter to your application. | Adjunta una carta de presentación a tu solicitud. |
+| `voc_a2_job-interview_123` | **job interview** | *noun* | `/dʒɑb ˈɪntərˌvju/` | entrevista de trabajo | I have a job interview tomorrow. | Tengo una entrevista de trabajo mañana. |
+| `voc_a2_job-offer_124` | **job offer** | *noun* | `/dʒɑb ˈɔfər/` | oferta de trabajo | She accepted the job offer. | Ella aceptó la oferta de trabajo. |
+| `voc_a2_position_125` | **position** | *noun* | `/pəˈzɪʃən/` | puesto | This position requires experience. | Este puesto requiere experiencia. |
+| `voc_a2_department_126` | **department** | *noun* | `/dɪˈpɑrtmənt/` | departamento | He works in the sales department. | Él trabaja en el departamento de ventas. |
+| `voc_a2_colleague_127` | **colleague** | *noun* | `/ˈkɑlig/` | colega | My colleague helped me with the report. | Mi colega me ayudó con el informe. |
+| `voc_a2_supervisor_128` | **supervisor** | *noun* | `/ˈsupərˌvaɪzər/` | supervisor | My supervisor approved my request. | Mi supervisor aprobó mi solicitud. |
+| `voc_a2_deadline_129` | **deadline** | *noun* | `/ˈdɛdˌlaɪn/` | fecha límite | The deadline is next Friday. | La fecha límite es el próximo viernes. |
+| `voc_a2_meeting-room_130` | **meeting room** | *noun* | `/ˈmitɪŋ rum/` | sala de reuniones | We are in the meeting room. | Estamos en la sala de reuniones. |
+| `voc_a2_conference-call_131` | **conference call** | *noun* | `/ˈkɑnfərəns kɔl/` | llamada de conferencia | We have a conference call at noon. | Tenemos una llamada de conferencia al mediodía. |
+| `voc_a2_presentation_132` | **presentation** | *noun* | `/ˌprɛzənˈteɪʃən/` | presentación | She gave a great presentation. | Ella dio una excelente presentación. |
+| `voc_a2_agenda_133` | **agenda** | *noun* | `/əˈdʒɛndə/` | agenda/orden del día | Let's follow the agenda today. | Sigamos la agenda hoy. |
+| `voc_a2_minutes_134` | **minutes (meeting)** | *noun* | `/ˈmɪnəts/` | acta (de reunión) | Who is taking the minutes? | ¿Quién está tomando el acta? |
+| `voc_a2_memo_135` | **memo** | *noun* | `/ˈmɛmoʊ/` | memorando | I sent a memo to the team. | Envié un memorando al equipo. |
+| `voc_a2_report_136` | **report** | *noun* | `/rɪˈpɔrt/` | informe | The report is due on Monday. | El informe debe entregarse el lunes. |
+| `voc_a2_spreadsheet_137` | **spreadsheet** | *noun* | `/ˈsprɛdˌʃit/` | hoja de cálculo | Open the spreadsheet, please. | Abre la hoja de cálculo, por favor. |
+| `voc_a2_attachment_138` | **attachment** | *noun* | `/əˈtætʃmənt/` | archivo adjunto | I forgot the attachment. | Olvidé el archivo adjunto. |
+| `voc_a2_reply_139` | **reply** | *verb* | `/rɪˈplaɪ/` | responder | Please reply to this email. | Por favor responde a este correo. |
+| `voc_a2_forward_140` | **forward (email)** | *phrasal-verb* | `/ˈfɔrwərd/` | reenviar | Can you forward me that message? | ¿Me reenvías ese mensaje? |
+| `voc_a2_inbox_141` | **inbox** | *noun* | `/ˈɪnˌbɑks/` | bandeja de entrada | My inbox is full of emails. | Mi bandeja de entrada está llena de correos. |
+| `voc_a2_out-of-office_142` | **out of office** | *noun* | `/aʊt əv ˈɔfəs/` | fuera de la oficina | I'll be out of office next week. | Estaré fuera de la oficina la próxima semana. |
+| `voc_a2_sick-leave_143` | **sick leave** | *noun* | `/sɪk liv/` | permiso por enfermedad | She is on sick leave today. | Ella está de permiso por enfermedad hoy. |
+| `voc_a2_vacation-days_144` | **vacation days** | *noun* | `/veɪˈkeɪʃən deɪz/` | días de vacaciones | I have five vacation days left. | Me quedan cinco días de vacaciones. |
+| `voc_a2_overtime_145` | **overtime** | *noun* | `/ˈoʊvərˌtaɪm/` | horas extra | We worked overtime this week. | Trabajamos horas extra esta semana. |
+| `voc_a2_part-time_146` | **part-time** | *noun* | `/ˈpɑrtˈtaɪm/` | medio tiempo | She has a part-time job. | Ella tiene un trabajo de medio tiempo. |
+| `voc_a2_full-time_147` | **full-time** | *noun* | `/ˈfʊlˌtaɪm/` | tiempo completo | He works full-time now. | Él trabaja tiempo completo ahora. |
+| `voc_a2_remote-work_148` | **remote work** | *noun* | `/rɪˈmoʊt wɜrk/` | trabajo remoto | Remote work is common now. | El trabajo remoto es común ahora. |
+| `voc_a2_freelance_149` | **freelance** | *adjective* | `/ˈfriˌlæns/` | trabajo independiente | She does freelance writing. | Ella hace escritura independiente. |
+| `voc_a2_promotion_150` | **promotion** | *noun* | `/prəˈmoʊʃən/` | ascenso | He got a promotion last month. | A él le dieron un ascenso el mes pasado. |
+| `voc_a2_raise_151` | **raise (salary)** | *noun* | `/reɪz/` | aumento de sueldo | She asked for a raise. | Ella pidió un aumento de sueldo. |
+| `voc_a2_resign_152` | **resign** | *verb* | `/rɪˈzaɪn/` | renunciar | He decided to resign. | Él decidió renunciar. |
+| `voc_a2_lay-off_153` | **lay off** | *phrasal-verb* | `/leɪ ɔf/` | despedir (recorte) | The company had to lay off staff. | La empresa tuvo que despedir personal. |
+| `voc_a2_retire_154` | **retire** | *verb* | `/rɪˈtaɪər/` | jubilarse | My father will retire next year. | Mi padre se jubilará el próximo año. |
+| `voc_a2_teamwork_155` | **teamwork** | *noun* | `/ˈtimˌwɜrk/` | trabajo en equipo | Teamwork made the project possible. | El trabajo en equipo hizo posible el proyecto. |
+| `voc_a2_brainstorm_156` | **brainstorm** | *noun* | `/ˈbreɪnˌstɔrm/` | lluvia de ideas | We had a brainstorm session. | Tuvimos una sesión de lluvia de ideas. |
+| `voc_a2_performance-review_157` | **performance review** | *noun* | `/pərˈfɔrməns rɪˈvju/` | evaluación de desempeño | My performance review is tomorrow. | Mi evaluación de desempeño es mañana. |
+| `voc_a2_workload_158` | **workload** | *noun* | `/ˈwɜrkˌloʊd/` | carga de trabajo | My workload is very heavy this month. | Mi carga de trabajo es muy pesada este mes. |
+| `voc_a2_multitask_159` | **multitask** | *verb* | `/ˈmʌltiˌtæsk/` | hacer varias cosas a la vez | It's hard to multitask at work. | Es difícil hacer varias cosas a la vez en el trabajo. |
+| `voc_a2_prioritize_160` | **prioritize** | *verb* | `/praɪˈɔrəˌtaɪz/` | priorizar | You need to prioritize your tasks. | Necesitas priorizar tus tareas. |
+| `voc_a2_negotiation_161` | **negotiation** | *noun* | `/nɪˌgoʊʃiˈeɪʃən/` | negociación | The negotiation took two hours. | La negociación tomó dos horas. |
+| `voc_a2_client_162` | **client** | *noun* | `/ˈklaɪənt/` | cliente (negocio) | Our client is happy with the results. | Nuestro cliente está contento con los resultados. |
+| `voc_a2_stakeholder_163` | **stakeholder** | *noun* | `/ˈsteɪkˌhoʊldər/` | parte interesada | We informed all the stakeholders. | Informamos a todas las partes interesadas. |
+| `voc_a2_quarterly_164` | **quarterly** | *adverb* | `/ˈkwɔrtərli/` | trimestral | We review sales quarterly. | Revisamos las ventas trimestralmente. |
+| `voc_a2_annual_165` | **annual** | *noun* | `/ˈænjuəl/` | anual | We have an annual meeting in June. | Tenemos una reunión anual en junio. |
+| `voc_a2_target_166` | **target (goal)** | *noun* | `/ˈtɑrgɪt/` | meta | We reached our sales target. | Alcanzamos nuestra meta de ventas. |
+| `voc_a2_achieve_167` | **achieve** | *verb* | `/əˈtʃiv/` | lograr | She achieved her goals this year. | Ella logró sus metas este año. |
+| `voc_a2_accomplish_168` | **accomplish** | *verb* | `/əˈkɑmplɪʃ/` | cumplir/lograr | We accomplished a lot this week. | Logramos mucho esta semana. |
+| `voc_a2_project-manager_169` | **project manager** | *noun* | `/ˈprɑdʒɛkt ˈmænɪdʒər/` | gerente de proyecto | The project manager called a meeting. | El gerente de proyecto convocó una reunión. |
+| `voc_a2_human-resources_170` | **human resources** | *noun* | `/ˈhjumən ˈrisɔrsɪz/` | recursos humanos | Contact human resources for that. | Contacta a recursos humanos para eso. |
+| `voc_a2_headquarters_171` | **headquarters** | *noun* | `/ˈhɛdˌkwɔrtərz/` | sede central | The headquarters are in New York. | La sede central está en Nueva York. |
+| `voc_a2_branch-office_172` | **branch office** | *noun* | `/bræntʃ ˈɔfəs/` | sucursal | There is a branch office downtown. | Hay una sucursal en el centro. |
+| `voc_a2_shift_173` | **shift (work)** | *noun* | `/ʃɪft/` | turno | I work the night shift. | Trabajo el turno nocturno. |
+| `voc_a2_commute_174` | **commute** | *noun* | `/kəˈmjut/` | desplazarse al trabajo | My commute takes forty minutes. | Mi desplazamiento al trabajo toma cuarenta minutos. |
+| `voc_a2_paperwork_175` | **paperwork** | *noun* | `/ˈpeɪpərˌwɜrk/` | papeleo | I have a lot of paperwork today. | Tengo mucho papeleo hoy. |
+| `voc_a2_signature_176` | **signature** | *noun* | `/ˈsɪgnətʃər/` | firma | I need your signature here. | Necesito tu firma aquí. |
+| `voc_a2_approval_177` | **approval** | *noun* | `/əˈpruvəl/` | aprobación | We are waiting for approval. | Estamos esperando la aprobación. |
+| `voc_a2_policy_178` | **policy (company)** | *noun* | `/ˈpɑləsi/` | política (empresa) | Please read the company policy. | Por favor lee la política de la empresa. |
+| `voc_a2_training_179` | **training** | *noun* | `/ˈtreɪnɪŋ/` | capacitación | New employees need training. | Los nuevos empleados necesitan capacitación. |
+| `voc_a2_onboarding_180` | **onboarding** | *noun* | `/ˈɑnˌbɔrdɪŋ/` | proceso de incorporación | Onboarding lasts one week. | El proceso de incorporación dura una semana. |
+| `voc_a2_networking-event_181` | **networking event** | *noun* | `/ˈnɛtˌwɜrkɪŋ ɪˈvɛnt/` | evento de networking | I met her at a networking event. | La conocí en un evento de networking. |
 
 ### Semana 4: Salud y cuerpo (síntomas y citas médicas)
 Total de palabras en esta semana: **59**
 
 | ID | Palabra | Categoría | Fonética (IPA) | Traducción | Ejemplo en Inglés | Traducción del Ejemplo |
 |---|---|---|---|---|---|---|
-| `voc_a2_symptom_182` | **symptom** | *noun* | — | síntoma | — | — |
-| `voc_a2_diagnosis_183` | **diagnosis** | *noun* | — | diagnóstico | — | — |
-| `voc_a2_prescription_184` | **prescription** | *noun* | — | receta médica | — | — |
-| `voc_a2_dosage_185` | **dosage** | *noun* | — | dosis | — | — |
-| `voc_a2_side-effect_186` | **side effect** | *noun* | — | efecto secundario | — | — |
-| `voc_a2_allergy_187` | **allergy** | *noun* | — | alergia | — | — |
-| `voc_a2_allergic-reaction_188` | **allergic reaction** | *noun* | — | reacción alérgica | — | — |
-| `voc_a2_infection_189` | **infection** | *noun* | — | infección | — | — |
-| `voc_a2_inflammation_190` | **inflammation** | *noun* | — | inflamación | — | — |
-| `voc_a2_rash_191` | **rash** | *noun* | — | sarpullido | — | — |
-| `voc_a2_swelling_192` | **swelling** | *noun* | — | hinchazón | — | — |
-| `voc_a2_bruise_193` | **bruise** | *noun* | — | moretón | — | — |
-| `voc_a2_wound_194` | **wound** | *noun* | — | herida | — | — |
-| `voc_a2_stitches_195` | **stitches** | *noun* | — | puntos de sutura | — | — |
-| `voc_a2_cast_196` | **cast (medical)** | *noun* | — | yeso | — | — |
-| `voc_a2_crutches_197` | **crutches** | *noun* | — | muletas | — | — |
-| `voc_a2_wheelchair_198` | **wheelchair** | *noun* | — | silla de ruedas | — | — |
-| `voc_a2_blood-pressure_199` | **blood pressure** | *noun* | — | presión arterial | — | — |
-| `voc_a2_heart-rate_200` | **heart rate** | *noun* | — | ritmo cardíaco | — | — |
-| `voc_a2_pulse_201` | **pulse** | *noun* | — | pulso | — | — |
-| `voc_a2_x-ray_202` | **x-ray** | *noun* | — | radiografía | — | — |
-| `voc_a2_surgery-operation_203` | **surgery / operation** | *noun* | — | cirugía | — | — |
-| `voc_a2_anesthesia_204` | **anesthesia** | *noun* | — | anestesia | — | — |
-| `voc_a2_recovery_205` | **recovery** | *noun* | — | recuperación | — | — |
-| `voc_a2_checkup_206` | **checkup** | *noun* | — | chequeo médico | — | — |
-| `voc_a2_specialist_207` | **specialist** | *noun* | — | especialista | — | — |
-| `voc_a2_physical-therapy_208` | **physical therapy** | *noun* | — | fisioterapia | — | — |
-| `voc_a2_mental-health_209` | **mental health** | *noun* | — | salud mental | — | — |
-| `voc_a2_anxiety_210` | **anxiety** | *noun* | — | ansiedad | — | — |
-| `voc_a2_depression_211` | **depression** | *noun* | — | depresión | — | — |
-| `voc_a2_sleep-disorder_212` | **sleep disorder** | *noun* | — | trastorno del sueño | — | — |
-| `voc_a2_chronic_213` | **chronic** | *adjective* | — | crónico | — | — |
-| `voc_a2_acute_214` | **acute** | *adjective* | — | agudo | — | — |
-| `voc_a2_contagious_215` | **contagious** | *adjective* | — | contagioso | — | — |
-| `voc_a2_immune-system_216` | **immune system** | *noun* | — | sistema inmunológico | — | — |
-| `voc_a2_lungs_217` | **lungs** | *noun* | — | pulmones | — | — |
-| `voc_a2_liver_218` | **liver** | *noun* | — | hígado | — | — |
-| `voc_a2_kidney_219` | **kidney** | *noun* | — | riñón | — | — |
-| `voc_a2_intestine_220` | **intestine** | *noun* | — | intestino | — | — |
-| `voc_a2_joint_221` | **joint** | *noun* | — | articulación | — | — |
-| `voc_a2_spine_222` | **spine** | *noun* | — | columna vertebral | — | — |
-| `voc_a2_artery_223` | **artery** | *noun* | — | arteria | — | — |
-| `voc_a2_vein_224` | **vein** | *noun* | — | vena | — | — |
-| `voc_a2_nervous-system_225` | **nervous system** | *noun* | — | sistema nervioso | — | — |
-| `voc_a2_digestive-system_226` | **digestive system** | *noun* | — | sistema digestivo | — | — |
-| `voc_a2_hormone_227` | **hormone** | *noun* | — | hormona | — | — |
-| `voc_a2_metabolism_228` | **metabolism** | *noun* | — | metabolismo | — | — |
-| `voc_a2_nutrient_229` | **nutrient** | *noun* | — | nutriente | — | — |
-| `voc_a2_vitamin_230` | **vitamin** | *noun* | — | vitamina | — | — |
-| `voc_a2_protein_231` | **protein** | *noun* | — | proteína | — | — |
-| `voc_a2_carbohydrate_232` | **carbohydrate** | *noun* | — | carbohidrato | — | — |
-| `voc_a2_fiber_233` | **fiber** | *noun* | — | fibra | — | — |
-| `voc_a2_calorie_234` | **calorie** | *noun* | — | caloría | — | — |
-| `voc_a2_overweight_235` | **overweight** | *adjective* | — | sobrepeso | — | — |
-| `voc_a2_underweight_236` | **underweight** | *adjective* | — | bajo peso | — | — |
-| `voc_a2_obesity_237` | **obesity** | *noun* | — | obesidad | — | — |
-| `voc_a2_wellness_238` | **wellness** | *noun* | — | bienestar | — | — |
-| `voc_a2_hygiene_239` | **hygiene** | *noun* | — | higiene | — | — |
-| `voc_a2_first-aid-kit_240` | **first aid kit** | *noun* | — | botiquín de primeros auxilios | — | — |
+| `voc_a2_symptom_182` | **symptom** | *noun* | `/ˈsɪmptəm/` | síntoma | What symptoms do you have? | ¿Qué síntomas tienes? |
+| `voc_a2_diagnosis_183` | **diagnosis** | *noun* | `/ˌdaɪəgˈnoʊsɪs/` | diagnóstico | The doctor gave a clear diagnosis. | El médico dio un diagnóstico claro. |
+| `voc_a2_prescription_184` | **prescription** | *noun* | `/prɪˈskrɪpʃən/` | receta médica | The doctor wrote a prescription. | El médico escribió una receta. |
+| `voc_a2_dosage_185` | **dosage** | *noun* | `/ˈdoʊsɪdʒ/` | dosis | Follow the correct dosage. | Sigue la dosis correcta. |
+| `voc_a2_side-effect_186` | **side effect** | *noun* | `/saɪd ɪˈfɛkt/` | efecto secundario | This medicine has few side effects. | Esta medicina tiene pocos efectos secundarios. |
+| `voc_a2_allergy_187` | **allergy** | *noun* | `/ˈælərdʒi/` | alergia | I have a food allergy. | Tengo una alergia alimentaria. |
+| `voc_a2_allergic-reaction_188` | **allergic reaction** | *noun* | `/əˈlɜrdʒɪk riˈækʃən/` | reacción alérgica | She had an allergic reaction. | Ella tuvo una reacción alérgica. |
+| `voc_a2_infection_189` | **infection** | *noun* | `/ɪnˈfɛkʃən/` | infección | He has an ear infection. | Él tiene una infección de oído. |
+| `voc_a2_inflammation_190` | **inflammation** | *noun* | `/ˌɪnfləˈmeɪʃən/` | inflamación | There is inflammation in his knee. | Hay inflamación en su rodilla. |
+| `voc_a2_rash_191` | **rash** | *noun* | `/ræʃ/` | sarpullido | She has a rash on her arm. | Ella tiene un sarpullido en el brazo. |
+| `voc_a2_swelling_192` | **swelling** | *noun* | `/ˈswɛlɪŋ/` | hinchazón | The swelling went down quickly. | La hinchazón bajó rápido. |
+| `voc_a2_bruise_193` | **bruise** | *noun* | `/bruz/` | moretón | He has a bruise on his leg. | Él tiene un moretón en la pierna. |
+| `voc_a2_wound_194` | **wound** | *noun* | `/wund/` | herida | Clean the wound carefully. | Limpia la herida con cuidado. |
+| `voc_a2_stitches_195` | **stitches** | *noun* | `/ˈstɪtʃɪz/` | puntos de sutura | He needed five stitches. | Él necesitó cinco puntos de sutura. |
+| `voc_a2_cast_196` | **cast (medical)** | *noun* | `/kæst/` | yeso | She has a cast on her arm. | Ella tiene un yeso en el brazo. |
+| `voc_a2_crutches_197` | **crutches** | *noun* | `/ˈkrʌtʃɪz/` | muletas | He is using crutches now. | Él está usando muletas ahora. |
+| `voc_a2_wheelchair_198` | **wheelchair** | *noun* | `/ˈwilˌtʃɛr/` | silla de ruedas | She uses a wheelchair. | Ella usa una silla de ruedas. |
+| `voc_a2_blood-pressure_199` | **blood pressure** | *noun* | `/blʌd ˈprɛʃər/` | presión arterial | The nurse checked my blood pressure. | La enfermera revisó mi presión arterial. |
+| `voc_a2_heart-rate_200` | **heart rate** | *noun* | `/hɑrt reɪt/` | ritmo cardíaco | His heart rate is normal. | Su ritmo cardíaco es normal. |
+| `voc_a2_pulse_201` | **pulse** | *noun* | `/pʌls/` | pulso | The doctor checked my pulse. | El médico revisó mi pulso. |
+| `voc_a2_x-ray_202` | **x-ray** | *noun* | `/ˈɛksˌreɪ/` | radiografía | They took an x-ray of my arm. | Me tomaron una radiografía del brazo. |
+| `voc_a2_surgery-operation_203` | **surgery / operation** | *noun* | `/ˈsɜrdʒəri/` | cirugía | She needs surgery next month. | Ella necesita cirugía el próximo mes. |
+| `voc_a2_anesthesia_204` | **anesthesia** | *noun* | `/ˌænəsˈθiʒə/` | anestesia | He was under anesthesia for an hour. | Él estuvo bajo anestesia por una hora. |
+| `voc_a2_recovery_205` | **recovery** | *noun* | `/rɪˈkʌvəri/` | recuperación | Her recovery is going well. | Su recuperación va bien. |
+| `voc_a2_checkup_206` | **checkup** | *noun* | `/ˈtʃɛkˌʌp/` | chequeo médico | I have a checkup next week. | Tengo un chequeo médico la próxima semana. |
+| `voc_a2_specialist_207` | **specialist** | *noun* | `/ˈspɛʃəlɪst/` | especialista | She saw a specialist yesterday. | Ella vio a un especialista ayer. |
+| `voc_a2_physical-therapy_208` | **physical therapy** | *noun* | `/ˈfɪzɪkəl ˈθɛrəpi/` | fisioterapia | He goes to physical therapy twice a week. | Él va a fisioterapia dos veces por semana. |
+| `voc_a2_mental-health_209` | **mental health** | *noun* | `/ˈmɛntəl hɛlθ/` | salud mental | Mental health matters too. | La salud mental también importa. |
+| `voc_a2_anxiety_210` | **anxiety** | *noun* | `/æŋˈzaɪəti/` | ansiedad | She feels anxiety before exams. | Ella siente ansiedad antes de los exámenes. |
+| `voc_a2_depression_211` | **depression** | *noun* | `/dɪˈprɛʃən/` | depresión | He is being treated for depression. | Él está siendo tratado por depresión. |
+| `voc_a2_sleep-disorder_212` | **sleep disorder** | *noun* | `/slip dɪsˈɔrdər/` | trastorno del sueño | He was diagnosed with a sleep disorder. | Le diagnosticaron un trastorno del sueño. |
+| `voc_a2_chronic_213` | **chronic** | *adjective* | `/ˈkrɑnɪk/` | crónico | She has a chronic condition. | Ella tiene una condición crónica. |
+| `voc_a2_acute_214` | **acute** | *adjective* | `/əˈkjut/` | agudo | He had an acute pain in his chest. | Él tuvo un dolor agudo en el pecho. |
+| `voc_a2_contagious_215` | **contagious** | *adjective* | `/kənˈteɪdʒəs/` | contagioso | The flu is very contagious. | La gripe es muy contagiosa. |
+| `voc_a2_immune-system_216` | **immune system** | *noun* | `/ɪˈmjun ˈsɪstəm/` | sistema inmunológico | Vitamin C helps the immune system. | La vitamina C ayuda al sistema inmunológico. |
+| `voc_a2_lungs_217` | **lungs** | *noun* | `/lʌŋz/` | pulmones | Smoking damages your lungs. | Fumar daña tus pulmones. |
+| `voc_a2_liver_218` | **liver** | *noun* | `/ˈlɪvər/` | hígado | Alcohol affects the liver. | El alcohol afecta el hígado. |
+| `voc_a2_kidney_219` | **kidney** | *noun* | `/ˈkɪdni/` | riñón | He donated a kidney to his brother. | Él donó un riñón a su hermano. |
+| `voc_a2_intestine_220` | **intestine** | *noun* | `/ɪnˈtɛstɪn/` | intestino | The doctor examined his intestine. | El médico examinó su intestino. |
+| `voc_a2_joint_221` | **joint** | *noun* | `/dʒɔɪnt/` | articulación | My knee joint hurts. | Me duele la articulación de la rodilla. |
+| `voc_a2_spine_222` | **spine** | *noun* | `/spaɪn/` | columna vertebral | She injured her spine. | Ella se lesionó la columna vertebral. |
+| `voc_a2_artery_223` | **artery** | *noun* | `/ˈɑrtəri/` | arteria | The artery was blocked. | La arteria estaba obstruida. |
+| `voc_a2_vein_224` | **vein** | *noun* | `/veɪn/` | vena | The nurse found a vein easily. | La enfermera encontró una vena fácilmente. |
+| `voc_a2_nervous-system_225` | **nervous system** | *noun* | `/ˈnɜrvəs ˈsɪstəm/` | sistema nervioso | Stress affects the nervous system. | El estrés afecta el sistema nervioso. |
+| `voc_a2_digestive-system_226` | **digestive system** | *noun* | `/daɪˈdʒɛstɪv ˈsɪstəm/` | sistema digestivo | Fiber helps the digestive system. | La fibra ayuda al sistema digestivo. |
+| `voc_a2_hormone_227` | **hormone** | *noun* | `/ˈhɔrˌmoʊn/` | hormona | This hormone controls growth. | Esta hormona controla el crecimiento. |
+| `voc_a2_metabolism_228` | **metabolism** | *noun* | `/məˈtæbəˌlɪzəm/` | metabolismo | Exercise speeds up your metabolism. | El ejercicio acelera tu metabolismo. |
+| `voc_a2_nutrient_229` | **nutrient** | *noun* | `/ˈnutriənt/` | nutriente | Vegetables are full of nutrients. | Las verduras están llenas de nutrientes. |
+| `voc_a2_vitamin_230` | **vitamin** | *noun* | `/ˈvaɪtəmɪn/` | vitamina | I take a vitamin every morning. | Tomo una vitamina cada mañana. |
+| `voc_a2_protein_231` | **protein** | *noun* | `/ˈproʊˌtin/` | proteína | Chicken has a lot of protein. | El pollo tiene mucha proteína. |
+| `voc_a2_carbohydrate_232` | **carbohydrate** | *noun* | `/ˌkɑrboʊˈhaɪˌdreɪt/` | carbohidrato | Rice is high in carbohydrates. | El arroz es alto en carbohidratos. |
+| `voc_a2_fiber_233` | **fiber** | *noun* | `/ˈfaɪbər/` | fibra | This bread has a lot of fiber. | Este pan tiene mucha fibra. |
+| `voc_a2_calorie_234` | **calorie** | *noun* | `/ˈkæləri/` | caloría | This snack has pocas calorías. | Esta merienda tiene pocas calorías. |
+| `voc_a2_overweight_235` | **overweight** | *adjective* | `/ˌoʊvərˈweɪt/` | sobrepeso | The doctor said he was overweight. | El médico dijo que él tenía sobrepeso. |
+| `voc_a2_underweight_236` | **underweight** | *adjective* | `/ˈʌndərˌweɪt/` | bajo peso | The baby was slightly underweight. | El bebé tenía un poco de bajo peso. |
+| `voc_a2_obesity_237` | **obesity** | *noun* | `/oʊˈbisəti/` | obesidad | Obesity is a growing health issue. | La obesidad es un problema de salud creciente. |
+| `voc_a2_wellness_238` | **wellness** | *noun* | `/ˈwɛlnəs/` | bienestar | The company offers wellness programs. | La empresa ofrece programas de bienestar. |
+| `voc_a2_hygiene_239` | **hygiene** | *noun* | `/ˈhaɪdʒin/` | higiene | Good hygiene prevents illness. | La buena higiene previene enfermedades. |
+| `voc_a2_first-aid-kit_240` | **first aid kit** | *noun* | `/fɜrst eɪd kɪt/` | botiquín de primeros auxilios | We keep a first aid kit at home. | Tenemos un botiquín de primeros auxilios en casa. |
 
 ### Semana 5: Conectores narrativos para contar historias
 Total de palabras en esta semana: **48**
 
 | ID | Palabra | Categoría | Fonética (IPA) | Traducción | Ejemplo en Inglés | Traducción del Ejemplo |
 |---|---|---|---|---|---|---|
-| `voc_a2_once-upon-a-time_241` | **once upon a time** | *conjunction* | — | érase una vez | — | — |
-| `voc_a2_meanwhile_242` | **meanwhile** | *adverb* | — | mientras tanto | — | — |
-| `voc_a2_afterward_243` | **afterward** | *adverb* | — | después/luego | — | — |
-| `voc_a2_eventually_244` | **eventually** | *adverb* | — | finalmente/con el tiempo | — | — |
-| `voc_a2_in-the-end_245` | **in the end** | *conjunction* | — | al final | — | — |
-| `voc_a2_at-first_246` | **at first** | *conjunction* | — | al principio | — | — |
-| `voc_a2_later-on_247` | **later on** | *conjunction* | — | más adelante | — | — |
-| `voc_a2_as-soon-as_248` | **as soon as** | *conjunction* | — | tan pronto como | — | — |
-| `voc_a2_by-the-time_249` | **by the time** | *conjunction* | — | para cuando | — | — |
-| `voc_a2_used-to_250` | **used to** | *conjunction* | — | solía | — | — |
-| `voc_a2_previously_251` | **previously** | *adverb* | — | previamente | — | — |
-| `voc_a2_formerly_252` | **formerly** | *adverb* | — | anteriormente | — | — |
-| `voc_a2_ever-since_253` | **ever since** | *adverb* | — | desde entonces | — | — |
-| `voc_a2_from-then-on_254` | **from then on** | *conjunction* | — | desde ese momento | — | — |
-| `voc_a2_at-that-moment_255` | **at that moment** | *conjunction* | — | en ese momento | — | — |
-| `voc_a2_right-after_256` | **right after** | *conjunction* | — | justo después | — | — |
-| `voc_a2_shortly-after_257` | **shortly after** | *conjunction* | — | poco después | — | — |
-| `voc_a2_in-the-meantime_258` | **in the meantime** | *conjunction* | — | mientras tanto | — | — |
-| `voc_a2_all-of-a-sudden_259` | **all of a sudden** | *conjunction* | — | de repente | — | — |
-| `voc_a2_little-by-little_260` | **little by little** | *conjunction* | — | poco a poco | — | — |
-| `voc_a2_one-day_261` | **one day** | *conjunction* | — | un día | — | — |
-| `voc_a2_years-ago_262` | **years ago** | *conjunction* | — | hace años | — | — |
-| `voc_a2_back-then_263` | **back then** | *conjunction* | — | en aquel entonces | — | — |
-| `voc_a2_during-that-time_264` | **during that time** | *conjunction* | — | durante ese tiempo | — | — |
-| `voc_a2_at-the-same-time_265` | **at the same time** | *conjunction* | — | al mismo tiempo | — | — |
-| `voc_a2_in-those-days_266` | **in those days** | *conjunction* | — | en aquellos días | — | — |
-| `voc_a2_as-a-result_267` | **as a result** | *conjunction* | — | como resultado | — | — |
-| `voc_a2_consequently_268` | **consequently** | *conjunction* | — | en consecuencia | — | — |
-| `voc_a2_thus_269` | **thus** | *conjunction* | — | así/por lo tanto | — | — |
-| `voc_a2_for-this-reason_270` | **for this reason** | *conjunction* | — | por esta razón | — | — |
-| `voc_a2_due-to_271` | **due to** | *conjunction* | — | debido a | — | — |
-| `voc_a2_because-of_272` | **because of** | *conjunction* | — | a causa de | — | — |
-| `voc_a2_thats-why_273` | **that's why** | *conjunction* | — | por eso | — | — |
-| `voc_a2_in-contrast_274` | **in contrast** | *conjunction* | — | en contraste | — | — |
-| `voc_a2_instead_275` | **instead** | *conjunction* | — | en cambio | — | — |
-| `voc_a2_nevertheless_276` | **nevertheless** | *conjunction* | — | sin embargo/no obstante | — | — |
-| `voc_a2_nonetheless_277` | **nonetheless** | *conjunction* | — | no obstante | — | — |
-| `voc_a2_moreover_278` | **moreover** | *conjunction* | — | además | — | — |
-| `voc_a2_furthermore_279` | **furthermore** | *conjunction* | — | además/asimismo | — | — |
-| `voc_a2_in-addition_280` | **in addition** | *conjunction* | — | adicionalmente | — | — |
-| `voc_a2_besides_281` | **besides** | *conjunction* | — | además | — | — |
-| `voc_a2_apart-from_282` | **apart from** | *conjunction* | — | aparte de | — | — |
-| `voc_a2_in-conclusion_283` | **in conclusion** | *conjunction* | — | en conclusión | — | — |
-| `voc_a2_to-sum-up_284` | **to sum up** | *conjunction* | — | en resumen | — | — |
-| `voc_a2_overall_285` | **overall** | *conjunction* | — | en general | — | — |
-| `voc_a2_in-general_286` | **in general** | *conjunction* | — | en general | — | — |
-| `voc_a2_such-as_287` | **such as** | *conjunction* | — | tal como | — | — |
-| `voc_a2_in-particular_288` | **in particular** | *conjunction* | — | en particular | — | — |
+| `voc_a2_once-upon-a-time_241` | **once upon a time** | *conjunction* | `/wʌns əˈpɑn ə taɪm/` | érase una vez | Once upon a time, there was a small village. | Érase una vez, había un pueblo pequeño. |
+| `voc_a2_meanwhile_242` | **meanwhile** | *adverb* | `/ˈminˌwaɪl/` | mientras tanto | Meanwhile, her brother was cooking dinner. | Mientras tanto, su hermano estaba cocinando la cena. |
+| `voc_a2_afterward_243` | **afterward** | *adverb* | `/ˈæftərwərd/` | después/luego | We had lunch and afterward went for a walk. | Almorzamos y después salimos a caminar. |
+| `voc_a2_eventually_244` | **eventually** | *adverb* | `/ɪˈvɛntʃuəli/` | finalmente/con el tiempo | Eventually, she found a new job. | Finalmente, ella encontró un nuevo trabajo. |
+| `voc_a2_in-the-end_245` | **in the end** | *conjunction* | `/ɪn ði ɛnd/` | al final | In the end, everything worked out fine. | Al final, todo salió bien. |
+| `voc_a2_at-first_246` | **at first** | *conjunction* | `/æt fɜrst/` | al principio | At first, I didn't understand the lesson. | Al principio, no entendí la lección. |
+| `voc_a2_later-on_247` | **later on** | *conjunction* | `/ˈleɪtər ɑn/` | más adelante | Later on, we became good friends. | Más adelante, nos hicimos buenos amigos. |
+| `voc_a2_as-soon-as_248` | **as soon as** | *conjunction* | `/æz sun æz/` | tan pronto como | Call me as soon as you arrive. | Llámame tan pronto como llegues. |
+| `voc_a2_by-the-time_249` | **by the time** | *conjunction* | `/baɪ ðə taɪm/` | para cuando | By the time we arrived, the show had started. | Para cuando llegamos, el espectáculo ya había empezado. |
+| `voc_a2_used-to_250` | **used to** | *conjunction* | `/ˈjuzd tu/` | solía | I used to live in another city. | Yo solía vivir en otra ciudad. |
+| `voc_a2_previously_251` | **previously** | *adverb* | `/ˈpriviəsli/` | previamente | Previously, she worked as a teacher. | Previamente, ella trabajaba como maestra. |
+| `voc_a2_formerly_252` | **formerly** | *adverb* | `/ˈfɔrmərli/` | anteriormente | This building was formerly a school. | Este edificio fue anteriormente una escuela. |
+| `voc_a2_ever-since_253` | **ever since** | *adverb* | `/ˈɛvər sɪns/` | desde entonces | Ever since that day, we've been close friends. | Desde ese día, hemos sido amigos cercanos. |
+| `voc_a2_from-then-on_254` | **from then on** | *conjunction* | `/frʌm ðɛn ɑn/` | desde ese momento | From then on, he studied every night. | Desde ese momento, él estudió todas las noches. |
+| `voc_a2_at-that-moment_255` | **at that moment** | *conjunction* | `/æt ðæt ˈmoʊmənt/` | en ese momento | At that moment, the phone rang. | En ese momento, sonó el teléfono. |
+| `voc_a2_right-after_256` | **right after** | *conjunction* | `/raɪt ˈæftər/` | justo después | We left right after the meeting. | Nos fuimos justo después de la reunión. |
+| `voc_a2_shortly-after_257` | **shortly after** | *conjunction* | `/ˈʃɔrtli ˈæftər/` | poco después | Shortly after, it started to rain. | Poco después, empezó a llover. |
+| `voc_a2_in-the-meantime_258` | **in the meantime** | *conjunction* | `/ɪn ðə ˈminˌtaɪm/` | mientras tanto | In the meantime, please wait here. | Mientras tanto, por favor espera aquí. |
+| `voc_a2_all-of-a-sudden_259` | **all of a sudden** | *conjunction* | `/ɔl əv ə ˈsʌdən/` | de repente | All of a sudden, the lights went out. | De repente, se fueron las luces. |
+| `voc_a2_little-by-little_260` | **little by little** | *conjunction* | `/ˈlɪtəl baɪ ˈlɪtəl/` | poco a poco | Little by little, she learned to speak English. | Poco a poco, ella aprendió a hablar inglés. |
+| `voc_a2_one-day_261` | **one day** | *conjunction* | `/wʌn deɪ/` | un día | One day, he decided to change his life. | Un día, él decidió cambiar su vida. |
+| `voc_a2_years-ago_262` | **years ago** | *conjunction* | `/jɪrz əˈgoʊ/` | hace años | Years ago, this street looked different. | Hace años, esta calle se veía diferente. |
+| `voc_a2_back-then_263` | **back then** | *conjunction* | `/bæk ðɛn/` | en aquel entonces | Back then, we didn't have cell phones. | En aquel entonces, no teníamos celulares. |
+| `voc_a2_during-that-time_264` | **during that time** | *conjunction* | `/ˈdʊrɪŋ ðæt taɪm/` | durante ese tiempo | During that time, she lived abroad. | Durante ese tiempo, ella vivió en el extranjero. |
+| `voc_a2_at-the-same-time_265` | **at the same time** | *conjunction* | `/æt ðə seɪm taɪm/` | al mismo tiempo | At the same time, he was studying and working. | Al mismo tiempo, él estudiaba y trabajaba. |
+| `voc_a2_in-those-days_266` | **in those days** | *conjunction* | `/ɪn ðoʊz deɪz/` | en aquellos días | In those days, life was simpler. | En aquellos días, la vida era más sencilla. |
+| `voc_a2_as-a-result_267` | **as a result** | *conjunction* | `/æz ə rɪˈzʌlt/` | como resultado | As a result, sales increased. | Como resultado, las ventas aumentaron. |
+| `voc_a2_consequently_268` | **consequently** | *conjunction* | `/ˈkɑnsəˌkwɛntli/` | en consecuencia | Consequently, the project was delayed. | En consecuencia, el proyecto se retrasó. |
+| `voc_a2_thus_269` | **thus** | *conjunction* | `/ðʌs/` | así/por lo tanto | Thus, we decided to cancel the trip. | Así, decidimos cancelar el viaje. |
+| `voc_a2_for-this-reason_270` | **for this reason** | *conjunction* | `/fɔr ðɪs ˈrizən/` | por esta razón | For this reason, we changed our plans. | Por esta razón, cambiamos nuestros planes. |
+| `voc_a2_due-to_271` | **due to** | *conjunction* | `/du tu/` | debido a | The flight was delayed due to weather. | El vuelo se retrasó debido al clima. |
+| `voc_a2_because-of_272` | **because of** | *conjunction* | `/bɪˈkɔz əv/` | a causa de | We stayed home because of the storm. | Nos quedamos en casa a causa de la tormenta. |
+| `voc_a2_thats-why_273` | **that's why** | *conjunction* | `/ðæts waɪ/` | por eso | That's why I called you. | Por eso te llamé. |
+| `voc_a2_in-contrast_274` | **in contrast** | *conjunction* | `/ɪn ˈkɑntræst/` | en contraste | In contrast, her sister loves the city. | En contraste, a su hermana le encanta la ciudad. |
+| `voc_a2_instead_275` | **instead** | *conjunction* | `/ɪnˈstɛd/` | en cambio | Let's have tea instead. | Tomemos té en cambio. |
+| `voc_a2_nevertheless_276` | **nevertheless** | *conjunction* | `/ˌnɛvərðəˈlɛs/` | sin embargo/no obstante | It was raining; nevertheless, we went out. | Estaba lloviendo; sin embargo, salimos. |
+| `voc_a2_nonetheless_277` | **nonetheless** | *conjunction* | `/ˌnʌnðəˈlɛs/` | no obstante | The task was hard; nonetheless, she finished it. | La tarea fue difícil; no obstante, ella la terminó. |
+| `voc_a2_moreover_278` | **moreover** | *conjunction* | `/mɔrˈoʊvər/` | además | The hotel is cheap; moreover, it's very clean. | El hotel es barato; además, está muy limpio. |
+| `voc_a2_furthermore_279` | **furthermore** | *conjunction* | `/ˈfɜrðərˌmɔr/` | además/asimismo | Furthermore, the staff was very kind. | Además, el personal fue muy amable. |
+| `voc_a2_in-addition_280` | **in addition** | *conjunction* | `/ɪn əˈdɪʃən/` | adicionalmente | In addition, we offer free delivery. | Adicionalmente, ofrecemos envío gratis. |
+| `voc_a2_besides_281` | **besides** | *conjunction* | `/bɪˈsaɪdz/` | además | Besides, I don't have time today. | Además, no tengo tiempo hoy. |
+| `voc_a2_apart-from_282` | **apart from** | *conjunction* | `/əˈpɑrt frʌm/` | aparte de | Apart from the price, everything was perfect. | Aparte del precio, todo estuvo perfecto. |
+| `voc_a2_in-conclusion_283` | **in conclusion** | *conjunction* | `/ɪn kənˈkluʒən/` | en conclusión | In conclusion, the plan was a success. | En conclusión, el plan fue un éxito. |
+| `voc_a2_to-sum-up_284` | **to sum up** | *conjunction* | `/tu sʌm ʌp/` | en resumen | To sum up, we need more time. | En resumen, necesitamos más tiempo. |
+| `voc_a2_overall_285` | **overall** | *conjunction* | `/ˈoʊvərˌɔl/` | en general | Overall, it was a great trip. | En general, fue un gran viaje. |
+| `voc_a2_in-general_286` | **in general** | *conjunction* | `/ɪn ˈdʒɛnərəl/` | en general | In general, people were friendly. | En general, la gente fue amigable. |
+| `voc_a2_such-as_287` | **such as** | *conjunction* | `/sʌtʃ æz/` | tal como | I like fruits such as mango and papaya. | Me gustan frutas como el mango y la papaya. |
+| `voc_a2_in-particular_288` | **in particular** | *conjunction* | `/ɪn pərˈtɪkjələr/` | en particular | I liked one dish in particular. | Me gustó un platillo en particular. |
 
 ### Semana 6: Expresar opiniones
 Total de palabras en esta semana: **44**
 
 | ID | Palabra | Categoría | Fonética (IPA) | Traducción | Ejemplo en Inglés | Traducción del Ejemplo |
 |---|---|---|---|---|---|---|
-| `voc_a2_in-my-opinion_289` | **in my opinion** | *noun* | — | en mi opinión | — | — |
-| `voc_a2_i-believe-that_290` | **I believe that** | *noun* | — | creo que | — | — |
-| `voc_a2_i-feel-that_291` | **I feel that** | *noun* | — | siento que | — | — |
-| `voc_a2_personally_292` | **personally** | *adverb* | — | personalmente | — | — |
-| `voc_a2_from-my-point-of-vie_293` | **from my point of view** | *noun* | — | desde mi punto de vista | — | — |
-| `voc_a2_i-agree_294` | **I agree** | *noun* | — | estoy de acuerdo | — | — |
-| `voc_a2_i-disagree_295` | **I disagree** | *noun* | — | no estoy de acuerdo | — | — |
-| `voc_a2_im-not-sure_296` | **I'm not sure** | *noun* | — | no estoy seguro | — | — |
-| `voc_a2_it-seems-to-me_297` | **it seems to me** | *noun* | — | me parece que | — | — |
-| `voc_a2_as-far-as-i-know_298` | **as far as I know** | *noun* | — | que yo sepa | — | — |
-| `voc_a2_i-suppose_299` | **I suppose** | *noun* | — | supongo | — | — |
-| `voc_a2_i-guess_300` | **I guess (opinion)** | *noun* | — | supongo/creo | — | — |
-| `voc_a2_to-be-honest_301` | **to be honest** | *noun* | — | para ser honesto | — | — |
-| `voc_a2_in-fact_302` | **in fact** | *noun* | — | de hecho | — | — |
-| `voc_a2_definitely_303` | **definitely** | *adverb* | — | definitivamente | — | — |
-| `voc_a2_absolutely_304` | **absolutely** | *adverb* | — | absolutamente | — | — |
-| `voc_a2_of-course_305` | **of course** | *noun* | — | por supuesto | — | — |
-| `voc_a2_no-way_306` | **no way** | *noun* | — | de ninguna manera | — | — |
-| `voc_a2_thats-true_307` | **that's true** | *noun* | — | eso es cierto | — | — |
-| `voc_a2_thats-not-true_308` | **that's not true** | *noun* | — | eso no es cierto | — | — |
-| `voc_a2_i-doubt-it_309` | **I doubt it** | *noun* | — | lo dudo | — | — |
-| `voc_a2_it-depends_310` | **it depends** | *noun* | — | depende | — | — |
-| `voc_a2_on-one-hand_311` | **on one hand** | *noun* | — | por un lado | — | — |
-| `voc_a2_on-the-other-hand_312` | **on the other hand** | *noun* | — | por otro lado | — | — |
-| `voc_a2_its-obvious_313` | **it's obvious** | *noun* | — | es obvio | — | — |
-| `voc_a2_clearly_314` | **clearly** | *adverb* | — | claramente | — | — |
-| `voc_a2_apparently_315` | **apparently** | *adverb* | — | aparentemente | — | — |
-| `voc_a2_allegedly_316` | **allegedly** | *adverb* | — | supuestamente | — | — |
-| `voc_a2_presumably_317` | **presumably** | *adverb* | — | presumiblemente | — | — |
-| `voc_a2_undoubtedly_318` | **undoubtedly** | *adverb* | — | sin duda | — | — |
-| `voc_a2_arguably_319` | **arguably** | *adverb* | — | posiblemente/se podría decir | — | — |
-| `voc_a2_in-my-experience_320` | **in my experience** | *noun* | — | en mi experiencia | — | — |
-| `voc_a2_based-on_321` | **based on** | *noun* | — | basado en | — | — |
-| `voc_a2_according-to_322` | **according to** | *noun* | — | según | — | — |
-| `voc_a2_evidence_323` | **evidence** | *noun* | — | evidencia | — | — |
-| `voc_a2_argument_324` | **argument** | *noun* | — | argumento | — | — |
-| `voc_a2_viewpoint-standpoint_325` | **viewpoint / standpoint** | *noun* | — | punto de vista | — | — |
-| `voc_a2_counterargument_326` | **counterargument** | *noun* | — | contraargumento | — | — |
-| `voc_a2_valid-point_327` | **valid point** | *noun* | — | punto válido | — | — |
-| `voc_a2_convince_328` | **convince** | *verb* | — | convencer | — | — |
-| `voc_a2_persuade_329` | **persuade** | *verb* | — | persuadir | — | — |
-| `voc_a2_debate_330` | **debate** | *verb* | — | debate | — | — |
-| `voc_a2_controversy_331` | **controversy** | *noun* | — | controversia | — | — |
-| `voc_a2_agree-to-disagree_332` | **agree to disagree** | *noun* | — | acordar estar en desacuerdo | — | — |
+| `voc_a2_in-my-opinion_289` | **in my opinion** | *noun* | `/ɪn maɪ əˈpɪnjən/` | en mi opinión | In my opinion, this movie is excellent. | En mi opinión, esta película es excelente. |
+| `voc_a2_i-believe-that_290` | **I believe that** | *noun* | `/aɪ bɪˈliv ðæt/` | creo que | I believe that honesty is important. | Creo que la honestidad es importante. |
+| `voc_a2_i-feel-that_291` | **I feel that** | *noun* | `/aɪ fil ðæt/` | siento que | I feel that we should wait. | Siento que deberíamos esperar. |
+| `voc_a2_personally_292` | **personally** | *adverb* | `/ˈpɜrsənəli/` | personalmente | Personally, I prefer tea over coffee. | Personalmente, prefiero el té sobre el café. |
+| `voc_a2_from-my-point-of-vie_293` | **from my point of view** | *noun* | `/frʌm maɪ pɔɪnt əv vju/` | desde mi punto de vista | From my point of view, it's a fair decision. | Desde mi punto de vista, es una decisión justa. |
+| `voc_a2_i-agree_294` | **I agree** | *noun* | `/aɪ əˈgri/` | estoy de acuerdo | I agree with your idea. | Estoy de acuerdo con tu idea. |
+| `voc_a2_i-disagree_295` | **I disagree** | *noun* | `/aɪ dɪsəˈgri/` | no estoy de acuerdo | I disagree with that plan. | No estoy de acuerdo con ese plan. |
+| `voc_a2_im-not-sure_296` | **I'm not sure** | *noun* | `/aɪm nɑt ʃʊr/` | no estoy seguro | I'm not sure about the schedule. | No estoy seguro sobre el horario. |
+| `voc_a2_it-seems-to-me_297` | **it seems to me** | *noun* | `/ɪt simz tu mi/` | me parece que | It seems to me that he is right. | Me parece que él tiene razón. |
+| `voc_a2_as-far-as-i-know_298` | **as far as I know** | *noun* | `/æz fɑr æz aɪ noʊ/` | que yo sepa | As far as I know, the store is open. | Que yo sepa, la tienda está abierta. |
+| `voc_a2_i-suppose_299` | **I suppose** | *noun* | `/aɪ səˈpoʊz/` | supongo | I suppose you're right. | Supongo que tienes razón. |
+| `voc_a2_i-guess_300` | **I guess (opinion)** | *noun* | `/aɪ gɛs/` | supongo/creo | I guess we can try it. | Supongo que podemos intentarlo. |
+| `voc_a2_to-be-honest_301` | **to be honest** | *noun* | `/tu bi ˈɑnəst/` | para ser honesto | To be honest, I didn't like the food. | Para ser honesto, no me gustó la comida. |
+| `voc_a2_in-fact_302` | **in fact** | *noun* | `/ɪn fækt/` | de hecho | In fact, she already knew the answer. | De hecho, ella ya sabía la respuesta. |
+| `voc_a2_definitely_303` | **definitely** | *adverb* | `/ˈdɛfənətli/` | definitivamente | I will definitely come to the party. | Definitivamente iré a la fiesta. |
+| `voc_a2_absolutely_304` | **absolutely** | *adverb* | `/ˌæbsəˈlutli/` | absolutamente | That's absolutely true. | Eso es absolutamente cierto. |
+| `voc_a2_of-course_305` | **of course** | *noun* | `/ʌv kɔrs/` | por supuesto | Of course, I can help you. | Por supuesto, puedo ayudarte. |
+| `voc_a2_no-way_306` | **no way** | *noun* | `/noʊ weɪ/` | de ninguna manera | No way, that's impossible. | De ninguna manera, eso es imposible. |
+| `voc_a2_thats-true_307` | **that's true** | *noun* | `/ðæts tru/` | eso es cierto | That's true, I hadn't thought of that. | Eso es cierto, no lo había pensado. |
+| `voc_a2_thats-not-true_308` | **that's not true** | *noun* | `/ðæts nɑt tru/` | eso no es cierto | That's not true; I checked it myself. | Eso no es cierto; lo verifiqué yo mismo. |
+| `voc_a2_i-doubt-it_309` | **I doubt it** | *noun* | `/aɪ daʊt ɪt/` | lo dudo | I doubt it will rain today. | Dudo que llueva hoy. |
+| `voc_a2_it-depends_310` | **it depends** | *noun* | `/ɪt dɪˈpɛndz/` | depende | It depends on the weather. | Depende del clima. |
+| `voc_a2_on-one-hand_311` | **on one hand** | *noun* | `/ɑn wʌn hænd/` | por un lado | On one hand, it's expensive. | Por un lado, es caro. |
+| `voc_a2_on-the-other-hand_312` | **on the other hand** | *noun* | `/ɑn ði ˈʌðər hænd/` | por otro lado | On the other hand, it's very useful. | Por otro lado, es muy útil. |
+| `voc_a2_its-obvious_313` | **it's obvious** | *noun* | `/ɪts ˈɑbviəs/` | es obvio | It's obvious that she is tired. | Es obvio que ella está cansada. |
+| `voc_a2_clearly_314` | **clearly** | *adverb* | `/ˈklɪrli/` | claramente | Clearly, we need a new plan. | Claramente, necesitamos un nuevo plan. |
+| `voc_a2_apparently_315` | **apparently** | *adverb* | `/əˈpɛrəntli/` | aparentemente | Apparently, the store closed early. | Aparentemente, la tienda cerró temprano. |
+| `voc_a2_allegedly_316` | **allegedly** | *adverb* | `/əˈlɛdʒədli/` | supuestamente | He allegedly missed the flight. | Supuestamente él perdió el vuelo. |
+| `voc_a2_presumably_317` | **presumably** | *adverb* | `/prɪˈzuməbli/` | presumiblemente | Presumably, they took another route. | Presumiblemente, tomaron otra ruta. |
+| `voc_a2_undoubtedly_318` | **undoubtedly** | *adverb* | `/ʌnˈdaʊtɪdli/` | sin duda | This is undoubtedly the best option. | Esta es sin duda la mejor opción. |
+| `voc_a2_arguably_319` | **arguably** | *adverb* | `/ˈɑrgjuəbli/` | posiblemente/se podría decir | This is arguably her best book. | Este es posiblemente su mejor libro. |
+| `voc_a2_in-my-experience_320` | **in my experience** | *noun* | `/ɪn maɪ ɪkˈspɪriəns/` | en mi experiencia | In my experience, patience helps a lot. | En mi experiencia, la paciencia ayuda mucho. |
+| `voc_a2_based-on_321` | **based on** | *noun* | `/beɪst ɑn/` | basado en | Based on the data, sales are growing. | Basado en los datos, las ventas están creciendo. |
+| `voc_a2_according-to_322` | **according to** | *noun* | `/əˈkɔrdɪŋ tu/` | según | According to the report, prices went up. | Según el informe, los precios subieron. |
+| `voc_a2_evidence_323` | **evidence** | *noun* | `/ˈɛvɪdəns/` | evidencia | There is no evidence for that claim. | No hay evidencia para esa afirmación. |
+| `voc_a2_argument_324` | **argument** | *noun* | `/ˈɑrgjəmənt/` | argumento | Her argument was very convincing. | Su argumento fue muy convincente. |
+| `voc_a2_viewpoint-standpoint_325` | **viewpoint / standpoint** | *noun* | `/ˈvjuˌpɔɪnt/` | punto de vista | Consider his viewpoint too. | Considera también su punto de vista. |
+| `voc_a2_counterargument_326` | **counterargument** | *noun* | `/ˈkaʊntərˌɑrgjəmənt/` | contraargumento | He didn't have a good counterargument. | Él no tenía un buen contraargumento. |
+| `voc_a2_valid-point_327` | **valid point** | *noun* | `/ˈvælɪd pɔɪnt/` | punto válido | That's a valid point. | Ese es un punto válido. |
+| `voc_a2_convince_328` | **convince** | *verb* | `/kənˈvɪns/` | convencer | I tried to convince her to stay. | Traté de convencerla de quedarse. |
+| `voc_a2_persuade_329` | **persuade** | *verb* | `/pərˈsweɪd/` | persuadir | He persuaded us to try the new restaurant. | Él nos persuadió de probar el nuevo restaurante. |
+| `voc_a2_debate_330` | **debate** | *verb* | `/dɪˈbeɪt/` | debate | They debated the topic for an hour. | Debatieron el tema durante una hora. |
+| `voc_a2_controversy_331` | **controversy** | *noun* | `/ˈkɑntrəˌvɜrsi/` | controversia | The decision caused a lot of controversy. | La decisión causó mucha controversia. |
+| `voc_a2_agree-to-disagree_332` | **agree to disagree** | *noun* | `/əˈgri tu dɪsəˈgri/` | acordar estar en desacuerdo | We decided to agree to disagree. | Decidimos acordar estar en desacuerdo. |
 
 ### Semana 7: Clima y desastres naturales
 Total de palabras en esta semana: **34**
 
 | ID | Palabra | Categoría | Fonética (IPA) | Traducción | Ejemplo en Inglés | Traducción del Ejemplo |
 |---|---|---|---|---|---|---|
-| `voc_a2_heatwave_333` | **heatwave** | *noun* | — | ola de calor | — | — |
-| `voc_a2_wildfire_334` | **wildfire** | *noun* | — | incendio forestal | — | — |
-| `voc_a2_hurricane_335` | **hurricane** | *noun* | — | huracán | — | — |
-| `voc_a2_tornado_336` | **tornado** | *adjective* | — | tornado | — | — |
-| `voc_a2_tsunami_337` | **tsunami** | *noun* | — | tsunami | — | — |
-| `voc_a2_avalanche_338` | **avalanche** | *noun* | — | avalancha | — | — |
-| `voc_a2_landslide_339` | **landslide** | *noun* | — | deslizamiento de tierra | — | — |
-| `voc_a2_blizzard_340` | **blizzard** | *noun* | — | ventisca | — | — |
-| `voc_a2_hailstorm_341` | **hailstorm** | *adjective* | — | granizada | — | — |
-| `voc_a2_thunderstorm_342` | **thunderstorm** | *noun* | — | tormenta eléctrica | — | — |
-| `voc_a2_temperature-drop_343` | **temperature drop** | *noun* | — | descenso de temperatura | — | — |
-| `voc_a2_climate-change_344` | **climate change** | *noun* | — | cambio climático | — | — |
-| `voc_a2_global-warming_345` | **global warming** | *noun* | — | calentamiento global | — | — |
-| `voc_a2_greenhouse-effect_346` | **greenhouse effect** | *noun* | — | efecto invernadero | — | — |
-| `voc_a2_carbon-footprint_347` | **carbon footprint** | *noun* | — | huella de carbono | — | — |
-| `voc_a2_renewable-energy_348` | **renewable energy** | *adjective* | — | energía renovable | — | — |
-| `voc_a2_deforestation_349` | **deforestation** | *noun* | — | deforestación | — | — |
-| `voc_a2_extinction_350` | **extinction** | *noun* | — | extinción | — | — |
-| `voc_a2_endangered-species_351` | **endangered species** | *noun* | — | especie en peligro | — | — |
-| `voc_a2_natural-disaster_352` | **natural disaster** | *noun* | — | desastre natural | — | — |
-| `voc_a2_shelter_353` | **shelter (emergency)** | *noun* | — | refugio | — | — |
-| `voc_a2_relief-effort_354` | **relief effort** | *noun* | — | esfuerzo de ayuda | — | — |
-| `voc_a2_damage_355` | **damage** | *noun* | — | daño | — | — |
-| `voc_a2_destruction_356` | **destruction** | *noun* | — | destrucción | — | — |
-| `voc_a2_rebuild_357` | **rebuild** | *verb* | — | reconstruir | — | — |
-| `voc_a2_warning-system_358` | **warning system** | *noun* | — | sistema de alerta | — | — |
-| `voc_a2_meteorologist_359` | **meteorologist** | *noun* | — | meteorólogo | — | — |
-| `voc_a2_atmosphere_360` | **atmosphere** | *noun* | — | atmósfera | — | — |
-| `voc_a2_ozone-layer_361` | **ozone layer** | *noun* | — | capa de ozono | — | — |
-| `voc_a2_ecosystem_362` | **ecosystem** | *noun* | — | ecosistema | — | — |
-| `voc_a2_biodiversity_363` | **biodiversity** | *noun* | — | biodiversidad | — | — |
-| `voc_a2_sustainability_364` | **sustainability** | *noun* | — | sostenibilidad | — | — |
-| `voc_a2_emission_365` | **emission** | *noun* | — | emisión | — | — |
-| `voc_a2_fossil-fuel_366` | **fossil fuel** | *noun* | — | combustible fósil | — | — |
+| `voc_a2_heatwave_333` | **heatwave** | *noun* | `/ˈhitˌweɪv/` | ola de calor | A heatwave hit the city last week. | Una ola de calor golpeó la ciudad la semana pasada. |
+| `voc_a2_wildfire_334` | **wildfire** | *noun* | `/ˈwaɪldˌfaɪər/` | incendio forestal | The wildfire destroyed many acres of forest. | El incendio forestal destruyó muchos acres de bosque. |
+| `voc_a2_hurricane_335` | **hurricane** | *noun* | `/ˈhɜrəˌkeɪn/` | huracán | The hurricane hit the coast at midnight. | El huracán golpeó la costa a medianoche. |
+| `voc_a2_tornado_336` | **tornado** | *adjective* | `/tɔrˈneɪˌdoʊ/` | tornado | A tornado destroyed several houses. | Un tornado destruyó varias casas. |
+| `voc_a2_tsunami_337` | **tsunami** | *noun* | `/tsuˈnɑmi/` | tsunami | The tsunami warning was issued quickly. | La alerta de tsunami se emitió rápidamente. |
+| `voc_a2_avalanche_338` | **avalanche** | *noun* | `/ˈævəˌlæntʃ/` | avalancha | The avalanche blocked the mountain road. | La avalancha bloqueó el camino de la montaña. |
+| `voc_a2_landslide_339` | **landslide** | *noun* | `/ˈlændˌslaɪd/` | deslizamiento de tierra | The landslide damaged several homes. | El deslizamiento de tierra dañó varias casas. |
+| `voc_a2_blizzard_340` | **blizzard** | *noun* | `/ˈblɪzərd/` | ventisca | The blizzard closed all the schools. | La ventisca cerró todas las escuelas. |
+| `voc_a2_hailstorm_341` | **hailstorm** | *adjective* | `/ˈheɪlˌstɔrm/` | granizada | The hailstorm damaged the crops. | La granizada dañó los cultivos. |
+| `voc_a2_thunderstorm_342` | **thunderstorm** | *noun* | `/ˈθʌndərˌstɔrm/` | tormenta eléctrica | A thunderstorm is coming tonight. | Una tormenta eléctrica se acerca esta noche. |
+| `voc_a2_temperature-drop_343` | **temperature drop** | *noun* | `/ˈtɛmpərətʃər drɑp/` | descenso de temperatura | There was a sudden temperature drop. | Hubo un descenso repentino de temperatura. |
+| `voc_a2_climate-change_344` | **climate change** | *noun* | `/ˈklaɪmɪt tʃeɪndʒ/` | cambio climático | Climate change affects the whole planet. | El cambio climático afecta a todo el planeta. |
+| `voc_a2_global-warming_345` | **global warming** | *noun* | `/ˈgloʊbəl ˈwɔrmɪŋ/` | calentamiento global | Global warming is a serious issue. | El calentamiento global es un problema serio. |
+| `voc_a2_greenhouse-effect_346` | **greenhouse effect** | *noun* | `/ˈgrinˌhaʊs ɪˈfɛkt/` | efecto invernadero | The greenhouse effect traps heat in the atmosphere. | El efecto invernadero atrapa el calor en la atmósfera. |
+| `voc_a2_carbon-footprint_347` | **carbon footprint** | *noun* | `/ˈkɑrbən ˈfʊtˌprɪnt/` | huella de carbono | We should reduce our carbon footprint. | Deberíamos reducir nuestra huella de carbono. |
+| `voc_a2_renewable-energy_348` | **renewable energy** | *adjective* | `/rɪˈnuəbəl ˈɛnərdʒi/` | energía renovable | The country invests in renewable energy. | El país invierte en energía renovable. |
+| `voc_a2_deforestation_349` | **deforestation** | *noun* | `/diˌfɔrɪˈsteɪʃən/` | deforestación | Deforestation harms many animal species. | La deforestación daña a muchas especies animales. |
+| `voc_a2_extinction_350` | **extinction** | *noun* | `/ɪkˈstɪŋkʃən/` | extinción | This species is close to extinction. | Esta especie está cerca de la extinción. |
+| `voc_a2_endangered-species_351` | **endangered species** | *noun* | `/ɪnˈdeɪndʒərd ˈspiʃiz/` | especie en peligro | Pandas are an endangered species. | Los pandas son una especie en peligro. |
+| `voc_a2_natural-disaster_352` | **natural disaster** | *noun* | `/ˈnætʃərəl dɪˈzæstər/` | desastre natural | The government responded quickly to the natural disaster. | El gobierno respondió rápido al desastre natural. |
+| `voc_a2_shelter_353` | **shelter (emergency)** | *noun* | `/ˈʃɛltər/` | refugio | Families went to the shelter for safety. | Las familias fueron al refugio por seguridad. |
+| `voc_a2_relief-effort_354` | **relief effort** | *noun* | `/rɪˈlif ˈɛfərt/` | esfuerzo de ayuda | The relief effort helped thousands of people. | El esfuerzo de ayuda ayudó a miles de personas. |
+| `voc_a2_damage_355` | **damage** | *noun* | `/ˈdæmɪdʒ/` | daño | The storm caused a lot of damage. | La tormenta causó mucho daño. |
+| `voc_a2_destruction_356` | **destruction** | *noun* | `/dɪˈstrʌkʃən/` | destrucción | The destruction was visible everywhere. | La destrucción era visible en todas partes. |
+| `voc_a2_rebuild_357` | **rebuild** | *verb* | `/riˈbɪld/` | reconstruir | They will rebuild the school next year. | Reconstruirán la escuela el próximo año. |
+| `voc_a2_warning-system_358` | **warning system** | *noun* | `/ˈwɔrnɪŋ ˈsɪstəm/` | sistema de alerta | The warning system saved many lives. | El sistema de alerta salvó muchas vidas. |
+| `voc_a2_meteorologist_359` | **meteorologist** | *noun* | `/ˌmitiərˈɑlədʒɪst/` | meteorólogo | The meteorologist predicted heavy rain. | El meteorólogo predijo lluvia fuerte. |
+| `voc_a2_atmosphere_360` | **atmosphere** | *noun* | `/ˈætməsˌfɪr/` | atmósfera | Pollution affects the atmosphere. | La contaminación afecta la atmósfera. |
+| `voc_a2_ozone-layer_361` | **ozone layer** | *noun* | `/ˈoʊˌzoʊn ˈleɪər/` | capa de ozono | The ozone layer protects us from the sun. | La capa de ozono nos protege del sol. |
+| `voc_a2_ecosystem_362` | **ecosystem** | *noun* | `/ˈikoʊˌsɪstəm/` | ecosistema | This ecosystem has many species. | Este ecosistema tiene muchas especies. |
+| `voc_a2_biodiversity_363` | **biodiversity** | *noun* | `/ˌbaɪoʊdaɪˈvɜrsəti/` | biodiversidad | The rainforest has incredible biodiversity. | La selva tropical tiene una biodiversidad increíble. |
+| `voc_a2_sustainability_364` | **sustainability** | *noun* | `/səˌsteɪnəˈbɪləti/` | sostenibilidad | The company focuses on sustainability. | La empresa se enfoca en la sostenibilidad. |
+| `voc_a2_emission_365` | **emission** | *noun* | `/ɪˈmɪʃən/` | emisión | We need to reduce carbon emissions. | Necesitamos reducir las emisiones de carbono. |
+| `voc_a2_fossil-fuel_366` | **fossil fuel** | *noun* | `/ˈfɑsəl ˈfjuəl/` | combustible fósil | Fossil fuels pollute the air. | Los combustibles fósiles contaminan el aire. |
 
 ### Semana 8: Educación y estudios superiores
 Total de palabras en esta semana: **46**
 
 | ID | Palabra | Categoría | Fonética (IPA) | Traducción | Ejemplo en Inglés | Traducción del Ejemplo |
 |---|---|---|---|---|---|---|
-| `voc_a2_enroll_367` | **enroll** | *noun* | — | inscribirse | — | — |
-| `voc_a2_tuition_368` | **tuition** | *noun* | — | matrícula (costo) | — | — |
-| `voc_a2_scholarship_369` | **scholarship** | *noun* | — | beca | — | — |
-| `voc_a2_semester_370` | **semester** | *noun* | — | semestre | — | — |
-| `voc_a2_syllabus_371` | **syllabus** | *noun* | — | programa del curso | — | — |
-| `voc_a2_lecture_372` | **lecture** | *noun* | — | clase magistral | — | — |
-| `voc_a2_seminar_373` | **seminar** | *noun* | — | seminario | — | — |
-| `voc_a2_thesis_374` | **thesis** | *noun* | — | tesis | — | — |
-| `voc_a2_dissertation_375` | **dissertation** | *noun* | — | tesis doctoral | — | — |
-| `voc_a2_major_376` | **major (field of study)** | *noun* | — | carrera principal | — | — |
-| `voc_a2_minor_377` | **minor (field of study)** | *noun* | — | especialización secundaria | — | — |
-| `voc_a2_gpa_378` | **GPA** | *noun* | — | promedio académico | — | — |
-| `voc_a2_transcript_379` | **transcript** | *noun* | — | historial académico | — | — |
-| `voc_a2_diploma_380` | **diploma** | *noun* | — | diploma | — | — |
-| `voc_a2_certificate_381` | **certificate** | *adjective* | — | certificado | — | — |
-| `voc_a2_campus_382` | **campus** | *noun* | — | campus | — | — |
-| `voc_a2_dormitory_383` | **dormitory** | *noun* | — | residencia estudiantil | — | — |
-| `voc_a2_faculty_384` | **faculty** | *adjective* | — | facultad/cuerpo docente | — | — |
-| `voc_a2_professor_385` | **professor** | *noun* | — | profesor universitario | — | — |
-| `voc_a2_academic-advisor_386` | **academic advisor** | *noun* | — | asesor académico | — | — |
-| `voc_a2_plagiarism_387` | **plagiarism** | *noun* | — | plagio | — | — |
-| `voc_a2_assignment_388` | **assignment** | *noun* | — | tarea/trabajo | — | — |
-| `voc_a2_essay_389` | **essay** | *noun* | — | ensayo | — | — |
-| `voc_a2_research-paper_390` | **research paper** | *noun* | — | trabajo de investigación | — | — |
-| `voc_a2_citation_391` | **citation** | *noun* | — | cita bibliográfica | — | — |
-| `voc_a2_bibliography_392` | **bibliography** | *noun* | — | bibliografía | — | — |
-| `voc_a2_peer-review_393` | **peer review** | *noun* | — | revisión por pares | — | — |
-| `voc_a2_graduate_394` | **graduate** | *adjective* | — | graduado | — | — |
-| `voc_a2_undergraduate_395` | **undergraduate** | *adjective* | — | estudiante de pregrado | — | — |
-| `voc_a2_postgraduate_396` | **postgraduate** | *adjective* | — | posgrado | — | — |
-| `voc_a2_internship_397` | **internship** | *noun* | — | pasantía | — | — |
-| `voc_a2_apprenticeship_398` | **apprenticeship** | *noun* | — | aprendizaje (oficio) | — | — |
-| `voc_a2_vocational-training_399` | **vocational training** | *noun* | — | formación profesional | — | — |
-| `voc_a2_distance-learning_400` | **distance learning** | *noun* | — | educación a distancia | — | — |
-| `voc_a2_online-course_401` | **online course** | *noun* | — | curso en línea | — | — |
-| `voc_a2_tutor_402` | **tutor** | *noun* | — | tutor | — | — |
-| `voc_a2_mentor_403` | **mentor** | *noun* | — | mentor | — | — |
-| `voc_a2_extracurricular_404` | **extracurricular** | *verb* | — | extracurricular | — | — |
-| `voc_a2_student-loan_405` | **student loan** | *noun* | — | préstamo estudiantil | — | — |
-| `voc_a2_financial-aid_406` | **financial aid** | *noun* | — | ayuda financiera | — | — |
-| `voc_a2_dropout_407` | **dropout** | *verb* | — | abandono escolar | — | — |
-| `voc_a2_literacy_408` | **literacy** | *noun* | — | alfabetización | — | — |
-| `voc_a2_curriculum_409` | **curriculum** | *noun* | — | plan de estudios | — | — |
-| `voc_a2_elective_410` | **elective** | *adjective* | — | materia electiva | — | — |
-| `voc_a2_credit-hour_411` | **credit hour** | *noun* | — | hora crédito | — | — |
-| `voc_a2_exam-period_412` | **exam period** | *noun* | — | periodo de exámenes | — | — |
+| `voc_a2_enroll_367` | **enroll** | *noun* | `/ɪnˈroʊl/` | inscribirse | I want to enroll in this course. | Quiero inscribirme en este curso. |
+| `voc_a2_tuition_368` | **tuition** | *noun* | `/tuˈɪʃən/` | matrícula (costo) | Tuition increased this year. | La matrícula subió este año. |
+| `voc_a2_scholarship_369` | **scholarship** | *noun* | `/ˈskɑlərˌʃɪp/` | beca | She received a full scholarship. | Ella recibió una beca completa. |
+| `voc_a2_semester_370` | **semester** | *noun* | `/səˈmɛstər/` | semestre | The semester ends in May. | El semestre termina en mayo. |
+| `voc_a2_syllabus_371` | **syllabus** | *noun* | `/ˈsɪləbəs/` | programa del curso | Check the syllabus for the dates. | Revisa el programa del curso para las fechas. |
+| `voc_a2_lecture_372` | **lecture** | *noun* | `/ˈlɛktʃər/` | clase magistral | The lecture lasted two hours. | La clase magistral duró dos horas. |
+| `voc_a2_seminar_373` | **seminar** | *noun* | `/ˈsɛməˌnɑr/` | seminario | We attended a seminar on writing. | Asistimos a un seminario de escritura. |
+| `voc_a2_thesis_374` | **thesis** | *noun* | `/ˈθisɪs/` | tesis | She is writing her thesis. | Ella está escribiendo su tesis. |
+| `voc_a2_dissertation_375` | **dissertation** | *noun* | `/ˌdɪsərˈteɪʃən/` | tesis doctoral | His dissertation took two years. | Su tesis doctoral tomó dos años. |
+| `voc_a2_major_376` | **major (field of study)** | *noun* | `/ˈmeɪdʒər/` | carrera principal | My major is computer science. | Mi carrera principal es ciencias de la computación. |
+| `voc_a2_minor_377` | **minor (field of study)** | *noun* | `/ˈmaɪnər/` | especialización secundaria | She has a minor in art. | Ella tiene una especialización secundaria en arte. |
+| `voc_a2_gpa_378` | **GPA** | *noun* | `/ˌdʒiˌpiˈeɪ/` | promedio académico | His GPA is very high. | Su promedio académico es muy alto. |
+| `voc_a2_transcript_379` | **transcript** | *noun* | `/ˈtrænˌskrɪpt/` | historial académico | I need my official transcript. | Necesito mi historial académico oficial. |
+| `voc_a2_diploma_380` | **diploma** | *noun* | `/dɪˈploʊmə/` | diploma | He received his diploma last week. | Él recibió su diploma la semana pasada. |
+| `voc_a2_certificate_381` | **certificate** | *noun* | `/sərˈtɪfɪkɪt/` | certificado | She got a certificate in marketing. | Ella obtuvo un certificado en marketing. |
+| `voc_a2_campus_382` | **campus** | *noun* | `/ˈkæmpəs/` | campus | The campus is very large. | El campus es muy grande. |
+| `voc_a2_dormitory_383` | **dormitory** | *noun* | `/ˈdɔrməˌtɔri/` | residencia estudiantil | He lives in a dormitory. | Él vive en una residencia estudiantil. |
+| `voc_a2_faculty_384` | **faculty** | *noun* | `/ˈfækəlti/` | facultad/cuerpo docente | The faculty meets every Friday. | El cuerpo docente se reúne todos los viernes. |
+| `voc_a2_professor_385` | **professor** | *noun* | `/prəˈfɛsər/` | profesor universitario | My professor is very demanding. | Mi profesor es muy exigente. |
+| `voc_a2_academic-advisor_386` | **academic advisor** | *noun* | `/ˌækəˈdɛmɪk ædˈvaɪzər/` | asesor académico | Talk to your academic advisor. | Habla con tu asesor académico. |
+| `voc_a2_plagiarism_387` | **plagiarism** | *noun* | `/ˈpleɪdʒəˌrɪzəm/` | plagio | Plagiarism is not allowed. | El plagio no está permitido. |
+| `voc_a2_assignment_388` | **assignment** | *noun* | `/əˈsaɪnmənt/` | tarea/trabajo | The assignment is due tomorrow. | La tarea se entrega mañana. |
+| `voc_a2_essay_389` | **essay** | *noun* | `/ˈɛˌseɪ/` | ensayo | I wrote an essay about climate change. | Escribí un ensayo sobre el cambio climático. |
+| `voc_a2_research-paper_390` | **research paper** | *noun* | `/ˈrisɜrtʃ ˈpeɪpər/` | trabajo de investigación | Her research paper was published. | Su trabajo de investigación fue publicado. |
+| `voc_a2_citation_391` | **citation** | *noun* | `/saɪˈteɪʃən/` | cita bibliográfica | Add the citation at the end. | Agrega la cita bibliográfica al final. |
+| `voc_a2_bibliography_392` | **bibliography** | *noun* | `/ˌbɪbliˈɑgrəfi/` | bibliografía | Check the bibliography for sources. | Revisa la bibliografía para ver las fuentes. |
+| `voc_a2_peer-review_393` | **peer review** | *noun* | `/pɪr rɪˈvju/` | revisión por pares | The article went through peer review. | El artículo pasó por revisión por pares. |
+| `voc_a2_graduate_394` | **graduate** | *adjective* | `/ˈgrædʒuət/` | graduado | She is a graduate student now. | Ella es estudiante de posgrado ahora. |
+| `voc_a2_undergraduate_395` | **undergraduate** | *adjective* | `/ˌʌndərˈgrædʒuət/` | estudiante de pregrado | He is an undergraduate at this university. | Él es estudiante de pregrado en esta universidad. |
+| `voc_a2_postgraduate_396` | **postgraduate** | *adjective* | `/poʊstˈgrædʒuət/` | posgrado | She started a postgraduate program. | Ella empezó un programa de posgrado. |
+| `voc_a2_internship_397` | **internship** | *noun* | `/ˈɪntərnˌʃɪp/` | pasantía | I did an internship last summer. | Hice una pasantía el verano pasado. |
+| `voc_a2_apprenticeship_398` | **apprenticeship** | *noun* | `/əˈprɛntɪsˌʃɪp/` | aprendizaje (oficio) | He completed his apprenticeship. | Él completó su aprendizaje. |
+| `voc_a2_vocational-training_399` | **vocational training** | *noun* | `/voʊˈkeɪʃənəl ˈtreɪnɪŋ/` | formación profesional | She chose vocational training instead. | Ella eligió formación profesional en su lugar. |
+| `voc_a2_distance-learning_400` | **distance learning** | *noun* | `/ˈdɪstəns ˈlɜrnɪŋ/` | educación a distancia | Distance learning is very flexible. | La educación a distancia es muy flexible. |
+| `voc_a2_online-course_401` | **online course** | *noun* | `/ˈɔnˌlaɪn kɔrs/` | curso en línea | I signed up for an online course. | Me inscribí en un curso en línea. |
+| `voc_a2_tutor_402` | **tutor** | *noun* | `/ˈtutər/` | tutor | I hired a math tutor. | Contraté a un tutor de matemáticas. |
+| `voc_a2_mentor_403` | **mentor** | *noun* | `/ˈmɛnˌtɔr/` | mentor | She has a great mentor at work. | Ella tiene un gran mentor en el trabajo. |
+| `voc_a2_extracurricular_404` | **extracurricular** | *adjective* | `/ˌɛkstrəkəˈrɪkjələr/` | extracurricular | He joined an extracurricular club. | Él se unió a un club extracurricular. |
+| `voc_a2_student-loan_405` | **student loan** | *noun* | `/ˈstudənt loʊn/` | préstamo estudiantil | She is still paying her student loan. | Ella todavía está pagando su préstamo estudiantil. |
+| `voc_a2_financial-aid_406` | **financial aid** | *noun* | `/faɪˈnænʃəl eɪd/` | ayuda financiera | I applied for financial aid. | Solicité ayuda financiera. |
+| `voc_a2_dropout_407` | **dropout** | *noun* | `/ˈdrɑpˌaʊt/` | abandono escolar | The dropout rate decreased this year. | La tasa de abandono escolar bajó este año. |
+| `voc_a2_literacy_408` | **literacy** | *noun* | `/ˈlɪtərəsi/` | alfabetización | Literacy programs help many adults. | Los programas de alfabetización ayudan a muchos adultos. |
+| `voc_a2_curriculum_409` | **curriculum** | *noun* | `/kəˈrɪkjələm/` | plan de estudios | The school updated its curriculum. | La escuela actualizó su plan de estudios. |
+| `voc_a2_elective_410` | **elective** | *adjective* | `/ɪˈlɛktɪv/` | materia electiva | I chose an elective in photography. | Elegí una materia electiva de fotografía. |
+| `voc_a2_credit-hour_411` | **credit hour** | *noun* | `/ˈkrɛdɪt aʊər/` | hora crédito | This class is worth three credit hours. | Esta clase vale tres horas crédito. |
+| `voc_a2_exam-period_412` | **exam period** | *noun* | `/ɪgˈzæm ˈpɪriəd/` | periodo de exámenes | The library is full during exam period. | La biblioteca está llena durante el periodo de exámenes. |
 
 ### Semana 9: Relaciones y emociones complejas
 Total de palabras en esta semana: **44**
 
 | ID | Palabra | Categoría | Fonética (IPA) | Traducción | Ejemplo en Inglés | Traducción del Ejemplo |
 |---|---|---|---|---|---|---|
-| `voc_a2_trust-issues_413` | **trust issues** | *noun* | — | problemas de confianza | — | — |
-| `voc_a2_commitment_414` | **commitment** | *noun* | — | compromiso | — | — |
-| `voc_a2_breakup_415` | **breakup** | *noun* | — | ruptura | — | — |
-| `voc_a2_reconciliation_416` | **reconciliation** | *noun* | — | reconciliación | — | — |
-| `voc_a2_betrayal_417` | **betrayal** | *noun* | — | traición | — | — |
-| `voc_a2_forgiveness_418` | **forgiveness** | *noun* | — | perdón | — | — |
-| `voc_a2_empathy_419` | **empathy** | *noun* | — | empatía | — | — |
-| `voc_a2_sympathy_420` | **sympathy** | *noun* | — | compasión/comprensión | — | — |
-| `voc_a2_compassion_421` | **compassion** | *noun* | — | compasión | — | — |
-| `voc_a2_resentment_422` | **resentment** | *noun* | — | resentimiento | — | — |
-| `voc_a2_heartbreak_423` | **heartbreak** | *noun* | — | desamor | — | — |
-| `voc_a2_infatuation_424` | **infatuation** | *noun* | — | enamoramiento pasajero | — | — |
-| `voc_a2_attraction_425` | **attraction** | *noun* | — | atracción | — | — |
-| `voc_a2_compatibility_426` | **compatibility** | *noun* | — | compatibilidad | — | — |
-| `voc_a2_conflict-resolution_427` | **conflict resolution** | *noun* | — | resolución de conflictos | — | — |
-| `voc_a2_compromise_428` | **compromise** | *noun* | — | compromiso/acuerdo | — | — |
-| `voc_a2_mutual-respect_429` | **mutual respect** | *noun* | — | respeto mutuo | — | — |
-| `voc_a2_boundaries_430` | **boundaries** | *noun* | — | límites (emocionales) | — | — |
-| `voc_a2_codependency_431` | **codependency** | *noun* | — | codependencia | — | — |
-| `voc_a2_long-distance-relati_432` | **long-distance relationship** | *noun* | — | relación a distancia | — | — |
-| `voc_a2_soulmate_433` | **soulmate** | *noun* | — | alma gemela | — | — |
-| `voc_a2_companionship_434` | **companionship** | *noun* | — | compañerismo | — | — |
-| `voc_a2_intimacy_435` | **intimacy** | *noun* | — | intimidad | — | — |
-| `voc_a2_vulnerability_436` | **vulnerability** | *noun* | — | vulnerabilidad | — | — |
-| `voc_a2_self-esteem_437` | **self-esteem** | *noun* | — | autoestima | — | — |
-| `voc_a2_self-doubt_438` | **self-doubt** | *noun* | — | inseguridad/duda de uno mismo | — | — |
-| `voc_a2_insecurity_439` | **insecurity** | *noun* | — | inseguridad | — | — |
-| `voc_a2_overwhelmed_440` | **overwhelmed** | *adjective* | — | abrumado | — | — |
-| `voc_a2_burnout_441` | **burnout** | *noun* | — | agotamiento (laboral/emocional) | — | — |
-| `voc_a2_frustration_442` | **frustration** | *noun* | — | frustración | — | — |
-| `voc_a2_irritation_443` | **irritation** | *noun* | — | irritación | — | — |
-| `voc_a2_resentful_444` | **resentful** | *noun* | — | resentido | — | — |
-| `voc_a2_heartfelt_445` | **heartfelt** | *noun* | — | sincero/de corazón | — | — |
-| `voc_a2_overjoyed_446` | **overjoyed** | *noun* | — | muy feliz | — | — |
-| `voc_a2_devastated_447` | **devastated** | *adjective* | — | devastado | — | — |
-| `voc_a2_humiliated_448` | **humiliated** | *adjective* | — | humillado | — | — |
-| `voc_a2_ashamed_449` | **ashamed** | *adjective* | — | avergonzado | — | — |
-| `voc_a2_guilty_450` | **guilty** | *adjective* | — | culpable | — | — |
-| `voc_a2_remorse_451` | **remorse** | *noun* | — | remordimiento | — | — |
-| `voc_a2_regret_452` | **regret** | *noun* | — | arrepentimiento | — | — |
-| `voc_a2_longing_453` | **longing** | *noun* | — | anhelo | — | — |
-| `voc_a2_nostalgia_454` | **nostalgia** | *noun* | — | nostalgia | — | — |
-| `voc_a2_contentment_455` | **contentment** | *noun* | — | satisfacción/contento | — | — |
-| `voc_a2_fulfillment_456` | **fulfillment** | *noun* | — | realización personal | — | — |
+| `voc_a2_trust-issues_413` | **trust issues** | *noun* | `/trʌst ˈɪʃuz/` | problemas de confianza | He has trust issues after the breakup. | Él tiene problemas de confianza después de la ruptura. |
+| `voc_a2_commitment_414` | **commitment** | *noun* | `/kəˈmɪtmənt/` | compromiso | Marriage requires real commitment. | El matrimonio requiere compromiso real. |
+| `voc_a2_breakup_415` | **breakup** | *noun* | `/ˈbreɪˌkʌp/` | ruptura | Their breakup was difficult for both. | Su ruptura fue difícil para ambos. |
+| `voc_a2_reconciliation_416` | **reconciliation** | *noun* | `/ˌrɛkənˌsɪliˈeɪʃən/` | reconciliación | Their reconciliation surprised everyone. | Su reconciliación sorprendió a todos. |
+| `voc_a2_betrayal_417` | **betrayal** | *noun* | `/bɪˈtreɪəl/` | traición | She never forgot his betrayal. | Ella nunca olvidó su traición. |
+| `voc_a2_forgiveness_418` | **forgiveness** | *noun* | `/fərˈgɪvnəs/` | perdón | Forgiveness takes time. | El perdón toma tiempo. |
+| `voc_a2_empathy_419` | **empathy** | *noun* | `/ˈɛmpəθi/` | empatía | She showed great empathy toward him. | Ella mostró gran empatía hacia él. |
+| `voc_a2_sympathy_420` | **sympathy** | *noun* | `/ˈsɪmpəθi/` | compasión/comprensión | I have sympathy for her situation. | Siento comprensión por su situación. |
+| `voc_a2_compassion_421` | **compassion** | *noun* | `/kəmˈpæʃən/` | compasión | He treated the patients with compassion. | Él trató a los pacientes con compasión. |
+| `voc_a2_resentment_422` | **resentment** | *noun* | `/rɪˈzɛntmənt/` | resentimiento | There was resentment between the brothers. | Había resentimiento entre los hermanos. |
+| `voc_a2_heartbreak_423` | **heartbreak** | *noun* | `/ˈhɑrtˌbreɪk/` | desamor | She wrote a song about heartbreak. | Ella escribió una canción sobre el desamor. |
+| `voc_a2_infatuation_424` | **infatuation** | *noun* | `/ɪnˌfætʃuˈeɪʃən/` | enamoramiento pasajero | It was just an infatuation, not love. | Era solo un enamoramiento pasajero, no amor. |
+| `voc_a2_attraction_425` | **attraction** | *noun* | `/əˈtrækʃən/` | atracción | There was instant attraction between them. | Hubo atracción instantánea entre ellos. |
+| `voc_a2_compatibility_426` | **compatibility** | *noun* | `/kəmˌpætəˈbɪləti/` | compatibilidad | Compatibility is important in a relationship. | La compatibilidad es importante en una relación. |
+| `voc_a2_conflict-resolution_427` | **conflict resolution** | *noun* | `/ˈkɑnflɪkt ˌrɛzəˈluʃən/` | resolución de conflictos | We practiced conflict resolution at work. | Practicamos la resolución de conflictos en el trabajo. |
+| `voc_a2_compromise_428` | **compromise** | *noun* | `/ˈkɑmprəˌmaɪz/` | compromiso/acuerdo | They reached a compromise. | Llegaron a un acuerdo. |
+| `voc_a2_mutual-respect_429` | **mutual respect** | *noun* | `/ˈmjutʃuəl rɪˈspɛkt/` | respeto mutuo | Their friendship is based on mutual respect. | Su amistad se basa en respeto mutuo. |
+| `voc_a2_boundaries_430` | **boundaries** | *noun* | `/ˈbaʊndəriz/` | límites (emocionales) | It's healthy to set boundaries. | Es saludable poner límites. |
+| `voc_a2_codependency_431` | **codependency** | *noun* | `/ˌkoʊdɪˈpɛndənsi/` | codependencia | The therapist talked about codependency. | El terapeuta habló sobre la codependencia. |
+| `voc_a2_long-distance-relati_432` | **long-distance relationship** | *noun* | `/ˌlɔŋˈdɪstəns rɪˈleɪʃənˌʃɪp/` | relación a distancia | They are in a long-distance relationship. | Están en una relación a distancia. |
+| `voc_a2_soulmate_433` | **soulmate** | *noun* | `/ˈsoʊlˌmeɪt/` | alma gemela | She believes he is her soulmate. | Ella cree que él es su alma gemela. |
+| `voc_a2_companionship_434` | **companionship** | *noun* | `/kəmˈpænjənˌʃɪp/` | compañerismo | Pets provide great companionship. | Las mascotas brindan un gran compañerismo. |
+| `voc_a2_intimacy_435` | **intimacy** | *noun* | `/ˈɪntəməsi/` | intimidad | Intimacy grows with time and trust. | La intimidad crece con el tiempo y la confianza. |
+| `voc_a2_vulnerability_436` | **vulnerability** | *noun* | `/ˌvʌlnərəˈbɪləti/` | vulnerabilidad | Sharing feelings takes vulnerability. | Compartir sentimientos requiere vulnerabilidad. |
+| `voc_a2_self-esteem_437` | **self-esteem** | *noun* | `/ˌsɛlfɪˈstim/` | autoestima | Exercise can improve self-esteem. | El ejercicio puede mejorar la autoestima. |
+| `voc_a2_self-doubt_438` | **self-doubt** | *noun* | `/ˌsɛlfˈdaʊt/` | inseguridad/duda de uno mismo | She struggled with self-doubt before the interview. | Ella luchó con inseguridad antes de la entrevista. |
+| `voc_a2_insecurity_439` | **insecurity** | *noun* | `/ˌɪnsɪˈkjʊrəti/` | inseguridad | His insecurity affected the relationship. | Su inseguridad afectó la relación. |
+| `voc_a2_overwhelmed_440` | **overwhelmed** | *adjective* | `/ˌoʊvərˈwɛlmd/` | abrumado | She felt overwhelmed by all the work. | Ella se sintió abrumada por todo el trabajo. |
+| `voc_a2_burnout_441` | **burnout** | *noun* | `/ˈbɜrnˌaʊt/` | agotamiento (laboral/emocional) | He is suffering from burnout. | Él está sufriendo de agotamiento. |
+| `voc_a2_frustration_442` | **frustration** | *noun* | `/frʌˈstreɪʃən/` | frustración | I could see her frustration. | Pude ver su frustración. |
+| `voc_a2_irritation_443` | **irritation** | *noun* | `/ˌɪrɪˈteɪʃən/` | irritación | There was a bit of irritation in his voice. | Había un poco de irritación en su voz. |
+| `voc_a2_resentful_444` | **resentful** | *adjective* | `/rɪˈzɛntfəl/` | resentido | She felt resentful after the argument. | Ella se sintió resentida después de la discusión. |
+| `voc_a2_heartfelt_445` | **heartfelt** | *adjective* | `/ˈhɑrtˌfɛlt/` | sincero/de corazón | He wrote a heartfelt letter. | Él escribió una carta sincera. |
+| `voc_a2_overjoyed_446` | **overjoyed** | *adjective* | `/ˌoʊvərˈdʒɔɪd/` | muy feliz | We were overjoyed at the news. | Estábamos muy felices con la noticia. |
+| `voc_a2_devastated_447` | **devastated** | *adjective* | `/ˈdɛvəˌsteɪtɪd/` | devastado | She was devastated after the loss. | Ella quedó devastada después de la pérdida. |
+| `voc_a2_humiliated_448` | **humiliated** | *adjective* | `/hjuˈmɪliˌeɪtɪd/` | humillado | He felt humiliated in front of everyone. | Él se sintió humillado frente a todos. |
+| `voc_a2_ashamed_449` | **ashamed** | *adjective* | `/əˈʃeɪmd/` | avergonzado | I felt ashamed of my mistake. | Me sentí avergonzado de mi error. |
+| `voc_a2_guilty_450` | **guilty** | *adjective* | `/ˈgɪlti/` | culpable | She felt guilty for forgetting his birthday. | Ella se sintió culpable por olvidar su cumpleaños. |
+| `voc_a2_remorse_451` | **remorse** | *noun* | `/rɪˈmɔrs/` | remordimiento | He showed real remorse. | Él mostró un remordimiento real. |
+| `voc_a2_regret_452` | **regret** | *noun* | `/rɪˈgrɛt/` | arrepentimiento | I have no regret about my decision. | No tengo arrepentimiento por mi decisión. |
+| `voc_a2_longing_453` | **longing** | *noun* | `/ˈlɔŋɪŋ/` | anhelo | She felt a longing for her hometown. | Ella sintió un anhelo por su ciudad natal. |
+| `voc_a2_nostalgia_454` | **nostalgia** | *noun* | `/nɑˈstældʒə/` | nostalgia | The song brought back nostalgia. | La canción trajo nostalgia. |
+| `voc_a2_contentment_455` | **contentment** | *noun* | `/kənˈtɛntmənt/` | satisfacción/contento | He felt contentment after the trip. | Él sintió satisfacción después del viaje. |
+| `voc_a2_fulfillment_456` | **fulfillment** | *noun* | `/fʊlˈfɪlmənt/` | realización personal | Her job gives her real fulfillment. | Su trabajo le da una verdadera realización. |
 
 ### Semana 10: Tecnología intermedia: redes y seguridad
 Total de palabras en esta semana: **39**
 
 | ID | Palabra | Categoría | Fonética (IPA) | Traducción | Ejemplo en Inglés | Traducción del Ejemplo |
 |---|---|---|---|---|---|---|
-| `voc_a2_firewall_457` | **firewall** | *noun* | — | cortafuegos | — | — |
-| `voc_a2_antivirus_458` | **antivirus** | *noun* | — | antivirus | — | — |
-| `voc_a2_malware_459` | **malware** | *noun* | — | malware | — | — |
-| `voc_a2_phishing_460` | **phishing** | *noun* | — | phishing (fraude en línea) | — | — |
-| `voc_a2_hacker_461` | **hacker** | *verb* | — | hacker | — | — |
-| `voc_a2_cybersecurity_462` | **cybersecurity** | *noun* | — | ciberseguridad | — | — |
-| `voc_a2_encryption_463` | **encryption** | *adjective* | — | cifrado | — | — |
-| `voc_a2_two-factor-authentic_464` | **two-factor authentication** | *noun* | — | autenticación de dos factores | — | — |
-| `voc_a2_backup_465` | **backup** | *noun* | — | copia de seguridad | — | — |
-| `voc_a2_cloud-storage_466` | **cloud storage** | *noun* | — | almacenamiento en la nube | — | — |
-| `voc_a2_server_467` | **server** | *noun* | — | servidor | — | — |
-| `voc_a2_database_468` | **database** | *noun* | — | base de datos | — | — |
-| `voc_a2_browser_469` | **browser** | *noun* | — | navegador | — | — |
-| `voc_a2_cookie_470` | **cookie (internet)** | *noun* | — | cookie (internet) | — | — |
-| `voc_a2_cache_471` | **cache** | *noun* | — | caché | — | — |
-| `voc_a2_bandwidth_472` | **bandwidth** | *noun* | — | ancho de banda | — | — |
-| `voc_a2_router_473` | **router** | *verb* | — | router | — | — |
-| `voc_a2_bluetooth_474` | **bluetooth** | *noun* | — | bluetooth | — | — |
-| `voc_a2_hotspot_475` | **hotspot** | *noun* | — | punto de acceso | — | — |
-| `voc_a2_streaming_476` | **streaming** | *noun* | — | transmisión en línea | — | — |
-| `voc_a2_notification_477` | **notification** | *noun* | — | notificación | — | — |
-| `voc_a2_settings_478` | **settings** | *noun* | — | configuración | — | — |
-| `voc_a2_factory-reset_479` | **factory reset** | *noun* | — | restablecer de fábrica | — | — |
-| `voc_a2_screenshot_480` | **screenshot** | *noun* | — | captura de pantalla | — | — |
-| `voc_a2_hashtag_481` | **hashtag** | *noun* | — | hashtag | — | — |
-| `voc_a2_algorithm_482` | **algorithm** | *noun* | — | algoritmo | — | — |
-| `voc_a2_artificial-intellige_483` | **artificial intelligence** | *noun* | — | inteligencia artificial | — | — |
-| `voc_a2_virtual-reality_484` | **virtual reality** | *noun* | — | realidad virtual | — | — |
-| `voc_a2_augmented-reality_485` | **augmented reality** | *adjective* | — | realidad aumentada | — | — |
-| `voc_a2_e-commerce_486` | **e-commerce** | *noun* | — | comercio electrónico | — | — |
-| `voc_a2_online-banking_487` | **online banking** | *noun* | — | banca en línea | — | — |
-| `voc_a2_digital-signature_488` | **digital signature** | *noun* | — | firma digital | — | — |
-| `voc_a2_biometric_489` | **biometric** | *noun* | — | biométrico | — | — |
-| `voc_a2_fingerprint-scanner_490` | **fingerprint scanner** | *noun* | — | lector de huellas | — | — |
-| `voc_a2_facial-recognition_491` | **facial recognition** | *noun* | — | reconocimiento facial | — | — |
-| `voc_a2_smart-home_492` | **smart home** | *adjective* | — | hogar inteligente | — | — |
-| `voc_a2_wearable-device_493` | **wearable device** | *noun* | — | dispositivo portátil | — | — |
-| `voc_a2_drone_494` | **drone** | *noun* | — | dron | — | — |
-| `voc_a2_d-printing_495` | **3D printing** | *noun* | — | impresión 3D | — | — |
+| `voc_a2_firewall_457` | **firewall** | *noun* | `/ˈfaɪərˌwɔl/` | cortafuegos | The firewall blocked the attack. | El cortafuegos bloqueó el ataque. |
+| `voc_a2_antivirus_458` | **antivirus** | *noun* | `/ˌæntiˈvaɪrəs/` | antivirus | Install antivirus on your computer. | Instala antivirus en tu computadora. |
+| `voc_a2_malware_459` | **malware** | *noun* | `/ˈmælˌwɛr/` | malware | The email contained malware. | El correo contenía malware. |
+| `voc_a2_phishing_460` | **phishing** | *noun* | `/ˈfɪʃɪŋ/` | phishing (fraude en línea) | Be careful with phishing emails. | Ten cuidado con los correos de phishing. |
+| `voc_a2_hacker_461` | **hacker** | *noun* | `/ˈhækər/` | hacker | A hacker stole the data. | Un hacker robó los datos. |
+| `voc_a2_cybersecurity_462` | **cybersecurity** | *noun* | `/ˌsaɪbərsɪˈkjʊrəti/` | ciberseguridad | The company invests in cybersecurity. | La empresa invierte en ciberseguridad. |
+| `voc_a2_encryption_463` | **encryption** | *noun* | `/ɛnˈkrɪpʃən/` | cifrado | This app uses strong encryption. | Esta aplicación usa cifrado fuerte. |
+| `voc_a2_two-factor-authentic_464` | **two-factor authentication** | *noun* | `/ˈtuˌfæktər ɔˌθɛntɪˈkeɪʃən/` | autenticación de dos factores | Turn on two-factor authentication. | Activa la autenticación de dos factores. |
+| `voc_a2_backup_465` | **backup** | *noun* | `/ˈbækˌʌp/` | copia de seguridad | I made a backup of my files. | Hice una copia de seguridad de mis archivos. |
+| `voc_a2_cloud-storage_466` | **cloud storage** | *noun* | `/klaʊd ˈstɔrɪdʒ/` | almacenamiento en la nube | I use cloud storage for photos. | Uso almacenamiento en la nube para las fotos. |
+| `voc_a2_server_467` | **server** | *noun* | `/ˈsɜrvər/` | servidor | The server is down right now. | El servidor está caído en este momento. |
+| `voc_a2_database_468` | **database** | *noun* | `/ˈdeɪtəˌbeɪs/` | base de datos | We updated the customer database. | Actualizamos la base de datos de clientes. |
+| `voc_a2_browser_469` | **browser** | *noun* | `/ˈbraʊzər/` | navegador | Open a new browser tab. | Abre una nueva pestaña del navegador. |
+| `voc_a2_cookie_470` | **cookie (internet)** | *noun* | `/ˈkʊki/` | cookie (internet) | The site asks to accept cookies. | El sitio pide aceptar cookies. |
+| `voc_a2_cache_471` | **cache** | *noun* | `/kæʃ/` | caché | Clear your browser cache. | Limpia la caché de tu navegador. |
+| `voc_a2_bandwidth_472` | **bandwidth** | *noun* | `/ˈbændˌwɪdθ/` | ancho de banda | We need more bandwidth for video calls. | Necesitamos más ancho de banda para videollamadas. |
+| `voc_a2_router_473` | **router** | *noun* | `/ˈraʊtər/` | router | Restart the router if it's slow. | Reinicia el router si está lento. |
+| `voc_a2_bluetooth_474` | **bluetooth** | *noun* | `/ˈbluˌtuθ/` | bluetooth | Connect your headphones via bluetooth. | Conecta tus audífonos por bluetooth. |
+| `voc_a2_hotspot_475` | **hotspot** | *noun* | `/ˈhɑtˌspɑt/` | punto de acceso | I used my phone as a hotspot. | Usé mi teléfono como punto de acceso. |
+| `voc_a2_streaming_476` | **streaming** | *noun* | `/ˈstrimɪŋ/` | transmisión en línea | We watched the game via streaming. | Vimos el partido por transmisión en línea. |
+| `voc_a2_notification_477` | **notification** | *noun* | `/ˌnoʊtəfɪˈkeɪʃən/` | notificación | I got a notification about the meeting. | Recibí una notificación sobre la reunión. |
+| `voc_a2_settings_478` | **settings** | *noun* | `/ˈsɛtɪŋz/` | configuración | Check your privacy settings. | Revisa tu configuración de privacidad. |
+| `voc_a2_factory-reset_479` | **factory reset** | *noun* | `/ˈfæktəri ˈrisɛt/` | restablecer de fábrica | I did a factory reset on my phone. | Le hice un restablecimiento de fábrica a mi teléfono. |
+| `voc_a2_screenshot_480` | **screenshot** | *noun* | `/ˈskrinˌʃɑt/` | captura de pantalla | Can you send me a screenshot? | ¿Me envías una captura de pantalla? |
+| `voc_a2_hashtag_481` | **hashtag** | *noun* | `/ˈhæʃˌtæg/` | hashtag | The hashtag went viral. | El hashtag se volvió viral. |
+| `voc_a2_algorithm_482` | **algorithm** | *noun* | `/ˈælgəˌrɪðəm/` | algoritmo | The algorithm suggests videos for you. | El algoritmo te sugiere videos. |
+| `voc_a2_artificial-intellige_483` | **artificial intelligence** | *noun* | `/ˌɑrtəˈfɪʃəl ɪnˈtɛlədʒəns/` | inteligencia artificial | Artificial intelligence is changing many jobs. | La inteligencia artificial está cambiando muchos trabajos. |
+| `voc_a2_virtual-reality_484` | **virtual reality** | *noun* | `/ˈvɜrtʃuəl riˈæləti/` | realidad virtual | We tried virtual reality at the fair. | Probamos realidad virtual en la feria. |
+| `voc_a2_augmented-reality_485` | **augmented reality** | *adjective* | `/ɔgˈmɛntɪd riˈæləti/` | realidad aumentada | The app uses augmented reality. | La aplicación usa realidad aumentada. |
+| `voc_a2_e-commerce_486` | **e-commerce** | *noun* | `/ˈiˌkɑmərs/` | comercio electrónico | E-commerce has grown a lot. | El comercio electrónico ha crecido mucho. |
+| `voc_a2_online-banking_487` | **online banking** | *noun* | `/ˈɔnˌlaɪn ˈbæŋkɪŋ/` | banca en línea | I use online banking every week. | Uso la banca en línea cada semana. |
+| `voc_a2_digital-signature_488` | **digital signature** | *noun* | `/ˈdɪdʒɪtəl ˈsɪgnətʃər/` | firma digital | Sign the document with a digital signature. | Firma el documento con una firma digital. |
+| `voc_a2_biometric_489` | **biometric** | *noun* | `/ˌbaɪoʊˈmɛtrɪk/` | biométrico | The phone uses biometric security. | El teléfono usa seguridad biométrica. |
+| `voc_a2_fingerprint-scanner_490` | **fingerprint scanner** | *noun* | `/ˈfɪŋgərˌprɪnt ˈskænər/` | lector de huellas | Unlock your phone with the fingerprint scanner. | Desbloquea tu teléfono con el lector de huellas. |
+| `voc_a2_facial-recognition_491` | **facial recognition** | *noun* | `/ˈfeɪʃəl ˌrɛkəgˈnɪʃən/` | reconocimiento facial | The airport uses facial recognition. | El aeropuerto usa reconocimiento facial. |
+| `voc_a2_smart-home_492` | **smart home** | *adjective* | `/smɑrt hoʊm/` | hogar inteligente | We installed a smart home system. | Instalamos un sistema de hogar inteligente. |
+| `voc_a2_wearable-device_493` | **wearable device** | *noun* | `/ˈwɛrəbəl dɪˈvaɪs/` | dispositivo portátil | She wears a wearable device to track sleep. | Ella usa un dispositivo portátil para monitorear el sueño. |
+| `voc_a2_drone_494` | **drone** | *noun* | `/droʊn/` | dron | He flew a drone over the beach. | Él voló un dron sobre la playa. |
+| `voc_a2_d-printing_495` | **3D printing** | *noun* | `/ˈθriˈdi ˈprɪntɪŋ/` | impresión 3D | 3D printing is used in medicine now. | La impresión 3D se usa en medicina ahora. |
 
 ### Semana 11: Cocina y recetas
 Total de palabras en esta semana: **59**
 
 | ID | Palabra | Categoría | Fonética (IPA) | Traducción | Ejemplo en Inglés | Traducción del Ejemplo |
 |---|---|---|---|---|---|---|
-| `voc_a2_recipe_496` | **recipe** | *noun* | — | receta | — | — |
-| `voc_a2_ingredient_497` | **ingredient** | *adjective* | — | ingrediente | — | — |
-| `voc_a2_chop_498` | **chop** | *verb* | — | picar | — | — |
-| `voc_a2_slice_499` | **slice** | *verb* | — | cortar en rodajas | — | — |
-| `voc_a2_grate_500` | **grate** | *verb* | — | rallar | — | — |
-| `voc_a2_peel_501` | **peel** | *verb* | — | pelar | — | — |
-| `voc_a2_whisk_502` | **whisk** | *verb* | — | batir | — | — |
-| `voc_a2_stir_503` | **stir** | *verb* | — | revolver | — | — |
-| `voc_a2_boil_504` | **boil** | *verb* | — | hervir | — | — |
-| `voc_a2_simmer_505` | **simmer** | *verb* | — | cocinar a fuego lento | — | — |
-| `voc_a2_roast_506` | **roast** | *verb* | — | asar (horno) | — | — |
-| `voc_a2_grill_507` | **grill** | *verb* | — | asar a la parrilla | — | — |
-| `voc_a2_bake_508` | **bake** | *verb* | — | hornear | — | — |
-| `voc_a2_fry_509` | **fry** | *verb* | — | freír | — | — |
-| `voc_a2_steam_510` | **steam** | *verb* | — | cocinar al vapor | — | — |
-| `voc_a2_marinate_511` | **marinate** | *verb* | — | marinar | — | — |
-| `voc_a2_garnish_512` | **garnish** | *verb* | — | decorar (plato) | — | — |
-| `voc_a2_portion_513` | **portion** | *noun* | — | porción | — | — |
-| `voc_a2_serving_514` | **serving** | *noun* | — | porción/ración | — | — |
-| `voc_a2_leftovers_515` | **leftovers** | *noun* | — | sobras | — | — |
-| `voc_a2_preheat_516` | **preheat** | *verb* | — | precalentar | — | — |
-| `voc_a2_blend_517` | **blend** | *verb* | — | licuar | — | — |
-| `voc_a2_mash_518` | **mash** | *verb* | — | triturar/hacer puré | — | — |
-| `voc_a2_dice_519` | **dice** | *verb* | — | cortar en cubos | — | — |
-| `voc_a2_sprinkle_520` | **sprinkle** | *verb* | — | espolvorear | — | — |
-| `voc_a2_drizzle_521` | **drizzle** | *verb* | — | rociar (líquido) | — | — |
-| `voc_a2_sauce_522` | **sauce** | *noun* | — | salsa | — | — |
-| `voc_a2_broth-stock_523` | **broth / stock** | *noun* | — | caldo | — | — |
-| `voc_a2_dough_524` | **dough** | *noun* | — | masa | — | — |
-| `voc_a2_batter_525` | **batter** | *noun* | — | masa líquida | — | — |
-| `voc_a2_yeast_526` | **yeast** | *noun* | — | levadura | — | — |
-| `voc_a2_flour_527` | **flour** | *noun* | — | harina | — | — |
-| `voc_a2_baking-powder_528` | **baking powder** | *phrasal-verb* | — | polvo de hornear | — | — |
-| `voc_a2_vanilla_529` | **vanilla** | *noun* | — | vainilla | — | — |
-| `voc_a2_cinnamon_530` | **cinnamon** | *noun* | — | canela | — | — |
-| `voc_a2_herbs_531` | **herbs** | *noun* | — | hierbas | — | — |
-| `voc_a2_spices_532` | **spices** | *noun* | — | especias | — | — |
-| `voc_a2_recipe-book-cookbook_533` | **recipe book / cookbook** | *noun* | — | libro de cocina | — | — |
-| `voc_a2_nutrition-label_534` | **nutrition label** | *noun* | — | etiqueta nutricional | — | — |
-| `voc_a2_expiration-date_535` | **expiration date** | *noun* | — | fecha de caducidad | — | — |
-| `voc_a2_organic_536` | **organic** | *noun* | — | orgánico | — | — |
-| `voc_a2_homemade_537` | **homemade** | *noun* | — | casero | — | — |
-| `voc_a2_store-bought_538` | **store-bought** | *noun* | — | comprado en tienda | — | — |
-| `voc_a2_vegetarian_539` | **vegetarian** | *noun* | — | vegetariano | — | — |
-| `voc_a2_vegan_540` | **vegan** | *noun* | — | vegano | — | — |
-| `voc_a2_gluten-free_541` | **gluten-free** | *noun* | — | sin gluten | — | — |
-| `voc_a2_dairy-free_542` | **dairy-free** | *noun* | — | sin lácteos | — | — |
-| `voc_a2_food-processor_543` | **food processor** | *noun* | — | procesador de alimentos | — | — |
-| `voc_a2_blender_544` | **blender** | *noun* | — | licuadora | — | — |
-| `voc_a2_mixing-bowl_545` | **mixing bowl** | *phrasal-verb* | — | tazón para mezclar | — | — |
-| `voc_a2_cutting-board_546` | **cutting board** | *phrasal-verb* | — | tabla de cortar | — | — |
-| `voc_a2_measuring-cup_547` | **measuring cup** | *noun* | — | taza medidora | — | — |
-| `voc_a2_colander_548` | **colander** | *noun* | — | colador | — | — |
-| `voc_a2_apron_549` | **apron** | *noun* | — | delantal | — | — |
-| `voc_a2_recipe-card_550` | **recipe card** | *noun* | — | tarjeta de receta | — | — |
-| `voc_a2_side-dish_551` | **side dish** | *noun* | — | guarnición | — | — |
-| `voc_a2_main-course_552` | **main course** | *noun* | — | plato principal | — | — |
-| `voc_a2_appetizer_553` | **appetizer** | *adjective* | — | aperitivo | — | — |
-| `voc_a2_dessert_554` | **dessert** | *noun* | — | postre | — | — |
+| `voc_a2_recipe_496` | **recipe** | *noun* | `/ˈrɛsəpi/` | receta | This recipe is very easy. | Esta receta es muy fácil. |
+| `voc_a2_ingredient_497` | **ingredient** | *adjective* | `/ɪnˈgridiənt/` | ingrediente | Check if you have all the ingredients. | Revisa si tienes todos los ingredientes. |
+| `voc_a2_chop_498` | **chop** | *verb* | `/tʃɑp/` | picar | Chop the onion finely. | Pica la cebolla finamente. |
+| `voc_a2_slice_499` | **slice** | *verb* | `/slaɪs/` | cortar en rodajas | Slice the bread, please. | Corta el pan en rebanadas, por favor. |
+| `voc_a2_grate_500` | **grate** | *verb* | `/greɪt/` | rallar | Grate some cheese on top. | Ralla un poco de queso encima. |
+| `voc_a2_peel_501` | **peel** | *verb* | `/pil/` | pelar | Peel the potatoes first. | Pela las papas primero. |
+| `voc_a2_whisk_502` | **whisk** | *verb* | `/wɪsk/` | batir | Whisk the eggs until smooth. | Bate los huevos hasta que queden suaves. |
+| `voc_a2_stir_503` | **stir** | *verb* | `/stɜr/` | revolver | Stir the soup slowly. | Revuelve la sopa lentamente. |
+| `voc_a2_boil_504` | **boil** | *verb* | `/bɔɪl/` | hervir | Boil the water first. | Hierve el agua primero. |
+| `voc_a2_simmer_505` | **simmer** | *verb* | `/ˈsɪmər/` | cocinar a fuego lento | Let the sauce simmer for ten minutes. | Deja que la salsa se cocine a fuego lento diez minutos. |
+| `voc_a2_roast_506` | **roast** | *verb* | `/roʊst/` | asar (horno) | We roasted the chicken for an hour. | Asamos el pollo durante una hora. |
+| `voc_a2_grill_507` | **grill** | *verb* | `/grɪl/` | asar a la parrilla | We grilled vegetables for dinner. | Asamos verduras a la parrilla para la cena. |
+| `voc_a2_bake_508` | **bake** | *verb* | `/beɪk/` | hornear | I baked a cake for her birthday. | Horneé un pastel para su cumpleaños. |
+| `voc_a2_fry_509` | **fry** | *verb* | `/fraɪ/` | freír | Fry the eggs in a little oil. | Fríe los huevos en un poco de aceite. |
+| `voc_a2_steam_510` | **steam** | *verb* | `/stim/` | cocinar al vapor | Steam the vegetables for five minutes. | Cocina las verduras al vapor cinco minutos. |
+| `voc_a2_marinate_511` | **marinate** | *verb* | `/ˈmɛrəˌneɪt/` | marinar | Marinate the chicken overnight. | Marina el pollo durante la noche. |
+| `voc_a2_garnish_512` | **garnish** | *verb* | `/ˈgɑrnɪʃ/` | decorar (plato) | Garnish the plate with parsley. | Decora el plato con perejil. |
+| `voc_a2_portion_513` | **portion** | *noun* | `/ˈpɔrʃən/` | porción | This is a large portion. | Esta es una porción grande. |
+| `voc_a2_serving_514` | **serving** | *noun* | `/ˈsɜrvɪŋ/` | porción/ración | One serving has 300 calories. | Una porción tiene 300 calorías. |
+| `voc_a2_leftovers_515` | **leftovers** | *noun* | `/ˈlɛftˌoʊvərz/` | sobras | We ate the leftovers for lunch. | Comimos las sobras en el almuerzo. |
+| `voc_a2_preheat_516` | **preheat** | *verb* | `/ˈpriˌhit/` | precalentar | Preheat the oven to 180 degrees. | Precalienta el horno a 180 grados. |
+| `voc_a2_blend_517` | **blend** | *verb* | `/blɛnd/` | licuar | Blend the fruit with some water. | Licúa la fruta con un poco de agua. |
+| `voc_a2_mash_518` | **mash** | *verb* | `/mæʃ/` | triturar/hacer puré | Mash the potatoes with butter. | Haz puré de las papas con mantequilla. |
+| `voc_a2_dice_519` | **dice** | *verb* | `/daɪs/` | cortar en cubos | Dice the tomatoes small. | Corta los tomates en cubos pequeños. |
+| `voc_a2_sprinkle_520` | **sprinkle** | *verb* | `/ˈsprɪŋkəl/` | espolvorear | Sprinkle some sugar on top. | Espolvorea un poco de azúcar encima. |
+| `voc_a2_drizzle_521` | **drizzle** | *verb* | `/ˈdrɪzəl/` | rociar (líquido) | Drizzle olive oil over the salad. | Rocía aceite de oliva sobre la ensalada. |
+| `voc_a2_sauce_522` | **sauce** | *noun* | `/sɔs/` | salsa | The pasta has tomato sauce. | La pasta tiene salsa de tomate. |
+| `voc_a2_broth-stock_523` | **broth / stock** | *noun* | `/brɔθ/` | caldo | Use chicken broth for this soup. | Usa caldo de pollo para esta sopa. |
+| `voc_a2_dough_524` | **dough** | *noun* | `/doʊ/` | masa | The dough needs to rest. | La masa necesita reposar. |
+| `voc_a2_batter_525` | **batter** | *noun* | `/ˈbætər/` | masa líquida | Mix the batter well. | Mezcla bien la masa líquida. |
+| `voc_a2_yeast_526` | **yeast** | *noun* | `/jist/` | levadura | Add yeast to the flour. | Agrega levadura a la harina. |
+| `voc_a2_flour_527` | **flour** | *noun* | `/flaʊər/` | harina | We need two cups of flour. | Necesitamos dos tazas de harina. |
+| `voc_a2_baking-powder_528` | **baking powder** | *noun* | `/ˈbeɪkɪŋ ˈpaʊdər/` | polvo de hornear | Don't forget the baking powder. | No olvides el polvo de hornear. |
+| `voc_a2_vanilla_529` | **vanilla** | *noun* | `/vəˈnɪlə/` | vainilla | Add a little vanilla to the cake. | Agrega un poco de vainilla al pastel. |
+| `voc_a2_cinnamon_530` | **cinnamon** | *noun* | `/ˈsɪnəmən/` | canela | Sprinkle cinnamon on the coffee. | Espolvorea canela sobre el café. |
+| `voc_a2_herbs_531` | **herbs** | *noun* | `/ɜrbz/` | hierbas | Fresh herbs improve the flavor. | Las hierbas frescas mejoran el sabor. |
+| `voc_a2_spices_532` | **spices** | *noun* | `/ˈspaɪsɪz/` | especias | This dish has many spices. | Este platillo tiene muchas especias. |
+| `voc_a2_recipe-book-cookbook_533` | **recipe book / cookbook** | *noun* | `/ˈrɛsəpi bʊk/` | libro de cocina | She has a huge recipe book. | Ella tiene un enorme libro de cocina. |
+| `voc_a2_nutrition-label_534` | **nutrition label** | *noun* | `/nuˈtrɪʃən ˈleɪbəl/` | etiqueta nutricional | Read the nutrition label first. | Lee la etiqueta nutricional primero. |
+| `voc_a2_expiration-date_535` | **expiration date** | *noun* | `/ˌɛkspəˈreɪʃən deɪt/` | fecha de caducidad | Check the expiration date. | Revisa la fecha de caducidad. |
+| `voc_a2_organic_536` | **organic** | *noun* | `/ɔrˈgænɪk/` | orgánico | We buy organic vegetables. | Compramos verduras orgánicas. |
+| `voc_a2_homemade_537` | **homemade** | *noun* | `/ˈhoʊmˈmeɪd/` | casero | This bread is homemade. | Este pan es casero. |
+| `voc_a2_store-bought_538` | **store-bought** | *noun* | `/stɔr bɔt/` | comprado en tienda | I prefer homemade over store-bought. | Prefiero lo casero antes que lo comprado en tienda. |
+| `voc_a2_vegetarian_539` | **vegetarian** | *noun* | `/ˌvɛdʒəˈtɛriən/` | vegetariano | My sister is vegetarian. | Mi hermana es vegetariana. |
+| `voc_a2_vegan_540` | **vegan** | *noun* | `/ˈvigən/` | vegano | This restaurant has vegan options. | Este restaurante tiene opciones veganas. |
+| `voc_a2_gluten-free_541` | **gluten-free** | *noun* | `/ˈglutənˈfri/` | sin gluten | This bread is gluten-free. | Este pan es sin gluten. |
+| `voc_a2_dairy-free_542` | **dairy-free** | *noun* | `/ˈdɛriˈfri/` | sin lácteos | She drinks dairy-free milk. | Ella bebe leche sin lácteos. |
+| `voc_a2_food-processor_543` | **food processor** | *noun* | `/fud ˈprɑˌsɛsər/` | procesador de alimentos | Use the food processor for the sauce. | Usa el procesador de alimentos para la salsa. |
+| `voc_a2_blender_544` | **blender** | *noun* | `/ˈblɛndər/` | licuadora | I use the blender every morning. | Uso la licuadora todas las mañanas. |
+| `voc_a2_mixing-bowl_545` | **mixing bowl** | *noun* | `/ˈmɪksɪŋ boʊl/` | tazón para mezclar | Put the flour in the mixing bowl. | Pon la harina en el tazón para mezclar. |
+| `voc_a2_cutting-board_546` | **cutting board** | *noun* | `/ˈkʌtɪŋ bɔrd/` | tabla de cortar | Use a clean cutting board. | Usa una tabla de cortar limpia. |
+| `voc_a2_measuring-cup_547` | **measuring cup** | *noun* | `/ˈmɛʒərɪŋ kʌp/` | taza medidora | I need the measuring cup for this. | Necesito la taza medidora para esto. |
+| `voc_a2_colander_548` | **colander** | *noun* | `/ˈkɑləndər/` | colador | Drain the pasta in a colander. | Escurre la pasta en un colador. |
+| `voc_a2_apron_549` | **apron** | *noun* | `/ˈeɪprən/` | delantal | Put on your apron before cooking. | Ponte el delantal antes de cocinar. |
+| `voc_a2_recipe-card_550` | **recipe card** | *noun* | `/ˈrɛsəpi kɑrd/` | tarjeta de receta | She wrote it on a recipe card. | Ella lo escribió en una tarjeta de receta. |
+| `voc_a2_side-dish_551` | **side dish** | *noun* | `/saɪd dɪʃ/` | guarnición | Rice is a good side dish. | El arroz es una buena guarnición. |
+| `voc_a2_main-course_552` | **main course** | *noun* | `/meɪn kɔrs/` | plato principal | The main course was fish. | El plato principal fue pescado. |
+| `voc_a2_appetizer_553` | **appetizer** | *adjective* | `/ˈæpəˌtaɪzər/` | aperitivo | We ordered an appetizer first. | Pedimos un aperitivo primero. |
+| `voc_a2_dessert_554` | **dessert** | *noun* | `/dɪˈzɜrt/` | postre | What's for dessert? | ¿Qué hay de postre? |
 
 ### Semana 12: Mantenimiento del hogar y reparaciones
 Total de palabras en esta semana: **50**
 
 | ID | Palabra | Categoría | Fonética (IPA) | Traducción | Ejemplo en Inglés | Traducción del Ejemplo |
 |---|---|---|---|---|---|---|
-| `voc_a2_repair_555` | **repair** | *verb* | — | reparar | — | — |
-| `voc_a2_leak_556` | **leak** | *noun* | — | fuga | — | — |
-| `voc_a2_clog_557` | **clog** | *verb* | — | atascar/atasco | — | — |
-| `voc_a2_broken-pipe_558` | **broken pipe** | *noun* | — | tubería rota | — | — |
-| `voc_a2_renovate_559` | **renovate** | *verb* | — | renovar | — | — |
-| `voc_a2_remodel_560` | **remodel** | *verb* | — | remodelar | — | — |
-| `voc_a2_diy_561` | **DIY (do it yourself)** | *noun* | — | hazlo tú mismo | — | — |
-| `voc_a2_blueprint_562` | **blueprint** | *noun* | — | plano | — | — |
-| `voc_a2_contractor_563` | **contractor** | *noun* | — | contratista | — | — |
-| `voc_a2_handyman_564` | **handyman** | *noun* | — | manitas/reparador | — | — |
-| `voc_a2_maintenance_565` | **maintenance** | *noun* | — | mantenimiento | — | — |
-| `voc_a2_inspection_566` | **inspection** | *noun* | — | inspección | — | — |
-| `voc_a2_electrical-outlet_567` | **electrical outlet** | *adjective* | — | tomacorriente | — | — |
-| `voc_a2_circuit-breaker_568` | **circuit breaker** | *noun* | — | interruptor automático | — | — |
-| `voc_a2_fuse_569` | **fuse** | *adjective* | — | fusible | — | — |
-| `voc_a2_wiring_570` | **wiring** | *adjective* | — | cableado | — | — |
-| `voc_a2_plumbing_571` | **plumbing** | *noun* | — | plomería | — | — |
-| `voc_a2_drain_572` | **drain** | *noun* | — | desagüe | — | — |
-| `voc_a2_faucet-tap_573` | **faucet / tap** | *noun* | — | grifo | — | — |
-| `voc_a2_thermostat_574` | **thermostat** | *noun* | — | termostato | — | — |
-| `voc_a2_insulation_575` | **insulation** | *noun* | — | aislamiento | — | — |
-| `voc_a2_ventilation_576` | **ventilation** | *noun* | — | ventilación | — | — |
-| `voc_a2_mold_577` | **mold** | *noun* | — | moho | — | — |
-| `voc_a2_pest-control_578` | **pest control** | *noun* | — | control de plagas | — | — |
-| `voc_a2_termite_579` | **termite** | *noun* | — | termita | — | — |
-| `voc_a2_rust_580` | **rust** | *noun* | — | óxido | — | — |
-| `voc_a2_crack_581` | **crack (wall)** | *noun* | — | grieta | — | — |
-| `voc_a2_dent_582` | **dent** | *noun* | — | abolladura | — | — |
-| `voc_a2_scratch_583` | **scratch** | *noun* | — | rayón | — | — |
-| `voc_a2_stain_584` | **stain** | *noun* | — | mancha | — | — |
-| `voc_a2_paint-roller_585` | **paint roller** | *noun* | — | rodillo de pintura | — | — |
-| `voc_a2_sandpaper_586` | **sandpaper** | *noun* | — | papel de lija | — | — |
-| `voc_a2_nail-gun_587` | **nail gun** | *noun* | — | pistola de clavos | — | — |
-| `voc_a2_power-drill_588` | **power drill** | *noun* | — | taladro eléctrico | — | — |
-| `voc_a2_toolbox_589` | **toolbox** | *noun* | — | caja de herramientas | — | — |
-| `voc_a2_measuring-tape_590` | **measuring tape** | *noun* | — | cinta métrica | — | — |
-| `voc_a2_level_591` | **level (tool)** | *noun* | — | nivel (herramienta) | — | — |
-| `voc_a2_wrench_592` | **wrench** | *noun* | — | llave inglesa | — | — |
-| `voc_a2_pliers_593` | **pliers** | *noun* | — | alicates | — | — |
-| `voc_a2_safety-goggles_594` | **safety goggles** | *noun* | — | gafas de seguridad | — | — |
-| `voc_a2_estimate_595` | **estimate (cost)** | *adjective* | — | presupuesto/estimado | — | — |
-| `voc_a2_quote_596` | **quote (price)** | *noun* | — | cotización | — | — |
-| `voc_a2_appliance-repair_597` | **appliance repair** | *noun* | — | reparación de electrodomésticos | — | — |
-| `voc_a2_gutter_598` | **gutter** | *noun* | — | canaleta | — | — |
-| `voc_a2_chimney_599` | **chimney** | *noun* | — | chimenea | — | — |
-| `voc_a2_foundation_600` | **foundation (house)** | *noun* | — | cimientos | — | — |
-| `voc_a2_structural-damage_601` | **structural damage** | *noun* | — | daño estructural | — | — |
-| `voc_a2_home-inspection_602` | **home inspection** | *noun* | — | inspección de vivienda | — | — |
-| `voc_a2_recyclable_603` | **recyclable** | *adjective* | — | reciclable | — | — |
-| `voc_a2_waste-disposal_604` | **waste disposal** | *noun* | — | eliminación de residuos | — | — |
+| `voc_a2_repair_555` | **repair** | *verb* | `/rɪˈpɛr/` | reparar | We need to repair the roof. | Necesitamos reparar el techo. |
+| `voc_a2_leak_556` | **leak** | *noun* | `/lik/` | fuga | There is a leak in the kitchen. | Hay una fuga en la cocina. |
+| `voc_a2_clog_557` | **clog** | *verb* | `/klɑg/` | atascar/atasco | The sink is clogged again. | El fregadero está atascado otra vez. |
+| `voc_a2_broken-pipe_558` | **broken pipe** | *noun* | `/ˈbroʊkən paɪp/` | tubería rota | A broken pipe flooded the bathroom. | Una tubería rota inundó el baño. |
+| `voc_a2_renovate_559` | **renovate** | *verb* | `/ˈrɛnəˌveɪt/` | renovar | We plan to renovate the kitchen. | Planeamos renovar la cocina. |
+| `voc_a2_remodel_560` | **remodel** | *verb* | `/riˈmɑdəl/` | remodelar | They remodeled the whole house. | Ellos remodelaron toda la casa. |
+| `voc_a2_diy_561` | **DIY (do it yourself)** | *noun* | `/ˌdiˌaɪˈwaɪ/` | hazlo tú mismo | This is a fun DIY project. | Este es un divertido proyecto de hazlo tú mismo. |
+| `voc_a2_blueprint_562` | **blueprint** | *noun* | `/ˈbluˌprɪnt/` | plano | The architect showed us the blueprint. | El arquitecto nos mostró el plano. |
+| `voc_a2_contractor_563` | **contractor** | *noun* | `/ˈkɑnˌtræktər/` | contratista | We hired a good contractor. | Contratamos a un buen contratista. |
+| `voc_a2_handyman_564` | **handyman** | *noun* | `/ˈhændiˌmæn/` | manitas/reparador | The handyman fixed the door. | El manitas arregló la puerta. |
+| `voc_a2_maintenance_565` | **maintenance** | *noun* | `/ˈmeɪntənəns/` | mantenimiento | The building needs maintenance. | El edificio necesita mantenimiento. |
+| `voc_a2_inspection_566` | **inspection** | *noun* | `/ɪnˈspɛkʃən/` | inspección | We scheduled an inspection. | Programamos una inspección. |
+| `voc_a2_electrical-outlet_567` | **electrical outlet** | *adjective* | `/ɪˈlɛktrɪkəl ˈaʊtlɛt/` | tomacorriente | This electrical outlet doesn't work. | Este tomacorriente no funciona. |
+| `voc_a2_circuit-breaker_568` | **circuit breaker** | *noun* | `/ˈsɜrkət ˈbreɪkər/` | interruptor automático | The circuit breaker tripped. | El interruptor automático se disparó. |
+| `voc_a2_fuse_569` | **fuse** | *noun* | `/fjuz/` | fusible | A fuse blew during the storm. | Un fusible se quemó durante la tormenta. |
+| `voc_a2_wiring_570` | **wiring** | *noun* | `/ˈwaɪrɪŋ/` | cableado | The wiring in this house is old. | El cableado de esta casa es viejo. |
+| `voc_a2_plumbing_571` | **plumbing** | *noun* | `/ˈplʌmɪŋ/` | plomería | The plumbing needs to be checked. | La plomería necesita revisarse. |
+| `voc_a2_drain_572` | **drain** | *noun* | `/dreɪn/` | desagüe | The drain is clogged with hair. | El desagüe está tapado con pelo. |
+| `voc_a2_faucet-tap_573` | **faucet / tap** | *noun* | `/ˈfɔsət/` | grifo | The faucet is dripping. | El grifo está goteando. |
+| `voc_a2_thermostat_574` | **thermostat** | *noun* | `/ˈθɜrməˌstæt/` | termostato | Set the thermostat to 22 degrees. | Ajusta el termostato a 22 grados. |
+| `voc_a2_insulation_575` | **insulation** | *noun* | `/ˌɪnsəˈleɪʃən/` | aislamiento | We added insulation in the attic. | Agregamos aislamiento en el ático. |
+| `voc_a2_ventilation_576` | **ventilation** | *noun* | `/ˌvɛntəˈleɪʃən/` | ventilación | The bathroom needs better ventilation. | El baño necesita mejor ventilación. |
+| `voc_a2_mold_577` | **mold** | *noun* | `/moʊld/` | moho | There is mold on the wall. | Hay moho en la pared. |
+| `voc_a2_pest-control_578` | **pest control** | *noun* | `/pɛst kənˈtroʊl/` | control de plagas | We called a pest control company. | Llamamos a una empresa de control de plagas. |
+| `voc_a2_termite_579` | **termite** | *noun* | `/ˈtɜrmaɪt/` | termita | Termites damaged the wooden floor. | Las termitas dañaron el piso de madera. |
+| `voc_a2_rust_580` | **rust** | *noun* | `/rʌst/` | óxido | The gate has some rust. | El portón tiene un poco de óxido. |
+| `voc_a2_crack_581` | **crack (wall)** | *noun* | `/kræk/` | grieta | There's a crack in the wall. | Hay una grieta en la pared. |
+| `voc_a2_dent_582` | **dent** | *noun* | `/dɛnt/` | abolladura | The car has a small dent. | El carro tiene una pequeña abolladura. |
+| `voc_a2_scratch_583` | **scratch** | *noun* | `/skrætʃ/` | rayón | There's a scratch on the table. | Hay un rayón en la mesa. |
+| `voc_a2_stain_584` | **stain** | *noun* | `/steɪn/` | mancha | This stain won't come out. | Esta mancha no sale. |
+| `voc_a2_paint-roller_585` | **paint roller** | *noun* | `/peɪnt ˈroʊlər/` | rodillo de pintura | Use a paint roller for the walls. | Usa un rodillo de pintura para las paredes. |
+| `voc_a2_sandpaper_586` | **sandpaper** | *noun* | `/ˈsændˌpeɪpər/` | papel de lija | Smooth the wood with sandpaper. | Alisa la madera con papel de lija. |
+| `voc_a2_nail-gun_587` | **nail gun** | *noun* | `/neɪl gʌn/` | pistola de clavos | He used a nail gun for the fence. | Él usó una pistola de clavos para la cerca. |
+| `voc_a2_power-drill_588` | **power drill** | *noun* | `/ˈpaʊər drɪl/` | taladro eléctrico | I borrowed a power drill. | Pedí prestado un taladro eléctrico. |
+| `voc_a2_toolbox_589` | **toolbox** | *noun* | `/ˈtulˌbɑks/` | caja de herramientas | The toolbox is in the garage. | La caja de herramientas está en el garaje. |
+| `voc_a2_measuring-tape_590` | **measuring tape** | *noun* | `/ˈmɛʒərɪŋ teɪp/` | cinta métrica | Use the measuring tape for the window. | Usa la cinta métrica para la ventana. |
+| `voc_a2_level_591` | **level (tool)** | *noun* | `/ˈlɛvəl/` | nivel (herramienta) | Check it with a level. | Revísalo con un nivel. |
+| `voc_a2_wrench_592` | **wrench** | *noun* | `/rɛntʃ/` | llave inglesa | Pass me the wrench, please. | Pásame la llave inglesa, por favor. |
+| `voc_a2_pliers_593` | **pliers** | *noun* | `/ˈplaɪərz/` | alicates | I need pliers for this wire. | Necesito alicates para este cable. |
+| `voc_a2_safety-goggles_594` | **safety goggles** | *noun* | `/ˈseɪfti ˈgɑgəlz/` | gafas de seguridad | Wear safety goggles when you cut wood. | Usa gafas de seguridad cuando cortes madera. |
+| `voc_a2_estimate_595` | **estimate (cost)** | *noun* | `/ˈɛstəmət/` | presupuesto/estimado | We got an estimate from the plumber. | Recibimos un presupuesto del plomero. |
+| `voc_a2_quote_596` | **quote (price)** | *noun* | `/kwoʊt/` | cotización | The quote seems reasonable. | La cotización parece razonable. |
+| `voc_a2_appliance-repair_597` | **appliance repair** | *noun* | `/əˈplaɪəns rɪˈpɛr/` | reparación de electrodomésticos | We called for appliance repair. | Llamamos para reparación de electrodomésticos. |
+| `voc_a2_gutter_598` | **gutter** | *noun* | `/ˈgʌtər/` | canaleta | Clean the gutters before winter. | Limpia las canaletas antes del invierno. |
+| `voc_a2_chimney_599` | **chimney** | *noun* | `/ˈtʃɪmni/` | chimenea | The chimney needs cleaning. | La chimenea necesita limpieza. |
+| `voc_a2_foundation_600` | **foundation (house)** | *noun* | `/faʊnˈdeɪʃən/` | cimientos | There's a crack in the foundation. | Hay una grieta en los cimientos. |
+| `voc_a2_structural-damage_601` | **structural damage** | *noun* | `/ˈstrʌktʃərəl ˈdæmɪdʒ/` | daño estructural | The storm caused structural damage. | La tormenta causó daño estructural. |
+| `voc_a2_home-inspection_602` | **home inspection** | *noun* | `/hoʊm ɪnˈspɛkʃən/` | inspección de vivienda | We scheduled a home inspection. | Programamos una inspección de vivienda. |
+| `voc_a2_recyclable_603` | **recyclable** | *adjective* | `/riˈsaɪkləbəl/` | reciclable | This packaging is recyclable. | Este empaque es reciclable. |
+| `voc_a2_waste-disposal_604` | **waste disposal** | *noun* | `/weɪst dɪˈspoʊzəl/` | eliminación de residuos | Follow the city's waste disposal rules. | Sigue las reglas de eliminación de residuos de la ciudad. |
 
 ### Semana 13: Deportes y vida activa
 Total de palabras en esta semana: **40**

@@ -30,7 +30,7 @@ import type { CEFRLevel } from '../packages/types/src/index'
 function buildVocabWeekMap(): Map<string, { level: CEFRLevel; week: number }> {
   const map = new Map<string, { level: CEFRLevel; week: number }>()
 
-  const levels: CEFRLevel[] = ['A1', 'A2', 'B1', 'B2']
+  const levels = ['A1', 'A2', 'B1', 'B2'] as const
   for (const level of levels) {
     const levelContent = contentRegistry[level]
     for (const block of levelContent.blocks) {

@@ -24,7 +24,7 @@ if (fs.existsSync(writingB2Path)) {
   writingB2 = JSON.parse(fs.readFileSync(writingB2Path, 'utf-8')) as WritingPrompt[]
 }
 
-const levels: CEFRLevel[] = ['A1', 'A2', 'B1', 'B2']
+const levels = ['A1', 'A2', 'B1', 'B2'] as const
 
 const totalVocab = levels.reduce(
   (sum, lvl) => sum + contentRegistry[lvl].blocks.reduce((bSum, b) => bSum + b.vocabulary.length, 0),
