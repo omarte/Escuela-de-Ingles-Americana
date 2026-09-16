@@ -66,15 +66,12 @@ console.log('    ✅ Semanas 4 a 19 de A1 correctamente bloqueadas para usuarios
 
 // 4. Simular acceso a niveles superiores (A2, B1, B2) sin pago
 console.log('[4] Verificando bloqueo de niveles avanzados para usuario gratuito:')
-const a2Free: boolean = canAccessWeek('A2', 1, false)
-const b1Free: boolean = canAccessWeek('B1', 1, false)
-const b2Free: boolean = canAccessWeek('B2', 1, false)
-
-console.log(`    • A2 Semana 1: ${a2Free ? '❌ ERROR' : '🔒 BLOQUEADO'}`)
-console.log(`    • B1 Semana 1: ${b1Free ? '❌ ERROR' : '🔒 BLOQUEADO'}`)
-console.log(`    • B2 Semana 1: ${b2Free ? '❌ ERROR' : '🔒 BLOQUEADO'}`)
-
-if (a2Free || b1Free || b2Free) throw new Error('A2, B1 o B2 permitieron acceso gratuito')
+const advancedLevels = ['A2', 'B1', 'B2'] as const
+for (const lvl of advancedLevels) {
+  const isAllowed = canAccessWeek(lvl, 1, false)
+  console.log(`    • ${lvl} Semana 1: ${isAllowed ? '❌ ERROR' : '🔒 BLOQUEADO'}`)
+  if (isAllowed) throw new Error(`${lvl} permitió acceso gratuito`)
+}
 console.log('    ✅ Todos los niveles superiores bloqueados sin suscripción.\n')
 
 // 5. Simular desbloqueo con Membresía Pro (isPro = true)
@@ -82,20 +79,24 @@ console.log('[5] Simulando usuario con Membresía Pro activa (isPro = true):')
 const a2Published: ContentApprovalByLevel = { A2: 'published' }
 const b1Published: ContentApprovalByLevel = { B1: 'published' }
 
-const w4Pro: boolean = canAccessWeek('A1', 4, true)
-const w8Pro: boolean = canAccessWeek('A1', 8, true)
-const w19Pro: boolean = canAccessWeek('A1', 19, true)
-const a2Pro: boolean = canAccessWeek('A2', 1, true, a2Published)
-const b1Pro: boolean = canAccessWeek('B1', 1, true, b1Published)
+interface ProCheck {
+  label: string
+  unlocked: boolean
+}
 
-console.log(`    • A1 Semana 4: ${w4Pro ? '🟢 DESBLOQUEADO (Pro)' : '❌ ERROR'}`)
-console.log(`    • A1 Semana 8 (Hito 2 Meses): ${w8Pro ? '🟢 DESBLOQUEADO (Pro)' : '❌ ERROR'}`)
-console.log(`    • A1 Semana 19 (Fin A1): ${w19Pro ? '🟢 DESBLOQUEADO (Pro)' : '❌ ERROR'}`)
-console.log(`    • A2 Semana 1: ${a2Pro ? '🟢 DESBLOQUEADO (Pro)' : '❌ ERROR'}`)
-console.log(`    • B1 Semana 1: ${b1Pro ? '🟢 DESBLOQUEADO (Pro)' : '❌ ERROR'}`)
+const proChecks: ProCheck[] = [
+  { label: 'A1 Semana 4', unlocked: canAccessWeek('A1', 4, true) },
+  { label: 'A1 Semana 8 (Hito 2 Meses)', unlocked: canAccessWeek('A1', 8, true) },
+  { label: 'A1 Semana 19 (Fin A1)', unlocked: canAccessWeek('A1', 19, true) },
+  { label: 'A2 Semana 1', unlocked: canAccessWeek('A2', 1, true, a2Published) },
+  { label: 'B1 Semana 1', unlocked: canAccessWeek('B1', 1, true, b1Published) },
+]
 
-if (!w4Pro || !w8Pro || !w19Pro || !a2Pro || !b1Pro) {
-  throw new Error('Pro falló al desbloquear el currículo publicado')
+for (const check of proChecks) {
+  console.log(`    • ${check.label}: ${check.unlocked ? '🟢 DESBLOQUEADO (Pro)' : '❌ ERROR'}`)
+  if (!check.unlocked) {
+    throw new Error(`Pro falló al desbloquear: ${check.label}`)
+  }
 }
 console.log('    ✅ Membresía Pro desbloquea con éxito todo el currículo.\n')
 
