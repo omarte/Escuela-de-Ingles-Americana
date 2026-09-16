@@ -2470,148 +2470,148 @@ Total de palabras en esta semana: **40**
 
 | ID | Palabra | Categoría | Fonética (IPA) | Traducción | Ejemplo en Inglés | Traducción del Ejemplo |
 |---|---|---|---|---|---|---|
-| `voc_a2_tournament_605` | **tournament** | *noun* | — | torneo | — | — |
-| `voc_a2_league_606` | **league** | *noun* | — | liga | — | — |
-| `voc_a2_teammate_607` | **teammate** | *noun* | — | compañero de equipo | — | — |
-| `voc_a2_opponent_608` | **opponent** | *adjective* | — | oponente | — | — |
-| `voc_a2_warm-up_609` | **warm-up** | *noun* | — | calentamiento | — | — |
-| `voc_a2_stretch_610` | **stretch** | *verb* | — | estirar | — | — |
-| `voc_a2_stamina_611` | **stamina** | *noun* | — | resistencia | — | — |
-| `voc_a2_cardio_612` | **cardio** | *noun* | — | cardio | — | — |
-| `voc_a2_strength-training_613` | **strength training** | *noun* | — | entrenamiento de fuerza | — | — |
-| `voc_a2_personal-trainer_614` | **personal trainer** | *noun* | — | entrenador personal | — | — |
-| `voc_a2_workout_615` | **workout** | *noun* | — | rutina de ejercicio | — | — |
-| `voc_a2_set_616` | **set (exercise)** | *noun* | — | serie (ejercicio) | — | — |
-| `voc_a2_rep-repetition_617` | **rep / repetition** | *noun* | — | repetición | — | — |
-| `voc_a2_marathon_618` | **marathon** | *noun* | — | maratón | — | — |
-| `voc_a2_sprint_619` | **sprint** | *verb* | — | carrera corta/esprintar | — | — |
-| `voc_a2_finish-line_620` | **finish line** | *noun* | — | línea de meta | — | — |
-| `voc_a2_medal_621` | **medal** | *noun* | — | medalla | — | — |
-| `voc_a2_trophy_622` | **trophy** | *noun* | — | trofeo | — | — |
-| `voc_a2_record_623` | **record (sports)** | *noun* | — | récord | — | — |
-| `voc_a2_draw_624` | **draw (tie)** | *noun* | — | empate | — | — |
-| `voc_a2_penalty_625` | **penalty** | *noun* | — | penalti | — | — |
-| `voc_a2_foul_626` | **foul** | *noun* | — | falta | — | — |
-| `voc_a2_injury-time_627` | **injury time** | *noun* | — | tiempo de descuento | — | — |
-| `voc_a2_substitute_628` | **substitute (player)** | *adjective* | — | suplente | — | — |
-| `voc_a2_spectator_629` | **spectator** | *noun* | — | espectador | — | — |
-| `voc_a2_scoreboard_630` | **scoreboard** | *noun* | — | marcador | — | — |
-| `voc_a2_halftime_631` | **halftime** | *noun* | — | medio tiempo | — | — |
-| `voc_a2_locker-room_632` | **locker room** | *noun* | — | vestuario | — | — |
-| `voc_a2_equipment_633` | **equipment (sports)** | *noun* | — | equipo (deportivo) | — | — |
-| `voc_a2_helmet_634` | **helmet** | *noun* | — | casco | — | — |
-| `voc_a2_mat_635` | **mat (exercise)** | *noun* | — | colchoneta | — | — |
-| `voc_a2_treadmill_636` | **treadmill** | *verb* | — | cinta de correr | — | — |
-| `voc_a2_dumbbell_637` | **dumbbell** | *noun* | — | mancuerna | — | — |
-| `voc_a2_flexibility_638` | **flexibility** | *noun* | — | flexibilidad | — | — |
-| `voc_a2_endurance_639` | **endurance** | *noun* | — | resistencia (física) | — | — |
-| `voc_a2_posture_640` | **posture** | *noun* | — | postura | — | — |
-| `voc_a2_physical-fitness_641` | **physical fitness** | *noun* | — | aptitud física | — | — |
-| `voc_a2_recreational_642` | **recreational** | *adjective* | — | recreativo | — | — |
-| `voc_a2_outdoor-activity_643` | **outdoor activity** | *noun* | — | actividad al aire libre | — | — |
-| `voc_a2_adventure-sport_644` | **adventure sport** | *noun* | — | deporte de aventura | — | — |
+| `voc_a2_tournament_605` | **tournament** | *noun* | `/ˈtʊrnəmənt/` | torneo | Our team won the tournament. | Nuestro equipo ganó el torneo. |
+| `voc_a2_league_606` | **league** | *noun* | `/lig/` | liga | He plays in the local league. | Él juega en la liga local. |
+| `voc_a2_teammate_607` | **teammate** | *noun* | `/ˈtiˌmeɪt/` | compañero de equipo | My teammate passed me the ball. | Mi compañero de equipo me pasó la pelota. |
+| `voc_a2_opponent_608` | **opponent** | *noun* | `/əˈpoʊnənt/` | oponente | Our opponent played very well. | Nuestro oponente jugó muy bien. |
+| `voc_a2_warm-up_609` | **warm-up** | *noun* | `/ˈwɔrmˌʌp/` | calentamiento | Do a warm-up before running. | Haz un calentamiento antes de correr. |
+| `voc_a2_stretch_610` | **stretch** | *verb* | `/strɛtʃ/` | estirar | Stretch your legs before exercise. | Estira las piernas antes de hacer ejercicio. |
+| `voc_a2_stamina_611` | **stamina** | *noun* | `/ˈstæmənə/` | resistencia | Running builds stamina. | Correr desarrolla resistencia. |
+| `voc_a2_cardio_612` | **cardio** | *noun* | `/ˈkɑrdioʊ/` | cardio | I do cardio three times a week. | Hago cardio tres veces por semana. |
+| `voc_a2_strength-training_613` | **strength training** | *noun* | `/strɛŋθ ˈtreɪnɪŋ/` | entrenamiento de fuerza | Strength training helps build muscle. | El entrenamiento de fuerza ayuda a formar músculo. |
+| `voc_a2_personal-trainer_614` | **personal trainer** | *noun* | `/ˈpɜrsənəl ˈtreɪnər/` | entrenador personal | She works with a personal trainer. | Ella trabaja con un entrenador personal. |
+| `voc_a2_workout_615` | **workout** | *noun* | `/ˈwɜrˌkaʊt/` | rutina de ejercicio | My workout takes an hour. | Mi rutina de ejercicio toma una hora. |
+| `voc_a2_set_616` | **set (exercise)** | *noun* | `/sɛt/` | serie (ejercicio) | Do three sets of ten. | Haz tres series de diez. |
+| `voc_a2_rep-repetition_617` | **rep / repetition** | *noun* | `/rɛp/` | repetición | Try to do more reps. | Intenta hacer más repeticiones. |
+| `voc_a2_marathon_618` | **marathon** | *noun* | `/ˈmɛrəˌθɑn/` | maratón | She finished her first marathon. | Ella terminó su primer maratón. |
+| `voc_a2_sprint_619` | **sprint** | *verb* | `/sprɪnt/` | carrera corta/esprintar | He sprinted to the finish line. | Él corrió a toda velocidad hasta la meta. |
+| `voc_a2_finish-line_620` | **finish line** | *noun* | `/ˈfɪnɪʃ laɪn/` | línea de meta | She crossed the finish line first. | Ella cruzó la línea de meta primero. |
+| `voc_a2_medal_621` | **medal** | *noun* | `/ˈmɛdəl/` | medalla | He won a gold medal. | Él ganó una medalla de oro. |
+| `voc_a2_trophy_622` | **trophy** | *noun* | `/ˈtroʊfi/` | trofeo | The team lifted the trophy. | El equipo levantó el trofeo. |
+| `voc_a2_record_623` | **record (sports)** | *noun* | `/ˈrɛkərd/` | récord | She broke the school record. | Ella rompió el récord escolar. |
+| `voc_a2_draw_624` | **draw (tie)** | *noun* | `/drɔ/` | empate | The match ended in a draw. | El partido terminó en empate. |
+| `voc_a2_penalty_625` | **penalty** | *noun* | `/ˈpɛnəlti/` | penalti | The referee gave a penalty. | El árbitro marcó un penalti. |
+| `voc_a2_foul_626` | **foul** | *noun* | `/faʊl/` | falta | That was a clear foul. | Esa fue una falta clara. |
+| `voc_a2_injury-time_627` | **injury time** | *noun* | `/ˈɪndʒəri taɪm/` | tiempo de descuento | They scored during injury time. | Anotaron durante el tiempo de descuento. |
+| `voc_a2_substitute_628` | **substitute (player)** | *noun* | `/ˈsʌbstɪˌtut/` | suplente | The substitute scored the winning goal. | El suplente anotó el gol de la victoria. |
+| `voc_a2_spectator_629` | **spectator** | *noun* | `/ˈspɛkteɪtər/` | espectador | Thousands of spectators watched the game. | Miles de espectadores vieron el partido. |
+| `voc_a2_scoreboard_630` | **scoreboard** | *noun* | `/ˈskɔrˌbɔrd/` | marcador | Check the scoreboard for the result. | Revisa el marcador para ver el resultado. |
+| `voc_a2_halftime_631` | **halftime** | *noun* | `/ˈhæfˌtaɪm/` | medio tiempo | The coach talked to the team at halftime. | El entrenador habló con el equipo en el medio tiempo. |
+| `voc_a2_locker-room_632` | **locker room** | *noun* | `/ˈlɑkər rum/` | vestuario | The players are in the locker room. | Los jugadores están en el vestuario. |
+| `voc_a2_equipment_633` | **equipment (sports)** | *noun* | `/ɪˈkwɪpmənt/` | equipo (deportivo) | Bring your own equipment. | Trae tu propio equipo. |
+| `voc_a2_helmet_634` | **helmet** | *noun* | `/ˈhɛlmɪt/` | casco | Always wear a helmet. | Siempre usa casco. |
+| `voc_a2_mat_635` | **mat (exercise)** | *noun* | `/mæt/` | colchoneta | Put your mat on the floor. | Pon tu colchoneta en el piso. |
+| `voc_a2_treadmill_636` | **treadmill** | *noun* | `/ˈtrɛdˌmɪl/` | cinta de correr | I ran on the treadmill for thirty minutes. | Corrí en la cinta de correr treinta minutos. |
+| `voc_a2_dumbbell_637` | **dumbbell** | *noun* | `/ˈdʌmˌbɛl/` | mancuerna | Lift the dumbbell slowly. | Levanta la mancuerna despacio. |
+| `voc_a2_flexibility_638` | **flexibility** | *noun* | `/ˌflɛksəˈbɪləti/` | flexibilidad | Yoga improves flexibility. | El yoga mejora la flexibilidad. |
+| `voc_a2_endurance_639` | **endurance** | *noun* | `/ɪnˈdʊrəns/` | resistencia (física) | Cycling improves endurance. | El ciclismo mejora la resistencia. |
+| `voc_a2_posture_640` | **posture** | *noun* | `/ˈpɑstʃər/` | postura | Fix your posture when you sit. | Corrige tu postura al sentarte. |
+| `voc_a2_physical-fitness_641` | **physical fitness** | *noun* | `/ˈfɪzɪkəl ˈfɪtnəs/` | aptitud física | Physical fitness improves your health. | La aptitud física mejora tu salud. |
+| `voc_a2_recreational_642` | **recreational** | *adjective* | `/ˌrɛkriˈeɪʃənəl/` | recreativo | We play recreational soccer on Sundays. | Jugamos fútbol recreativo los domingos. |
+| `voc_a2_outdoor-activity_643` | **outdoor activity** | *noun* | `/ˈaʊtˌdɔr ækˈtɪvəti/` | actividad al aire libre | Hiking is a great outdoor activity. | El senderismo es una gran actividad al aire libre. |
+| `voc_a2_adventure-sport_644` | **adventure sport** | *noun* | `/ædˈvɛntʃər spɔrt/` | deporte de aventura | Rock climbing is an adventure sport. | La escalada es un deporte de aventura. |
 
 ### Semana 14: Cultura, medios y entretenimiento
 Total de palabras en esta semana: **42**
 
 | ID | Palabra | Categoría | Fonética (IPA) | Traducción | Ejemplo en Inglés | Traducción del Ejemplo |
 |---|---|---|---|---|---|---|
-| `voc_a2_headline_645` | **headline** | *verb* | — | titular | — | — |
-| `voc_a2_breaking-news_646` | **breaking news** | *noun* | — | noticia de última hora | — | — |
-| `voc_a2_editorial_647` | **editorial** | *noun* | — | editorial | — | — |
-| `voc_a2_celebrity_648` | **celebrity** | *noun* | — | celebridad | — | — |
-| `voc_a2_plot_649` | **plot (story)** | *noun* | — | trama | — | — |
-| `voc_a2_character_650` | **character (story)** | *noun* | — | personaje | — | — |
-| `voc_a2_genre_651` | **genre** | *noun* | — | género | — | — |
-| `voc_a2_soundtrack_652` | **soundtrack** | *noun* | — | banda sonora | — | — |
-| `voc_a2_subtitle_653` | **subtitle** | *noun* | — | subtítulo | — | — |
-| `voc_a2_box-office_654` | **box office** | *noun* | — | taquilla | — | — |
-| `voc_a2_streaming-platform_655` | **streaming platform** | *noun* | — | plataforma de streaming | — | — |
-| `voc_a2_premiere_656` | **premiere** | *noun* | — | estreno | — | — |
-| `voc_a2_sequel_657` | **sequel** | *noun* | — | secuela | — | — |
-| `voc_a2_remake_658` | **remake** | *noun* | — | nueva versión | — | — |
-| `voc_a2_script_659` | **script** | *noun* | — | guion | — | — |
-| `voc_a2_director_660` | **director** | *noun* | — | director | — | — |
-| `voc_a2_producer_661` | **producer** | *noun* | — | productor | — | — |
-| `voc_a2_audience_662` | **audience** | *noun* | — | audiencia | — | — |
-| `voc_a2_review_663` | **review (critique)** | *noun* | — | crítica/reseña | — | — |
-| `voc_a2_critic_664` | **critic** | *noun* | — | crítico | — | — |
-| `voc_a2_bestselling_665` | **bestselling** | *noun* | — | más vendido (libro) | — | — |
-| `voc_a2_author_666` | **author** | *noun* | — | autor | — | — |
-| `voc_a2_publisher_667` | **publisher** | *noun* | — | editorial (empresa) | — | — |
-| `voc_a2_edition_668` | **edition** | *noun* | — | edición | — | — |
-| `voc_a2_chapter_669` | **chapter** | *noun* | — | capítulo | — | — |
-| `voc_a2_plot-twist_670` | **plot twist** | *noun* | — | giro de la trama | — | — |
-| `voc_a2_cliffhanger_671` | **cliffhanger** | *noun* | — | final en suspenso | — | — |
-| `voc_a2_fan-base_672` | **fan base** | *noun* | — | base de fanáticos | — | — |
-| `voc_a2_influencer_673` | **influencer** | *verb* | — | influencer | — | — |
-| `voc_a2_viral_674` | **viral** | *noun* | — | viral | — | — |
-| `voc_a2_trending_675` | **trending** | *noun* | — | en tendencia | — | — |
-| `voc_a2_content-creator_676` | **content creator** | *noun* | — | creador de contenido | — | — |
-| `voc_a2_live-stream_677` | **live stream** | *adjective* | — | transmisión en vivo | — | — |
-| `voc_a2_podcast_678` | **podcast** | *noun* | — | podcast | — | — |
-| `voc_a2_exhibit-exhibition_679` | **exhibit / exhibition** | *noun* | — | exhibición | — | — |
-| `voc_a2_gallery_680` | **gallery** | *noun* | — | galería | — | — |
-| `voc_a2_performance_681` | **performance (show)** | *noun* | — | actuación | — | — |
-| `voc_a2_stand-up-comedy_682` | **stand-up comedy** | *adjective* | — | comedia en vivo | — | — |
-| `voc_a2_orchestra_683` | **orchestra** | *noun* | — | orquesta | — | — |
-| `voc_a2_choir_684` | **choir** | *noun* | — | coro | — | — |
-| `voc_a2_album_685` | **album** | *noun* | — | álbum | — | — |
-| `voc_a2_lyrics_686` | **lyrics** | *noun* | — | letra de canción | — | — |
+| `voc_a2_headline_645` | **headline** | *noun* | `/ˈhɛˌdlaɪn/` | titular | The headline caught my attention. | El titular llamó mi atención. |
+| `voc_a2_breaking-news_646` | **breaking news** | *noun* | `/ˈbreɪkɪŋ nuz/` | noticia de última hora | This is breaking news. | Esta es una noticia de última hora. |
+| `voc_a2_editorial_647` | **editorial** | *noun* | `/ˌɛdəˈtɔriəl/` | editorial | I read the editorial this morning. | Leí el editorial esta mañana. |
+| `voc_a2_celebrity_648` | **celebrity** | *noun* | `/səˈlɛbrəti/` | celebridad | The celebrity attended the event. | La celebridad asistió al evento. |
+| `voc_a2_plot_649` | **plot (story)** | *noun* | `/plɑt/` | trama | The plot was very confusing. | La trama fue muy confusa. |
+| `voc_a2_character_650` | **character (story)** | *noun* | `/ˈkɛrɪktər/` | personaje | My favorite character is the villain. | Mi personaje favorito es el villano. |
+| `voc_a2_genre_651` | **genre** | *noun* | `/ˈʒɑnrə/` | género | What is your favorite movie genre? | ¿Cuál es tu género de película favorito? |
+| `voc_a2_soundtrack_652` | **soundtrack** | *noun* | `/ˈsaʊndˌtræk/` | banda sonora | I love the movie's soundtrack. | Me encanta la banda sonora de la película. |
+| `voc_a2_subtitle_653` | **subtitle** | *noun* | `/ˈsʌbˌtaɪtəl/` | subtítulo | I watched it with subtitles. | Lo vi con subtítulos. |
+| `voc_a2_box-office_654` | **box office** | *noun* | `/bɑks ˈɔfəs/` | taquilla | The film broke box office records. | La película rompió récords de taquilla. |
+| `voc_a2_streaming-platform_655` | **streaming platform** | *noun* | `/ˈstrimɪŋ ˈplætˌfɔrm/` | plataforma de streaming | Which streaming platform do you use? | ¿Qué plataforma de streaming usas? |
+| `voc_a2_premiere_656` | **premiere** | *noun* | `/prɪˈmɪr/` | estreno | We went to the movie premiere. | Fuimos al estreno de la película. |
+| `voc_a2_sequel_657` | **sequel** | *noun* | `/ˈsikwəl/` | secuela | The sequel was better than the original. | La secuela fue mejor que la original. |
+| `voc_a2_remake_658` | **remake** | *noun* | `/ˈriˌmeɪk/` | nueva versión | They released a remake of the classic. | Lanzaron una nueva versión del clásico. |
+| `voc_a2_script_659` | **script** | *noun* | `/skrɪpt/` | guion | She wrote the script herself. | Ella escribió el guion ella misma. |
+| `voc_a2_director_660` | **director** | *noun* | `/dɪˈrɛktər/` | director | The director won an award. | El director ganó un premio. |
+| `voc_a2_producer_661` | **producer** | *noun* | `/prəˈdusər/` | productor | The producer funded the whole film. | El productor financió toda la película. |
+| `voc_a2_audience_662` | **audience** | *noun* | `/ˈɔdiəns/` | audiencia | The audience loved the show. | Al público le encantó el espectáculo. |
+| `voc_a2_review_663` | **review (critique)** | *noun* | `/rɪˈvju/` | crítica/reseña | The review was very positive. | La reseña fue muy positiva. |
+| `voc_a2_critic_664` | **critic** | *noun* | `/ˈkrɪtɪk/` | crítico | The critic gave it five stars. | El crítico le dio cinco estrellas. |
+| `voc_a2_bestselling_665` | **bestselling** | *adjective* | `/bɛstˈsɛlɪŋ/` | más vendido (libro) | This is a bestselling novel. | Esta es una novela más vendida. |
+| `voc_a2_author_666` | **author** | *noun* | `/ˈɔθər/` | autor | The author signed my book. | El autor firmó mi libro. |
+| `voc_a2_publisher_667` | **publisher** | *noun* | `/ˈpʌblɪʃər/` | editorial (empresa) | The publisher rejected the manuscript. | La editorial rechazó el manuscrito. |
+| `voc_a2_edition_668` | **edition** | *noun* | `/ɪˈdɪʃən/` | edición | I have the first edition. | Tengo la primera edición. |
+| `voc_a2_chapter_669` | **chapter** | *noun* | `/ˈtʃæptər/` | capítulo | I finished the last chapter. | Terminé el último capítulo. |
+| `voc_a2_plot-twist_670` | **plot twist** | *noun* | `/plɑt twɪst/` | giro de la trama | The plot twist surprised everyone. | El giro de la trama sorprendió a todos. |
+| `voc_a2_cliffhanger_671` | **cliffhanger** | *noun* | `/ˈklɪfˌhæŋər/` | final en suspenso | The episode ended in a cliffhanger. | El episodio terminó en suspenso. |
+| `voc_a2_fan-base_672` | **fan base** | *noun* | `/fæn beɪs/` | base de fanáticos | The band has a huge fan base. | La banda tiene una enorme base de fanáticos. |
+| `voc_a2_influencer_673` | **influencer** | *noun* | `/ˈɪnfluənsər/` | influencer | She works as an influencer. | Ella trabaja como influencer. |
+| `voc_a2_viral_674` | **viral** | *adjective* | `/ˈvaɪrəl/` | viral | The video went viral overnight. | El video se volvió viral de la noche a la mañana. |
+| `voc_a2_trending_675` | **trending** | *adjective* | `/ˈtrɛndɪŋ/` | en tendencia | This topic is trending today. | Este tema está en tendencia hoy. |
+| `voc_a2_content-creator_676` | **content creator** | *noun* | `/ˈkɑnˌtɛnt kriˈeɪtər/` | creador de contenido | She is a full-time content creator. | Ella es creadora de contenido de tiempo completo. |
+| `voc_a2_live-stream_677` | **live stream** | *noun* | `/laɪv strim/` | transmisión en vivo | We watched the live stream at home. | Vimos la transmisión en vivo desde casa. |
+| `voc_a2_podcast_678` | **podcast** | *noun* | `/ˈpɑdˌkæst/` | podcast | I listen to a podcast every morning. | Escucho un podcast todas las mañanas. |
+| `voc_a2_exhibit-exhibition_679` | **exhibit / exhibition** | *noun* | `/ɪgˈzɪbɪt/` | exhibición | We visited the art exhibit. | Visitamos la exhibición de arte. |
+| `voc_a2_gallery_680` | **gallery** | *noun* | `/ˈgæləri/` | galería | The gallery has modern art. | La galería tiene arte moderno. |
+| `voc_a2_performance_681` | **performance (show)** | *noun* | `/pərˈfɔrməns/` | actuación | The dance performance was amazing. | La actuación de baile fue increíble. |
+| `voc_a2_stand-up-comedy_682` | **stand-up comedy** | *noun* | `/ˈstændˌʌp ˈkɑmədi/` | comedia en vivo | We watched a stand-up comedy show. | Vimos un show de comedia en vivo. |
+| `voc_a2_orchestra_683` | **orchestra** | *noun* | `/ˈɔrkɪstrə/` | orquesta | The orchestra played beautifully. | La orquesta tocó hermosamente. |
+| `voc_a2_choir_684` | **choir** | *noun* | `/kwaɪər/` | coro | She sings in the school choir. | Ella canta en el coro de la escuela. |
+| `voc_a2_album_685` | **album** | *noun* | `/ˈælbəm/` | álbum | Their new album is excellent. | Su nuevo álbum es excelente. |
+| `voc_a2_lyrics_686` | **lyrics** | *noun* | `/ˈlɪrɪks/` | letra de canción | I don't know the lyrics of this song. | No conozco la letra de esta canción. |
 
 ### Semana 15: Personalidad y carácter
 Total de palabras en esta semana: **48**
 
 | ID | Palabra | Categoría | Fonética (IPA) | Traducción | Ejemplo en Inglés | Traducción del Ejemplo |
 |---|---|---|---|---|---|---|
-| `voc_a2_ambitious_687` | **ambitious** | *adjective* | — | ambicioso | — | — |
-| `voc_a2_stubborn_688` | **stubborn** | *adjective* | — | terco | — | — |
-| `voc_a2_arrogant_689` | **arrogant** | *adjective* | — | arrogante | — | — |
-| `voc_a2_humble_690` | **humble** | *adjective* | — | humilde | — | — |
-| `voc_a2_reliable_691` | **reliable** | *adjective* | — | confiable | — | — |
-| `voc_a2_trustworthy_692` | **trustworthy** | *adjective* | — | digno de confianza | — | — |
-| `voc_a2_sociable_693` | **sociable** | *adjective* | — | sociable | — | — |
-| `voc_a2_introverted_694` | **introverted** | *adjective* | — | introvertido | — | — |
-| `voc_a2_extroverted_695` | **extroverted** | *adjective* | — | extrovertido | — | — |
-| `voc_a2_open-minded_696` | **open-minded** | *adjective* | — | de mente abierta | — | — |
-| `voc_a2_closed-minded_697` | **closed-minded** | *adjective* | — | cerrado de mente | — | — |
-| `voc_a2_judgmental_698` | **judgmental** | *adjective* | — | crítico/juzgón | — | — |
-| `voc_a2_optimistic_699` | **optimistic** | *adjective* | — | optimista | — | — |
-| `voc_a2_pessimistic_700` | **pessimistic** | *adjective* | — | pesimista | — | — |
-| `voc_a2_realistic_701` | **realistic** | *adjective* | — | realista | — | — |
-| `voc_a2_idealistic_702` | **idealistic** | *adjective* | — | idealista | — | — |
-| `voc_a2_assertive_703` | **assertive** | *adjective* | — | asertivo | — | — |
-| `voc_a2_passive_704` | **passive** | *adjective* | — | pasivo | — | — |
-| `voc_a2_aggressive_705` | **aggressive** | *adjective* | — | agresivo | — | — |
-| `voc_a2_competitive_706` | **competitive** | *adjective* | — | competitivo | — | — |
-| `voc_a2_cooperative_707` | **cooperative** | *adjective* | — | cooperativo | — | — |
-| `voc_a2_independent_708` | **independent** | *adjective* | — | independiente | — | — |
-| `voc_a2_dependent_709` | **dependent** | *adjective* | — | dependiente | — | — |
-| `voc_a2_mature_710` | **mature** | *adjective* | — | maduro | — | — |
-| `voc_a2_immature_711` | **immature** | *adjective* | — | inmaduro | — | — |
-| `voc_a2_responsible_712` | **responsible** | *adjective* | — | responsable | — | — |
-| `voc_a2_irresponsible_713` | **irresponsible** | *adjective* | — | irresponsable | — | — |
-| `voc_a2_disciplined_714` | **disciplined** | *adjective* | — | disciplinado | — | — |
-| `voc_a2_spontaneous_715` | **spontaneous** | *adjective* | — | espontáneo | — | — |
-| `voc_a2_cautious_716` | **cautious** | *adjective* | — | cauteloso | — | — |
-| `voc_a2_adventurous_717` | **adventurous** | *adjective* | — | aventurero | — | — |
-| `voc_a2_creative_718` | **creative** | *adjective* | — | creativo | — | — |
-| `voc_a2_logical_719` | **logical** | *adjective* | — | lógico | — | — |
-| `voc_a2_analytical_720` | **analytical** | *adjective* | — | analítico | — | — |
-| `voc_a2_intuitive_721` | **intuitive** | *adjective* | — | intuitivo | — | — |
-| `voc_a2_perceptive_722` | **perceptive** | *adjective* | — | perceptivo | — | — |
-| `voc_a2_charismatic_723` | **charismatic** | *adjective* | — | carismático | — | — |
-| `voc_a2_witty_724` | **witty** | *adjective* | — | ingenioso | — | — |
-| `voc_a2_sarcastic_725` | **sarcastic** | *adjective* | — | sarcástico | — | — |
-| `voc_a2_blunt_726` | **blunt** | *adjective* | — | directo/franco | — | — |
-| `voc_a2_diplomatic_727` | **diplomatic** | *adjective* | — | diplomático | — | — |
-| `voc_a2_tactful_728` | **tactful** | *adjective* | — | con tacto | — | — |
-| `voc_a2_insensitive_729` | **insensitive** | *adjective* | — | insensible | — | — |
-| `voc_a2_thoughtful_730` | **thoughtful** | *adjective* | — | considerado | — | — |
-| `voc_a2_forgetful_731` | **forgetful** | *adjective* | — | olvidadizo | — | — |
-| `voc_a2_punctual_732` | **punctual** | *adjective* | — | puntual | — | — |
-| `voc_a2_easygoing_733` | **easygoing** | *adjective* | — | de trato fácil | — | — |
-| `voc_a2_demanding_734` | **demanding** | *adjective* | — | exigente | — | — |
+| `voc_a2_ambitious_687` | **ambitious** | *adjective* | `/æmˈbɪʃəs/` | ambicioso | She is very ambitious about her career. | Ella es muy ambiciosa con su carrera. |
+| `voc_a2_stubborn_688` | **stubborn** | *adjective* | `/ˈstʌbərn/` | terco | My brother is really stubborn. | Mi hermano es muy terco. |
+| `voc_a2_arrogant_689` | **arrogant** | *adjective* | `/ˈɛrəgənt/` | arrogante | He seemed arrogant during the meeting. | Él pareció arrogante durante la reunión. |
+| `voc_a2_humble_690` | **humble** | *adjective* | `/ˈhʌmbəl/` | humilde | She stayed humble after winning. | Ella se mantuvo humilde después de ganar. |
+| `voc_a2_reliable_691` | **reliable** | *adjective* | `/rɪˈlaɪəbəl/` | confiable | He is a reliable friend. | Él es un amigo confiable. |
+| `voc_a2_trustworthy_692` | **trustworthy** | *adjective* | `/ˈtrʌstˌwɜrði/` | digno de confianza | She is a trustworthy person. | Ella es una persona digna de confianza. |
+| `voc_a2_sociable_693` | **sociable** | *adjective* | `/ˈsoʊʃəbəl/` | sociable | My cousin is very sociable. | Mi primo es muy sociable. |
+| `voc_a2_introverted_694` | **introverted** | *adjective* | `/ˈɪntroʊˌvɜrtɪd/` | introvertido | He is more introverted than his sister. | Él es más introvertido que su hermana. |
+| `voc_a2_extroverted_695` | **extroverted** | *adjective* | `/ˈɛkstroʊˌvɜrtɪd/` | extrovertido | She is extroverted and outgoing. | Ella es extrovertida y abierta. |
+| `voc_a2_open-minded_696` | **open-minded** | *adjective* | `/ˈoʊpənˈmaɪndɪd/` | de mente abierta | My boss is very open-minded. | Mi jefe tiene mente muy abierta. |
+| `voc_a2_closed-minded_697` | **closed-minded** | *adjective* | `/ˈkloʊzdˈmaɪndɪd/` | cerrado de mente | Don't be closed-minded about new ideas. | No seas de mente cerrada con ideas nuevas. |
+| `voc_a2_judgmental_698` | **judgmental** | *adjective* | `/dʒʌdʒˈmɛntəl/` | crítico/juzgón | Try not to be judgmental. | Trata de no ser crítico/juzgón. |
+| `voc_a2_optimistic_699` | **optimistic** | *adjective* | `/ˌɑptɪˈmɪstɪk/` | optimista | She is always optimistic. | Ella siempre es optimista. |
+| `voc_a2_pessimistic_700` | **pessimistic** | *adjective* | `/ˌpɛsəˈmɪstɪk/` | pesimista | He can be a bit pessimistic. | Él puede ser un poco pesimista. |
+| `voc_a2_realistic_701` | **realistic** | *adjective* | `/ˌriəˈlɪstɪk/` | realista | Let's be realistic about the timeline. | Seamos realistas sobre el tiempo. |
+| `voc_a2_idealistic_702` | **idealistic** | *adjective* | `/aɪˌdiəˈlɪstɪk/` | idealista | He has idealistic views on society. | Él tiene visiones idealistas sobre la sociedad. |
+| `voc_a2_assertive_703` | **assertive** | *adjective* | `/əˈsɜrtɪv/` | asertivo | You need to be more assertive. | Necesitas ser más asertivo. |
+| `voc_a2_passive_704` | **passive** | *adjective* | `/ˈpæsɪv/` | pasivo | He is too passive at work. | Él es demasiado pasivo en el trabajo. |
+| `voc_a2_aggressive_705` | **aggressive** | *adjective* | `/əˈgrɛsɪv/` | agresivo | Don't be aggressive during the debate. | No seas agresivo durante el debate. |
+| `voc_a2_competitive_706` | **competitive** | *adjective* | `/kəmˈpɛtɪtɪv/` | competitivo | She is very competitive in sports. | Ella es muy competitiva en los deportes. |
+| `voc_a2_cooperative_707` | **cooperative** | *adjective* | `/koʊˈɑpərətɪv/` | cooperativo | The whole team was cooperative. | Todo el equipo fue cooperativo. |
+| `voc_a2_independent_708` | **independent** | *adjective* | `/ˌɪndɪˈpɛndənt/` | independiente | My daughter is very independent. | Mi hija es muy independiente. |
+| `voc_a2_dependent_709` | **dependent** | *adjective* | `/dɪˈpɛndənt/` | dependiente | He is too dependent on his phone. | Él es demasiado dependiente de su teléfono. |
+| `voc_a2_mature_710` | **mature** | *adjective* | `/məˈtʃʊr/` | maduro | She is mature for her age. | Ella es madura para su edad. |
+| `voc_a2_immature_711` | **immature** | *adjective* | `/ˌɪməˈtʃʊr/` | inmaduro | He acted immature at the party. | Él actuó de forma inmadura en la fiesta. |
+| `voc_a2_responsible_712` | **responsible** | *adjective* | `/rɪˈspɑnsəbəl/` | responsable | She is a responsible employee. | Ella es una empleada responsable. |
+| `voc_a2_irresponsible_713` | **irresponsible** | *adjective* | `/ˌɪrɪˈspɑnsəbəl/` | irresponsable | It was irresponsible to leave early. | Fue irresponsable irse temprano. |
+| `voc_a2_disciplined_714` | **disciplined** | *adjective* | `/ˈdɪsəplɪnd/` | disciplinado | He is very disciplined about studying. | Él es muy disciplinado con el estudio. |
+| `voc_a2_spontaneous_715` | **spontaneous** | *adjective* | `/spɑnˈteɪniəs/` | espontáneo | She is spontaneous and fun. | Ella es espontánea y divertida. |
+| `voc_a2_cautious_716` | **cautious** | *adjective* | `/ˈkɔʃəs/` | cauteloso | Be cautious near the edge. | Ten cuidado cerca del borde. |
+| `voc_a2_adventurous_717` | **adventurous** | *adjective* | `/ædˈvɛntʃərəs/` | aventurero | My father is an adventurous person. | Mi padre es una persona aventurera. |
+| `voc_a2_creative_718` | **creative** | *adjective* | `/kriˈeɪtɪv/` | creativo | She has a creative mind. | Ella tiene una mente creativa. |
+| `voc_a2_logical_719` | **logical** | *adjective* | `/ˈlɑdʒɪkəl/` | lógico | His argument was very logical. | Su argumento fue muy lógico. |
+| `voc_a2_analytical_720` | **analytical** | *adjective* | `/ˌænəˈlɪtɪkəl/` | analítico | She has an analytical approach to problems. | Ella tiene un enfoque analítico ante los problemas. |
+| `voc_a2_intuitive_721` | **intuitive** | *adjective* | `/ɪnˈtuɪtɪv/` | intuitivo | He made an intuitive decision. | Él tomó una decisión intuitiva. |
+| `voc_a2_perceptive_722` | **perceptive** | *adjective* | `/pərˈsɛptɪv/` | perceptivo | She is very perceptive about people. | Ella es muy perceptiva con las personas. |
+| `voc_a2_charismatic_723` | **charismatic** | *adjective* | `/ˌkɛrɪzˈmætɪk/` | carismático | The speaker was charismatic and funny. | El orador fue carismático y gracioso. |
+| `voc_a2_witty_724` | **witty** | *adjective* | `/ˈwɪti/` | ingenioso | He is known for his witty comments. | Él es conocido por sus comentarios ingeniosos. |
+| `voc_a2_sarcastic_725` | **sarcastic** | *adjective* | `/sɑrˈkæstɪk/` | sarcástico | Her tone was a bit sarcastic. | Su tono fue un poco sarcástico. |
+| `voc_a2_blunt_726` | **blunt** | *adjective* | `/blʌnt/` | directo/franco | He is very blunt with his opinions. | Él es muy directo con sus opiniones. |
+| `voc_a2_diplomatic_727` | **diplomatic** | *adjective* | `/ˌdɪpləˈmætɪk/` | diplomático | She handled the situation in a diplomatic way. | Ella manejó la situación de forma diplomática. |
+| `voc_a2_tactful_728` | **tactful** | *adjective* | `/ˈtæktfəl/` | con tacto | He gave tactful feedback. | Él dio retroalimentación con tacto. |
+| `voc_a2_insensitive_729` | **insensitive** | *adjective* | `/ɪnˈsɛnsɪtɪv/` | insensible | That comment was a bit insensitive. | Ese comentario fue un poco insensible. |
+| `voc_a2_thoughtful_730` | **thoughtful** | *adjective* | `/ˈθɔtfəl/` | considerado | It was a thoughtful gift. | Fue un regalo considerado. |
+| `voc_a2_forgetful_731` | **forgetful** | *adjective* | `/fərˈgɛtfəl/` | olvidadizo | My grandfather is a bit forgetful now. | Mi abuelo es un poco olvidadizo ahora. |
+| `voc_a2_punctual_732` | **punctual** | *adjective* | `/ˈpʌŋktʃuəl/` | puntual | She is always punctual. | Ella siempre es puntual. |
+| `voc_a2_easygoing_733` | **easygoing** | *adjective* | `/ˈiziˌgoʊɪŋ/` | de trato fácil | He has an easygoing personality. | Él tiene una personalidad de trato fácil. |
+| `voc_a2_demanding_734` | **demanding** | *adjective* | `/dɪˈmændɪŋ/` | exigente | Her job is very demanding. | Su trabajo es muy exigente. |
 
 ### 📖 Lecturas de Comprensión · Nivel A2
 
