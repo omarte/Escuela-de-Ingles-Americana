@@ -879,14 +879,15 @@ footer {
   align-items: center;
   position: relative;
   z-index: 4;
-  background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
-  padding: 8px 0;
+  background: transparent;
+  padding: 0;
+  margin: 0;
 }
 
 .section-divider-emerald {
-  height: 3px;
-  width: min(92%, 1140px);
+  height: 1.5px;
+  width: min(90%, 1140px);
   background: linear-gradient(90deg, transparent 0%, rgba(16, 185, 129, 0.4) 15%, #059669 50%, rgba(16, 185, 129, 0.4) 85%, transparent 100%);
-  box-shadow: 0 4px 16px rgba(16, 185, 129, 0.45), 0 1px 4px rgba(5, 150, 105, 0.3);
+  box-shadow: 0 1px 8px rgba(16, 185, 129, 0.4), 0 0 2px rgba(5, 150, 105, 0.25);
   border-radius: 999px;
 }
