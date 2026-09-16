@@ -266,7 +266,7 @@ function auditSM2LatencyEngine(): boolean {
     lapses: 0,
     quality,
     reviewedAt: new Date().toISOString(),
-    latencyMs,
+    ...(latencyMs !== undefined ? { latencyMs } : {}),
   })
 
   let pilar3Passed = true

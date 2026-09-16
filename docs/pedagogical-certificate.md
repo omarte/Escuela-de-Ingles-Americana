@@ -2,8 +2,8 @@
 **Escuela de Inglés Americana — Dirección de Tecnología Educativa**
 
 - **Estado de Certificación:** `CERTIFIED_AUDIT_PASSED`
-- **Firma Criptográfica SHA-256:** `1d6c4a326d18cd78141e257f1359c86665cc14e108c831d41ba69508db5ba75e`
-- **Fecha de Emisión:** 2026-09-16T22:22:06.665Z
+- **Firma Criptográfica SHA-256:** `a2d1db4ae4907adbf669d46858be5a70385b6a1ea2651c91da0868f6a32f0609`
+- **Fecha de Emisión:** 2026-09-16T22:23:11.476Z
 - **Pruebas de Ingeniería Ejecutadas:** 6 aprobadas / 0 fallidas
 
 ---
