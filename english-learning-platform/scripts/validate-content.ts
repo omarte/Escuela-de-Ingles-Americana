@@ -55,7 +55,6 @@ let totalPassages = 0
 // ─── 1. Vocabulary Validation ────────────────────────────────────────────────
 for (const level of LEVELS) {
   const levelContent = contentRegistry[level]
-  if (!levelContent) continue
 
   for (const block of levelContent.blocks) {
     for (const item of block.vocabulary) {
