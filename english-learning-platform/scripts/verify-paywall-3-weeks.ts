@@ -15,8 +15,9 @@ console.log('══════════════════════�
 
 // 1. Validar constante de semanas gratuitas
 console.log(`[1] Verificando constante de semanas gratis: MAX_FREE_WEEKS = ${MAX_FREE_WEEKS}`)
-if (MAX_FREE_WEEKS !== 3) {
-  throw new Error(`FALLO: MAX_FREE_WEEKS debería ser 3, pero es ${MAX_FREE_WEEKS}`)
+const expectedFreeWeeks = 3
+if ((MAX_FREE_WEEKS as number) !== expectedFreeWeeks) {
+  throw new Error(`FALLO: MAX_FREE_WEEKS debería ser 3, pero es ${String(MAX_FREE_WEEKS)}`)
 }
 console.log('    ✅ MAX_FREE_WEEKS está correctamente fijado en 3 semanas.\n')
 
@@ -24,17 +25,17 @@ console.log('    ✅ MAX_FREE_WEEKS está correctamente fijado en 3 semanas.\n')
 const a1Vocab = getVocabularyForLevel('A1')
 const weekCounts: Record<number, number> = {}
 for (const item of a1Vocab) {
-  weekCounts[item.week] = (weekCounts[item.week] || 0) + 1
+  weekCounts[item.week] = (weekCounts[item.week] ?? 0) + 1
 }
 
-const w1 = weekCounts[1] || 0
-const w2 = weekCounts[2] || 0
-const w3 = weekCounts[3] || 0
+const w1 = weekCounts[1] ?? 0
+const w2 = weekCounts[2] ?? 0
+const w3 = weekCounts[3] ?? 0
 const freeTotal = w1 + w2 + w3
 
 console.log(`[2] Desglose de contenido gratuito inicial (A1):`)
 for (let w = 1; w <= 19; w++) {
-  console.log(`    • Semana ${w}: ${weekCounts[w] || 0} palabras`)
+  console.log(`    • Semana ${w}: ${weekCounts[w] ?? 0} palabras`)
 }
 console.log(`    • Total Nivel Gratuito (Semanas 1–3): ${freeTotal} palabras`)
 console.log('    ✅ Contenido de las primeras 3 semanas contabilizado con éxito.\n')
