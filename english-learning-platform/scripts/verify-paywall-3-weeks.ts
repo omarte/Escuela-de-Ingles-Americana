@@ -6,7 +6,11 @@
 //    (blockedByPaywall: true) y no inyecta ninguna palabra adicional.
 // 3. Con Membresía Pro activa (isPro: true), la Semana 4 y niveles A2–B2 se desbloquean con éxito.
 
-import { canAccessWeek, MAX_FREE_WEEKS } from '../packages/monetization/src/entitlements'
+import {
+  canAccessWeek,
+  MAX_FREE_WEEKS,
+  type ContentApprovalByLevel,
+} from '../packages/monetization/src/index'
 import { getVocabularyForLevel } from '../packages/content/src/index'
 
 console.log('════════════════════════════════════════════════════════════════════')
@@ -43,27 +47,27 @@ console.log('    ✅ Contenido de las primeras 3 semanas contabilizado con éxit
 // 3. Simular acceso de usuario NO PAGADO (isPro = false)
 console.log('[3] Simulando acceso para Usuario Gratuito (isPro = false):')
 for (let w = 1; w <= 3; w++) {
-  const allowed = canAccessWeek('A1', w, false)
+  const allowed: boolean = canAccessWeek('A1', w, false)
   console.log(`    • Semana ${w}: ${allowed ? '🟢 ACCESO PERMITIDO (Gratis)' : '❌ ERROR'}`)
   if (!allowed) throw new Error(`Semana ${w} debería ser gratis`)
 }
 
 console.log('\n    Intentando acceder a la Semana 4 sin suscripción:')
-const w4Free = canAccessWeek('A1', 4, false)
+const w4Free: boolean = canAccessWeek('A1', 4, false)
 console.log(`    • Semana 4: ${w4Free ? '❌ ERROR (Permitido)' : '🔒 BLOQUEADO POR PAYWALL'}`)
 if (w4Free) throw new Error('Semana 4 NO debe ser accesible sin Pro')
 
 for (let w = 5; w <= 19; w++) {
-  const allowed = canAccessWeek('A1', w, false)
+  const allowed: boolean = canAccessWeek('A1', w, false)
   if (allowed) throw new Error(`Semana ${w} NO debe ser accesible sin Pro`)
 }
 console.log('    ✅ Semanas 4 a 19 de A1 correctamente bloqueadas para usuarios gratuitos.\n')
 
 // 4. Simular acceso a niveles superiores (A2, B1, B2) sin pago
 console.log('[4] Verificando bloqueo de niveles avanzados para usuario gratuito:')
-const a2Free = canAccessWeek('A2', 1, false)
-const b1Free = canAccessWeek('B1', 1, false)
-const b2Free = canAccessWeek('B2', 1, false)
+const a2Free: boolean = canAccessWeek('A2', 1, false)
+const b1Free: boolean = canAccessWeek('B1', 1, false)
+const b2Free: boolean = canAccessWeek('B2', 1, false)
 
 console.log(`    • A2 Semana 1: ${a2Free ? '❌ ERROR' : '🔒 BLOQUEADO'}`)
 console.log(`    • B1 Semana 1: ${b1Free ? '❌ ERROR' : '🔒 BLOQUEADO'}`)
@@ -74,11 +78,14 @@ console.log('    ✅ Todos los niveles superiores bloqueados sin suscripción.\n
 
 // 5. Simular desbloqueo con Membresía Pro (isPro = true)
 console.log('[5] Simulando usuario con Membresía Pro activa (isPro = true):')
-const w4Pro = canAccessWeek('A1', 4, true)
-const w8Pro = canAccessWeek('A1', 8, true)
-const w19Pro = canAccessWeek('A1', 19, true)
-const a2Pro = canAccessWeek('A2', 1, true, { A2: 'published' })
-const b1Pro = canAccessWeek('B1', 1, true, { B1: 'published' })
+const a2Published: ContentApprovalByLevel = { A2: 'published' }
+const b1Published: ContentApprovalByLevel = { B1: 'published' }
+
+const w4Pro: boolean = canAccessWeek('A1', 4, true)
+const w8Pro: boolean = canAccessWeek('A1', 8, true)
+const w19Pro: boolean = canAccessWeek('A1', 19, true)
+const a2Pro: boolean = canAccessWeek('A2', 1, true, a2Published)
+const b1Pro: boolean = canAccessWeek('B1', 1, true, b1Published)
 
 console.log(`    • A1 Semana 4: ${w4Pro ? '🟢 DESBLOQUEADO (Pro)' : '❌ ERROR'}`)
 console.log(`    • A1 Semana 8 (Hito 2 Meses): ${w8Pro ? '🟢 DESBLOQUEADO (Pro)' : '❌ ERROR'}`)
