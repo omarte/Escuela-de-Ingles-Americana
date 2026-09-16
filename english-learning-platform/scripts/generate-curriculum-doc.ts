@@ -5,7 +5,6 @@ import {
   readingPassagesRegistry,
 } from '../packages/content/src/index'
 import type {
-  CEFRLevel,
   GrammarExercise,
   WritingPrompt,
 } from '../packages/types/src/index'
