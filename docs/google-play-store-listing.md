@@ -27,30 +27,32 @@ Desde los fundamentos de A1 hasta la progresión hacia niveles avanzados (B1/B2)
 POR QUÉ NUESTRO MÉTODO FUNCIONA
 ────────────────────────────────────────
 
-1. REPETICIÓN ESPACIADA INTELIGENTE (SRS)
-Olvídate de olvidar lo aprendido. Nuestro algoritmo calcula el momento exacto en que tu cerebro está a punto de perder una palabra o estructura y te la presenta en el intervalo óptimo. Memoriza vocabulario de por vida invirtiendo solo 10 a 15 minutos al día.
+1. REPETICIÓN ESPACIADA SM-2 CON TELEMETRÍA DE LATENCIA
+Olvídate de olvidar lo aprendido. Nuestro algoritmo mide el tiempo exacto de tu respuesta en milisegundos. Si tardas más de 7 segundos, detecta fricción cognitiva oculta y activa el Bucle de Fijación Inmediata para consolidar el término antes de que se vuelva olvido permanente.
 
-2. BANCO DE VOCABULARIO ESTRUCTURADO Y AUDITADO
-Más de 1.500 palabras y colocaciones esenciales en niveles base 100% auditadas por docentes, organizadas temáticamente por semanas (MCER):
-• A1 (Acceso - 100% Auditado): Fundamentos cotidianos, números, familia, comida y rutinas del día a día.
-• A2 (Plataforma - 100% Auditado): Trabajo, viajes, compras, descripciones y relaciones sociales.
-• B1 y B2 (Intermedio / Profesional - Curaduría Activa): Argumentación, conectores lógicos, finanzas y redacción formal en despliegue supervisado.
+2. 2.556 PALABRAS 100% CURADAS Y CON FONÉTICA IPA AUTÉNTICA
+Currículo académico completo en los 4 niveles del MCER, curado por lingüistas humanos bajo la política Zero AI Hallucinations:
+• A1 (Principiante - 100% Auditado): 1.512 palabras y colocaciones esenciales con transcripción IPA y oraciones reales.
+• A2 (Elemental - 100% Auditado): 734 palabras para desenvolverte en trabajo, viajes y relaciones cotidianas.
+• B1 (Intermedio - 100% Auditado): 226 palabras de argumentación, debate y redacción estructurada.
+• B2 (Profesional - 100% Auditado): 84 palabras de alta precisión léxica, matices y diplomacia formal.
 
-3. LECTURAS GRADUADAS CON COMPRENSIÓN REAL
-El vocabulario no vive aislado. Lee textos y crónicas adaptadas a tu nivel, con traducción instantánea de soporte y preguntas de comprensión que desafían tu entendimiento del contexto.
+3. LECTURAS GRADUADAS BAJO EL PRINCIPIO KRASHEN i+1
+El vocabulario no vive aislado. Lee textos contextuales que solo utilizan palabras que ya dominas más el léxico nuevo de la semana. Cero tropiezos con términos avanzados del futuro; 100% comprensión natural y disfrute lector.
 
 4. PRONUNCIACIÓN Y AUDIO NATIVO
-Escucha cada término con claridad de estudio. Elige entre pronunciación estadounidense estándar y velocidad pausada para entrenar tu oído paso a paso.
+Elimina el acento de turista. Aprende la colocación bucal exacta con el Alfabeto Fonético Internacional (IPA) y escucha cada término con claridad de estudio profesional.
 
-5. EJERCICIOS DE GRAMÁTICA Y REDACCIÓN
-Progresa desde oraciones guiadas ("Fill the Blank") hasta redacción libre (ensayos de opinión, correos formales e informes) con rúbricas claras de autoevaluación.
+5. BOLETAS OFICIALES Y EVALUACIÓN DE COMPETENCIAS
+Acredita tu progreso real. Cada nivel cuenta con hitos de evaluación cronometrados, dictamen de latencia refleja y certificados académicos formales para tu perfil profesional.
 
 ────────────────────────────────────────
 DISEÑADO PARA TU DÍA A DÍA
 ────────────────────────────────────────
-• 100% Offline-First: Estudia en el metro, en el avión o sin cobertura; tus progresos se sincronizan automáticamente.
-• Racha y Metas Diarias: Establece tu objetivo (10, 15, 20 o 25 tarjetas diarias) y mantén tu racha activa con recordatorios discretos.
-• Sin distracciones infantiles: Una interfaz limpia, moderna y oscura diseñada para adultos enfocados en progresar.
+• 100% Offline-First: Estudia en el metro, en el avión o sin cobertura con base de datos local SQLite.
+• Racha y Metas Diarias: Establece tu objetivo (10, 15, 20 o 25 tarjetas diarias) y mantén tu hábito activo.
+• Privacidad Rigurosa: Cero venta de datos, sin anuncios invasivos y derecho al olvido en 1 clic.
+• Certificación Criptográfica: Código fuente y currículo auditados con firma digital inmutable SHA-256.
 
 Domina el idioma que abre puertas profesionales y personales. Descarga Escuela de Inglés Americana y empieza a aprender con rigor desde hoy.
 ```
