@@ -73,7 +73,7 @@ export default function PaywallScreen(): React.JSX.Element {
           iconBgColor="#FEF3C7"
           eyebrow="SUSCRIPCIÓN & ACCESO COMPLETO"
           title="Membresía Pro"
-          subtitle="El Nivel A1 es y seguirá siendo 100% gratuito. Con Pro desbloqueas el Nivel A2 hoy, y B1/B2 automáticamente sin pagar de nuevo."
+          subtitle="Comienza con el Starter Deck gratuito de las primeras semanas. Desbloquea el currículo completo de 44 semanas (A1 avanzado a B2) con tu Membresía Pro o Plan Vitalicio."
           rightElement={<Badge label="Plan Pro" color="#D97706" size="sm" />}
         />
 
@@ -95,9 +95,9 @@ export default function PaywallScreen(): React.JSX.Element {
                 <Ionicons name="checkmark-circle" size={20} color={colors.primary} />
               </View>
               <View style={styles.benefitTextCol}>
-                <Text style={styles.benefitItemTitle}>Nivel A2 Completo Desbloqueado</Text>
+                <Text style={styles.benefitItemTitle}>Currículo Completo de 44 Semanas</Text>
                 <Text style={styles.benefitItemDesc}>
-                  20 semanas de vocabulario intermedio inicial y 1,000+ nuevas palabras.
+                  2,556 palabras 100% curadas por docentes humanos en A1 avanzado, A2, B1 y B2.
                 </Text>
               </View>
             </View>
@@ -107,9 +107,9 @@ export default function PaywallScreen(): React.JSX.Element {
                 <Ionicons name="checkmark-circle" size={20} color={colors.primary} />
               </View>
               <View style={styles.benefitTextCol}>
-                <Text style={styles.benefitItemTitle}>Pase Vitalicio a B1 y B2</Text>
+                <Text style={styles.benefitItemTitle}>Telemetría de Latencia Cognitiva</Text>
                 <Text style={styles.benefitItemDesc}>
-                  Acceso garantizado a las semanas avanzadas en cuanto se publiquen.
+                  Detección de fricción (&gt;7s), velocidad de recuperación y curvas de olvido Ebbinghaus.
                 </Text>
               </View>
             </View>
@@ -119,9 +119,9 @@ export default function PaywallScreen(): React.JSX.Element {
                 <Ionicons name="checkmark-circle" size={20} color={colors.primary} />
               </View>
               <View style={styles.benefitTextCol}>
-                <Text style={styles.benefitItemTitle}>Estudio 100% Offline</Text>
+                <Text style={styles.benefitItemTitle}>Bucle de Fijación Inmediata (Hot Re-injection)</Text>
                 <Text style={styles.benefitItemDesc}>
-                  Sin depender de conexión a internet: en viajes, metro u obra.
+                  Re-inyección activa en memoria de trabajo en la misma sesión para sellar dudas.
                 </Text>
               </View>
             </View>
@@ -131,9 +131,33 @@ export default function PaywallScreen(): React.JSX.Element {
                 <Ionicons name="checkmark-circle" size={20} color={colors.primary} />
               </View>
               <View style={styles.benefitTextCol}>
-                <Text style={styles.benefitItemTitle}>Certificados y Diplomas CEFR</Text>
+                <Text style={styles.benefitItemTitle}>Modo Rescate Ilimitado Anti-Burnout</Text>
                 <Text style={styles.benefitItemDesc}>
-                  Descarga tus certificados de superación de nivel avalados por la escuela.
+                  Protección de rachas y repasos ligeros en días de alta carga laboral o viajes.
+                </Text>
+              </View>
+            </View>
+
+            <View style={styles.benefitItem}>
+              <View style={styles.benefitCheck}>
+                <Ionicons name="checkmark-circle" size={20} color={colors.primary} />
+              </View>
+              <View style={styles.benefitTextCol}>
+                <Text style={styles.benefitItemTitle}>Banco Completo de Micro-Exámenes de 60s</Text>
+                <Text style={styles.benefitItemDesc}>
+                  Retos contextuales tipo cloze aplicados a 9 disciplinas profesionales reales.
+                </Text>
+              </View>
+            </View>
+
+            <View style={styles.benefitItem}>
+              <View style={styles.benefitCheck}>
+                <Ionicons name="checkmark-circle" size={20} color={colors.primary} />
+              </View>
+              <View style={styles.benefitTextCol}>
+                <Text style={styles.benefitItemTitle}>Garantía y Cancelación en 1 Clic</Text>
+                <Text style={styles.benefitItemDesc}>
+                  Prueba de 7 días sin compromiso. Administra o cancela desde Google Play / App Store.
                 </Text>
               </View>
             </View>
@@ -148,8 +172,7 @@ export default function PaywallScreen(): React.JSX.Element {
             </View>
             <Text style={styles.emptyTitle}>Suscripciones en Verificación</Text>
             <Text style={styles.emptyText}>
-              Los productos de suscripción se están sincronizando con Google Play Console.
-              Mientras tanto, puedes seguir aprendiendo el Nivel A1 con acceso libre y completo.
+              Los productos de suscripción ($9.99/mes con 7 días de prueba y $79.99 vitalicio) se están sincronizando con Google Play Console. Mientras tanto, puedes seguir aprendiendo con el Starter Deck inicial.
             </Text>
           </Card>
         ) : (
