@@ -85,98 +85,98 @@ Total de palabras en esta semana: **96**
 | `voc_a1_you_001` | **you** | *pronoun* | `/juː/` | tú / usted | You are my friend. | Tú eres mi amigo. |
 | `voc_a1_he_001` | **he** | *pronoun* | `/hiː/` | él | He is tall. | Él es alto. |
 | `voc_a1_she_001` | **she** | *pronoun* | `/ʃiː/` | ella | She lives in Mexico. | Ella vive en México. |
-| `voc_a1_it_001` | **it** | *pronoun* | — | eso / ello | — | — |
+| `voc_a1_it_001` | **it** | *pronoun* | `/ɪt/` | eso / ello | It is a sunny day. | Es un día soleado. |
 | `voc_a1_we_001` | **we** | *pronoun* | `/wiː/` | nosotros | We are happy today. | Estamos felices hoy. |
-| `voc_a1_they_001` | **they** | *pronoun* | — | ellos | — | — |
+| `voc_a1_they_001` | **they** | *pronoun* | `/ðeɪ/` | ellos | They are my brothers. | Ellos son mis hermanos. |
 | `voc_a1_my_001` | **my** | *determiner* | `/maɪ/` | mi | This is my house. | Esta es mi casa. |
-| `voc_a1_your_001` | **your** | *determiner* | — | tu | — | — |
-| `voc_a1_his_001` | **his** | *pronoun* | — | su (de él) | — | — |
-| `voc_a1_her_001` | **her** | *determiner* | — | su (de ella) | — | — |
-| `voc_a1_its_001` | **its** | *determiner* | — | su (de eso) | — | — |
-| `voc_a1_our_001` | **our** | *determiner* | — | nuestro | — | — |
-| `voc_a1_their_001` | **their** | *determiner* | — | su (de ellos) | — | — |
-| `voc_a1_mine_001` | **mine** | *pronoun* | — | mío | — | — |
+| `voc_a1_your_001` | **your** | *determiner* | `/jɔːr/` | tu | What is your name? | ¿Cuál es tu nombre? |
+| `voc_a1_his_001` | **his** | *pronoun* | `/hɪz/` | su (de él) | His car is blue. | Su carro es azul. |
+| `voc_a1_her_001` | **her** | *determiner* | `/hɜːr/` | su (de ella) | Her sister is a teacher. | Su hermana es maestra. |
+| `voc_a1_its_001` | **its** | *determiner* | `/ɪts/` | su (de eso) | The cat licked its paw. | El gato lamió su pata. |
+| `voc_a1_our_001` | **our** | *determiner* | `/ˈaʊər/` | nuestro | Our house is near the school. | Nuestra casa está cerca de la escuela. |
+| `voc_a1_their_001` | **their** | *determiner* | `/ðɛr/` | su (de ellos) | Their office is closed. | Su oficina está cerrada. |
+| `voc_a1_mine_001` | **mine** | *pronoun* | `/maɪn/` | mío | This book is mine. | Este libro es mío. |
 | `voc_a1_this_001` | **this** | *pronoun* | `/ðɪs/` | este/esto | This is my brother. | Este es mi hermano. |
-| `voc_a1_that_001` | **that** | *pronoun* | — | ese/eso | — | — |
-| `voc_a1_these_001` | **these** | *pronoun* | — | estos | — | — |
-| `voc_a1_those_001` | **those** | *pronoun* | — | esos | — | — |
+| `voc_a1_that_001` | **that** | *pronoun* | `/ðæt/` | ese/eso | That house is very big. | Esa casa es muy grande. |
+| `voc_a1_these_001` | **these** | *pronoun* | `/ðiːz/` | estos | These shoes are comfortable. | Estos zapatos son cómodos. |
+| `voc_a1_those_001` | **those** | *pronoun* | `/ðoʊz/` | esos | Those trees are tall. | Esos árboles son altos. |
 | `voc_a1_am_001` | **am** | *verb* | `/æm/` | soy/estoy | I am from Canada. | Soy de Canadá. |
 | `voc_a1_is_001` | **is** | *verb* | `/ɪz/` | es/está | She is a doctor. | Ella es médica. |
 | `voc_a1_are_001` | **are** | *verb* | `/ɑːr/` | son/están | They are at home. | Ellos están en casa. |
-| `voc_a1_was_001` | **was** | *verb* | — | era/estaba | — | — |
-| `voc_a1_were_001` | **were** | *verb* | — | eran/estaban | — | — |
-| `voc_a1_be_001` | **be** | *verb* | — | ser/estar | — | — |
-| `voc_a1_been_001` | **been** | *verb* | — | sido/estado | — | — |
-| `voc_a1_being_001` | **being** | *verb* | — | siendo | — | — |
+| `voc_a1_was_001` | **was** | *verb* | `/wʌz/` | era/estaba | He was happy yesterday. | Él estaba feliz ayer. |
+| `voc_a1_were_001` | **were** | *verb* | `/wɜːr/` | eran/estaban | They were in the park. | Ellos estaban en el parque. |
+| `voc_a1_be_001` | **be** | *verb* | `/biː/` | ser/estar | You should be patient. | Deberías ser paciente. |
+| `voc_a1_been_001` | **been** | *verb* | `/bɪn/` | sido/estado | I have been busy today. | He estado ocupado hoy. |
+| `voc_a1_being_001` | **being** | *verb* | `/ˈbiːɪŋ/` | siendo | She is being very polite. | Ella está siendo muy educada. |
 | `voc_a1_have_001` | **have** | *verb* | `/hæv/` | tener | I have two brothers. | Tengo dos hermanos. |
-| `voc_a1_has_001` | **has** | *verb* | — | tiene | — | — |
-| `voc_a1_had_001` | **had** | *verb* | — | tenía/tuvo | — | — |
-| `voc_a1_having_001` | **having** | *verb* | — | teniendo | — | — |
+| `voc_a1_has_001` | **has** | *verb* | `/hæz/` | tiene | She has two dogs. | Ella tiene dos perros. |
+| `voc_a1_had_001` | **had** | *verb* | `/hæd/` | tenía/tuvo | We had a good time. | La pasamos bien. |
+| `voc_a1_having_001` | **having** | *verb* | `/ˈhævɪŋ/` | teniendo | They are having lunch. | Ellos están almorzando. |
 | `voc_a1_do_001` | **do** | *verb* | `/duː/` | hacer | I do my homework every day. | Hago mi tarea todos los días. |
-| `voc_a1_does_001` | **does** | *verb* | — | hace | — | — |
+| `voc_a1_does_001` | **does** | *verb* | `/dʌz/` | hace | He does his homework every evening. | Él hace su tarea cada noche. |
 | `voc_a1_did_001` | **did** | *verb* | `/dɪd/` | hizo | She did the dishes. | Ella lavó los platos. |
-| `voc_a1_doing_001` | **doing** | *verb* | — | haciendo | — | — |
-| `voc_a1_done_001` | **done** | *verb* | — | hecho | — | — |
+| `voc_a1_doing_001` | **doing** | *verb* | `/ˈduːɪŋ/` | haciendo | What are you doing now? | ¿Qué estás haciendo ahora? |
+| `voc_a1_done_001` | **done** | *verb* | `/dʌn/` | hecho | The project is finally done. | El proyecto finalmente está terminado. |
 | `voc_a1_hello_001` | **hello** | *interjection* | `/həˈloʊ/` | hola | Hello, how are you? | Hola, ¿cómo estás? |
-| `voc_a1_hi_001` | **hi** | *interjection* | — | hola | — | — |
+| `voc_a1_hi_001` | **hi** | *interjection* | `/haɪ/` | hola | Hi, how can I help you? | Hola, ¿cómo te puedo ayudar? |
 | `voc_a1_goodbye_001` | **goodbye** | *interjection* | `/ˌɡʊdˈbaɪ/` | adiós | Goodbye, see you tomorrow. | Adiós, nos vemos mañana. |
-| `voc_a1_bye_001` | **bye** | *interjection* | — | chao | — | — |
+| `voc_a1_bye_001` | **bye** | *interjection* | `/baɪ/` | chao | Bye, see you tomorrow! | ¡Chao, nos vemos mañana! |
 | `voc_a1_good-morning_001` | **good morning** | *interjection* | `/ɡʊd ˈmɔːrnɪŋ/` | buenos días | Good morning, everyone! | ¡Buenos días a todos! |
-| `voc_a1_good-afternoon_001` | **good afternoon** | *interjection* | — | buenas tardes | — | — |
-| `voc_a1_good-evening_001` | **good evening** | *interjection* | — | buenas noches (saludo) | — | — |
-| `voc_a1_good-night_001` | **good night** | *interjection* | — | buenas noches (despedida) | — | — |
+| `voc_a1_good-afternoon_001` | **good afternoon** | *interjection* | `/ˌɡʊd ˌæftərˈnuːn/` | buenas tardes | Good afternoon, Mr. Davis. | Buenas tardes, señor Davis. |
+| `voc_a1_good-evening_001` | **good evening** | *interjection* | `/ˌɡʊd ˈiːvnɪŋ/` | buenas noches (saludo) | Good evening, welcome to our restaurant. | Buenas noches, bienvenidos a nuestro restaurante. |
+| `voc_a1_good-night_001` | **good night** | *interjection* | `/ˌɡʊd ˈnaɪt/` | buenas noches (despedida) | Good night, sleep well. | Buenas noches, que duermas bien. |
 | `voc_a1_please_001` | **please** | *interjection* | `/pliːz/` | por favor | Please, sit down. | Por favor, siéntate. |
 | `voc_a1_thank-you_001` | **thank you** | *interjection* | `/θæŋk juː/` | gracias | Thank you for your help. | Gracias por tu ayuda. |
-| `voc_a1_thanks_001` | **thanks** | *interjection* | — | gracias | — | — |
+| `voc_a1_thanks_001` | **thanks** | *interjection* | `/θæŋks/` | gracias | Thanks for your assistance. | Gracias por tu ayuda. |
 | `voc_a1_sorry_001` | **sorry** | *interjection* | `/ˈsɑːri/` | perdón | Sorry, I am late. | Perdón, llego tarde. |
-| `voc_a1_excuse-me_001` | **excuse me** | *interjection* | — | disculpe | — | — |
+| `voc_a1_excuse-me_001` | **excuse me** | *interjection* | `/ɪkˈskjuːz miː/` | disculpe | Excuse me, where is the station? | Disculpe, ¿dónde está la estación? |
 | `voc_a1_yes_001` | **yes** | *interjection* | `/jɛs/` | sí | Yes, I understand. | Sí, entiendo. |
 | `voc_a1_no_001` | **no** | *interjection* | `/noʊ/` | no | No, I don't have time. | No, no tengo tiempo. |
-| `voc_a1_ok_001` | **ok** | *interjection* | — | de acuerdo | — | — |
-| `voc_a1_welcome_001` | **welcome** | *interjection* | — | bienvenido | — | — |
-| `voc_a1_nice-to-meet-you_001` | **nice to meet you** | *interjection* | — | mucho gusto | — | — |
-| `voc_a1_how-are-you_001` | **how are you** | *interjection* | — | ¿cómo estás? | — | — |
-| `voc_a1_fine_001` | **fine** | *noun* | — | bien | — | — |
+| `voc_a1_ok_001` | **ok** | *interjection* | `/oʊˈkeɪ/` | de acuerdo | Is it ok if I call you later? | ¿Está bien si te llamo más tarde? |
+| `voc_a1_welcome_001` | **welcome** | *interjection* | `/ˈwɛlkəm/` | bienvenido | Welcome to our team. | Bienvenido a nuestro equipo. |
+| `voc_a1_nice-to-meet-you_001` | **nice to meet you** | *interjection* | `/ˌnaɪs tu ˈmiːt ju/` | mucho gusto | Hello Sarah, nice to meet you. | Hola Sarah, mucho gusto. |
+| `voc_a1_how-are-you_001` | **how are you** | *interjection* | `/ˌhaʊ ɑːr ˈjuː/` | ¿cómo estás? | How are you feeling today? | ¿Cómo te sientes hoy? |
+| `voc_a1_fine_001` | **fine** | *noun* | `/faɪn/` | bien | I am fine, thank you. | Estoy bien, gracias. |
 | `voc_a1_one_001` | **one** | *noun* | `/wʌn/` | uno | I have one sister. | Tengo una hermana. |
-| `voc_a1_two_001` | **two** | *noun* | — | dos | — | — |
-| `voc_a1_three_001` | **three** | *noun* | — | tres | — | — |
-| `voc_a1_four_001` | **four** | *noun* | — | cuatro | — | — |
-| `voc_a1_five_001` | **five** | *noun* | — | cinco | — | — |
-| `voc_a1_six_001` | **six** | *noun* | — | seis | — | — |
-| `voc_a1_seven_001` | **seven** | *noun* | — | siete | — | — |
-| `voc_a1_eight_001` | **eight** | *noun* | — | ocho | — | — |
-| `voc_a1_nine_001` | **nine** | *noun* | — | nueve | — | — |
+| `voc_a1_two_001` | **two** | *noun* | `/tuː/` | dos | I have two tickets for the concert. | Tengo dos boletos para el concierto. |
+| `voc_a1_three_001` | **three** | *noun* | `/θriː/` | tres | We have three meetings today. | Tenemos tres reuniones hoy. |
+| `voc_a1_four_001` | **four** | *noun* | `/fɔːr/` | cuatro | There are four chairs around the table. | Hay cuatro sillas alrededor de la mesa. |
+| `voc_a1_five_001` | **five** | *noun* | `/faɪv/` | cinco | She works five days a week. | Ella trabaja cinco días a la semana. |
+| `voc_a1_six_001` | **six** | *noun* | `/sɪks/` | seis | The store opens at six in the morning. | La tienda abre a las seis de la mañana. |
+| `voc_a1_seven_001` | **seven** | *noun* | `/ˈsɛvən/` | siete | He has seven cousins in California. | Él tiene siete primos en California. |
+| `voc_a1_eight_001` | **eight** | *noun* | `/eɪt/` | ocho | The train leaves at eight o'clock. | El tren sale a las ocho en punto. |
+| `voc_a1_nine_001` | **nine** | *noun* | `/naɪn/` | nueve | She bought nine apples at the market. | Ella compró nueve manzanas en el mercado. |
 | `voc_a1_ten_001` | **ten** | *noun* | `/tɛn/` | diez | The bus arrives in ten minutes. | El autobús llega en diez minutos. |
-| `voc_a1_eleven_001` | **eleven** | *noun* | — | once | — | — |
-| `voc_a1_twelve_001` | **twelve** | *noun* | — | doce | — | — |
-| `voc_a1_thirteen_001` | **thirteen** | *noun* | — | trece | — | — |
-| `voc_a1_fourteen_001` | **fourteen** | *noun* | — | catorce | — | — |
-| `voc_a1_fifteen_001` | **fifteen** | *noun* | — | quince | — | — |
-| `voc_a1_sixteen_001` | **sixteen** | *noun* | — | dieciséis | — | — |
-| `voc_a1_seventeen_001` | **seventeen** | *noun* | — | diecisiete | — | — |
-| `voc_a1_eighteen_001` | **eighteen** | *noun* | — | dieciocho | — | — |
-| `voc_a1_nineteen_001` | **nineteen** | *noun* | — | diecinueve | — | — |
-| `voc_a1_twenty_001` | **twenty** | *noun* | — | veinte | — | — |
+| `voc_a1_eleven_001` | **eleven** | *noun* | `/ɪˈlɛvən/` | once | There are eleven players on each soccer team. | Hay once jugadores en cada equipo de fútbol. |
+| `voc_a1_twelve_001` | **twelve** | *noun* | `/twɛlv/` | doce | A year has twelve months. | Un año tiene doce meses. |
+| `voc_a1_thirteen_001` | **thirteen** | *noun* | `/ˌθɜːrˈtiːn/` | trece | My daughter turns thirteen next month. | Mi hija cumple trece años el próximo mes. |
+| `voc_a1_fourteen_001` | **fourteen** | *noun* | `/ˌfɔːrˈtiːn/` | catorce | The trip lasted fourteen days. | El viaje duró catorce días. |
+| `voc_a1_fifteen_001` | **fifteen** | *noun* | `/ˌfɪfˈtiːn/` | quince | The bus arrives in fifteen minutes. | El autobús llega en quince minutos. |
+| `voc_a1_sixteen_001` | **sixteen** | *noun* | `/ˌsɪksˈtiːn/` | dieciséis | You can drive when you are sixteen. | Puedes conducir cuando tienes dieciséis años. |
+| `voc_a1_seventeen_001` | **seventeen** | *noun* | `/ˌsɛvənˈtiːn/` | diecisiete | There are seventeen students in the class. | Hay diecisiete estudiantes en la clase. |
+| `voc_a1_eighteen_001` | **eighteen** | *noun* | `/ˌeɪˈtiːn/` | dieciocho | He became an adult at eighteen. | Él se convirtió en adulto a los dieciocho años. |
+| `voc_a1_nineteen_001` | **nineteen** | *noun* | `/ˌnaɪnˈtiːn/` | diecinueve | Room nineteen is on the second floor. | La habitación diecinueve está en el segundo piso. |
+| `voc_a1_twenty_001` | **twenty** | *noun* | `/ˈtwɛnti/` | veinte | I walked twenty blocks this morning. | Caminé veinte cuadras esta mañana. |
 | `voc_a1_what_001` | **what** | *pronoun* | `/wʌt/` | qué | What is your name? | ¿Cómo te llamas? |
-| `voc_a1_who_001` | **who** | *pronoun* | — | quién | — | — |
+| `voc_a1_who_001` | **who** | *pronoun* | `/huː/` | quién | Who is the manager of this store? | ¿Quién es el gerente de esta tienda? |
 | `voc_a1_where_001` | **where** | *noun* | `/wɛr/` | dónde | Where do you live? | ¿Dónde vives? |
-| `voc_a1_when_001` | **when** | *noun* | — | cuándo | — | — |
-| `voc_a1_why_001` | **why** | *noun* | — | por qué | — | — |
-| `voc_a1_how_001` | **how** | *noun* | — | cómo | — | — |
-| `voc_a1_which_001` | **which** | *pronoun* | — | cuál | — | — |
-| `voc_a1_name_001` | **name** | *noun* | — | nombre | — | — |
-| `voc_a1_age_001` | **age** | *noun* | — | edad | — | — |
-| `voc_a1_and_001` | **and** | *conjunction* | — | y | — | — |
-| `voc_a1_or_001` | **or** | *conjunction* | — | o | — | — |
-| `voc_a1_but_001` | **but** | *conjunction* | — | pero | — | — |
-| `voc_a1_a_001` | **a** | *article* | — | un/una | — | — |
-| `voc_a1_an_001` | **an** | *article* | — | un/una (ante vocal) | — | — |
-| `voc_a1_the_001` | **the** | *article* | — | el/la | — | — |
-| `voc_a1_not_001` | **not** | *adverb* | — | no | — | — |
-| `voc_a1_very_001` | **very** | *adverb* | — | muy | — | — |
-| `voc_a1_too_001` | **too** | *adverb* | — | también | — | — |
-| `voc_a1_here_001` | **here** | *adverb* | — | aquí | — | — |
-| `voc_a1_there_001` | **there** | *adverb* | — | allí | — | — |
+| `voc_a1_when_001` | **when** | *noun* | `/wɛn/` | cuándo | When does the class start? | ¿Cuándo empieza la clase? |
+| `voc_a1_why_001` | **why** | *noun* | `/waɪ/` | por qué | Why is the door locked? | ¿Por qué está cerrada la puerta? |
+| `voc_a1_how_001` | **how** | *noun* | `/haʊ/` | cómo | How do you spell your last name? | ¿Cómo se escribe tu apellido? |
+| `voc_a1_which_001` | **which** | *pronoun* | `/wɪtʃ/` | cuál | Which bus goes to downtown? | ¿Cuál autobús va al centro? |
+| `voc_a1_name_001` | **name** | *noun* | `/neɪm/` | nombre | Please write your full name here. | Por favor escribe tu nombre completo aquí. |
+| `voc_a1_age_001` | **age** | *noun* | `/eɪdʒ/` | edad | State your age on the application form. | Indica tu edad en el formulario de solicitud. |
+| `voc_a1_and_001` | **and** | *conjunction* | `/ænd/` | y | She likes coffee and tea. | A ella le gusta el café y el té. |
+| `voc_a1_or_001` | **or** | *conjunction* | `/ɔːr/` | o | Do you prefer morning or afternoon? | ¿Prefieres la mañana o la tarde? |
+| `voc_a1_but_001` | **but** | *conjunction* | `/bʌt/` | pero | The hotel was small but clean. | El hotel era pequeño pero limpio. |
+| `voc_a1_a_001` | **a** | *article* | `/ə/` | un/una | He is reading a fascinating book. | Él está leyendo un libro fascinante. |
+| `voc_a1_an_001` | **an** | *article* | `/æn/` | un/una (ante vocal) | She ate an apple before working out. | Ella comió una manzana antes de entrenar. |
+| `voc_a1_the_001` | **the** | *article* | `/ðə/` | el/la | The weather is great today. | El clima está excelente hoy. |
+| `voc_a1_not_001` | **not** | *adverb* | `/nɑːt/` | no | I am not available this afternoon. | No estoy disponible esta tarde. |
+| `voc_a1_very_001` | **very** | *adverb* | `/ˈvɛri/` | muy | The coffee is very hot. | El café está muy caliente. |
+| `voc_a1_too_001` | **too** | *adverb* | `/tuː/` | también | The shoes are too tight for me. | Los zapatos son demasiado apretados para mí. |
+| `voc_a1_here_001` | **here** | *adverb* | `/hɪr/` | aquí | Please sign your name right here. | Por favor firma tu nombre justo aquí. |
+| `voc_a1_there_001` | **there** | *adverb* | `/ðɛr/` | allí | The library is over there. | La biblioteca está allá. |
 
 ### Semana 2: Semana 2 – Números, días, meses y expresiones de tiempo
 Total de palabras en esta semana: **88**

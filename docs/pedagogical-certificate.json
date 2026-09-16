@@ -1,0 +1,13 @@
+{
+  "timestamp": "2026-09-16T20:06:42.784Z",
+  "totalWordsChecked": 2556,
+  "ipaCoverageRate": 100,
+  "totalPassagesChecked": 16,
+  "totalPassageVocabChecked": 141,
+  "krashenComplianceRate": 100,
+  "sm2TelemetryEfficiencyRate": 100,
+  "testsPassed": 6,
+  "testsFailed": 0,
+  "overallStatus": "CERTIFIED_AUDIT_PASSED",
+  "sha256Signature": "4de6ccc81e917a341506395920c6940378b6b3a4968176738cedef2241cb8790"
+}

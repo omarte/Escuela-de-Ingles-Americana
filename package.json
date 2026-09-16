@@ -7,6 +7,7 @@
     "dev": "pnpm --filter english-learning-platform dev",
     "test": "pnpm --filter english-learning-platform test",
     "lint": "pnpm --filter english-learning-platform lint",
-    "typecheck": "pnpm --filter english-learning-platform typecheck"
+    "typecheck": "pnpm --filter english-learning-platform typecheck",
+    "audit:pedagogy": "pnpm --filter english-learning-platform audit:pedagogy"
   }
 }
