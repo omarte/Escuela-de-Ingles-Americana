@@ -2,7 +2,7 @@ import { z } from 'zod'
 
 // ─── CEFR / Status ───────────────────────────────────────────────────────────
 
-export const CEFRLevelSchema = z.enum(['A1', 'A2', 'B1', 'B2'])
+export const CEFRLevelSchema = z.enum(['A1', 'A2', 'B1', 'B2', 'C1', 'C2', 'D1', 'D2'])
 
 export const ContentStatusSchema = z.enum([
   'draft',

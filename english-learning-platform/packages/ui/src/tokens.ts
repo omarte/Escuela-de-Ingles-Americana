@@ -47,6 +47,10 @@ export const colors = {
     A2: '#0284C7', // Sky Blue
     B1: '#4F46E5', // Indigo
     B2: '#DB2777', // Rose Pink
+    C1: '#2563EB', // Royal Blue
+    C2: '#0D9488', // Teal
+    D1: '#D97706', // Amber Gold
+    D2: '#7C3AED', // Purple
   },
 } as const
 
@@ -95,6 +99,10 @@ export const darkColors = {
     A2: '#38BDF8',
     B1: '#818CF8',
     B2: '#F472B6',
+    C1: '#60A5FA',
+    C2: '#2DD4BF',
+    D1: '#FBBF24',
+    D2: '#A78BFA',
   },
 } as const
 

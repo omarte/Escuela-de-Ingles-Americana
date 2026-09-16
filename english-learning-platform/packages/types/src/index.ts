@@ -1,8 +1,40 @@
 /**
- * CEFR Levels supported by the platform.
+ * CEFR & Specialized Curriculum Levels supported by the platform.
  * IDs are permanent — never change a level code after content is published.
+ * - A1: Acceso / Principiante
+ * - A2: Plataforma / Elemental
+ * - B1: Umbral / Intermedio
+ * - B2: Avanzado / Fluidez Profesional
+ * - C1: Pronunciación & Fonética Avanzada (Reducción de acento, connected speech)
+ * - C2: Club de Conversación General (Debates, role-play, idioms)
+ * - D1: Inglés Profesional Especializado por Ramas (Tecnología, Derecho, Medicina, etc.)
+ * - D2: Club de Conversación Laboral Vitalicio por Rama Especializada
  */
-export type CEFRLevel = 'A1' | 'A2' | 'B1' | 'B2'
+export type CEFRLevel = 'A1' | 'A2' | 'B1' | 'B2' | 'C1' | 'C2' | 'D1' | 'D2'
+
+/**
+ * Specialized professional branches for levels D1 (Vocabulario Técnico) and D2 (Club Laboral).
+ */
+export type ProfessionalTrack =
+  | 'technology'
+  | 'law'
+  | 'foreign_trade'
+  | 'medicine'
+  | 'teaching'
+  | 'business'
+  | 'general'
+
+/**
+ * Metadata descriptor for a professional track.
+ */
+export interface ProfessionalTrackInfo {
+  readonly id: ProfessionalTrack
+  readonly title: string
+  readonly subtitle: string
+  readonly icon: string
+  readonly description: string
+  readonly isVitalicioClub: boolean
+}
 
 /**
  * Lifecycle status of any educational content item.

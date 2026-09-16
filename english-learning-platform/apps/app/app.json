@@ -13,6 +13,13 @@
       "backgroundColor": "#059669",
       "resizeMode": "cover"
     },
+    "updates": {
+      "url": "https://u.expo.dev/094201bb-0ebb-4fa7-b7ca-e73da8a83d1d",
+      "fallbackToCacheTimeout": 0
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.elp.app"
@@ -31,6 +38,7 @@
     },
     "plugins": [
       "expo-router",
+      "expo-updates",
       [
         "expo-notifications",
         {

@@ -27,6 +27,10 @@ const LEVEL_COLORS: Record<CEFRLevel, { primary: string; light: string; border: 
   A2: { primary: '#0284C7', light: '#F0F9FF', border: '#BAE6FD' },
   B1: { primary: '#7C3AED', light: '#F5F3FF', border: '#DDD6FE' },
   B2: { primary: '#D97706', light: '#FFFBEB', border: '#FDE68A' },
+  C1: { primary: '#2563EB', light: '#EFF6FF', border: '#BFDBFE' },
+  C2: { primary: '#0D9488', light: '#F0FDFA', border: '#99F6E4' },
+  D1: { primary: '#EA580C', light: '#FFF7ED', border: '#FFEDD5' },
+  D2: { primary: '#9333EA', light: '#FAF5FF', border: '#E9D5FF' },
 }
 
 type CategoryFilter = 'all' | 'noun' | 'verb' | 'adjective' | 'adverb' | 'other'

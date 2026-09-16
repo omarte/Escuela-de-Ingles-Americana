@@ -14,6 +14,10 @@ export const readingPassagesRegistry: Record<CEFRLevel, readonly ReadingPassage[
   A2: a2ReadingPassages,
   B1: b1ReadingPassages,
   B2: b2ReadingPassages,
+  C1: [],
+  C2: [],
+  D1: [],
+  D2: [],
 }
 
 /**

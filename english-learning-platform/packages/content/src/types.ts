@@ -30,4 +30,8 @@ export interface ContentRegistry {
   readonly A2: LevelContent
   readonly B1: LevelContent
   readonly B2: LevelContent
+  readonly C1?: LevelContent
+  readonly C2?: LevelContent
+  readonly D1?: LevelContent
+  readonly D2?: LevelContent
 }

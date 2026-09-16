@@ -3,7 +3,7 @@
 // de RevenueCat aquí a propósito: esto se puede testear sin dispositivo,
 // sin sandbox de Apple/Google, y sin mockear nada nativo.
 
-export type CEFRLevel = 'A1' | 'A2' | 'B1' | 'B2' | 'C1' | 'C2'
+export type CEFRLevel = 'A1' | 'A2' | 'B1' | 'B2' | 'C1' | 'C2' | 'D1' | 'D2'
 export type ContentApprovalState = 'draft' | 'curated' | 'teacher_reviewed' | 'published' | 'approved'
 
 export const PRO_ENTITLEMENT_ID = 'pro_access'
@@ -49,7 +49,7 @@ export function getAccessibleLevels(
   hasProEntitlement: boolean,
   approvalByLevel: ContentApprovalByLevel,
 ): CEFRLevel[] {
-  const allLevels: CEFRLevel[] = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2']
+  const allLevels: CEFRLevel[] = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2', 'D1', 'D2']
   return allLevels.filter((level) => canAccessLevel(level, hasProEntitlement, approvalByLevel))
 }
 

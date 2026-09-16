@@ -36,7 +36,7 @@ export interface Database {
         Row: {
           id: string
           display_name: string
-          current_level: 'A1' | 'A2' | 'B1' | 'B2'
+          current_level: 'A1' | 'A2' | 'B1' | 'B2' | 'C1' | 'C2' | 'D1' | 'D2'
           current_week: number
           streak_days: number
           created_at: string
@@ -45,7 +45,7 @@ export interface Database {
         Insert: {
           id: string
           display_name: string
-          current_level?: 'A1' | 'A2' | 'B1' | 'B2'
+          current_level?: 'A1' | 'A2' | 'B1' | 'B2' | 'C1' | 'C2' | 'D1' | 'D2'
           current_week?: number
           streak_days?: number
           created_at?: string
@@ -53,7 +53,7 @@ export interface Database {
         }
         Update: {
           display_name?: string
-          current_level?: 'A1' | 'A2' | 'B1' | 'B2'
+          current_level?: 'A1' | 'A2' | 'B1' | 'B2' | 'C1' | 'C2' | 'D1' | 'D2'
           current_week?: number
           streak_days?: number
           updated_at?: string
@@ -137,7 +137,7 @@ export interface Database {
           ended_at: string | null
           cards_reviewed: number
           cards_correct: number
-          level: 'A1' | 'A2' | 'B1' | 'B2'
+          level: 'A1' | 'A2' | 'B1' | 'B2' | 'C1' | 'C2' | 'D1' | 'D2'
         }
         Insert: {
           id?: string
@@ -146,7 +146,7 @@ export interface Database {
           ended_at?: string | null
           cards_reviewed?: number
           cards_correct?: number
-          level: 'A1' | 'A2' | 'B1' | 'B2'
+          level: 'A1' | 'A2' | 'B1' | 'B2' | 'C1' | 'C2' | 'D1' | 'D2'
         }
         Update: {
           ended_at?: string | null
@@ -159,7 +159,7 @@ export interface Database {
     Views: Record<string, never>
     Functions: Record<string, never>
     Enums: {
-      cefr_level: 'A1' | 'A2' | 'B1' | 'B2'
+      cefr_level: 'A1' | 'A2' | 'B1' | 'B2' | 'C1' | 'C2' | 'D1' | 'D2'
       content_status: 'draft' | 'review' | 'approved' | 'published' | 'deprecated'
       card_state: 'new' | 'learning' | 'review' | 'relearning' | 'dominated'
     }

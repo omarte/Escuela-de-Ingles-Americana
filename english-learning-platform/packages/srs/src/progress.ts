@@ -36,7 +36,7 @@ export interface WeeklyBreakdownItem {
   readonly status: 'not_started' | 'in_progress' | 'completed'
 }
 
-const CEFR_ORDER: readonly CEFRLevel[] = ['A1', 'A2', 'B1', 'B2']
+const CEFR_ORDER: readonly CEFRLevel[] = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2', 'D1', 'D2']
 
 /**
  * Normalizes an ISO timestamp, Date object, or date string to local calendar YYYY-MM-DD.

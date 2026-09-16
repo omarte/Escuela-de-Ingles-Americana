@@ -12,11 +12,13 @@ import { colors, radius, spacing, typography } from '../tokens'
 
 import { Card } from './Card'
 
+export type WordCardLevel = keyof typeof colors.levels
+
 export interface WordCardProps {
   word: string
   translation: string
   partOfSpeech: string
-  level: 'A1' | 'A2' | 'B1' | 'B2'
+  level: WordCardLevel
   week?: number | undefined
   phonetic?: string | undefined
   example?:

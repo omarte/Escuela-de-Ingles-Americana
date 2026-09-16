@@ -34,6 +34,7 @@ import { deleteAccountAndCleanup } from '../../lib/account'
 import { APP_LOGO, SCHOOL_LOGO } from '../../lib/assets'
 import { OnboardingModal } from '../../components/OnboardingModal'
 import { AppScreenHeader } from '../../components/AppScreenHeader'
+import { updatesService } from '../../lib/updatesService'
 import {
   useStudyPreferencesStore,
   type PronunciationVariant,
@@ -139,6 +140,52 @@ export default function ProfileScreen(): React.JSX.Element {
   const [isRestoring, setIsRestoring] = useState(false)
   const [isRestoreModalVisible, setIsRestoreModalVisible] = useState(false)
   const [backupJsonInput, setBackupJsonInput] = useState('')
+  const [isCheckingUpdate, setIsCheckingUpdate] = useState(false)
+
+  const handleCheckAppUpdate = async (): Promise<void> => {
+    setIsCheckingUpdate(true)
+    const result = await updatesService.checkForUpdates()
+    setIsCheckingUpdate(false)
+
+    if (result.isDevelopmentEnvironment) {
+      Alert.alert(
+        'Modo Desarrollo',
+        'Las actualizaciones automáticas Over-The-Air están activas en builds compilados (preview y producción). En modo desarrollo las pantallas se actualizan vía Metro bundler.'
+      )
+      return
+    }
+
+    if (result.error) {
+      Alert.alert('Comprobación de Actualizaciones', `No se pudo verificar: ${result.error}`)
+      return
+    }
+
+    if (result.isAvailable) {
+      Alert.alert(
+        '¡Nueva Actualización Disponible!',
+        'Hay una nueva versión de la plataforma y contenidos lista para instalarse. ¿Deseas aplicarla y reiniciar la app ahora?',
+        [
+          { text: 'Más tarde', style: 'cancel' },
+          {
+            text: 'Actualizar Ahora',
+            onPress: async () => {
+              setIsCheckingUpdate(true)
+              const reloadRes = await updatesService.fetchAndReload()
+              setIsCheckingUpdate(false)
+              if (!reloadRes.success) {
+                Alert.alert('Error al actualizar', reloadRes.error ?? 'Intenta de nuevo.')
+              }
+            },
+          },
+        ]
+      )
+    } else {
+      Alert.alert(
+        'Plataforma al Día',
+        'Cuentas con la versión más reciente del motor pedagógico, currículo y algoritmos de repetición espaciada.'
+      )
+    }
+  }
 
   const [isDeleteModalVisible, setDeleteModalVisible] = useState(false)
   const [confirmationText, setConfirmationText] = useState('')
@@ -534,6 +581,58 @@ export default function ProfileScreen(): React.JSX.Element {
             </View>
             <Ionicons name="chevron-forward" size={18} color={colors.textSecondary} />
           </TouchableOpacity>
+        </Card>
+
+        {/* Actualizaciones de la Plataforma & Roadmap */}
+        <Text style={styles.sectionTitle}>Actualizaciones & Roadmap</Text>
+        <Card padding="md" style={styles.updatesCard}>
+          <View style={styles.updatesHeaderRow}>
+            <View style={styles.updatesIconBox}>
+              <Ionicons name="cloud-download-outline" size={22} color={colors.primary} />
+            </View>
+            <View style={styles.updatesHeaderInfo}>
+              <Text style={styles.updatesCardTitle}>Motor de Actualizaciones OTA</Text>
+              <Text style={styles.updatesCardSubtitle}>
+                Recibe nuevas funciones, pantallas y expansiones curriculares sin reinstalar la app.
+              </Text>
+            </View>
+          </View>
+
+          {/* Roadmap Badges */}
+          <View style={styles.roadmapBox}>
+            <Text style={styles.roadmapTitle}>Próximos Niveles en el Roadmap:</Text>
+            <View style={styles.roadmapGrid}>
+              <View style={styles.roadmapItem}>
+                <Badge label="Nivel C1" color="#2563EB" size="sm" />
+                <Text style={styles.roadmapItemText}>Pronunciación & Fonética Avanzada</Text>
+              </View>
+              <View style={styles.roadmapItem}>
+                <Badge label="Nivel C2" color="#059669" size="sm" />
+                <Text style={styles.roadmapItemText}>Club de Conversación General</Text>
+              </View>
+              <View style={styles.roadmapItem}>
+                <Badge label="Nivel D1" color="#D97706" size="sm" />
+                <Text style={styles.roadmapItemText}>Inglés Técnico (Tech, Legal, Salud, Comercio)</Text>
+              </View>
+              <View style={styles.roadmapItem}>
+                <Badge label="Nivel D2" color="#7C3AED" size="sm" />
+                <Text style={styles.roadmapItemText}>Club de Conversación Laboral Vitalicio</Text>
+              </View>
+            </View>
+          </View>
+
+          <Button
+            title={isCheckingUpdate ? 'Comprobando...' : 'Buscar Actualizaciones'}
+            variant="outline"
+            size="sm"
+            loading={isCheckingUpdate}
+            disabled={isCheckingUpdate}
+            onPress={() => {
+              void handleCheckAppUpdate()
+            }}
+            style={styles.updateBtn}
+            icon={<Ionicons name="refresh-outline" size={16} color={colors.primary} />}
+          />
         </Card>
 
         {/* Account & Logout */}
@@ -1386,6 +1485,73 @@ const styles = StyleSheet.create({
     fontWeight: typography.weights.bold,
     color: '#B45309',
     textDecorationLine: 'underline',
+  },
+  updatesCard: {
+    backgroundColor: '#FFFFFF',
+    borderRadius: radius.md,
+    marginBottom: spacing.md,
+    borderWidth: 1,
+    borderColor: colors.border,
+  },
+  updatesHeaderRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.sm,
+    marginBottom: spacing.xs,
+  },
+  updatesIconBox: {
+    width: 38,
+    height: 38,
+    borderRadius: 10,
+    backgroundColor: 'rgba(5, 150, 105, 0.1)',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  updatesHeaderInfo: {
+    flex: 1,
+  },
+  updatesCardTitle: {
+    fontSize: typography.sizes.sm,
+    fontWeight: typography.weights.bold,
+    color: colors.textPrimary,
+  },
+  updatesCardSubtitle: {
+    fontSize: typography.sizes.xs - 0.5,
+    color: colors.textSecondary,
+    lineHeight: 16,
+    marginTop: 2,
+  },
+  roadmapBox: {
+    backgroundColor: '#F8FAFC',
+    borderRadius: radius.sm,
+    padding: spacing.sm,
+    marginTop: spacing.xs,
+    marginBottom: spacing.sm,
+    borderWidth: 1,
+    borderColor: '#E2E8F0',
+  },
+  roadmapTitle: {
+    fontSize: typography.sizes.xs,
+    fontWeight: typography.weights.bold,
+    color: colors.textPrimary,
+    marginBottom: spacing.xs,
+  },
+  roadmapGrid: {
+    gap: 6,
+  },
+  roadmapItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.xs,
+  },
+  roadmapItemText: {
+    fontSize: typography.sizes.xs - 0.5,
+    color: colors.textSecondary,
+    flex: 1,
+  },
+  updateBtn: {
+    width: '100%',
+    marginTop: spacing.xs,
   },
 })
 

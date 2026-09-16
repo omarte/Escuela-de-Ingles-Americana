@@ -89,7 +89,7 @@ export const useProgressStore = create<ProgressState>()((set, get) => ({
       const currentLevel: CEFRLevel = authProfile?.currentLevel ?? 'A1'
 
       // 4. Extract week definitions for current level
-      const levelBlocks = contentRegistry[currentLevel].blocks
+      const levelBlocks = contentRegistry[currentLevel]?.blocks ?? []
       const weekDefs: WeekDefinition[] = levelBlocks.map((b) => ({
         week: b.week,
         title: b.topic,

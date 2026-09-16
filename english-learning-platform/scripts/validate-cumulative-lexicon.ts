@@ -85,7 +85,7 @@ function validateCumulativeLexicon(): void {
 
         // Cross-level check: passages can only reference same-level or lower
         // For simplicity, we use level order: A1 < A2 < B1 < B2
-        const levelOrder: Record<CEFRLevel, number> = { A1: 1, A2: 2, B1: 3, B2: 4 }
+        const levelOrder: Record<CEFRLevel, number> = { A1: 1, A2: 2, B1: 3, B2: 4, C1: 5, C2: 6, D1: 7, D2: 8 }
         const passageLevelOrder = levelOrder[level]
         const vocabLevelOrder = levelOrder[vocabEntry.level]
 

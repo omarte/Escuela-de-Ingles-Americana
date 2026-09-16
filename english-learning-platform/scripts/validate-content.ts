@@ -30,7 +30,7 @@ import { ReadingPassageSchema, VocabularyItemSchema } from '../packages/validati
 import type { CEFRLevel, VocabularyItem } from '../packages/types/src/index'
 
 const LEVELS: readonly CEFRLevel[] = ['A1', 'A2', 'B1', 'B2']
-const CEFR_ORDER: Record<CEFRLevel, number> = { A1: 1, A2: 2, B1: 3, B2: 4 }
+const CEFR_ORDER: Record<CEFRLevel, number> = { A1: 1, A2: 2, B1: 3, B2: 4, C1: 5, C2: 6, D1: 7, D2: 8 }
 
 interface ValidationError {
   itemId: string
