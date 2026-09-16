@@ -2699,117 +2699,117 @@ Total de palabras en esta semana: **36**
 
 | ID | Palabra | Categoría | Fonética (IPA) | Traducción | Ejemplo en Inglés | Traducción del Ejemplo |
 |---|---|---|---|---|---|---|
-| `voc_b1_give-up_001` | **give up** | *phrasal-verb* | — | rendirse/dejar de hacer algo | — | — |
-| `voc_b1_look-forward-to_002` | **look forward to** | *phrasal-verb* | — | esperar con ilusión | — | — |
-| `voc_b1_get-along-with_003` | **get along with** | *phrasal-verb* | — | llevarse bien con | — | — |
-| `voc_b1_put-off_004` | **put off** | *phrasal-verb* | — | posponer | — | — |
-| `voc_b1_run-into_005` | **run into** | *phrasal-verb* | — | encontrarse por casualidad con | — | — |
-| `voc_b1_come-across_006` | **come across** | *phrasal-verb* | — | encontrarse/toparse con algo | — | — |
-| `voc_b1_look-after_007` | **look after** | *phrasal-verb* | — | cuidar de | — | — |
-| `voc_b1_turn-down_008` | **turn down** | *phrasal-verb* | — | rechazar | — | — |
-| `voc_b1_find-out_009` | **find out** | *phrasal-verb* | — | descubrir/averiguar | — | — |
-| `voc_b1_work-out_010` | **work out** | *phrasal-verb* | — | resolver / hacer ejercicio | — | — |
-| `voc_b1_deal-with_011` | **deal with** | *phrasal-verb* | — | lidiar con | — | — |
-| `voc_b1_end-up_012` | **end up** | *phrasal-verb* | — | terminar (en una situación) | — | — |
-| `voc_b1_carry-on_013` | **carry on** | *phrasal-verb* | — | continuar | — | — |
-| `voc_b1_figure-out_014` | **figure out** | *phrasal-verb* | — | entender/descifrar | — | — |
-| `voc_b1_point-out_015` | **point out** | *phrasal-verb* | — | señalar | — | — |
-| `voc_b1_break-down_016` | **break down** | *phrasal-verb* | — | descomponerse / desglosar | — | — |
-| `voc_b1_bring-up_017` | **bring up** | *phrasal-verb* | — | criar / sacar un tema | — | — |
-| `voc_b1_call-off_018` | **call off** | *phrasal-verb* | — | cancelar | — | — |
-| `voc_b1_count-on_019` | **count on** | *phrasal-verb* | — | contar con (confiar) | — | — |
-| `voc_b1_cut-down-on_020` | **cut down on** | *phrasal-verb* | — | reducir (consumo) | — | — |
-| `voc_b1_drop-by_021` | **drop by** | *phrasal-verb* | — | pasar de visita | — | — |
-| `voc_b1_fall-apart_022` | **fall apart** | *phrasal-verb* | — | desmoronarse | — | — |
-| `voc_b1_get-over_023` | **get over** | *phrasal-verb* | — | superar | — | — |
-| `voc_b1_hang-out_024` | **hang out** | *phrasal-verb* | — | pasar el rato | — | — |
-| `voc_b1_hold-on_025` | **hold on** | *phrasal-verb* | — | esperar un momento | — | — |
-| `voc_b1_let-down_026` | **let down** | *phrasal-verb* | — | decepcionar | — | — |
-| `voc_b1_make-up_027` | **make up** | *phrasal-verb* | — | inventar / reconciliarse | — | — |
-| `voc_b1_pass-away_028` | **pass away** | *phrasal-verb* | — | fallecer | — | — |
-| `voc_b1_pull-off_029` | **pull off** | *phrasal-verb* | — | lograr algo difícil | — | — |
-| `voc_b1_put-up-with_030` | **put up with** | *phrasal-verb* | — | tolerar/aguantar | — | — |
-| `voc_b1_show-up_031` | **show up** | *phrasal-verb* | — | aparecer/presentarse | — | — |
-| `voc_b1_sort-out_032` | **sort out** | *phrasal-verb* | — | resolver/organizar | — | — |
-| `voc_b1_stand-for_033` | **stand for** | *phrasal-verb* | — | representar/significar | — | — |
-| `voc_b1_take-after_034` | **take after** | *phrasal-verb* | — | parecerse a (familiar) | — | — |
-| `voc_b1_throw-away_035` | **throw away** | *phrasal-verb* | — | desechar | — | — |
-| `voc_b1_wear-out_036` | **wear out** | *phrasal-verb* | — | desgastar/agotar | — | — |
+| `voc_b1_give-up_001` | **give up** | *phrasal-verb* | `/gɪv ʌp/` | rendirse/dejar de hacer algo | Don't give up on your dreams. | No renuncies a tus sueños. |
+| `voc_b1_look-forward-to_002` | **look forward to** | *phrasal-verb* | `/lʊk ˈfɔrwərd tu/` | esperar con ilusión | I look forward to seeing you soon. | Espero con ilusión verte pronto. |
+| `voc_b1_get-along-with_003` | **get along with** | *phrasal-verb* | `/gɛt əˈlɔŋ wɪð/` | llevarse bien con | I get along with my coworkers. | Me llevo bien con mis compañeros de trabajo. |
+| `voc_b1_put-off_004` | **put off** | *phrasal-verb* | `/pʊt ɔf/` | posponer | Don't put off the meeting again. | No pospongas la reunión de nuevo. |
+| `voc_b1_run-into_005` | **run into** | *phrasal-verb* | `/rʌn ˈɪntu/` | encontrarse por casualidad con | I ran into an old friend downtown. | Me encontré por casualidad con un viejo amigo en el centro. |
+| `voc_b1_come-across_006` | **come across** | *phrasal-verb* | `/kʌm əˈkrɔs/` | encontrarse/toparse con algo | I came across an interesting article. | Me topé con un artículo interesante. |
+| `voc_b1_look-after_007` | **look after** | *phrasal-verb* | `/lʊk ˈæftər/` | cuidar de | She looks after her grandmother. | Ella cuida de su abuela. |
+| `voc_b1_turn-down_008` | **turn down** | *phrasal-verb* | `/tɜrn daʊn/` | rechazar | He turned down the job offer. | Él rechazó la oferta de trabajo. |
+| `voc_b1_find-out_009` | **find out** | *phrasal-verb* | `/faɪnd aʊt/` | descubrir/averiguar | I need to find out the truth. | Necesito descubrir la verdad. |
+| `voc_b1_work-out_010` | **work out** | *phrasal-verb* | `/wɜrk aʊt/` | resolver / hacer ejercicio | Everything worked out fine in the end. | Todo se resolvió bien al final. |
+| `voc_b1_deal-with_011` | **deal with** | *phrasal-verb* | `/dil wɪð/` | lidiar con | I have to deal with this problem today. | Tengo que lidiar con este problema hoy. |
+| `voc_b1_end-up_012` | **end up** | *phrasal-verb* | `/ɛnd ʌp/` | terminar (en una situación) | We ended up staying home. | Terminamos quedándonos en casa. |
+| `voc_b1_carry-on_013` | **carry on** | *phrasal-verb* | `/ˈkæri ɑn/` | continuar | Please carry on with your presentation. | Por favor continúa con tu presentación. |
+| `voc_b1_figure-out_014` | **figure out** | *phrasal-verb* | `/ˈfɪgjər aʊt/` | entender/descifrar | I can't figure out this puzzle. | No logro descifrar este rompecabezas. |
+| `voc_b1_point-out_015` | **point out** | *phrasal-verb* | `/pɔɪnt aʊt/` | señalar | She pointed out a mistake in the report. | Ella señaló un error en el informe. |
+| `voc_b1_break-down_016` | **break down** | *phrasal-verb* | `/breɪk daʊn/` | descomponerse / desglosar | My car broke down on the highway. | Mi carro se descompuso en la autopista. |
+| `voc_b1_bring-up_017` | **bring up** | *phrasal-verb* | `/brɪŋ ʌp/` | criar / sacar un tema | He brought up an important topic. | Él sacó a relucir un tema importante. |
+| `voc_b1_call-off_018` | **call off** | *phrasal-verb* | `/kɔl ɔf/` | cancelar | They called off the wedding. | Cancelaron la boda. |
+| `voc_b1_count-on_019` | **count on** | *phrasal-verb* | `/kaʊnt ɑn/` | contar con (confiar) | You can always count on me. | Siempre puedes contar conmigo. |
+| `voc_b1_cut-down-on_020` | **cut down on** | *phrasal-verb* | `/kʌt daʊn ɑn/` | reducir (consumo) | I need to cut down on sugar. | Necesito reducir el consumo de azúcar. |
+| `voc_b1_drop-by_021` | **drop by** | *phrasal-verb* | `/drɑp baɪ/` | pasar de visita | Feel free to drop by anytime. | Siéntete libre de pasar de visita cuando quieras. |
+| `voc_b1_fall-apart_022` | **fall apart** | *phrasal-verb* | `/fɔl əˈpɑrt/` | desmoronarse | Their plan fell apart quickly. | Su plan se desmoronó rápidamente. |
+| `voc_b1_get-over_023` | **get over** | *phrasal-verb* | `/gɛt ˈoʊvər/` | superar | It took him months to get over the loss. | Le tomó meses superar la pérdida. |
+| `voc_b1_hang-out_024` | **hang out** | *phrasal-verb* | `/hæŋ aʊt/` | pasar el rato | We hung out at the park all afternoon. | Pasamos el rato en el parque toda la tarde. |
+| `voc_b1_hold-on_025` | **hold on** | *phrasal-verb* | `/hoʊld ɑn/` | esperar un momento | Hold on, I'll be right there. | Espera un momento, ya voy. |
+| `voc_b1_let-down_026` | **let down** | *phrasal-verb* | `/lɛt daʊn/` | decepcionar | I don't want to let you down. | No quiero decepcionarte. |
+| `voc_b1_make-up_027` | **make up** | *phrasal-verb* | `/meɪk ʌp/` | inventar / reconciliarse | They made up after the argument. | Se reconciliaron después de la discusión. |
+| `voc_b1_pass-away_028` | **pass away** | *phrasal-verb* | `/pæs əˈweɪ/` | fallecer | Her grandfather passed away last year. | Su abuelo falleció el año pasado. |
+| `voc_b1_pull-off_029` | **pull off** | *phrasal-verb* | `/pʊl ɔf/` | lograr algo difícil | She managed to pull off the event perfectly. | Ella logró sacar adelante el evento perfectamente. |
+| `voc_b1_put-up-with_030` | **put up with** | *phrasal-verb* | `/pʊt ʌp wɪð/` | tolerar/aguantar | I can't put up with this noise anymore. | Ya no puedo tolerar este ruido. |
+| `voc_b1_show-up_031` | **show up** | *phrasal-verb* | `/ʃoʊ ʌp/` | aparecer/presentarse | He didn't show up to the meeting. | Él no se presentó a la reunión. |
+| `voc_b1_sort-out_032` | **sort out** | *phrasal-verb* | `/sɔrt aʊt/` | resolver/organizar | We need to sort out this issue. | Necesitamos resolver este asunto. |
+| `voc_b1_stand-for_033` | **stand for** | *phrasal-verb* | `/stænd fɔr/` | representar/significar | What does this abbreviation stand for? | ¿Qué representa esta abreviatura? |
+| `voc_b1_take-after_034` | **take after** | *phrasal-verb* | `/teɪk ˈæftər/` | parecerse a (familiar) | She takes after her mother. | Ella se parece a su madre. |
+| `voc_b1_throw-away_035` | **throw away** | *phrasal-verb* | `/θroʊ əˈweɪ/` | desechar | Don't throw away that document. | No deseches ese documento. |
+| `voc_b1_wear-out_036` | **wear out** | *phrasal-verb* | `/wɛr aʊt/` | desgastar/agotar | These shoes wore out fast. | Estos zapatos se desgastaron rápido. |
 
 ### Semana 2: B1 · Semana 2 – Modismos y expresiones idiomáticas
 Total de palabras en esta semana: **24**
 
 | ID | Palabra | Categoría | Fonética (IPA) | Traducción | Ejemplo en Inglés | Traducción del Ejemplo |
 |---|---|---|---|---|---|---|
-| `voc_b1_once-in-a-blue-moon_037` | **once in a blue moon** | *adverb* | — | muy de vez en cuando | — | — |
-| `voc_b1_break-the-ice_038` | **break the ice** | *verb* | — | romper el hielo | — | — |
-| `voc_b1_hit-the-books_039` | **hit the books** | *verb* | — | ponerse a estudiar | — | — |
-| `voc_b1_under-the-weather_040` | **under the weather** | *adverb* | — | sentirse mal/indispuesto | — | — |
-| `voc_b1_piece-of-cake_041` | **piece of cake** | *adverb* | — | pan comido | — | — |
-| `voc_b1_cost-an-arm-and-a-leg_042` | **cost an arm and a leg** | *verb* | — | costar un ojo de la cara | — | — |
-| `voc_b1_on-the-ball_043` | **on the ball** | *adverb* | — | atento/competente | — | — |
-| `voc_b1_let-the-cat-out-of-the-bag_044` | **let the cat out of the bag** | *verb* | — | revelar un secreto | — | — |
-| `voc_b1_cutting-corners_045` | **cutting corners** | *adverb* | — | hacer las cosas mal por ahorrar | — | — |
-| `voc_b1_back-to-square-one_046` | **back to square one** | *adverb* | — | volver al punto de partida | — | — |
-| `voc_b1_bite-the-bullet_047` | **bite the bullet** | *verb* | — | aguantar algo difícil | — | — |
-| `voc_b1_call-it-a-day_048` | **call it a day** | *verb* | — | dar por terminado el día/trabajo | — | — |
-| `voc_b1_get-the-ball-rolling_049` | **get the ball rolling** | *verb* | — | poner algo en marcha | — | — |
-| `voc_b1_hang-in-there_050` | **hang in there** | *adverb* | — | aguantar/no rendirse | — | — |
-| `voc_b1_in-the-loop_051` | **in the loop** | *adverb* | — | al tanto/informado | — | — |
-| `voc_b1_keep-an-eye-on_052` | **keep an eye on** | *adverb* | — | vigilar | — | — |
-| `voc_b1_the-last-straw_053` | **the last straw** | *adverb* | — | la gota que colma el vaso | — | — |
-| `voc_b1_miss-the-boat_054` | **miss the boat** | *verb* | — | perder la oportunidad | — | — |
-| `voc_b1_on-the-same-page_055` | **on the same page** | *adverb* | — | de acuerdo/en sintonía | — | — |
-| `voc_b1_speak-of-the-devil_056` | **speak of the devil** | *adverb* | — | hablando del rey de Roma | — | — |
-| `voc_b1_the-ball-is-in-your-court_057` | **the ball is in your court** | *adverb* | — | la decisión es tuya ahora | — | — |
-| `voc_b1_time-flies_058` | **time flies** | *adverb* | — | el tiempo vuela | — | — |
-| `voc_b1_up-in-the-air_059` | **up in the air** | *adverb* | — | incierto/sin decidir | — | — |
-| `voc_b1_weather-the-storm_060` | **weather the storm** | *adverb* | — | superar una dificultad | — | — |
+| `voc_b1_once-in-a-blue-moon_037` | **once in a blue moon** | *adverb* | `/wʌns ɪn ə blu mun/` | muy de vez en cuando | I only eat fast food once in a blue moon. | Solo como comida rápida muy de vez en cuando. |
+| `voc_b1_break-the-ice_038` | **break the ice** | *verb* | `/breɪk ði aɪs/` | romper el hielo | He told a joke to break the ice. | Él contó un chiste para romper el hielo. |
+| `voc_b1_hit-the-books_039` | **hit the books** | *verb* | `/hɪt ðə bʊks/` | ponerse a estudiar | I need to hit the books before the exam. | Necesito ponerme a estudiar antes del examen. |
+| `voc_b1_under-the-weather_040` | **under the weather** | *adverb* | `/ˈʌndər ðə ˈwɛðər/` | sentirse mal/indispuesto | I'm feeling a bit under the weather today. | Me siento un poco mal hoy. |
+| `voc_b1_piece-of-cake_041` | **piece of cake** | *adverb* | `/pis əv keɪk/` | pan comido | The test was a piece of cake. | El examen fue pan comido. |
+| `voc_b1_cost-an-arm-and-a-leg_042` | **cost an arm and a leg** | *verb* | `/kɔst ən ɑrm ənd ə lɛg/` | costar un ojo de la cara | That car cost an arm and a leg. | Ese carro costó un ojo de la cara. |
+| `voc_b1_on-the-ball_043` | **on the ball** | *adverb* | `/ɑn ðə bɔl/` | atento/competente | She's really on the ball at work. | Ella está muy atenta y competente en el trabajo. |
+| `voc_b1_let-the-cat-out-of-the-bag_044` | **let the cat out of the bag** | *verb* | `/lɛt ðə kæt aʊt əv ðə bæg/` | revelar un secreto | He accidentally let the cat out of the bag. | Él sin querer reveló el secreto. |
+| `voc_b1_cutting-corners_045` | **cutting corners** | *adverb* | `/ˈkʌtɪŋ ˈkɔrnərz/` | hacer las cosas mal por ahorrar | They finished fast, but they were cutting corners. | Terminaron rápido, pero ahorraron esfuerzo a costa de la calidad. |
+| `voc_b1_back-to-square-one_046` | **back to square one** | *adverb* | `/bæk tu skwɛr wʌn/` | volver al punto de partida | The plan failed, so we're back to square one. | El plan falló, así que volvemos al punto de partida. |
+| `voc_b1_bite-the-bullet_047` | **bite the bullet** | *verb* | `/baɪt ðə ˈbʊlɪt/` | aguantar algo difícil | I decided to bite the bullet and go to the dentist. | Decidí aguantarme y ir al dentista. |
+| `voc_b1_call-it-a-day_048` | **call it a day** | *verb* | `/kɔl ɪt ə deɪ/` | dar por terminado el día/trabajo | Let's call it a day and go home. | Demos por terminado el día e vámonos a casa. |
+| `voc_b1_get-the-ball-rolling_049` | **get the ball rolling** | *verb* | `/gɛt ðə bɔl ˈroʊlɪŋ/` | poner algo en marcha | Let's get the ball rolling on this project. | Pongamos en marcha este proyecto. |
+| `voc_b1_hang-in-there_050` | **hang in there** | *adverb* | `/hæŋ ɪn ðɛr/` | aguantar/no rendirse | Hang in there, it will get better. | Aguanta, va a mejorar. |
+| `voc_b1_in-the-loop_051` | **in the loop** | *adverb* | `/ɪn ðə lup/` | al tanto/informado | Please keep me in the loop about this. | Por favor mantenme al tanto de esto. |
+| `voc_b1_keep-an-eye-on_052` | **keep an eye on** | *adverb* | `/kip ən aɪ ɑn/` | vigilar | Can you keep an eye on the kids? | ¿Puedes vigilar a los niños? |
+| `voc_b1_the-last-straw_053` | **the last straw** | *adverb* | `/ðə læst strɔ/` | la gota que colma el vaso | Losing his keys was the last straw. | Perder sus llaves fue la gota que colmó el vaso. |
+| `voc_b1_miss-the-boat_054` | **miss the boat** | *verb* | `/mɪs ðə boʊt/` | perder la oportunidad | If you don't apply now, you'll miss the boat. | Si no aplicas ahora, perderás la oportunidad. |
+| `voc_b1_on-the-same-page_055` | **on the same page** | *adverb* | `/ɑn ðə seɪm peɪdʒ/` | de acuerdo/en sintonía | Let's make sure we're on the same page. | Aseguremos que estamos de acuerdo/en sintonía. |
+| `voc_b1_speak-of-the-devil_056` | **speak of the devil** | *adverb* | `/spik əv ðə ˈdɛvəl/` | hablando del rey de Roma | Speak of the devil, here she comes! | Hablando del rey de Roma, ¡ahí viene ella! |
+| `voc_b1_the-ball-is-in-your-court_057` | **the ball is in your court** | *adverb* | `/ðə bɔl ɪz ɪn jʊr kɔrt/` | la decisión es tuya ahora | I've done my part; the ball is in your court now. | Ya hice mi parte; ahora la decisión es tuya. |
+| `voc_b1_time-flies_058` | **time flies** | *adverb* | `/taɪm flaɪz/` | el tiempo vuela | Time flies when you're having fun. | El tiempo vuela cuando te diviertes. |
+| `voc_b1_up-in-the-air_059` | **up in the air** | *adverb* | `/ʌp ɪn ði ɛr/` | incierto/sin decidir | Our vacation plans are still up in the air. | Nuestros planes de vacaciones siguen inciertos. |
+| `voc_b1_weather-the-storm_060` | **weather the storm** | *adverb* | `/ˈwɛðər ðə stɔrm/` | superar una dificultad | The company managed to weather the storm. | La empresa logró superar la dificultad. |
 
 ### Semana 3: B1 · Semana 3 – Sustantivos abstractos de uso frecuente
 Total de palabras en esta semana: **39**
 
 | ID | Palabra | Categoría | Fonética (IPA) | Traducción | Ejemplo en Inglés | Traducción del Ejemplo |
 |---|---|---|---|---|---|---|
-| `voc_b1_achievement_061` | **achievement** | *noun* | — | logro | — | — |
-| `voc_b1_assumption_062` | **assumption** | *noun* | — | suposición | — | — |
-| `voc_b1_attitude_063` | **attitude** | *noun* | — | actitud | — | — |
-| `voc_b1_awareness_064` | **awareness** | *noun* | — | conciencia (de algo) | — | — |
-| `voc_b1_behavior_065` | **behavior** | *noun* | — | comportamiento | — | — |
-| `voc_b1_capability_066` | **capability** | *noun* | — | capacidad | — | — |
-| `voc_b1_circumstance_067` | **circumstance** | *noun* | — | circunstancia | — | — |
-| `voc_b1_consequence_068` | **consequence** | *noun* | — | consecuencia | — | — |
-| `voc_b1_consideration_069` | **consideration** | *noun* | — | consideración | — | — |
-| `voc_b1_contribution_070` | **contribution** | *noun* | — | contribución | — | — |
-| `voc_b1_credibility_071` | **credibility** | *noun* | — | credibilidad | — | — |
-| `voc_b1_definition_072` | **definition** | *noun* | — | definición | — | — |
-| `voc_b1_dimension_073` | **dimension** | *noun* | — | dimensión | — | — |
-| `voc_b1_emphasis_074` | **emphasis** | *noun* | — | énfasis | — | — |
-| `voc_b1_evaluation_075` | **evaluation** | *noun* | — | evaluación | — | — |
-| `voc_b1_factor_076` | **factor** | *noun* | — | factor | — | — |
-| `voc_b1_framework_077` | **framework** | *noun* | — | marco (de referencia) | — | — |
-| `voc_b1_function_078` | **function** | *noun* | — | función | — | — |
-| `voc_b1_impact_079` | **impact** | *noun* | — | impacto | — | — |
-| `voc_b1_initiative_080` | **initiative** | *noun* | — | iniciativa | — | — |
-| `voc_b1_insight_081` | **insight** | *noun* | — | percepción profunda | — | — |
-| `voc_b1_integrity_082` | **integrity** | *noun* | — | integridad | — | — |
-| `voc_b1_motivation_083` | **motivation** | *noun* | — | motivación | — | — |
-| `voc_b1_objective-noun_084` | **objective (noun)** | *noun* | — | objetivo | — | — |
-| `voc_b1_outcome_085` | **outcome** | *noun* | — | resultado | — | — |
-| `voc_b1_perception_086` | **perception** | *noun* | — | percepción | — | — |
-| `voc_b1_phenomenon_087` | **phenomenon** | *noun* | — | fenómeno | — | — |
-| `voc_b1_principle_088` | **principle** | *noun* | — | principio | — | — |
-| `voc_b1_priority_089` | **priority** | *noun* | — | prioridad | — | — |
-| `voc_b1_procedure_090` | **procedure** | *noun* | — | procedimiento | — | — |
-| `voc_b1_process_091` | **process** | *noun* | — | proceso | — | — |
-| `voc_b1_reputation_092` | **reputation** | *noun* | — | reputación | — | — |
-| `voc_b1_scenario_093` | **scenario** | *noun* | — | escenario | — | — |
-| `voc_b1_significance_094` | **significance** | *noun* | — | importancia/relevancia | — | — |
-| `voc_b1_stability_095` | **stability** | *noun* | — | estabilidad | — | — |
-| `voc_b1_structure_096` | **structure** | *noun* | — | estructura | — | — |
-| `voc_b1_tendency_097` | **tendency** | *noun* | — | tendencia | — | — |
-| `voc_b1_theory_098` | **theory** | *noun* | — | teoría | — | — |
-| `voc_b1_transition_099` | **transition** | *noun* | — | transición | — | — |
+| `voc_b1_achievement_061` | **achievement** | *noun* | `/əˈtʃivmənt/` | logro | Finishing the marathon was a great achievement. | Terminar el maratón fue un gran logro. |
+| `voc_b1_assumption_062` | **assumption** | *noun* | `/əˈsʌmpʃən/` | suposición | That's just an assumption, not a fact. | Eso es solo una suposición, no un hecho. |
+| `voc_b1_attitude_063` | **attitude** | *noun* | `/ˈætɪˌtud/` | actitud | She has a positive attitude toward work. | Ella tiene una actitud positiva hacia el trabajo. |
+| `voc_b1_awareness_064` | **awareness** | *noun* | `/əˈwɛrnəs/` | conciencia (de algo) | The campaign raised awareness about pollution. | La campaña generó conciencia sobre la contaminación. |
+| `voc_b1_behavior_065` | **behavior** | *noun* | `/bɪˈheɪvjər/` | comportamiento | His behavior surprised everyone. | Su comportamiento sorprendió a todos. |
+| `voc_b1_capability_066` | **capability** | *noun* | `/ˌkeɪpəˈbɪləti/` | capacidad | She has the capability to lead the team. | Ella tiene la capacidad de liderar el equipo. |
+| `voc_b1_circumstance_067` | **circumstance** | *noun* | `/ˈsɜrkəmˌstæns/` | circunstancia | Under these circumstances, we must wait. | Bajo estas circunstancias, debemos esperar. |
+| `voc_b1_consequence_068` | **consequence** | *noun* | `/ˈkɑnsəˌkwɛns/` | consecuencia | Every action has a consequence. | Toda acción tiene una consecuencia. |
+| `voc_b1_consideration_069` | **consideration** | *noun* | `/kənˌsɪdəˈreɪʃən/` | consideración | Please take this into consideration. | Por favor toma esto en consideración. |
+| `voc_b1_contribution_070` | **contribution** | *noun* | `/ˌkɑntrɪˈbjuʃən/` | contribución | His contribution to the project was huge. | Su contribución al proyecto fue enorme. |
+| `voc_b1_credibility_071` | **credibility** | *noun* | `/ˌkrɛdəˈbɪləti/` | credibilidad | The scandal damaged her credibility. | El escándalo dañó su credibilidad. |
+| `voc_b1_definition_072` | **definition** | *noun* | `/ˌdɛfəˈnɪʃən/` | definición | Look up the definition of this word. | Busca la definición de esta palabra. |
+| `voc_b1_dimension_073` | **dimension** | *noun* | `/dɪˈmɛnʃən/` | dimensión | This adds a new dimension to the debate. | Esto añade una nueva dimensión al debate. |
+| `voc_b1_emphasis_074` | **emphasis** | *noun* | `/ˈɛmfəsɪs/` | énfasis | She put emphasis on teamwork. | Ella puso énfasis en el trabajo en equipo. |
+| `voc_b1_evaluation_075` | **evaluation** | *noun* | `/ɪˌvæljuˈeɪʃən/` | evaluación | The teacher's evaluation was very fair. | La evaluación del maestro fue muy justa. |
+| `voc_b1_factor_076` | **factor** | *noun* | `/ˈfæktər/` | factor | Price is an important factor for us. | El precio es un factor importante para nosotros. |
+| `voc_b1_framework_077` | **framework** | *noun* | `/ˈfreɪmˌwɜrk/` | marco (de referencia) | We built a new framework for the project. | Construimos un nuevo marco para el proyecto. |
+| `voc_b1_function_078` | **function** | *noun* | `/ˈfʌŋkʃən/` | función | What is the function of this device? | ¿Cuál es la función de este dispositivo? |
+| `voc_b1_impact_079` | **impact** | *noun* | `/ˈɪmˌpækt/` | impacto | The decision had a big impact on sales. | La decisión tuvo un gran impacto en las ventas. |
+| `voc_b1_initiative_080` | **initiative** | *noun* | `/ɪˈnɪʃətɪv/` | iniciativa | She showed great initiative at work. | Ella mostró gran iniciativa en el trabajo. |
+| `voc_b1_insight_081` | **insight** | *noun* | `/ˈɪnˌsaɪt/` | percepción profunda | His insight helped us solve the problem. | Su percepción profunda nos ayudó a resolver el problema. |
+| `voc_b1_integrity_082` | **integrity** | *noun* | `/ɪnˈtɛgrəti/` | integridad | He is known for his integrity. | Él es conocido por su integridad. |
+| `voc_b1_motivation_083` | **motivation** | *noun* | `/ˌmoʊtɪˈveɪʃən/` | motivación | Her motivation to succeed is inspiring. | Su motivación para triunfar es inspiradora. |
+| `voc_b1_objective-noun_084` | **objective (noun)** | *noun* | `/əbˈdʒɛktɪv/` | objetivo | Our main objective is to grow the business. | Nuestro objetivo principal es hacer crecer el negocio. |
+| `voc_b1_outcome_085` | **outcome** | *noun* | `/ˈaʊtˌkʌm/` | resultado | We were happy with the outcome. | Quedamos contentos con el resultado. |
+| `voc_b1_perception_086` | **perception** | *noun* | `/pərˈsɛpʃən/` | percepción | Public perception of the brand improved. | La percepción pública de la marca mejoró. |
+| `voc_b1_phenomenon_087` | **phenomenon** | *noun* | `/fɪˈnɑməˌnɑn/` | fenómeno | This is a common social phenomenon. | Este es un fenómeno social común. |
+| `voc_b1_principle_088` | **principle** | *noun* | `/ˈprɪnsəpəl/` | principio | Honesty is one of her principles. | La honestidad es uno de sus principios. |
+| `voc_b1_priority_089` | **priority** | *noun* | `/praɪˈɔrəti/` | prioridad | Health should always be a priority. | La salud siempre debería ser una prioridad. |
+| `voc_b1_procedure_090` | **procedure** | *noun* | `/prəˈsidʒər/` | procedimiento | Follow the correct procedure. | Sigue el procedimiento correcto. |
+| `voc_b1_process_091` | **process** | *noun* | `/ˈprɑˌsɛs/` | proceso | The hiring process takes two weeks. | El proceso de contratación toma dos semanas. |
+| `voc_b1_reputation_092` | **reputation** | *noun* | `/ˌrɛpjəˈteɪʃən/` | reputación | The company has a good reputation. | La empresa tiene una buena reputación. |
+| `voc_b1_scenario_093` | **scenario** | *noun* | `/sɪˈnɛrioʊ/` | escenario | Let's consider a different scenario. | Consideremos un escenario diferente. |
+| `voc_b1_significance_094` | **significance** | *noun* | `/sɪgˈnɪfɪkəns/` | importancia/relevancia | This event has great historical significance. | Este evento tiene gran importancia histórica. |
+| `voc_b1_stability_095` | **stability** | *noun* | `/stəˈbɪləti/` | estabilidad | The country needs political stability. | El país necesita estabilidad política. |
+| `voc_b1_structure_096` | **structure** | *noun* | `/ˈstrʌktʃər/` | estructura | The report has a clear structure. | El informe tiene una estructura clara. |
+| `voc_b1_tendency_097` | **tendency** | *noun* | `/ˈtɛndənsi/` | tendencia | He has a tendency to arrive late. | Él tiene una tendencia a llegar tarde. |
+| `voc_b1_theory_098` | **theory** | *noun* | `/ˈθɪəri/` | teoría | This is just a theory, not proven yet. | Esto es solo una teoría, aún no comprobada. |
+| `voc_b1_transition_099` | **transition** | *noun* | `/trænˈzɪʃən/` | transición | The transition to remote work was smooth. | La transición al trabajo remoto fue fluida. |
 
 ### Semana 4: B1 · Semana 4 – Conectores avanzados del discurso
 Total de palabras en esta semana: **20**
