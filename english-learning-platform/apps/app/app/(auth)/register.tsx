@@ -20,12 +20,40 @@ import { APP_LOGO } from '../../lib/assets'
 
 const LEVELS: CEFRLevel[] = ['A1', 'A2', 'B1', 'B2']
 
+const REFERRAL_OPTIONS = [
+  { id: 'instagram', label: 'Instagram' },
+  { id: 'linkedin', label: 'LinkedIn' },
+  { id: 'amigo_familiar', label: 'Amigo / Familia' },
+  { id: 'busqueda_google', label: 'Google' },
+  { id: 'otro', label: 'Otro' },
+]
+
+const GOAL_OPTIONS = [
+  { id: 'trabajo_ascenso', label: '💼 Trabajo' },
+  { id: 'viajes', label: '✈️ Viajes' },
+  { id: 'academico_examen', label: '🎓 Exámenes' },
+  { id: 'crecimiento_personal', label: '🚀 Crecimiento' },
+]
+
+const COUNTRY_OPTIONS = [
+  { id: 'PE', label: '🇵🇪 PE' },
+  { id: 'MX', label: '🇲🇽 MX' },
+  { id: 'CO', label: '🇨🇴 CO' },
+  { id: 'ES', label: '🇪🇸 ES' },
+  { id: 'AR', label: '🇦🇷 AR' },
+  { id: 'US', label: '🇺🇸 US' },
+]
+
 export default function RegisterScreen(): React.JSX.Element {
   const router = useRouter()
   const [displayName, setDisplayName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [selectedLevel, setSelectedLevel] = useState<CEFRLevel>('A1')
+  const [selectedGoal, setSelectedGoal] = useState<string>('trabajo_ascenso')
+  const [selectedReferral, setSelectedReferral] = useState<string>('')
+  const [selectedCountry, setSelectedCountry] = useState<string>('')
+  const [showExtraFields, setShowExtraFields] = useState(false)
 
   const register = useAuthStore((state) => state.register)
   const isLoading = useAuthStore((state) => state.isLoading)
@@ -34,11 +62,16 @@ export default function RegisterScreen(): React.JSX.Element {
 
   const handleRegister = async (): Promise<void> => {
     clearError()
+    const timezoneOffset = Math.round(new Date().getTimezoneOffset() / -60)
     const success = await register({
       displayName,
       email,
       password,
       initialLevel: selectedLevel,
+      referralSource: selectedReferral || undefined,
+      countryCode: selectedCountry || undefined,
+      timezoneOffset,
+      learningGoal: selectedGoal || undefined,
     })
     if (success) {
       router.replace('/(app)')
@@ -144,6 +177,84 @@ export default function RegisterScreen(): React.JSX.Element {
                 })}
               </View>
             </View>
+
+            {/* Selector de Objetivo Principal */}
+            <View style={styles.inputGroup}>
+              <Text style={styles.label}>Objetivo de Aprendizaje</Text>
+              <View style={styles.chipsRow}>
+                {GOAL_OPTIONS.map((g) => {
+                  const isSelected = selectedGoal === g.id
+                  return (
+                    <TouchableOpacity
+                      key={g.id}
+                      disabled={isLoading}
+                      onPress={() => setSelectedGoal(g.id)}
+                      style={[styles.chip, isSelected && styles.chipSelected]}
+                    >
+                      <Text style={[styles.chipText, isSelected && styles.chipTextSelected]}>
+                        {g.label}
+                      </Text>
+                    </TouchableOpacity>
+                  )
+                })}
+              </View>
+            </View>
+
+            {/* Botón para expandir preguntas opcionales de personalización */}
+            <TouchableOpacity
+              onPress={() => setShowExtraFields(!showExtraFields)}
+              style={styles.toggleExtraBtn}
+            >
+              <Text style={styles.toggleExtraText}>
+                {showExtraFields ? '▲ Ocultar datos opcionales' : '▼ ¿Cómo nos conociste? / País (Opcional)'}
+              </Text>
+            </TouchableOpacity>
+
+            {showExtraFields && (
+              <View style={styles.extraContainer}>
+                <View style={styles.inputGroup}>
+                  <Text style={styles.label}>¿Cómo te enteraste de nosotros?</Text>
+                  <View style={styles.chipsRow}>
+                    {REFERRAL_OPTIONS.map((r) => {
+                      const isSelected = selectedReferral === r.id
+                      return (
+                        <TouchableOpacity
+                          key={r.id}
+                          disabled={isLoading}
+                          onPress={() => setSelectedReferral(isSelected ? '' : r.id)}
+                          style={[styles.chip, isSelected && styles.chipSelected]}
+                        >
+                          <Text style={[styles.chipText, isSelected && styles.chipTextSelected]}>
+                            {r.label}
+                          </Text>
+                        </TouchableOpacity>
+                      )
+                    })}
+                  </View>
+                </View>
+
+                <View style={styles.inputGroup}>
+                  <Text style={styles.label}>País</Text>
+                  <View style={styles.chipsRow}>
+                    {COUNTRY_OPTIONS.map((c) => {
+                      const isSelected = selectedCountry === c.id
+                      return (
+                        <TouchableOpacity
+                          key={c.id}
+                          disabled={isLoading}
+                          onPress={() => setSelectedCountry(isSelected ? '' : c.id)}
+                          style={[styles.chip, isSelected && styles.chipSelected]}
+                        >
+                          <Text style={[styles.chipText, isSelected && styles.chipTextSelected]}>
+                            {c.label}
+                          </Text>
+                        </TouchableOpacity>
+                      )
+                    })}
+                  </View>
+                </View>
+              </View>
+            )}
 
             <Button
               title="Registrarme"
@@ -267,6 +378,50 @@ const styles = StyleSheet.create({
   },
   submitBtn: {
     marginTop: spacing.md,
+  },
+  chipsRow: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: spacing.xs,
+    marginTop: spacing.xs,
+  },
+  chip: {
+    paddingHorizontal: spacing.sm + 2,
+    paddingVertical: spacing.xs + 2,
+    backgroundColor: colors.backgroundSubtle,
+    borderRadius: radius.full,
+    borderWidth: 1,
+    borderColor: colors.border,
+  },
+  chipSelected: {
+    backgroundColor: colors.primary,
+    borderColor: colors.primary,
+  },
+  chipText: {
+    fontSize: typography.sizes.xs,
+    color: colors.textSecondary,
+    fontWeight: typography.weights.medium,
+  },
+  chipTextSelected: {
+    color: colors.textInverse,
+    fontWeight: typography.weights.semibold,
+  },
+  toggleExtraBtn: {
+    paddingVertical: spacing.xs,
+    marginVertical: spacing.xs,
+    alignItems: 'center',
+  },
+  toggleExtraText: {
+    fontSize: typography.sizes.xs,
+    color: colors.primary,
+    fontWeight: typography.weights.medium,
+  },
+  extraContainer: {
+    paddingTop: spacing.xs,
+    paddingBottom: spacing.xs,
+    borderTopWidth: 1,
+    borderTopColor: colors.border,
+    marginBottom: spacing.xs,
   },
   switchRow: {
     flexDirection: 'row',

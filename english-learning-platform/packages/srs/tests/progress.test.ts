@@ -179,7 +179,7 @@ describe('Progress Engine: evaluateLevelAdvancement', () => {
     expect(result.remainingWordsToMaster).toBe(0)
   })
 
-  it('returns nextLevel null for highest CEFR level (B2)', () => {
+  it('returns nextLevel C1 when graduating from B2', () => {
     const cards = [makeCard('voc_1', 'review', 4, 30)]
     const result = evaluateLevelAdvancement({
       currentLevel: 'B2',
@@ -187,8 +187,20 @@ describe('Progress Engine: evaluateLevelAdvancement', () => {
       cards,
     })
 
+    expect(result.nextLevel).toBe('C1')
+    expect(result.isEligible).toBe(true)
+  })
+
+  it('returns nextLevel null for highest curriculum level (D2)', () => {
+    const cards = [makeCard('voc_1', 'review', 4, 30)]
+    const result = evaluateLevelAdvancement({
+      currentLevel: 'D2',
+      totalLevelWords: 1,
+      cards,
+    })
+
     expect(result.nextLevel).toBeNull()
-    expect(result.isEligible).toBe(false) // cannot advance beyond B2
+    expect(result.isEligible).toBe(false) // cannot advance beyond D2
   })
 })
 

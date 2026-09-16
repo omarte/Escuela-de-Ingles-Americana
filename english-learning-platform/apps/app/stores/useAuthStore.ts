@@ -20,6 +20,11 @@ export interface RegisterParams {
   password: string
   displayName: string
   initialLevel?: CEFRLevel | undefined
+  referralSource?: string | undefined
+  countryCode?: string | undefined
+  timezoneOffset?: number | undefined
+  learningGoal?: string | undefined
+  professionalSector?: string | undefined
 }
 
 export interface AuthState {
@@ -43,6 +48,7 @@ function createFallbackProfile(
   email: string,
   displayName: string,
   level: CEFRLevel = 'A1',
+  meta?: Partial<UserProfile>,
 ): UserProfile {
   return {
     id: userId,
@@ -52,6 +58,12 @@ function createFallbackProfile(
     streakDays: 1,
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
+    referralSource: meta?.referralSource ?? null,
+    countryCode: meta?.countryCode ?? null,
+    timezoneOffset: meta?.timezoneOffset ?? null,
+    learningGoal: meta?.learningGoal ?? null,
+    professionalSector: meta?.professionalSector ?? null,
+    emailDomain: email.split('@')[1]?.toLowerCase() ?? null,
   }
 }
 
@@ -280,6 +292,11 @@ export const useAuthStore = create<AuthState>()((set, get) => ({
           password: params.password,
           displayName: params.displayName.trim(),
           initialLevel: params.initialLevel ?? 'A1',
+          referralSource: params.referralSource,
+          countryCode: params.countryCode,
+          timezoneOffset: params.timezoneOffset,
+          learningGoal: params.learningGoal,
+          professionalSector: params.professionalSector,
         })
 
         if (error || !data.user) {
@@ -298,6 +315,13 @@ export const useAuthStore = create<AuthState>()((set, get) => ({
             params.email,
             params.displayName,
             params.initialLevel ?? 'A1',
+            {
+              referralSource: params.referralSource ?? null,
+              countryCode: params.countryCode ?? null,
+              timezoneOffset: params.timezoneOffset ?? null,
+              learningGoal: params.learningGoal ?? null,
+              professionalSector: params.professionalSector ?? null,
+            },
           )
         }
 
@@ -321,6 +345,12 @@ export const useAuthStore = create<AuthState>()((set, get) => ({
         streakDays: 1,
         createdAt: new Date().toISOString(),
         updatedAt: new Date().toISOString(),
+        referralSource: params.referralSource ?? null,
+        countryCode: params.countryCode ?? null,
+        timezoneOffset: params.timezoneOffset ?? null,
+        learningGoal: params.learningGoal ?? null,
+        professionalSector: params.professionalSector ?? null,
+        emailDomain: params.email.split('@')[1]?.toLowerCase() ?? null,
       }
 
       const demoUser = {

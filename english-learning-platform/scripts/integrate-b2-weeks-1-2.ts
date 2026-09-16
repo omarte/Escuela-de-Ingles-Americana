@@ -1,8 +1,8 @@
 import fs from 'node:fs'
 import path from 'node:path'
 
-const contentDir = path.resolve(__dirname, '../packages/content/src/b1')
-const mdPath = path.resolve(__dirname, '../../docs/curacion-docente/B1_Semanas_4_5_6.md')
+const contentDir = path.resolve(__dirname, '../packages/content/src/b2')
+const mdPath = path.resolve(__dirname, '../../docs/curacion-docente/B2_Semanas_1_2.md')
 
 if (!fs.existsSync(mdPath)) {
   console.error(`File not found: ${mdPath}`)
@@ -35,14 +35,12 @@ const tableRows: TableRow[] = mdContent
 
 console.log(`Found ${tableRows.length} total rows in markdown`)
 
-// B1 Week 4: 20 words
-// B1 Week 5: 26 words
-// B1 Week 6: 19 words
-const w4Rows = tableRows.slice(0, 20)
-const w5Rows = tableRows.slice(20, 20 + 26)
-const w6Rows = tableRows.slice(20 + 26, 20 + 26 + 19)
+// B2 Week 1: 18 words
+// B2 Week 2: 21 words
+const w1Rows = tableRows.slice(0, 18)
+const w2Rows = tableRows.slice(18, 18 + 21)
 
-console.log(`w4: ${w4Rows.length}, w5: ${w5Rows.length}, w6: ${w6Rows.length}`)
+console.log(`w1: ${w1Rows.length}, w2: ${w2Rows.length}`)
 
 function normalizePos(_word: string, cat: string): string {
   const c = cat.toLowerCase().trim()
@@ -117,6 +115,5 @@ function updateWeekFile(weekNum: number, rows: TableRow[], fileName: string): vo
   console.log(`Updated week ${weekNum} (${fileName}): ${matchedCount}/${rows.length} words matched.`)
 }
 
-updateWeekFile(4, w4Rows, 'week-04.ts')
-updateWeekFile(5, w5Rows, 'week-05.ts')
-updateWeekFile(6, w6Rows, 'week-06.ts')
+updateWeekFile(1, w1Rows, 'week-01.ts')
+updateWeekFile(2, w2Rows, 'week-02.ts')

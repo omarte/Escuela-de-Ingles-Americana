@@ -350,4 +350,16 @@ export interface UserProfile {
   readonly streakDays: number
   readonly createdAt: string
   readonly updatedAt: string
+  /** Marketing attribution source */
+  readonly referralSource?: string | null | undefined
+  /** ISO 3166-1 alpha-2 country code */
+  readonly countryCode?: string | null | undefined
+  /** Timezone offset in hours relative to UTC */
+  readonly timezoneOffset?: number | null | undefined
+  /** Primary learning goal */
+  readonly learningGoal?: string | null | undefined
+  /** Optional professional track industry */
+  readonly professionalSector?: string | null | undefined
+  /** Extracted domain from email (e.g. gmail.com) */
+  readonly emailDomain?: string | null | undefined
 }

@@ -45,7 +45,7 @@ describe('@elp/database Auth & Profiles', () => {
   })
 
   describe('profileRowToUserProfile', () => {
-    it('maps snake_case database row to camelCase domain UserProfile', () => {
+    it('maps snake_case database row to camelCase domain UserProfile with analytics fields', () => {
       const row: ProfileRow = {
         id: 'usr_123',
         display_name: 'Carlos Mendoza',
@@ -54,6 +54,12 @@ describe('@elp/database Auth & Profiles', () => {
         streak_days: 7,
         created_at: '2026-09-01T10:00:00Z',
         updated_at: '2026-09-10T12:00:00Z',
+        referral_source: 'linkedin',
+        country_code: 'PE',
+        timezone_offset: -5,
+        learning_goal: 'trabajo_ascenso',
+        professional_sector: 'tecnologia',
+        email_domain: 'empresa.pe',
       }
 
       const profile = profileRowToUserProfile(row)
@@ -66,7 +72,34 @@ describe('@elp/database Auth & Profiles', () => {
         streakDays: 7,
         createdAt: '2026-09-01T10:00:00Z',
         updatedAt: '2026-09-10T12:00:00Z',
+        referralSource: 'linkedin',
+        countryCode: 'PE',
+        timezoneOffset: -5,
+        learningGoal: 'trabajo_ascenso',
+        professionalSector: 'tecnologia',
+        emailDomain: 'empresa.pe',
       })
+    })
+
+    it('handles null / undefined optional analytics fields cleanly', () => {
+      const row: ProfileRow = {
+        id: 'usr_456',
+        display_name: 'Maria Rossi',
+        current_level: 'A1',
+        current_week: 1,
+        streak_days: 0,
+        created_at: '2026-09-01T10:00:00Z',
+        updated_at: '2026-09-01T10:00:00Z',
+      }
+
+      const profile = profileRowToUserProfile(row)
+
+      expect(profile.referralSource).toBeNull()
+      expect(profile.countryCode).toBeNull()
+      expect(profile.timezoneOffset).toBeNull()
+      expect(profile.learningGoal).toBeNull()
+      expect(profile.professionalSector).toBeNull()
+      expect(profile.emailDomain).toBeNull()
     })
   })
 
@@ -96,6 +129,46 @@ describe('@elp/database Auth & Profiles', () => {
           data: {
             display_name: 'Ana Lopez',
             current_level: 'B1',
+          },
+        },
+      })
+    })
+
+    it('signUpWithEmail passes analytics telemetry metadata correctly', async () => {
+      const mockSignUp = vi.fn().mockResolvedValue({
+        data: { user: { id: 'u2' }, session: null },
+        error: null,
+      })
+      const mockClient = {
+        auth: {
+          signUp: mockSignUp,
+        },
+      } as unknown as SupabaseClient<Database>
+
+      await signUpWithEmail(mockClient, {
+        email: 'estudiante@empresa.com',
+        password: 'password123',
+        displayName: 'Roberto Gomez',
+        initialLevel: 'A2',
+        referralSource: 'linkedin',
+        countryCode: 'PE',
+        timezoneOffset: -5,
+        learningGoal: 'trabajo_ascenso',
+        professionalSector: 'tecnologia',
+      })
+
+      expect(mockSignUp).toHaveBeenCalledWith({
+        email: 'estudiante@empresa.com',
+        password: 'password123',
+        options: {
+          data: {
+            display_name: 'Roberto Gomez',
+            current_level: 'A2',
+            referral_source: 'linkedin',
+            country_code: 'PE',
+            timezone_offset: -5,
+            learning_goal: 'trabajo_ascenso',
+            professional_sector: 'tecnologia',
           },
         },
       })
@@ -184,6 +257,12 @@ describe('@elp/database Auth & Profiles', () => {
         streakDays: 0,
         createdAt: '2026-09-01T00:00:00Z',
         updatedAt: '2026-09-01T00:00:00Z',
+        referralSource: null,
+        countryCode: null,
+        timezoneOffset: null,
+        learningGoal: null,
+        professionalSector: null,
+        emailDomain: null,
       })
     })
 

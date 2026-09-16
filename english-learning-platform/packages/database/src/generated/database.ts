@@ -41,6 +41,12 @@ export interface Database {
           streak_days: number
           created_at: string
           updated_at: string
+          referral_source?: string | null
+          country_code?: string | null
+          timezone_offset?: number | null
+          learning_goal?: string | null
+          professional_sector?: string | null
+          email_domain?: string | null
         }
         Insert: {
           id: string
@@ -50,6 +56,12 @@ export interface Database {
           streak_days?: number
           created_at?: string
           updated_at?: string
+          referral_source?: string | null
+          country_code?: string | null
+          timezone_offset?: number | null
+          learning_goal?: string | null
+          professional_sector?: string | null
+          email_domain?: string | null
         }
         Update: {
           display_name?: string
@@ -57,6 +69,12 @@ export interface Database {
           current_week?: number
           streak_days?: number
           updated_at?: string
+          referral_source?: string | null
+          country_code?: string | null
+          timezone_offset?: number | null
+          learning_goal?: string | null
+          professional_sector?: string | null
+          email_domain?: string | null
         }
         Relationships: []
       }

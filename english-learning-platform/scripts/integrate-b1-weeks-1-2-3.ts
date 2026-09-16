@@ -44,8 +44,7 @@ const w3Rows = tableRows.slice(36 + 24, 36 + 24 + 39)
 
 console.log(`w1: ${w1Rows.length}, w2: ${w2Rows.length}, w3: ${w3Rows.length}`)
 
-function normalizePos(word: string, cat: string): string {
-  const w = word.toLowerCase().trim()
+function normalizePos(_word: string, cat: string): string {
   const c = cat.toLowerCase().trim()
 
   if (c.includes('phrasal-verb') || c.includes('phrasal verb')) return 'phrasal-verb'

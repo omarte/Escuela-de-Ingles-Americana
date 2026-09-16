@@ -3275,114 +3275,114 @@ Total de palabras en esta semana: **18**
 
 | ID | Palabra | Categoría | Fonética (IPA) | Traducción | Ejemplo en Inglés | Traducción del Ejemplo |
 |---|---|---|---|---|---|---|
-| `voc_b2_nuance_001` | **nuance** | *noun* | — | matiz | — | — |
-| `voc_b2_connotation_002` | **connotation** | *noun* | — | connotación | — | — |
-| `voc_b2_implication_003` | **implication** | *noun* | — | implicación | — | — |
-| `voc_b2_subtlety_004` | **subtlety** | *noun* | — | sutileza | — | — |
-| `voc_b2_rhetoric_005` | **rhetoric** | *adjective* | — | retórica | — | — |
-| `voc_b2_discourse_006` | **discourse** | *noun* | — | discurso (análisis) | — | — |
-| `voc_b2_register-language_007` | **register (language)** | *noun* | — | registro (lingüístico) | — | — |
-| `voc_b2_colloquial_008` | **colloquial** | *adjective* | — | coloquial | — | — |
-| `voc_b2_vernacular_009` | **vernacular** | *noun* | — | vernáculo/habla local | — | — |
-| `voc_b2_jargon_010` | **jargon** | *noun* | — | jerga (técnica) | — | — |
-| `voc_b2_ambiguity_011` | **ambiguity** | *noun* | — | ambigüedad | — | — |
-| `voc_b2_paradox_012` | **paradox** | *noun* | — | paradoja | — | — |
-| `voc_b2_irony_013` | **irony** | *noun* | — | ironía | — | — |
-| `voc_b2_cynicism_014` | **cynicism** | *noun* | — | cinismo | — | — |
-| `voc_b2_skepticism_015` | **skepticism** | *noun* | — | escepticismo | — | — |
-| `voc_b2_euphemism_016` | **euphemism** | *noun* | — | eufemismo | — | — |
-| `voc_b2_understatement_017` | **understatement** | *noun* | — | subestimación/decir menos de lo que es | — | — |
-| `voc_b2_overstatement_018` | **overstatement** | *noun* | — | exageración | — | — |
+| `voc_b2_nuance_001` | **nuance** | *noun* | `/ˈnuˌɑns/` | matiz | There is a subtle nuance between these two words. | Hay un matiz sutil entre estas dos palabras. |
+| `voc_b2_connotation_002` | **connotation** | *noun* | `/ˌkɑnəˈteɪʃən/` | connotación | The word has a negative connotation in this context. | La palabra tiene una connotación negativa en este contexto. |
+| `voc_b2_implication_003` | **implication** | *noun* | `/ˌɪmpləˈkeɪʃən/` | implicación | The policy has serious implications for small businesses. | La política tiene implicaciones serias para las pequeñas empresas. |
+| `voc_b2_subtlety_004` | **subtlety** | *noun* | `/ˈsʌtəlti/` | sutileza | The subtlety of her argument impressed the judges. | La sutileza de su argumento impresionó a los jueces. |
+| `voc_b2_rhetoric_005` | **rhetoric** | *noun* | `/ˈrɛtərɪk/` | retórica | His speech was full of empty rhetoric. | Su discurso estaba lleno de retórica vacía. |
+| `voc_b2_discourse_006` | **discourse** | *noun* | `/ˈdɪsˌkɔrs/` | discurso (análisis) | Political discourse has become more polarized. | El discurso político se ha vuelto más polarizado. |
+| `voc_b2_register-language_007` | **register (language)** | *noun* | `/ˈrɛdʒɪstər/` | registro (lingüístico) | She switched to a more formal register during the interview. | Ella cambió a un registro más formal durante la entrevista. |
+| `voc_b2_colloquial_008` | **colloquial** | *adjective* | `/kəˈloʊkwiəl/` | coloquial | That phrase is too colloquial for a business email. | Esa frase es demasiado coloquial para un correo de negocios. |
+| `voc_b2_vernacular_009` | **vernacular** | *noun* | `/vərˈnækjələr/` | vernáculo/habla local | The novel is written in the local vernacular. | La novela está escrita en el habla local. |
+| `voc_b2_jargon_010` | **jargon** | *noun* | `/ˈdʒɑrgən/` | jerga (técnica) | The report was full of technical jargon. | El informe estaba lleno de jerga técnica. |
+| `voc_b2_ambiguity_011` | **ambiguity** | *noun* | `/ˌæmbɪˈgjuəti/` | ambigüedad | The contract's ambiguity caused confusion. | La ambigüedad del contrato causó confusión. |
+| `voc_b2_paradox_012` | **paradox** | *noun* | `/ˈpɛrəˌdɑks/` | paradoja | It's a paradox that helping too much can hurt. | Es una paradoja que ayudar demasiado puede perjudicar. |
+| `voc_b2_irony_013` | **irony** | *noun* | `/ˈaɪrəni/` | ironía | The irony of the situation wasn't lost on anyone. | Nadie pasó por alto la ironía de la situación. |
+| `voc_b2_cynicism_014` | **cynicism** | *noun* | `/ˈsɪnɪˌsɪzəm/` | cinismo | His cynicism made it hard to trust his advice. | Su cinismo dificultaba confiar en su consejo. |
+| `voc_b2_skepticism_015` | **skepticism** | *noun* | `/ˈskɛptɪˌsɪzəm/` | escepticismo | She approached the claim with healthy skepticism. | Ella abordó la afirmación con un sano escepticismo. |
+| `voc_b2_euphemism_016` | **euphemism** | *noun* | `/ˈjufəˌmɪzəm/` | eufemismo | "Letting someone go" is a euphemism for firing. | "Dejar ir a alguien" es un eufemismo para despedir. |
+| `voc_b2_understatement_017` | **understatement** | *noun* | `/ˈʌndərˌsteɪtmənt/` | subestimación/decir menos de lo que es | Calling it a challenge was an understatement. | Llamarlo un reto fue quedarse corto. |
+| `voc_b2_overstatement_018` | **overstatement** | *noun* | `/ˈoʊvərˌsteɪtmənt/` | exageración | Saying it changed everything is an overstatement. | Decir que cambió todo es una exageración. |
 
 ### Semana 2: B2 · Semana 2 – Ideas, ideología y sociedad
 Total de palabras en esta semana: **21**
 
 | ID | Palabra | Categoría | Fonética (IPA) | Traducción | Ejemplo en Inglés | Traducción del Ejemplo |
 |---|---|---|---|---|---|---|
-| `voc_b2_ideology_019` | **ideology** | *noun* | — | ideología | — | — |
-| `voc_b2_philosophy_020` | **philosophy** | *noun* | — | filosofía | — | — |
-| `voc_b2_ethics_021` | **ethics** | *noun* | — | ética | — | — |
-| `voc_b2_morality_022` | **morality** | *noun* | — | moralidad | — | — |
-| `voc_b2_autonomy_023` | **autonomy** | *noun* | — | autonomía | — | — |
-| `voc_b2_sovereignty_024` | **sovereignty** | *noun* | — | soberanía | — | — |
-| `voc_b2_legislation_025` | **legislation** | *noun* | — | legislación | — | — |
-| `voc_b2_jurisdiction_026` | **jurisdiction** | *noun* | — | jurisdicción | — | — |
-| `voc_b2_advocacy_027` | **advocacy** | *noun* | — | apoyo/defensa de una causa | — | — |
-| `voc_b2_activism_028` | **activism** | *noun* | — | activismo | — | — |
-| `voc_b2_discrimination_029` | **discrimination** | *noun* | — | discriminación | — | — |
-| `voc_b2_prejudice_030` | **prejudice** | *noun* | — | prejuicio | — | — |
-| `voc_b2_stereotype_031` | **stereotype** | *noun* | — | estereotipo | — | — |
-| `voc_b2_stigma_032` | **stigma** | *noun* | — | estigma | — | — |
-| `voc_b2_marginalization_033` | **marginalization** | *noun* | — | marginación | — | — |
-| `voc_b2_inequality_034` | **inequality** | *noun* | — | desigualdad | — | — |
-| `voc_b2_disparity_035` | **disparity** | *noun* | — | disparidad | — | — |
-| `voc_b2_privilege-noun_036` | **privilege (noun)** | *noun* | — | privilegio | — | — |
-| `voc_b2_empowerment_037` | **empowerment** | *noun* | — | empoderamiento | — | — |
-| `voc_b2_exploitation_038` | **exploitation** | *noun* | — | explotación | — | — |
-| `voc_b2_oppression_039` | **oppression** | *noun* | — | opresión | — | — |
+| `voc_b2_ideology_019` | **ideology** | *noun* | `/ˌaɪdiˈɑlədʒi/` | ideología | Their political ideology shapes every decision. | Su ideología política moldea cada decisión. |
+| `voc_b2_philosophy_020` | **philosophy** | *noun* | `/fəˈlɑsəfi/` | filosofía | Her philosophy of life is simple: be kind. | Su filosofía de vida es simple: sé amable. |
+| `voc_b2_ethics_021` | **ethics** | *noun* | `/ˈɛθɪks/` | ética | The committee reviews the ethics of each study. | El comité revisa la ética de cada estudio. |
+| `voc_b2_morality_022` | **morality** | *noun* | `/mɔˈræləti/` | moralidad | The film raises questions about morality and choice. | La película plantea preguntas sobre la moralidad y la elección. |
+| `voc_b2_autonomy_023` | **autonomy** | *noun* | `/ɔˈtɑnəmi/` | autonomía | Employees value autonomy in their work. | Los empleados valoran la autonomía en su trabajo. |
+| `voc_b2_sovereignty_024` | **sovereignty** | *noun* | `/ˈsɑvrənti/` | soberanía | The nation defended its sovereignty. | La nación defendió su soberanía. |
+| `voc_b2_legislation_025` | **legislation** | *noun* | `/ˌlɛdʒəsˈleɪʃən/` | legislación | New legislation will regulate the industry. | Una nueva legislación regulará la industria. |
+| `voc_b2_jurisdiction_026` | **jurisdiction** | *noun* | `/ˌdʒʊrɪsˈdɪkʃən/` | jurisdicción | This case falls under federal jurisdiction. | Este caso cae bajo jurisdicción federal. |
+| `voc_b2_advocacy_027` | **advocacy** | *noun* | `/ˈædvəkəsi/` | apoyo/defensa de una causa | She works in advocacy for children's rights. | Ella trabaja en la defensa de los derechos de los niños. |
+| `voc_b2_activism_028` | **activism** | *noun* | `/ˈæktɪˌvɪzəm/` | activismo | His activism inspired an entire generation. | Su activismo inspiró a toda una generación. |
+| `voc_b2_discrimination_029` | **discrimination** | *noun* | `/dɪˌskrɪməˈneɪʃən/` | discriminación | The law protects against workplace discrimination. | La ley protege contra la discriminación laboral. |
+| `voc_b2_prejudice_030` | **prejudice** | *noun* | `/ˈprɛdʒədɪs/` | prejuicio | The program aims to reduce prejudice. | El programa busca reducir el prejuicio. |
+| `voc_b2_stereotype_031` | **stereotype** | *noun* | `/ˈstɛriəˌtaɪp/` | estereotipo | The movie challenges a common stereotype. | La película desafía un estereotipo común. |
+| `voc_b2_stigma_032` | **stigma** | *noun* | `/ˈstɪgmə/` | estigma | There is still stigma around mental illness. | Todavía hay estigma alrededor de la enfermedad mental. |
+| `voc_b2_marginalization_033` | **marginalization** | *noun* | `/ˌmɑrdʒənələˈzeɪʃən/` | marginación | The report addresses the marginalization of rural communities. | El informe aborda la marginación de las comunidades rurales. |
+| `voc_b2_inequality_034` | **inequality** | *noun* | `/ˌɪnɪˈkwɑləti/` | desigualdad | Income inequality has increased in recent years. | La desigualdad de ingresos ha aumentado en los últimos años. |
+| `voc_b2_disparity_035` | **disparity** | *noun* | `/dɪˈspɛrəti/` | disparidad | There is a wide disparity between the two regions. | Hay una gran disparidad entre las dos regiones. |
+| `voc_b2_privilege-noun_036` | **privilege (noun)** | *noun* | `/ˈprɪvəlɪdʒ/` | privilegio | It's important to recognize your own privilege. | Es importante reconocer tu propio privilegio. |
+| `voc_b2_empowerment_037` | **empowerment** | *noun* | `/ɪmˈpaʊərmənt/` | empoderamiento | The workshop focuses on women's empowerment. | El taller se enfoca en el empoderamiento de las mujeres. |
+| `voc_b2_exploitation_038` | **exploitation** | *noun* | `/ˌɛksplɔɪˈteɪʃən/` | explotación | The report exposed the exploitation of workers. | El informe expuso la explotación de los trabajadores. |
+| `voc_b2_oppression_039` | **oppression** | *noun* | `/əˈprɛʃən/` | opresión | The book describes decades of oppression. | El libro describe décadas de opresión. |
 
 ### Semana 3: B2 · Semana 3 – Cambio, tecnología y procesos globales
 Total de palabras en esta semana: **18**
 
 | ID | Palabra | Categoría | Fonética (IPA) | Traducción | Ejemplo en Inglés | Traducción del Ejemplo |
 |---|---|---|---|---|---|---|
-| `voc_b2_globalization_040` | **globalization** | *noun* | — | globalización | — | — |
-| `voc_b2_urbanization_041` | **urbanization** | *noun* | — | urbanización | — | — |
-| `voc_b2_industrialization_042` | **industrialization** | *noun* | — | industrialización | — | — |
-| `voc_b2_digitalization_043` | **digitalization** | *noun* | — | digitalización | — | — |
-| `voc_b2_automation_044` | **automation** | *noun* | — | automatización | — | — |
-| `voc_b2_disruption_045` | **disruption** | *noun* | — | disrupción | — | — |
-| `voc_b2_innovation_046` | **innovation** | *noun* | — | innovación | — | — |
-| `voc_b2_obsolete_047` | **obsolete** | *noun* | — | obsoleto | — | — |
-| `voc_b2_paradigm_048` | **paradigm** | *noun* | — | paradigma | — | — |
-| `voc_b2_hypothesis_049` | **hypothesis** | *noun* | — | hipótesis | — | — |
-| `voc_b2_methodology_050` | **methodology** | *noun* | — | metodología | — | — |
-| `voc_b2_correlation_051` | **correlation** | *noun* | — | correlación | — | — |
-| `voc_b2_causation_052` | **causation** | *noun* | — | causalidad | — | — |
-| `voc_b2_variable-noun_053` | **variable (noun)** | *noun* | — | variable | — | — |
-| `voc_b2_empirical_054` | **empirical** | *adjective* | — | empírico | — | — |
-| `voc_b2_qualitative_055` | **qualitative** | *adjective* | — | cualitativo | — | — |
-| `voc_b2_quantitative_056` | **quantitative** | *adjective* | — | cuantitativo | — | — |
-| `voc_b2_synthesis_057` | **synthesis** | *noun* | — | síntesis | — | — |
+| `voc_b2_globalization_040` | **globalization** | *noun* | `/ˈgloʊbələˈzeɪʃən/` | globalización | Globalization has changed how businesses operate. | La globalización ha cambiado cómo operan las empresas. |
+| `voc_b2_urbanization_041` | **urbanization** | *noun* | `/ˈɜrbənəˈzeɪʃən/` | urbanización | Rapid urbanization put pressure on housing. | La urbanización acelerada presionó la vivienda. |
+| `voc_b2_industrialization_042` | **industrialization** | *noun* | `/ɪnˌdʌstriələˈzeɪʃən/` | industrialización | Industrialization transformed the country's economy. | La industrialización transformó la economía del país. |
+| `voc_b2_digitalization_043` | **digitalization** | *noun* | `/ˈdɪdʒɪtələˈzeɪʃən/` | digitalización | Digitalization improved efficiency across departments. | La digitalización mejoró la eficiencia en todos los departamentos. |
+| `voc_b2_automation_044` | **automation** | *noun* | `/ˈɔtəˈmeɪʃən/` | automatización | Automation reduced production costs. | La automatización redujo los costos de producción. |
+| `voc_b2_disruption_045` | **disruption** | *noun* | `/dɪsˈrʌpʃən/` | disrupción | The new app caused massive disruption in the market. | La nueva aplicación causó una gran disrupción en el mercado. |
+| `voc_b2_innovation_046` | **innovation** | *noun* | `/ˈɪnəˈveɪʃən/` | innovación | The company is known for its innovation. | La empresa es conocida por su innovación. |
+| `voc_b2_obsolete_047` | **obsolete** | *noun* | `/ˈɑbsəˌlit/` | obsoleto | This technology quickly became obsolete. | Esta tecnología rápidamente se volvió obsoleta. |
+| `voc_b2_paradigm_048` | **paradigm** | *noun* | `/ˈpɛrəˌdaɪm/` | paradigma | This discovery shifted the scientific paradigm. | Este descubrimiento cambió el paradigma científico. |
+| `voc_b2_hypothesis_049` | **hypothesis** | *noun* | `/haɪˈpɑθəsɪs/` | hipótesis | The researchers tested their hypothesis carefully. | Los investigadores probaron su hipótesis con cuidado. |
+| `voc_b2_methodology_050` | **methodology** | *noun* | `/ˈmɛθəˈdɑlədʒi/` | metodología | The study uses a clear methodology. | El estudio usa una metodología clara. |
+| `voc_b2_correlation_051` | **correlation** | *noun* | `/ˈkɔrəˈleɪʃən/` | correlación | There is a strong correlation between the two variables. | Hay una fuerte correlación entre las dos variables. |
+| `voc_b2_causation_052` | **causation** | *noun* | `/kɔˈzeɪʃən/` | causalidad | Correlation doesn't always imply causation. | La correlación no siempre implica causalidad. |
+| `voc_b2_variable-noun_053` | **variable (noun)** | *noun* | `/ˈvɛriəbəl/` | variable | Age is an important variable in this study. | La edad es una variable importante en este estudio. |
+| `voc_b2_empirical_054` | **empirical** | *adjective* | `/ɛmˈpɪrɪkəl/` | empírico | The theory is based on empirical evidence. | La teoría se basa en evidencia empírica. |
+| `voc_b2_qualitative_055` | **qualitative** | *adjective* | `/ˈkwɑləˌteɪtɪv/` | cualitativo | We conducted qualitative interviews with users. | Realizamos entrevistas cualitativas con usuarios. |
+| `voc_b2_quantitative_056` | **quantitative** | *adjective* | `/ˈkwɑntəˌteɪtɪv/` | cuantitativo | The report includes quantitative data. | El informe incluye datos cuantitativos. |
+| `voc_b2_synthesis_057` | **synthesis** | *noun* | `/ˈsɪnθəsɪs/` | síntesis | The essay is a synthesis of several theories. | El ensayo es una síntesis de varias teorías. |
 
 ### Semana 4: B2 · Semana 4 – Conectores formales de escritura académica
 Total de palabras en esta semana: **15**
 
 | ID | Palabra | Categoría | Fonética (IPA) | Traducción | Ejemplo en Inglés | Traducción del Ejemplo |
 |---|---|---|---|---|---|---|
-| `voc_b2_notwithstanding_058` | **notwithstanding** | *adverb* | — | no obstante | — | — |
-| `voc_b2_albeit_059` | **albeit** | *conjunction* | — | aunque/si bien | — | — |
-| `voc_b2_thereby_060` | **thereby** | *conjunction* | — | de ese modo | — | — |
-| `voc_b2_hitherto_061` | **hitherto** | *conjunction* | — | hasta ahora | — | — |
-| `voc_b2_henceforth_062` | **henceforth** | *conjunction* | — | de aquí en adelante | — | — |
-| `voc_b2_insofar-as_063` | **insofar as** | *conjunction* | — | en la medida en que | — | — |
-| `voc_b2_to-the-extent-that_064` | **to the extent that** | *conjunction* | — | en la medida en que | — | — |
-| `voc_b2_in-light-of_065` | **in light of** | *conjunction* | — | a la luz de | — | — |
-| `voc_b2_with-regard-to_066` | **with regard to** | *conjunction* | — | con respecto a | — | — |
-| `voc_b2_in-relation-to_067` | **in relation to** | *conjunction* | — | en relación con | — | — |
-| `voc_b2_by-virtue-of_068` | **by virtue of** | *conjunction* | — | en virtud de | — | — |
-| `voc_b2_for-the-sake-of_069` | **for the sake of** | *conjunction* | — | por el bien de | — | — |
-| `voc_b2_as-a-consequence-of_070` | **as a consequence of** | *conjunction* | — | como consecuencia de | — | — |
-| `voc_b2_conversely_071` | **conversely** | *conjunction* | — | por el contrario | — | — |
-| `voc_b2_notably_072` | **notably** | *adverb* | — | notablemente | — | — |
+| `voc_b2_notwithstanding_058` | **notwithstanding** | *adverb* | `/ˌnɑtwɪθˈstændɪŋ/` | no obstante | Notwithstanding the risks, they proceeded with the plan. | No obstante los riesgos, procedieron con el plan. |
+| `voc_b2_albeit_059` | **albeit** | *conjunction* | `/ɔlˈbiɪt/` | aunque/si bien | The project succeeded, albeit with some delays. | El proyecto tuvo éxito, aunque con algunos retrasos. |
+| `voc_b2_thereby_060` | **thereby** | *conjunction* | `/ðɛrˈbaɪ/` | de ese modo | They cut costs, thereby increasing profits. | Redujeron costos, de ese modo aumentando las ganancias. |
+| `voc_b2_hitherto_061` | **hitherto** | *conjunction* | `/ˈhɪðərˌtu/` | hasta ahora | Hitherto, no one had studied this phenomenon. | Hasta ahora, nadie había estudiado este fenómeno. |
+| `voc_b2_henceforth_062` | **henceforth** | *conjunction* | `/ˌhɛnsˈfɔrθ/` | de aquí en adelante | Henceforth, all reports must be submitted digitally. | De aquí en adelante, todos los informes deben enviarse digitalmente. |
+| `voc_b2_insofar-as_063` | **insofar as** | *conjunction* | `/ˌɪnsoʊˈfɑr æz/` | en la medida en que | The plan is good insofar as it saves money. | El plan es bueno en la medida en que ahorra dinero. |
+| `voc_b2_to-the-extent-that_064` | **to the extent that** | *conjunction* | `/tu ði ɪkˈstɛnt ðæt/` | en la medida en que | The policy failed to the extent that it was ignored. | La política fracasó en la medida en que fue ignorada. |
+| `voc_b2_in-light-of_065` | **in light of** | *conjunction* | `/ɪn laɪt əv/` | a la luz de | In light of recent events, we changed our plans. | A la luz de los eventos recientes, cambiamos nuestros planes. |
+| `voc_b2_with-regard-to_066` | **with regard to** | *conjunction* | `/wɪð rɪˈgɑrd tu/` | con respecto a | With regard to the budget, we need more details. | Con respecto al presupuesto, necesitamos más detalles. |
+| `voc_b2_in-relation-to_067` | **in relation to** | *conjunction* | `/ɪn rɪˈleɪʃən tu/` | en relación con | Sales grew in relation to last year. | Las ventas crecieron en relación con el año pasado. |
+| `voc_b2_by-virtue-of_068` | **by virtue of** | *conjunction* | `/baɪ ˈvɜrtʃu əv/` | en virtud de | She got the job by virtue of her experience. | Ella obtuvo el trabajo en virtud de su experiencia. |
+| `voc_b2_for-the-sake-of_069` | **for the sake of** | *conjunction* | `/fɔr ðə seɪk əv/` | por el bien de | Let's simplify this for the sake of clarity. | Simplifiquemos esto por el bien de la claridad. |
+| `voc_b2_as-a-consequence-of_070` | **as a consequence of** | *conjunction* | `/æz ə ˈkɑnsəˌkwɛns əv/` | como consecuencia de | Prices rose as a consequence of the shortage. | Los precios subieron como consecuencia de la escasez. |
+| `voc_b2_conversely_071` | **conversely** | *conjunction* | `/kənˈvɜrsli/` | por el contrario | Conversely, smaller companies adapted more quickly. | Por el contrario, las empresas más pequeñas se adaptaron más rápido. |
+| `voc_b2_notably_072` | **notably** | *adverb* | `/ˈnoʊtəbli/` | notablemente | Several sectors improved, most notably technology. | Varios sectores mejoraron, notablemente el tecnológico. |
 
 ### Semana 5: B2 · Semana 5 – Liderazgo, estrategia y conceptos académicos
 Total de palabras en esta semana: **12**
 
 | ID | Palabra | Categoría | Fonética (IPA) | Traducción | Ejemplo en Inglés | Traducción del Ejemplo |
 |---|---|---|---|---|---|---|
-| `voc_b2_abstract_073` | **abstract** | *adjective* | — | abstracto / teórico | — | — |
-| `voc_b2_inherent_074` | **inherent** | *adjective* | — | inherente / intrínseco | — | — |
-| `voc_b2_scrutinise_075` | **scrutinise** | *verb* | — | examinar detalladamente / escudriñar | — | — |
-| `voc_b2_unprecedented_076` | **unprecedented** | *adjective* | — | sin precedentes | — | — |
-| `voc_b2_ethical_077` | **ethical** | *adjective* | — | ético / moral | — | — |
-| `voc_b2_leadership_078` | **leadership** | *noun* | — | liderazgo / dirección | — | — |
-| `voc_b2_strategy_079` | **strategy** | *noun* | — | estrategia | — | — |
-| `voc_b2_merger_080` | **merger** | *noun* | — | fusión empresarial | — | — |
-| `voc_b2_acquisition_081` | **acquisition** | *noun* | — | adquisición empresarial | — | — |
-| `voc_b2_accountability_082` | **accountability** | *noun* | — | rendición de cuentas / responsabilidad | — | — |
-| `voc_b2_transparency_083` | **transparency** | *noun* | — | transparencia | — | — |
-| `voc_b2_compliance_084` | **compliance** | *noun* | — | cumplimiento normativo | — | — |
+| `voc_b2_abstract_073` | **abstract** | *adjective* | `/ˈæbˌstrækt/` | abstracto / teórico | The concept is too abstract for beginners. | El concepto es demasiado abstracto para principiantes. |
+| `voc_b2_inherent_074` | **inherent** | *adjective* | `/ɪnˈhɪrənt/` | inherente / intrínseco | There is an inherent risk in this strategy. | Hay un riesgo inherente en esta estrategia. |
+| `voc_b2_scrutinise_075` | **scrutinise** | *verb* | `/ˈskrutəˌnaɪz/` | examinar detalladamente / escudriñar | Investors will scrutinise the company's financial reports. | Los inversores escudriñarán los informes financieros de la empresa. |
+| `voc_b2_unprecedented_076` | **unprecedented** | *adjective* | `/ʌnˈprɛsəˌdɛntɪd/` | sin precedentes | The company achieved unprecedented growth this year. | La empresa logró un crecimiento sin precedentes este año. |
+| `voc_b2_ethical_077` | **ethical** | *adjective* | `/ˈɛθɪkəl/` | ético / moral | The board discussed the ethical implications. | La junta discutió las implicaciones éticas. |
+| `voc_b2_leadership_078` | **leadership** | *noun* | `/ˈlidərˌʃɪp/` | liderazgo / dirección | Strong leadership guided the company through the crisis. | Un liderazgo fuerte guió a la empresa durante la crisis. |
+| `voc_b2_strategy_079` | **strategy** | *noun* | `/ˈstrætədʒi/` | estrategia | Their marketing strategy was very effective. | Su estrategia de marketing fue muy efectiva. |
+| `voc_b2_merger_080` | **merger** | *noun* | `/ˈmɜrdʒər/` | fusión empresarial | The merger created the largest company in the sector. | La fusión creó la empresa más grande del sector. |
+| `voc_b2_acquisition_081` | **acquisition** | *noun* | `/ˌækwəˈzɪʃən/` | adquisición empresarial | The acquisition doubled the company's size. | La adquisición duplicó el tamaño de la empresa. |
+| `voc_b2_accountability_082` | **accountability** | *noun* | `/əˌkaʊntəˈbɪləti/` | rendición de cuentas / responsabilidad | Leaders must show accountability for their decisions. | Los líderes deben mostrar responsabilidad por sus decisiones. |
+| `voc_b2_transparency_083` | **transparency** | *noun* | `/trænsˈpɛrənsi/` | transparencia | The company promised more transparency with investors. | La empresa prometió más transparencia con los inversores. |
+| `voc_b2_compliance_084` | **compliance** | *noun* | `/kəmˈplaɪəns/` | cumplimiento normativo | The department ensures compliance with regulations. | El departamento asegura el cumplimiento de las regulaciones. |
 
 ### 📖 Lecturas de Comprensión · Nivel B2
 

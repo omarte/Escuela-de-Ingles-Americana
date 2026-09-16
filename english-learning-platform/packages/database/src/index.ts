@@ -72,6 +72,11 @@ export interface SignUpParams {
   password: string
   displayName: string
   initialLevel?: CEFRLevel | undefined
+  referralSource?: string | undefined
+  countryCode?: string | undefined
+  timezoneOffset?: number | undefined
+  learningGoal?: string | undefined
+  professionalSector?: string | undefined
 }
 
 export interface SignInParams {
@@ -90,6 +95,11 @@ export async function signUpWithEmail(
       data: {
         display_name: params.displayName,
         current_level: params.initialLevel ?? 'A1',
+        ...(params.referralSource ? { referral_source: params.referralSource } : {}),
+        ...(params.countryCode ? { country_code: params.countryCode } : {}),
+        ...(params.timezoneOffset !== undefined ? { timezone_offset: params.timezoneOffset } : {}),
+        ...(params.learningGoal ? { learning_goal: params.learningGoal } : {}),
+        ...(params.professionalSector ? { professional_sector: params.professionalSector } : {}),
       },
     },
   })
@@ -291,6 +301,12 @@ export function profileRowToUserProfile(row: ProfileRow): UserProfile {
     streakDays: row.streak_days,
     createdAt: row.created_at,
     updatedAt: row.updated_at,
+    referralSource: row.referral_source ?? null,
+    countryCode: row.country_code ?? null,
+    timezoneOffset: row.timezone_offset ?? null,
+    learningGoal: row.learning_goal ?? null,
+    professionalSector: row.professional_sector ?? null,
+    emailDomain: row.email_domain ?? null,
   }
 }
 
