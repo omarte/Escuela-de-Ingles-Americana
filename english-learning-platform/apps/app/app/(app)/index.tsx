@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import { View, Text, StyleSheet, ScrollView, Image, TouchableOpacity, Share } from 'react-native'
+import { View, Text, StyleSheet, ScrollView, Image, TouchableOpacity, Share, Alert } from 'react-native'
 import { useRouter, useFocusEffect } from 'expo-router'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import AsyncStorage from '@react-native-async-storage/async-storage'
@@ -10,6 +10,7 @@ import { useSRSStore } from '../../stores/useSRSStore'
 import { useProgressStore } from '../../stores/useProgressStore'
 import { getDueCards, calculateDailyProgress } from '@elp/srs'
 import { useStudyPreferencesStore } from '../../stores/useStudyPreferencesStore'
+import { usePurchases } from '../../hooks/usePurchases'
 import { SCHOOL_LOGO, EMPTY_REVIEWS_IMG } from '../../lib/assets'
 import { OnboardingModal } from '../../components/OnboardingModal'
 
@@ -31,6 +32,7 @@ export default function HomeScreen(): React.JSX.Element {
   const loadNextBatch = useSRSStore((state) => state.loadNextBatch)
   const startStudySession = useSRSStore((state) => state.startStudySession)
 
+  const { isPro } = usePurchases()
   const userId = user?.id ?? 'demo-user'
   const displayName = profile?.displayName ?? 'Estudiante'
   const currentLevel = profile?.currentLevel ?? 'A1'
@@ -204,10 +206,22 @@ export default function HomeScreen(): React.JSX.Element {
             onPress={async () => {
               if (dueCount > 0) {
                 await startStudySession(userId, currentLevel)
+                router.push('/(app)/learn')
               } else {
-                await loadNextBatch(userId, currentLevel, 10)
+                const res = await loadNextBatch(userId, currentLevel, 10, isPro)
+                if (res?.blockedByPaywall) {
+                  Alert.alert(
+                    '¡Hito de 3 Semanas Completado! 🏆',
+                    'Has completado tus primeras 3 semanas 100% gratuitas (225 palabras con fonética IPA). Para continuar a la Semana 4 y avanzar hacia el hito de 2 meses, desbloquea tu Plan Pro.',
+                    [
+                      { text: 'Tal vez luego', style: 'cancel' },
+                      { text: 'Ver Planes Pro 🚀', onPress: () => router.push('/(app)/paywall') },
+                    ],
+                  )
+                  return
+                }
+                router.push('/(app)/learn')
               }
-              router.push('/(app)/learn')
             }}
             size="lg"
             style={styles.heroBtn}

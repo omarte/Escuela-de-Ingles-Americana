@@ -8,13 +8,17 @@ import {
   TouchableOpacity,
   Pressable,
   Modal,
+  Alert,
 } from 'react-native'
+import { useRouter } from 'expo-router'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { colors, spacing, radius, typography, WordCard, Badge } from '@elp/ui'
 import { Ionicons } from '@expo/vector-icons'
 import { contentRegistry, getVocabularyForLevel } from '@elp/content'
+import { canAccessWeek } from '@elp/monetization'
 import type { CEFRLevel, VocabularyItem } from '@elp/types'
 import { useSRSStore } from '../../stores/useSRSStore'
+import { usePurchases } from '../../hooks/usePurchases'
 import { speakEnglish } from '../../lib/audio'
 import { getSpanishPhonetic } from '../../lib/phonetics'
 import { GamesModal, type GameType } from '../../components/GamesModal'
@@ -54,6 +58,8 @@ const CATEGORY_COLORS: Record<CategoryFilter, { color: string; light: string; bo
 }
 
 export default function VocabularyScreen(): React.JSX.Element {
+  const router = useRouter()
+  const { isPro } = usePurchases()
   const [selectedLevel, setSelectedLevel] = useState<CEFRLevel>('A1')
   const [selectedCategory, setSelectedCategory] = useState<CategoryFilter>('all')
   const [selectedWeek, setSelectedWeek] = useState<number | null>(null)
@@ -227,6 +233,17 @@ export default function VocabularyScreen(): React.JSX.Element {
                 key={lvl}
                 accessibilityRole="button"
                 onPress={() => {
+                  if (lvl !== 'A1' && !isPro) {
+                    Alert.alert(
+                      `Nivel ${lvl} Exclusivo Plan Pro 🔒`,
+                      `El nivel ${lvl} requiere Membresía Pro activa. Tus primeras 3 semanas de A1 (225 palabras) son 100% gratuitas. ¡Desbloquea el currículo completo para acceder a ${lvl}!`,
+                      [
+                        { text: 'Cerrar', style: 'cancel' },
+                        { text: 'Ver Planes Pro 🚀', onPress: () => router.push('/(app)/paywall') },
+                      ],
+                    )
+                    return
+                  }
                   setSelectedLevel(lvl)
                   setSelectedWeek(null)
                 }}
@@ -326,18 +343,34 @@ export default function VocabularyScreen(): React.JSX.Element {
 
             {availableWeeks.map((item) => {
               const isSelected = selectedWeek === item.week
+              const isLocked = !canAccessWeek(selectedLevel, item.week, isPro)
               return (
                 <TouchableOpacity
                   key={item.week}
-                  style={[styles.weekChip, isSelected && styles.weekChipActive]}
+                  style={[
+                    styles.weekChip,
+                    isSelected && styles.weekChipActive,
+                    isLocked && { opacity: 0.75, borderColor: '#F59E0B' },
+                  ]}
                   accessibilityRole="button"
                   onPress={() => {
+                    if (isLocked) {
+                      Alert.alert(
+                        'Semana Exclusiva Plan Pro 🔒',
+                        `La Semana ${item.week} de ${selectedLevel} pertenece al Plan Pro. Has completado tus 3 semanas gratuitas de A1. Desbloquea tu Membresía Pro para acceder a esta semana y continuar hacia el hito de 2 meses.`,
+                        [
+                          { text: 'Cerrar', style: 'cancel' },
+                          { text: 'Ver Planes Pro 🚀', onPress: () => router.push('/(app)/paywall') },
+                        ],
+                      )
+                      return
+                    }
                     setSelectedWeek(isSelected ? null : item.week)
                   }}
                   activeOpacity={0.7}
                 >
                   <Text style={[styles.weekChipText, isSelected && styles.weekChipTextActive]}>
-                    Sem. {item.week}
+                    {isLocked ? '🔒 ' : ''}Sem. {item.week}
                   </Text>
                 </TouchableOpacity>
               )
@@ -483,6 +516,17 @@ export default function VocabularyScreen(): React.JSX.Element {
                   memoryStatus={memoryStatus}
                   revealed
                   onPress={() => {
+                    if (!canAccessWeek(item.level, item.week, isPro)) {
+                      Alert.alert(
+                        'Palabra Exclusiva Plan Pro 🔒',
+                        `Esta palabra pertenece a la Semana ${item.week} (${item.level}). Para desbloquear todo el vocabulario a partir de la Semana 4, accede al Plan Pro.`,
+                        [
+                          { text: 'Cerrar', style: 'cancel' },
+                          { text: 'Ver Planes Pro 🚀', onPress: () => router.push('/(app)/paywall') },
+                        ],
+                      )
+                      return
+                    }
                     openWordModal(index)
                   }}
                   onPlayAudio={() => {
@@ -497,6 +541,17 @@ export default function VocabularyScreen(): React.JSX.Element {
                   accessibilityRole="button"
                   accessibilityLabel={`Practicar escritura de ${item.word}`}
                   onPress={() => {
+                    if (!canAccessWeek(item.level, item.week, isPro)) {
+                      Alert.alert(
+                        'Palabra Exclusiva Plan Pro 🔒',
+                        `Esta palabra pertenece a la Semana ${item.week} (${item.level}). Para desbloquear la práctica a partir de la Semana 4, accede al Plan Pro.`,
+                        [
+                          { text: 'Cerrar', style: 'cancel' },
+                          { text: 'Ver Planes Pro 🚀', onPress: () => router.push('/(app)/paywall') },
+                        ],
+                      )
+                      return
+                    }
                     openWordModal(index)
                   }}
                 >

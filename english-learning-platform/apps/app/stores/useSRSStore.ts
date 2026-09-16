@@ -9,9 +9,16 @@ import { syncUserData } from '../lib/db/syncEngine'
 import { useSyncStore } from './useSyncStore'
 import { buildStudySessionQueue, calculateNextReview, createCard } from '@elp/srs'
 import { getVocabularyForLevel } from '@elp/content'
+import { canAccessWeek } from '@elp/monetization'
 import type { CEFRLevel, ReviewEvent, ReviewQuality, SRSCard } from '@elp/types'
 import { isSupabaseConfigured, supabase } from '../lib/supabase'
 import { STARTER_WORD_IDS } from '../lib/vocabulary'
+
+export interface BatchLoadResult {
+  success: boolean
+  blockedByPaywall: boolean
+  loadedCount: number
+}
 
 export interface SessionStats {
   cardsReviewed: number
@@ -41,7 +48,12 @@ export interface SRSState {
 
   loadCards: (userId: string) => Promise<void>
   startStudySession: (userId: string, level: CEFRLevel) => Promise<void>
-  loadNextBatch: (userId: string, level: CEFRLevel, count?: number) => Promise<void>
+  loadNextBatch: (
+    userId: string,
+    level: CEFRLevel,
+    count?: number,
+    isPro?: boolean,
+  ) => Promise<BatchLoadResult>
   repeatCurrentLesson: (userId: string) => Promise<void>
   startFreePracticeSession: (userId: string, level: CEFRLevel) => Promise<void>
   submitReview: (quality: ReviewQuality) => Promise<void>
@@ -166,7 +178,12 @@ export const useSRSStore = create<SRSState>()((set, get) => ({
     })
   },
 
-  loadNextBatch: async (userId: string, level: CEFRLevel, count = 10): Promise<void> => {
+  loadNextBatch: async (
+    userId: string,
+    level: CEFRLevel,
+    count = 10,
+    isPro = false,
+  ): Promise<BatchLoadResult> => {
     let currentCards = get().cards
     if (currentCards.length === 0) {
       await get().loadCards(userId)
@@ -175,15 +192,30 @@ export const useSRSStore = create<SRSState>()((set, get) => ({
 
     const existingItemIds = new Set(currentCards.map((c) => c.vocabularyItemId))
     const levelVocab = getVocabularyForLevel(level)
-    const candidates = levelVocab.filter((v) => !existingItemIds.has(v.id))
 
-    if (candidates.length === 0) {
-      // All level words are already in the deck; fallback to practice
+    // Filtrar candidatos según los derechos de suscripción del estudiante (canAccessWeek)
+    const accessibleCandidates = levelVocab.filter((v) => {
+      if (existingItemIds.has(v.id)) return false
+      return canAccessWeek(level, v.week, isPro)
+    })
+
+    if (accessibleCandidates.length === 0) {
+      // Si no hay candidatos accesibles pero todavía existen palabras en el nivel
+      // que están bloqueadas por el paywall (ej. Semana 4+ para usuarios free o A2-B2):
+      const hasPaywallLockedWords = levelVocab.some(
+        (v) => !existingItemIds.has(v.id) && !canAccessWeek(level, v.week, isPro),
+      )
+
+      if (hasPaywallLockedWords) {
+        return { success: false, blockedByPaywall: true, loadedCount: 0 }
+      }
+
+      // Si verdaderamente todas las palabras del nivel fueron aprendidas, fallback a práctica libre
       await get().startFreePracticeSession(userId, level)
-      return
+      return { success: true, blockedByPaywall: false, loadedCount: 0 }
     }
 
-    const batch = candidates.slice(0, count)
+    const batch = accessibleCandidates.slice(0, count)
     const now = new Date().toISOString()
     const newCards: SRSCard[] = batch.map((item) => {
       const card = createCard(`card_${userId}_${item.id}`, userId, item.id)
@@ -208,6 +240,8 @@ export const useSRSStore = create<SRSState>()((set, get) => ({
       isCompleted: false,
       sessionStats: INITIAL_SESSION_STATS,
     })
+
+    return { success: true, blockedByPaywall: false, loadedCount: newCards.length }
   },
 
   repeatCurrentLesson: async (userId: string): Promise<void> => {

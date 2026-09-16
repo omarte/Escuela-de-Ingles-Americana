@@ -3,6 +3,9 @@ import {
   canAccessLevel,
   getAccessibleLevels,
   getLevelLockReason,
+  canAccessWeek,
+  getWeekLockReason,
+  MAX_FREE_WEEKS,
 } from '../src/entitlements'
 
 describe('canAccessLevel', () => {
@@ -83,3 +86,57 @@ describe('getLevelLockReason', () => {
     expect(getLevelLockReason('A2', true, approvals)).toBe('unlocked')
   })
 })
+
+describe('canAccessWeek y Gating de 3 Semanas Gratis', () => {
+  it('MAX_FREE_WEEKS está fijado exactamente en 3', () => {
+    expect(MAX_FREE_WEEKS).toBe(3)
+  })
+
+  it('A1 Semanas 1, 2 y 3 son 100% GRATIS sin suscripción Pro', () => {
+    expect(canAccessWeek('A1', 1, false)).toBe(true)
+    expect(canAccessWeek('A1', 2, false)).toBe(true)
+    expect(canAccessWeek('A1', 3, false)).toBe(true)
+
+    expect(getWeekLockReason('A1', 1, false)).toBe('unlocked')
+    expect(getWeekLockReason('A1', 2, false)).toBe('unlocked')
+    expect(getWeekLockReason('A1', 3, false)).toBe('unlocked')
+  })
+
+  it('A1 Semana 4 se BLOQUEA si el usuario no tiene Pro (dispara paywall)', () => {
+    expect(canAccessWeek('A1', 4, false)).toBe(false)
+    expect(getWeekLockReason('A1', 4, false)).toBe('requires_purchase')
+  })
+
+  it('A1 Semanas 5 a 19 se BLOQUEAN si el usuario no tiene Pro', () => {
+    for (let w = 5; w <= 19; w++) {
+      expect(canAccessWeek('A1', w, false)).toBe(false)
+      expect(getWeekLockReason('A1', w, false)).toBe('requires_purchase')
+    }
+  })
+
+  it('A1 Semanas 4 a 19 se DESBLOQUEAN con Pro activo', () => {
+    for (let w = 4; w <= 19; w++) {
+      expect(canAccessWeek('A1', w, true)).toBe(true)
+      expect(getWeekLockReason('A1', w, true)).toBe('unlocked')
+    }
+  })
+
+  it('A2 cualquier semana se BLOQUEA si no tiene Pro', () => {
+    const approvals = { A2: 'published' as const }
+    expect(canAccessWeek('A2', 1, false, approvals)).toBe(false)
+    expect(getWeekLockReason('A2', 1, false, approvals)).toBe('requires_purchase')
+  })
+
+  it('A2 se DESBLOQUEA con Pro si el contenido está publicado', () => {
+    const approvals = { A2: 'published' as const }
+    expect(canAccessWeek('A2', 1, true, approvals)).toBe(true)
+    expect(getWeekLockReason('A2', 1, true, approvals)).toBe('unlocked')
+  })
+
+  it('B1 no desbloquea semana si sigue en curaduría docente aun teniendo Pro', () => {
+    const approvals = { B1: 'curated' as const }
+    expect(canAccessWeek('B1', 1, true, approvals)).toBe(false)
+    expect(getWeekLockReason('B1', 1, true, approvals)).toBe('not_yet_available')
+  })
+})
+

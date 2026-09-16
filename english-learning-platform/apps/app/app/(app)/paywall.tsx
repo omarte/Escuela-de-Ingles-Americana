@@ -73,7 +73,7 @@ export default function PaywallScreen(): React.JSX.Element {
           iconBgColor="#FEF3C7"
           eyebrow="SUSCRIPCIÓN & ACCESO COMPLETO"
           title="Membresía Pro"
-          subtitle="Comienza con el Starter Deck gratuito de las primeras semanas. Desbloquea el currículo completo de 44 semanas (A1 avanzado a B2) con tu Membresía Pro o Plan Vitalicio."
+          subtitle="Tus primeras 3 semanas (225 palabras) son 100% gratuitas. Desbloquea el currículo completo de 48 semanas (A1 avanzado a B2) y el hito de los 2 meses con tu Membresía Pro o Plan Vitalicio."
           rightElement={<Badge label="Plan Pro" color="#D97706" size="sm" />}
         />
 
@@ -95,9 +95,9 @@ export default function PaywallScreen(): React.JSX.Element {
                 <Ionicons name="checkmark-circle" size={20} color={colors.primary} />
               </View>
               <View style={styles.benefitTextCol}>
-                <Text style={styles.benefitItemTitle}>Currículo Completo de 44 Semanas</Text>
+                <Text style={styles.benefitItemTitle}>Currículo Completo de 48 Semanas</Text>
                 <Text style={styles.benefitItemDesc}>
-                  2,556 palabras 100% curadas por docentes humanos en A1 avanzado, A2, B1 y B2.
+                  2,556 palabras 100% curadas por docentes humanos con fonética IPA auténtica en A1 avanzado, A2, B1 y B2.
                 </Text>
               </View>
             </View>

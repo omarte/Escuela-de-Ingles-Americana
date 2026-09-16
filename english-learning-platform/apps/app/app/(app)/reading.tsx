@@ -8,15 +8,19 @@ import {
   Pressable,
   Modal,
   Image,
+  Alert,
   type StyleProp,
   type ViewStyle,
   type TextStyle,
 } from 'react-native'
+import { useRouter } from 'expo-router'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { colors, spacing, radius, typography, Card, Badge, Button } from '@elp/ui'
 import { Ionicons } from '@expo/vector-icons'
 import { getReadingPassagesByLevel, getVocabularyById } from '@elp/content'
+import { canAccessWeek } from '@elp/monetization'
 import type { CEFRLevel, ReadingPassage, VocabularyItem, WordMapping } from '@elp/types'
+import { usePurchases } from '../../hooks/usePurchases'
 import { EMPTY_READINGS_IMG } from '../../lib/assets'
 import { AppScreenHeader } from '../../components/AppScreenHeader'
 
@@ -34,6 +38,8 @@ const LEVEL_COLORS: Record<CEFRLevel, { primary: string; light: string; border: 
 }
 
 export default function ReadingScreen(): React.JSX.Element {
+  const router = useRouter()
+  const { isPro } = usePurchases()
   const [selectedLevel, setSelectedLevel] = useState<CEFRLevel>('A1')
   const passages = useMemo(() => getReadingPassagesByLevel(selectedLevel), [selectedLevel])
   const [selectedPassage, setSelectedPassage] = useState<ReadingPassage>(() => {
@@ -56,6 +62,17 @@ export default function ReadingScreen(): React.JSX.Element {
   })
 
   const handleSelectLevel = (level: CEFRLevel): void => {
+    if (level !== 'A1' && !isPro) {
+      Alert.alert(
+        `Nivel ${level} Exclusivo Plan Pro 🔒`,
+        `Las lecturas graduadas del nivel ${level} requieren Membresía Pro activa. Tus primeras 3 semanas de A1 son 100% gratis. ¡Desbloquea el currículo completo para acceder a todos los niveles!`,
+        [
+          { text: 'Cerrar', style: 'cancel' },
+          { text: 'Ver Planes Pro 🚀', onPress: () => router.push('/(app)/paywall') },
+        ],
+      )
+      return
+    }
     setSelectedLevel(level)
     const newPassages = getReadingPassagesByLevel(level)
     const firstPassage = newPassages[0]
@@ -271,18 +288,23 @@ export default function ReadingScreen(): React.JSX.Element {
           >
             {passages.map((passage) => {
               const isSelected = selectedPassage.id === passage.id
+              const isLocked = !canAccessWeek(passage.level, passage.week, isPro)
               return (
                 <TouchableOpacity
                   key={passage.id}
                   onPress={() => {
                     handleSelectPassage(passage)
                   }}
-                  style={[styles.selectorChip, isSelected && styles.selectorChipActive]}
+                  style={[
+                    styles.selectorChip,
+                    isSelected && styles.selectorChipActive,
+                    isLocked && { opacity: 0.75, borderColor: '#F59E0B' },
+                  ]}
                 >
                   <Text
                     style={[styles.selectorChipText, isSelected && styles.selectorChipTextActive]}
                   >
-                    {passage.title}
+                    {isLocked ? '🔒 ' : ''}{passage.title}
                   </Text>
                 </TouchableOpacity>
               )
@@ -301,6 +323,26 @@ export default function ReadingScreen(): React.JSX.Element {
             <Text style={styles.emptySubtitle}>
               Estamos curando lecturas bilingües graduadas para este nivel. Por ahora, continúa repasando las lecturas disponibles en los niveles A1 y A2.
             </Text>
+          </Card>
+        ) : !canAccessWeek(selectedPassage.level, selectedPassage.week, isPro) ? (
+          <Card padding="lg" highlighted style={styles.readerCard}>
+            <View style={{ alignItems: 'center', padding: 24 }}>
+              <View style={{ width: 64, height: 64, borderRadius: 32, backgroundColor: '#FEF3C7', alignItems: 'center', justifyContent: 'center', marginBottom: 16 }}>
+                <Ionicons name="lock-closed" size={30} color="#D97706" />
+              </View>
+              <Text style={{ fontSize: 20, fontWeight: '800', color: colors.textPrimary, textAlign: 'center', marginBottom: 8 }}>
+                Lectura Exclusiva Plan Pro
+              </Text>
+              <Text style={{ fontSize: 14, color: colors.textSecondary, textAlign: 'center', lineHeight: 22, marginBottom: 20, maxWidth: 420 }}>
+                Esta lectura contextual pertenece a la {selectedPassage.level} (Semana {selectedPassage.week}). Tus primeras 3 semanas de A1 son 100% gratuitas. Para continuar con lecturas contextuales hacia el hito de las 8 semanas, desbloquea tu Membresía Pro.
+              </Text>
+              <Button
+                title="Desbloquear Membresía Pro 🚀"
+                variant="primary"
+                size="md"
+                onPress={() => router.push('/(app)/paywall')}
+              />
+            </View>
           </Card>
         ) : (
           <>
