@@ -891,3 +891,346 @@ footer {
   box-shadow: 0 1px 8px rgba(16, 185, 129, 0.4), 0 0 2px rgba(5, 150, 105, 0.25);
   border-radius: 999px;
 }
+
+/* ─── 3 Pilares Científicos de Alta Conversión ─── */
+.science-pillar-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-top: 36px;
+  margin-bottom: 48px;
+}
+
+.science-card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  padding: 32px 26px;
+  box-shadow: var(--card-shadow);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.science-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--card-shadow-lg);
+  border-color: rgba(5, 150, 105, 0.35);
+}
+
+.science-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--emerald-500), #2563EB);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.science-card:hover::before {
+  opacity: 1;
+}
+
+.science-header {
+  margin-bottom: 20px;
+}
+
+.science-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: 11.5px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.science-pill.emerald {
+  background: rgba(5, 150, 105, 0.1);
+  color: var(--emerald-600);
+  border: 1px solid rgba(5, 150, 105, 0.25);
+}
+
+.science-pill.indigo {
+  background: rgba(79, 70, 229, 0.1);
+  color: var(--indigo);
+  border: 1px solid rgba(79, 70, 229, 0.25);
+}
+
+.science-pill.amber {
+  background: rgba(217, 119, 6, 0.1);
+  color: #D97706;
+  border: 1px solid rgba(217, 119, 6, 0.25);
+}
+
+.science-title {
+  font-size: 20px;
+  font-weight: 850;
+  color: var(--navy-900);
+  line-height: 1.25;
+  margin: 0 0 10px;
+  letter-spacing: -0.02em;
+}
+
+.science-punchline {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--slate-600);
+  margin: 0 0 20px;
+  line-height: 1.5;
+}
+
+.science-body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex-grow: 1;
+}
+
+.science-block {
+  border-radius: 14px;
+  padding: 14px 16px;
+  font-size: 13.5px;
+  line-height: 1.55;
+}
+
+.science-block.problem {
+  background: #FEF2F2;
+  border-left: 3px solid #EF4444;
+  color: #991B1B;
+}
+
+.science-block.problem strong {
+  display: block;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #B91C1C;
+  margin-bottom: 4px;
+}
+
+.science-block.solution {
+  background: #F0FDF4;
+  border-left: 3px solid var(--emerald-600);
+  color: #065F46;
+}
+
+.science-block.solution strong {
+  display: block;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--emerald-700);
+  margin-bottom: 4px;
+}
+
+.science-benefit {
+  background: linear-gradient(135deg, rgba(248, 250, 252, 0.9), rgba(241, 245, 249, 0.9));
+  border: 1px dashed #CBD5E1;
+  border-radius: 14px;
+  padding: 14px 16px;
+  margin-top: 14px;
+  font-size: 13px;
+  color: var(--navy-900);
+  line-height: 1.5;
+}
+
+.science-benefit strong {
+  display: block;
+  color: var(--navy-900);
+  font-size: 12.5px;
+  font-weight: 800;
+  margin-bottom: 4px;
+}
+
+/* ─── Tabla Comparativa: El Permiso Racional ─── */
+.comparison-wrap {
+  margin-top: 60px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.07);
+  overflow: hidden;
+}
+
+.comparison-header-box {
+  padding: 36px 36px 24px;
+  background: linear-gradient(180deg, #F8FAFC 0%, #FFFFFF 100%);
+  border-bottom: 1px solid var(--line);
+  text-align: center;
+}
+
+.comparison-header-box h3 {
+  font-size: clamp(22px, 2.5vw, 30px);
+  font-weight: 900;
+  color: var(--navy-900);
+  margin: 0 0 10px;
+  letter-spacing: -0.03em;
+}
+
+.comparison-header-box p {
+  font-size: 15.5px;
+  color: var(--slate-600);
+  max-width: 780px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.comparison-table-container {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.comp-table {
+  width: 100%;
+  min-width: 820px;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.comp-table th {
+  padding: 18px 24px;
+  font-size: 14px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--slate-500);
+  border-bottom: 2px solid var(--line);
+  background: #F8FAFC;
+}
+
+.comp-table th.highlight-col {
+  background: #ECFDF5;
+  color: var(--emerald-700);
+  border-top: 3px solid var(--emerald-600);
+  font-size: 15px;
+  text-align: center;
+}
+
+.comp-table th.competitor-col {
+  text-align: center;
+  color: var(--slate-600);
+}
+
+.comp-table td {
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--line);
+  font-size: 14px;
+  line-height: 1.5;
+  vertical-align: middle;
+}
+
+.comp-table tr:last-child td {
+  border-bottom: none;
+}
+
+.comp-table td.feature-name-cell {
+  font-weight: 700;
+  color: var(--navy-900);
+  width: 32%;
+}
+
+.comp-table td.feature-name-cell small {
+  display: block;
+  font-weight: 400;
+  color: var(--slate-500);
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.comp-table td.highlight-col {
+  background: rgba(236, 253, 245, 0.45);
+  border-left: 2px solid rgba(5, 150, 105, 0.25);
+  border-right: 2px solid rgba(5, 150, 105, 0.25);
+  text-align: left;
+}
+
+.comp-table td.competitor-col {
+  text-align: left;
+  color: var(--slate-600);
+  background: #FFFFFF;
+}
+
+.cell-status-good {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: #065F46;
+  font-weight: 600;
+}
+
+.cell-status-good .icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  background: var(--emerald-600);
+  color: #FFFFFF;
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: 900;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.cell-status-bad {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: #64748B;
+}
+
+.cell-status-bad .icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  background: #FEE2E2;
+  color: #DC2626;
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: 900;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.comp-table tr:hover td {
+  background-color: rgba(241, 245, 249, 0.5);
+}
+
+.comp-table tr:hover td.highlight-col {
+  background-color: rgba(236, 253, 245, 0.7);
+}
+
+.comp-footer-cta {
+  padding: 24px 36px;
+  background: #F8FAFC;
+  border-top: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+@media (max-width: 960px) {
+  .science-pillar-grid {
+    grid-template-columns: 1fr;
+  }
+  .comp-footer-cta {
+    flex-direction: column;
+    text-align: center;
+  }
+}
