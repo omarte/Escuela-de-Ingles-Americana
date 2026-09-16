@@ -1986,7 +1986,7 @@
     }
 
     function startAutoplay() {
-      autoplayTimer = setInterval(nextSlide, 5500);
+      autoplayTimer = setInterval(nextSlide, 8000); // 8 segundos de permanencia para lectura cómoda
     }
 
     function resetAutoplay() {
@@ -2000,6 +2000,8 @@
       if (container) {
         container.addEventListener('mouseenter', () => clearInterval(autoplayTimer));
         container.addEventListener('mouseleave', startAutoplay);
+        container.addEventListener('touchstart', () => clearInterval(autoplayTimer), { passive: true });
+        container.addEventListener('touchend', startAutoplay, { passive: true });
       }
     });
   </script>
