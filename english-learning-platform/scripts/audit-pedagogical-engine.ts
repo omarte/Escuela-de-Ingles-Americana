@@ -23,8 +23,8 @@ import fs from 'node:fs'
 import path from 'node:path'
 import crypto from 'node:crypto'
 import { contentRegistry, getAllVocabulary, readingPassagesRegistry } from '../packages/content/src/index'
-import { calculateNextReview, DEFAULT_SRS_CONFIG } from '../packages/srs/src/index'
-import type { CEFRLevel, ReviewInput, CardState } from '../packages/types/src/index'
+import { calculateNextReview, DEFAULT_SRS_CONFIG, type ReviewInput } from '../packages/srs/src/index'
+import type { CEFRLevel, CardState } from '../packages/types/src/index'
 
 // ─── COLORES Y FORMATO DE CONSOLA ───────────────────────────────────────────
 const GREEN = '\x1b[32m'
