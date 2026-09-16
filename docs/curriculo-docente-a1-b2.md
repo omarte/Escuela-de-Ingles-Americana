@@ -2816,83 +2816,83 @@ Total de palabras en esta semana: **20**
 
 | ID | Palabra | Categoría | Fonética (IPA) | Traducción | Ejemplo en Inglés | Traducción del Ejemplo |
 |---|---|---|---|---|---|---|
-| `voc_b1_whereas_100` | **whereas** | *conjunction* | — | mientras que (contraste) | — | — |
-| `voc_b1_provided-that_101` | **provided that** | *conjunction* | — | siempre que/con la condición de que | — | — |
-| `voc_b1_unless_102` | **unless** | *conjunction* | — | a menos que | — | — |
-| `voc_b1_even-though_103` | **even though** | *conjunction* | — | aunque | — | — |
-| `voc_b1_as-long-as_104` | **as long as** | *conjunction* | — | mientras (condición) | — | — |
-| `voc_b1_in-spite-of_105` | **in spite of** | *conjunction* | — | a pesar de | — | — |
-| `voc_b1_despite_106` | **despite** | *conjunction* | — | a pesar de | — | — |
-| `voc_b1_given-that_107` | **given that** | *conjunction* | — | dado que | — | — |
-| `voc_b1_assuming-that_108` | **assuming that** | *conjunction* | — | suponiendo que | — | — |
-| `voc_b1_in-order-to_109` | **in order to** | *conjunction* | — | con el fin de | — | — |
-| `voc_b1_so-as-to_110` | **so as to** | *conjunction* | — | para/con el objetivo de | — | — |
-| `voc_b1_rather-than_111` | **rather than** | *conjunction* | — | en lugar de | — | — |
-| `voc_b1_as-opposed-to_112` | **as opposed to** | *conjunction* | — | en contraposición a | — | — |
-| `voc_b1_on-the-whole_113` | **on the whole** | *conjunction* | — | en general/en conjunto | — | — |
-| `voc_b1_by-and-large_114` | **by and large** | *conjunction* | — | en su mayor parte | — | — |
-| `voc_b1_needless-to-say_115` | **needless to say** | *conjunction* | — | huelga decir/ni que decir | — | — |
-| `voc_b1_last-but-not-least_116` | **last but not least** | *conjunction* | — | por último pero no menos importante | — | — |
-| `voc_b1_all-things-considered_117` | **all things considered** | *conjunction* | — | considerándolo todo | — | — |
-| `voc_b1_in-other-words_118` | **in other words** | *conjunction* | — | en otras palabras | — | — |
-| `voc_b1_that-being-said_119` | **that being said** | *conjunction* | — | dicho esto | — | — |
+| `voc_b1_whereas_100` | **whereas** | *conjunction* | `/wɛrˈæz/` | mientras que (contraste) | She loves the city, whereas he prefers the countryside. | A ella le encanta la ciudad, mientras que él prefiere el campo. |
+| `voc_b1_provided-that_101` | **provided that** | *conjunction* | `/prəˈvaɪdɪd ðæt/` | siempre que/con la condición de que | You can go out, provided that you finish your homework. | Puedes salir, siempre que termines tu tarea. |
+| `voc_b1_unless_102` | **unless** | *conjunction* | `/ənˈlɛs/` | a menos que | We won't leave unless it stops raining. | No saldremos a menos que deje de llover. |
+| `voc_b1_even-though_103` | **even though** | *conjunction* | `/ˈivən ðoʊ/` | aunque | Even though he was tired, he kept working. | Aunque estaba cansado, siguió trabajando. |
+| `voc_b1_as-long-as_104` | **as long as** | *conjunction* | `/æz lɔŋ æz/` | mientras (condición) | You can stay as long as you like. | Puedes quedarte mientras quieras. |
+| `voc_b1_in-spite-of_105` | **in spite of** | *conjunction* | `/ɪn spaɪt əv/` | a pesar de | In spite of the rain, we went hiking. | A pesar de la lluvia, fuimos de senderismo. |
+| `voc_b1_despite_106` | **despite** | *conjunction* | `/dɪˈspaɪt/` | a pesar de | Despite the traffic, we arrived on time. | A pesar del tráfico, llegamos a tiempo. |
+| `voc_b1_given-that_107` | **given that** | *conjunction* | `/ˈgɪvən ðæt/` | dado que | Given that it's late, let's finish tomorrow. | Dado que es tarde, terminemos mañana. |
+| `voc_b1_assuming-that_108` | **assuming that** | *conjunction* | `/əˈsumɪŋ ðæt/` | suponiendo que | Assuming that the plan works, we'll save money. | Suponiendo que el plan funcione, ahorraremos dinero. |
+| `voc_b1_in-order-to_109` | **in order to** | *conjunction* | `/ɪn ˈɔrdər tu/` | con el fin de | She studied hard in order to pass the exam. | Ella estudió mucho con el fin de aprobar el examen. |
+| `voc_b1_so-as-to_110` | **so as to** | *conjunction* | `/soʊ æz tu/` | para/con el objetivo de | We left early so as to avoid traffic. | Salimos temprano para evitar el tráfico. |
+| `voc_b1_rather-than_111` | **rather than** | *conjunction* | `/ˈræðər ðæn/` | en lugar de | I'd rather walk rather than take the bus. | Prefiero caminar en lugar de tomar el autobús. |
+| `voc_b1_as-opposed-to_112` | **as opposed to** | *conjunction* | `/æz əˈpoʊzd tu/` | en contraposición a | We chose quality as opposed to quantity. | Elegimos calidad en contraposición a cantidad. |
+| `voc_b1_on-the-whole_113` | **on the whole** | *conjunction* | `/ɑn ðə hoʊl/` | en general/en conjunto | On the whole, the trip was a success. | En general, el viaje fue un éxito. |
+| `voc_b1_by-and-large_114` | **by and large** | *conjunction* | `/baɪ ənd lɑrdʒ/` | en su mayor parte | By and large, people were satisfied. | En su mayor parte, la gente quedó satisfecha. |
+| `voc_b1_needless-to-say_115` | **needless to say** | *conjunction* | `/ˈnidləs tu seɪ/` | huelga decir/ni que decir | Needless to say, we were very happy. | Huelga decir que estábamos muy felices. |
+| `voc_b1_last-but-not-least_116` | **last but not least** | *conjunction* | `/læst bʌt nɑt list/` | por último pero no menos importante | Last but not least, thank you all for coming. | Por último pero no menos importante, gracias a todos por venir. |
+| `voc_b1_all-things-considered_117` | **all things considered** | *conjunction* | `/ɔl θɪŋz kənˈsɪdərd/` | considerándolo todo | All things considered, it was a good decision. | Considerándolo todo, fue una buena decisión. |
+| `voc_b1_in-other-words_118` | **in other words** | *conjunction* | `/ɪn ˈʌðər wɜrdz/` | en otras palabras | In other words, we need more time. | En otras palabras, necesitamos más tiempo. |
+| `voc_b1_that-being-said_119` | **that being said** | *conjunction* | `/ðæt ˈbiɪŋ sɛd/` | dicho esto | That being said, I still support the idea. | Dicho esto, sigo apoyando la idea. |
 
 ### Semana 5: B1 · Semana 5 – Verbos de argumentación y análisis
 Total de palabras en esta semana: **26**
 
 | ID | Palabra | Categoría | Fonética (IPA) | Traducción | Ejemplo en Inglés | Traducción del Ejemplo |
 |---|---|---|---|---|---|---|
-| `voc_b1_assume_120` | **assume** | *verb* | — | suponer | — | — |
-| `voc_b1_argue-that_121` | **argue (that)** | *verb* | — | argumentar/sostener que | — | — |
-| `voc_b1_claim_122` | **claim** | *verb* | — | afirmar/alegar | — | — |
-| `voc_b1_demonstrate_123` | **demonstrate** | *verb* | — | demostrar | — | — |
-| `voc_b1_emphasize_124` | **emphasize** | *verb* | — | enfatizar | — | — |
-| `voc_b1_imply_125` | **imply** | *verb* | — | insinuar/implicar | — | — |
-| `voc_b1_indicate_126` | **indicate** | *verb* | — | indicar | — | — |
-| `voc_b1_justify_127` | **justify** | *verb* | — | justificar | — | — |
-| `voc_b1_maintain-an-opinion_128` | **maintain (an opinion)** | *verb* | — | mantener/sostener una postura | — | — |
-| `voc_b1_predict_129` | **predict** | *verb* | — | predecir | — | — |
-| `voc_b1_prove_130` | **prove** | *verb* | — | probar/demostrar | — | — |
-| `voc_b1_reveal_131` | **reveal** | *verb* | — | revelar | — | — |
-| `voc_b1_acknowledge_132` | **acknowledge** | *verb* | — | reconocer | — | — |
-| `voc_b1_analyze_133` | **analyze** | *verb* | — | analizar | — | — |
-| `voc_b1_assess_134` | **assess** | *verb* | — | evaluar/valorar | — | — |
-| `voc_b1_clarify_135` | **clarify** | *verb* | — | aclarar | — | — |
-| `voc_b1_conclude_136` | **conclude** | *verb* | — | concluir | — | — |
-| `voc_b1_contradict_137` | **contradict** | *verb* | — | contradecir | — | — |
-| `voc_b1_distinguish_138` | **distinguish** | *verb* | — | distinguir | — | — |
-| `voc_b1_elaborate-on_139` | **elaborate (on)** | *verb* | — | desarrollar/profundizar en | — | — |
-| `voc_b1_examine_140` | **examine** | *verb* | — | examinar | — | — |
-| `voc_b1_highlight_141` | **highlight** | *verb* | — | destacar | — | — |
-| `voc_b1_illustrate-an-idea_142` | **illustrate (an idea)** | *verb* | — | ilustrar (una idea) | — | — |
-| `voc_b1_interpret_143` | **interpret** | *verb* | — | interpretar | — | — |
-| `voc_b1_outline-a-plan_144` | **outline (a plan)** | *verb* | — | esbozar (un plan) | — | — |
-| `voc_b1_summarize_145` | **summarize** | *verb* | — | resumir | — | — |
+| `voc_b1_assume_120` | **assume** | *verb* | `/əˈsum/` | suponer | I assume you already know the answer. | Supongo que ya sabes la respuesta. |
+| `voc_b1_argue-that_121` | **argue (that)** | *verb* | `/ˈɑrgju/` | argumentar/sostener que | She argues that the plan is too risky. | Ella argumenta que el plan es demasiado arriesgado. |
+| `voc_b1_claim_122` | **claim** | *verb* | `/kleɪm/` | afirmar/alegar | He claims he saw the accident. | Él afirma que vio el accidente. |
+| `voc_b1_demonstrate_123` | **demonstrate** | *verb* | `/ˈdɛmənˌstreɪt/` | demostrar | The study demonstrates a clear pattern. | El estudio demuestra un patrón claro. |
+| `voc_b1_emphasize_124` | **emphasize** | *verb* | `/ˈɛmfəˌsaɪz/` | enfatizar | The teacher emphasized the importance of practice. | El profesor enfatizó la importancia de la práctica. |
+| `voc_b1_imply_125` | **imply** | *verb* | `/ɪmˈplaɪ/` | insinuar/implicar | Her tone implied she was upset. | Su tono insinuaba que estaba molesta. |
+| `voc_b1_indicate_126` | **indicate** | *verb* | `/ˈɪndəˌkeɪt/` | indicar | The results indicate a positive trend. | Los resultados indican una tendencia positiva. |
+| `voc_b1_justify_127` | **justify** | *verb* | `/ˈdʒʌstəˌfaɪ/` | justificar | He tried to justify his decision. | Él trató de justificar su decisión. |
+| `voc_b1_maintain-an-opinion_128` | **maintain (an opinion)** | *verb* | `/meɪnˈteɪn/` | mantener/sostener una postura | She maintains that she is innocent. | Ella sostiene que es inocente. |
+| `voc_b1_predict_129` | **predict** | *verb* | `/prɪˈdɪkt/` | predecir | Experts predict a rise in prices. | Los expertos predicen un aumento de precios. |
+| `voc_b1_prove_130` | **prove** | *verb* | `/pruv/` | probar/demostrar | This proves that the theory was correct. | Esto prueba que la teoría era correcta. |
+| `voc_b1_reveal_131` | **reveal** | *verb* | `/rɪˈvil/` | revelar | The report revealed several problems. | El informe reveló varios problemas. |
+| `voc_b1_acknowledge_132` | **acknowledge** | *verb* | `/ækˈnɑlɪdʒ/` | reconocer | He acknowledged his mistake. | Él reconoció su error. |
+| `voc_b1_analyze_133` | **analyze** | *verb* | `/ˈænəˌlaɪz/` | analizar | We need to analyze the data carefully. | Necesitamos analizar los datos con cuidado. |
+| `voc_b1_assess_134` | **assess** | *verb* | `/əˈsɛs/` | evaluar/valorar | The teacher will assess our progress. | El profesor evaluará nuestro progreso. |
+| `voc_b1_clarify_135` | **clarify** | *verb* | `/ˈklɛrəˌfaɪ/` | aclarar | Can you clarify your point? | ¿Puedes aclarar tu punto? |
+| `voc_b1_conclude_136` | **conclude** | *verb* | `/kənˈklud/` | concluir | The study concludes that exercise helps sleep. | El estudio concluye que el ejercicio ayuda a dormir. |
+| `voc_b1_contradict_137` | **contradict** | *verb* | `/ˌkɑntrəˈdɪkt/` | contradecir | His statement contradicts the evidence. | Su declaración contradice la evidencia. |
+| `voc_b1_distinguish_138` | **distinguish** | *verb* | `/dɪˈstɪŋgwɪʃ/` | distinguir | It's hard to distinguish the two versions. | Es difícil distinguir las dos versiones. |
+| `voc_b1_elaborate-on_139` | **elaborate (on)** | *verb* | `/ɪˈlæbəˌreɪt/` | desarrollar/profundizar en | Could you elaborate on that point? | ¿Podrías desarrollar más ese punto? |
+| `voc_b1_examine_140` | **examine** | *verb* | `/ɪgˈzæmɪn/` | examinar | The doctor examined the results. | El médico examinó los resultados. |
+| `voc_b1_highlight_141` | **highlight** | *verb* | `/ˈhaɪˌlaɪt/` | destacar | The report highlights the main risks. | El informe destaca los principales riesgos. |
+| `voc_b1_illustrate-an-idea_142` | **illustrate (an idea)** | *verb* | `/ˈɪləˌstreɪt/` | ilustrar (una idea) | This example illustrates the problem well. | Este ejemplo ilustra bien el problema. |
+| `voc_b1_interpret_143` | **interpret** | *verb* | `/ɪnˈtɜrprɪt/` | interpretar | She interpreted the data differently. | Ella interpretó los datos de forma diferente. |
+| `voc_b1_outline-a-plan_144` | **outline (a plan)** | *verb* | `/ˈaʊtˌlaɪn/` | esbozar (un plan) | Let me outline the main steps. | Déjame esbozar los pasos principales. |
+| `voc_b1_summarize_145` | **summarize** | *verb* | `/ˈsʌməˌraɪz/` | resumir | Can you summarize the article for me? | ¿Puedes resumirme el artículo? |
 
 ### Semana 6: B1 · Semana 6 – Medios de comunicación y actualidad
 Total de palabras en esta semana: **19**
 
 | ID | Palabra | Categoría | Fonética (IPA) | Traducción | Ejemplo en Inglés | Traducción del Ejemplo |
 |---|---|---|---|---|---|---|
-| `voc_b1_article_146` | **article** | *noun* | — | artículo | — | — |
-| `voc_b1_column-newspaper_147` | **column (newspaper)** | *noun* | — | columna (periódico) | — | — |
-| `voc_b1_broadcast_148` | **broadcast** | *verb* | — | transmisión/emitir | — | — |
-| `voc_b1_coverage-news_149` | **coverage (news)** | *noun* | — | cobertura (noticiosa) | — | — |
-| `voc_b1_correspondent_150` | **correspondent** | *noun* | — | corresponsal | — | — |
-| `voc_b1_editor_151` | **editor** | *noun* | — | editor | — | — |
-| `voc_b1_feature-article_152` | **feature (article)** | *noun* | — | reportaje/artículo especial | — | — |
-| `voc_b1_interview-noun_153` | **interview (noun)** | *noun* | — | entrevista | — | — |
-| `voc_b1_investigate_154` | **investigate** | *verb* | — | investigar | — | — |
-| `voc_b1_source-news_155` | **source (news)** | *noun* | — | fuente (informativa) | — | — |
-| `voc_b1_statement-public_156` | **statement (public)** | *noun* | — | declaración (pública) | — | — |
-| `voc_b1_survey_157` | **survey** | *noun* | — | encuesta | — | — |
-| `voc_b1_poll_158` | **poll** | *noun* | — | sondeo/encuesta | — | — |
-| `voc_b1_censorship_159` | **censorship** | *noun* | — | censura | — | — |
-| `voc_b1_propaganda_160` | **propaganda** | *noun* | — | propaganda | — | — |
-| `voc_b1_bias_161` | **bias** | *noun* | — | sesgo/parcialidad | — | — |
-| `voc_b1_credible_162` | **credible** | *adjective* | — | creíble | — | — |
-| `voc_b1_misinformation_163` | **misinformation** | *noun* | — | desinformación | — | — |
-| `voc_b1_current-affairs_164` | **current affairs** | *noun* | — | actualidad | — | — |
+| `voc_b1_article_146` | **article** | *noun* | `/ˈɑrtɪkəl/` | artículo | I read an interesting article today. | Leí un artículo interesante hoy. |
+| `voc_b1_column-newspaper_147` | **column (newspaper)** | *noun* | `/ˈkɑləm/` | columna (periódico) | She writes a weekly column. | Ella escribe una columna semanal. |
+| `voc_b1_broadcast_148` | **broadcast** | *verb* | `/ˈbrɔdˌkæst/` | transmisión/emitir | The game will be broadcast live. | El partido se transmitirá en vivo. |
+| `voc_b1_coverage-news_149` | **coverage (news)** | *noun* | `/ˈkʌvərɪdʒ/` | cobertura (noticiosa) | The election coverage lasted all night. | La cobertura de las elecciones duró toda la noche. |
+| `voc_b1_correspondent_150` | **correspondent** | *noun* | `/ˌkɔrəˈspɑndənt/` | corresponsal | Our correspondent reported from the capital. | Nuestro corresponsal reportó desde la capital. |
+| `voc_b1_editor_151` | **editor** | *noun* | `/ˈɛdɪtər/` | editor | The editor approved the final draft. | El editor aprobó el borrador final. |
+| `voc_b1_feature-article_152` | **feature (article)** | *noun* | `/ˈfitʃər/` | reportaje/artículo especial | The magazine published a feature on climate change. | La revista publicó un reportaje sobre el cambio climático. |
+| `voc_b1_interview-noun_153` | **interview (noun)** | *noun* | `/ˈɪntərˌvju/` | entrevista | I watched her interview last night. | Vi su entrevista anoche. |
+| `voc_b1_investigate_154` | **investigate** | *verb* | `/ɪnˈvɛstəˌgeɪt/` | investigar | The journalists investigated the case for months. | Los periodistas investigaron el caso durante meses. |
+| `voc_b1_source-news_155` | **source (news)** | *noun* | `/sɔrs/` | fuente (informativa) | The reporter protected her source. | La periodista protegió su fuente. |
+| `voc_b1_statement-public_156` | **statement (public)** | *noun* | `/ˈsteɪtmənt/` | declaración (pública) | The company released an official statement. | La empresa emitió una declaración oficial. |
+| `voc_b1_survey_157` | **survey** | *noun* | `/ˈsɜrˌveɪ/` | encuesta | The survey showed interesting results. | La encuesta mostró resultados interesantes. |
+| `voc_b1_poll_158` | **poll** | *noun* | `/poʊl/` | sondeo/encuesta | The poll suggests a close election. | El sondeo sugiere una elección reñida. |
+| `voc_b1_censorship_159` | **censorship** | *noun* | `/ˈsɛnsərˌʃɪp/` | censura | Censorship limits free speech. | La censura limita la libertad de expresión. |
+| `voc_b1_propaganda_160` | **propaganda** | *noun* | `/ˌprɑpəˈgændə/` | propaganda | The posters were pure propaganda. | Los carteles eran pura propaganda. |
+| `voc_b1_bias_161` | **bias** | *noun* | `/ˈbaɪəs/` | sesgo/parcialidad | The article showed clear bias. | El artículo mostró un sesgo claro. |
+| `voc_b1_credible_162` | **credible** | *adjective* | `/ˈkrɛdəbəl/` | creíble | Is this source credible? | ¿Es creíble esta fuente? |
+| `voc_b1_misinformation_163` | **misinformation** | *noun* | `/ˌmɪsɪnfərˈmeɪʃən/` | desinformación | Social media spreads misinformation quickly. | Las redes sociales difunden desinformación rápidamente. |
+| `voc_b1_current-affairs_164` | **current affairs** | *noun* | `/ˈkɜrənt əˈfɛrz/` | actualidad | She follows current affairs closely. | Ella sigue de cerca la actualidad. |
 
 ### Semana 7: B1 · Semana 7 – Economía y trabajo (nivel intermedio)
 Total de palabras en esta semana: **23**
