@@ -80,7 +80,7 @@ const ipaData: Record<string, { id: string; ipa: string; example: string; exampl
 
 let patched = 0
 
-for (const [word, data] of Object.entries(ipaData)) {
+for (const data of Object.values(ipaData)) {
   const needle = `id: '${data.id}',`
   const index = code.indexOf(needle)
   if (index === -1) {
