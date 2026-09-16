@@ -614,18 +614,28 @@ footer {
 .foot-brand-title {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
   font-weight: 850;
-  font-size: 18px;
+  font-size: 19px;
   color: var(--white);
-  margin-bottom: 14px;
+  margin-bottom: 16px;
 }
 
 .foot-brand-title img {
-  width: 32px;
-  height: 32px;
-  border-radius: 8px;
-  background: #1E293B;
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  background: #FFFFFF;
+  padding: 5px;
+  object-fit: contain;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
+  flex-shrink: 0;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.foot-brand-title img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 22px rgba(5, 150, 105, 0.3);
 }
 
 .foot-brand p {
