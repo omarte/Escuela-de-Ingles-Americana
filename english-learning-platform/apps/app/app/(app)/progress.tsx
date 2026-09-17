@@ -120,7 +120,7 @@ export default function ProgressScreen(): React.JSX.Element {
 
   useEffect(() => {
     void refreshMetrics(userId)
-    void loadEvaluationAttempts()
+    void loadEvaluationAttempts(userId)
   }, [userId, cards.length, refreshMetrics, loadEvaluationAttempts])
 
   const {

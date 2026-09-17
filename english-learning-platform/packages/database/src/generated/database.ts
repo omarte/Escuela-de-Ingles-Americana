@@ -173,6 +173,64 @@ export interface Database {
         }
         Relationships: []
       }
+      checkpoint_attempts: {
+        Row: {
+          id: string
+          user_id: string
+          checkpoint_id: string
+          score_percentage: number
+          total_questions: number
+          correct_count: number
+          passed: boolean
+          average_latency_ms: number
+          fast_answers_count: number
+          friction_count: number
+          certificate_hash: string | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          user_id: string
+          checkpoint_id: string
+          score_percentage: number
+          total_questions: number
+          correct_count: number
+          passed: boolean
+          average_latency_ms: number
+          fast_answers_count?: number
+          friction_count?: number
+          certificate_hash?: string | null
+          created_at?: string
+        }
+        Update: {
+          score_percentage?: number
+          correct_count?: number
+          passed?: boolean
+          average_latency_ms?: number
+          certificate_hash?: string | null
+        }
+        Relationships: []
+      }
+      session_feedback: {
+        Row: {
+          id: string
+          user_id: string
+          session_date: string
+          friction_level: 'easy' | 'normal' | 'hard'
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          user_id: string
+          session_date?: string
+          friction_level: 'easy' | 'normal' | 'hard'
+          created_at?: string
+        }
+        Update: {
+          friction_level?: 'easy' | 'normal' | 'hard'
+        }
+        Relationships: []
+      }
     }
     Views: Record<string, never>
     Functions: Record<string, never>
