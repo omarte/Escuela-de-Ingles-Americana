@@ -25,6 +25,7 @@ import { RescueModeBanner } from '../../components/RescueModeBanner'
 import { SessionFeedbackModal } from '../../components/SessionFeedbackModal'
 import { MicroExamModal } from '../../components/MicroExamModal'
 import { AppScreenHeader } from '../../components/AppScreenHeader'
+import { saveSessionFeedback } from '../../lib/feedbackService'
 
 const OPTION_LETTERS = ['A', 'B', 'C', 'D']
 
@@ -170,11 +171,11 @@ export default function LearnScreen(): React.JSX.Element {
     setShowFeedback(true)
   }, [])
 
-  const handleFeedbackSubmit = useCallback((_level: FrictionLevel): void => {
-    // TODO Sprint D: persist to SQLite via localFeedbackService
+  const handleFeedbackSubmit = useCallback((level: FrictionLevel): void => {
+    void saveSessionFeedback(userId, level)
     setShowFeedback(false)
     setSessionFrozen(false)
-  }, [])
+  }, [userId])
 
   const handleFeedbackSkip = useCallback((): void => {
     setShowFeedback(false)
