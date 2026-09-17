@@ -28,12 +28,16 @@ import {
   type MatchingPair,
 } from '../lib/matchingCategories'
 
+import { AudioDictationGame, type AudioDictationFinishData } from './AudioDictationGame'
+
 export type GameType =
   | 'typing_rush'
   | 'typing_rush_failed'
   | 'lightning_quiz'
   | 'memory_match'
   | 'word_match'
+  | 'audio_dictation'
+  | 'audio_dictation_failed'
   | null
 
 interface GamesModalProps {
@@ -1975,6 +1979,31 @@ export function GamesModal({
     setActiveGame(null)
   }
 
+  const handleFinishAudioDictation = (res: AudioDictationFinishData): void => {
+    const mins = Math.floor(res.secondsElapsed / 60)
+    const secs = res.secondsElapsed % 60
+    const timeFormatted = `${mins}:${secs < 10 ? '0' : ''}${secs}`
+
+    setGameResult({
+      game: 'audio_dictation',
+      summary:
+        res.completed === res.total
+          ? '¡Oído y Ortografía Perfectos! 🎧🏆'
+          : res.completed > 0
+            ? '¡Buen Entrenamiento Auditivo! 🎯'
+            : '¡Sigue Entrenando el Oído! 👂',
+      stats: {
+        'Puntos XP': `+${res.xp} XP`,
+        'Aciertos': `${res.completed} de ${res.total}`,
+        'Tiempo': timeFormatted,
+        'Combo Máximo': `x${res.maxCombo} 🔥`,
+      },
+      reviewWords: res.reviewItems,
+      failedWordsPool: res.failedItems,
+    })
+    setActiveGame(null)
+  }
+
   return (
     <Modal visible={visible} animationType="slide" transparent={false} onRequestClose={onClose}>
       <SafeAreaView style={styles.modalSafe} edges={['top', 'bottom']}>
@@ -2012,6 +2041,18 @@ export function GamesModal({
           <WordMatchGame
             wordsPool={wordsPool}
             onFinish={handleFinishWordMatch}
+            onExit={() => {
+              setActiveGame(null)
+            }}
+          />
+        ) : activeGame === 'audio_dictation' || activeGame === 'audio_dictation_failed' ? (
+          <AudioDictationGame
+            wordsPool={
+              activeGame === 'audio_dictation_failed' && failedPool && failedPool.length > 0
+                ? failedPool
+                : wordsPool
+            }
+            onFinish={handleFinishAudioDictation}
             onExit={() => {
               setActiveGame(null)
             }}
@@ -2110,12 +2151,16 @@ export function GamesModal({
 
                 {/* Botones de acción */}
                 <View style={styles.resultActionsCol}>
-                  {gameResult.failedWordsPool && gameResult.failedWordsPool.length > 0 ? (
+                    {gameResult.failedWordsPool && gameResult.failedWordsPool.length > 0 ? (
                     <TouchableOpacity
                       style={styles.retryFailedButton}
                       onPress={() => {
                         setFailedPool(gameResult.failedWordsPool!)
-                        setActiveGame('typing_rush_failed')
+                        setActiveGame(
+                          gameResult.game === 'audio_dictation'
+                            ? 'audio_dictation_failed'
+                            : 'typing_rush_failed'
+                        )
                         setGameResult(null)
                       }}
                     >
@@ -2134,7 +2179,11 @@ export function GamesModal({
                     onPress={() => {
                       setFailedPool(null)
                       setActiveGame(
-                        gameResult.game === 'typing_rush_failed' ? 'typing_rush' : gameResult.game
+                        gameResult.game === 'typing_rush_failed'
+                          ? 'typing_rush'
+                          : gameResult.game === 'audio_dictation_failed'
+                            ? 'audio_dictation'
+                            : gameResult.game
                       )
                       setGameResult(null)
                     }}
@@ -2254,6 +2303,33 @@ export function GamesModal({
                 </Text>
               </View>
               <Ionicons name="chevron-forward" size={20} color="#2563EB" />
+            </Pressable>
+
+            {/* Game Card 5: DICTADO & ORTOGRAFÍA */}
+            <Pressable
+              style={({ pressed }) => [
+                styles.gameMenuCard,
+                styles.gameMenuCardDictation,
+                { transform: [{ scale: pressed ? 0.97 : 1 }] },
+              ]}
+              onPress={() => {
+                setActiveGame('audio_dictation')
+                setGameResult(null)
+              }}
+            >
+              <View style={[styles.gameIconWrap, { backgroundColor: '#ECFDF5' }]}>
+                <Text style={styles.gameEmoji}>🎧</Text>
+              </View>
+              <View style={styles.gameMenuInfo}>
+                <View style={styles.gameMenuTitleRow}>
+                  <Text style={styles.gameMenuTitle}>DICTADO & ORTOGRAFÍA</Text>
+                  <Badge label="Escucha ➔ Escribe" color="#059669" size="sm" />
+                </View>
+                <Text style={styles.gameMenuDesc}>
+                  Escucha la pronunciación nativa y escribe la palabra en inglés. ¡Entrena oído y ortografía!
+                </Text>
+              </View>
+              <Ionicons name="chevron-forward" size={20} color="#059669" />
             </Pressable>
           </ScrollView>
         )}
@@ -3141,6 +3217,10 @@ const styles = StyleSheet.create({
   gameMenuCardMatch: {
     borderLeftWidth: 4,
     borderLeftColor: '#2563EB',
+  },
+  gameMenuCardDictation: {
+    borderLeftWidth: 4,
+    borderLeftColor: '#059669',
   },
   gameIconWrap: {
     width: 48,
