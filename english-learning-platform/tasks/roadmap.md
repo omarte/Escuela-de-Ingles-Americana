@@ -124,8 +124,8 @@
 | :-------- | :----- | :------------ | :--------------- | :---------------------------- |
 | **A1**    | 19     | 1,512         | 3                | ✅ Completed                  |
 | **A2**    | 15     | 734           | 3                | ✅ Completed                  |
-| **B1**    | 9      | 226           | 8                | ⏳ Structural Model Ready     |
-| **B2**    | 5      | 84            | 2                | ⏳ Structural Model Ready     |
+| **B1**    | 9      | 226           | 8                | ✅ Completed                  |
+| **B2**    | 5      | 84            | 2                | ✅ Completed                  |
 | **TOTAL** | **48** | **2,556**     | **16**           | **Production Ready Platform** |
 
 ---
