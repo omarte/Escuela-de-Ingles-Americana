@@ -64,5 +64,10 @@ export const LEVEL_A1_COMPLETED: ImageSourcePropType = require('../assets/level-
 export const LEVEL_A2_COMPLETED: ImageSourcePropType = require('../assets/level-a2-completed.jpg')
 // eslint-disable-next-line @typescript-eslint/no-require-imports, @typescript-eslint/no-unsafe-assignment
 export const LEVEL_B1_COMPLETED: ImageSourcePropType = require('../assets/level-b1-completed.jpg')
+// Level Completed Milestones
 // eslint-disable-next-line @typescript-eslint/no-require-imports, @typescript-eslint/no-unsafe-assignment
 export const LEVEL_B2_COMPLETED: ImageSourcePropType = require('../assets/level-b2-completed.jpg')
+
+// Game & Interactive Assets
+// eslint-disable-next-line @typescript-eslint/no-require-imports, @typescript-eslint/no-unsafe-assignment
+export const CARD_BACK_IMG: ImageSourcePropType = require('../assets/card-back.jpg')

@@ -8,7 +8,45 @@ export interface QuizOption {
   isCorrect: boolean
 }
 
-// Curated fallbacks in case level pool is small
+// Curated specific confusions for high-frequency pitfalls (false friends, phonetic similarity, lexical confusion)
+const SPECIFIC_CONFUSIONS: Record<string, string[]> = {
+  daughter: ['Hijo', 'Hermana', 'Duda', 'Madre', 'Sobrina'],
+  son: ['Hija', 'Hermano', 'Sol', 'Padre'],
+  doubt: ['Hija', 'Deuda', 'Duda', 'Temor'],
+  actually: ['Actualmente', 'De hecho', 'En realidad', 'Ahora'],
+  current: ['Corriente', 'Actual', 'Pasado', 'Común'],
+  success: ['Suceso', 'Éxito', 'Salida', 'Acontecimiento'],
+  exit: ['Éxito', 'Salida', 'Entrada', 'Escape'],
+  library: ['Librería', 'Biblioteca', 'Lugar', 'Libro'],
+  bookstore: ['Biblioteca', 'Librería', 'Estudio', 'Tienda'],
+  large: ['Largo', 'Grande', 'Amplio', 'Pesado'],
+  long: ['Grande', 'Largo', 'Alto', 'Bajo'],
+  embarrassed: ['Embarazada', 'Avergonzado', 'Confundido', 'Cansado'],
+  carpet: ['Carpeta', 'Alfombra', 'Cortina', 'Manta'],
+  folder: ['Alfombra', 'Carpeta', 'Cuaderno', 'Sobre'],
+  advice: ['Aviso', 'Consejo', 'Noticia', 'Advertencia'],
+  notice: ['Consejo', 'Aviso', 'Nota', 'Anuncio'],
+  soap: ['Sopa', 'Jabón', 'Espuma', 'Toalla'],
+  soup: ['Jabón', 'Sopa', 'Caldo', 'Bebida'],
+  hit: ['Golpear', 'Atrapar', 'Herir', 'Tirar'],
+  flu: ['Gripe', 'Gripa', 'Agarre', 'Resfriado'],
+  sensible: ['Sensible', 'Sensato', 'Sencillo', 'Simple'],
+  sensitive: ['Sensato', 'Sensible', 'Atento', 'Cuidadoso'],
+}
+
+// Semantic category clusters for natural category-level distractors
+const SEMANTIC_CLUSTERS: Record<string, string[]> = {
+  family: ['Padre', 'Madre', 'Hijo', 'Hija', 'Hermano', 'Hermana', 'Abuelo', 'Abuela', 'Tío', 'Tía', 'Primo', 'Prima', 'Sobrino', 'Sobrina', 'Esposo', 'Esposa'],
+  time: ['Hoy', 'Mañana', 'Ayer', 'Semana', 'Mes', 'Año', 'Hora', 'Minuto', 'Segundo', 'Tarde', 'Noche', 'Día', 'Siglo'],
+  emotions: ['Feliz', 'Triste', 'Enojado', 'Cansado', 'Sorprendido', 'Asustado', 'Tranquilo', 'Nervioso', 'Orgulloso'],
+  body: ['Cabeza', 'Brazo', 'Pierna', 'Mano', 'Pie', 'Ojo', 'Oreja', 'Boca', 'Nariz', 'Dedo', 'Espalda', 'Corazón'],
+  food: ['Comida', 'Pan', 'Agua', 'Leche', 'Carne', 'Fruta', 'Verdura', 'Arroz', 'Huevo', 'Queso', 'Manzana', 'Pescado'],
+  places: ['Casa', 'Escuela', 'Hospital', 'Parque', 'Tienda', 'Ciudad', 'Calle', 'Playa', 'Oficina', 'Restaurante'],
+  weather: ['Lluvia', 'Sol', 'Nieve', 'Viento', 'Nube', 'Tormenta', 'Frío', 'Calor', 'Clima'],
+  colors: ['Rojo', 'Azul', 'Verde', 'Amarillo', 'Blanco', 'Negro', 'Gris', 'Marrón', 'Naranja', 'Morado'],
+}
+
+// Curated fallbacks by part of speech
 const BACKUP_DISTRACTORS: Record<string, string[]> = {
   noun: [
     'Hermano',
@@ -67,13 +105,16 @@ const BACKUP_DISTRACTORS: Record<string, string[]> = {
  */
 function getCleanTranslation(raw: string): string {
   if (!raw) return 'Traducción'
-  // If format is "Madre / Mamá", keep first or clean format
   return raw.trim()
 }
 
 /**
  * Generates 4 well-balanced options for the active recall multiple-choice challenge.
- * 1 correct translation + 3 smart distractors of similar category.
+ * Priorities:
+ * 1. Specific curated lexical/phonetic/false-friend confusions
+ * 2. Semantic cluster matches (family, body, time, food, etc.)
+ * 3. Same part of speech from the active CEFR level
+ * 4. Fallback from curated part of speech pool
  */
 export function generateQuizOptions(
   currentWord: WordDisplayData,
@@ -81,62 +122,101 @@ export function generateQuizOptions(
 ): QuizOption[] {
   const correctText = getCleanTranslation(currentWord.translation)
   const normalizedCorrect = correctText.toLowerCase()
+  const lowerWord = currentWord.word.trim().toLowerCase()
+  const currentPos = (currentWord.partOfSpeech || 'noun').toLowerCase()
 
-  // 1. Gather candidate distractors from same level
-  let candidateItems: string[] = []
-  try {
-    const levelVocab = getVocabularyForLevel(level)
-    candidateItems = levelVocab
-      .filter((v) => v.id !== currentWord.id && v.translation)
-      .filter((v) => !v.translation.toLowerCase().includes(normalizedCorrect) && !normalizedCorrect.includes(v.translation.toLowerCase()))
-      .map((v) => getCleanTranslation(v.translation))
-  } catch {
-    candidateItems = []
-  }
+  const selectedDistractors: string[] = []
 
-  // Deduplicate and filter out empty or identical
-  const uniqueCandidates = Array.from(new Set(candidateItems)).filter(
-    (text) => text.toLowerCase() !== normalizedCorrect,
-  )
-
-  // 2. Select 3 distractors
-  const distractors: string[] = []
-  const shuffledCandidates = [...uniqueCandidates].sort(() => 0.5 - Math.random())
-
-  for (const item of shuffledCandidates) {
-    if (distractors.length >= 3) break
-    if (!distractors.includes(item)) {
-      distractors.push(item)
+  const addIfValid = (item: string) => {
+    if (selectedDistractors.length >= 3) return
+    const clean = getCleanTranslation(item)
+    const norm = clean.toLowerCase()
+    if (
+      norm !== normalizedCorrect &&
+      !selectedDistractors.some((d) => d.toLowerCase() === norm) &&
+      !norm.includes(normalizedCorrect) &&
+      !normalizedCorrect.includes(norm)
+    ) {
+      selectedDistractors.push(clean)
     }
   }
 
-  // 3. Fallback if not enough candidates from dataset
-  if (distractors.length < 3) {
-    const pos = currentWord.partOfSpeech.toLowerCase()
-    const pool = BACKUP_DISTRACTORS[pos] ?? BACKUP_DISTRACTORS['noun'] ?? []
-    const shuffledPool = [...pool].sort(() => 0.5 - Math.random())
-    for (const item of shuffledPool) {
-      if (distractors.length >= 3) break
-      if (item.toLowerCase() !== normalizedCorrect && !distractors.includes(item)) {
-        distractors.push(item)
+  // Priority 1: Specific confusions for this word
+  if (SPECIFIC_CONFUSIONS[lowerWord]) {
+    const specific = [...SPECIFIC_CONFUSIONS[lowerWord]!].sort(() => 0.5 - Math.random())
+    for (const item of specific) {
+      addIfValid(item)
+    }
+  }
+
+  // Priority 2: Semantic cluster match
+  if (selectedDistractors.length < 3) {
+    for (const cluster of Object.values(SEMANTIC_CLUSTERS)) {
+      const isWordInCluster = cluster.some(
+        (c) => c.toLowerCase() === normalizedCorrect || normalizedCorrect.includes(c.toLowerCase())
+      )
+      if (isWordInCluster) {
+        const shuffledCluster = [...cluster].sort(() => 0.5 - Math.random())
+        for (const item of shuffledCluster) {
+          addIfValid(item)
+        }
+        break
       }
     }
   }
 
-  // 4. Assemble 4 options and shuffle
+  // Priority 3: Same level and EXACT SAME part of speech
+  if (selectedDistractors.length < 3) {
+    try {
+      const levelVocab = getVocabularyForLevel(level)
+      const samePosVocab = levelVocab
+        .filter(
+          (v) =>
+            v.id !== currentWord.id &&
+            v.translation &&
+            (v.partOfSpeech || '').toLowerCase() === currentPos
+        )
+        .map((v) => getCleanTranslation(v.translation))
+        .sort(() => 0.5 - Math.random())
+
+      for (const item of samePosVocab) {
+        addIfValid(item)
+      }
+    } catch {
+      // ignore
+    }
+  }
+
+  // Priority 4: Any word from level with same part of speech or fallback
+  if (selectedDistractors.length < 3) {
+    const pool = BACKUP_DISTRACTORS[currentPos] ?? BACKUP_DISTRACTORS['noun'] ?? []
+    const shuffledPool = [...pool].sort(() => 0.5 - Math.random())
+    for (const item of shuffledPool) {
+      addIfValid(item)
+    }
+  }
+
+  // Priority 5: Generic emergency fallback
+  if (selectedDistractors.length < 3) {
+    const generic = ['Opción', 'Respuesta', 'Palabra', 'Término']
+    for (const item of generic) {
+      addIfValid(item)
+    }
+  }
+
+  // 4. Assemble 4 options with distinct IDs and shuffle
   const options: QuizOption[] = [
     {
       id: `opt_correct_${currentWord.id}`,
       text: correctText,
       isCorrect: true,
     },
-    ...distractors.map((text, idx) => ({
+    ...selectedDistractors.slice(0, 3).map((text, idx) => ({
       id: `opt_distractor_${idx}_${currentWord.id}`,
       text,
       isCorrect: false,
     })),
   ]
 
-  // Shuffle so the correct answer is randomly distributed
   return options.sort(() => 0.5 - Math.random())
 }

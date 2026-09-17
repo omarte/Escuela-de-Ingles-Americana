@@ -23,6 +23,8 @@ import type { CEFRLevel, ReadingPassage, VocabularyItem, WordMapping } from '@el
 import { usePurchases } from '../../hooks/usePurchases'
 import { EMPTY_READINGS_IMG } from '../../lib/assets'
 import { AppScreenHeader } from '../../components/AppScreenHeader'
+import { useSRSStore } from '../../stores/useSRSStore'
+import { speakEnglish } from '../../lib/audio'
 
 const LEVELS: CEFRLevel[] = ['A1', 'A2', 'B1', 'B2']
 
@@ -100,6 +102,44 @@ export default function ReadingScreen(): React.JSX.Element {
   const [activeMappingKey, setActiveMappingKey] = useState<string | null>(null)
   const [userAnswers, setUserAnswers] = useState<Record<number, number>>({})
   const [isCompleted, setIsCompleted] = useState(false)
+
+  const cards = useSRSStore((state) => state.cards)
+
+  // Map vocabularyId -> 'mastered' (interval >= 21d) | 'learning' (1-20d) | 'new' (0d / not reviewed)
+  const srsStatusMap = useMemo(() => {
+    const map = new Map<string, 'mastered' | 'learning' | 'new'>()
+    for (const c of cards) {
+      if (c.interval >= 21) {
+        map.set(c.vocabularyItemId, 'mastered')
+      } else if (c.interval > 0 || c.reps > 0) {
+        map.set(c.vocabularyItemId, 'learning')
+      } else {
+        map.set(c.vocabularyItemId, 'new')
+      }
+    }
+    return map
+  }, [cards])
+
+  const passageIndex = passages.findIndex((p) => p.id === selectedPassage.id)
+  const currentPassageNum = passageIndex >= 0 ? passageIndex + 1 : 1
+  const totalPassages = passages.length
+  const progressPercent =
+    totalPassages > 0 ? Math.round((currentPassageNum / totalPassages) * 100) : 0
+
+  const wordCount = useMemo(
+    () => selectedPassage.text.split(/\s+/).filter(Boolean).length,
+    [selectedPassage.text],
+  )
+  const estimatedReadMinutes = Math.max(1, Math.ceil(wordCount / 120))
+
+  const knownPercent = useMemo(() => {
+    if (!selectedPassage.vocabularyIds.length) return 100
+    const count = selectedPassage.vocabularyIds.filter((id) => {
+      const s = srsStatusMap.get(id)
+      return s === 'mastered' || s === 'learning'
+    }).length
+    return Math.round((count / selectedPassage.vocabularyIds.length) * 100)
+  }, [selectedPassage.vocabularyIds, srsStatusMap])
 
   // Map of normalized word string -> VocabularyItem
   const vocabMap = useMemo(() => {
@@ -196,20 +236,27 @@ export default function ReadingScreen(): React.JSX.Element {
           if (matched) {
             const isPairActive = activeMappingKey === matched.en.toLowerCase()
             const vocItem = matched.vocabularyId ? getVocabularyById(matched.vocabularyId) : null
+            const srsStatus = matched.vocabularyId
+              ? (srsStatusMap.get(matched.vocabularyId) ?? 'new')
+              : 'new'
 
             return (
               <Text
                 key={`tok-${isSpanish ? 'es' : 'en'}-${String(index)}`}
                 accessibilityRole="button"
-                accessibilityLabel={`Ver significado de ${token}`}
+                accessibilityLabel={`Ver significado y escuchar ${token}`}
                 onPress={() => {
                   setActiveMappingKey(matched.en.toLowerCase())
                   if (vocItem) {
                     setActiveWordItem(vocItem)
+                    void speakEnglish(vocItem.word)
                   }
                 }}
                 style={[
                   styles.highlightedWord,
+                  srsStatus === 'mastered' && styles.wordMastered,
+                  srsStatus === 'learning' && styles.wordLearning,
+                  srsStatus === 'new' && styles.wordNew,
                   isPairActive && styles.highlightedWordActive,
                 ]}
               >
@@ -223,8 +270,6 @@ export default function ReadingScreen(): React.JSX.Element {
       </Text>
     )
   }
-
-  const wordCount = selectedPassage.text.split(/\s+/).filter(Boolean).length
 
   return (
     <SafeAreaView style={styles.safeArea} edges={['top']}>
@@ -348,35 +393,69 @@ export default function ReadingScreen(): React.JSX.Element {
           <>
             {/* Active Passage Reader Card */}
             <Card padding="lg" highlighted style={styles.readerCard}>
+              {/* Level Progress Bar */}
+              <View style={styles.progressContainer}>
+                <View style={styles.progressHeaderRow}>
+                  <Text style={styles.progressLabel}>
+                    Lectura {currentPassageNum} de {totalPassages} de Nivel {selectedLevel}
+                  </Text>
+                  <Text style={styles.progressValue}>{progressPercent}%</Text>
+                </View>
+                <View style={styles.progressBarTrack}>
+                  <View style={[styles.progressBarFill, { width: `${progressPercent}%` }]} />
+                </View>
+              </View>
+
+              {/* Passage Metadata Badges */}
+              <View style={styles.metadataBar}>
+                <View style={styles.metaChip}>
+                  <Ionicons name="time-outline" size={13} color="#0D9488" />
+                  <Text style={styles.metaChipText}>{estimatedReadMinutes} min</Text>
+                </View>
+                <View style={styles.metaChip}>
+                  <Ionicons name="school-outline" size={13} color="#2563EB" />
+                  <Text style={styles.metaChipText}>{knownPercent}% familiar</Text>
+                </View>
+                <View style={styles.metaChip}>
+                  <Ionicons name="flash-outline" size={13} color="#D97706" />
+                  <Text style={styles.metaChipText}>Dif. {selectedPassage.difficulty}/5</Text>
+                </View>
+                <View style={styles.metaChip}>
+                  <Ionicons name="text-outline" size={13} color="#64748B" />
+                  <Text style={styles.metaChipText}>{wordCount} palabras</Text>
+                </View>
+              </View>
+
               <View style={styles.passageHeader}>
-            <View style={styles.badgeRow}>
-              <Badge label={selectedPassage.level} color={colors.primary} size="sm" />
-              <Badge
-                label={`Semana ${String(selectedPassage.week)}`}
-                color={colors.secondary}
-                size="sm"
-              />
-              <Badge
-                label={`Dificultad ${String(selectedPassage.difficulty)}/5`}
-                color={colors.warning}
-                size="sm"
-              />
-            </View>
-            <Text style={styles.wordCountBadge}>{String(wordCount)} palabras</Text>
-          </View>
+                <Text style={styles.passageTitle}>{selectedPassage.title}</Text>
+                <View style={styles.badgeRow}>
+                  <Badge label={selectedPassage.level} color={colors.primary} size="sm" />
+                  <Badge
+                    label={`Semana ${String(selectedPassage.week)}`}
+                    color={colors.secondary}
+                    size="sm"
+                  />
+                </View>
+              </View>
 
-          <Text style={styles.passageTitle}>{selectedPassage.title}</Text>
+              {/* Semantic SRS Pedagogical Legend */}
+              <View style={styles.srsLegendBar}>
+                <View style={styles.srsLegendItem}>
+                  <View style={[styles.srsDot, { backgroundColor: '#10B981' }]} />
+                  <Text style={styles.srsLegendText}>Dominada (≥21d)</Text>
+                </View>
+                <View style={styles.srsLegendItem}>
+                  <View style={[styles.srsDot, { backgroundColor: '#F59E0B' }]} />
+                  <Text style={styles.srsLegendText}>En aprendizaje</Text>
+                </View>
+                <View style={styles.srsLegendItem}>
+                  <View style={[styles.srsDot, { backgroundColor: '#3B82F6' }]} />
+                  <Text style={styles.srsLegendText}>Nueva</Text>
+                </View>
+              </View>
 
-          <View style={styles.instructionBanner}>
-            <Ionicons name="information-circle-outline" size={16} color={colors.primary} />
-            <Text style={styles.instructionText}>
-              Las palabras subrayadas en inglés y español están conectadas. Tócalas para relacionar
-              su significado y traducción.
-            </Text>
-          </View>
-
-          {/* English Interactive Passage */}
-          {renderInteractiveContent(false)}
+              {/* English Interactive Passage */}
+              {renderInteractiveContent(false)}
 
           {/* Translation Section (Tap-to-reveal with synchronized highlighted words) */}
           {showTranslation ? (
@@ -499,41 +578,76 @@ export default function ReadingScreen(): React.JSX.Element {
         </>
         )}
 
-        {/* Word Detail Modal */}
+        {/* Word Detail Slide-Up Bottom Sheet */}
         <Modal
           visible={activeWordItem !== null}
           transparent
-          animationType="fade"
+          animationType="slide"
           onRequestClose={() => {
             setActiveWordItem(null)
           }}
         >
-          <View style={styles.modalOverlay}>
-            <View style={styles.modalContent}>
+          <Pressable
+            style={styles.bottomSheetOverlay}
+            onPress={() => setActiveWordItem(null)}
+          >
+            <Pressable
+              style={styles.bottomSheetContent}
+              onPress={(e) => e.stopPropagation()}
+            >
               {activeWordItem ? (
                 <>
+                  <View style={styles.bottomSheetDragHandle} />
+
                   <View style={styles.modalHeader}>
-                    <Badge label={activeWordItem.level} color={colors.primary} size="sm" />
-                    <Badge
-                      label={activeWordItem.partOfSpeech}
-                      color={colors.textSecondary}
-                      backgroundColor={colors.cardHover}
-                      size="sm"
-                    />
+                    <View style={styles.modalHeaderBadges}>
+                      <Badge label={activeWordItem.level} color={colors.primary} size="sm" />
+                      <Badge
+                        label={activeWordItem.partOfSpeech}
+                        color={colors.textSecondary}
+                        backgroundColor={colors.cardHover}
+                        size="sm"
+                      />
+                      {(() => {
+                        const status = srsStatusMap.get(activeWordItem.id) ?? 'new'
+                        if (status === 'mastered') {
+                          return <Badge label="✓ Dominada" color="#059669" backgroundColor="#ECFDF5" size="sm" />
+                        }
+                        if (status === 'learning') {
+                          return <Badge label="⚡ En repaso" color="#D97706" backgroundColor="#FEF3C7" size="sm" />
+                        }
+                        return <Badge label="✨ Nueva" color="#2563EB" backgroundColor="#EFF6FF" size="sm" />
+                      })()}
+                    </View>
                     <TouchableOpacity
                       onPress={() => {
                         setActiveWordItem(null)
                       }}
                       style={styles.modalCloseBtn}
+                      accessibilityLabel="Cerrar detalle"
                     >
                       <Ionicons name="close" size={22} color={colors.textMuted} />
                     </TouchableOpacity>
                   </View>
 
-                  <Text style={styles.modalWord}>{activeWordItem.word}</Text>
-                  {activeWordItem.pronunciation ? (
-                    <Text style={styles.modalPhonetic}>{activeWordItem.pronunciation}</Text>
-                  ) : null}
+                  <View style={styles.wordAudioRow}>
+                    <View style={styles.wordTitleContainer}>
+                      <Text style={styles.modalWord}>{activeWordItem.word}</Text>
+                      {activeWordItem.pronunciation ? (
+                        <View style={styles.phoneticChip}>
+                          <Ionicons name="mic-outline" size={12} color={colors.textSecondary} />
+                          <Text style={styles.modalPhonetic}>{activeWordItem.pronunciation}</Text>
+                        </View>
+                      ) : null}
+                    </View>
+                    <TouchableOpacity
+                      style={styles.audioPlayButton}
+                      onPress={() => void speakEnglish(activeWordItem.word)}
+                      accessibilityLabel="Escuchar pronunciación nativa"
+                    >
+                      <Ionicons name="volume-high" size={22} color="#FFFFFF" />
+                    </TouchableOpacity>
+                  </View>
 
                   <View style={styles.modalDivider} />
 
@@ -542,7 +656,8 @@ export default function ReadingScreen(): React.JSX.Element {
 
                   {activeWordItem.example ? (
                     <View style={styles.modalExampleBox}>
-                      <Text style={styles.modalExampleEn}>{activeWordItem.example}</Text>
+                      <Text style={styles.modalExampleLabel}>En contexto:</Text>
+                      <Text style={styles.modalExampleEn}>"{activeWordItem.example}"</Text>
                       {activeWordItem.exampleTranslation ? (
                         <Text style={styles.modalExampleEs}>
                           {activeWordItem.exampleTranslation}
@@ -551,19 +666,59 @@ export default function ReadingScreen(): React.JSX.Element {
                     </View>
                   ) : null}
 
-                  <Button
-                    title="Entendido"
-                    variant="primary"
-                    size="md"
-                    onPress={() => {
-                      setActiveWordItem(null)
-                    }}
-                    style={styles.modalBtn}
-                  />
+                  {/* Scientific Retention Pill */}
+                  <View style={styles.srsStatusInfoBox}>
+                    <Ionicons
+                      name={
+                        (srsStatusMap.get(activeWordItem.id) ?? 'new') === 'mastered'
+                          ? 'shield-checkmark'
+                          : (srsStatusMap.get(activeWordItem.id) ?? 'new') === 'learning'
+                          ? 'timer-outline'
+                          : 'sparkles'
+                      }
+                      size={15}
+                      color={
+                        (srsStatusMap.get(activeWordItem.id) ?? 'new') === 'mastered'
+                          ? '#059669'
+                          : (srsStatusMap.get(activeWordItem.id) ?? 'new') === 'learning'
+                          ? '#D97706'
+                          : '#2563EB'
+                      }
+                    />
+                    <Text style={styles.srsStatusInfoText}>
+                      {(() => {
+                        const status = srsStatusMap.get(activeWordItem.id) ?? 'new'
+                        if (status === 'mastered') {
+                          return 'Retención consolidada a largo plazo (intervalo ≥ 21 días).'
+                        }
+                        if (status === 'learning') {
+                          return 'En afianzamiento activo — programada para tu próximo repaso SRS.'
+                        }
+                        return 'Vocabulario nuevo introducido en esta lectura.'
+                      })()}
+                    </Text>
+                  </View>
+
+                  <View style={styles.modalActionButtonsRow}>
+                    <Button
+                      title="Pronunciar 🔊"
+                      variant="outline"
+                      size="md"
+                      onPress={() => void speakEnglish(activeWordItem.word)}
+                      style={{ flex: 1 }}
+                    />
+                    <Button
+                      title="Continuar"
+                      variant="primary"
+                      size="md"
+                      onPress={() => setActiveWordItem(null)}
+                      style={{ flex: 1 }}
+                    />
+                  </View>
                 </>
               ) : null}
-            </View>
-          </View>
+            </Pressable>
+          </Pressable>
         </Modal>
       </ScrollView>
     </SafeAreaView>
@@ -648,39 +803,99 @@ const styles = StyleSheet.create({
   readerCard: {
     marginBottom: spacing.lg,
   },
+  progressContainer: {
+    marginBottom: spacing.md,
+  },
+  progressHeaderRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: spacing.xs,
+  },
+  progressLabel: {
+    fontSize: typography.sizes.xs,
+    fontWeight: typography.weights.semibold,
+    color: colors.textSecondary,
+  },
+  progressValue: {
+    fontSize: typography.sizes.xs,
+    fontWeight: typography.weights.bold,
+    color: colors.primary,
+  },
+  progressBarTrack: {
+    height: 6,
+    borderRadius: 3,
+    backgroundColor: colors.border,
+    overflow: 'hidden',
+  },
+  progressBarFill: {
+    height: '100%',
+    backgroundColor: colors.primary,
+    borderRadius: 3,
+  },
+  metadataBar: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: spacing.xs,
+    marginBottom: spacing.md,
+  },
+  metaChip: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+    backgroundColor: colors.cardHover,
+    paddingHorizontal: spacing.sm,
+    paddingVertical: 3,
+    borderRadius: radius.full,
+    borderWidth: 1,
+    borderColor: colors.border,
+  },
+  metaChipText: {
+    fontSize: typography.sizes.xs - 1,
+    color: colors.textSecondary,
+    fontWeight: typography.weights.medium,
+  },
   passageHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: spacing.md,
+    marginBottom: spacing.xs,
   },
   badgeRow: {
     flexDirection: 'row',
     gap: spacing.xs,
   },
-  wordCountBadge: {
-    fontSize: typography.sizes.xs - 2,
-    color: colors.textMuted,
-  },
   passageTitle: {
     fontSize: typography.sizes.lg,
     fontWeight: typography.weights.bold,
     color: colors.textPrimary,
-    marginBottom: spacing.sm,
+    flex: 1,
+    marginRight: spacing.sm,
   },
-  instructionBanner: {
+  srsLegendBar: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: spacing.xs,
-    backgroundColor: colors.primaryLight,
+    gap: spacing.md,
+    backgroundColor: colors.backgroundSubtle,
+    paddingHorizontal: spacing.sm,
+    paddingVertical: 6,
     borderRadius: radius.sm,
-    padding: spacing.sm,
     marginBottom: spacing.md,
   },
-  instructionText: {
-    fontSize: typography.sizes.xs - 1,
-    color: colors.primary,
-    flex: 1,
+  srsLegendItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 5,
+  },
+  srsDot: {
+    width: 8,
+    height: 8,
+    borderRadius: 4,
+  },
+  srsLegendText: {
+    fontSize: typography.sizes.xs - 2,
+    color: colors.textSecondary,
+    fontWeight: typography.weights.medium,
   },
   passageTextEn: {
     fontSize: typography.sizes.md,
@@ -697,8 +912,26 @@ const styles = StyleSheet.create({
     paddingHorizontal: 4,
     paddingVertical: 2,
   },
+  wordMastered: {
+    backgroundColor: '#ECFDF5',
+    color: '#047857',
+    borderBottomWidth: 1.5,
+    borderBottomColor: '#10B981',
+  },
+  wordLearning: {
+    backgroundColor: '#FEF3C7',
+    color: '#92400E',
+    borderBottomWidth: 1.5,
+    borderBottomColor: '#F59E0B',
+  },
+  wordNew: {
+    backgroundColor: '#EFF6FF',
+    color: '#1E40AF',
+    borderBottomWidth: 1.5,
+    borderBottomColor: '#3B82F6',
+  },
   highlightedWordActive: {
-    color: colors.textInverse,
+    color: '#FFFFFF',
     backgroundColor: colors.primary,
     fontWeight: '700',
     borderRadius: 4,
@@ -834,21 +1067,33 @@ const styles = StyleSheet.create({
   completeBtn: {
     marginBottom: spacing.xl,
   },
-  modalOverlay: {
+  bottomSheetOverlay: {
     flex: 1,
     backgroundColor: 'rgba(15, 23, 42, 0.45)',
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: spacing.lg,
+    justifyContent: 'flex-end',
   },
-  modalContent: {
+  bottomSheetContent: {
     width: '100%',
-    maxWidth: 400,
     backgroundColor: colors.card,
-    borderRadius: radius.lg,
+    borderTopLeftRadius: radius.xl,
+    borderTopRightRadius: radius.xl,
     padding: spacing.lg,
+    paddingBottom: spacing.xxl,
     borderWidth: 1,
     borderColor: colors.border,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: -4 },
+    shadowOpacity: 0.12,
+    shadowRadius: 12,
+    elevation: 10,
+  },
+  bottomSheetDragHandle: {
+    width: 40,
+    height: 4,
+    borderRadius: 2,
+    backgroundColor: colors.border,
+    alignSelf: 'center',
+    marginBottom: spacing.md,
   },
   modalHeader: {
     flexDirection: 'row',
@@ -856,21 +1101,52 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginBottom: spacing.sm,
   },
+  modalHeaderBadges: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.xs,
+    flexWrap: 'wrap',
+  },
   modalCloseBtn: {
     padding: spacing.xs,
   },
-  modalWord: {
-    fontSize: typography.sizes.xxl,
-    fontWeight: typography.weights.bold,
-    color: colors.textPrimary,
-    textAlign: 'center',
+  wordAudioRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
     marginTop: spacing.xs,
   },
+  wordTitleContainer: {
+    flex: 1,
+  },
+  modalWord: {
+    fontSize: 26,
+    fontWeight: typography.weights.bold,
+    color: colors.textPrimary,
+  },
+  phoneticChip: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+    marginTop: 4,
+  },
   modalPhonetic: {
-    fontSize: typography.sizes.xs,
+    fontSize: typography.sizes.sm,
     color: colors.textSecondary,
-    textAlign: 'center',
-    marginTop: 2,
+    fontFamily: 'monospace',
+  },
+  audioPlayButton: {
+    width: 46,
+    height: 46,
+    borderRadius: 23,
+    backgroundColor: colors.primary,
+    alignItems: 'center',
+    justifyContent: 'center',
+    shadowColor: colors.primary,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 4,
   },
   modalDivider: {
     height: 1,
@@ -884,28 +1160,54 @@ const styles = StyleSheet.create({
     letterSpacing: 0.5,
   },
   modalTranslation: {
-    fontSize: typography.sizes.lg,
+    fontSize: typography.sizes.xl,
     fontWeight: typography.weights.bold,
     color: colors.primary,
     marginTop: 2,
   },
   modalExampleBox: {
     backgroundColor: colors.cardHover,
+    padding: spacing.md,
+    borderRadius: radius.md,
+    marginTop: spacing.md,
+    borderLeftWidth: 3,
+    borderLeftColor: colors.primary,
+  },
+  modalExampleLabel: {
+    fontSize: typography.sizes.xs - 1,
+    color: colors.textMuted,
+    fontWeight: typography.weights.semibold,
+    textTransform: 'uppercase',
+    marginBottom: 2,
+  },
+  modalExampleEn: {
+    fontSize: typography.sizes.sm,
+    color: colors.textPrimary,
+    fontStyle: 'italic',
+    lineHeight: 20,
+  },
+  modalExampleEs: {
+    fontSize: typography.sizes.xs,
+    color: colors.textSecondary,
+    marginTop: 4,
+  },
+  srsStatusInfoBox: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.xs,
+    backgroundColor: colors.backgroundSubtle,
     padding: spacing.sm,
     borderRadius: radius.sm,
     marginTop: spacing.md,
   },
-  modalExampleEn: {
-    fontSize: typography.sizes.xs,
-    color: colors.textPrimary,
-    fontStyle: 'italic',
-  },
-  modalExampleEs: {
+  srsStatusInfoText: {
     fontSize: typography.sizes.xs - 1,
     color: colors.textSecondary,
-    marginTop: 2,
+    flex: 1,
   },
-  modalBtn: {
+  modalActionButtonsRow: {
+    flexDirection: 'row',
+    gap: spacing.sm,
     marginTop: spacing.lg,
   },
   emptyCard: {

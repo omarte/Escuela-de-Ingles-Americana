@@ -131,6 +131,70 @@ export default function ProfileScreen(): React.JSX.Element {
     cards.filter((c) => c.reps > 0).length * 10 + cards.filter((c) => c.interval >= 21).length * 20,
   )
 
+  // Trophy Rack Computation (Academic Milestones)
+  const wordsMastered = cards.filter((c) => c.interval >= 21).length
+  const wordsStarted = cards.filter((c) => c.reps > 0).length
+  const streakDays = profile?.streakDays ?? 0
+
+  const trophies = [
+    {
+      id: 'a1_foundation',
+      title: 'Fundamentos A1',
+      desc: '50 tarjetas en mazo',
+      icon: 'school-outline',
+      unlocked: cards.length >= 50,
+      progress: Math.min(cards.length, 50),
+      total: 50,
+    },
+    {
+      id: 'streak_7',
+      title: 'Hábito de Acero',
+      desc: '7 días de racha continua',
+      icon: 'flame-outline',
+      unlocked: streakDays >= 7,
+      progress: Math.min(streakDays, 7),
+      total: 7,
+    },
+    {
+      id: 'sm2_consolidated',
+      title: 'Memoria SM-2',
+      desc: '20 palabras consolidadas (≥21d)',
+      icon: 'shield-checkmark-outline',
+      unlocked: wordsMastered >= 20,
+      progress: Math.min(wordsMastered, 20),
+      total: 20,
+    },
+    {
+      id: 'krashen_reader',
+      title: 'Lector Contextual',
+      desc: 'Vocabulario en uso real',
+      icon: 'book-outline',
+      unlocked: wordsStarted >= 10,
+      progress: Math.min(wordsStarted, 10),
+      total: 10,
+    },
+    {
+      id: 'vocabulary_sprint',
+      title: 'Velocista Léxico',
+      desc: '100 repasos registrados',
+      icon: 'flash-outline',
+      unlocked: wordsStarted >= 100,
+      progress: Math.min(wordsStarted, 100),
+      total: 100,
+    },
+    {
+      id: 'master_scholar',
+      title: 'Alumno Distinguido',
+      desc: '500+ XP acumulados',
+      icon: 'trophy-outline',
+      unlocked: totalXP >= 500,
+      progress: Math.min(totalXP, 500),
+      total: 500,
+    },
+  ]
+
+  const unlockedTrophiesCount = trophies.filter((t) => t.unlocked).length
+
   const totalPending = pendingCardsCount + pendingEventsCount
   const formattedSyncTime = lastSyncedAt
     ? new Date(lastSyncedAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
@@ -361,8 +425,13 @@ export default function ProfileScreen(): React.JSX.Element {
           }
         />
 
-        {/* User Card */}
+        {/* Academic User Card with Institutional Branding */}
         <Card padding="lg" style={styles.profileCard}>
+          <View style={styles.institutionalStudentBadge}>
+            <Image source={SCHOOL_LOGO} style={styles.institutionalStudentLogo} resizeMode="contain" />
+            <Text style={styles.institutionalStudentText}>ESCUELA DE INGLÉS AMERICANA · ALUMNO MATRICULADO</Text>
+          </View>
+
           <View style={styles.avatarRow}>
             <View style={styles.avatar}>
               <Text style={styles.avatarInitial}>{avatarInitial}</Text>
@@ -376,6 +445,10 @@ export default function ProfileScreen(): React.JSX.Element {
                   color={colors.primary}
                   size="sm"
                 />
+                <View style={styles.streakPill}>
+                  <Ionicons name="flame" size={13} color="#F59E0B" />
+                  <Text style={styles.streakPillText}>{String(streakDays)}d</Text>
+                </View>
                 <View style={styles.xpPill}>
                   <Ionicons name="flash" size={13} color="#D97706" />
                   <Text style={styles.xpPillText}>{String(totalXP)} XP</Text>
@@ -385,62 +458,147 @@ export default function ProfileScreen(): React.JSX.Element {
           </View>
         </Card>
 
+        {/* Estantería Visual de Trofeos / Logros (Trophy Rack) */}
+        <View style={styles.trophySectionHeader}>
+          <View style={styles.trophyHeaderLeft}>
+            <Ionicons name="trophy" size={20} color="#F59E0B" />
+            <Text style={styles.sectionTitleNoMargin}>Estantería de Logros</Text>
+          </View>
+          <Badge
+            label={`${unlockedTrophiesCount} de ${trophies.length} completados`}
+            color={unlockedTrophiesCount > 0 ? '#059669' : colors.textSecondary}
+            backgroundColor={unlockedTrophiesCount > 0 ? '#ECFDF5' : colors.cardHover}
+            size="sm"
+          />
+        </View>
 
-        {/* Offline & Sync Status */}
-        <Text style={styles.sectionTitle}>Sincronización & Almacenamiento Local</Text>
+        <View style={styles.trophyGrid}>
+          {trophies.map((trophy) => (
+            <Card
+              key={trophy.id}
+              padding="sm"
+              style={[
+                styles.trophyCard,
+                trophy.unlocked ? styles.trophyCardUnlocked : styles.trophyCardLocked,
+              ]}
+            >
+              <View
+                style={[
+                  styles.trophyIconBox,
+                  trophy.unlocked ? styles.trophyIconBoxUnlocked : styles.trophyIconBoxLocked,
+                ]}
+              >
+                <Ionicons
+                  name={trophy.unlocked ? (trophy.icon.replace('-outline', '') as any) : (trophy.icon as any)}
+                  size={24}
+                  color={trophy.unlocked ? '#D97706' : '#94A3B8'}
+                />
+                {trophy.unlocked ? (
+                  <View style={styles.trophyCheckmarkBadge}>
+                    <Ionicons name="checkmark" size={10} color="#FFFFFF" />
+                  </View>
+                ) : null}
+              </View>
+
+              <Text
+                style={[
+                  styles.trophyTitle,
+                  trophy.unlocked ? styles.trophyTitleUnlocked : styles.trophyTitleLocked,
+                ]}
+                numberOfLines={1}
+              >
+                {trophy.title}
+              </Text>
+              <Text style={styles.trophyDesc} numberOfLines={2}>
+                {trophy.desc}
+              </Text>
+
+              {/* Progress mini bar */}
+              <View style={styles.trophyProgressTrack}>
+                <View
+                  style={[
+                    styles.trophyProgressFill,
+                    {
+                      width: `${Math.round((trophy.progress / trophy.total) * 100)}%`,
+                      backgroundColor: trophy.unlocked ? '#059669' : '#CBD5E1',
+                    },
+                  ]}
+                />
+              </View>
+              <Text style={styles.trophyProgressText}>
+                {trophy.unlocked ? 'Completado ✓' : `${trophy.progress} / ${trophy.total}`}
+              </Text>
+            </Card>
+          ))}
+        </View>
+
+        {/* Offline & Sync Status (Friendly Humanized State) */}
+        <Text style={styles.sectionTitle}>Sincronización & Respaldo en la Nube</Text>
         <Card padding="md" style={styles.syncCard}>
-          <View style={styles.syncRow}>
-            <View style={styles.syncIconBox}>
+          <View style={styles.syncFriendlyRow}>
+            <View
+              style={[
+                styles.syncFriendlyIconBox,
+                {
+                  backgroundColor: isSupabaseConfigured
+                    ? totalPending > 0
+                      ? '#FEF3C7'
+                      : '#ECFDF5'
+                    : '#F1F5F9',
+                },
+              ]}
+            >
               {isSyncing ? (
                 <ActivityIndicator size="small" color={colors.primary} />
               ) : (
                 <Ionicons
-                  name={isSupabaseConfigured ? 'cloud-done-outline' : 'phone-portrait-outline'}
-                  size={24}
-                  color={colors.primary}
+                  name={
+                    isSupabaseConfigured
+                      ? totalPending > 0
+                        ? 'cloud-upload-outline'
+                        : 'shield-checkmark'
+                      : 'phone-portrait-outline'
+                  }
+                  size={22}
+                  color={
+                    isSupabaseConfigured
+                      ? totalPending > 0
+                        ? '#D97706'
+                        : '#059669'
+                      : '#64748B'
+                  }
                 />
               )}
             </View>
-            <View style={styles.syncTextInfo}>
-              <Text style={styles.syncTitle}>
-                {isSupabaseConfigured ? 'Motor de Sincronización Activo' : 'Modo Offline Autónomo'}
-              </Text>
-              <Text style={styles.syncSubtitle}>
+            <View style={styles.syncFriendlyTextCol}>
+              <Text style={styles.syncFriendlyTitle}>
                 {isSupabaseConfigured
-                  ? `Última sincronización: ${formattedSyncTime}`
-                  : 'Tarjetas y repasos persistidos localmente'}
+                  ? totalPending > 0
+                    ? `${String(totalPending)} cambio${totalPending > 1 ? 's' : ''} pendiente${totalPending > 1 ? 's' : ''}`
+                    : 'Tu avance está seguro en la nube'
+                  : 'Modo Autónomo Local'}
               </Text>
-            </View>
-            <Badge
-              label={isSupabaseConfigured ? 'Cloud Sync' : 'Offline'}
-              color={colors.primary}
-              size="sm"
-            />
-          </View>
-
-          <View style={styles.syncStatsRow}>
-            <View style={styles.syncStatCol}>
-              <Text style={styles.syncStatNumber}>{String(totalPending)}</Text>
-              <Text style={styles.syncStatLabel}>Cambios pendientes</Text>
-            </View>
-            <View style={styles.syncStatDivider} />
-            <View style={styles.syncStatCol}>
-              <Text style={styles.syncStatNumber}>
-                {isSupabaseConfigured ? 'Conectado' : 'Local'}
+              <Text style={styles.syncFriendlySub}>
+                {isSupabaseConfigured
+                  ? totalPending > 0
+                    ? 'Guardados en tu teléfono. Se sincronizarán automáticamente al detectar red.'
+                    : `Sincronizado hoy (${formattedSyncTime}). Tu racha y tarjetas están al día.`
+                  : 'Tus repasos y tarjetas están seguros en la base de datos de tu teléfono.'}
               </Text>
-              <Text style={styles.syncStatLabel}>Estado backend</Text>
             </View>
           </View>
 
           {lastSyncError ? (
             <View style={styles.errorBanner}>
               <Ionicons name="alert-circle-outline" size={16} color={colors.danger} />
-              <Text style={styles.errorText}>{lastSyncError}</Text>
+              <Text style={styles.errorText}>
+                Sin conexión momentánea. Tus datos siguen a salvo en SQLite local.
+              </Text>
             </View>
           ) : null}
 
           <Button
-            title={isSyncing ? 'Sincronizando...' : 'Sincronizar Ahora'}
+            title={isSyncing ? 'Sincronizando...' : 'Sincronizar Progreso Ahora'}
             variant="outline"
             size="sm"
             loading={isSyncing}
@@ -580,6 +738,29 @@ export default function ProfileScreen(): React.JSX.Element {
               <Text style={styles.settingLabel}>Ver Tutorial y Método de la Escuela</Text>
             </View>
             <Ionicons name="chevron-forward" size={18} color={colors.textSecondary} />
+          </TouchableOpacity>
+        </Card>
+
+        {/* Centro de Soporte y Asistencia Técnica */}
+        <Text style={styles.sectionTitle}>Soporte y Asistencia</Text>
+        <Card padding="md" style={styles.settingsCard}>
+          <TouchableOpacity
+            style={styles.settingItem}
+            onPress={() => {
+              router.push('/(app)/support' as any)
+            }}
+          >
+            <View style={styles.settingLeft}>
+              <Ionicons name="headset-outline" size={20} color={colors.primary} />
+              <View>
+                <Text style={styles.settingLabel}>Centro de Soporte en Vivo</Text>
+                <Text style={styles.settingSubtext}>Abre un ticket con captura y logs del sistema</Text>
+              </View>
+            </View>
+            <View style={styles.settingRight}>
+              <Badge label="En Vivo" color="#10B981" size="sm" />
+              <Ionicons name="chevron-forward" size={18} color={colors.textSecondary} />
+            </View>
           </TouchableOpacity>
         </Card>
 
@@ -1039,7 +1220,30 @@ const styles = StyleSheet.create({
     paddingBottom: spacing.xxl,
   },
   profileCard: {
-    marginBottom: spacing.lg,
+    marginBottom: spacing.md,
+  },
+  institutionalStudentBadge: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+    backgroundColor: 'rgba(5, 150, 105, 0.08)',
+    paddingHorizontal: spacing.sm,
+    paddingVertical: 5,
+    borderRadius: radius.sm,
+    marginBottom: spacing.md,
+    borderWidth: 1,
+    borderColor: 'rgba(5, 150, 105, 0.2)',
+  },
+  institutionalStudentLogo: {
+    width: 18,
+    height: 18,
+    borderRadius: 3,
+  },
+  institutionalStudentText: {
+    fontSize: 9.5,
+    fontWeight: typography.weights.bold,
+    color: colors.primary,
+    letterSpacing: 0.5,
   },
   avatarRow: {
     flexDirection: 'row',
@@ -1080,6 +1284,22 @@ const styles = StyleSheet.create({
     gap: spacing.xs,
     marginTop: spacing.xs,
   },
+  streakPill: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 3,
+    backgroundColor: '#FFFBEB',
+    paddingHorizontal: 8,
+    paddingVertical: 3,
+    borderRadius: radius.full,
+    borderWidth: 1,
+    borderColor: '#FDE68A',
+  },
+  streakPillText: {
+    color: '#D97706',
+    fontSize: typography.sizes.xs - 1,
+    fontWeight: typography.weights.bold,
+  },
   xpPill: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -1100,6 +1320,119 @@ const styles = StyleSheet.create({
     marginTop: spacing.xs,
   },
 
+  // Trophy Rack Styles
+  trophySectionHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: spacing.xs + 2,
+  },
+  trophyHeaderLeft: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+  },
+  sectionTitleNoMargin: {
+    fontSize: typography.sizes.xs,
+    fontWeight: typography.weights.bold,
+    color: colors.textSecondary,
+    textTransform: 'uppercase',
+    letterSpacing: 0.5,
+  },
+  trophyGrid: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: spacing.sm,
+    marginBottom: spacing.lg,
+  },
+  trophyCard: {
+    width: '48%',
+    borderRadius: radius.md,
+    borderWidth: 1,
+    padding: spacing.sm + 2,
+  },
+  trophyCardUnlocked: {
+    backgroundColor: '#FFFFFF',
+    borderColor: '#FDE68A',
+    shadowColor: '#D97706',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.08,
+    shadowRadius: 4,
+    elevation: 2,
+  },
+  trophyCardLocked: {
+    backgroundColor: colors.backgroundSubtle,
+    borderColor: colors.border,
+    opacity: 0.8,
+  },
+  trophyIconBox: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: spacing.xs,
+    position: 'relative',
+  },
+  trophyIconBoxUnlocked: {
+    backgroundColor: '#FEF3C7',
+    borderWidth: 1.5,
+    borderColor: '#F59E0B',
+  },
+  trophyIconBoxLocked: {
+    backgroundColor: '#F1F5F9',
+    borderWidth: 1,
+    borderColor: '#CBD5E1',
+  },
+  trophyCheckmarkBadge: {
+    position: 'absolute',
+    bottom: -2,
+    right: -2,
+    width: 14,
+    height: 14,
+    borderRadius: 7,
+    backgroundColor: '#059669',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 1.5,
+    borderColor: '#FFFFFF',
+  },
+  trophyTitle: {
+    fontSize: typography.sizes.xs,
+    fontWeight: typography.weights.bold,
+    marginBottom: 2,
+  },
+  trophyTitleUnlocked: {
+    color: colors.textPrimary,
+  },
+  trophyTitleLocked: {
+    color: colors.textSecondary,
+  },
+  trophyDesc: {
+    fontSize: 9.5,
+    color: colors.textMuted,
+    lineHeight: 13,
+    marginBottom: 6,
+    minHeight: 26,
+  },
+  trophyProgressTrack: {
+    height: 4,
+    borderRadius: 2,
+    backgroundColor: colors.border,
+    overflow: 'hidden',
+    marginBottom: 3,
+  },
+  trophyProgressFill: {
+    height: '100%',
+    borderRadius: 2,
+  },
+  trophyProgressText: {
+    fontSize: 8.5,
+    color: colors.textMuted,
+    textAlign: 'right',
+    fontWeight: typography.weights.medium,
+  },
+
   sectionTitle: {
     fontSize: typography.sizes.xs,
     fontWeight: typography.weights.bold,
@@ -1111,31 +1444,32 @@ const styles = StyleSheet.create({
   syncCard: {
     marginBottom: spacing.lg,
   },
-  syncRow: {
+  syncFriendlyRow: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: spacing.md,
+    marginBottom: spacing.md,
   },
-  syncIconBox: {
+  syncFriendlyIconBox: {
     width: 44,
     height: 44,
     borderRadius: radius.md,
-    backgroundColor: colors.primaryLight,
     alignItems: 'center',
     justifyContent: 'center',
   },
-  syncTextInfo: {
+  syncFriendlyTextCol: {
     flex: 1,
   },
-  syncTitle: {
+  syncFriendlyTitle: {
     fontSize: typography.sizes.sm,
-    fontWeight: typography.weights.semibold,
+    fontWeight: typography.weights.bold,
     color: colors.textPrimary,
   },
-  syncSubtitle: {
-    fontSize: typography.sizes.xs - 1,
-    color: colors.textMuted,
+  syncFriendlySub: {
+    fontSize: typography.sizes.xs - 1.5,
+    color: colors.textSecondary,
     marginTop: 2,
+    lineHeight: 16,
   },
   syncStatsRow: {
     flexDirection: 'row',

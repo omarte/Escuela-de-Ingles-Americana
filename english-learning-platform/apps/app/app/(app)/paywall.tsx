@@ -223,6 +223,16 @@ export default function PaywallScreen(): React.JSX.Element {
           )}
         </TouchableOpacity>
 
+        {/* Support Link */}
+        <TouchableOpacity
+          style={styles.supportLinkBtn}
+          onPress={() => router.push('/(app)/support' as any)}
+          activeOpacity={0.7}
+        >
+          <Ionicons name="headset-outline" size={15} color={colors.primary} />
+          <Text style={styles.supportLinkText}>¿Problemas con tu suscripción? Contactar a Soporte</Text>
+        </TouchableOpacity>
+
         {/* Legal Disclaimer */}
         <Text style={styles.legalNotice}>
           La suscripción se renueva automáticamente a menos que se cancele al menos 24 horas antes
@@ -408,6 +418,19 @@ const styles = StyleSheet.create({
     color: colors.textSecondary,
     fontWeight: typography.weights.medium,
     textDecorationLine: 'underline',
+  },
+  supportLinkBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 6,
+    paddingVertical: spacing.xs + 2,
+    marginBottom: spacing.xs,
+  },
+  supportLinkText: {
+    fontSize: typography.sizes.xs,
+    color: colors.primary,
+    fontWeight: typography.weights.semibold,
   },
   legalNotice: {
     fontSize: typography.sizes.xs - 2,
