@@ -2101,7 +2101,7 @@ export function GamesModal({
                     <Text style={styles.reviewWordsTitle}>🎯 Contexto de Aprendizaje:</Text>
                     {gameResult.reviewWords.map((item, idx) => (
                       <View
-                        key={item.word + idx}
+                        key={`${item.word}-${idx}`}
                         style={[
                           styles.reviewWordRow,
                           item.isCorrect ? styles.reviewWordRowCorrect : styles.reviewWordRowFailed,

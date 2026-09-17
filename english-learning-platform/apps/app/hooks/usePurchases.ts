@@ -49,10 +49,10 @@ export async function configurePurchases(existingUserId: string): Promise<void> 
   }
 
   if (__DEV__) {
-    Purchases.setLogLevel(LOG_LEVEL.DEBUG)
+    void Purchases.setLogLevel(LOG_LEVEL.DEBUG)
   }
 
-  await Purchases.configure({ apiKey, appUserID: existingUserId })
+  Purchases.configure({ apiKey, appUserID: existingUserId })
 }
 
 function hasProEntitlement(customerInfo: CustomerInfo | null): boolean {
