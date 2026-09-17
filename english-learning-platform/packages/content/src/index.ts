@@ -28,7 +28,7 @@ export const contentRegistry: ContentRegistry = {
  * Filters out items that are not yet in 'published' status.
  */
 export function getVocabularyForLevel(level: CEFRLevel): readonly VocabularyItem[] {
-  const levelContent = contentRegistry[level as keyof ContentRegistry]
+  const levelContent = contentRegistry[level]
   if (!levelContent) return []
   return levelContent.blocks.flatMap((block) =>
     block.vocabulary.filter((item) => item.status === 'published' || item.status === 'approved'),
@@ -56,7 +56,7 @@ export function getVocabularyById(id: string): VocabularyItem | undefined {
  * Retrieves all vocabulary for a specific week within a level.
  */
 export function getVocabularyForWeek(level: CEFRLevel, week: number): readonly VocabularyItem[] {
-  const levelContent = contentRegistry[level as keyof ContentRegistry]
+  const levelContent = contentRegistry[level]
   if (!levelContent) return []
   const block = levelContent.blocks.find((b) => b.week === week)
   return block?.vocabulary ?? []
