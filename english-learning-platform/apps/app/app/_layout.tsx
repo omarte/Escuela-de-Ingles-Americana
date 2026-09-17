@@ -1,3 +1,4 @@
+import 'expo-dev-client'
 import React, { useEffect } from 'react'
 import { View, ActivityIndicator, StyleSheet, Image } from 'react-native'
 import { Stack, useRouter, useSegments } from 'expo-router'
