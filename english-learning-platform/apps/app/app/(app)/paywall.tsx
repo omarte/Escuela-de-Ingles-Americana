@@ -73,7 +73,7 @@ export default function PaywallScreen(): React.JSX.Element {
           iconBgColor="#FEF3C7"
           eyebrow="SUSCRIPCIÓN & ACCESO COMPLETO"
           title="Membresía Pro"
-          subtitle="Tus primeras 3 semanas (225 palabras) son 100% gratuitas. Desbloquea el currículo completo de 48 semanas (A1 avanzado a B2) y el hito de los 2 meses con tu Membresía Pro o Plan Vitalicio."
+          subtitle="Tus primeras 3 semanas (274 palabras) son 100% gratuitas. Desbloquea el currículo completo de 48 semanas (A1 avanzado a B2) y el hito de los 2 meses con tu Membresía Pro o Plan Vitalicio."
           rightElement={<Badge label="Plan Pro" color="#D97706" size="sm" />}
         />
 

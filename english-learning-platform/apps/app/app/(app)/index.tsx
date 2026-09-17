@@ -378,7 +378,7 @@ export default function HomeScreen(): React.JSX.Element {
               if (res?.blockedByPaywall) {
                 Alert.alert(
                   '¡Hito de 3 Semanas Completado! 🏆',
-                  'Has completado tus primeras 3 semanas 100% gratuitas (225 palabras con fonética IPA). Para continuar a la Semana 4 y avanzar hacia el hito de 2 meses, desbloquea tu Plan Pro.',
+                  'Has completado tus primeras 3 semanas 100% gratuitas (274 palabras con fonética IPA). Para continuar a la Semana 4 y avanzar hacia el hito de 2 meses, desbloquea tu Plan Pro.',
                   [
                     { text: 'Tal vez luego', style: 'cancel' },
                     { text: 'Ver Planes Pro 🚀', onPress: () => router.push('/(app)/paywall') },
