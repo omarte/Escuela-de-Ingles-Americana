@@ -33,6 +33,13 @@ vi.mock('../lib/supabase', () => ({
   isSupabaseConfigured: false,
 }))
 
+// Mock SQLite
+vi.mock('../lib/db/sqlite', () => ({
+  upsertLocalSessionFeedback: vi.fn(() => Promise.resolve()),
+  markSessionFeedbackSynced: vi.fn(() => Promise.resolve()),
+  getPendingSessionFeedback: vi.fn(() => Promise.resolve([])),
+}))
+
 describe('feedbackService — 1-Tap Session Feedback', () => {
   beforeEach(async () => {
     await AsyncStorage.clear()

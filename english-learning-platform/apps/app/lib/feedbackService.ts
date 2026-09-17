@@ -2,6 +2,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import type { FrictionLevel } from '@elp/types'
 import { toLocalDateString } from '@elp/srs'
 import { supabase } from './supabase'
+import { upsertLocalSessionFeedback, markSessionFeedbackSynced } from './db/sqlite'
 
 export interface SessionFeedbackRecord {
   id: string
@@ -16,7 +17,7 @@ const FEEDBACK_STORAGE_KEY_PREFIX = '@elp_session_feedback_'
 
 /**
  * Persiste la respuesta de dificultad post-sesión del alumno.
- * 1. Almacena en AsyncStorage local de forma inmediata (Offline-first).
+ * 1. Almacena en SQLite y AsyncStorage local de forma inmediata (Offline-first).
  * 2. Si hay conexión y usuario autenticado, sincroniza con la tabla session_feedback de Supabase Cloud.
  */
 export async function saveSessionFeedback(
@@ -36,7 +37,13 @@ export async function saveSessionFeedback(
     synced: false,
   }
 
-  // 1. Persistencia local
+  // 1. Persistencia local en SQLite y AsyncStorage
+  try {
+    await upsertLocalSessionFeedback(userId, dateStr, level, 'pending')
+  } catch {
+    // Ignorar fallo si sqlite no está disponible
+  }
+
   const storageKey = `${FEEDBACK_STORAGE_KEY_PREFIX}${userId}`
   try {
     const raw = await AsyncStorage.getItem(storageKey)
@@ -62,7 +69,8 @@ export async function saveSessionFeedback(
         )
 
         if (!error) {
-          // Marcar como sincronizado localmente
+          // Marcar como sincronizado localmente en SQLite y AsyncStorage
+          await markSessionFeedbackSynced(userId, dateStr)
           try {
             const raw = await AsyncStorage.getItem(storageKey)
             if (raw) {

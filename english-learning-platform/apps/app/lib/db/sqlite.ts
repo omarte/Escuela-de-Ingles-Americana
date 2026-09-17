@@ -7,13 +7,17 @@ import {
   CREATE_LOCAL_REVIEW_EVENTS_TABLE,
   CREATE_LOCAL_USER_CARDS_TABLE,
   CREATE_SYNC_METADATA_TABLE,
+  CREATE_LOCAL_SESSION_FEEDBACK_TABLE,
   localRowToSRSCard,
   srsCardToLocalRow,
   reviewEventToLocalRow,
   localRowToReviewEvent,
-  type LocalReviewEventRow,
-  type LocalSyncStatus,
-  type LocalUserCardRow,
+} from './schema'
+import type {
+  LocalReviewEventRow,
+  LocalSyncStatus,
+  LocalUserCardRow,
+  LocalSessionFeedbackRow,
 } from './schema'
 
 interface SQLiteModule {
@@ -31,6 +35,7 @@ const DB_NAME = 'elp_offline.db'
 const ASYNC_CARDS_PREFIX = '@elp/sqlite_fallback_cards_'
 const ASYNC_EVENTS_PREFIX = '@elp/sqlite_fallback_events_'
 const ASYNC_META_PREFIX = '@elp/sqlite_fallback_meta_'
+const ASYNC_FEEDBACK_PREFIX = '@elp/sqlite_fallback_feedback_'
 
 let dbPromise: Promise<SQLiteDbLike | null> | null = null
 
@@ -49,6 +54,7 @@ async function openSQLite(): Promise<SQLiteDbLike | null> {
         ${CREATE_LOCAL_USER_CARDS_TABLE}
         ${CREATE_LOCAL_REVIEW_EVENTS_TABLE}
         ${CREATE_SYNC_METADATA_TABLE}
+        ${CREATE_LOCAL_SESSION_FEEDBACK_TABLE}
         ${CREATE_INDEXES}
       `)
       return db
@@ -480,6 +486,7 @@ export async function clearLocalUserData(userId: string): Promise<void> {
     try {
       await db.runAsync('DELETE FROM local_user_cards WHERE user_id = ?', [userId])
       await db.runAsync('DELETE FROM local_review_events WHERE user_id = ?', [userId])
+      await db.runAsync('DELETE FROM local_session_feedback WHERE user_id = ?', [userId])
       await db.runAsync('DELETE FROM sync_metadata WHERE key LIKE ?', [`%${userId}%`])
     } catch {
       // Ignorar errores si la tabla aún no fue creada
@@ -489,8 +496,111 @@ export async function clearLocalUserData(userId: string): Promise<void> {
     await AsyncStorage.removeItem(`${ASYNC_CARDS_PREFIX}${userId}`)
     await AsyncStorage.removeItem(`${ASYNC_EVENTS_PREFIX}${userId}`)
     await AsyncStorage.removeItem(`${ASYNC_META_PREFIX}${userId}`)
+    await AsyncStorage.removeItem(`${ASYNC_FEEDBACK_PREFIX}${userId}`)
   } catch {
     // ignore
   }
 }
+
+/**
+ * Inserta o actualiza un reporte de dificultad post-sesión en SQLite local.
+ */
+export async function upsertLocalSessionFeedback(
+  userId: string,
+  sessionDate: string,
+  frictionLevel: string,
+  syncStatus: 'pending' | 'synced' = 'pending',
+): Promise<void> {
+  const db = await getDatabase()
+  const id = `fb_${sessionDate}_${userId.substring(0, 8)}`
+  const now = new Date().toISOString()
+
+  if (db) {
+    await db.runAsync(
+      `INSERT INTO local_session_feedback (id, user_id, session_date, friction_level, sync_status, created_at)
+       VALUES (?, ?, ?, ?, ?, ?)
+       ON CONFLICT(user_id, session_date) DO UPDATE SET
+         friction_level = excluded.friction_level,
+         sync_status = excluded.sync_status,
+         created_at = excluded.created_at`,
+      [id, userId, sessionDate, frictionLevel, syncStatus, now],
+    )
+    return
+  }
+
+  // Fallback AsyncStorage
+  try {
+    const raw = await AsyncStorage.getItem(`${ASYNC_FEEDBACK_PREFIX}${userId}`)
+    const list: LocalSessionFeedbackRow[] = raw ? JSON.parse(raw) : []
+    const filtered = list.filter((item) => item.session_date !== sessionDate)
+    const newRow: LocalSessionFeedbackRow = {
+      id,
+      user_id: userId,
+      session_date: sessionDate,
+      friction_level: frictionLevel,
+      sync_status: syncStatus,
+      created_at: now,
+    }
+    await AsyncStorage.setItem(
+      `${ASYNC_FEEDBACK_PREFIX}${userId}`,
+      JSON.stringify([newRow, ...filtered]),
+    )
+  } catch {
+    // ignore
+  }
+}
+
+/**
+ * Obtiene las encuestas post-sesión pendientes de sincronizar con Supabase.
+ */
+export async function getPendingSessionFeedback(
+  userId: string,
+): Promise<LocalSessionFeedbackRow[]> {
+  const db = await getDatabase()
+  if (db) {
+    return await db.getAllAsync<LocalSessionFeedbackRow>(
+      `SELECT * FROM local_session_feedback WHERE user_id = ? AND sync_status = 'pending'`,
+      [userId],
+    )
+  }
+
+  try {
+    const raw = await AsyncStorage.getItem(`${ASYNC_FEEDBACK_PREFIX}${userId}`)
+    const list: LocalSessionFeedbackRow[] = raw ? JSON.parse(raw) : []
+    return list.filter((item) => item.sync_status === 'pending')
+  } catch {
+    return []
+  }
+}
+
+/**
+ * Marca una encuesta de sesión como sincronizada con Supabase.
+ */
+export async function markSessionFeedbackSynced(
+  userId: string,
+  sessionDate: string,
+): Promise<void> {
+  const db = await getDatabase()
+  if (db) {
+    await db.runAsync(
+      `UPDATE local_session_feedback SET sync_status = 'synced' WHERE user_id = ? AND session_date = ?`,
+      [userId, sessionDate],
+    )
+    return
+  }
+
+  try {
+    const raw = await AsyncStorage.getItem(`${ASYNC_FEEDBACK_PREFIX}${userId}`)
+    if (raw) {
+      const list: LocalSessionFeedbackRow[] = JSON.parse(raw)
+      const updated = list.map((item) =>
+        item.session_date === sessionDate ? { ...item, sync_status: 'synced' as const } : item,
+      )
+      await AsyncStorage.setItem(`${ASYNC_FEEDBACK_PREFIX}${userId}`, JSON.stringify(updated))
+    }
+  } catch {
+    // ignore
+  }
+}
+
 

@@ -9,13 +9,16 @@ import type { ReviewEvent, SRSCard } from '@elp/types'
 import {
   getDirtyLocalCards,
   getPendingReviewEvents,
+  getPendingSessionFeedback,
   getSyncMetadata,
   markCardsSynced,
   markReviewEventsSynced,
+  markSessionFeedbackSynced,
   setSyncMetadata,
   upsertLocalCard,
 } from './sqlite'
-import { localRowToSRSCard, type LocalUserCardRow } from './schema'
+import { localRowToSRSCard } from './schema'
+import type { LocalUserCardRow } from './schema'
 
 export interface SyncResult {
   success: boolean
@@ -138,6 +141,23 @@ export async function syncUserData(
 
     if (syncedCardIds.length > 0) {
       await markCardsSynced(userId, syncedCardIds)
+    }
+
+    // ─── Step 2.5: Push pending session feedback ────────────────────────────
+    const pendingFeedback = await getPendingSessionFeedback(userId)
+    for (const fb of pendingFeedback) {
+      const { error } = await client.from('session_feedback').upsert(
+        {
+          user_id: fb.user_id,
+          session_date: fb.session_date,
+          friction_level: fb.friction_level as 'easy' | 'normal' | 'hard',
+        },
+        { onConflict: 'user_id,session_date' },
+      )
+
+      if (!error) {
+        await markSessionFeedbackSynced(userId, fb.session_date)
+      }
     }
 
     // ─── Step 3: Pull remote cards modified since last_synced_at ────────────

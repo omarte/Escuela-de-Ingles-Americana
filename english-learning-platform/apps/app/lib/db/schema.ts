@@ -82,11 +82,34 @@ CREATE TABLE IF NOT EXISTS sync_metadata (
 );
 `
 
+export interface LocalSessionFeedbackRow {
+  id: string
+  user_id: string
+  session_date: string
+  friction_level: string
+  sync_status: 'pending' | 'synced'
+  created_at: string
+}
+
+export const CREATE_LOCAL_SESSION_FEEDBACK_TABLE = `
+CREATE TABLE IF NOT EXISTS local_session_feedback (
+  id TEXT PRIMARY KEY NOT NULL,
+  user_id TEXT NOT NULL,
+  session_date TEXT NOT NULL,
+  friction_level TEXT NOT NULL,
+  sync_status TEXT NOT NULL DEFAULT 'pending',
+  created_at TEXT NOT NULL,
+  CONSTRAINT uq_local_feedback_user_date UNIQUE (user_id, session_date)
+);
+`
+
 export const CREATE_INDEXES = `
 CREATE INDEX IF NOT EXISTS idx_luc_user ON local_user_cards (user_id);
 CREATE INDEX IF NOT EXISTS idx_luc_due ON local_user_cards (user_id, due_date);
 CREATE INDEX IF NOT EXISTS idx_luc_sync ON local_user_cards (sync_status);
 CREATE INDEX IF NOT EXISTS idx_lre_sync ON local_review_events (sync_status);
+CREATE INDEX IF NOT EXISTS idx_lsf_user ON local_session_feedback (user_id, session_date DESC);
+CREATE INDEX IF NOT EXISTS idx_lsf_sync ON local_session_feedback (sync_status);
 `
 
 export function localRowToSRSCard(row: LocalUserCardRow): SRSCard {
