@@ -363,3 +363,5 @@ export interface UserProfile {
   /** Extracted domain from email (e.g. gmail.com) */
   readonly emailDomain?: string | null | undefined
 }
+
+export * from './evaluations'

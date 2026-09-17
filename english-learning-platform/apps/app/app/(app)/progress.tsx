@@ -14,7 +14,7 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { colors, spacing, radius, typography, Card, ProgressBar, Badge, Button } from '@elp/ui'
 import { Ionicons } from '@expo/vector-icons'
-import { contentRegistry } from '@elp/content'
+import { contentRegistry, getVocabularyForLevel } from '@elp/content'
 import { useAuthStore } from '../../stores/useAuthStore'
 import { useProgressStore } from '../../stores/useProgressStore'
 import { useSRSStore } from '../../stores/useSRSStore'
@@ -34,6 +34,10 @@ import {
   MASTERED_1000_WORDS,
 } from '../../lib/assets'
 import { AppScreenHeader } from '../../components/AppScreenHeader'
+import { AcademicRecordModal } from '../../components/AcademicRecordModal'
+import { CheckpointExamModal } from '../../components/CheckpointExamModal'
+import { useEvaluationStore } from '../../stores/useEvaluationStore'
+import type { CheckpointDefinition } from '@elp/types'
 
 export default function ProgressScreen(): React.JSX.Element {
   const user = useAuthStore((state) => state.user)
@@ -44,7 +48,13 @@ export default function ProgressScreen(): React.JSX.Element {
   const refreshMetrics = useProgressStore((state) => state.refreshMetrics)
   const advanceLevel = useProgressStore((state) => state.advanceLevel)
 
+  const loadEvaluationAttempts = useEvaluationStore((state) => state.loadAttempts)
+  const getAllCheckpointsState = useEvaluationStore((state) => state.getAllCheckpointsState)
+  const getAcademicSummary = useEvaluationStore((state) => state.getAcademicSummary)
+
   const [advancingModalVisible, setAdvancingModalVisible] = useState(false)
+  const [academicRecordVisible, setAcademicRecordVisible] = useState(false)
+  const [activeExamCheckpoint, setActiveExamCheckpoint] = useState<CheckpointDefinition | null>(null)
   const [showAllWeeks, setShowAllWeeks] = useState(false)
   const [selectedBadge, setSelectedBadge] = useState<{
     id: string
@@ -110,7 +120,8 @@ export default function ProgressScreen(): React.JSX.Element {
 
   useEffect(() => {
     void refreshMetrics(userId)
-  }, [userId, cards.length, refreshMetrics])
+    void loadEvaluationAttempts()
+  }, [userId, cards.length, refreshMetrics, loadEvaluationAttempts])
 
   const {
     streak,
@@ -123,6 +134,20 @@ export default function ProgressScreen(): React.JSX.Element {
   } = metrics
 
   const currentLevel = profile?.currentLevel ?? 'A1'
+  const wordsMasteredCount = levelAdvancement.wordsMastered
+
+  const checkpointsState = useMemo(() => {
+    return getAllCheckpointsState(wordsMasteredCount)
+  }, [getAllCheckpointsState, wordsMasteredCount])
+
+  const academicSummary = useMemo(() => {
+    return getAcademicSummary(wordsMasteredCount)
+  }, [getAcademicSummary, wordsMasteredCount])
+
+  const userCardsPool = useMemo(() => {
+    return getVocabularyForLevel(currentLevel)
+  }, [currentLevel])
+
   const masteryPercentage = Math.round(levelAdvancement.masteryRatio * 100)
 
   // 7-day visual activity chart
@@ -452,6 +477,66 @@ export default function ProgressScreen(): React.JSX.Element {
               icon={<Ionicons name="share-social-outline" size={16} color={colors.primary} />}
             />
           </View>
+        </Card>
+
+        {/* Card de Boleta Académica y Checkpoints (Fase 12) */}
+        <Card padding="md" style={styles.academicRecordCard}>
+          <View style={styles.academicCardHeader}>
+            <View style={styles.academicIconWrap}>
+              <Ionicons name="school" size={22} color="#1D4ED8" />
+            </View>
+            <View style={{ flex: 1 }}>
+              <Text style={styles.academicCardEyebrow}>EVALUACIONES OFICIALES EIA</Text>
+              <Text style={styles.academicCardTitle}>Boleta Académica y Checkpoints</Text>
+            </View>
+            <TouchableOpacity
+              style={styles.openRecordBtn}
+              onPress={() => setAcademicRecordVisible(true)}
+            >
+              <Text style={styles.openRecordBtnText}>Ver Boleta 📋</Text>
+            </TouchableOpacity>
+          </View>
+
+          <Text style={styles.academicCardDesc}>
+            Supera los checkpoints por hitos de vocabulario dominado (100, 500, 1.000 y 1.512 palabras) y obtén tus credenciales digitales oficiales.
+          </Text>
+
+          {/* Quick Checkpoints Horizontal Chips */}
+          <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.checkpointsChipsRow}>
+            {checkpointsState.map((st) => {
+              const cp = st.checkpoint
+              const isPassed = st.status === 'passed'
+              const isAvailable = st.status === 'available'
+
+              return (
+                <TouchableOpacity
+                  key={cp.id}
+                  style={[
+                    styles.checkpointChip,
+                    isPassed && styles.checkpointChipPassed,
+                    isAvailable && styles.checkpointChipAvailable,
+                  ]}
+                  onPress={() => {
+                    if (isAvailable || isPassed || st.status === 'failed') {
+                      setActiveExamCheckpoint(cp)
+                    } else {
+                      setAcademicRecordVisible(true)
+                    }
+                  }}
+                >
+                  <Text style={styles.checkpointChipEmoji}>{cp.badgeEmoji}</Text>
+                  <View style={{ flexShrink: 1 }}>
+                    <Text style={styles.checkpointChipTitle} numberOfLines={1}>
+                      {cp.title.split(':')[0]}
+                    </Text>
+                    <Text style={[styles.checkpointChipStatus, isPassed && { color: '#059669', fontWeight: 'bold' }]}>
+                      {isPassed ? `${st.bestScorePercentage}% Aprobado` : isAvailable ? 'Presentar Examen' : `Req. ${cp.requiredWords}`}
+                    </Text>
+                  </View>
+                </TouchableOpacity>
+              )
+            })}
+          </ScrollView>
         </Card>
 
         {/* 7-Day Activity Mini-Chart */}
@@ -973,6 +1058,29 @@ export default function ProgressScreen(): React.JSX.Element {
             </View>
           </View>
         </Modal>
+
+        {/* Modal de Boleta Académica Institucional (Fase 12) */}
+        <AcademicRecordModal
+          visible={academicRecordVisible}
+          wordsMasteredCount={wordsMasteredCount}
+          onClose={() => setAcademicRecordVisible(false)}
+          onStartExam={(cp) => {
+            setAcademicRecordVisible(false)
+            setActiveExamCheckpoint(cp)
+          }}
+        />
+
+        {/* Modal de Examen del Checkpoint (Fase 12) */}
+        <CheckpointExamModal
+          visible={activeExamCheckpoint !== null}
+          checkpoint={activeExamCheckpoint}
+          userCardsPool={userCardsPool}
+          onClose={() => setActiveExamCheckpoint(null)}
+          onPassed={() => {
+            void loadEvaluationAttempts()
+            void refreshMetrics(userId)
+          }}
+        />
       </ScrollView>
     </SafeAreaView>
   )
@@ -1572,5 +1680,104 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     gap: spacing.sm,
     width: '100%',
+  },
+  /* Academic Record & Checkpoints Styles (Fase 12) */
+  academicRecordCard: {
+    marginBottom: spacing.lg,
+    backgroundColor: '#FFFFFF',
+    borderWidth: 1.5,
+    borderColor: '#DBEAFE',
+    borderRadius: radius.lg,
+    shadowColor: '#1E3A8A',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.05,
+    shadowRadius: 6,
+    elevation: 2,
+  },
+  academicCardHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.sm,
+    marginBottom: spacing.xs,
+  },
+  academicIconWrap: {
+    width: 38,
+    height: 38,
+    borderRadius: 10,
+    backgroundColor: '#EFF6FF',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 1,
+    borderColor: '#BFDBFE',
+  },
+  academicCardEyebrow: {
+    fontSize: 9,
+    fontWeight: typography.weights.bold,
+    color: '#2563EB',
+    letterSpacing: 0.8,
+  },
+  academicCardTitle: {
+    fontSize: typography.sizes.sm + 1,
+    fontWeight: typography.weights.bold,
+    color: '#0F172A',
+  },
+  openRecordBtn: {
+    backgroundColor: '#EFF6FF',
+    paddingHorizontal: spacing.sm,
+    paddingVertical: 6,
+    borderRadius: radius.md,
+    borderWidth: 1,
+    borderColor: '#BFDBFE',
+  },
+  openRecordBtnText: {
+    fontSize: 11,
+    fontWeight: typography.weights.bold,
+    color: '#1D4ED8',
+  },
+  academicCardDesc: {
+    fontSize: typography.sizes.xs,
+    color: '#64748B',
+    lineHeight: 18,
+    marginBottom: spacing.md,
+    marginTop: spacing.xs,
+  },
+  checkpointsChipsRow: {
+    flexDirection: 'row',
+    marginHorizontal: -spacing.xs,
+    paddingHorizontal: spacing.xs,
+  },
+  checkpointChip: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.xs,
+    backgroundColor: '#F8FAFC',
+    borderRadius: radius.md,
+    borderWidth: 1,
+    borderColor: '#E2E8F0',
+    paddingVertical: 8,
+    paddingHorizontal: spacing.sm,
+    marginRight: spacing.sm,
+    maxWidth: 200,
+  },
+  checkpointChipPassed: {
+    backgroundColor: '#ECFDF5',
+    borderColor: '#A7F3D0',
+  },
+  checkpointChipAvailable: {
+    backgroundColor: '#EFF6FF',
+    borderColor: '#93C5FD',
+  },
+  checkpointChipEmoji: {
+    fontSize: 18,
+  },
+  checkpointChipTitle: {
+    fontSize: 11,
+    fontWeight: typography.weights.bold,
+    color: '#1E293B',
+  },
+  checkpointChipStatus: {
+    fontSize: 10,
+    color: '#64748B',
+    marginTop: 1,
   },
 })
