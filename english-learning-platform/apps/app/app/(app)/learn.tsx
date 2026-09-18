@@ -291,7 +291,7 @@ export default function LearnScreen(): React.JSX.Element {
                   })
                   .filter((fw): fw is FrictionWordData => fw !== null)
               }
-              streak={profile?.streak || 1}
+              streak={profile?.streakDays || 1}
               onApplyAdvice={() => {
                 if (dueCount > 0) {
                   void startStudySession(userId, currentLevel)
