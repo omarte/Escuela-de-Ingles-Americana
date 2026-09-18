@@ -47,6 +47,18 @@ export default function AppTabsLayout(): React.JSX.Element {
           title: 'Perfil',
         }}
       />
+      <Tabs.Screen
+        name="paywall"
+        options={{
+          title: 'Planes',
+        }}
+      />
+      <Tabs.Screen
+        name="support"
+        options={{
+          title: 'Soporte',
+        }}
+      />
     </Tabs>
   )
 }

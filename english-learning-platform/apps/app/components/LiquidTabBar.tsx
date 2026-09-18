@@ -53,6 +53,16 @@ const TAB_CONFIGS: Record<string, TabConfig> = {
     iconActive: 'person',
     label: 'Perfil',
   },
+  paywall: {
+    icon: 'diamond-outline',
+    iconActive: 'diamond',
+    label: 'Planes',
+  },
+  support: {
+    icon: 'headset-outline',
+    iconActive: 'headset',
+    label: 'Soporte',
+  },
 }
 
 export function LiquidTabBar({
@@ -127,10 +137,11 @@ export function LiquidTabBar({
   `
 
   // Responsive bubble diameter and vertical placement
-  const bubbleSize = Math.min(Math.max(tabWidth * 0.78, 38), 46)
+  const bubbleSize = Math.min(Math.max(tabWidth * 0.78, 34), 46)
   const bubbleRadius = bubbleSize / 2
   const bubbleTop = -(bubbleRadius - 4)
-  const bubbleIconSize = tabWidth < 52 ? 19 : 22
+  const bubbleIconSize = tabWidth < 46 ? 17 : tabWidth < 52 ? 19 : 22
+  const inactiveIconSize = tabWidth < 46 ? 17 : 20
 
   const activeRoute = routes[activeIndex]
   const activeRouteName = activeRoute ? activeRoute.name : 'index'
@@ -145,6 +156,7 @@ export function LiquidTabBar({
       style={[
         styles.outerContainer,
         {
+          paddingHorizontal: tabWidth < 46 ? 6 : 12,
           paddingBottom: Platform.OS === 'ios' ? Math.max(insets.bottom - 8, 8) : 10,
         },
       ]}
@@ -227,7 +239,13 @@ export function LiquidTabBar({
                 {isFocused ? (
                   // Active Tab: Icon floats in bubble above; label shows inside the scoop
                   <View style={styles.activeLabelContainer}>
-                    <Text numberOfLines={1} style={styles.activeLabel}>
+                    <Text
+                      numberOfLines={1}
+                      style={[
+                        styles.activeLabel,
+                        tabWidth < 46 && { fontSize: 8.5 },
+                      ]}
+                    >
                       {config.label}
                     </Text>
                   </View>
@@ -236,10 +254,16 @@ export function LiquidTabBar({
                   <View style={styles.inactiveItemContainer}>
                     <Ionicons
                       name={config.icon}
-                      size={20}
+                      size={inactiveIconSize}
                       color={darkColors.textMuted}
                     />
-                    <Text numberOfLines={1} style={styles.inactiveLabel}>
+                    <Text
+                      numberOfLines={1}
+                      style={[
+                        styles.inactiveLabel,
+                        tabWidth < 46 && { fontSize: 8 },
+                      ]}
+                    >
                       {config.label}
                     </Text>
                   </View>
