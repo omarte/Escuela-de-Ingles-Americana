@@ -32,7 +32,11 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#0B0F17"
       },
-      "package": "com.elp.app"
+      "package": "com.elp.app",
+      "notification": {
+        "icon": "./assets/notification-icon.png",
+        "color": "#059669"
+      }
     },
     "web": {
       "bundler": "metro",
