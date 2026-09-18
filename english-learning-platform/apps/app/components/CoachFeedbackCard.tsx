@@ -32,13 +32,15 @@ interface PedagogicalMessageTemplate {
   krashenPrinciple: string
 }
 
-const LEVEL_FEEDBACK_MATRIX: Record<
-  CEFRLevel,
-  {
-    highAccuracy: PedagogicalMessageTemplate[] // >= 85%
-    moderateAccuracy: PedagogicalMessageTemplate[] // 65% - 84%
-    needsReinforcement: PedagogicalMessageTemplate[] // < 65%
-  }
+const LEVEL_FEEDBACK_MATRIX: Partial<
+  Record<
+    CEFRLevel,
+    {
+      highAccuracy: PedagogicalMessageTemplate[] // >= 85%
+      moderateAccuracy: PedagogicalMessageTemplate[] // 65% - 84%
+      needsReinforcement: PedagogicalMessageTemplate[] // < 65%
+    }
+  >
 > = {
   A1: {
     highAccuracy: [
@@ -372,7 +374,7 @@ export function CoachFeedbackCard({
 }: CoachFeedbackCardProps): React.JSX.Element {
   // Selección rotativa determinística de la plantilla según el día y nivel
   const template = useMemo(() => {
-    const levelMatrix = LEVEL_FEEDBACK_MATRIX[level] || LEVEL_FEEDBACK_MATRIX.A1
+    const levelMatrix = LEVEL_FEEDBACK_MATRIX[level] || LEVEL_FEEDBACK_MATRIX.A1!
     const pool =
       accuracy >= 85
         ? levelMatrix.highAccuracy
