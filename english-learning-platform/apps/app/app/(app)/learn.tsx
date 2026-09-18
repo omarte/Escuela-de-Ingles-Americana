@@ -67,7 +67,7 @@ export default function LearnScreen(): React.JSX.Element {
   const [showMicroExam, setShowMicroExam] = useState<boolean>(false)
   const [showFeedback, setShowFeedback] = useState<boolean>(false)
   const [microExamVocabId, setMicroExamVocabId] = useState<string | null>(null)
-  const [sessionFrozen, setSessionFrozen] = useState<boolean>(false)
+  const [hasShownPostSessionModals, setHasShownPostSessionModals] = useState<boolean>(false)
 
   const userId = user?.id ?? 'demo-user'
   const currentLevel = profile?.currentLevel ?? 'A1'
@@ -78,6 +78,16 @@ export default function LearnScreen(): React.JSX.Element {
   useEffect(() => {
     void loadCards(userId)
   }, [loadCards, userId])
+
+  // Reset post-session flag whenever a new active study session is running
+  useEffect(() => {
+    if (!isCompleted) {
+      setHasShownPostSessionModals(false)
+      setShowMicroExam(false)
+      setShowFeedback(false)
+      setMicroExamVocabId(null)
+    }
+  }, [isCompleted])
 
   const activeCard = sessionQueue[currentIndex]
   const wordData = activeCard ? getWordDisplayData(activeCard.vocabularyItemId) : null
@@ -153,7 +163,8 @@ export default function LearnScreen(): React.JSX.Element {
 
   // ── Post-session modal trigger ──────────────────────────────────────────────
   useEffect(() => {
-    if (isCompleted && !sessionFrozen) {
+    if (isCompleted && !hasShownPostSessionModals) {
+      setHasShownPostSessionModals(true)
       // Pick a word from the last session for the micro-exam (first card reviewed)
       const lastCard = sessionQueue[0]
       if (lastCard) {
@@ -162,9 +173,8 @@ export default function LearnScreen(): React.JSX.Element {
       } else {
         setShowFeedback(true)
       }
-      setSessionFrozen(true)
     }
-  }, [isCompleted, sessionFrozen, sessionQueue])
+  }, [isCompleted, hasShownPostSessionModals, sessionQueue])
 
   const handleMicroExamComplete = useCallback((): void => {
     setShowMicroExam(false)
@@ -174,12 +184,10 @@ export default function LearnScreen(): React.JSX.Element {
   const handleFeedbackSubmit = useCallback((level: FrictionLevel): void => {
     void saveSessionFeedback(userId, level)
     setShowFeedback(false)
-    setSessionFrozen(false)
   }, [userId])
 
   const handleFeedbackSkip = useCallback((): void => {
     setShowFeedback(false)
-    setSessionFrozen(false)
   }, [])
 
   // ── Completion View ────────────────────────────────────────────────────────
