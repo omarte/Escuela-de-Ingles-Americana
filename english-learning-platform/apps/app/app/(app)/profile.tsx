@@ -844,16 +844,16 @@ export default function ProfileScreen(): React.JSX.Element {
           </View>
 
           <Button
-            title={isCheckingUpdate ? 'Comprobando...' : 'Buscar Actualizaciones'}
-            variant="outline"
-            size="sm"
+            title={isCheckingUpdate ? 'Comprobando Plataforma...' : 'Buscar Actualizaciones Ahora'}
+            variant="primary"
+            size="md"
             loading={isCheckingUpdate}
             disabled={isCheckingUpdate}
             onPress={() => {
               void handleCheckAppUpdate()
             }}
             style={styles.updateBtn}
-            icon={<Ionicons name="refresh-outline" size={16} color={colors.primary} />}
+            icon={<Ionicons name="sparkles" size={18} color="#FFFFFF" />}
           />
         </Card>
 
@@ -1942,7 +1942,15 @@ const styles = StyleSheet.create({
   },
   updateBtn: {
     width: '100%',
-    marginTop: spacing.xs,
+    marginTop: spacing.sm,
+    backgroundColor: '#059669',
+    borderColor: '#047857',
+    borderWidth: 1,
+    shadowColor: '#059669',
+    shadowOffset: { width: 0, height: 3 },
+    shadowOpacity: 0.25,
+    shadowRadius: 6,
+    elevation: 3,
   },
 })
 
