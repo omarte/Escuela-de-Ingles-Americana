@@ -185,6 +185,7 @@ export async function scheduleDrillReminder(
     content: {
       title,
       body,
+      color: '#059669',
       data: { deepLink, vocabularyIds },
       sound: true,
     },

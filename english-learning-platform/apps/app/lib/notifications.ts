@@ -126,6 +126,7 @@ export async function scheduleDailyStudyReminder(
         title: '⏰ ¡Hora de tu práctica de inglés!',
         body: `Tu meta de hoy es repasar ${dailyGoal} palabras. ¡Estudia 5 minutos y no pierdas tu racha!`,
         sound: 'default',
+        color: '#059669',
         data: { channelId: 'study-reminders' },
       },
       trigger,
@@ -185,6 +186,7 @@ export async function sendInstantTestNotification(
         title: '🎓 Escuela de Inglés Americana',
         body: `${greeting} Tu sistema de recordatorios está activo y configurado al 100%. ¡A por tu meta de hoy!`,
         sound: 'default',
+        color: '#059669',
         data: { test: true, channelId: 'study-reminders' },
       },
       trigger: {
