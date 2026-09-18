@@ -116,3 +116,29 @@ export function playDualReinforcement(
   }
 }
 
+/**
+ * Dual sentence reinforcement audio player:
+ * Plays the full English sentence first, followed by a pedagogical pause (~2.2s),
+ * then the full Spanish translation of the sentence so the student's subconscious
+ * connects auditory English comprehension with semantic meaning.
+ */
+export function playDualSentenceReinforcement(
+  englishSentence: string,
+  spanishSentence: string,
+  delayMs: number = 2200
+): void {
+  stopAllSpeech()
+
+  const cleanEnglish = englishSentence.trim()
+  const cleanSpanish = spanishSentence
+    .replace(/\//g, ', ')
+    .replace(/[()]/g, '')
+    .trim()
+
+  void speakEnglish(cleanEnglish)
+  if (cleanSpanish) {
+    dualAudioTimeout = setTimeout(() => {
+      void speakSpanish(cleanSpanish)
+    }, delayMs)
+  }
+}

@@ -12,7 +12,7 @@ import { Ionicons } from '@expo/vector-icons'
 import { colors, spacing, typography, radius } from '@elp/ui'
 import { getVocabularyById, getVocabularyForWeek } from '@elp/content'
 import type { CEFRLevel, PartOfSpeech } from '@elp/types'
-import { speakEnglish, playDualReinforcement } from '../lib/audio'
+import { speakEnglish, playDualSentenceReinforcement, stopAllSpeech } from '../lib/audio'
 
 interface MicroExamModalProps {
   visible: boolean
@@ -46,11 +46,10 @@ const PART_OF_SPEECH_HINTS: Record<PartOfSpeech, string> = {
  *
  * Pedagogical features:
  * - 3 micro-challenges per 5 words reviewed.
- * - Cognitive difficulty: hint hidden by default.
  * - Progressive 3-level hint system (Grammar -> Translation).
  * - High-contrast visual blank highlight.
- * - Full sentence audio playback.
- * - Comprehensive post-answer feedback with sentence meaning.
+ * - Dual audio reinforcement upon answering: speaks full English sentence -> pause -> speaks Spanish translation.
+ * - Replay button for continuous ear training.
  */
 export function MicroExamModal({
   visible,
@@ -86,6 +85,7 @@ export function MicroExamModal({
       setSelectedId(null)
       setHasAnswered(false)
       setHintLevel(0)
+      stopAllSpeech()
     }
   }, [visible])
 
@@ -94,6 +94,7 @@ export function MicroExamModal({
     setSelectedId(null)
     setHasAnswered(false)
     setHintLevel(0)
+    stopAllSpeech()
   }, [currentIndex])
 
   const totalCount = itemIds.length
@@ -199,7 +200,6 @@ export function MicroExamModal({
           Animated.timing(scaleAnim, { toValue: 1.05, duration: 140, useNativeDriver: true }),
           Animated.spring(scaleAnim, { toValue: 1, friction: 5, useNativeDriver: true }),
         ]).start()
-        void speakEnglish(targetItem.word)
       } else {
         // Error shake
         Animated.sequence([
@@ -209,13 +209,21 @@ export function MicroExamModal({
           Animated.timing(shakeAnim, { toValue: 5, duration: 40, useNativeDriver: true }),
           Animated.timing(shakeAnim, { toValue: 0, duration: 40, useNativeDriver: true }),
         ]).start()
-        playDualReinforcement(targetItem.word, targetItem.translation, false, 1800)
       }
+
+      // DOBLE REFUERZO AUDITIVO DE LA ORACIÓN COMPLETA:
+      // 1. Reproduce la frase completa en Inglés
+      // 2. Pausa de 2.2 segundos para asimilar el sonido
+      // 3. Reproduce la traducción completa en Español para fijar el significado
+      const englishSentence = targetItem.example || targetItem.word
+      const spanishSentence = targetItem.exampleEs || targetItem.translation
+      playDualSentenceReinforcement(englishSentence, spanishSentence, 2200)
     },
     [hasAnswered, options, targetItem, scaleAnim, shakeAnim],
   )
 
   const handleNext = useCallback(() => {
+    stopAllSpeech()
     if (currentIndex + 1 < totalCount) {
       setCurrentIndex((prev) => prev + 1)
     } else {
@@ -283,10 +291,10 @@ export function MicroExamModal({
             },
           ]}
         >
-          {/* HEADER: Brain Icon + Title */}
+          {/* HEADER: Sparkle / Brain Icon + Title */}
           <View style={styles.header}>
             <View style={styles.iconContainer}>
-              <Ionicons name="brain-outline" size={28} color="#059669" />
+              <Ionicons name="sparkles" size={26} color="#059669" />
             </View>
             <Text style={styles.title}>Micro-reto</Text>
             <Text style={styles.subtitle}>Completa la oración con la palabra correcta</Text>
@@ -322,7 +330,7 @@ export function MicroExamModal({
               onPress={handlePlaySentenceAudio}
               style={styles.audioButton}
               accessibilityRole="button"
-              accessibilityLabel="Escuchar oración completa"
+              accessibilityLabel="Escuchar oración en inglés"
               activeOpacity={0.7}
             >
               <Ionicons name="volume-high" size={20} color="#059669" />
@@ -389,7 +397,7 @@ export function MicroExamModal({
             })}
           </View>
 
-          {/* FEEDBACK EXPLICATIVO POST-RESPUESTA */}
+          {/* FEEDBACK EXPLICATIVO POST-RESPUESTA CON DOBLE REFUERZO AUDITIVO */}
           {hasAnswered && (
             <View
               style={[
@@ -411,11 +419,25 @@ export function MicroExamModal({
               <Text style={styles.feedbackSentence}>
                 "{clozeParts.full}"
               </Text>
-              {targetItem.exampleEs ? (
-                <Text style={styles.feedbackTranslation}>
-                  ({targetItem.exampleEs})
+              <Text style={styles.feedbackTranslation}>
+                "{targetItem.exampleEs || targetItem.translation}"
+              </Text>
+
+              {/* Botón interactivo para repetir el audio de la frase (Inglés -> Español) */}
+              <TouchableOpacity
+                style={styles.replayAudioBtn}
+                onPress={() => {
+                  const englishSentence = targetItem.example || targetItem.word
+                  const spanishSentence = targetItem.exampleEs || targetItem.translation
+                  playDualSentenceReinforcement(englishSentence, spanishSentence, 2200)
+                }}
+                activeOpacity={0.75}
+              >
+                <Ionicons name="volume-high" size={16} color="#059669" />
+                <Text style={styles.replayAudioText}>
+                  🔊 Repetir audio (Inglés ➔ Español)
                 </Text>
-              ) : null}
+              </TouchableOpacity>
             </View>
           )}
 
@@ -636,9 +658,28 @@ const styles = StyleSheet.create({
     fontStyle: 'italic',
   },
   feedbackTranslation: {
-    fontSize: 12,
-    color: '#475569',
+    fontSize: 12.5,
+    color: '#334155',
+    fontWeight: '600',
     marginTop: 2,
+  },
+  replayAudioBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 6,
+    backgroundColor: '#ECFDF5',
+    borderWidth: 1,
+    borderColor: '#A7F3D0',
+    borderRadius: 8,
+    paddingVertical: 8,
+    paddingHorizontal: 10,
+    marginTop: 8,
+  },
+  replayAudioText: {
+    fontSize: 12,
+    fontWeight: '700',
+    color: '#047857',
   },
   continueBtn: {
     backgroundColor: '#059669',
