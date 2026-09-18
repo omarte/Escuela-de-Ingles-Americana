@@ -67,6 +67,38 @@ function createFallbackProfile(
   }
 }
 
+function formatAuthErrorMessage(rawMessage?: string): string {
+  if (!rawMessage) return 'Ha ocurrido un error. Inténtalo de nuevo.'
+  const lower = rawMessage.toLowerCase()
+  if (lower.includes('invalid login credentials')) {
+    return 'Correo o contraseña incorrectos. Si no tienes cuenta aún, toca "Regístrate aquí" abajo.'
+  }
+  if (lower.includes('email not confirmed')) {
+    return 'Tu correo no ha sido confirmado. Por favor revisa tu bandeja de entrada o spam.'
+  }
+  if (lower.includes('user already registered') || lower.includes('already registered')) {
+    return 'Ya existe una cuenta con este correo. Inicia sesión en su lugar.'
+  }
+  if (lower.includes('password should be at least')) {
+    return 'La contraseña debe tener al menos 6 caracteres.'
+  }
+  if (lower.includes('rate limit') || lower.includes('too many requests')) {
+    return 'Demasiados intentos. Espera unos minutos e inténtalo de nuevo.'
+  }
+  if (lower.includes('invalid email') || lower.includes('valid email')) {
+    return 'Por favor ingresa un formato de correo electrónico válido.'
+  }
+  if (
+    lower.includes('network request failed') ||
+    lower.includes('failed to fetch') ||
+    lower.includes('network error') ||
+    lower.includes('timeout')
+  ) {
+    return 'Error de conexión con el servidor. Revisa tu conexión a internet o desactiva VPN / Proxy.'
+  }
+  return rawMessage
+}
+
 export const useAuthStore = create<AuthState>()((set, get) => ({
   user: null,
   profile: null,
@@ -193,7 +225,7 @@ export const useAuthStore = create<AuthState>()((set, get) => ({
 
         if (error || !data.user || !data.session) {
           set({
-            error: error?.message ?? 'Credenciales inválidas.',
+            error: formatAuthErrorMessage(error?.message),
             isLoading: false,
           })
           return false
@@ -301,7 +333,7 @@ export const useAuthStore = create<AuthState>()((set, get) => ({
 
         if (error || !data.user) {
           set({
-            error: error?.message ?? 'No se pudo crear la cuenta.',
+            error: formatAuthErrorMessage(error?.message),
             isLoading: false,
           })
           return false

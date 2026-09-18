@@ -157,7 +157,7 @@ export default function PaywallScreen(): React.JSX.Element {
               <View style={styles.benefitTextCol}>
                 <Text style={styles.benefitItemTitle}>Garantía y Cancelación en 1 Clic</Text>
                 <Text style={styles.benefitItemDesc}>
-                  Prueba de 7 días sin compromiso. Administra o cancela desde Google Play / App Store.
+                  Prueba de 3 semanas (21 días) sin compromiso. Administra o cancela desde Google Play / App Store.
                 </Text>
               </View>
             </View>
@@ -172,7 +172,7 @@ export default function PaywallScreen(): React.JSX.Element {
             </View>
             <Text style={styles.emptyTitle}>Suscripciones en Verificación</Text>
             <Text style={styles.emptyText}>
-              Los productos de suscripción ($9.99/mes con 7 días de prueba y $79.99 vitalicio) se están sincronizando con Google Play Console. Mientras tanto, puedes seguir aprendiendo con el Starter Deck inicial.
+              Los productos de suscripción ($9.99/mes con 3 semanas de prueba y $79.99 vitalicio) se están sincronizando con Google Play Console. Mientras tanto, puedes seguir aprendiendo con el Starter Deck inicial.
             </Text>
           </Card>
         ) : (

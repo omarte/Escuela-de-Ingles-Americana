@@ -4,6 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "turbo run dev",
+    "start": "expo start apps/app",
+    "start:tunnel": "expo start apps/app --tunnel",
+    "start:go": "expo start apps/app --go",
     "build": "turbo run build",
     "lint": "turbo run lint",
     "lint:fix": "turbo run lint:fix",
