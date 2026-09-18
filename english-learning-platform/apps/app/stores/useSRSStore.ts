@@ -309,14 +309,13 @@ export const useSRSStore = create<SRSState>()((set, get) => ({
     const latencyMs =
       cardStartTime !== null ? Math.max(0, Date.now() - cardStartTime) : undefined
 
-    // ── Friction Detection ─────────────────────────────────────────────────
-    // Two signals indicate the word needs immediate reinforcement:
-    //   1. Quality < 3 (user explicitly failed / expressed doubt)
-    //   2. Latency > 7 000 ms (slow recall = hidden uncertainty even if correct)
-    // References: discusion-pedagogica.md §8.2 (Bucle de Fijación Inmediata)
-    const FRICTION_THRESHOLD_MS = 7_000
-    const frictionFlagged =
-      quality < 3 || (latencyMs !== undefined && latencyMs > FRICTION_THRESHOLD_MS)
+    // ── Friction & Hot Re-injection Logic ─────────────────────────────────
+    // A word requires in-session reinforcement ONLY if the student failed (quality < 3).
+    // Correct answers (quality >= 3) should NEVER be re-injected into the queue,
+    // avoiding infinite repeating loops during multi-phase learning sessions.
+    const isFailed = quality < 3
+    const isSlow = latencyMs !== undefined && latencyMs > 7_000
+    const frictionFlagged = isFailed || (isSlow && quality < 4)
 
     const now = new Date().toISOString()
     const result = calculateNextReview({
@@ -357,19 +356,21 @@ export const useSRSStore = create<SRSState>()((set, get) => ({
     }
 
     // ── Bucle de Fijación Inmediata (Hot Re-injection) ─────────────────────
-    // When friction is detected, don't send the card to the end of the deck.
-    // Instead, re-insert it 2 positions ahead in the ACTIVE session queue so
-    // the learner encounters it again while it's still in working memory.
-    // The queue is treated as a mutable working copy; the canonical SRS state
-    // is driven by the card's updated easeFactor and interval in the DB.
+    // Re-insert ONLY if the card was failed (quality < 3) AND is not already
+    // queued ahead in this session, preventing infinite looping on the same cards.
     const updatedQueue = [...sessionQueue]
     const nextIndex = currentIndex + 1
 
-    if (frictionFlagged) {
-      // Splice the card out of its current position and re-insert at +2
-      const reinjectPosition = Math.min(currentIndex + 2, updatedQueue.length)
-      // Remove from current index (already answered, so insert a fresh copy)
-      updatedQueue.splice(reinjectPosition, 0, activeCard)
+    if (isFailed) {
+      const alreadyQueuedAhead = updatedQueue
+        .slice(nextIndex)
+        .some((c) => c.vocabularyItemId === activeCard.vocabularyItemId)
+
+      if (!alreadyQueuedAhead) {
+        // Place it 3 positions ahead or at the end of the queue
+        const reinjectPosition = Math.min(currentIndex + 3, updatedQueue.length)
+        updatedQueue.splice(reinjectPosition, 0, activeCard)
+      }
     }
 
     // 1. Update in-memory state immediately for zero-latency UI
