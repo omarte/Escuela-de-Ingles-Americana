@@ -97,6 +97,34 @@ export default function VocabularyScreen(): React.JSX.Element {
 
   const wordsForLevel = useMemo(() => getVocabularyForLevel(selectedLevel), [selectedLevel])
 
+  // Pool pedagógico adaptativo para juegos del Arcade:
+  // 1. Si el usuario filtra por una semana específica, usa las palabras de esa semana.
+  // 2. Si no, toma ÚNICAMENTE las palabras desbloqueadas y practicadas en su SRS (cardMap) para el nivel seleccionado.
+  // 3. Si el estudiante es nuevo (< 6 palabras activas en SRS), toma las palabras de la Semana 1 del nivel actual.
+  // 4. Esto garantiza que un alumno de semana 1 con 17 palabras nunca enfrente palabras avanzadas no vistas (como "ajedrez").
+  const gameWordsPool = useMemo(() => {
+    // Si el usuario tiene una semana seleccionada en la vista de vocabulario, respeta esa semana
+    if (selectedWeek !== null) {
+      const weekWords = wordsForLevel.filter((w) => w.week === selectedWeek)
+      if (weekWords.length >= 6) return weekWords
+    }
+
+    // Palabras del nivel actual que el estudiante YA ha desbloqueado / practicado en su SRS
+    const unlockedWords = wordsForLevel.filter((w) => cardMap.has(w.id))
+    if (unlockedWords.length >= 6) {
+      return unlockedWords
+    }
+
+    // Si aún tiene pocas tarjetas en este nivel, usar las palabras de la Semana 1 del nivel
+    const week1Words = wordsForLevel.filter((w) => w.week === 1)
+    if (week1Words.length >= 6) {
+      return week1Words
+    }
+
+    // Fallback de seguridad: las primeras 15 palabras básicas de ese nivel
+    return wordsForLevel.slice(0, 15)
+  }, [wordsForLevel, cardMap, selectedWeek])
+
   // Available weeks for the level
   const availableWeeks = useMemo(() => {
     const blocks = contentRegistry[selectedLevel]?.blocks ?? []
@@ -809,7 +837,7 @@ export default function VocabularyScreen(): React.JSX.Element {
           setIsGamesModalVisible(false)
         }}
         level={selectedLevel}
-        wordsPool={filteredWords.length >= 6 ? filteredWords : wordsForLevel}
+        wordsPool={gameWordsPool}
         initialGame={initialGame}
       />
     </SafeAreaView>

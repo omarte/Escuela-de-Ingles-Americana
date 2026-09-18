@@ -2181,7 +2181,7 @@ export function GamesModal({
               <View>
                 <Text style={styles.hubTitle}>🎮 Arcade de Vocabulario</Text>
                 <Text style={styles.hubSubtitle}>
-                  Practica con palabras de nivel {level}
+                  {wordsPool.length} palabras activas • Nivel {level}
                 </Text>
               </View>
               <TouchableOpacity onPress={onClose} style={styles.exitButton}>
