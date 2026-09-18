@@ -25,6 +25,7 @@ import { EMPTY_REVIEWS_IMG } from '../../lib/assets'
 import { RescueModeBanner } from '../../components/RescueModeBanner'
 import { SessionFeedbackModal } from '../../components/SessionFeedbackModal'
 import { MicroExamModal } from '../../components/MicroExamModal'
+import { CoachFeedbackCard, type FrictionWordData } from '../../components/CoachFeedbackCard'
 import { AppScreenHeader } from '../../components/AppScreenHeader'
 import { saveSessionFeedback } from '../../lib/feedbackService'
 
@@ -275,6 +276,30 @@ export default function LearnScreen(): React.JSX.Element {
                 </View>
               </View>
             </Card>
+
+            {/* Módulo de Diagnóstico y Análisis Pedagógico (Coach EIA) */}
+            <CoachFeedbackCard
+              level={currentLevel}
+              accuracy={accuracy}
+              cardsReviewed={sessionStats.cardsReviewed}
+              frictionWords={
+                sessionQueue
+                  .filter((c) => c.lapses > 0 || (c.interval !== undefined && c.interval <= 1))
+                  .map((c) => {
+                    const vocab = getVocabularyById(c.vocabularyItemId)
+                    return vocab ? ({ item: vocab, lapses: c.lapses } as FrictionWordData) : null
+                  })
+                  .filter((fw): fw is FrictionWordData => fw !== null)
+              }
+              streak={profile?.streak || 1}
+              onApplyAdvice={() => {
+                if (dueCount > 0) {
+                  void startStudySession(userId, currentLevel)
+                } else {
+                  void loadNextBatch(userId, currentLevel, 10)
+                }
+              }}
+            />
 
             {/* 1 + 2 + 1 CTA Hierarchy */}
             <View style={styles.completedActions}>
