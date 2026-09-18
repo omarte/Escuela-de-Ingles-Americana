@@ -16,7 +16,7 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import { colors, spacing, typography, radius, Badge } from '@elp/ui'
 import { Ionicons } from '@expo/vector-icons'
 import type { CEFRLevel, VocabularyItem } from '@elp/types'
-import { speakEnglish, speakSpanish } from '../lib/audio'
+import { speakEnglish, speakSpanish, playDualReinforcement } from '../lib/audio'
 import { generateQuizOptions, type QuizOption } from '../lib/distractors'
 import { getWordDisplayData } from '../lib/vocabulary'
 import { CARD_BACK_IMG } from '../lib/assets'
@@ -303,7 +303,7 @@ function TypingRushGame({
         ? `¡Excelente! +${baseWordXp} × ${combo} combo = +${earnedXp} XP 🔥`
         : `¡Excelente! +${earnedXp} XP`
     )
-    void speakEnglish(currentWord.word)
+    void playDualReinforcement(currentWord.word, currentWord.translation, true, 1800)
 
     const updated = roundWords.map((w, idx) => {
       if (idx === currentIndex) {
@@ -813,20 +813,25 @@ function LightningQuizGame({
       setStreak(newStreak)
       setMaxStreak((prev) => Math.max(prev, newStreak))
       setTotalCorrect((prev) => prev + 1)
-      if (currentWord) void speakEnglish(currentWord.word)
+      if (currentWord) {
+        void playDualReinforcement(currentWord.word, currentWord.translation, true, 1800)
+      }
 
       setTimeout(() => {
         advanceQuestion()
-      }, 450)
+      }, 500)
     } else {
       setStreak(0)
       const correctOpt = options.find((o) => o.isCorrect)
       setFeedbackTip(
         `Elegiste "${opt.text}". "${currentWord?.word || ''}" significa "${correctOpt?.text || ''}".`
       )
+      if (currentWord && correctOpt) {
+        void playDualReinforcement(currentWord.word, correctOpt.text, false, 1800)
+      }
       setTimeout(() => {
         advanceQuestion()
-      }, 1400)
+      }, 2000)
     }
   }
 
@@ -1248,6 +1253,8 @@ function MemoryMatchGame({
 
     if (card.isEnglish) {
       void speakEnglish(card.text)
+    } else {
+      void speakSpanish(card.text)
     }
 
     const nextFlipped = [...flippedIndices, index]
@@ -1262,6 +1269,10 @@ function MemoryMatchGame({
       if (firstCard && secondCard && firstCard.wordId === secondCard.wordId) {
         // MATCH!
         setCombo((c) => c + 1)
+        const enCard = firstCard.isEnglish ? firstCard : secondCard
+        const esCard = firstCard.isEnglish ? secondCard : firstCard
+        void playDualReinforcement(enCard.text, esCard.text, true, 1800)
+
         setTimeout(() => {
           setCards((prev) =>
             prev.map((c) => (c.wordId === firstCard.wordId ? { ...c, isMatched: true } : c))
@@ -1282,17 +1293,20 @@ function MemoryMatchGame({
             }
             return next
           })
-          const enCard = firstCard.isEnglish ? firstCard : secondCard
-          void speakEnglish(enCard.text)
         }, 350)
-      } else {
-        // NO MATCH -> reset combo, highlight mismatch red, then flip back
+      } else if (firstCard && secondCard) {
+        // NO MATCH -> reset combo, reinforce mismatch pronunciation, highlight red, then flip back
         setCombo(0)
         setMismatchIndices(nextFlipped)
+        const enCard = firstCard.isEnglish ? firstCard : secondCard.isEnglish ? secondCard : null
+        const esCard = !firstCard.isEnglish ? firstCard : !secondCard.isEnglish ? secondCard : null
+        if (enCard && esCard) {
+          void playDualReinforcement(enCard.text, esCard.text, false, 1800)
+        }
         setTimeout(() => {
           setFlippedIndices([])
           setMismatchIndices([])
-        }, 850)
+        }, 1100)
       }
     }
   }
@@ -1579,6 +1593,11 @@ function WordMatchGame({
       setTotalXp((prev) => prev + gainedXp)
       setSuccessPair({ en: enId, es: esId })
 
+      const matchedPair = pairs.find((p) => p.id === enId)
+      if (matchedPair) {
+        void playDualReinforcement(matchedPair.english, matchedPair.spanish, true, 1800)
+      }
+
       setTimeout(() => {
         setMatchedIds((prev) => {
           const next = [...prev, enId]
@@ -1609,11 +1628,18 @@ function WordMatchGame({
       setMistakes((prev) => prev + 1)
       setCombo(1)
       setMismatchPair({ en: enId, es: esId })
+
+      const enItem = pairs.find((p) => p.id === enId)
+      const esItem = pairs.find((p) => p.id === esId)
+      if (enItem && esItem) {
+        void playDualReinforcement(enItem.english, esItem.spanish, false, 1800)
+      }
+
       setTimeout(() => {
         setSelectedEnglishId(null)
         setSelectedSpanishId(null)
         setMismatchPair(null)
-      }, 450)
+      }, 550)
     }
   }
 
@@ -1633,6 +1659,7 @@ function WordMatchGame({
     if (matchedIds.includes(pair.id)) return
     if (mismatchPair) return
 
+    void speakSpanish(pair.spanish)
     setSelectedSpanishId(pair.id)
 
     if (selectedEnglishId) {
@@ -2113,7 +2140,7 @@ export function GamesModal({
                           <TouchableOpacity
                             style={styles.reviewWordSpeakerBtn}
                             onPress={() => {
-                              void speakEnglish(item.word)
+                              void playDualReinforcement(item.word, item.translation, item.isCorrect, 1800)
                             }}
                             accessibilityRole="button"
                             accessibilityLabel={`Escuchar ${item.word}`}

@@ -13,7 +13,7 @@ import {
 import { Ionicons } from '@expo/vector-icons'
 import { colors, spacing, typography, radius, Badge, Button } from '@elp/ui'
 import type { VocabularyItem } from '@elp/types'
-import { speakEnglish } from '../lib/audio'
+import { speakEnglish, playDualReinforcement } from '../lib/audio'
 import { getSpanishPhonetic } from '../lib/phonetics'
 import { shuffleArray } from '../lib/matchingCategories'
 import { generateSpellingTip } from '../lib/spellingTips'
@@ -127,10 +127,11 @@ export function AudioDictationGame({
       const nextCombo = combo + 1
       setCombo(nextCombo)
       if (nextCombo > maxCombo) setMaxCombo(nextCombo)
-      // Sonido de confirmación con audio de la palabra
-      void speakCurrentWord(0.85)
+      // Refuerzo auditivo dual inmediato (inglés -> pausa -> español)
+      void playDualReinforcement(currentWord.word, currentWord.translation, true, 1800)
     } else {
       setCombo(0)
+      void playDualReinforcement(currentWord.word, currentWord.translation, false, 1800)
     }
 
     const itemRecord: DictationWordItem = {
