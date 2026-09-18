@@ -503,6 +503,11 @@ export default function LearnScreen(): React.JSX.Element {
               {/* Large Clear English Word */}
               <Text style={styles.englishWord}>{wordData.word}</Text>
 
+              {/* Spanish Translation Semantic Anchor (Doble Refuerzo Visual y Semántico) */}
+              <View style={styles.spanishMeaningBox}>
+                <Text style={styles.spanishMeaningText}>{wordData.translation}</Text>
+              </View>
+
               {/* Spanish-Adapted Phonetic Guide */}
               <TouchableOpacity
                 onPress={() => {
@@ -947,11 +952,27 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   englishWord: {
-    fontSize: 40,
+    fontSize: 38,
     fontWeight: typography.weights.bold,
     color: colors.textPrimary,
     textAlign: 'center',
-    marginVertical: spacing.xs,
+    marginTop: spacing.xs,
+    marginBottom: 2,
+  },
+  spanishMeaningBox: {
+    backgroundColor: 'rgba(5, 150, 105, 0.08)',
+    paddingHorizontal: spacing.md,
+    paddingVertical: 4,
+    borderRadius: radius.md,
+    marginVertical: 4,
+    borderWidth: 1,
+    borderColor: 'rgba(5, 150, 105, 0.15)',
+  },
+  spanishMeaningText: {
+    fontSize: typography.sizes.md,
+    fontWeight: typography.weights.semibold,
+    color: colors.primary,
+    textAlign: 'center',
   },
   phoneticPill: {
     flexDirection: 'row',
