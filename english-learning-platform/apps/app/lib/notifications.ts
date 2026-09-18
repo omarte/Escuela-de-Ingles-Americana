@@ -59,7 +59,7 @@ export async function requestNotificationPermissions(): Promise<boolean> {
         name: 'Recordatorios de Estudio',
         importance: Notifications.AndroidImportance.HIGH,
         vibrationPattern: [0, 250, 250, 250],
-        lightColor: '#2563EB',
+        lightColor: '#059669',
         sound: 'default',
       })
     }
