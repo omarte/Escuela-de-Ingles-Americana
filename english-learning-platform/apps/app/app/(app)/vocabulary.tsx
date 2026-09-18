@@ -987,7 +987,7 @@ const styles = StyleSheet.create({
   },
   scrollList: {
     padding: spacing.md,
-    paddingBottom: spacing.xxl,
+    paddingBottom: 140,
   },
   arcadeBanner: {
     flexDirection: 'row',
@@ -1092,7 +1092,7 @@ const styles = StyleSheet.create({
   },
   modalScroll: {
     padding: spacing.md,
-    paddingBottom: spacing.xxl,
+    paddingBottom: 140,
   },
   modalTopBar: {
     flexDirection: 'row',
