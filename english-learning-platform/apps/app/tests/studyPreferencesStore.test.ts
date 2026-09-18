@@ -35,6 +35,12 @@ vi.mock('../lib/notifications', () => ({
   ),
   cancelDailyStudyReminder: vi.fn(() => Promise.resolve()),
   requestNotificationPermissions: vi.fn(() => Promise.resolve(true)),
+  sendInstantTestNotification: vi.fn((name?: string) =>
+    Promise.resolve({
+      success: true,
+      message: `¡Notificación de prueba enviada! Aparecerá en tu pantalla en 2 segundos.`,
+    }),
+  ),
 }))
 
 describe('useStudyPreferencesStore & Daily Reminders', () => {
@@ -92,5 +98,12 @@ describe('useStudyPreferencesStore & Daily Reminders', () => {
     expect(useStudyPreferencesStore.getState().pronunciationVariant).toBe('US_SLOW')
     const raw = await AsyncStorage.getItem('@elp/study_preferences_v1')
     expect(raw).toContain('US_SLOW')
+  })
+
+  it('can trigger instant test notification successfully', async () => {
+    const res = await notifications.sendInstantTestNotification('Omar')
+    expect(notifications.sendInstantTestNotification).toHaveBeenCalledWith('Omar')
+    expect(res.success).toBe(true)
+    expect(res.message).toContain('Notificación de prueba')
   })
 })

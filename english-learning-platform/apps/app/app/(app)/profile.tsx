@@ -35,6 +35,7 @@ import { APP_LOGO, SCHOOL_LOGO } from '../../lib/assets'
 import { OnboardingModal } from '../../components/OnboardingModal'
 import { AppScreenHeader } from '../../components/AppScreenHeader'
 import { updatesService } from '../../lib/updatesService'
+import { sendInstantTestNotification } from '../../lib/notifications'
 import {
   useStudyPreferencesStore,
   type PronunciationVariant,
@@ -205,6 +206,18 @@ export default function ProfileScreen(): React.JSX.Element {
   const [isRestoreModalVisible, setIsRestoreModalVisible] = useState(false)
   const [backupJsonInput, setBackupJsonInput] = useState('')
   const [isCheckingUpdate, setIsCheckingUpdate] = useState(false)
+  const [isTestingNotif, setIsTestingNotif] = useState(false)
+
+  const handleTestNotification = async (): Promise<void> => {
+    setIsTestingNotif(true)
+    const result = await sendInstantTestNotification(displayName)
+    setIsTestingNotif(false)
+
+    Alert.alert(
+      result.success ? '🔔 Notificación de Prueba' : 'Aviso de Notificación',
+      result.message,
+    )
+  }
 
   const handleCheckAppUpdate = async (): Promise<void> => {
     setIsCheckingUpdate(true)
@@ -722,6 +735,34 @@ export default function ProfileScreen(): React.JSX.Element {
               <Ionicons name="chevron-forward" size={16} color={colors.textSecondary} />
             </View>
           </TouchableOpacity>
+
+          <View style={styles.settingDivider} />
+
+          <TouchableOpacity
+            style={styles.settingItem}
+            onPress={() => {
+              void handleTestNotification()
+            }}
+            activeOpacity={0.7}
+            disabled={isTestingNotif}
+            accessibilityRole="button"
+            accessibilityLabel="Probar notificación en este dispositivo"
+          >
+            <View style={styles.settingLeft}>
+              <Ionicons name="paper-plane-outline" size={20} color="#059669" />
+              <View>
+                <Text style={styles.settingLabel}>Probar Notificación Ahora</Text>
+                <Text style={styles.settingSubtext}>Envía un aviso de prueba en 2 segundos</Text>
+              </View>
+            </View>
+            <View style={styles.settingRight}>
+              {isTestingNotif ? (
+                <ActivityIndicator size="small" color="#059669" />
+              ) : (
+                <Badge label="Test Instantáneo" color="#059669" backgroundColor="#ECFDF5" size="sm" />
+              )}
+            </View>
+          </TouchableOpacity>
         </Card>
 
         {/* Help & Guide */}
@@ -1196,6 +1237,22 @@ export default function ProfileScreen(): React.JSX.Element {
                   )
                 })}
             </View>
+
+            {activeSettingModal === 'reminder' && (
+              <View style={{ marginTop: spacing.md, paddingTop: spacing.md, borderTopWidth: 1, borderTopColor: colors.border }}>
+                <Button
+                  title={isTestingNotif ? 'Enviando notificación...' : '🧪 Enviar Notificación de Prueba (2s)'}
+                  variant="outline"
+                  size="sm"
+                  loading={isTestingNotif}
+                  disabled={isTestingNotif}
+                  onPress={async () => {
+                    await handleTestNotification()
+                  }}
+                  icon={<Ionicons name="paper-plane-outline" size={16} color={colors.primary} />}
+                />
+              </View>
+            )}
           </View>
         </View>
       </Modal>

@@ -154,3 +154,55 @@ export async function cancelDailyStudyReminder(): Promise<void> {
     // Ignore error
   }
 }
+
+/**
+ * Send an instant test notification to verify push/local notifications on the physical device.
+ * Fires after 2 seconds to allow observing banner or lock screen presentation.
+ */
+export async function sendInstantTestNotification(
+  studentName?: string,
+): Promise<{ success: boolean; message: string }> {
+  if (Platform.OS === 'web') {
+    return {
+      success: false,
+      message: 'Las notificaciones nativas no están disponibles en la versión web.',
+    }
+  }
+
+  try {
+    const hasPermission = await requestNotificationPermissions()
+    if (!hasPermission) {
+      return {
+        success: false,
+        message: 'Permiso de notificaciones denegado. Actívalo en los Ajustes de tu dispositivo.',
+      }
+    }
+
+    const greeting = studentName ? `¡Hola ${studentName}!` : '¡Hola Estudiante!'
+
+    await Notifications.scheduleNotificationAsync({
+      content: {
+        title: '🎓 Escuela de Inglés Americana',
+        body: `${greeting} Tu sistema de recordatorios está activo y configurado al 100%. ¡A por tu meta de hoy!`,
+        sound: 'default',
+        data: { test: true, channelId: 'study-reminders' },
+      },
+      trigger: {
+        type: Notifications.SchedulableTriggerInputTypes.TIME_INTERVAL,
+        seconds: 2,
+        repeats: false,
+      },
+    })
+
+    return {
+      success: true,
+      message: '¡Notificación de prueba enviada! Aparecerá en tu pantalla en 2 segundos.',
+    }
+  } catch (err) {
+    console.warn('[notifications] Failed to send instant test notification:', err)
+    return {
+      success: false,
+      message: `Error al enviar notificación: ${err instanceof Error ? err.message : 'Error desconocido'}`,
+    }
+  }
+}
