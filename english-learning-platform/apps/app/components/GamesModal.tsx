@@ -1110,7 +1110,7 @@ function MemoryCardItem({
           { opacity: pressed && !card.isMatched && !showFront ? 0.9 : 1 },
         ]}
         onPress={() => onPress(index)}
-        disabled={card.isMatched || showFront}
+        disabled={card.isMatched}
         accessibilityRole="button"
         accessibilityLabel={
           showFront
@@ -1192,7 +1192,11 @@ function MemoryMatchGame({
   const [matchedCount, setMatchedCount] = useState(0)
   const [combo, setCombo] = useState(0)
   const [secondsElapsed, setSecondsElapsed] = useState(0)
-  const timerRef = useRef<NodeJS.Timeout | null>(null)
+  const [isPreviewPhase, setIsPreviewPhase] = useState(true)
+  const [previewSecondsLeft, setPreviewSecondsLeft] = useState(10)
+
+  const previewTimerRef = useRef<NodeJS.Timeout | null>(null)
+  const playTimerRef = useRef<NodeJS.Timeout | null>(null)
 
   useEffect(() => {
     const selected = [...wordsPool].sort(() => 0.5 - Math.random()).slice(0, 6)
@@ -1223,16 +1227,49 @@ function MemoryMatchGame({
     setMatchedCount(0)
     setCombo(0)
     setSecondsElapsed(0)
+    setIsPreviewPhase(true)
+    setPreviewSecondsLeft(10)
+  }, [wordsPool])
 
-    if (timerRef.current) clearInterval(timerRef.current)
-    timerRef.current = setInterval(() => {
+  // Temporizador de 10 segundos de la fase de memorización
+  useEffect(() => {
+    if (!isPreviewPhase) return
+
+    previewTimerRef.current = setInterval(() => {
+      setPreviewSecondsLeft((prev) => {
+        if (prev <= 1) {
+          if (previewTimerRef.current) clearInterval(previewTimerRef.current)
+          setIsPreviewPhase(false)
+          return 0
+        }
+        return prev - 1
+      })
+    }, 1000)
+
+    return () => {
+      if (previewTimerRef.current) clearInterval(previewTimerRef.current)
+    }
+  }, [isPreviewPhase])
+
+  // Temporizador de juego principal (inicia una vez finaliza la fase de memorización)
+  useEffect(() => {
+    if (isPreviewPhase) return
+    if (matchedCount === 6) return
+
+    playTimerRef.current = setInterval(() => {
       setSecondsElapsed((s) => s + 1)
     }, 1000)
 
     return () => {
-      if (timerRef.current) clearInterval(timerRef.current)
+      if (playTimerRef.current) clearInterval(playTimerRef.current)
     }
-  }, [wordsPool])
+  }, [isPreviewPhase, matchedCount])
+
+  const startPlayingNow = (): void => {
+    if (previewTimerRef.current) clearInterval(previewTimerRef.current)
+    setIsPreviewPhase(false)
+    setPreviewSecondsLeft(0)
+  }
 
   const formatTime = (secs: number): string => {
     const m = Math.floor(secs / 60)
@@ -1244,12 +1281,21 @@ function MemoryMatchGame({
   const currentStars = moves <= 8 ? 3 : moves <= 12 ? 2 : 1
 
   const handleCardPress = (index: number): void => {
-    if (flippedIndices.length >= 2) return
-    if (flippedIndices.includes(index)) return
-    if (cards[index]?.isMatched) return
-
     const card = cards[index]
     if (!card) return
+
+    if (isPreviewPhase) {
+      if (card.isEnglish) {
+        void speakEnglish(card.text)
+      } else {
+        void speakSpanish(card.text)
+      }
+      return
+    }
+
+    if (flippedIndices.length >= 2) return
+    if (flippedIndices.includes(index)) return
+    if (card.isMatched) return
 
     if (card.isEnglish) {
       void speakEnglish(card.text)
@@ -1281,7 +1327,7 @@ function MemoryMatchGame({
           setMatchedCount((c) => {
             const next = c + 1
             if (next === 6) {
-              if (timerRef.current) clearInterval(timerRef.current)
+              if (playTimerRef.current) clearInterval(playTimerRef.current)
               const finalStars = nextMoves <= 8 ? 3 : nextMoves <= 12 ? 2 : 1
               onFinish({
                 moves: nextMoves,
@@ -1313,13 +1359,20 @@ function MemoryMatchGame({
 
   return (
     <View style={styles.gameInnerContainer}>
-      {/* Barra de progreso de parejas (0% a 100%) */}
+      {/* Barra de progreso superior (cuenta regresiva 10s en preview, o avance de parejas en juego) */}
       <View style={styles.topProgressBarTrack}>
         <View
           style={[
             styles.topProgressBarFill,
-            { width: `${(matchedCount / 6) * 100}%` },
-            matchedCount === 6 && { backgroundColor: '#10B981' },
+            isPreviewPhase
+              ? {
+                  width: `${(previewSecondsLeft / 10) * 100}%`,
+                  backgroundColor: previewSecondsLeft <= 3 ? '#EF4444' : '#F59E0B',
+                }
+              : {
+                  width: `${(matchedCount / 6) * 100}%`,
+                  backgroundColor: '#10B981',
+                },
           ]}
         />
       </View>
@@ -1332,52 +1385,94 @@ function MemoryMatchGame({
 
         <Text style={styles.gameBadgeTitle}>🃏 MEMORY MATCH</Text>
 
-        <View style={styles.memoryTimerBadge}>
-          <Ionicons name="time-outline" size={13} color="#0F172A" />
-          <Text style={styles.memoryTimerText}>{formatTime(secondsElapsed)}</Text>
+        <View style={[styles.memoryTimerBadge, isPreviewPhase && styles.memoryTimerBadgePreview]}>
+          <Ionicons
+            name={isPreviewPhase ? 'eye' : 'time-outline'}
+            size={13}
+            color={isPreviewPhase ? (previewSecondsLeft <= 3 ? '#DC2626' : '#D97706') : '#0F172A'}
+          />
+          <Text
+            style={[
+              styles.memoryTimerText,
+              isPreviewPhase && { color: previewSecondsLeft <= 3 ? '#DC2626' : '#D97706', fontWeight: 'bold' },
+            ]}
+          >
+            {isPreviewPhase
+              ? `00:${previewSecondsLeft < 10 ? '0' : ''}${previewSecondsLeft}`
+              : formatTime(secondsElapsed)}
+          </Text>
         </View>
       </View>
 
-      {/* Status Bar con Intentos, Parejas, Combo y Calificación en vivo */}
-      <View style={styles.memoryStatusBar}>
-        <View style={styles.memoryScorePill}>
-          <Ionicons name="trophy" size={14} color="#059669" />
-          <Text style={styles.memoryScoreText}>
-            {matchedCount} / 6
-          </Text>
-        </View>
-
-        <View style={styles.memoryMovesBadge}>
-          <Ionicons name="repeat" size={13} color="#475569" />
-          <Text style={styles.memoryMovesText}>{moves} {moves === 1 ? 'intento' : 'intentos'}</Text>
-        </View>
-
-        {combo >= 2 ? (
-          <View style={styles.memoryComboBadge}>
-            <Text style={styles.memoryComboText}>🔥 x{combo}</Text>
+      {/* Banner de fase de memorización previa (10s) vs Barra de estado de juego */}
+      {isPreviewPhase ? (
+        <View style={styles.previewModeBanner}>
+          <View style={styles.previewBannerLeft}>
+            <View style={styles.previewIconCircle}>
+              <Ionicons name="eye" size={15} color="#D97706" />
+            </View>
+            <View style={{ flex: 1 }}>
+              <Text style={styles.previewBannerTitle}>
+                🧠 MEMORIZA LAS CARTAS ({previewSecondsLeft}s)
+              </Text>
+              <Text style={styles.previewBannerSub}>
+                Ubica las parejas antes de que se volteen
+              </Text>
+            </View>
           </View>
-        ) : null}
-
-        <View style={styles.memoryStarsBadge}>
-          <Text style={styles.memoryStarsText}>
-            {'⭐'.repeat(currentStars) + '☆'.repeat(3 - currentStars)}
-          </Text>
+          <TouchableOpacity
+            style={styles.previewStartBtn}
+            onPress={startPlayingNow}
+            accessibilityRole="button"
+            accessibilityLabel="Empezar juego ahora"
+          >
+            <Text style={styles.previewStartBtnText}>¡Empezar!</Text>
+            <Ionicons name="play" size={11} color="#FFFFFF" />
+          </TouchableOpacity>
         </View>
-      </View>
+      ) : (
+        <View style={styles.memoryStatusBar}>
+          <View style={styles.memoryScorePill}>
+            <Ionicons name="trophy" size={14} color="#059669" />
+            <Text style={styles.memoryScoreText}>
+              {matchedCount} / 6
+            </Text>
+          </View>
+
+          <View style={styles.memoryMovesBadge}>
+            <Ionicons name="repeat" size={13} color="#475569" />
+            <Text style={styles.memoryMovesText}>{moves} {moves === 1 ? 'intento' : 'intentos'}</Text>
+          </View>
+
+          {combo >= 2 ? (
+            <View style={styles.memoryComboBadge}>
+              <Text style={styles.memoryComboText}>🔥 x{combo}</Text>
+            </View>
+          ) : null}
+
+          <View style={styles.memoryStarsBadge}>
+            <Text style={styles.memoryStarsText}>
+              {'⭐'.repeat(currentStars) + '☆'.repeat(3 - currentStars)}
+            </Text>
+          </View>
+        </View>
+      )}
 
       {/* Subtítulo orientativo */}
       <View style={styles.memoryInstructionWrap}>
         <Text style={styles.hintTextSmall}>
-          {matchedCount === 6
-            ? '🎉 ¡Todas las parejas encontradas!'
-            : 'Toca una carta en inglés y su traducción en español'}
+          {isPreviewPhase
+            ? '👁️ Toca cualquier carta para escuchar su pronunciación'
+            : matchedCount === 6
+              ? '🎉 ¡Todas las parejas encontradas!'
+              : 'Toca una carta en inglés y su traducción en español'}
         </Text>
       </View>
 
       {/* Grid de 12 cartas con animación física 3D y rebote táctil */}
       <View style={styles.memoryGrid}>
         {cards.map((card, idx) => {
-          const isFlipped = flippedIndices.includes(idx) || card.isMatched
+          const isFlipped = isPreviewPhase || flippedIndices.includes(idx) || card.isMatched
           const isMismatched = mismatchIndices.includes(idx)
 
           return (
@@ -3044,6 +3139,73 @@ const styles = StyleSheet.create({
     paddingHorizontal: spacing.sm,
     paddingVertical: spacing.xs,
     borderRadius: radius.full,
+  },
+  previewModeBanner: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    backgroundColor: '#FFFBEB',
+    borderColor: '#FDE68A',
+    borderWidth: 1.5,
+    borderRadius: radius.lg,
+    paddingHorizontal: spacing.sm + 2,
+    paddingVertical: spacing.xs + 3,
+    marginBottom: spacing.xs,
+    shadowColor: '#D97706',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.08,
+    shadowRadius: 3,
+    elevation: 1,
+  },
+  previewBannerLeft: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    flex: 1,
+    gap: spacing.xs + 2,
+  },
+  previewIconCircle: {
+    width: 28,
+    height: 28,
+    borderRadius: 14,
+    backgroundColor: '#FEF3C7',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 1,
+    borderColor: '#FDE68A',
+  },
+  previewBannerTitle: {
+    fontSize: typography.sizes.xs,
+    fontWeight: typography.weights.bold,
+    color: '#92400E',
+    letterSpacing: 0.3,
+  },
+  previewBannerSub: {
+    fontSize: 10,
+    color: '#B45309',
+    marginTop: 1,
+  },
+  previewStartBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+    backgroundColor: '#10B981',
+    paddingHorizontal: spacing.sm + 2,
+    paddingVertical: 6,
+    borderRadius: radius.full,
+    shadowColor: '#10B981',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 3,
+    elevation: 2,
+  },
+  previewStartBtnText: {
+    fontSize: typography.sizes.xs,
+    fontWeight: typography.weights.bold,
+    color: '#FFFFFF',
+  },
+  memoryTimerBadgePreview: {
+    backgroundColor: '#FEF3C7',
+    borderColor: '#FDE68A',
   },
   memoryComboText: {
     fontSize: typography.sizes.xs,
