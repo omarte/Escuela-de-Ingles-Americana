@@ -21,10 +21,10 @@ const LEVELS_VISIBLE_TO_STUDENTS: ReadonlySet<ContentApprovalState> = new Set([
 
 /**
  * Número máximo de semanas que un estudiante puede estudiar 100% gratis
- * en el Nivel A1 (225 palabras curadas con fonética IPA y SM-2).
- * A partir de la Semana 4 se requiere Membresía Pro activa.
+ * en el Nivel A1 (75 palabras curadas con fonética IPA y SM-2).
+ * A partir de la Semana 2 se requiere Membresía Pro activa.
  */
-export const MAX_FREE_WEEKS = 3
+export const MAX_FREE_WEEKS = 1
 
 /**
  * Reglas de acceso, en una sola función auditable:
@@ -49,8 +49,8 @@ export function canAccessLevel(
 
 /**
  * Valida si un estudiante puede estudiar una semana específica dentro de un nivel.
- * - Nivel A1, Semanas 1 a 3: 100% GRATIS (con o sin Pro).
- * - Nivel A1, Semanas 4 en adelante: Requiere `hasProEntitlement === true`.
+ * - Nivel A1, Semana 1: 100% GRATIS (con o sin Pro).
+ * - Nivel A1, Semanas 2 en adelante: Requiere `hasProEntitlement === true`.
  * - Niveles A2, B1, B2: Requiere `hasProEntitlement === true` y contenido aprobado.
  */
 export function canAccessWeek(
@@ -59,7 +59,7 @@ export function canAccessWeek(
   hasProEntitlement: boolean,
   approvalByLevel: ContentApprovalByLevel = {},
 ): boolean {
-  // Las primeras 3 semanas de A1 siempre son gratuitas
+  // La primera semana de A1 siempre es gratuita
   if (level === 'A1' && week <= MAX_FREE_WEEKS) {
     return true
   }

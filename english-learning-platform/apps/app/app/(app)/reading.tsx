@@ -67,7 +67,7 @@ export default function ReadingScreen(): React.JSX.Element {
     if (level !== 'A1' && !isPro) {
       Alert.alert(
         `Nivel ${level} Exclusivo Plan Pro 🔒`,
-        `Las lecturas graduadas del nivel ${level} requieren Membresía Pro activa. Tus primeras 3 semanas de A1 son 100% gratis. ¡Desbloquea el currículo completo para acceder a todos los niveles!`,
+        `Las lecturas graduadas del nivel ${level} requieren Membresía Pro activa. Tu primera semana de A1 (7 días de prueba) es 100% gratis. ¡Desbloquea el currículo completo para acceder a todos los niveles!`,
         [
           { text: 'Cerrar', style: 'cancel' },
           { text: 'Ver Planes Pro 🚀', onPress: () => router.push('/(app)/paywall') },
@@ -379,7 +379,7 @@ export default function ReadingScreen(): React.JSX.Element {
                 Lectura Exclusiva Plan Pro
               </Text>
               <Text style={{ fontSize: 14, color: colors.textSecondary, textAlign: 'center', lineHeight: 22, marginBottom: 20, maxWidth: 420 }}>
-                Esta lectura contextual pertenece a la {selectedPassage.level} (Semana {selectedPassage.week}). Tus primeras 3 semanas de A1 son 100% gratuitas. Para continuar con lecturas contextuales hacia el hito de las 8 semanas, desbloquea tu Membresía Pro.
+                Esta lectura contextual pertenece a la {selectedPassage.level} (Semana {selectedPassage.week}). Tu primera semana de A1 (7 días de prueba) es 100% gratuita. Para continuar con lecturas contextuales hacia el hito de las 8 semanas, desbloquea tu Membresía Pro.
               </Text>
               <Button
                 title="Desbloquear Membresía Pro 🚀"

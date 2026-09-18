@@ -1,10 +1,10 @@
 // scripts/verify-paywall-3-weeks.ts
 //
 // Verificación integral de la regla de negocio:
-// 1. Semanas 1, 2 y 3 de A1 (225 palabras) son 100% GRATIS.
-// 2. Al llegar a la Semana 4, si el usuario no ha pagado (isPro: false), el sistema se BLOQUEA
+// 1. Semana 1 de A1 (75 palabras) es 100% GRATIS (7 días de prueba).
+// 2. Al llegar a la Semana 2, si el usuario no ha pagado (isPro: false), el sistema se BLOQUEA
 //    (blockedByPaywall: true) y no inyecta ninguna palabra adicional.
-// 3. Con Membresía Pro activa (isPro: true), la Semana 4 y niveles A2–B2 se desbloquean con éxito.
+// 3. Con Membresía Pro activa (isPro: true), la Semana 2 y niveles A2–B2 se desbloquean con éxito.
 
 import {
   canAccessWeek,
@@ -14,16 +14,16 @@ import {
 import { getVocabularyForLevel } from '../packages/content/src/index'
 
 console.log('════════════════════════════════════════════════════════════════════')
-console.log('🔬 AUDITORÍA DE GATING DE MONETIZACIÓN: BLOQUEO A LAS 3 SEMANAS')
+console.log('🔬 AUDITORÍA DE GATING DE MONETIZACIÓN: BLOQUEO A LA 1ª SEMANA (7 DÍAS)')
 console.log('════════════════════════════════════════════════════════════════════\n')
 
 // 1. Validar constante de semanas gratuitas
 console.log(`[1] Verificando constante de semanas gratis: MAX_FREE_WEEKS = ${MAX_FREE_WEEKS}`)
-const expectedFreeWeeks = 3
+const expectedFreeWeeks = 1
 if ((MAX_FREE_WEEKS as number) !== expectedFreeWeeks) {
-  throw new Error(`FALLO: MAX_FREE_WEEKS debería ser 3, pero es ${String(MAX_FREE_WEEKS)}`)
+  throw new Error(`FALLO: MAX_FREE_WEEKS debería ser 1, pero es ${String(MAX_FREE_WEEKS)}`)
 }
-console.log('    ✅ MAX_FREE_WEEKS está correctamente fijado en 3 semanas.\n')
+console.log('    ✅ MAX_FREE_WEEKS está correctamente fijado en 1 semana (7 días).\n')
 
 // 2. Analizar vocabulario de A1 por semanas
 const a1Vocab = getVocabularyForLevel('A1')
@@ -33,36 +33,32 @@ for (const item of a1Vocab) {
 }
 
 const w1 = weekCounts[1] ?? 0
-const w2 = weekCounts[2] ?? 0
-const w3 = weekCounts[3] ?? 0
-const freeTotal = w1 + w2 + w3
+const freeTotal = w1
 
 console.log(`[2] Desglose de contenido gratuito inicial (A1):`)
 for (let w = 1; w <= 19; w++) {
   console.log(`    • Semana ${w}: ${weekCounts[w] ?? 0} palabras`)
 }
-console.log(`    • Total Nivel Gratuito (Semanas 1–3): ${freeTotal} palabras`)
-console.log('    ✅ Contenido de las primeras 3 semanas contabilizado con éxito.\n')
+console.log(`    • Total Nivel Gratuito (Semana 1): ${freeTotal} palabras`)
+console.log('    ✅ Contenido de la primera semana contabilizado con éxito.\n')
 
 // 3. Simular acceso de usuario NO PAGADO (isPro = false)
 console.log('[3] Simulando acceso para Usuario Gratuito (isPro = false):')
-for (let w = 1; w <= 3; w++) {
-  const allowed = canAccessWeek('A1', w, false)
-  console.log(`    • Semana ${w}: ${allowed ? '🟢 ACCESO PERMITIDO (Gratis)' : '❌ ERROR'}`)
-  if (!allowed) throw new Error(`Semana ${w} debería ser gratis`)
-}
+const allowedW1 = canAccessWeek('A1', 1, false)
+console.log(`    • Semana 1: ${allowedW1 ? '🟢 ACCESO PERMITIDO (Gratis)' : '❌ ERROR'}`)
+if (!allowedW1) throw new Error(`Semana 1 debería ser gratis`)
 
-console.log('\n    Intentando acceder a la Semana 4 sin suscripción:')
-const w4Free: boolean = canAccessWeek('A1', 4, false)
-console.log(`    • Semana 4: ${w4Free ? '❌ ERROR (Permitido)' : '🔒 BLOQUEADO POR PAYWALL'}`)
-if (w4Free) throw new Error('Semana 4 NO debe ser accesible sin Pro')
+console.log('\n    Intentando acceder a la Semana 2 sin suscripción:')
+const w2Free: boolean = canAccessWeek('A1', 2, false)
+console.log(`    • Semana 2: ${w2Free ? '❌ ERROR (Permitido)' : '🔒 BLOQUEADO POR PAYWALL'}`)
+if (w2Free) throw new Error('Semana 2 NO debe ser accesible sin Pro')
 
-for (let w = 5; w <= 19; w++) {
+for (let w = 3; w <= 19; w++) {
   if (canAccessWeek('A1', w, false)) {
     throw new Error(`Semana ${w} NO debe ser accesible sin Pro`)
   }
 }
-console.log('    ✅ Semanas 4 a 19 de A1 correctamente bloqueadas para usuarios gratuitos.\n')
+console.log('    ✅ Semanas 2 a 19 de A1 correctamente bloqueadas para usuarios gratuitos.\n')
 
 // 4. Simular acceso a niveles superiores (A2, B1, B2) sin pago
 console.log('[4] Verificando bloqueo de niveles avanzados para usuario gratuito:')
@@ -102,5 +98,5 @@ console.log('    ✅ Membresía Pro desbloquea con éxito todo el currículo.\n'
 
 console.log('════════════════════════════════════════════════════════════════════')
 console.log('🏆 RESULTADO DE LA AUDITORÍA: 100% CONFORME')
-console.log('El sistema se BLOQUEA estrictamente al cumplir las 3 semanas gratuitas.')
+console.log('El sistema se BLOQUEA estrictamente al cumplir la 1ª semana gratuita (7 días).')
 console.log('════════════════════════════════════════════════════════════════════')

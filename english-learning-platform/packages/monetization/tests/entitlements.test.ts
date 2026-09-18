@@ -87,35 +87,30 @@ describe('getLevelLockReason', () => {
   })
 })
 
-describe('canAccessWeek y Gating de 3 Semanas Gratis', () => {
-  it('MAX_FREE_WEEKS está fijado exactamente en 3', () => {
-    expect(MAX_FREE_WEEKS).toBe(3)
+describe('canAccessWeek y Gating de 1 Semana Gratis', () => {
+  it('MAX_FREE_WEEKS está fijado exactamente en 1', () => {
+    expect(MAX_FREE_WEEKS).toBe(1)
   })
 
-  it('A1 Semanas 1, 2 y 3 son 100% GRATIS sin suscripción Pro', () => {
+  it('A1 Semana 1 es 100% GRATIS sin suscripción Pro', () => {
     expect(canAccessWeek('A1', 1, false)).toBe(true)
-    expect(canAccessWeek('A1', 2, false)).toBe(true)
-    expect(canAccessWeek('A1', 3, false)).toBe(true)
-
     expect(getWeekLockReason('A1', 1, false)).toBe('unlocked')
-    expect(getWeekLockReason('A1', 2, false)).toBe('unlocked')
-    expect(getWeekLockReason('A1', 3, false)).toBe('unlocked')
   })
 
-  it('A1 Semana 4 se BLOQUEA si el usuario no tiene Pro (dispara paywall)', () => {
-    expect(canAccessWeek('A1', 4, false)).toBe(false)
-    expect(getWeekLockReason('A1', 4, false)).toBe('requires_purchase')
+  it('A1 Semana 2 se BLOQUEA si el usuario no tiene Pro (dispara paywall)', () => {
+    expect(canAccessWeek('A1', 2, false)).toBe(false)
+    expect(getWeekLockReason('A1', 2, false)).toBe('requires_purchase')
   })
 
-  it('A1 Semanas 5 a 19 se BLOQUEAN si el usuario no tiene Pro', () => {
-    for (let w = 5; w <= 19; w++) {
+  it('A1 Semanas 3 a 19 se BLOQUEAN si el usuario no tiene Pro', () => {
+    for (let w = 3; w <= 19; w++) {
       expect(canAccessWeek('A1', w, false)).toBe(false)
       expect(getWeekLockReason('A1', w, false)).toBe('requires_purchase')
     }
   })
 
-  it('A1 Semanas 4 a 19 se DESBLOQUEAN con Pro activo', () => {
-    for (let w = 4; w <= 19; w++) {
+  it('A1 Semanas 2 a 19 se DESBLOQUEAN con Pro activo', () => {
+    for (let w = 2; w <= 19; w++) {
       expect(canAccessWeek('A1', w, true)).toBe(true)
       expect(getWeekLockReason('A1', w, true)).toBe('unlocked')
     }

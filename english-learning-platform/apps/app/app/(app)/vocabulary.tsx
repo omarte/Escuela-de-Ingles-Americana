@@ -236,7 +236,7 @@ export default function VocabularyScreen(): React.JSX.Element {
                   if (lvl !== 'A1' && !isPro) {
                     Alert.alert(
                       `Nivel ${lvl} Exclusivo Plan Pro 🔒`,
-                      `El nivel ${lvl} requiere Membresía Pro activa. Tus primeras 3 semanas de A1 (225 palabras) son 100% gratuitas. ¡Desbloquea el currículo completo para acceder a ${lvl}!`,
+                      `El nivel ${lvl} requiere Membresía Pro activa. Tu primera semana de A1 (7 días de prueba) es 100% gratuita. ¡Desbloquea el currículo completo para acceder a ${lvl}!`,
                       [
                         { text: 'Cerrar', style: 'cancel' },
                         { text: 'Ver Planes Pro 🚀', onPress: () => router.push('/(app)/paywall') },
@@ -357,7 +357,7 @@ export default function VocabularyScreen(): React.JSX.Element {
                     if (isLocked) {
                       Alert.alert(
                         'Semana Exclusiva Plan Pro 🔒',
-                        `La Semana ${item.week} de ${selectedLevel} pertenece al Plan Pro. Has completado tus 3 semanas gratuitas de A1. Desbloquea tu Membresía Pro para acceder a esta semana y continuar hacia el hito de 2 meses.`,
+                        `La Semana ${item.week} de ${selectedLevel} pertenece al Plan Pro. Has completado tu 1ª semana gratuita de A1. Desbloquea tu Membresía Pro para acceder a esta semana y continuar hacia el hito de 2 meses.`,
                         [
                           { text: 'Cerrar', style: 'cancel' },
                           { text: 'Ver Planes Pro 🚀', onPress: () => router.push('/(app)/paywall') },
