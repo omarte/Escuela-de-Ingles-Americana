@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useMemo } from 'react'
+import React, { useState, useCallback, useMemo, useEffect } from 'react'
 import {
   View,
   Text,
@@ -14,41 +14,61 @@ import type { CEFRLevel } from '@elp/types'
 
 interface MicroExamModalProps {
   visible: boolean
-  /** vocabularyItemId of the word to challenge. Selected from last session. */
-  vocabularyItemId: string
+  /** Array of vocabularyItemIds for the sequence of micro-challenges */
+  vocabularyItemIds?: string[]
+  /** Legacy single vocabularyItemId */
+  vocabularyItemId?: string
   /** CEFR level of the session (used to pull distractors from same level/week) */
   level: CEFRLevel
   /** The highest week number the user has studied (for distractor pool scope) */
   maxWeek: number
-  /** Called when the user finishes or skips the micro-exam */
+  /** Called when the user finishes or skips the micro-exam sequence */
   onComplete: () => void
 }
 
 /**
- * MicroExamModal — Contextual Cloze micro-exam shown after session completion.
+ * MicroExamModal — Contextual Cloze micro-exam sequence shown after session completion.
  *
+ * Proportion: 3 micro-challenges per 5 words reviewed.
  * Shows a Cloze sentence from the curated `example` field of a VocabularyItem,
  * with one correct answer and 2 seeded distractors from the same level/week pool.
- *
- * Design goals:
- * - ZERO AI: all content comes from curated `example` / `translation` fields.
- * - Deterministic distractors: seeded by vocabularyItemId + ISO day (no randomness
- *   across re-renders, but different every day for variety).
- * - Max 1 Cloze question per session to keep it lightweight (Minimal Friction).
- *
- * References: discusion-pedagogica.md §8.3 (Micro-Examen Contextual)
  */
 export function MicroExamModal({
   visible,
+  vocabularyItemIds,
   vocabularyItemId,
   level,
   maxWeek,
   onComplete,
 }: MicroExamModalProps): React.JSX.Element | null {
+  const itemIds = useMemo(() => {
+    if (vocabularyItemIds && vocabularyItemIds.length > 0) {
+      return vocabularyItemIds
+    }
+    if (vocabularyItemId) {
+      return [vocabularyItemId]
+    }
+    return []
+  }, [vocabularyItemIds, vocabularyItemId])
+
+  const [currentIndex, setCurrentIndex] = useState(0)
   const [selectedId, setSelectedId] = useState<string | null>(null)
   const [hasAnswered, setHasAnswered] = useState(false)
+  const [correctCount, setCorrectCount] = useState(0)
 
-  const targetItem = getVocabularyById(vocabularyItemId)
+  // Reset state on sequence start
+  useEffect(() => {
+    if (visible) {
+      setCurrentIndex(0)
+      setSelectedId(null)
+      setHasAnswered(false)
+      setCorrectCount(0)
+    }
+  }, [visible])
+
+  const totalCount = itemIds.length
+  const currentVocabId = itemIds[currentIndex] ?? ''
+  const targetItem = getVocabularyById(currentVocabId)
 
   // Build the Cloze sentence: replace the word in the example with ______
   const clozeSentence = useMemo(() => {
@@ -62,14 +82,13 @@ export function MicroExamModal({
   const distractors = useMemo(() => {
     if (!targetItem) return []
 
-    // Seeded pseudo-random: seed = vocabularyItemId charCode sum + ISO day of year
     const now = new Date()
     const startOfYear = new Date(now.getFullYear(), 0, 0)
     const dayOfYear = Math.floor(
       (now.getTime() - startOfYear.getTime()) / (1000 * 60 * 60 * 24),
     )
     const seedBase =
-      vocabularyItemId.split('').reduce((acc, c) => acc + c.charCodeAt(0), 0) + dayOfYear
+      currentVocabId.split('').reduce((acc, c) => acc + c.charCodeAt(0), 0) + dayOfYear + currentIndex
 
     // Collect same partOfSpeech words from all weeks up to maxWeek
     const pool: { id: string; word: string }[] = []
@@ -82,9 +101,21 @@ export function MicroExamModal({
       }
     }
 
+    // Fallback if not enough words with same partOfSpeech
+    if (pool.length < 2) {
+      for (let w = 1; w <= maxWeek; w++) {
+        const weekVocab = getVocabularyForWeek(level, w)
+        for (const item of weekVocab) {
+          if (item.id !== targetItem.id) {
+            pool.push({ id: item.id, word: item.word })
+          }
+        }
+      }
+    }
+
     if (pool.length < 2) return []
 
-    // Seeded Fisher-Yates shuffle (deterministic per seed)
+    // Seeded Fisher-Yates shuffle
     const shuffled = [...pool]
     let seed = seedBase
     const lcg = (): number => {
@@ -101,9 +132,9 @@ export function MicroExamModal({
       }
     }
     return shuffled.slice(0, 2)
-  }, [targetItem, level, maxWeek, vocabularyItemId])
+  }, [targetItem, level, maxWeek, currentVocabId, currentIndex])
 
-  // Build final options (correct + 2 distractors), shuffled with same seed logic
+  // Build final options (correct + 2 distractors)
   const options = useMemo(() => {
     if (!targetItem || distractors.length < 2) return []
     const d0 = distractors[0]
@@ -114,32 +145,56 @@ export function MicroExamModal({
       { id: `dist_${d0.id}`, word: d0.word, isCorrect: false },
       { id: `dist_${d1.id}`, word: d1.word, isCorrect: false },
     ]
-    // Simple deterministic sort by id (consistent per session)
     return allOptions.sort((a, b) => a.id.localeCompare(b.id))
   }, [targetItem, distractors])
 
-  const handleSelect = useCallback((optionId: string) => {
-    if (hasAnswered) return
-    setSelectedId(optionId)
-    setHasAnswered(true)
-  }, [hasAnswered])
+  const handleSelect = useCallback(
+    (optionId: string) => {
+      if (hasAnswered) return
+      setSelectedId(optionId)
+      setHasAnswered(true)
+      const selected = options.find((o) => o.id === optionId)
+      if (selected?.isCorrect) {
+        setCorrectCount((c) => c + 1)
+      }
+    },
+    [hasAnswered, options],
+  )
 
-  const handleContinue = useCallback(() => {
-    setSelectedId(null)
-    setHasAnswered(false)
-    onComplete()
-  }, [onComplete])
+  const handleNext = useCallback(() => {
+    if (currentIndex + 1 < totalCount) {
+      setCurrentIndex((prev) => prev + 1)
+      setSelectedId(null)
+      setHasAnswered(false)
+    } else {
+      setSelectedId(null)
+      setHasAnswered(false)
+      onComplete()
+    }
+  }, [currentIndex, totalCount, onComplete])
 
-  // Guard: if we can't build a valid exam, skip silently
-  if (!targetItem || !clozeSentence || options.length < 3) {
+  // Guards: handle invalid state gracefully
+  if (totalCount === 0) {
     if (visible) {
       onComplete()
     }
     return null
   }
 
+  if (!targetItem || !clozeSentence || options.length < 3) {
+    if (visible) {
+      if (currentIndex + 1 < totalCount) {
+        setCurrentIndex((prev) => prev + 1)
+      } else {
+        onComplete()
+      }
+    }
+    return null
+  }
+
   const correctOption = options.find((o) => o.isCorrect)
   const isCorrect = selectedId ? options.find((o) => o.id === selectedId)?.isCorrect : false
+  const isLastQuestion = currentIndex + 1 >= totalCount
 
   return (
     <Modal
@@ -147,16 +202,33 @@ export function MicroExamModal({
       transparent
       animationType="fade"
       statusBarTranslucent
-      onRequestClose={handleContinue}
+      onRequestClose={handleNext}
     >
       <View style={styles.overlay}>
         <View style={styles.card}>
-          {/* Header */}
+          {/* Header with Counter & Progress */}
           <View style={styles.header}>
             <View style={styles.iconRow}>
               <Ionicons name="flash" size={20} color={colors.primary} />
             </View>
-            <Text style={styles.title}>Micro-reto</Text>
+
+            <View style={styles.counterBadge}>
+              <Text style={styles.counterBadgeText}>
+                Micro-reto {currentIndex + 1} de {totalCount}
+              </Text>
+            </View>
+
+            {/* Progress Bar */}
+            <View style={styles.progressBarTrack}>
+              <View
+                style={[
+                  styles.progressBarFill,
+                  { width: `${((currentIndex + 1) / totalCount) * 100}%` },
+                ]}
+              />
+            </View>
+
+            <Text style={styles.title}>Micro-reto Contextual</Text>
             <Text style={styles.subtitle}>Completa la oración con la palabra correcta</Text>
           </View>
 
@@ -239,19 +311,25 @@ export function MicroExamModal({
           {hasAnswered ? (
             <Pressable
               style={styles.continueBtn}
-              onPress={handleContinue}
+              onPress={handleNext}
               accessibilityRole="button"
-              accessibilityLabel="Continuar"
+              accessibilityLabel={isLastQuestion ? 'Finalizar micro-retos' : 'Siguiente micro-reto'}
             >
-              <Text style={styles.continueBtnText}>Continuar →</Text>
+              <Text style={styles.continueBtnText}>
+                {isLastQuestion
+                  ? 'Finalizar micro-retos →'
+                  : `Siguiente micro-reto (${currentIndex + 2}/${totalCount}) →`}
+              </Text>
             </Pressable>
           ) : (
             <TouchableOpacity
-              onPress={handleContinue}
+              onPress={handleNext}
               style={styles.skipBtn}
               accessibilityRole="button"
             >
-              <Text style={styles.skipText}>Saltar micro-reto</Text>
+              <Text style={styles.skipText}>
+                {isLastQuestion ? 'Saltar micro-reto' : 'Saltar este micro-reto'}
+              </Text>
             </TouchableOpacity>
           )}
         </View>
@@ -283,7 +361,34 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(99, 102, 241, 0.12)',
     borderRadius: radius.full,
     padding: spacing.sm,
-    marginBottom: spacing.sm,
+    marginBottom: spacing.xs,
+  },
+  counterBadge: {
+    backgroundColor: colors.primaryLight,
+    paddingHorizontal: spacing.sm,
+    paddingVertical: 2,
+    borderRadius: radius.full,
+    borderWidth: 1,
+    borderColor: '#A7F3D0',
+    marginBottom: spacing.xs,
+  },
+  counterBadgeText: {
+    fontSize: 11,
+    fontWeight: typography.weights.bold,
+    color: colors.primary,
+  },
+  progressBarTrack: {
+    width: '100%',
+    height: 4,
+    backgroundColor: colors.border,
+    borderRadius: 2,
+    overflow: 'hidden',
+    marginVertical: 6,
+  },
+  progressBarFill: {
+    height: '100%',
+    backgroundColor: colors.primary,
+    borderRadius: 2,
   },
   title: {
     fontSize: typography.sizes.lg,
@@ -292,11 +397,11 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   subtitle: {
-    fontSize: typography.sizes.sm,
+    fontSize: typography.sizes.xs,
     fontWeight: typography.weights.regular,
     color: colors.textSecondary,
     textAlign: 'center',
-    marginTop: spacing.xs,
+    marginTop: 2,
   },
   sentenceBox: {
     backgroundColor: 'rgba(255,255,255,0.04)',

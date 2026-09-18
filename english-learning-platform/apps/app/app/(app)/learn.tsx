@@ -15,6 +15,7 @@ import { colors, spacing, typography, radius, Card, Button, Badge, ProgressBar }
 import { Ionicons } from '@expo/vector-icons'
 import type { FrictionLevel, ReviewQuality } from '@elp/types'
 import { getDueCards } from '@elp/srs'
+import { getVocabularyById } from '@elp/content'
 import { useSRSStore } from '../../stores/useSRSStore'
 import { useAuthStore } from '../../stores/useAuthStore'
 import { getWordDisplayData } from '../../lib/vocabulary'
@@ -63,10 +64,10 @@ export default function LearnScreen(): React.JSX.Element {
   const [isSpellingCorrect, setIsSpellingCorrect] = useState<boolean>(false)
 
   // Post-Session Modal Flow State
-  // Sequence: session completes → MicroExam → SessionFeedback → summary screen
+  // Sequence: session completes → MicroExam (3 per 5 words) → SessionFeedback → summary screen
   const [showMicroExam, setShowMicroExam] = useState<boolean>(false)
   const [showFeedback, setShowFeedback] = useState<boolean>(false)
-  const [microExamVocabId, setMicroExamVocabId] = useState<string | null>(null)
+  const [microExamVocabIds, setMicroExamVocabIds] = useState<string[]>([])
   const [hasShownPostSessionModals, setHasShownPostSessionModals] = useState<boolean>(false)
 
   const userId = user?.id ?? 'demo-user'
@@ -85,7 +86,7 @@ export default function LearnScreen(): React.JSX.Element {
       setHasShownPostSessionModals(false)
       setShowMicroExam(false)
       setShowFeedback(false)
-      setMicroExamVocabId(null)
+      setMicroExamVocabIds([])
     }
   }, [isCompleted])
 
@@ -169,16 +170,30 @@ export default function LearnScreen(): React.JSX.Element {
   useEffect(() => {
     if (isCompleted && !hasShownPostSessionModals) {
       setHasShownPostSessionModals(true)
-      // Pick a word from the last session for the micro-exam (first card reviewed)
-      const lastCard = sessionQueue[0]
-      if (lastCard) {
-        setMicroExamVocabId(lastCard.vocabularyItemId)
+      const reviewedCount = sessionStats.cardsReviewed || sessionQueue.length || 5
+      // 3 micro-retos por cada 5 palabras repasadas:
+      const targetCount = Math.max(3, Math.round((reviewedCount / 5) * 3))
+
+      // Extraer palabras únicas de la sesión que tengan oración de ejemplo (cloze)
+      const validIds = sessionQueue
+        .map((c) => c.vocabularyItemId)
+        .filter((id, idx, arr) => arr.indexOf(id) === idx)
+        .filter((id) => {
+          const item = getVocabularyById(id)
+          return Boolean(item?.example)
+        })
+
+      // Mezclar y tomar hasta targetCount
+      const selectedIds = [...validIds].sort(() => 0.5 - Math.random()).slice(0, targetCount)
+
+      if (selectedIds.length > 0) {
+        setMicroExamVocabIds(selectedIds)
         setShowMicroExam(true)
       } else {
         setShowFeedback(true)
       }
     }
-  }, [isCompleted, hasShownPostSessionModals, sessionQueue])
+  }, [isCompleted, hasShownPostSessionModals, sessionQueue, sessionStats.cardsReviewed])
 
   const handleMicroExamComplete = useCallback((): void => {
     setShowMicroExam(false)
@@ -203,11 +218,11 @@ export default function LearnScreen(): React.JSX.Element {
 
     return (
       <SafeAreaView style={styles.safeArea} edges={['top']}>
-        {/* Post-session modals: MicroExam first, then SessionFeedback */}
-        {microExamVocabId ? (
+        {/* Post-session modals: MicroExam sequence first, then SessionFeedback */}
+        {microExamVocabIds.length > 0 ? (
           <MicroExamModal
             visible={showMicroExam}
-            vocabularyItemId={microExamVocabId}
+            vocabularyItemIds={microExamVocabIds}
             level={currentLevel}
             maxWeek={19}
             onComplete={handleMicroExamComplete}
