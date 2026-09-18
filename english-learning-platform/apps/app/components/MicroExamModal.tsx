@@ -216,7 +216,7 @@ export function MicroExamModal({
       // 2. Pausa de 2.2 segundos para asimilar el sonido
       // 3. Reproduce la traducción completa en Español para fijar el significado
       const englishSentence = targetItem.example || targetItem.word
-      const spanishSentence = targetItem.exampleEs || targetItem.translation
+      const spanishSentence = targetItem.exampleTranslation || targetItem.translation
       playDualSentenceReinforcement(englishSentence, spanishSentence, 2200)
     },
     [hasAnswered, options, targetItem, scaleAnim, shakeAnim],
@@ -420,7 +420,7 @@ export function MicroExamModal({
                 "{clozeParts.full}"
               </Text>
               <Text style={styles.feedbackTranslation}>
-                "{targetItem.exampleEs || targetItem.translation}"
+                "{targetItem.exampleTranslation || targetItem.translation}"
               </Text>
 
               {/* Botón interactivo para repetir el audio de la frase (Inglés -> Español) */}
@@ -428,7 +428,7 @@ export function MicroExamModal({
                 style={styles.replayAudioBtn}
                 onPress={() => {
                   const englishSentence = targetItem.example || targetItem.word
-                  const spanishSentence = targetItem.exampleEs || targetItem.translation
+                  const spanishSentence = targetItem.exampleTranslation || targetItem.translation
                   playDualSentenceReinforcement(englishSentence, spanishSentence, 2200)
                 }}
                 activeOpacity={0.75}
