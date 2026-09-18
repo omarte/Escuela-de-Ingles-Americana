@@ -37,8 +37,9 @@ const PART_OF_SPEECH_HINTS: Record<PartOfSpeech, string> = {
   preposition: 'Preposición (relación espacial o temporal)',
   conjunction: 'Conjunción (conector gramatical)',
   interjection: 'Expresión común o exclamación',
-  determiner: 'Determinante o artículo',
-  phrase: 'Frase o locución idiomática',
+  article: 'Artículo (definido o indefinido)',
+  determiner: 'Determinante o cuantificador',
+  'phrasal-verb': 'Verbo frasal / compuesto',
 }
 
 /**
