@@ -77,42 +77,13 @@ export default function SupportScreen(): React.JSX.Element {
     }
   }
 
-  // Selector de Captura de Pantalla
-  const handlePickScreenshot = async (): Promise<void> => {
-    try {
-      // Importación dinámica segura de expo-image-picker
-      // @ts-expect-error - expo-image-picker is optionally installed
-      const ImagePicker = await import('expo-image-picker')
-      const permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync()
-
-      if (!permissionResult.granted) {
-        Alert.alert(
-          'Permiso Requerido',
-          'Necesitamos acceso a tus fotos para que puedas adjuntar la captura del problema.'
-        )
-        return
-      }
-
-      const result = await ImagePicker.launchImageLibraryAsync({
-        mediaTypes: ['images'],
-        allowsEditing: false,
-        quality: 0.6,
-        base64: true,
-      })
-
-      if (!result.canceled && result.assets?.[0]) {
-        const asset = result.assets[0]
-        setScreenshotUri(asset.uri)
-        if (asset.base64) {
-          setScreenshotBase64(`data:image/jpeg;base64,${asset.base64}`)
-        }
-      }
-    } catch {
-      Alert.alert(
-        'Aviso',
-        'Puedes describir el problema en el campo de texto si no deseas o no puedes adjuntar una captura.'
-      )
-    }
+  // Selector / Asistencia de Captura de Pantalla Segura
+  const handlePickScreenshot = (): void => {
+    Alert.alert(
+      'Adjuntar Captura de Pantalla',
+      'Para enviar capturas de pantalla adicionales o grabaciones de video, puedes enviarlas directamente a soporte@escueladeinglesamericana.com indicando tu correo de usuario.\n\nTu reporte actual ya incluye automáticamente todos los logs y diagnóstico técnico de tu dispositivo.',
+      [{ text: 'Entendido', style: 'default' }]
+    )
   }
 
   const handleRemoveScreenshot = (): void => {
@@ -349,10 +320,10 @@ export default function SupportScreen(): React.JSX.Element {
             </View>
           ) : (
             <TouchableOpacity style={styles.attachButton} onPress={handlePickScreenshot}>
-              <Ionicons name="camera-outline" size={22} color={colors.primary} />
+              <Ionicons name="information-circle-outline" size={22} color={colors.primary} />
               <View style={styles.attachButtonTexts}>
-                <Text style={styles.attachButtonTitle}>Adjuntar Captura desde la Galería</Text>
-                <Text style={styles.attachButtonDesc}>Una foto nos permite solucionar tu caso mucho más rápido.</Text>
+                <Text style={styles.attachButtonTitle}>¿Cómo adjuntar capturas o videos?</Text>
+                <Text style={styles.attachButtonDesc}>Toca aquí para ver instrucciones de envío directo al equipo.</Text>
               </View>
             </TouchableOpacity>
           )}
