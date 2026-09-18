@@ -1034,7 +1034,7 @@ function MemoryCardItem({
   isMismatched,
   onPress,
 }: MemoryCardItemProps): React.JSX.Element {
-  const flipAnim = useRef(new Animated.Value(isFlipped ? 1 : 0)).current
+  const flipAnim = useRef(new Animated.Value(1)).current
   const shakeAnim = useRef(new Animated.Value(0)).current
   const scaleAnim = useRef(new Animated.Value(1)).current
   const [showFront, setShowFront] = useState(isFlipped)
@@ -1043,7 +1043,7 @@ function MemoryCardItem({
   useEffect(() => {
     if (isFlipped !== showFront) {
       Animated.timing(flipAnim, {
-        toValue: 0.1,
+        toValue: 0.05,
         duration: 110,
         useNativeDriver: true,
       }).start(() => {
@@ -1081,11 +1081,6 @@ function MemoryCardItem({
     }
   }, [card.isMatched])
 
-  const animatedScaleX = flipAnim.interpolate({
-    inputRange: [0.1, 1],
-    outputRange: [0.08, 1],
-  })
-
   const isLongWord = card.text.length > 9
 
   return (
@@ -1095,7 +1090,7 @@ function MemoryCardItem({
         {
           transform: [
             { scale: scaleAnim },
-            { scaleX: animatedScaleX },
+            { scaleX: flipAnim },
             { translateX: shakeAnim },
           ],
         },
@@ -3047,13 +3042,13 @@ const styles = StyleSheet.create({
   memoryGrid: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    gap: spacing.sm,
+    gap: 8,
     justifyContent: 'center',
     paddingHorizontal: 4,
   },
   memoryCardWrapper: {
     width: '30%',
-    aspectRatio: 1,
+    aspectRatio: 0.85,
     marginVertical: 2,
   },
   memoryCard: {
