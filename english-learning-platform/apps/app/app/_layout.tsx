@@ -30,6 +30,23 @@ function NavigationGuard(): React.JSX.Element {
 
   useEffect(() => {
     void initSession()
+    // Check and apply OTA updates automatically if available
+    async function checkOTAUpdates(): Promise<void> {
+      try {
+        const Updates = await import('expo-updates')
+        if (Updates.isEnabled) {
+          const check = await Updates.checkForUpdateAsync()
+          if (check.isAvailable) {
+            await Updates.fetchUpdateAsync()
+            await Updates.reloadAsync()
+          }
+        }
+      } catch {
+        // Degrades gracefully on offline or dev environment
+      }
+    }
+    void checkOTAUpdates()
+
     // Give brand splash screen a smooth presence during initialization
     const timer = setTimeout(() => {
       setMinSplashDone(true)
