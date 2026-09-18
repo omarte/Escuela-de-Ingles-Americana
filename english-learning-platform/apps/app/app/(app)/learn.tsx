@@ -19,7 +19,7 @@ import { useSRSStore } from '../../stores/useSRSStore'
 import { useAuthStore } from '../../stores/useAuthStore'
 import { getWordDisplayData } from '../../lib/vocabulary'
 import { generateQuizOptions, type QuizOption } from '../../lib/distractors'
-import { speakEnglish } from '../../lib/audio'
+import { speakEnglish, speakSpanish, playDualReinforcement, stopAllSpeech } from '../../lib/audio'
 import { EMPTY_REVIEWS_IMG } from '../../lib/assets'
 import { RescueModeBanner } from '../../components/RescueModeBanner'
 import { SessionFeedbackModal } from '../../components/SessionFeedbackModal'
@@ -119,13 +119,16 @@ export default function LearnScreen(): React.JSX.Element {
     setHasAnswered(true)
     setIsCorrectSelection(option.isCorrect)
 
-    // Repeat voice on answer
+    // Doble Refuerzo Auditivo Simultáneo (Inglés y Español con intervalo de pausa):
+    // - Si es error: Suena en Español primero para anclar significado -> pausa 2.2s -> Suena en Inglés
+    // - Si es correcto: Suena en Inglés primero -> pausa 2.2s -> Suena en Español
     if (wordData) {
-      void speakEnglish(wordData.word)
+      playDualReinforcement(wordData.word, wordData.translation, option.isCorrect, 2200)
     }
   }
 
   const handleGoToSpellingPhase = (): void => {
+    stopAllSpeech()
     setStudyPhase('spelling')
     setTypedWord('')
     setHasCheckedSpelling(false)
@@ -144,11 +147,12 @@ export default function LearnScreen(): React.JSX.Element {
     setIsSpellingCorrect(correct)
 
     if (correct) {
-      void speakEnglish(wordData.word)
+      playDualReinforcement(wordData.word, wordData.translation, true, 2000)
     }
   }
 
   const handleAdvance = (quality?: ReviewQuality): void => {
+    stopAllSpeech()
     const finalQuality: ReviewQuality =
       quality ?? (isCorrectSelection && isSpellingCorrect ? 5 : isCorrectSelection ? 4 : 1)
     setSelectedOptionId(null)
@@ -649,6 +653,20 @@ export default function LearnScreen(): React.JSX.Element {
                     <Text style={styles.detailTranslation}>{wordData.translation}</Text>
                   </View>
 
+                  {/* Dual Audio Replay Button */}
+                  <TouchableOpacity
+                    style={styles.replayDualAudioBtn}
+                    activeOpacity={0.75}
+                    onPress={() => {
+                      playDualReinforcement(wordData.word, wordData.translation, isCorrectSelection, 2000)
+                    }}
+                  >
+                    <Ionicons name="volume-high" size={18} color={colors.primary} />
+                    <Text style={styles.replayDualAudioText}>
+                      🔊 Repetir Refuerzo Auditivo ({wordData.translation} ➔ {wordData.word})
+                    </Text>
+                  </TouchableOpacity>
+
                   {/* Variations (e.g. Mom, Mum, Mommy) */}
                   {wordData.variations && wordData.variations.length > 0 ? (
                     <View style={styles.variationsBox}>
@@ -1117,6 +1135,23 @@ const styles = StyleSheet.create({
   detailTranslation: {
     fontSize: typography.sizes.lg,
     fontWeight: typography.weights.bold,
+    color: colors.primary,
+  },
+  replayDualAudioBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: spacing.xs,
+    backgroundColor: 'rgba(5, 150, 105, 0.08)',
+    paddingVertical: spacing.xs + 2,
+    paddingHorizontal: spacing.md,
+    borderRadius: radius.md,
+    borderWidth: 1,
+    borderColor: 'rgba(5, 150, 105, 0.2)',
+  },
+  replayDualAudioText: {
+    fontSize: typography.sizes.xs,
+    fontWeight: typography.weights.semibold,
     color: colors.primary,
   },
   variationsBox: {

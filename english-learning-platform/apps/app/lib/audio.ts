@@ -39,9 +39,26 @@ export async function speakEnglish(word: string, customRate?: number): Promise<v
   }
 }
 
+let dualAudioTimeout: ReturnType<typeof setTimeout> | null = null
+
+/**
+ * Stop any pending delayed speech and active TTS engine.
+ */
+export function stopAllSpeech(): void {
+  if (dualAudioTimeout) {
+    clearTimeout(dualAudioTimeout)
+    dualAudioTimeout = null
+  }
+  try {
+    void Speech.stop()
+  } catch {
+    // Graceful catch
+  }
+}
+
 /**
  * Audio voice helper for Spanish language pronunciation.
- * Used for audio stimulus and reinforcement without revealing English spelling.
+ * Used for audio stimulus and reinforcement.
  */
 export async function speakSpanish(text: string): Promise<void> {
   if (!text || text.trim().length === 0) return
@@ -61,6 +78,41 @@ export async function speakSpanish(text: string): Promise<void> {
     })
   } catch {
     // Graceful catch if audio service is unavailable
+  }
+}
+
+/**
+ * Dual reinforcement audio player:
+ * Plays Spanish meaning and English pronunciation with a pedagogical pause (~2.2s).
+ * - If incorrect: Plays Spanish translation first -> pause -> plays English word.
+ * - If correct: Plays English word first -> pause -> plays Spanish translation.
+ */
+export function playDualReinforcement(
+  englishWord: string,
+  spanishTranslation: string,
+  isCorrect: boolean,
+  delayMs: number = 2200
+): void {
+  stopAllSpeech()
+
+  // Clean spanish text for TTS (e.g. replace slashes with commas, clean parentheses)
+  const cleanSpanish = spanishTranslation
+    .replace(/\//g, ', ')
+    .replace(/[()]/g, '')
+    .trim()
+
+  if (isCorrect) {
+    // Correct: English first, then Spanish reinforcement
+    void speakEnglish(englishWord)
+    dualAudioTimeout = setTimeout(() => {
+      void speakSpanish(cleanSpanish)
+    }, delayMs)
+  } else {
+    // Incorrect: Spanish first (to anchor conceptual meaning), then English pronunciation
+    void speakSpanish(cleanSpanish)
+    dualAudioTimeout = setTimeout(() => {
+      void speakEnglish(englishWord)
+    }, delayMs)
   }
 }
 
