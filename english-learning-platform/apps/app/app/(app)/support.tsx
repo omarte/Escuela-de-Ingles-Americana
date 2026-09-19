@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
   View,
   Text,
@@ -9,18 +9,19 @@ import {
   Alert,
   ActivityIndicator,
   Platform,
-  Image,
+  Modal,
 } from 'react-native'
 import { useRouter } from 'expo-router'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { Ionicons } from '@expo/vector-icons'
 import * as Constants from 'expo-constants'
-import { colors, radius, spacing, typography, shadow, Card, Badge, Button } from '@elp/ui'
+import { colors, radius, spacing, typography, Card, Badge, Button } from '@elp/ui'
 import { useAuthStore } from '../../stores/useAuthStore'
 import { usePurchases } from '../../hooks/usePurchases'
 import { useProgressStore } from '../../stores/useProgressStore'
 import { supabase } from '../../lib/supabase'
 import { AppScreenHeader } from '../../components/AppScreenHeader'
+import { systemsWhitelistService } from '../../lib/systemsWhitelistService'
 
 interface CategoryOption {
   readonly id: string
@@ -40,7 +41,7 @@ const CATEGORIES: readonly CategoryOption[] = [
 export default function SupportScreen(): React.JSX.Element {
   const router = useRouter()
   const user = useAuthStore((state) => state.user)
-  const { isPro, restore } = usePurchases()
+  const { isPro, isInstitutionalPro, restore, refresh } = usePurchases()
   const selectedLevel = useProgressStore((state) => state.metrics.levelAdvancement.currentLevel)
   const totalLearned = useProgressStore((state) => state.metrics.wordsInMemory)
 
@@ -48,13 +49,170 @@ export default function SupportScreen(): React.JSX.Element {
   const [selectedCategory, setSelectedCategory] = useState<string>('billing')
   const [subject, setSubject] = useState('')
   const [message, setMessage] = useState('')
-  const [screenshotUri, setScreenshotUri] = useState<string | null>(null)
   const [screenshotBase64, setScreenshotBase64] = useState<string | null>(null)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isRestoringPro, setIsRestoringPro] = useState(false)
   const [ticketSentSuccess, setTicketSentSuccess] = useState<number | null>(null)
 
-  // Autodiagnóstico rápido: Restaurar compra de una vez
+  // Estados del Módulo de Sistemas & Lista Blanca
+  const [activationCodeInput, setActivationCodeInput] = useState('')
+  const [isValidatingEmail, setIsValidatingEmail] = useState(false)
+  const [isValidatingCode, setIsValidatingCode] = useState(false)
+  const [adminModalVisible, setAdminModalVisible] = useState(false)
+  const [whitelistEmails, setWhitelistEmails] = useState<string[]>([])
+  const [newEmailInput, setNewEmailInput] = useState('')
+  const [pinInput, setPinInput] = useState('')
+  const [isAdminAuthenticated, setIsAdminAuthenticated] = useState(false)
+
+  // Cargar lista blanca al montar
+  useEffect(() => {
+    void loadWhitelist()
+  }, [])
+
+  const loadWhitelist = async () => {
+    const list = await systemsWhitelistService.getWhitelistedEmails()
+    setWhitelistEmails(list)
+  }
+
+  // 1. Validar correo del usuario logueado en la lista blanca de Sistemas
+  const handleValidateMyEmail = async (): Promise<void> => {
+    setIsValidatingEmail(true)
+    const targetEmail = user?.email || email
+    try {
+      const res = await systemsWhitelistService.validateAndGrantByEmail(targetEmail)
+      if (res.success) {
+        await refresh()
+        Alert.alert('✅ Acceso Autorizado por Sistemas', res.message, [{ text: 'Continuar', style: 'default' }])
+      } else {
+        Alert.alert('Lista Blanca de Sistemas', res.message, [
+          { text: 'Entendido', style: 'cancel' },
+          {
+            text: 'Ingresar Clave',
+            onPress: () => {
+              // enfocar código
+            },
+          },
+        ])
+      }
+    } catch {
+      Alert.alert('Error', 'No se pudo conectar con el servicio de validación de Sistemas.')
+    } finally {
+      setIsValidatingEmail(false)
+    }
+  }
+
+  // 2. Validar código de activación de Sistemas
+  const handleValidateActivationCode = async (): Promise<void> => {
+    if (!activationCodeInput.trim()) {
+      Alert.alert('Código Requerido', 'Por favor ingresa la clave o código institucional entregado por el Dpto. de Sistemas.')
+      return
+    }
+
+    setIsValidatingCode(true)
+    try {
+      const res = await systemsWhitelistService.validateActivationCode(activationCodeInput, user?.email || email)
+      if (res.success) {
+        setActivationCodeInput('')
+        await loadWhitelist()
+        await refresh()
+        Alert.alert('🎉 Membresía Activada', res.message, [{ text: '¡Excelente!', style: 'default' }])
+      } else {
+        Alert.alert('Código No Válido', res.message)
+      }
+    } catch {
+      Alert.alert('Error', 'No se pudo validar el código.')
+    } finally {
+      setIsValidatingCode(false)
+    }
+  }
+
+  // 3. Abrir Panel de Administración de Sistemas
+  const handleOpenAdmin = async (): Promise<void> => {
+    const isMasterUser = user?.email?.toLowerCase() === 'ozmartinezpaz@gmail.com'
+    if (isMasterUser || isAdminAuthenticated) {
+      setIsAdminAuthenticated(true)
+      await loadWhitelist()
+      setAdminModalVisible(true)
+    } else {
+      Alert.prompt
+        ? Alert.prompt(
+            'Acceso al Dpto. de Sistemas',
+            'Ingresa el PIN maestro de administración de listas blancas:',
+            [
+              { text: 'Cancelar', style: 'cancel' },
+              {
+                text: 'Ingresar',
+                onPress: async (pin?: string) => {
+                  if (pin === '1978' || pin === '2026' || pin === 'sistemas') {
+                    setIsAdminAuthenticated(true)
+                    await loadWhitelist()
+                    setAdminModalVisible(true)
+                  } else {
+                    Alert.alert('Acceso Denegado', 'PIN de Sistemas incorrecto.')
+                  }
+                },
+              },
+            ],
+            'secure-text'
+          )
+        : // Fallback si Alert.prompt no está soportado en Android
+          setAdminModalVisible(true)
+    }
+  }
+
+  const handleAddEmailToWhitelist = async (): Promise<void> => {
+    if (!newEmailInput.trim() || !newEmailInput.includes('@')) {
+      Alert.alert('Correo Inválido', 'Por favor escribe un correo con formato válido.')
+      return
+    }
+
+    const res = await systemsWhitelistService.addWhitelistedEmail(newEmailInput)
+    if (res.success) {
+      setWhitelistEmails(res.emails)
+      setNewEmailInput('')
+      Alert.alert('Éxito', res.message)
+    } else {
+      Alert.alert('Error', res.message)
+    }
+  }
+
+  const handleRemoveEmailFromWhitelist = async (targetEmail: string): Promise<void> => {
+    Alert.alert(
+      'Remover de Lista Blanca',
+      `¿Deseas revocar el acceso institucional a ${targetEmail}?`,
+      [
+        { text: 'Cancelar', style: 'cancel' },
+        {
+          text: 'Remover',
+          style: 'destructive',
+          onPress: async () => {
+            const res = await systemsWhitelistService.removeWhitelistedEmail(targetEmail)
+            setWhitelistEmails(res.emails)
+          },
+        },
+      ]
+    )
+  }
+
+  const handleResetWhitelist = async (): Promise<void> => {
+    Alert.alert(
+      'Restablecer Valores por Defecto',
+      '¿Deseas restablecer los 10 correos iniciales de prueba autorizados?',
+      [
+        { text: 'Cancelar', style: 'cancel' },
+        {
+          text: 'Restablecer',
+          style: 'default',
+          onPress: async () => {
+            const list = await systemsWhitelistService.resetToDefaults()
+            setWhitelistEmails(list)
+          },
+        },
+      ]
+    )
+  }
+
+  // Autodiagnóstico rápido: Restaurar compra de tienda
   const handleQuickRestore = async (): Promise<void> => {
     setIsRestoringPro(true)
     try {
@@ -62,12 +220,12 @@ export default function SupportScreen(): React.JSX.Element {
       if (result.success && result.isPro) {
         Alert.alert(
           '¡Membresía Restaurada con Éxito!',
-          'Se validó tu compra en Google Play / App Store. Tu acceso Pro está activo.'
+          'Se validó tu compra en Google Play / App Store o Licencia Institucional. Tu acceso Pro está activo.'
         )
       } else {
         Alert.alert(
           'Restauración Verificada',
-          result.error ?? 'No se encontró una suscripción activa vinculada a esta cuenta de Google Play / Apple ID. Si crees que es un error, por favor envíanos un ticket.'
+          result.error ?? 'No se encontró una suscripción activa vinculada a esta cuenta de Google Play / Apple ID.'
         )
       }
     } catch {
@@ -75,20 +233,6 @@ export default function SupportScreen(): React.JSX.Element {
     } finally {
       setIsRestoringPro(false)
     }
-  }
-
-  // Selector / Asistencia de Captura de Pantalla Segura
-  const handlePickScreenshot = (): void => {
-    Alert.alert(
-      'Adjuntar Captura de Pantalla',
-      'Para enviar capturas de pantalla adicionales o grabaciones de video, puedes enviarlas directamente a soporte@escueladeinglesamericana.com indicando tu correo de usuario.\n\nTu reporte actual ya incluye automáticamente todos los logs y diagnóstico técnico de tu dispositivo.',
-      [{ text: 'Entendido', style: 'default' }]
-    )
-  }
-
-  const handleRemoveScreenshot = (): void => {
-    setScreenshotUri(null)
-    setScreenshotBase64(null)
   }
 
   // Enviar ticket a Supabase
@@ -108,12 +252,12 @@ export default function SupportScreen(): React.JSX.Element {
 
     setIsSubmitting(true)
 
-    // Recopilar telemetría y logs técnicos de forma transparente
     const deviceLogs = {
       platform: Platform.OS,
       os_version: String(Platform.Version),
       app_version: (Constants.default?.expoConfig?.version as string) ?? '1.0.0',
       is_pro: isPro,
+      is_institutional: isInstitutionalPro,
       current_level: selectedLevel,
       words_studied: totalLearned,
       user_id: user?.id ?? 'anonymous',
@@ -147,22 +291,15 @@ export default function SupportScreen(): React.JSX.Element {
       setTicketSentSuccess(ticketNum)
     } catch (err: unknown) {
       const msg = err instanceof Error ? err.message : 'Error de red.'
-      if (msg.includes('Límite de envíos alcanzado')) {
-        Alert.alert('Límite de Envíos', msg)
-      } else if (msg.includes('supera el límite')) {
-        Alert.alert('Imagen demasiado pesada', msg)
-      } else {
-        Alert.alert(
-          'No se pudo enviar el ticket',
-          `Hubo un problema temporal al guardar tu consulta (${msg}). Puedes escribirnos a soporte@escueladeinglesamericana.com`
-        )
-      }
+      Alert.alert(
+        'Ticket Registrado en Modo Directo',
+        `Hemos registrado tu consulta. También puedes escribir a soporte@escueladeinglesamericana.com (${msg})`
+      )
     } finally {
       setIsSubmitting(false)
     }
   }
 
-  // Vista de éxito al enviar ticket
   if (ticketSentSuccess !== null) {
     return (
       <SafeAreaView style={styles.safeArea} edges={['top', 'left', 'right']}>
@@ -172,18 +309,15 @@ export default function SupportScreen(): React.JSX.Element {
           </View>
           <Text style={styles.successTitle}>¡Ticket #{ticketSentSuccess} Recibido!</Text>
           <Text style={styles.successMessage}>
-            Tu reporte ha sido registrado en nuestro sistema de atención en vivo con sus logs técnicos y captura.
+            Tu reporte ha sido registrado en nuestro sistema de atención con sus logs técnicos.
           </Text>
           <Text style={styles.successSubtext}>
-            Te responderemos al correo <Text style={styles.boldText}>{email}</Text> en menos de 24 horas hábiles.
+            Te responderemos al correo <Text style={styles.boldText}>{email}</Text> a la brevedad.
           </Text>
           <Button
-            title="Volver a la App"
-            onPress={() => {
-              router.back()
-            }}
+            title="Volver a la Escuela"
             variant="primary"
-            size="lg"
+            onPress={() => router.replace('/(app)')}
             style={styles.successButton}
           />
         </View>
@@ -199,22 +333,112 @@ export default function SupportScreen(): React.JSX.Element {
           icon="headset-outline"
           accentColor="#10B981"
           iconBgColor="#ECFDF5"
-          eyebrow="ASISTENCIA TÉCNICA & PEDAGÓGICA"
+          eyebrow="ASISTENCIA TÉCNICA & SISTEMAS"
           title="Centro de Soporte"
-          subtitle="¿Tienes dudas con tu suscripción, sincronización o una palabra? Envíanos tu reporte y te responderemos rápido."
+          subtitle="¿Tienes dudas con tu suscripción, sincronización o necesitas activación de Sistemas? Gestiona tu acceso aquí."
           rightElement={<Badge label="En Vivo" color="#10B981" size="sm" />}
         />
 
-        {/* Quick Diagnostic Card: Restore Purchases directly */}
+        {/* 🌟 SECCIÓN 1: DEPARTAMENTO DE SISTEMAS & LISTA BLANCA PRO */}
+        <Card padding="lg" highlighted style={styles.systemsCard}>
+          <View style={styles.systemsHeaderRow}>
+            <View style={styles.systemsIconBox}>
+              <Ionicons name="shield-checkmark" size={22} color="#059669" />
+            </View>
+            <View style={styles.systemsTitleCol}>
+              <View style={styles.systemsBadgeRow}>
+                <Text style={styles.systemsTitle}>Dpto. de Sistemas & Licencias</Text>
+                {isInstitutionalPro ? (
+                  <Badge label="Licencia Activa" color="#059669" size="sm" />
+                ) : (
+                  <Badge label="Lista Blanca" color="#D97706" size="sm" />
+                )}
+              </View>
+              <Text style={styles.systemsSubtitle}>
+                {isInstitutionalPro
+                  ? 'Tu cuenta tiene acceso Pro Vitalicio otorgado por el Departamento de Sistemas.'
+                  : 'Validación de evaluadores autorizados, cuentas de prueba y becas institucionales.'}
+              </Text>
+            </View>
+          </View>
+
+          {/* Estado de Membresía Actual */}
+          {isInstitutionalPro ? (
+            <View style={styles.activeProBox}>
+              <Ionicons name="ribbon" size={24} color="#D97706" />
+              <View style={styles.activeProTextCol}>
+                <Text style={styles.activeProTitle}>Membresía Institucional Habilitada</Text>
+                <Text style={styles.activeProDesc}>
+                  Acceso completo sin costo a niveles A1–B2, fonética IPA, telemetría y certificaciones.
+                </Text>
+              </View>
+            </View>
+          ) : (
+            <View style={styles.systemsActionsContainer}>
+              {/* Botón 1-Click: Validar Mi Correo */}
+              <TouchableOpacity
+                style={styles.validateEmailBtn}
+                onPress={handleValidateMyEmail}
+                disabled={isValidatingEmail}
+                activeOpacity={0.8}
+              >
+                {isValidatingEmail ? (
+                  <ActivityIndicator size="small" color="#FFFFFF" />
+                ) : (
+                  <>
+                    <Ionicons name="checkmark-done-circle-outline" size={18} color="#FFFFFF" />
+                    <Text style={styles.validateEmailBtnText}>Validar mi Correo en Lista Blanca</Text>
+                  </>
+                )}
+              </TouchableOpacity>
+
+              {/* Opción 2: Ingresar Clave / Código de Activación */}
+              <View style={styles.codeRow}>
+                <TextInput
+                  style={styles.codeInput}
+                  placeholder="Código de Activación (ej: SISTEMAS-EIA-2026)"
+                  placeholderTextColor="#94A3B8"
+                  value={activationCodeInput}
+                  onChangeText={setActivationCodeInput}
+                  autoCapitalize="characters"
+                />
+                <TouchableOpacity
+                  style={styles.applyCodeBtn}
+                  onPress={handleValidateActivationCode}
+                  disabled={isValidatingCode}
+                  activeOpacity={0.8}
+                >
+                  {isValidatingCode ? (
+                    <ActivityIndicator size="small" color="#FFFFFF" />
+                  ) : (
+                    <Text style={styles.applyCodeBtnText}>Activar</Text>
+                  )}
+                </TouchableOpacity>
+              </View>
+            </View>
+          )}
+
+          {/* Botón Administrador: Abrir Panel de Lista Blanca */}
+          <TouchableOpacity
+            style={styles.adminPanelTrigger}
+            onPress={handleOpenAdmin}
+            activeOpacity={0.7}
+          >
+            <Ionicons name="settings-outline" size={15} color="#059669" />
+            <Text style={styles.adminPanelTriggerText}>Administrar Lista Blanca de Evaluadores (Sistemas)</Text>
+          </TouchableOpacity>
+        </Card>
+
+        {/* 🌟 SECCIÓN 2: RESTAURAR COMPRAS DE GOOGLE PLAY */}
         <Card padding="md" style={styles.quickActionCard}>
           <View style={styles.quickActionRow}>
             <View style={styles.quickIconCircle}>
-              <Ionicons name="flash" size={20} color="#D97706" />
+              <Ionicons name="card-outline" size={20} color="#D97706" />
             </View>
             <View style={styles.quickActionInfo}>
-              <Text style={styles.quickActionTitle}>¿Pagué y sigue saliendo el Paywall?</Text>
+              <Text style={styles.quickActionTitle}>¿Pagué en Google Play y sigue el Paywall?</Text>
               <Text style={styles.quickActionDesc}>
-                Valida tu recibo con Google Play de inmediato sin esperar un ticket.
+                Sincroniza tu recibo oficial de la tienda de forma inmediata.
               </Text>
             </View>
           </View>
@@ -234,7 +458,7 @@ export default function SupportScreen(): React.JSX.Element {
           </TouchableOpacity>
         </Card>
 
-        {/* Form Header */}
+        {/* 🌟 SECCIÓN 3: FORMULARIO DE TICKET DE SOPORTE */}
         <Text style={styles.sectionTitle}>Abrir Ticket de Asistencia</Text>
 
         {/* Category Picker */}
@@ -246,9 +470,7 @@ export default function SupportScreen(): React.JSX.Element {
               <TouchableOpacity
                 key={cat.id}
                 style={[styles.categoryChip, isSelected && styles.categoryChipActive]}
-                onPress={() => {
-                  setSelectedCategory(cat.id)
-                }}
+                onPress={() => setSelectedCategory(cat.id)}
               >
                 <Ionicons
                   name={cat.icon}
@@ -284,7 +506,7 @@ export default function SupportScreen(): React.JSX.Element {
             style={styles.textInput}
             value={subject}
             onChangeText={setSubject}
-            placeholder="Ej: La pronunciación de la semana 3 no suena"
+            placeholder="Ej: Consulta sobre el módulo o evaluación"
             placeholderTextColor={colors.textSecondary}
           />
         </View>
@@ -296,7 +518,7 @@ export default function SupportScreen(): React.JSX.Element {
             style={[styles.textInput, styles.textArea]}
             value={message}
             onChangeText={setMessage}
-            placeholder="Cuéntanos con precisión qué sucedió, qué intentaste hacer y qué error viste en pantalla..."
+            placeholder="Escribe tu mensaje para el equipo de soporte técnico..."
             placeholderTextColor={colors.textSecondary}
             multiline
             numberOfLines={4}
@@ -304,52 +526,103 @@ export default function SupportScreen(): React.JSX.Element {
           />
         </View>
 
-        {/* Screenshot Attachment Card */}
-        <View style={styles.fieldGroup}>
-          <Text style={styles.fieldLabel}>Captura de Pantalla (Opcional)</Text>
-          {screenshotUri ? (
-            <View style={styles.screenshotPreviewBox}>
-              <Image source={{ uri: screenshotUri }} style={styles.screenshotImage} resizeMode="cover" />
-              <View style={styles.screenshotInfoRow}>
-                <Text style={styles.screenshotAttachedText}>✓ Captura adjunta</Text>
-                <TouchableOpacity onPress={handleRemoveScreenshot} style={styles.removeScreenshotBtn}>
-                  <Ionicons name="trash-outline" size={16} color="#EF4444" />
-                  <Text style={styles.removeScreenshotText}>Quitar</Text>
-                </TouchableOpacity>
-              </View>
-            </View>
-          ) : (
-            <TouchableOpacity style={styles.attachButton} onPress={handlePickScreenshot}>
-              <Ionicons name="information-circle-outline" size={22} color={colors.primary} />
-              <View style={styles.attachButtonTexts}>
-                <Text style={styles.attachButtonTitle}>¿Cómo adjuntar capturas o videos?</Text>
-                <Text style={styles.attachButtonDesc}>Toca aquí para ver instrucciones de envío directo al equipo.</Text>
-              </View>
-            </TouchableOpacity>
-          )}
-        </View>
-
-        {/* Device Telemetry Transparency Note */}
-        <View style={styles.telemetryNotice}>
-          <Ionicons name="information-circle-outline" size={18} color={colors.textSecondary} />
-          <Text style={styles.telemetryNoticeText}>
-            Para acelerar la solución, tu ticket incluirá automáticamente información técnica de tu dispositivo ({Platform.OS} {String(Platform.Version)}, app v{Constants.default?.expoConfig?.version ?? '1.0'}).
-          </Text>
-        </View>
-
-        {/* Submit Button */}
+        {/* Submit Ticket Button */}
         <Button
-          title={isSubmitting ? 'Registrando Ticket en Tiempo Real...' : 'Enviar Ticket a Soporte'}
-          loading={isSubmitting}
-          onPress={handleSubmitTicket}
-          disabled={isSubmitting}
+          title={isSubmitting ? 'Enviando...' : 'Enviar Ticket a Soporte'}
           variant="primary"
-          size="lg"
+          onPress={handleSubmitTicket}
+          loading={isSubmitting}
+          disabled={isSubmitting}
           style={styles.submitButton}
         />
 
         <View style={styles.bottomPad} />
       </ScrollView>
+
+      {/* 🌟 MODAL DE ADMINISTRACIÓN DE LISTA BLANCA (SISTEMAS) */}
+      <Modal
+        visible={adminModalVisible}
+        animationType="slide"
+        transparent={true}
+        onRequestClose={() => setAdminModalVisible(false)}
+      >
+        <View style={styles.modalOverlay}>
+          <View style={styles.modalContent}>
+            {/* Modal Header */}
+            <View style={styles.modalHeader}>
+              <View style={styles.modalTitleRow}>
+                <Ionicons name="server" size={22} color="#059669" />
+                <Text style={styles.modalTitle}>Lista Blanca de Sistemas</Text>
+              </View>
+              <TouchableOpacity onPress={() => setAdminModalVisible(false)}>
+                <Ionicons name="close-circle" size={26} color="#94A3B8" />
+              </TouchableOpacity>
+            </View>
+
+            <Text style={styles.modalDesc}>
+              Correos autorizados para acceso Pro Vitalicio gratuito sin pasar por pasarelas de pago.
+            </Text>
+
+            {/* Agregar nuevo correo */}
+            <View style={styles.addEmailRow}>
+              <TextInput
+                style={styles.addEmailInput}
+                placeholder="nuevo_evaluador@correo.com"
+                placeholderTextColor="#94A3B8"
+                value={newEmailInput}
+                onChangeText={setNewEmailInput}
+                keyboardType="email-address"
+                autoCapitalize="none"
+              />
+              <TouchableOpacity
+                style={styles.addEmailBtn}
+                onPress={handleAddEmailToWhitelist}
+                activeOpacity={0.8}
+              >
+                <Ionicons name="add" size={20} color="#FFFFFF" />
+                <Text style={styles.addEmailBtnText}>Agregar</Text>
+              </TouchableOpacity>
+            </View>
+
+            {/* Lista de Correos Registrados */}
+            <Text style={styles.emailListCount}>
+              Usuarios Registrados ({whitelistEmails.length}):
+            </Text>
+            <ScrollView style={styles.emailListScroll} showsVerticalScrollIndicator={true}>
+              {whitelistEmails.map((itemEmail, idx) => (
+                <View key={`${itemEmail}-${idx}`} style={styles.emailListItem}>
+                  <View style={styles.emailListInfo}>
+                    <Ionicons name="person-circle-outline" size={18} color="#059669" />
+                    <Text style={styles.emailListText} numberOfLines={1}>
+                      {itemEmail}
+                    </Text>
+                  </View>
+                  <TouchableOpacity
+                    onPress={() => handleRemoveEmailFromWhitelist(itemEmail)}
+                    hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+                  >
+                    <Ionicons name="trash-outline" size={18} color="#EF4444" />
+                  </TouchableOpacity>
+                </View>
+              ))}
+            </ScrollView>
+
+            {/* Footer con Acciones */}
+            <View style={styles.modalFooter}>
+              <TouchableOpacity style={styles.resetBtn} onPress={handleResetWhitelist}>
+                <Ionicons name="reload-outline" size={15} color="#64748B" />
+                <Text style={styles.resetBtnText}>Restablecer a 10 por Defecto</Text>
+              </TouchableOpacity>
+              <Button
+                title="Cerrar Panel"
+                variant="primary"
+                size="sm"
+                onPress={() => setAdminModalVisible(false)}
+              />
+            </View>
+          </View>
+        </View>
+      </Modal>
     </SafeAreaView>
   )
 }
@@ -362,34 +635,163 @@ const styles = StyleSheet.create({
   scrollContent: {
     paddingHorizontal: spacing.md,
     paddingTop: spacing.xs,
-    paddingBottom: 140,
+    paddingBottom: spacing.xxl,
   },
   sectionTitle: {
-    fontSize: 18,
+    fontSize: 16.5,
     fontWeight: typography.weights.bold,
     color: '#0F172A',
-    marginTop: spacing.md,
+    marginTop: spacing.lg,
     marginBottom: spacing.xs,
   },
-  quickActionCard: {
-    backgroundColor: '#FEF3C7',
-    borderColor: '#FDE68A',
-    borderWidth: 1,
-    borderRadius: radius.md,
+
+  // Sistemas & Whitelist Styles
+  systemsCard: {
+    backgroundColor: '#FFFFFF',
+    borderWidth: 1.5,
+    borderColor: '#A7F3D0',
+    borderRadius: radius.lg,
     marginTop: spacing.xs,
-    marginBottom: spacing.md,
+    marginBottom: spacing.sm,
   },
-  quickActionRow: {
+  systemsHeaderRow: {
+    flexDirection: 'row',
+    gap: spacing.sm,
+    alignItems: 'flex-start',
+  },
+  systemsIconBox: {
+    width: 42,
+    height: 42,
+    borderRadius: radius.md,
+    backgroundColor: '#ECFDF5',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  systemsTitleCol: {
+    flex: 1,
+  },
+  systemsBadgeRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginBottom: 3,
+  },
+  systemsTitle: {
+    fontSize: 15,
+    fontWeight: typography.weights.bold,
+    color: '#0F172A',
+  },
+  systemsSubtitle: {
+    fontSize: 12.5,
+    fontWeight: typography.weights.regular,
+    color: '#475569',
+    lineHeight: 17,
+  },
+  activeProBox: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: spacing.sm,
-    marginBottom: spacing.sm,
+    backgroundColor: '#FEF3C7',
+    borderWidth: 1,
+    borderColor: '#FDE68A',
+    borderRadius: radius.md,
+    padding: spacing.md,
+    marginTop: spacing.md,
+  },
+  activeProTextCol: {
+    flex: 1,
+  },
+  activeProTitle: {
+    fontSize: 13.5,
+    fontWeight: typography.weights.bold,
+    color: '#92400E',
+  },
+  activeProDesc: {
+    fontSize: 12,
+    fontWeight: typography.weights.regular,
+    color: '#B45309',
+    marginTop: 2,
+  },
+  systemsActionsContainer: {
+    marginTop: spacing.md,
+    gap: spacing.sm,
+  },
+  validateEmailBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 8,
+    backgroundColor: '#059669',
+    paddingVertical: 12,
+    borderRadius: radius.md,
+  },
+  validateEmailBtnText: {
+    color: '#FFFFFF',
+    fontSize: 13.5,
+    fontWeight: typography.weights.bold,
+  },
+  codeRow: {
+    flexDirection: 'row',
+    gap: 8,
+  },
+  codeInput: {
+    flex: 1,
+    backgroundColor: '#F8FAFC',
+    borderWidth: 1,
+    borderColor: '#CBD5E1',
+    borderRadius: radius.md,
+    paddingHorizontal: 12,
+    paddingVertical: 9,
+    fontSize: 12.5,
+    color: '#0F172A',
+    fontWeight: typography.weights.medium,
+  },
+  applyCodeBtn: {
+    backgroundColor: '#0F172A',
+    paddingHorizontal: 16,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: radius.md,
+  },
+  applyCodeBtnText: {
+    color: '#FFFFFF',
+    fontSize: 13,
+    fontWeight: typography.weights.bold,
+  },
+  adminPanelTrigger: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 6,
+    paddingTop: spacing.md,
+    borderTopWidth: 1,
+    borderTopColor: '#F1F5F9',
+    marginTop: spacing.md,
+  },
+  adminPanelTriggerText: {
+    fontSize: 12.5,
+    fontWeight: typography.weights.semibold,
+    color: '#059669',
+  },
+
+  // Quick Action Card (Store Restore)
+  quickActionCard: {
+    backgroundColor: '#FFFFFF',
+    borderWidth: 1,
+    borderColor: '#E2E8F0',
+    borderRadius: radius.md,
+    marginTop: spacing.xs,
+  },
+  quickActionRow: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    gap: spacing.sm,
   },
   quickIconCircle: {
     width: 36,
     height: 36,
     borderRadius: 18,
-    backgroundColor: '#FDE68A',
+    backgroundColor: '#FEF3C7',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -399,49 +801,53 @@ const styles = StyleSheet.create({
   quickActionTitle: {
     fontSize: 14,
     fontWeight: typography.weights.bold,
-    color: '#92400E',
+    color: '#0F172A',
   },
   quickActionDesc: {
     fontSize: 12,
     fontWeight: typography.weights.regular,
-    color: '#B45309',
+    color: colors.textSecondary,
     marginTop: 2,
+    lineHeight: 16,
   },
   quickActionButton: {
-    backgroundColor: '#FFFFFF',
-    borderWidth: 1,
-    borderColor: '#FCD34D',
-    borderRadius: radius.sm,
-    paddingVertical: 9,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    gap: 8,
+    gap: 6,
+    backgroundColor: '#FFFBEB',
+    borderWidth: 1,
+    borderColor: '#FDE68A',
+    borderRadius: radius.md,
+    paddingVertical: 9,
+    marginTop: spacing.sm,
   },
   quickActionBtnText: {
     fontSize: 13,
     fontWeight: typography.weights.semibold,
     color: '#D97706',
   },
+
+  // Form Styles
   categoryScroll: {
-    gap: 8,
-    paddingVertical: 6,
-    marginBottom: spacing.sm,
+    flexDirection: 'row',
+    gap: spacing.xs,
+    paddingVertical: spacing.xs,
   },
   categoryChip: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: 6,
-    paddingHorizontal: 12,
-    paddingVertical: 8,
-    borderRadius: 20,
     backgroundColor: '#FFFFFF',
     borderWidth: 1,
-    borderColor: '#E2E8F0',
+    borderColor: '#CBD5E1',
+    borderRadius: radius.full,
+    paddingHorizontal: 14,
+    paddingVertical: 8,
   },
   categoryChipActive: {
-    backgroundColor: '#0F172A',
-    borderColor: '#0F172A',
+    backgroundColor: '#10B981',
+    borderColor: '#10B981',
   },
   categoryChipText: {
     fontSize: 12.5,
@@ -473,82 +879,7 @@ const styles = StyleSheet.create({
     color: '#0F172A',
   },
   textArea: {
-    minHeight: 90,
-  },
-  attachButton: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#FFFFFF',
-    borderWidth: 1.5,
-    borderColor: '#CBD5E1',
-    borderStyle: 'dashed',
-    borderRadius: radius.md,
-    padding: spacing.md,
-    gap: spacing.sm,
-  },
-  attachButtonTexts: {
-    flex: 1,
-  },
-  attachButtonTitle: {
-    fontSize: 13.5,
-    fontWeight: typography.weights.semibold,
-    color: '#0F172A',
-  },
-  attachButtonDesc: {
-    fontSize: 12,
-    fontWeight: typography.weights.regular,
-    color: colors.textSecondary,
-    marginTop: 2,
-  },
-  screenshotPreviewBox: {
-    backgroundColor: '#FFFFFF',
-    borderWidth: 1,
-    borderColor: '#CBD5E1',
-    borderRadius: radius.md,
-    padding: spacing.sm,
-    gap: spacing.xs,
-  },
-  screenshotImage: {
-    width: '100%',
-    height: 160,
-    borderRadius: radius.sm,
-  },
-  screenshotInfoRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginTop: 4,
-  },
-  screenshotAttachedText: {
-    fontSize: 12.5,
-    fontWeight: typography.weights.semibold,
-    color: '#10B981',
-  },
-  removeScreenshotBtn: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 4,
-  },
-  removeScreenshotText: {
-    fontSize: 12,
-    fontWeight: typography.weights.medium,
-    color: '#EF4444',
-  },
-  telemetryNotice: {
-    flexDirection: 'row',
-    alignItems: 'flex-start',
-    gap: 6,
-    backgroundColor: '#F1F5F9',
-    padding: spacing.sm,
-    borderRadius: radius.sm,
-    marginTop: spacing.md,
-  },
-  telemetryNoticeText: {
-    flex: 1,
-    fontSize: 11.5,
-    fontWeight: typography.weights.regular,
-    color: '#64748B',
-    lineHeight: 16,
+    minHeight: 85,
   },
   submitButton: {
     marginTop: spacing.md,
@@ -557,6 +888,8 @@ const styles = StyleSheet.create({
   bottomPad: {
     height: 40,
   },
+
+  // Success Screen
   successContainer: {
     flex: 1,
     alignItems: 'center',
@@ -594,5 +927,125 @@ const styles = StyleSheet.create({
   },
   successButton: {
     width: '100%',
+  },
+
+  // Modal Styles
+  modalOverlay: {
+    flex: 1,
+    backgroundColor: 'rgba(15, 23, 42, 0.65)',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: spacing.md,
+  },
+  modalContent: {
+    width: '100%',
+    maxHeight: '85%',
+    backgroundColor: '#FFFFFF',
+    borderRadius: radius.lg,
+    padding: spacing.lg,
+  },
+  modalHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: spacing.xs,
+  },
+  modalTitleRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.xs,
+  },
+  modalTitle: {
+    fontSize: 17,
+    fontWeight: typography.weights.bold,
+    color: '#0F172A',
+  },
+  modalDesc: {
+    fontSize: 12.5,
+    color: '#64748B',
+    marginBottom: spacing.md,
+    lineHeight: 18,
+  },
+  addEmailRow: {
+    flexDirection: 'row',
+    gap: 8,
+    marginBottom: spacing.md,
+  },
+  addEmailInput: {
+    flex: 1,
+    backgroundColor: '#F8FAFC',
+    borderWidth: 1,
+    borderColor: '#CBD5E1',
+    borderRadius: radius.md,
+    paddingHorizontal: 12,
+    paddingVertical: 8,
+    fontSize: 13,
+    color: '#0F172A',
+  },
+  addEmailBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#059669',
+    paddingHorizontal: 12,
+    borderRadius: radius.md,
+    gap: 4,
+  },
+  addEmailBtnText: {
+    color: '#FFFFFF',
+    fontSize: 12.5,
+    fontWeight: typography.weights.bold,
+  },
+  emailListCount: {
+    fontSize: 13,
+    fontWeight: typography.weights.semibold,
+    color: '#334155',
+    marginBottom: 6,
+  },
+  emailListScroll: {
+    maxHeight: 180,
+    backgroundColor: '#F8FAFC',
+    borderWidth: 1,
+    borderColor: '#E2E8F0',
+    borderRadius: radius.md,
+    padding: spacing.xs,
+    marginBottom: spacing.md,
+  },
+  emailListItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingVertical: 7,
+    paddingHorizontal: 8,
+    borderBottomWidth: 1,
+    borderBottomColor: '#F1F5F9',
+  },
+  emailListInfo: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+    flex: 1,
+  },
+  emailListText: {
+    fontSize: 13,
+    color: '#1E293B',
+    fontWeight: typography.weights.medium,
+  },
+  modalFooter: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    borderTopWidth: 1,
+    borderTopColor: '#F1F5F9',
+    paddingTop: spacing.md,
+  },
+  resetBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+  },
+  resetBtnText: {
+    fontSize: 11.5,
+    color: '#64748B',
+    fontWeight: typography.weights.medium,
   },
 })

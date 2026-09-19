@@ -18,7 +18,7 @@ import { AppScreenHeader } from '../../components/AppScreenHeader'
 
 export default function PaywallScreen(): React.JSX.Element {
   const router = useRouter()
-  const { isLoading, currentOffering, purchase, restore } = usePurchases()
+  const { isLoading, isPro, isInstitutionalPro, currentOffering, purchase, restore } = usePurchases()
   const [busyPackageId, setBusyPackageId] = useState<string | null>(null)
   const [isRestoring, setIsRestoring] = useState(false)
 
@@ -73,9 +73,41 @@ export default function PaywallScreen(): React.JSX.Element {
           iconBgColor="#FEF3C7"
           eyebrow="SUSCRIPCIÓN & ACCESO COMPLETO"
           title="Membresía Pro"
-          subtitle="Tu primera semana de A1 (7 días de prueba) es 100% gratuita. Desbloquea el currículo completo de 48 semanas (A1 avanzado a B2) y el hito de los 2 meses con tu Membresía Pro o Plan Vitalicio."
-          rightElement={<Badge label="Plan Pro" color="#D97706" size="sm" />}
+          subtitle={
+            isPro
+              ? 'Tienes acceso total e ilimitado habilitado para todos los niveles de la Escuela de Inglés Americana.'
+              : 'Tu primera semana de A1 (7 días de prueba) es 100% gratuita. Desbloquea el currículo completo de 48 semanas (A1 avanzado a B2) y el hito de los 2 meses con tu Membresía Pro o Plan Vitalicio.'
+          }
+          rightElement={<Badge label={isPro ? 'Pro Activo' : 'Plan Pro'} color={isPro ? '#059669' : '#D97706'} size="sm" />}
         />
+
+        {/* 🌟 Active Pro Status Banner */}
+        {isPro && (
+          <Card padding="lg" highlighted style={styles.activePlanCard}>
+            <View style={styles.activePlanHeader}>
+              <View style={styles.activePlanIconCircle}>
+                <Ionicons name="ribbon" size={24} color="#059669" />
+              </View>
+              <View style={styles.activePlanTexts}>
+                <Text style={styles.activePlanTitle}>
+                  {isInstitutionalPro ? 'Licencia Institucional Activa' : 'Membresía Pro Activa'}
+                </Text>
+                <Text style={styles.activePlanDesc}>
+                  {isInstitutionalPro
+                    ? 'Otorgada por el Departamento de Sistemas (Lista Blanca). Disfrutas de acceso ilimitado a todos los niveles, audios nativos y certificaciones.'
+                    : 'Tu suscripción está completamente activa. Tienes acceso total al currículo.'}
+                </Text>
+              </View>
+            </View>
+            <Button
+              title="Continuar Estudiando"
+              variant="primary"
+              size="md"
+              onPress={() => router.replace('/(app)/learn')}
+              style={styles.continueStudyingBtn}
+            />
+          </Card>
+        )}
 
         {/* Benefits & Value Proposition Card */}
         <Card padding="lg" highlighted style={styles.benefitsCard}>
@@ -432,6 +464,43 @@ const styles = StyleSheet.create({
     color: colors.primary,
     fontWeight: typography.weights.semibold,
   },
+  activePlanCard: {
+    backgroundColor: '#ECFDF5',
+    borderWidth: 1.5,
+    borderColor: '#059669',
+    borderRadius: radius.lg,
+    marginBottom: spacing.md,
+  },
+  activePlanHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.sm,
+  },
+  activePlanIconCircle: {
+    width: 44,
+    height: 44,
+    borderRadius: 22,
+    backgroundColor: '#D1FAE5',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  activePlanTexts: {
+    flex: 1,
+  },
+  activePlanTitle: {
+    fontSize: 15,
+    fontWeight: typography.weights.bold,
+    color: '#065F46',
+  },
+  activePlanDesc: {
+    fontSize: 12.5,
+    color: '#047857',
+    marginTop: 2,
+    lineHeight: 17,
+  },
+  continueStudyingBtn: {
+    marginTop: spacing.md,
+  },
   legalNotice: {
     fontSize: typography.sizes.xs - 2,
     color: colors.textMuted,
@@ -441,3 +510,4 @@ const styles = StyleSheet.create({
     paddingHorizontal: spacing.sm,
   },
 })
+

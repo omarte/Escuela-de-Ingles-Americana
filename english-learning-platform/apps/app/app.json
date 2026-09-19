@@ -24,7 +24,11 @@
       "supportsTablet": true,
       "bundleIdentifier": "com.elp.app",
       "infoPlist": {
-        "ITSAppUsesNonExemptEncryption": false
+        "ITSAppUsesNonExemptEncryption": false,
+        "supportsTablet": true,
+        "NSCameraUsageDescription": "La app necesita acceso a tu cámara para escanear códigos QR y adjuntar capturas en el soporte técnico.",
+        "NSPhotoLibraryUsageDescription": "La app necesita acceso a tu galería para guardar tu progreso y seleccionar imágenes.",
+        "NSMicrophoneUsageDescription": "La app necesita acceso al micrófono para reproducir y grabar audio de pronunciación."
       }
     },
     "android": {

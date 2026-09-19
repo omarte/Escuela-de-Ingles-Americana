@@ -15,10 +15,13 @@ import Purchases, {
 } from 'react-native-purchases'
 import { Platform } from 'react-native'
 import { PRO_ENTITLEMENT_ID } from '@elp/monetization'
+import { systemsWhitelistService } from '../lib/systemsWhitelistService'
+import { useAuthStore } from '../stores/useAuthStore'
 
 interface PurchasesState {
   isLoading: boolean
   isPro: boolean
+  isInstitutionalPro: boolean
   customerInfo: CustomerInfo | null
   currentOffering: PurchasesOffering | null
   error: string | null
@@ -60,9 +63,11 @@ function hasProEntitlement(customerInfo: CustomerInfo | null): boolean {
 }
 
 export function usePurchases() {
+  const userEmail = useAuthStore((state) => state.user?.email)
   const [state, setState] = useState<PurchasesState>({
     isLoading: true,
     isPro: false,
+    isInstitutionalPro: false,
     customerInfo: null,
     currentOffering: null,
     error: null,
@@ -70,46 +75,69 @@ export function usePurchases() {
 
   const refresh = useCallback(async () => {
     try {
-      const [customerInfo, offerings] = await Promise.all([
+      const [customerInfo, offerings, institutionalActive] = await Promise.all([
         Purchases.getCustomerInfo(),
         Purchases.getOfferings(),
+        systemsWhitelistService.isInstitutionalProActive(userEmail),
       ]);
+      const hasNativePro = hasProEntitlement(customerInfo)
+      const isEffectivePro = hasNativePro || institutionalActive
+
       setState({
         isLoading: false,
-        isPro: hasProEntitlement(customerInfo),
+        isPro: isEffectivePro,
+        isInstitutionalPro: institutionalActive,
         customerInfo,
         currentOffering: offerings.current ?? null,
         error: null,
       })
     } catch (err) {
-      // Si falla la red, mantenemos el último CustomerInfo cacheado por el SDK
-      // en vez de asumir que el usuario perdió su Pro — RevenueCat cachea
-      // localmente, así que esto solo debería fallar en el primer arranque
-      // sin conexión NUNCA antes exitoso.
+      // Si falla la red de la tienda, aún verificamos la lista blanca local institucional
+      const institutionalActive = await systemsWhitelistService.isInstitutionalProActive(userEmail).catch(() => false)
       setState((prev) => ({
         ...prev,
         isLoading: false,
+        isPro: prev.isPro || institutionalActive,
+        isInstitutionalPro: institutionalActive,
         error: err instanceof Error ? err.message : 'Error desconocido al consultar compras',
       }))
     }
-  }, [])
+  }, [userEmail])
 
   useEffect(() => {
     void refresh()
 
     const listener = (customerInfo: CustomerInfo) => {
-      setState((prev) => ({ ...prev, customerInfo, isPro: hasProEntitlement(customerInfo) }))
+      setState((prev) => {
+        const hasNative = hasProEntitlement(customerInfo)
+        return {
+          ...prev,
+          customerInfo,
+          isPro: hasNative || prev.isInstitutionalPro,
+        }
+      })
     }
     Purchases.addCustomerInfoUpdateListener(listener)
+
+    // Listener para activaciones de lista blanca / sistemas en tiempo real
+    const unsubscribeWhitelist = systemsWhitelistService.subscribe((isInstitutional) => {
+      setState((prev) => ({
+        ...prev,
+        isInstitutionalPro: isInstitutional,
+        isPro: prev.isPro || isInstitutional,
+      }))
+    })
+
     return () => {
       Purchases.removeCustomerInfoUpdateListener(listener)
+      unsubscribeWhitelist()
     }
   }, [refresh])
 
   const purchase = useCallback(async (pkg: PurchasesPackage) => {
     try {
       const { customerInfo } = await Purchases.purchasePackage(pkg)
-      setState((prev) => ({ ...prev, customerInfo, isPro: hasProEntitlement(customerInfo) }))
+      setState((prev) => ({ ...prev, customerInfo, isPro: hasProEntitlement(customerInfo) || prev.isInstitutionalPro }))
       return { success: true as const }
     } catch (err: any) {
       if (err?.userCancelled) {
@@ -123,12 +151,17 @@ export function usePurchases() {
   const restore = useCallback(async () => {
     try {
       const customerInfo = await Purchases.restorePurchases()
-      setState((prev) => ({ ...prev, customerInfo, isPro: hasProEntitlement(customerInfo) }))
-      return { success: true as const, isPro: hasProEntitlement(customerInfo) }
+      const institutionalActive = await systemsWhitelistService.isInstitutionalProActive(userEmail)
+      const hasNative = hasProEntitlement(customerInfo)
+      const isEffective = hasNative || institutionalActive
+
+      setState((prev) => ({ ...prev, customerInfo, isPro: isEffective, isInstitutionalPro: institutionalActive }))
+      return { success: true as const, isPro: isEffective }
     } catch (err) {
       return { success: false as const, error: err instanceof Error ? err.message : 'No se pudo restaurar' }
     }
-  }, [])
+  }, [userEmail])
 
   return { ...state, refresh, purchase, restore }
 }
+
