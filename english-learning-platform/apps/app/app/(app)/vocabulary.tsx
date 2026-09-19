@@ -57,6 +57,18 @@ const CATEGORY_COLORS: Record<CategoryFilter, { color: string; light: string; bo
   other: { color: '#9333EA', light: '#FAF5FF', border: '#E9D5FF' },
 }
 
+const POS_INFO: Record<string, { es: string; icon: any; color: string; bg: string }> = {
+  noun: { es: 'Sustantivo', icon: 'cube-outline', color: '#0891B2', bg: '#ECFEFF' },
+  verb: { es: 'Verbo', icon: 'walk-outline', color: '#4F46E5', bg: '#EEF2FF' },
+  pronoun: { es: 'Pronombre', icon: 'person-outline', color: '#059669', bg: '#ECFDF5' },
+  adjective: { es: 'Adjetivo', icon: 'color-palette-outline', color: '#E11D48', bg: '#FFF1F2' },
+  adverb: { es: 'Adverbio', icon: 'flash-outline', color: '#D97706', bg: '#FFFBEB' },
+  preposition: { es: 'Preposición', icon: 'navigate-outline', color: '#9333EA', bg: '#FAF5FF' },
+  conjunction: { es: 'Conjunción', icon: 'git-merge-outline', color: '#6366F1', bg: '#EEF2FF' },
+  'phrasal-verb': { es: 'Phrasal Verb', icon: 'git-network-outline', color: '#2563EB', bg: '#EFF6FF' },
+  interjection: { es: 'Interjección', icon: 'sparkles-outline', color: '#EA580C', bg: '#FFF7ED' },
+}
+
 export default function VocabularyScreen(): React.JSX.Element {
   const router = useRouter()
   const { isPro } = usePurchases()
@@ -602,20 +614,69 @@ export default function VocabularyScreen(): React.JSX.Element {
           onRequestClose={closeWordModal}
         >
           <SafeAreaView style={styles.modalSafe} edges={['top', 'bottom']}>
-            <ScrollView contentContainerStyle={styles.modalScroll}>
+            {/* Modal Level Progress Line */}
+            <View style={styles.modalProgressTrack}>
+              <View
+                style={[
+                  styles.modalProgressFill,
+                  {
+                    width: `${Math.round((((activeWordIndex ?? 0) + 1) / (filteredWords.length || 1)) * 100)}%`,
+                  },
+                ]}
+              />
+            </View>
+
+            <ScrollView contentContainerStyle={styles.modalScroll} keyboardShouldPersistTaps="handled">
               {/* Modal Top Bar */}
               <View style={styles.modalTopBar}>
                 <View style={styles.modalBadgesRow}>
                   <Badge label={`Nivel ${activeWord.level}`} color={colors.primary} size="sm" />
-                  <Badge label={activeWord.partOfSpeech} color={colors.textSecondary} size="sm" />
+                  <View
+                    style={[
+                      styles.posChip,
+                      {
+                        backgroundColor: (POS_INFO[activeWord.partOfSpeech.toLowerCase()] ?? POS_INFO.noun).bg,
+                        borderColor: (POS_INFO[activeWord.partOfSpeech.toLowerCase()] ?? POS_INFO.noun).color,
+                      },
+                    ]}
+                  >
+                    <Ionicons
+                      name={(POS_INFO[activeWord.partOfSpeech.toLowerCase()] ?? POS_INFO.noun).icon}
+                      size={12}
+                      color={(POS_INFO[activeWord.partOfSpeech.toLowerCase()] ?? POS_INFO.noun).color}
+                    />
+                    <Text
+                      style={[
+                        styles.posChipText,
+                        { color: (POS_INFO[activeWord.partOfSpeech.toLowerCase()] ?? POS_INFO.noun).color },
+                      ]}
+                    >
+                      {(POS_INFO[activeWord.partOfSpeech.toLowerCase()] ?? POS_INFO.noun).es}
+                    </Text>
+                  </View>
                   <Badge label={`Sem. ${activeWord.week}`} color={colors.textMuted} size="sm" />
+                  {(() => {
+                    const srsCard = cardMap.get(activeWord.id)
+                    const status = !srsCard || srsCard.reps === 0
+                      ? 'new'
+                      : (srsCard.interval >= 21 || srsCard.reps >= 4)
+                        ? 'mastered'
+                        : 'learning'
+                    if (status === 'mastered') {
+                      return <Badge label="✓ Dominada" color="#059669" backgroundColor="#ECFDF5" size="sm" />
+                    }
+                    if (status === 'learning') {
+                      return <Badge label="⚡ En Repaso" color="#D97706" backgroundColor="#FEF3C7" size="sm" />
+                    }
+                    return <Badge label="✨ Nueva" color="#2563EB" backgroundColor="#EFF6FF" size="sm" />
+                  })()}
                 </View>
-                <TouchableOpacity onPress={closeWordModal} style={styles.modalCloseBtn}>
-                  <Ionicons name="close" size={22} color={colors.textPrimary} />
+                <TouchableOpacity onPress={closeWordModal} style={styles.modalCloseBtn} accessibilityLabel="Cerrar">
+                  <Ionicons name="close" size={20} color={colors.textPrimary} />
                 </TouchableOpacity>
               </View>
 
-              {/* Word & Phonetics & Audio */}
+              {/* Enhanced Word & Phonetics & Audio Card */}
               <View style={styles.modalWordCard}>
                 {/* English Word (Tap to reveal Spanish translation) */}
                 <TouchableOpacity
@@ -629,43 +690,67 @@ export default function VocabularyScreen(): React.JSX.Element {
                   <Text style={styles.modalWordEn}>{activeWord.word}</Text>
                   <View style={styles.tapToRevealTag}>
                     <Ionicons
-                      name={isTranslationRevealed ? 'eye-outline' : 'eye-off-outline'}
-                      size={14}
-                      color={colors.primary}
+                      name={isTranslationRevealed ? 'eye-outline' : 'sparkles'}
+                      size={13}
+                      color="#059669"
                     />
                     <Text style={styles.tapToRevealTagText}>
-                      {isTranslationRevealed ? 'Ocultar traducción' : 'Toca la palabra para ver en español'}
+                      {isTranslationRevealed ? 'Ocultar significado' : 'Toca para voltear tarjeta 🇪🇸'}
                     </Text>
                   </View>
                 </TouchableOpacity>
 
-                {/* Spanish Phonetics */}
-                <Text style={styles.modalPhonetic}>
-                  [{getSpanishPhonetic(activeWord.word, activeWord.pronunciation)}]
-                </Text>
+                {/* Spanish Phonetics Box */}
+                <View style={styles.phoneticContainer}>
+                  <Ionicons name="mic-outline" size={14} color="#059669" />
+                  <Text style={styles.modalPhoneticLabel}>Pronunciación Guiada:</Text>
+                  <Text style={styles.modalPhonetic}>
+                    [{getSpanishPhonetic(activeWord.word, activeWord.pronunciation)}]
+                  </Text>
+                </View>
 
-                {/* Audio Button */}
-                <TouchableOpacity
-                  style={styles.modalAudioButton}
-                  onPress={() => {
-                    void speakEnglish(activeWord.word)
-                  }}
-                  activeOpacity={0.8}
-                >
-                  <Ionicons name="volume-high" size={22} color="#FFFFFF" />
-                  <Text style={styles.modalAudioButtonText}>Escuchar pronunciación</Text>
-                </TouchableOpacity>
+                {/* Dual Audio Controls (Normal & Slow) */}
+                <View style={styles.audioControlsRow}>
+                  <TouchableOpacity
+                    style={styles.modalAudioButtonPrimary}
+                    onPress={() => {
+                      void speakEnglish(activeWord.word)
+                    }}
+                    activeOpacity={0.8}
+                  >
+                    <Ionicons name="volume-high" size={20} color="#FFFFFF" />
+                    <Text style={styles.modalAudioButtonText}>Pronunciación Nativa</Text>
+                  </TouchableOpacity>
+
+                  <TouchableOpacity
+                    style={styles.modalAudioButtonSlow}
+                    onPress={() => {
+                      void speakEnglish(activeWord.word, 0.65)
+                    }}
+                    activeOpacity={0.8}
+                    accessibilityLabel="Escuchar pronunciación lenta"
+                  >
+                    <Text style={styles.modalAudioSlowIcon}>🐢</Text>
+                    <Text style={styles.modalAudioSlowText}>Lento</Text>
+                  </TouchableOpacity>
+                </View>
 
                 {/* Tap to Reveal Translation Display Area */}
                 {isTranslationRevealed ? (
                   <View style={styles.revealedTranslationBox}>
+                    <View style={styles.revealedHeaderRow}>
+                      <Ionicons name="checkmark-circle" size={16} color="#059669" />
+                      <Text style={styles.revealedTranslationLabel}>Significado Oficial:</Text>
+                    </View>
                     <Text style={styles.revealedTranslationText}>
                       {activeWord.translation}
                     </Text>
                     {activeWord.variants && activeWord.variants.length > 0 ? (
-                      <Text style={styles.revealedVariantsText}>
-                        Variaciones: {activeWord.variants.join(', ')}
-                      </Text>
+                      <View style={styles.variantsPillRow}>
+                        <Text style={styles.revealedVariantsText}>
+                          Sinónimos / Formas: {activeWord.variants.join(', ')}
+                        </Text>
+                      </View>
                     ) : null}
                   </View>
                 ) : (
@@ -675,17 +760,27 @@ export default function VocabularyScreen(): React.JSX.Element {
                       setIsTranslationRevealed(true)
                     }}
                   >
-                    <Ionicons name="help-circle-outline" size={20} color={colors.textMuted} />
+                    <Ionicons name="help-circle-outline" size={18} color={colors.primary} />
                     <Text style={styles.hiddenTranslationPromptText}>
                       ¿Recuerdas el significado? Toca para comprobar
                     </Text>
                   </TouchableOpacity>
                 )}
 
-                {/* Context Example */}
+                {/* Context Example with Audio */}
                 {activeWord.example ? (
                   <View style={styles.modalExampleBox}>
-                    <Text style={styles.modalExampleLabel}>Ejemplo:</Text>
+                    <View style={styles.exampleHeaderRow}>
+                      <Text style={styles.modalExampleLabel}>En Contexto Real (i+1):</Text>
+                      <TouchableOpacity
+                        style={styles.exampleAudioBtn}
+                        onPress={() => void speakEnglish(activeWord.example ?? '')}
+                        accessibilityLabel="Escuchar ejemplo en inglés"
+                      >
+                        <Ionicons name="volume-medium-outline" size={16} color="#059669" />
+                        <Text style={styles.exampleAudioBtnText}>Escuchar</Text>
+                      </TouchableOpacity>
+                    </View>
                     <Text style={styles.modalExampleEn}>"{activeWord.example}"</Text>
                     {activeWord.exampleTranslation ? (
                       <Text style={styles.modalExampleEs}>"{activeWord.exampleTranslation}"</Text>
@@ -694,15 +789,40 @@ export default function VocabularyScreen(): React.JSX.Element {
                 ) : null}
               </View>
 
-              {/* ----------------- UNLIMITED SPELLING PRACTICE ----------------- */}
+              {/* ----------------- ACTIVE RECALL & SPELLING LABORATORY ----------------- */}
               <View style={styles.spellingSection}>
                 <View style={styles.spellingHeaderRow}>
-                  <Text style={styles.spellingTitle}>✍️ Práctica de Escritura Libre</Text>
-                  <Badge label="Repaso Ilimitado" color={colors.success} size="sm" />
+                  <View style={styles.spellingTitleContainer}>
+                    <Ionicons name="create" size={18} color="#059669" />
+                    <Text style={styles.spellingTitle}>Laboratorio de Escritura</Text>
+                  </View>
+                  <Badge label="Memoria Motriz" color={colors.success} size="sm" />
                 </View>
                 <Text style={styles.spellingDesc}>
-                  Escribe la palabra en inglés las veces que desees para afianzar la ortografía:
+                  Escribe la palabra en inglés de memoria para afianzar la ortografía:
                 </Text>
+
+                {/* Didactic length slots indicator */}
+                <View style={styles.spellingSlotsRow}>
+                  <Text style={styles.spellingSlotsText}>
+                    Longitud: <Text style={{ fontWeight: '700', color: colors.primary }}>{activeWord.word.length} letras</Text>
+                  </Text>
+                  <View style={styles.slotsBoxesContainer}>
+                    {Array.from({ length: Math.min(activeWord.word.length, 12) }).map((_, i) => (
+                      <View
+                        key={`slot-${i}`}
+                        style={[
+                          styles.slotBox,
+                          typedSpelling.length > i && styles.slotBoxFilled,
+                        ]}
+                      >
+                        <Text style={styles.slotLetter}>
+                          {typedSpelling[i] ? typedSpelling[i].toUpperCase() : ''}
+                        </Text>
+                      </View>
+                    ))}
+                  </View>
+                </View>
 
                 <View style={styles.spellingInputBox}>
                   <TextInput
@@ -718,6 +838,17 @@ export default function VocabularyScreen(): React.JSX.Element {
                     autoCorrect={false}
                     onSubmitEditing={handleCheckSpelling}
                   />
+                  {typedSpelling.length > 0 ? (
+                    <TouchableOpacity
+                      style={styles.clearTypedBtn}
+                      onPress={() => {
+                        setTypedSpelling('')
+                        setHasCheckedSpelling(false)
+                      }}
+                    >
+                      <Ionicons name="close-circle" size={18} color={colors.textMuted} />
+                    </TouchableOpacity>
+                  ) : null}
                   <TouchableOpacity
                     style={[
                       styles.checkSpellingBtn,
@@ -743,7 +874,7 @@ export default function VocabularyScreen(): React.JSX.Element {
                     <Ionicons
                       name={isSpellingCorrect ? 'checkmark-circle' : 'alert-circle'}
                       size={20}
-                      color={isSpellingCorrect ? colors.success : colors.danger}
+                      color={isSpellingCorrect ? '#059669' : colors.danger}
                     />
                     <Text
                       style={[
@@ -754,7 +885,7 @@ export default function VocabularyScreen(): React.JSX.Element {
                       ]}
                     >
                       {isSpellingCorrect
-                        ? '¡Ortografía Perfecta! 🌟'
+                        ? '¡Ortografía Perfecta! +10 XP 🌟'
                         : 'Revisa las letras e inténtalo de nuevo.'}
                     </Text>
                   </View>
@@ -776,10 +907,11 @@ export default function VocabularyScreen(): React.JSX.Element {
                     </TouchableOpacity>
 
                     {showSpellingHint ? (
-                      <Text style={styles.hintDisplay}>
-                        Tiene {activeWord.word.length} letras y empieza con "
-                        {activeWord.word.charAt(0).toUpperCase()}".
-                      </Text>
+                      <View style={styles.hintDisplayBox}>
+                        <Text style={styles.hintDisplay}>
+                          💡 Empieza con "{activeWord.word.charAt(0).toUpperCase()}", termina con "{activeWord.word.slice(-1).toLowerCase()}" y tiene {activeWord.word.length} letras.
+                        </Text>
+                      </View>
                     ) : null}
                   </View>
                 ) : null}
@@ -791,7 +923,7 @@ export default function VocabularyScreen(): React.JSX.Element {
                       style={styles.nextWordActionBtn}
                       onPress={goToNextWord}
                     >
-                      <Text style={styles.nextWordActionBtnText}>Siguiente Palabra ➡</Text>
+                      <Text style={styles.nextWordActionBtnText}>Siguiente Palabra ➔</Text>
                     </TouchableOpacity>
                     <TouchableOpacity
                       style={styles.finishWordActionBtn}
@@ -814,7 +946,7 @@ export default function VocabularyScreen(): React.JSX.Element {
                 </TouchableOpacity>
 
                 <Text style={styles.navCounterText}>
-                  {(activeWordIndex ?? 0) + 1} de {filteredWords.length}
+                  Palabra {(activeWordIndex ?? 0) + 1} de {filteredWords.length} ({selectedLevel})
                 </Text>
 
                 <TouchableOpacity
@@ -1118,6 +1250,15 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.background,
   },
+  modalProgressTrack: {
+    height: 3,
+    backgroundColor: colors.border,
+    width: '100%',
+  },
+  modalProgressFill: {
+    height: '100%',
+    backgroundColor: colors.primary,
+  },
   modalScroll: {
     padding: spacing.md,
     paddingBottom: 140,
@@ -1130,33 +1271,51 @@ const styles = StyleSheet.create({
   },
   modalBadgesRow: {
     flexDirection: 'row',
+    alignItems: 'center',
     gap: spacing.xs,
+    flexWrap: 'wrap',
+    flex: 1,
+  },
+  posChip: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+    paddingHorizontal: spacing.sm,
+    paddingVertical: 3,
+    borderRadius: radius.full,
+    borderWidth: 1,
+  },
+  posChipText: {
+    fontSize: 11,
+    fontWeight: typography.weights.bold,
   },
   modalCloseBtn: {
-    padding: spacing.xs,
+    padding: spacing.xs + 2,
     borderRadius: radius.full,
     backgroundColor: colors.cardHover,
+    borderWidth: 1,
+    borderColor: colors.border,
   },
   modalWordCard: {
     backgroundColor: colors.card,
     borderRadius: radius.xl,
     padding: spacing.lg,
-    borderWidth: 1,
+    borderWidth: 1.5,
     borderColor: colors.border,
     alignItems: 'center',
     marginBottom: spacing.lg,
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.05,
-    shadowRadius: 6,
-    elevation: 2,
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.08,
+    shadowRadius: 10,
+    elevation: 3,
   },
   englishWordTouchable: {
     alignItems: 'center',
     paddingVertical: spacing.xs,
   },
   modalWordEn: {
-    fontSize: 34,
+    fontSize: 38,
     fontWeight: typography.weights.bold,
     color: colors.textPrimary,
     letterSpacing: -0.5,
@@ -1165,100 +1324,199 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 6,
-    marginTop: 4,
-    backgroundColor: colors.primaryLight,
-    paddingHorizontal: spacing.sm,
-    paddingVertical: 3,
+    marginTop: 6,
+    backgroundColor: '#ECFDF5',
+    paddingHorizontal: spacing.md,
+    paddingVertical: 4,
     borderRadius: radius.full,
+    borderWidth: 1,
+    borderColor: '#A7F3D0',
   },
   tapToRevealTagText: {
     fontSize: 11,
-    color: colors.primary,
+    color: '#059669',
+    fontWeight: typography.weights.bold,
+  },
+  phoneticContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+    backgroundColor: colors.backgroundSubtle,
+    paddingHorizontal: spacing.md,
+    paddingVertical: 6,
+    borderRadius: radius.full,
+    marginTop: spacing.sm,
+    marginBottom: spacing.md,
+    borderWidth: 1,
+    borderColor: colors.border,
+  },
+  modalPhoneticLabel: {
+    fontSize: 11,
+    color: colors.textMuted,
     fontWeight: typography.weights.medium,
   },
   modalPhonetic: {
     fontSize: typography.sizes.sm,
-    color: colors.primary,
-    fontWeight: typography.weights.semibold,
-    marginTop: 6,
-    marginBottom: spacing.md,
+    color: '#059669',
+    fontWeight: typography.weights.bold,
   },
-  modalAudioButton: {
+  audioControlsRow: {
     flexDirection: 'row',
     alignItems: 'center',
+    gap: spacing.sm,
+    width: '100%',
+    marginBottom: spacing.md,
+  },
+  modalAudioButtonPrimary: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
     gap: spacing.xs,
     backgroundColor: colors.primary,
-    paddingHorizontal: spacing.lg,
-    paddingVertical: spacing.sm,
+    paddingVertical: spacing.sm + 2,
     borderRadius: radius.full,
-    marginBottom: spacing.md,
+    shadowColor: colors.primary,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 2,
   },
   modalAudioButtonText: {
     color: '#FFFFFF',
     fontSize: typography.sizes.sm,
     fontWeight: typography.weights.bold,
   },
+  modalAudioButtonSlow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+    backgroundColor: colors.cardHover,
+    paddingHorizontal: spacing.md,
+    paddingVertical: spacing.sm + 2,
+    borderRadius: radius.full,
+    borderWidth: 1,
+    borderColor: colors.border,
+  },
+  modalAudioSlowIcon: {
+    fontSize: 14,
+  },
+  modalAudioSlowText: {
+    fontSize: typography.sizes.xs,
+    fontWeight: typography.weights.bold,
+    color: colors.textSecondary,
+  },
   revealedTranslationBox: {
     width: '100%',
     backgroundColor: '#ECFDF5',
-    borderRadius: radius.md,
+    borderRadius: radius.lg,
     padding: spacing.md,
     alignItems: 'center',
-    borderWidth: 1,
-    borderColor: colors.success,
+    borderWidth: 1.5,
+    borderColor: '#059669',
     marginBottom: spacing.md,
   },
-  revealedTranslationText: {
-    fontSize: typography.sizes.xl,
+  revealedHeaderRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+    marginBottom: 4,
+  },
+  revealedTranslationLabel: {
+    fontSize: 11,
+    color: '#059669',
     fontWeight: typography.weights.bold,
-    color: colors.success,
+    textTransform: 'uppercase',
+    letterSpacing: 0.5,
+  },
+  revealedTranslationText: {
+    fontSize: 26,
+    fontWeight: typography.weights.bold,
+    color: '#059669',
+    textAlign: 'center',
+  },
+  variantsPillRow: {
+    marginTop: 6,
+    paddingTop: 6,
+    borderTopWidth: 1,
+    borderTopColor: '#A7F3D0',
+    width: '100%',
   },
   revealedVariantsText: {
     fontSize: typography.sizes.xs,
     color: colors.textSecondary,
-    marginTop: 4,
     textAlign: 'center',
+    fontStyle: 'italic',
   },
   hiddenTranslationPrompt: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 6,
+    justifyContent: 'center',
+    gap: 8,
+    width: '100%',
     backgroundColor: colors.cardHover,
     paddingHorizontal: spacing.md,
-    paddingVertical: spacing.sm,
-    borderRadius: radius.md,
+    paddingVertical: spacing.md,
+    borderRadius: radius.lg,
+    borderWidth: 1.5,
+    borderStyle: 'dashed',
+    borderColor: colors.border,
     marginBottom: spacing.md,
   },
   hiddenTranslationPromptText: {
     fontSize: typography.sizes.xs,
-    color: colors.textMuted,
-    fontWeight: typography.weights.medium,
+    color: colors.textSecondary,
+    fontWeight: typography.weights.semibold,
   },
   modalExampleBox: {
     width: '100%',
     backgroundColor: colors.cardHover,
-    borderRadius: radius.md,
+    borderRadius: radius.lg,
     padding: spacing.md,
-    borderLeftWidth: 3,
+    borderLeftWidth: 3.5,
     borderLeftColor: colors.primary,
+  },
+  exampleHeaderRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 4,
   },
   modalExampleLabel: {
     fontSize: 10,
     textTransform: 'uppercase',
     fontWeight: typography.weights.bold,
     color: colors.textMuted,
-    marginBottom: 2,
+    letterSpacing: 0.5,
+  },
+  exampleAudioBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 3,
+    backgroundColor: '#ECFDF5',
+    paddingHorizontal: 8,
+    paddingVertical: 2,
+    borderRadius: radius.full,
+    borderWidth: 1,
+    borderColor: '#A7F3D0',
+  },
+  exampleAudioBtnText: {
+    fontSize: 10,
+    fontWeight: typography.weights.bold,
+    color: '#059669',
   },
   modalExampleEn: {
     fontSize: typography.sizes.sm,
     fontWeight: typography.weights.semibold,
     color: colors.textPrimary,
     fontStyle: 'italic',
+    lineHeight: 20,
   },
   modalExampleEs: {
     fontSize: typography.sizes.xs,
     color: colors.textSecondary,
-    marginTop: 2,
+    marginTop: 4,
+    lineHeight: 18,
   },
 
   // Spelling Section
@@ -1266,7 +1524,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.card,
     borderRadius: radius.xl,
     padding: spacing.lg,
-    borderWidth: 1,
+    borderWidth: 1.5,
     borderColor: colors.border,
     marginBottom: spacing.lg,
   },
@@ -1276,6 +1534,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: spacing.xs,
   },
+  spellingTitleContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+  },
   spellingTitle: {
     fontSize: typography.sizes.md,
     fontWeight: typography.weights.bold,
@@ -1284,11 +1547,50 @@ const styles = StyleSheet.create({
   spellingDesc: {
     fontSize: typography.sizes.xs,
     color: colors.textSecondary,
-    marginBottom: spacing.md,
+    marginBottom: spacing.sm,
     lineHeight: 16,
+  },
+  spellingSlotsRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    backgroundColor: colors.backgroundSubtle,
+    paddingHorizontal: spacing.md,
+    paddingVertical: spacing.xs + 2,
+    borderRadius: radius.md,
+    marginBottom: spacing.sm,
+  },
+  spellingSlotsText: {
+    fontSize: typography.sizes.xs,
+    color: colors.textSecondary,
+  },
+  slotsBoxesContainer: {
+    flexDirection: 'row',
+    gap: 4,
+  },
+  slotBox: {
+    width: 20,
+    height: 24,
+    borderRadius: 4,
+    backgroundColor: colors.card,
+    borderWidth: 1,
+    borderColor: colors.border,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  slotBoxFilled: {
+    borderColor: '#059669',
+    backgroundColor: '#ECFDF5',
+  },
+  slotLetter: {
+    fontSize: 11,
+    fontWeight: typography.weights.bold,
+    color: '#059669',
   },
   spellingInputBox: {
     flexDirection: 'row',
+    alignItems: 'center',
+    position: 'relative',
     gap: spacing.xs,
     marginBottom: spacing.sm,
   },
@@ -1299,14 +1601,21 @@ const styles = StyleSheet.create({
     borderWidth: 1.5,
     borderColor: colors.border,
     paddingHorizontal: spacing.md,
+    paddingRight: 36,
     paddingVertical: spacing.sm + 2,
     fontSize: typography.sizes.md,
     color: colors.textPrimary,
+  },
+  clearTypedBtn: {
+    position: 'absolute',
+    right: 110,
+    padding: 6,
   },
   checkSpellingBtn: {
     backgroundColor: colors.primary,
     borderRadius: radius.md,
     paddingHorizontal: spacing.md,
+    paddingVertical: spacing.sm + 4,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -1328,16 +1637,20 @@ const styles = StyleSheet.create({
   },
   spellingFeedbackCorrect: {
     backgroundColor: '#ECFDF5',
+    borderWidth: 1,
+    borderColor: '#A7F3D0',
   },
   spellingFeedbackIncorrect: {
     backgroundColor: '#FEF2F2',
+    borderWidth: 1,
+    borderColor: '#FECDD3',
   },
   spellingFeedbackText: {
     fontSize: typography.sizes.xs,
     fontWeight: typography.weights.bold,
   },
   spellingFeedbackTextCorrect: {
-    color: colors.success,
+    color: '#059669',
   },
   spellingFeedbackTextIncorrect: {
     color: colors.danger,
@@ -1356,11 +1669,18 @@ const styles = StyleSheet.create({
     color: colors.warning,
     fontWeight: typography.weights.semibold,
   },
+  hintDisplayBox: {
+    backgroundColor: '#FFFBEB',
+    padding: spacing.sm,
+    borderRadius: radius.sm,
+    borderWidth: 1,
+    borderColor: '#FDE68A',
+    marginTop: 4,
+  },
   hintDisplay: {
     fontSize: 11,
-    color: colors.textSecondary,
-    fontStyle: 'italic',
-    marginTop: 2,
+    color: '#D97706',
+    fontWeight: typography.weights.medium,
   },
   successActionsRow: {
     flexDirection: 'row',
@@ -1371,7 +1691,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.success,
     borderRadius: radius.md,
-    paddingVertical: spacing.sm,
+    paddingVertical: spacing.sm + 2,
     alignItems: 'center',
   },
   nextWordActionBtnText: {
@@ -1383,7 +1703,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.cardHover,
     borderRadius: radius.md,
-    paddingVertical: spacing.sm,
+    paddingVertical: spacing.sm + 2,
     alignItems: 'center',
     borderWidth: 1,
     borderColor: colors.border,
@@ -1406,10 +1726,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     gap: 4,
     paddingHorizontal: spacing.md,
-    paddingVertical: spacing.sm,
+    paddingVertical: spacing.sm + 2,
     borderRadius: radius.md,
     backgroundColor: colors.card,
-    borderWidth: 1,
+    borderWidth: 1.5,
     borderColor: colors.border,
   },
   navWordBtnText: {
@@ -1419,8 +1739,8 @@ const styles = StyleSheet.create({
   },
   navCounterText: {
     fontSize: typography.sizes.xs,
-    color: colors.textMuted,
-    fontWeight: typography.weights.medium,
+    color: colors.textSecondary,
+    fontWeight: typography.weights.semibold,
   },
 
   // Search Bar Styles
