@@ -225,6 +225,8 @@ export default function VocabularyScreen(): React.JSX.Element {
     const cleanTyped = typedSpelling.trim().toLowerCase()
     const cleanTarget = activeWord.word.trim().toLowerCase()
 
+    setIsTranslationRevealed(true)
+
     if (cleanTyped === cleanTarget) {
       setIsSpellingCorrect(true)
       setHasCheckedSpelling(true)
@@ -861,33 +863,51 @@ export default function VocabularyScreen(): React.JSX.Element {
                   </TouchableOpacity>
                 </View>
 
-                {/* Feedback Message */}
+                {/* Feedback Message & Immediate Spanish Translation */}
                 {hasCheckedSpelling ? (
-                  <View
-                    style={[
-                      styles.spellingFeedbackBox,
-                      isSpellingCorrect
-                        ? styles.spellingFeedbackCorrect
-                        : styles.spellingFeedbackIncorrect,
-                    ]}
-                  >
-                    <Ionicons
-                      name={isSpellingCorrect ? 'checkmark-circle' : 'alert-circle'}
-                      size={20}
-                      color={isSpellingCorrect ? '#059669' : colors.danger}
-                    />
-                    <Text
+                  <View style={styles.spellingFeedbackContainer}>
+                    <View
                       style={[
-                        styles.spellingFeedbackText,
+                        styles.spellingFeedbackBox,
                         isSpellingCorrect
-                          ? styles.spellingFeedbackTextCorrect
-                          : styles.spellingFeedbackTextIncorrect,
+                          ? styles.spellingFeedbackCorrect
+                          : styles.spellingFeedbackIncorrect,
                       ]}
                     >
-                      {isSpellingCorrect
-                        ? '¡Ortografía Perfecta! +10 XP 🌟'
-                        : 'Revisa las letras e inténtalo de nuevo.'}
-                    </Text>
+                      <Ionicons
+                        name={isSpellingCorrect ? 'checkmark-circle' : 'alert-circle'}
+                        size={20}
+                        color={isSpellingCorrect ? '#059669' : colors.danger}
+                      />
+                      <Text
+                        style={[
+                          styles.spellingFeedbackText,
+                          isSpellingCorrect
+                            ? styles.spellingFeedbackTextCorrect
+                            : styles.spellingFeedbackTextIncorrect,
+                        ]}
+                      >
+                        {isSpellingCorrect
+                          ? '¡Ortografía Perfecta! +10 XP 🌟'
+                          : 'Revisa las letras e inténtalo de nuevo.'}
+                      </Text>
+                    </View>
+
+                    {/* Immediate Spanish Translation Result Box */}
+                    <View style={styles.spellingTranslationResultCard}>
+                      <View style={styles.spellingTranslationHeaderRow}>
+                        <View style={styles.spellingTranslationBadge}>
+                          <Ionicons name="language" size={13} color="#059669" />
+                          <Text style={styles.spellingTranslationBadgeText}>TRADUCCIÓN AL ESPAÑOL</Text>
+                        </View>
+                        <Text style={styles.spellingTranslationTargetWord}>
+                          "{activeWord.word}"
+                        </Text>
+                      </View>
+                      <Text style={styles.spellingTranslationResultText}>
+                        {activeWord.translation}
+                      </Text>
+                    </View>
                   </View>
                 ) : null}
 
@@ -1627,13 +1647,16 @@ const styles = StyleSheet.create({
     fontWeight: typography.weights.bold,
     fontSize: typography.sizes.sm,
   },
+  spellingFeedbackContainer: {
+    marginTop: spacing.xs,
+    gap: spacing.xs,
+  },
   spellingFeedbackBox: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: spacing.xs,
     padding: spacing.sm,
     borderRadius: radius.md,
-    marginTop: spacing.xs,
   },
   spellingFeedbackCorrect: {
     backgroundColor: '#ECFDF5',
@@ -1654,6 +1677,43 @@ const styles = StyleSheet.create({
   },
   spellingFeedbackTextIncorrect: {
     color: colors.danger,
+  },
+  spellingTranslationResultCard: {
+    backgroundColor: '#ECFDF5',
+    borderRadius: radius.md,
+    padding: spacing.md,
+    borderWidth: 1.5,
+    borderColor: '#059669',
+    marginTop: 2,
+  },
+  spellingTranslationHeaderRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 4,
+  },
+  spellingTranslationBadge: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+  },
+  spellingTranslationBadgeText: {
+    fontSize: 10,
+    fontWeight: typography.weights.bold,
+    color: '#059669',
+    letterSpacing: 0.5,
+  },
+  spellingTranslationTargetWord: {
+    fontSize: typography.sizes.xs,
+    fontWeight: typography.weights.semibold,
+    color: colors.textSecondary,
+    fontStyle: 'italic',
+  },
+  spellingTranslationResultText: {
+    fontSize: 22,
+    fontWeight: typography.weights.bold,
+    color: '#059669',
+    marginTop: 2,
   },
   hintContainer: {
     marginTop: spacing.xs,
