@@ -97,13 +97,27 @@ export default function ReadingScreen(): React.JSX.Element {
     }
   }
 
+  const scrollRef = React.useRef<ScrollView>(null)
   const [showTranslation, setShowTranslation] = useState(false)
   const [activeWordItem, setActiveWordItem] = useState<VocabularyItem | null>(null)
   const [activeMappingKey, setActiveMappingKey] = useState<string | null>(null)
   const [userAnswers, setUserAnswers] = useState<Record<number, number>>({})
   const [isCompleted, setIsCompleted] = useState(false)
+  const [showResultsModal, setShowResultsModal] = useState(false)
 
   const cards = useSRSStore((state) => state.cards)
+
+  const totalQuestions = selectedPassage.comprehensionQuestions?.length ?? 0
+  const answeredQuestions = Object.keys(userAnswers).length
+  const correctAnswersCount = useMemo(() => {
+    if (!selectedPassage.comprehensionQuestions) return 0
+    return selectedPassage.comprehensionQuestions.reduce((acc, q, idx) => {
+      return userAnswers[idx] === q.correctOptionIndex ? acc + 1 : acc
+    }, 0)
+  }, [selectedPassage.comprehensionQuestions, userAnswers])
+
+  const scorePercentage = totalQuestions > 0 ? Math.round((correctAnswersCount / totalQuestions) * 100) : 100
+  const xpEarned = totalQuestions > 0 ? 40 + correctAnswersCount * 20 : 50
 
   // Map vocabularyId -> 'mastered' (interval >= 21d) | 'learning' (1-20d) | 'new' (0d / not reviewed)
   const srsStatusMap = useMemo(() => {
@@ -196,6 +210,25 @@ export default function ReadingScreen(): React.JSX.Element {
     setActiveMappingKey(null)
     setUserAnswers({})
     setIsCompleted(false)
+    setShowResultsModal(false)
+  }
+
+  const hasNextPassage = passageIndex >= 0 && passageIndex < passages.length - 1
+
+  const handleNextPassage = (): void => {
+    if (hasNextPassage) {
+      const nextPassage = passages[passageIndex + 1]
+      if (nextPassage) {
+        handleSelectPassage(nextPassage)
+        scrollRef.current?.scrollTo({ y: 0, animated: true })
+      }
+    }
+  }
+
+  const handleRetryQuiz = (): void => {
+    setUserAnswers({})
+    setIsCompleted(false)
+    setShowResultsModal(false)
   }
 
   const handleSelectOption = (questionIndex: number, optionIndex: number): void => {
@@ -273,7 +306,7 @@ export default function ReadingScreen(): React.JSX.Element {
 
   return (
     <SafeAreaView style={styles.safeArea} edges={['top']}>
-      <ScrollView contentContainerStyle={styles.scrollContent}>
+      <ScrollView ref={scrollRef} contentContainerStyle={styles.scrollContent}>
         {/* Screen Header */}
         <AppScreenHeader
           icon="reader"
@@ -563,20 +596,140 @@ export default function ReadingScreen(): React.JSX.Element {
           </Card>
         ) : null}
 
-        {/* Mark as read button */}
-        <Button
-          title={isCompleted ? '✓ Lectura Completada' : 'Marcar Lectura como Completada'}
-          variant={isCompleted ? 'secondary' : 'primary'}
-          size="lg"
-          onPress={() => {
-            setIsCompleted(true)
-          }}
-          disabled={isCompleted}
-          style={styles.completeBtn}
-          icon={<Ionicons name="checkmark-done-outline" size={20} color={colors.textPrimary} />}
-        />
+        {/* Reading Completion and Results Section */}
+        {isCompleted ? (
+          <Card padding="lg" highlighted style={styles.resultsCard}>
+            <View style={styles.resultsHeader}>
+              <View style={styles.resultsTrophyBadge}>
+                <Ionicons name="trophy" size={28} color="#F59E0B" />
+              </View>
+              <View style={{ flex: 1 }}>
+                <Text style={styles.resultsTitle}>¡Lectura Completada!</Text>
+                <Text style={styles.resultsSubtitle}>
+                  {scorePercentage === 100
+                    ? '¡Puntaje perfecto! Dominio total del contexto.'
+                    : scorePercentage >= 60
+                    ? '¡Gran trabajo de comprensión y asimilación!'
+                    : '¡Buen intento! Te recomendamos repasar las palabras clave.'}
+                </Text>
+              </View>
+            </View>
+
+            <View style={styles.resultsStatsRow}>
+              <View style={styles.resultsStatBox}>
+                <Text style={styles.resultsStatNumber}>
+                  {correctAnswersCount} / {totalQuestions}
+                </Text>
+                <Text style={styles.resultsStatLabel}>Aciertos ({scorePercentage}%)</Text>
+              </View>
+              <View style={styles.resultsStatBox}>
+                <Text style={[styles.resultsStatNumber, { color: '#059669' }]}>+{xpEarned} XP</Text>
+                <Text style={styles.resultsStatLabel}>Puntos Ganados</Text>
+              </View>
+              <View style={styles.resultsStatBox}>
+                <Text style={[styles.resultsStatNumber, { color: '#2563EB' }]}>{wordCount}</Text>
+                <Text style={styles.resultsStatLabel}>Palabras Leídas</Text>
+              </View>
+            </View>
+
+            <View style={styles.resultsActionButtons}>
+              {hasNextPassage ? (
+                <Button
+                  title="Siguiente Lectura ➔"
+                  variant="primary"
+                  size="lg"
+                  onPress={handleNextPassage}
+                  style={{ flex: 1 }}
+                />
+              ) : null}
+              <Button
+                title="Repetir Preguntas 🔄"
+                variant={hasNextPassage ? 'outline' : 'primary'}
+                size="lg"
+                onPress={handleRetryQuiz}
+                style={{ flex: 1 }}
+              />
+            </View>
+          </Card>
+        ) : (
+          <Button
+            title={
+              totalQuestions > 0 && answeredQuestions === totalQuestions
+                ? '🎉 Completar y Ver Resultados'
+                : 'Marcar Lectura como Completada'
+            }
+            variant="primary"
+            size="lg"
+            onPress={() => {
+              setIsCompleted(true)
+              setShowResultsModal(true)
+            }}
+            style={styles.completeBtn}
+            icon={<Ionicons name="checkmark-done-outline" size={20} color={colors.textPrimary} />}
+          />
+        )}
         </>
         )}
+
+        {/* Reading Completion Celebration Modal */}
+        <Modal
+          visible={showResultsModal}
+          transparent
+          animationType="fade"
+          onRequestClose={() => setShowResultsModal(false)}
+        >
+          <Pressable style={styles.resultsModalOverlay} onPress={() => setShowResultsModal(false)}>
+            <Pressable style={styles.resultsModalCard} onPress={(e) => e.stopPropagation()}>
+              <View style={styles.resultsModalIconContainer}>
+                <Ionicons name="sparkles" size={36} color="#059669" />
+              </View>
+
+              <Text style={styles.resultsModalTitle}>¡Misión Cumplida! 🎓</Text>
+              <Text style={styles.resultsModalPassageName}>"{selectedPassage.title}"</Text>
+
+              <View style={styles.resultsModalScorePill}>
+                <Ionicons name="checkmark-circle" size={18} color="#059669" />
+                <Text style={styles.resultsModalScoreText}>
+                  {correctAnswersCount} de {totalQuestions} respuestas correctas ({scorePercentage}%)
+                </Text>
+              </View>
+
+              <View style={styles.resultsModalRewardBox}>
+                <View style={styles.resultsModalRewardItem}>
+                  <Text style={styles.resultsModalRewardValue}>+{xpEarned} XP</Text>
+                  <Text style={styles.resultsModalRewardLabel}>Experiencia Académica</Text>
+                </View>
+                <View style={styles.resultsModalRewardDivider} />
+                <View style={styles.resultsModalRewardItem}>
+                  <Text style={styles.resultsModalRewardValue}>{estimatedReadMinutes} min</Text>
+                  <Text style={styles.resultsModalRewardLabel}>Tiempo en Contexto</Text>
+                </View>
+              </View>
+
+              <View style={styles.resultsModalButtonsContainer}>
+                {hasNextPassage ? (
+                  <Button
+                    title="Siguiente Lectura ➔"
+                    variant="primary"
+                    size="lg"
+                    onPress={() => {
+                      setShowResultsModal(false)
+                      handleNextPassage()
+                    }}
+                    style={{ width: '100%', marginBottom: spacing.xs }}
+                  />
+                ) : null}
+                <Button
+                  title="Revisar Texto y Vocabulario"
+                  variant="outline"
+                  size="md"
+                  onPress={() => setShowResultsModal(false)}
+                  style={{ width: '100%' }}
+                />
+              </View>
+            </Pressable>
+          </Pressable>
+        </Modal>
 
         {/* Word Detail Slide-Up Bottom Sheet */}
         <Modal
@@ -1236,5 +1389,161 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     lineHeight: 20,
     maxWidth: 320,
+  },
+  resultsCard: {
+    marginTop: spacing.md,
+    borderRadius: radius.lg,
+    borderWidth: 1.5,
+    borderColor: '#059669',
+    backgroundColor: colors.card,
+  },
+  resultsHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.md,
+    marginBottom: spacing.md,
+  },
+  resultsTrophyBadge: {
+    width: 52,
+    height: 52,
+    borderRadius: 26,
+    backgroundColor: '#FEF3C7',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  resultsTitle: {
+    fontSize: typography.sizes.lg,
+    fontWeight: typography.weights.bold,
+    color: colors.textPrimary,
+  },
+  resultsSubtitle: {
+    fontSize: typography.sizes.xs,
+    color: colors.textSecondary,
+    marginTop: 2,
+    lineHeight: 18,
+  },
+  resultsStatsRow: {
+    flexDirection: 'row',
+    gap: spacing.xs,
+    backgroundColor: colors.cardHover,
+    padding: spacing.md,
+    borderRadius: radius.md,
+    marginBottom: spacing.md,
+  },
+  resultsStatBox: {
+    flex: 1,
+    alignItems: 'center',
+  },
+  resultsStatNumber: {
+    fontSize: typography.sizes.md,
+    fontWeight: typography.weights.bold,
+    color: colors.textPrimary,
+  },
+  resultsStatLabel: {
+    fontSize: typography.sizes.xs - 2,
+    color: colors.textSecondary,
+    marginTop: 2,
+    textAlign: 'center',
+  },
+  resultsActionButtons: {
+    flexDirection: 'row',
+    gap: spacing.sm,
+  },
+  resultsModalOverlay: {
+    flex: 1,
+    backgroundColor: 'rgba(0, 0, 0, 0.75)',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: spacing.lg,
+  },
+  resultsModalCard: {
+    width: '100%',
+    maxWidth: 380,
+    backgroundColor: colors.card,
+    borderRadius: radius.xl,
+    padding: spacing.xl,
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: colors.border,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 10 },
+    shadowOpacity: 0.3,
+    shadowRadius: 20,
+    elevation: 10,
+  },
+  resultsModalIconContainer: {
+    width: 72,
+    height: 72,
+    borderRadius: 36,
+    backgroundColor: '#ECFDF5',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: spacing.md,
+    borderWidth: 2,
+    borderColor: '#A7F3D0',
+  },
+  resultsModalTitle: {
+    fontSize: typography.sizes.xl,
+    fontWeight: typography.weights.bold,
+    color: colors.textPrimary,
+    textAlign: 'center',
+    marginBottom: 4,
+  },
+  resultsModalPassageName: {
+    fontSize: typography.sizes.sm,
+    color: colors.textSecondary,
+    textAlign: 'center',
+    fontStyle: 'italic',
+    marginBottom: spacing.md,
+  },
+  resultsModalScorePill: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+    backgroundColor: '#ECFDF5',
+    paddingHorizontal: spacing.md,
+    paddingVertical: spacing.xs + 2,
+    borderRadius: radius.full,
+    borderWidth: 1,
+    borderColor: '#A7F3D0',
+    marginBottom: spacing.md,
+  },
+  resultsModalScoreText: {
+    fontSize: typography.sizes.xs,
+    fontWeight: typography.weights.semibold,
+    color: '#059669',
+  },
+  resultsModalRewardBox: {
+    flexDirection: 'row',
+    width: '100%',
+    backgroundColor: colors.cardHover,
+    borderRadius: radius.md,
+    padding: spacing.md,
+    marginBottom: spacing.lg,
+    alignItems: 'center',
+  },
+  resultsModalRewardItem: {
+    flex: 1,
+    alignItems: 'center',
+  },
+  resultsModalRewardValue: {
+    fontSize: typography.sizes.lg,
+    fontWeight: typography.weights.bold,
+    color: '#059669',
+  },
+  resultsModalRewardLabel: {
+    fontSize: typography.sizes.xs - 2,
+    color: colors.textSecondary,
+    marginTop: 2,
+    textAlign: 'center',
+  },
+  resultsModalRewardDivider: {
+    width: 1,
+    height: 30,
+    backgroundColor: colors.border,
+  },
+  resultsModalButtonsContainer: {
+    width: '100%',
+    gap: spacing.xs,
   },
 })
